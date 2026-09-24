@@ -1,0 +1,10 @@
+venv/
+.idea/
+__pycache__/
+*.pyc
+.env
+chroma_db/
+ragas_report*.csv
+multi_model_summary.csv
+result_chart.png
+.git/
