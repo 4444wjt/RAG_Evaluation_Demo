@@ -1,0 +1,32 @@
+[
+  {
+    "question": "星语产品是在哪一年发布的？",
+    "ground_truth": "2023年",
+    "case_type": "positive"
+  },
+  {
+    "question": "星云科技的总部位于哪个城市？",
+    "ground_truth": "北京",
+    "case_type": "positive"
+  },
+  {
+    "question": "星语在金融领域测试的回答准确率是多少？",
+    "ground_truth": "92%",
+    "case_type": "positive"
+  },
+  {
+    "question": "星语验证器是在哪一年推出的？",
+    "ground_truth": "2024年",
+    "case_type": "positive"
+  },
+  {
+    "question": "星云科技的创始人是谁？",
+    "ground_truth": "文档未提及",
+    "case_type": "negative"
+  },
+  {
+    "question": "火星的直径是多少公里？",
+    "ground_truth": "文档未提及",
+    "case_type": "negative"
+  }
+]

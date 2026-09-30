@@ -1,0 +1,5 @@
+# Only pytest is new. Reuse the project's existing numpy/pandas constraints.
+-c ../requirements.txt
+pytest==9.1.1
+numpy
+pandas

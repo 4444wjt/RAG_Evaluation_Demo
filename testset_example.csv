@@ -1,0 +1,7 @@
+question,ground_truth,case_type
+星语产品是在哪一年发布的？,2023年,positive
+星云科技的总部位于哪个城市？,北京,positive
+星语在金融领域测试的回答准确率是多少？,92%,positive
+星语验证器是在哪一年推出的？,2024年,positive
+星云科技的创始人是谁？,文档未提及,negative
+火星的直径是多少公里？,文档未提及,negative
