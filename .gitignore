@@ -136,3 +136,32 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# IDE
+.idea/
+
+# 项目运行时产物（评测结果、向量库、本地模型，均不入库）
+chroma_db/
+/models/
+ragas_report*
+multi_model_summary.csv
+result_chart.png
+*.png
+*.tar.gz
+
+# 备份、临时验证脚本、冻结依赖清单与评测历史（不入库）
+*.bak_*
+backup/
+_verify_*.py
+freeze_full.txt
+eval_history.json
+
+# Explicitly retained historical diagnostic snapshots
+!/archive/diagnostics/phase_3_b_10/_verify_refusal.py
+!/archive/diagnostics/phase_3_b_10/_verify_trend.py
+
+# Retained local previews and original diagnostic scripts
+/work/
+/_diag_env.py
+/_diag_refusal.py
+/_diag_refusal2.py

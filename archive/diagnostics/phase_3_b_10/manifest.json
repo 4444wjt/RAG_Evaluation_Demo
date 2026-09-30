@@ -1,0 +1,37 @@
+{
+  "phase": "3-B-10",
+  "archive_date": "2026-10-01",
+  "method": "copy; originals preserved pending explicit deletion approval",
+  "files": [
+    {
+      "original_path": "D:\\RAG_Evaluation_Demo\\_diag_env.py",
+      "archive_path": "D:\\RAG_Evaluation_Demo\\archive\\diagnostics\\phase_3_b_10\\_diag_env.py",
+      "sha256": "a7d3744baebb409ad6bd27e732bbbb5de45032803e46904915401ae146f24b99",
+      "original_preserved": true
+    },
+    {
+      "original_path": "D:\\RAG_Evaluation_Demo\\_diag_refusal.py",
+      "archive_path": "D:\\RAG_Evaluation_Demo\\archive\\diagnostics\\phase_3_b_10\\_diag_refusal.py",
+      "sha256": "294820bf0eec89e316a33c8714898aecccf01cac944bae8cc7de2be51945feb5",
+      "original_preserved": true
+    },
+    {
+      "original_path": "D:\\RAG_Evaluation_Demo\\_diag_refusal2.py",
+      "archive_path": "D:\\RAG_Evaluation_Demo\\archive\\diagnostics\\phase_3_b_10\\_diag_refusal2.py",
+      "sha256": "aedb58f515f19f83d0ffcffd06b7625852c27ec5c564d7ba4277f7d81b7080e1",
+      "original_preserved": true
+    },
+    {
+      "original_path": "D:\\RAG_Evaluation_Demo\\_verify_refusal.py",
+      "archive_path": "D:\\RAG_Evaluation_Demo\\archive\\diagnostics\\phase_3_b_10\\_verify_refusal.py",
+      "sha256": "b77d3a9fe57b357092a4bd7eccabb2c251a5861405507612e58f9ad33118e790",
+      "original_preserved": true
+    },
+    {
+      "original_path": "D:\\RAG_Evaluation_Demo\\_verify_trend.py",
+      "archive_path": "D:\\RAG_Evaluation_Demo\\archive\\diagnostics\\phase_3_b_10\\_verify_trend.py",
+      "sha256": "dbee323cc79f9c1d78c1e9a54622d3254435e107f92374a37663a49fd836c255",
+      "original_preserved": true
+    }
+  ]
+}

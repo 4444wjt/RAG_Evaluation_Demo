@@ -8,3 +8,15 @@ ragas_report*.csv
 multi_model_summary.csv
 result_chart.png
 .git/
+
+# Local workspace data and generated artifacts
+work/
+backup/
+models/
+eval_history.json
+ragas_report.html
+*.png
+*.bak_*
+*.tar.gz
+freeze_full.txt
+.pytest_cache/

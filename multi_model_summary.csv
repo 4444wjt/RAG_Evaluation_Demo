@@ -1,3 +1,0 @@
-﻿model,faithfulness,context_precision,pos_faithfulness,pos_context_precision,neg_faithfulness,neg_context_precision
-deepseek-chat,1.0,0.5,1.0,1.0,,0.0
-Pro/Qwen/Qwen2.5-7B-Instruct,0.9,0.4167,1.0,0.8333,0.8333,0.0
