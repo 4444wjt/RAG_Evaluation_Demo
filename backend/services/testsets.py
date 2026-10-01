@@ -95,7 +95,7 @@ def load_custom_testset(path):
                 "case_type": str(item.get("case_type", "positive")).strip() or "positive",
             })
     elif ext in (".csv", ".txt"):
-        df = pd.read_csv(path, encoding="utf-8-sig")
+        df = pd.read_csv(path, encoding="utf-8-sig").fillna("")
         for _, row in df.iterrows():
             testset.append({
                 "question": str(row.get("question", "")).strip(),

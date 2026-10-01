@@ -77,17 +77,26 @@ def test_empty_csv_header_only_is_rejected(app, tmp_path):
         app.load_custom_testset(str(path))
 
 
-@pytest.mark.xfail(
-    strict=True,
-    raises=AssertionError,
-    reason="Known CSV bug: pandas NaN becomes 'nan'; blank questions/default fields are not normalized. main.py is out of scope.",
-)
 def test_csv_blank_cells_should_not_become_literal_nan(app, tmp_path):
     path = tmp_path / "blank.csv"
     path.write_text("question,ground_truth,case_type\n,orphan,positive\nvalid,,\n", encoding="utf-8")
     assert app.load_custom_testset(str(path)) == [
         {"question": "valid", "ground_truth": "", "contexts": [], "case_type": "positive"},
     ]
+
+
+@pytest.mark.parametrize("extension", [".csv", ".txt"])
+def test_backend_csv_blank_cells_match_main_loader(app, tmp_path, extension):
+    from backend.services import testsets as backend_testsets
+
+    path = tmp_path / ("blank" + extension)
+    path.write_text("question,ground_truth,case_type\n,orphan,positive\nvalid,,\n", encoding="utf-8")
+    expected = [
+        {"question": "valid", "ground_truth": "", "contexts": [], "case_type": "positive"},
+    ]
+    result = backend_testsets.load_custom_testset(str(path))
+    assert result == expected
+    assert result == app.load_custom_testset(str(path))
 
 
 class FakeDataset:

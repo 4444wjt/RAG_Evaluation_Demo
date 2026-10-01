@@ -128,7 +128,7 @@ python main.py --web --port 8080
 ## ⚠️ 已知限制
 1. **GLM-5.2-Fast 深度思考已通过 `extra_body` 关闭**：阿里云百炼上的 `glm-5.2-fast-preview` 默认启用 reasoning 模式，未关闭时每次调用会额外产生大量 `reasoning_tokens`，拖慢评测并增加成本。已在 `get_llm` 中针对百炼/GLM 模型传入 `extra_body={"enable_thinking": False}` 关闭思考（仅作用于此模型，不影响 DeepSeek / Qwen）。实测「只回复OK」单次调用：开启思考 `completion_tokens=95`（其中 `reasoning_tokens=92`）/ 耗时 2.07s；关闭后 `completion_tokens=1`（`reasoning_tokens=0`）/ 耗时 1.06s。
 2. **Embedding 依赖本地模型**：初始化时使用 `local_files_only=True`，不联网下载，需提前将 `bge-small-zh-v1.5` 放入本地缓存或 `models/` 目录。
-3. **自定义 CSV 测试集的空单元格会被误读**：`load_custom_testset` 的 CSV 分支未对 `NaN` 做过滤，空单元格会被转成 `"nan"` 字符串（对应测试已用 `xfail` 标记，待修复）。
+3. **自定义 CSV 空值处理已在 Phase 4-B 修复**：CSV/TXT 加载后先将 pandas 识别的缺失值填为 `""`，不再将缺失值转成 `"nan"`；原缺陷测试已转为普通回归测试，历史评测产物不重算。
 
 ## 📁 输出产物
 - 汇总对比：`multi_model_summary.csv`
@@ -177,7 +177,9 @@ LICENSE                # 开源协议
 
 离线测试沿用 `tests/pytest.ini`、原测试用例和断言，不需要 `.env`、API Key、本地 Embedding 或网络。本地与 CI 使用相同的源码编译范围（`main.py`、`backend/`、`tests/`），不遍历虚拟环境或本地运行产物。Phase 3-B-10 的完整仓库语法检查结果保留在冻结报告。
 
-冻结验收基线为 **176 passed、1 xfailed**；原 CSV 空值问题仍保留 xfail，不在本轮修复。Phase 4-A 实际结果见 [PHASE_4_A_RECORD.md](PHASE_4_A_RECORD.md)，下方 2026-09-28 的场景验证数字属于历史记录。
+冻结及 Phase 4-A 验收基线为 **176 passed、1 xfailed**，见 [PHASE_4_A_RECORD.md](PHASE_4_A_RECORD.md)。Phase 4-B 修复 CSV 空值并解除该缺陷测试的 xfail，实际验证结果见 [PHASE_4_B_RECORD.md](PHASE_4_B_RECORD.md)；下方 2026-09-28 的场景验证数字属于历史记录。
+
+自定义 CSV/TXT 测试集沿用 pandas 默认的缺失值识别，读取后统一填为 `""`：空 `question` 经原有规则过滤，空 `ground_truth` 保留为空字符串，空 `case_type` 默认 `positive`。CSV 的 `contexts` 仍为 `[]`；全部问题无效时仍抛出原异常。JSON 和 benchmark 加载不变。不额外清洗普通文本；正常输入的指标与门禁规则不变，原含缺失值的输入重跑后可能因有效样本或类型修正而得到不同结果，已保存的历史结果不会修改。
 
 仓库托管在 Gitee。现有 `.github/workflows/ci.yml` 是 GitHub Actions 配置，不会在 Gitee 自动执行；本轮不新增 Gitee 流水线，以本地离线验收为准。
 
