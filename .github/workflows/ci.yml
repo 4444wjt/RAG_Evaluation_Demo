@@ -23,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r tests/requirements.txt
 
-      - name: Syntax check (py_compile)
-        run: python -m py_compile main.py
+      - name: Syntax check (project sources)
+        run: python -m compileall -q main.py backend tests
 
       - name: Run tests
         run: python -m pytest -q tests

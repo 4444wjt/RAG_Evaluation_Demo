@@ -171,13 +171,13 @@ LICENSE                # 开源协议
 在项目根目录使用现有 Python 3.11 虚拟环境，无需安装或升级依赖：
 
 ```powershell
-.\venv\Scripts\python.exe -m compileall -q main.py backend tests archive/diagnostics/phase_3_b_10 regenerate_report.py
+.\venv\Scripts\python.exe -m compileall -q main.py backend tests
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
-离线测试沿用 `tests/pytest.ini`、原测试用例和断言，不需要 `.env`、API Key、本地 Embedding 或网络。本轮完整仓库语法检查另执行 `python -m compileall .`；该命令还会检查本地虚拟环境和工作资料，结果如实记录在冻结报告。
+离线测试沿用 `tests/pytest.ini`、原测试用例和断言，不需要 `.env`、API Key、本地 Embedding 或网络。本地与 CI 使用相同的源码编译范围（`main.py`、`backend/`、`tests/`），不遍历虚拟环境或本地运行产物。Phase 3-B-10 的完整仓库语法检查结果保留在冻结报告。
 
-上一阶段验收基线为 **176 passed、1 xfailed**；原 CSV 空值问题仍保留 xfail，不在工程整理中修复。本轮实际结果以冻结报告为准，下方 2026-09-28 的场景验证数字属于历史记录。
+冻结验收基线为 **176 passed、1 xfailed**；原 CSV 空值问题仍保留 xfail，不在本轮修复。Phase 4-A 实际结果见 [PHASE_4_A_RECORD.md](PHASE_4_A_RECORD.md)，下方 2026-09-28 的场景验证数字属于历史记录。
 
 仓库托管在 Gitee。现有 `.github/workflows/ci.yml` 是 GitHub Actions 配置，不会在 Gitee 自动执行；本轮不新增 Gitee 流水线，以本地离线验收为准。
 
