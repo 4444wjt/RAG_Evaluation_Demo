@@ -147,6 +147,7 @@ backend/
   services/            # 文档、检索、问答、测试集、负样本、溯源
   storage/             # 实验历史与本地产物存储
   reporting/           # 图表、HTML / Excel / PDF 报告
+  api/                 # Phase 4-C-1：FastAPI 应用工厂与健康检查
 archive/diagnostics/phase_3_b_10/  # 历史诊断快照，不加入 pytest
 tests/                 # 现有离线测试与测试依赖
 scenarios/             # 公开场景文档；运行归档保留在本地
@@ -164,7 +165,79 @@ LICENSE                # 开源协议
 
 后端沿用 config / core / adapters / services / storage / reporting 六层。`main.py` 的 `run_pipeline` 是兼容入口，委托 `backend.core.pipeline.evaluate`，仍保留 `_legacy_run_pipeline` 供兼容与回滚参考；本轮不删除旧管线、不改变参数或返回结构。
 
-当前后端完整清单为 29 个 Python 文件、2410 行（含 `__init__.py`）。React、FastAPI 与 Docker Compose 属于后续阶段，本轮不引入。模型执行顺序、Ragas 五项指标、trace、score、门禁、失败语义和历史结构保持原有行为。
+Phase 3-B-10 冻结时的后端清单为 29 个 Python 文件、2410 行（含 `__init__.py`）。Phase 4-C-1 仅新增独立 API 骨架，原六层保持不变；React、评测 API 接线与 Docker Compose 仍属后续阶段。模型执行顺序、Ragas 五项指标、trace、score、门禁、失败语义和历史结构保持原有行为。
+
+## 本地 FastAPI 接口（Phase 4-C）
+
+当前接口提供应用工厂 `backend.api.app.create_app`、ASGI 入口 `backend.api.app:app`、`GET /health` 和同步 `POST /evaluate`。启动与健康检查不导入评测引擎或配置，不读取 `.env`，不初始化 Embedding、向量库或模型；实际评测请求才延迟调用原 `backend.core.pipeline.evaluate`。
+
+使用现有虚拟环境，在项目根目录启动本地单 worker 服务（不使用 reload）：
+
+```powershell
+.\venv\Scripts\python.exe -m uvicorn backend.api.app:app --host 127.0.0.1 --port 8000 --workers 1
+```
+
+另开终端检查服务存活：
+
+```powershell
+Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8000/health
+```
+
+返回 `{"status":"ok"}`，不代表密钥、Embedding 或模型可用，也不提供忙碌状态。以下 POST 示例会调用真实模型；本阶段离线验收未执行这些使用命令。示例模型名称为默认配置，如已重命名，应使用本地 `MODELS_CONFIG` 的当前名称。
+
+```powershell
+$requestBody = @{
+    doc_path = "demo.txt"
+    testset_path = "testset_example.json"
+    model_names = @("deepseek-chat")
+    faith_threshold = 0.8
+    ctx_prec_threshold = 0.8
+} | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/evaluate -ContentType "application/json" -Body $requestBody -TimeoutSec 3600
+```
+
+请求仅接受以下字段，拒绝未知字段：
+
+| 字段 | 默认值 / 规则 |
+| --- | --- |
+| `doc_path` | `null`，使用 `demo.txt`；只接受受控项目相对路径 |
+| `testset_path` | `null`，可选自定义测试集 |
+| `benchmark` | `null`，当前仅支持 `truthful_qa` |
+| `benchmark_limit` | `20`，正整数 |
+| `model_names` | `null` 表示全部配置模型；非空列表且名称必须存在于 `MODELS_CONFIG` |
+| `faith_threshold` | `null` 沿用引擎默认值；范围 `[0,1]`，保留 `0.0` |
+| `ctx_prec_threshold` | `null` 沿用引擎默认值；范围 `[0,1]`，保留 `0.0` |
+| `version_label` | `null`，沿用原历史记录 version 语义 |
+
+文档允许根目录 `demo.txt` 或 `scenarios/` 内的 `.txt` / `.md` / `.pdf` / `.docx`。测试集允许根目录 `testset_example.json`、`testset_example.csv`，或 `scenarios/` 内的 `.json` / `.csv` / `.txt`。请求路径和解析后的真实路径都必须在允许范围内；拒绝绝对路径、目录越界及符号链接越界。只检查实际使用的测试集路径，优先级保持 **benchmark → 自定义测试集 → 自动生成**。模型名单不重排、不去重，实际执行顺序仍由原引擎的 `MODELS_CONFIG` 决定。
+
+成功响应保持原八字段，不增加指标：
+
+| 字段 | JSON 表示 |
+| --- | --- |
+| `summary` | 原 summary 字典列表 |
+| `summary_df` | DataFrame 转记录列表 |
+| `gate_passed` | 原布尔值，`false` 仍返回 HTTP 200 |
+| `gate_message` | 原门禁消息 |
+| `chart_path` | 服务器本地当前图表路径 |
+| `html_path` | 服务器本地当前报告路径 |
+| `model_dfs` | 模型名称 → DataFrame 记录列表 |
+| `total_elapsed_seconds` | 原耗时 |
+
+NumPy 值转换为 Python 原生类型；缺失及非有限数值转 `null`，保留 `0`、`false` 和 trace 字符串内容，不修改引擎返回对象。图表和报告路径不是下载 URL 或独立运行快照，后续评测会覆盖共享目录中的当前产物。
+
+| HTTP 状态 | 含义 |
+| --- | --- |
+| `200` | 评测完成，包括门禁拦截及引擎已处理的部分模型失败 |
+| `422` | 请求参数、模型名称或文件类型不合法 |
+| `403` | 路径不在允许范围或禁止访问 |
+| `404` | 允许范围内的文件不存在 |
+| `409` | 同一 API 进程已有评测运行，不排队 |
+| `500` | 引擎、序列化或响应校验异常，返回固定安全文案 |
+
+同步请求需要足够长的读取超时；断开连接不表示评测已取消，不应自动重试。进程内锁覆盖执行、序列化及响应校验，异常后释放。API 与独立 Gradio / CLI 共用向量库、报告和历史路径，应交替执行真实评测；该锁不保护其他进程。不提供上传、任务轮询、数据库或任务队列，也不作为公开云服务部署。
+
+FastAPI、Uvicorn、Pydantic 已按现有环境版本补齐直接依赖声明，没有安装或升级依赖。Gradio / CLI 和 Docker 默认入口保持原样。Phase 4-C-4 使用离线 mock 完成回归验收，完整 pytest **227 passed**；实际验证结果及范围见 [PHASE_4_C_RECORD.md](PHASE_4_C_RECORD.md)。
 
 ## 如何运行测试
 

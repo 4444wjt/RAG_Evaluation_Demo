@@ -1,0 +1,32 @@
+{
+  "scenario": "information_disclosure",
+  "main_sha256": "5234a36c0c78a5c46a5b83bf77ad8cbb30ac91b62af699affcca5d94341bc567",
+  "document_sha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6",
+  "missing_metric_cells": {
+    "deepseek-chat": {
+      "faithfulness": 3,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    },
+    "Pro/Qwen/Qwen2.5-7B-Instruct": {
+      "faithfulness": 1,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    }
+  },
+  "actual_api_cost_cny": null,
+  "cost_note": "CLI does not record API usage or billing; actual charges not verified.",
+  "artifacts": {
+    "multi_model_summary.csv": "bffe34b2131b31e59bf80c81cc331991035bfb23daab04391db23eabdb41c791",
+    "result_chart.png": "1b126c2e0f44481266e99985e4b66b2b3659b0189993f3b79c3ba1a840cd0f08",
+    "trend_chart.png": "e69862490c3d78a4d5f070a99d7cb320941e27fcc85f6f4cd0ea46ce97ce5d5e",
+    "ragas_report.html": "de9d0a4fbabcb4b5fb5b0c59dcc0c24d77f5e86a81644f62c834fc4f608bf0d8",
+    "eval_history.json": "c0098df24190c46e8034e0c447f687dd5c0c04bebbbfeaa5d28054728d05075f",
+    "ragas_report_deepseek-chat.csv": "f82f82b866cb98b139e99d562303fa89d43ca80cdd69a0725f95a1062103a9dd",
+    "ragas_report_Pro_Qwen_Qwen2.5-7B-Instruct.csv": "0963545962d73a7d456de796e19fc88d28827892ae7a774c6a9736b7c37bbdfc"
+  }
+}

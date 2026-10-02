@@ -1,0 +1,1324 @@
+{
+  "calls": [
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 122,
+      "output_tokens": 45,
+      "planning_cost_cny": 0.002313
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 163,
+      "output_tokens": 52,
+      "planning_cost_cny": 0.002871
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 178,
+      "output_tokens": 27,
+      "planning_cost_cny": 0.002331
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1475,
+      "output_tokens": 546,
+      "planning_cost_cny": 0.028017
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1593,
+      "output_tokens": 338,
+      "planning_cost_cny": 0.023463
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 305,
+      "output_tokens": 36,
+      "planning_cost_cny": 0.003717
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 363,
+      "output_tokens": 39,
+      "planning_cost_cny": 0.00432
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 402,
+      "output_tokens": 44,
+      "planning_cost_cny": 0.004806
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 308,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.003015
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 364,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.003519
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 329,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.003204
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1664,
+      "output_tokens": 65,
+      "planning_cost_cny": 0.016731
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1477,
+      "output_tokens": 85,
+      "planning_cost_cny": 0.015588
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1343,
+      "output_tokens": 72,
+      "planning_cost_cny": 0.014031
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1407,
+      "output_tokens": 65,
+      "planning_cost_cny": 0.014418
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 805,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.00738
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2512,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.022743
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2071,
+      "output_tokens": 38,
+      "planning_cost_cny": 0.019665
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3004,
+      "output_tokens": 32,
+      "planning_cost_cny": 0.0279
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1737,
+      "output_tokens": 74,
+      "planning_cost_cny": 0.017631
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1478,
+      "output_tokens": 74,
+      "planning_cost_cny": 0.0153
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1665,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.016632
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1344,
+      "output_tokens": 68,
+      "planning_cost_cny": 0.013932
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 804,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.007371
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 764,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.007011
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 958,
+      "output_tokens": 83,
+      "planning_cost_cny": 0.010863
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 684,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.006291
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1115,
+      "output_tokens": 213,
+      "planning_cost_cny": 0.015786
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2400,
+      "output_tokens": 26,
+      "planning_cost_cny": 0.022302
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2641,
+      "output_tokens": 73,
+      "planning_cost_cny": 0.02574
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3360,
+      "output_tokens": 26,
+      "planning_cost_cny": 0.030942
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 903,
+      "output_tokens": 98,
+      "planning_cost_cny": 0.010773
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3119,
+      "output_tokens": 191,
+      "planning_cost_cny": 0.033228
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 805,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.00738
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 765,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.00702
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 818,
+      "output_tokens": 34,
+      "planning_cost_cny": 0.00828
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2775,
+      "output_tokens": 67,
+      "planning_cost_cny": 0.026784
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3453,
+      "output_tokens": 70,
+      "planning_cost_cny": 0.032967
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1913,
+      "output_tokens": 85,
+      "planning_cost_cny": 0.019512
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1839,
+      "output_tokens": 67,
+      "planning_cost_cny": 0.01836
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1815,
+      "output_tokens": 33,
+      "planning_cost_cny": 0.017226
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1476,
+      "output_tokens": 71,
+      "planning_cost_cny": 0.015201
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2971,
+      "output_tokens": 50,
+      "planning_cost_cny": 0.028089
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2970,
+      "output_tokens": 58,
+      "planning_cost_cny": 0.028296
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1614,
+      "output_tokens": 60,
+      "planning_cost_cny": 0.016146
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1814,
+      "output_tokens": 56,
+      "planning_cost_cny": 0.017838
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1740,
+      "output_tokens": 88,
+      "planning_cost_cny": 0.018036
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1357,
+      "output_tokens": 65,
+      "planning_cost_cny": 0.013968
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 958,
+      "output_tokens": 83,
+      "planning_cost_cny": 0.010863
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3724,
+      "output_tokens": 210,
+      "planning_cost_cny": 0.039186
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 972,
+      "output_tokens": 62,
+      "planning_cost_cny": 0.010422
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3252,
+      "output_tokens": 121,
+      "planning_cost_cny": 0.032535
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2649,
+      "output_tokens": 28,
+      "planning_cost_cny": 0.024597
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1720,
+      "output_tokens": 45,
+      "planning_cost_cny": 0.016695
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1584,
+      "output_tokens": 67,
+      "planning_cost_cny": 0.016065
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1656,
+      "output_tokens": 58,
+      "planning_cost_cny": 0.01647
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1622,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.016083
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1413,
+      "output_tokens": 37,
+      "planning_cost_cny": 0.013716
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1850,
+      "output_tokens": 59,
+      "planning_cost_cny": 0.018243
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1714,
+      "output_tokens": 72,
+      "planning_cost_cny": 0.01737
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1393,
+      "output_tokens": 52,
+      "planning_cost_cny": 0.013941
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3571,
+      "output_tokens": 53,
+      "planning_cost_cny": 0.03357
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 903,
+      "output_tokens": 98,
+      "planning_cost_cny": 0.010773
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 814,
+      "output_tokens": 65,
+      "planning_cost_cny": 0.009081
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1198,
+      "output_tokens": 255,
+      "planning_cost_cny": 0.017667
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 818,
+      "output_tokens": 34,
+      "planning_cost_cny": 0.00828
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 778,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.007137
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1206,
+      "output_tokens": 57,
+      "planning_cost_cny": 0.012393
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 804,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.007371
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2183,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.019782
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 972,
+      "output_tokens": 62,
+      "planning_cost_cny": 0.010422
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 877,
+      "output_tokens": 79,
+      "planning_cost_cny": 0.010026
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 1210,
+      "output_tokens": 327,
+      "planning_cost_cny": 0.019719
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 2549,
+      "output_tokens": 30,
+      "planning_cost_cny": 0.023751
+    },
+    {
+      "model": "deepseek-chat",
+      "input_tokens": 3233,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.030744
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 367,
+      "output_tokens": 33,
+      "planning_cost_cny": 0.0004
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 424,
+      "output_tokens": 33,
+      "planning_cost_cny": 0.000457
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 473,
+      "output_tokens": 44,
+      "planning_cost_cny": 0.000517
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 374,
+      "output_tokens": 35,
+      "planning_cost_cny": 0.000409
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 427,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.000482
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 398,
+      "output_tokens": 46,
+      "planning_cost_cny": 0.000444
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2691,
+      "output_tokens": 35,
+      "planning_cost_cny": 0.002726
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1595,
+      "output_tokens": 49,
+      "planning_cost_cny": 0.001644
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2170,
+      "output_tokens": 40,
+      "planning_cost_cny": 0.00221
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1980,
+      "output_tokens": 65,
+      "planning_cost_cny": 0.002045
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1577,
+      "output_tokens": 68,
+      "planning_cost_cny": 0.001645
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1034,
+      "output_tokens": 72,
+      "planning_cost_cny": 0.001106
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 733,
+      "output_tokens": 29,
+      "planning_cost_cny": 0.000762
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 885,
+      "output_tokens": 41,
+      "planning_cost_cny": 0.000926
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1132,
+      "output_tokens": 124,
+      "planning_cost_cny": 0.001256
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1048,
+      "output_tokens": 54,
+      "planning_cost_cny": 0.001102
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3899,
+      "output_tokens": 739,
+      "planning_cost_cny": 0.004638
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3064,
+      "output_tokens": 23,
+      "planning_cost_cny": 0.003087
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 4415,
+      "output_tokens": 118,
+      "planning_cost_cny": 0.004533
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3712,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.003767
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 964,
+      "output_tokens": 95,
+      "planning_cost_cny": 0.001059
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 891,
+      "output_tokens": 50,
+      "planning_cost_cny": 0.000941
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1210,
+      "output_tokens": 178,
+      "planning_cost_cny": 0.001388
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1049,
+      "output_tokens": 59,
+      "planning_cost_cny": 0.001108
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2842,
+      "output_tokens": 534,
+      "planning_cost_cny": 0.003376
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2274,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.002335
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2196,
+      "output_tokens": 63,
+      "planning_cost_cny": 0.002259
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2176,
+      "output_tokens": 75,
+      "planning_cost_cny": 0.002251
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1699,
+      "output_tokens": 78,
+      "planning_cost_cny": 0.001777
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3561,
+      "output_tokens": 494,
+      "planning_cost_cny": 0.004055
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3256,
+      "output_tokens": 54,
+      "planning_cost_cny": 0.00331
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3187,
+      "output_tokens": 255,
+      "planning_cost_cny": 0.003442
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 4048,
+      "output_tokens": 257,
+      "planning_cost_cny": 0.004305
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1048,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.001103
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 995,
+      "output_tokens": 53,
+      "planning_cost_cny": 0.001048
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1226,
+      "output_tokens": 187,
+      "planning_cost_cny": 0.001413
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 964,
+      "output_tokens": 77,
+      "planning_cost_cny": 0.001041
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3371,
+      "output_tokens": 503,
+      "planning_cost_cny": 0.003874
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3662,
+      "output_tokens": 168,
+      "planning_cost_cny": 0.00383
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1049,
+      "output_tokens": 58,
+      "planning_cost_cny": 0.001107
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 843,
+      "output_tokens": 25,
+      "planning_cost_cny": 0.000868
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1284,
+      "output_tokens": 133,
+      "planning_cost_cny": 0.001417
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1177,
+      "output_tokens": 82,
+      "planning_cost_cny": 0.001259
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 843,
+      "output_tokens": 27,
+      "planning_cost_cny": 0.00087
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1306,
+      "output_tokens": 222,
+      "planning_cost_cny": 0.001528
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3990,
+      "output_tokens": 640,
+      "planning_cost_cny": 0.00463
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1912,
+      "output_tokens": 69,
+      "planning_cost_cny": 0.001981
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2143,
+      "output_tokens": 67,
+      "planning_cost_cny": 0.00221
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2065,
+      "output_tokens": 78,
+      "planning_cost_cny": 0.002143
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1550,
+      "output_tokens": 47,
+      "planning_cost_cny": 0.001597
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 4272,
+      "output_tokens": 398,
+      "planning_cost_cny": 0.00467
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1177,
+      "output_tokens": 71,
+      "planning_cost_cny": 0.001248
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3403,
+      "output_tokens": 430,
+      "planning_cost_cny": 0.003833
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2064,
+      "output_tokens": 80,
+      "planning_cost_cny": 0.002144
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1716,
+      "output_tokens": 81,
+      "planning_cost_cny": 0.001797
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1932,
+      "output_tokens": 71,
+      "planning_cost_cny": 0.002003
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1529,
+      "output_tokens": 43,
+      "planning_cost_cny": 0.001572
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 3624,
+      "output_tokens": 187,
+      "planning_cost_cny": 0.003811
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 4182,
+      "output_tokens": 28,
+      "planning_cost_cny": 0.00421
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1259,
+      "output_tokens": 4,
+      "planning_cost_cny": 0.001263
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1492,
+      "output_tokens": 4,
+      "planning_cost_cny": 0.001496
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 864,
+      "output_tokens": 29,
+      "planning_cost_cny": 0.000893
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1278,
+      "output_tokens": 51,
+      "planning_cost_cny": 0.001329
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1259,
+      "output_tokens": 4,
+      "planning_cost_cny": 0.001263
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1492,
+      "output_tokens": 4,
+      "planning_cost_cny": 0.001496
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1932,
+      "output_tokens": 70,
+      "planning_cost_cny": 0.002002
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1716,
+      "output_tokens": 81,
+      "planning_cost_cny": 0.001797
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1529,
+      "output_tokens": 73,
+      "planning_cost_cny": 0.001602
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1627,
+      "output_tokens": 57,
+      "planning_cost_cny": 0.001684
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 2012,
+      "output_tokens": 59,
+      "planning_cost_cny": 0.002071
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1822,
+      "output_tokens": 76,
+      "planning_cost_cny": 0.001898
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1954,
+      "output_tokens": 66,
+      "planning_cost_cny": 0.00202
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1914,
+      "output_tokens": 73,
+      "planning_cost_cny": 0.001987
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 1034,
+      "output_tokens": 68,
+      "planning_cost_cny": 0.001102
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "input_tokens": 4390,
+      "output_tokens": 1836,
+      "planning_cost_cny": 0.006226
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 321,
+      "output_tokens": 31,
+      "planning_cost_cny": 0.006872
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 374,
+      "output_tokens": 32,
+      "planning_cost_cny": 0.007776
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 419,
+      "output_tokens": 46,
+      "planning_cost_cny": 0.00928
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 322,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.005656
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 384,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.006648
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 351,
+      "output_tokens": 9,
+      "planning_cost_cny": 0.00612
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2658,
+      "output_tokens": 25,
+      "planning_cost_cny": 0.043928
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1828,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.032664
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1539,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.027704
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1727,
+      "output_tokens": 74,
+      "planning_cost_cny": 0.031776
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1384,
+      "output_tokens": 51,
+      "planning_cost_cny": 0.025
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 824,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013464
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 782,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.012792
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 838,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013688
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2956,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.047576
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3828,
+      "output_tokens": 52,
+      "planning_cost_cny": 0.06416
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 878,
+      "output_tokens": 90,
+      "planning_cost_cny": 0.019088
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 827,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013512
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1130,
+      "output_tokens": 161,
+      "planning_cost_cny": 0.027096
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3126,
+      "output_tokens": 64,
+      "planning_cost_cny": 0.0536
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3158,
+      "output_tokens": 47,
+      "planning_cost_cny": 0.05316
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2198,
+      "output_tokens": 43,
+      "planning_cost_cny": 0.037576
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 824,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013464
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2672,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.043032
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2853,
+      "output_tokens": 24,
+      "planning_cost_cny": 0.046992
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3456,
+      "output_tokens": 118,
+      "planning_cost_cny": 0.061904
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2569,
+      "output_tokens": 44,
+      "planning_cost_cny": 0.043568
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2017,
+      "output_tokens": 60,
+      "planning_cost_cny": 0.035632
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1941,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.034472
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1923,
+      "output_tokens": 50,
+      "planning_cost_cny": 0.033568
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1529,
+      "output_tokens": 58,
+      "planning_cost_cny": 0.027712
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1446,
+      "output_tokens": 35,
+      "planning_cost_cny": 0.025096
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1934,
+      "output_tokens": 61,
+      "planning_cost_cny": 0.03436
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1772,
+      "output_tokens": 86,
+      "planning_cost_cny": 0.033168
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1429,
+      "output_tokens": 55,
+      "planning_cost_cny": 0.025944
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3207,
+      "output_tokens": 34,
+      "planning_cost_cny": 0.053216
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1690,
+      "output_tokens": 93,
+      "planning_cost_cny": 0.032248
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1903,
+      "output_tokens": 88,
+      "planning_cost_cny": 0.035376
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1827,
+      "output_tokens": 70,
+      "planning_cost_cny": 0.033152
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1398,
+      "output_tokens": 54,
+      "planning_cost_cny": 0.025392
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3645,
+      "output_tokens": 24,
+      "planning_cost_cny": 0.059664
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3706,
+      "output_tokens": 85,
+      "planning_cost_cny": 0.064056
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 998,
+      "output_tokens": 88,
+      "planning_cost_cny": 0.020896
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 4043,
+      "output_tokens": 218,
+      "planning_cost_cny": 0.076896
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1798,
+      "output_tokens": 57,
+      "planning_cost_cny": 0.03196
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1636,
+      "output_tokens": 69,
+      "planning_cost_cny": 0.03004
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1737,
+      "output_tokens": 60,
+      "planning_cost_cny": 0.031152
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1704,
+      "output_tokens": 83,
+      "planning_cost_cny": 0.031912
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 822,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013432
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2301,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.037096
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 998,
+      "output_tokens": 79,
+      "planning_cost_cny": 0.020392
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 691,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.011336
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1099,
+      "output_tokens": 201,
+      "planning_cost_cny": 0.02884
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2785,
+      "output_tokens": 87,
+      "planning_cost_cny": 0.049432
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 969,
+      "output_tokens": 88,
+      "planning_cost_cny": 0.020432
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 910,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.01484
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1179,
+      "output_tokens": 180,
+      "planning_cost_cny": 0.028944
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 838,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013688
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 796,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013016
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 822,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.013432
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 780,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.01276
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 969,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.015784
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 3092,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.049752
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 878,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.014328
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 2595,
+      "output_tokens": 5,
+      "planning_cost_cny": 0.0418
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1725,
+      "output_tokens": 75,
+      "planning_cost_cny": 0.0318
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1537,
+      "output_tokens": 109,
+      "planning_cost_cny": 0.030696
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1382,
+      "output_tokens": 53,
+      "planning_cost_cny": 0.02508
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "input_tokens": 1455,
+      "output_tokens": 94,
+      "planning_cost_cny": 0.028544
+    }
+  ],
+  "input_tokens": 375389,
+  "output_tokens": 19463,
+  "planning_cost_cny": 3.408369,
+  "missing_usage_calls": 0,
+  "actual_billed_cost_cny": null,
+  "rate_note": "Planning CNY/M input/output: DeepSeek 9/27 (reserve), Qwen 1/1 (reserve), GLM 16/56 (Beijing list); cache discounts excluded; failed requests may be absent."
+}

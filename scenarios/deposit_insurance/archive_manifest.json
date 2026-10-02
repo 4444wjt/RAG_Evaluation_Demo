@@ -1,0 +1,40 @@
+{
+  "scenario": "deposit_insurance",
+  "main_sha256": "5234a36c0c78a5c46a5b83bf77ad8cbb30ac91b62af699affcca5d94341bc567",
+  "document_sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+  "missing_metric_cells": {
+    "deepseek-chat": {
+      "faithfulness": 2,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    },
+    "Pro/Qwen/Qwen2.5-7B-Instruct": {
+      "faithfulness": 1,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    },
+    "glm-5.2-fast-preview": {
+      "faithfulness": 4,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    }
+  },
+  "actual_api_cost_cny": null,
+  "cost_note": "CLI does not record API usage or billing; actual charges not verified.",
+  "artifacts": {
+    "multi_model_summary.csv": "54b6602b78dfd08ccc50d0464c1a6f41bb3385273e5a5b3dd171b42f5100b94d",
+    "result_chart.png": "08492150670e941caca3168dc377484033249c4c335ac80fcf45e277d29da908",
+    "trend_chart.png": "28e47d08b332e30a0072b9f481d33e7adbe9a64bac357cac354e4387fa39f1ae",
+    "ragas_report.html": "cf3e8eaf95273ca5de743fc2c02a5f18b83b99b482419bfefd9b226f80f16b30",
+    "eval_history.json": "5e0f3dd067eb9e071e7adc4aea14679c8bd8c5f204f2ec173fc2fe22468cb336",
+    "ragas_report_deepseek-chat.csv": "9f0b8bfba482a3a299f8d1407b694f499dc9a93027261c07f8677f3ef0b6dd0a",
+    "ragas_report_Pro_Qwen_Qwen2.5-7B-Instruct.csv": "439b684da688cbedec99a74736dbbe4e8cbb019fce67c5dbe67673c45242750e",
+    "ragas_report_glm-5.2-fast-preview.csv": "a7eec528369d244a5e1654916e1033d9a70426f8ef89db26f504677ace13150e"
+  }
+}

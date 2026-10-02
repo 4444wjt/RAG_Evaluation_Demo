@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-09-28T14:34:01.027265",
+  "main_sha256": "c46fb78fb3278e8a0d180c331ece9a8d33e440f951c23d206594bc61a166486e",
+  "document_sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+  "temporary_files_preserved": true,
+  "completed_at": "2026-09-28T14:41:15.399608",
+  "gate_passed": false,
+  "models_returned": 3,
+  "status": "completed"
+}

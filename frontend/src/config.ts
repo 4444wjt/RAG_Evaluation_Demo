@@ -1,0 +1,20 @@
+/** Public model IDs only. Update these if the local backend names are overridden. */
+export const MODELS = [
+  { id: 'deepseek-chat', label: 'DeepSeek', detail: 'DeepSeek 通用对话模型', initials: 'DS' },
+  { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', detail: '通义千问 7B 指令模型', initials: 'QW' },
+  { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', detail: '智谱 GLM · 阿里云百炼', initials: 'GL' },
+] as const;
+
+export const DATASETS = [
+  { path: 'demo.txt', label: '默认示例文档' },
+  { path: 'scenarios/deposit_insurance.txt', label: '存款保险' },
+  { path: 'scenarios/information_disclosure.txt', label: '信息披露' },
+] as const;
+
+export const METRICS = [
+  { key: 'faithfulness', label: '忠实度' },
+  { key: 'context_precision', label: '上下文精度' },
+  { key: 'answer_relevancy', label: '答案相关性' },
+  { key: 'answer_correctness', label: '事实一致性' },
+  { key: 'context_recall', label: '回答完整性' },
+] as const;

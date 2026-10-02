@@ -165,3 +165,8 @@ eval_history.json
 /_diag_env.py
 /_diag_refusal.py
 /_diag_refusal2.py
+
+# === GitHub 上传前排除项（2026-10-02）===
+node_modules/
+onetake/
+.trae/

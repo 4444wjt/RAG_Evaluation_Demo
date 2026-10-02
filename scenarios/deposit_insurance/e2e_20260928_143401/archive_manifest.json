@@ -1,0 +1,34 @@
+{
+  "status": "partial_archive",
+  "reason": "Shared root CSV and charts were overwritten by later web runs before this archive; no stale files copied.",
+  "run_id": "e2e_20260928_143401",
+  "source_main_sha256": "c46fb78fb3278e8a0d180c331ece9a8d33e440f951c23d206594bc61a166486e",
+  "document_sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+  "models": [
+    "deepseek-chat",
+    "Pro/Qwen/Qwen2.5-7B-Instruct",
+    "glm-5.2-fast-preview"
+  ],
+  "gate_passed": false,
+  "token_summary": {
+    "input_tokens": 375389,
+    "output_tokens": 19463,
+    "planning_cost_cny": 3.408369,
+    "missing_usage_calls": 0,
+    "actual_billed_cost_cny": null
+  },
+  "preserved_files": [
+    "run.log",
+    "run_metadata.json",
+    "token_usage.json",
+    "run_record.json"
+  ],
+  "missing_original_outputs": [
+    "multi_model_summary.csv",
+    "result_chart.png",
+    "trend_chart.png",
+    "ragas_report.html",
+    "ragas_report_<model>.csv"
+  ],
+  "temporary_files_preserved": true
+}

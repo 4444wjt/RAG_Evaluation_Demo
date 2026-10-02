@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-09-28 13:23:18",
+  "version": "20260928-1323",
+  "doc_name": "information_disclosure.txt",
+  "testset_source": "自动生成",
+  "thresholds": {
+    "faithfulness": 0.8,
+    "context_precision": 0.8
+  },
+  "gate_passed": true,
+  "models": [
+    {
+      "model": "deepseek-chat",
+      "faithfulness": 1.0,
+      "context_precision": 0.5,
+      "answer_relevancy": 0.4664,
+      "answer_correctness": 0.7442,
+      "context_recall": 0.6667,
+      "pos_faithfulness": 1.0,
+      "pos_context_precision": 1.0,
+      "neg_faithfulness": null,
+      "neg_context_precision": 0.0,
+      "hallucination_rate": 0.0,
+      "score": 1.0,
+      "elapsed_seconds": 62.23
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "faithfulness": 0.7,
+      "context_precision": 0.5,
+      "answer_relevancy": 0.1757,
+      "answer_correctness": 0.3972,
+      "context_recall": 0.8333,
+      "pos_faithfulness": 1.0,
+      "pos_context_precision": 1.0,
+      "neg_faithfulness": 0.25,
+      "neg_context_precision": 0.0,
+      "hallucination_rate": 0.0,
+      "score": 1.0,
+      "elapsed_seconds": 432.37
+    }
+  ],
+  "total_elapsed_seconds": 511.89
+}

@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-09-28 14:41:14",
+  "version": "e2e_20260928_143401",
+  "doc_name": "deposit_insurance.txt",
+  "testset_source": "自动生成",
+  "thresholds": {
+    "faithfulness": 0.8,
+    "context_precision": 0.8
+  },
+  "gate_passed": false,
+  "models": [
+    {
+      "model": "deepseek-chat",
+      "faithfulness": 0.75,
+      "context_precision": 0.3472,
+      "answer_relevancy": 0.4733,
+      "answer_correctness": 0.6182,
+      "context_recall": 0.5,
+      "pos_faithfulness": 1.0,
+      "pos_context_precision": 0.6944,
+      "neg_faithfulness": 0.0,
+      "neg_context_precision": 0.0,
+      "hallucination_rate": 0.0,
+      "score": 0.8472,
+      "elapsed_seconds": 71.45
+    },
+    {
+      "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+      "faithfulness": 0.5333,
+      "context_precision": 0.4722,
+      "answer_relevancy": 0.3725,
+      "answer_correctness": 0.3484,
+      "context_recall": 0.5,
+      "pos_faithfulness": 0.6667,
+      "pos_context_precision": 0.9444,
+      "neg_faithfulness": 0.3333,
+      "neg_context_precision": 0.0,
+      "hallucination_rate": 0.3333,
+      "score": 0.8055,
+      "elapsed_seconds": 251.52
+    },
+    {
+      "model": "glm-5.2-fast-preview",
+      "faithfulness": 0.75,
+      "context_precision": 0.5139,
+      "answer_relevancy": 0.4435,
+      "answer_correctness": 0.5697,
+      "context_recall": 0.8333,
+      "pos_faithfulness": 0.75,
+      "pos_context_precision": 0.6944,
+      "neg_faithfulness": null,
+      "neg_context_precision": 0.3333,
+      "hallucination_rate": 0.25,
+      "score": 0.7222,
+      "elapsed_seconds": 84.75
+    }
+  ],
+  "total_elapsed_seconds": 433.76
+}
