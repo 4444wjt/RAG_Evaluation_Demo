@@ -152,7 +152,7 @@
           "answer_relevancy": 1.0000000000000002,
           "answer_correctness": 0.15522937058932856,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -165,7 +165,7 @@
           "answer_relevancy": 1.0000000000000002,
           "answer_correctness": 0.1479090206468746,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫“星语”。\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫“星语”。\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -178,7 +178,7 @@
           "answer_relevancy": 0.9877133761571458,
           "answer_correctness": 0.9499550682852415,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星语产品具备多轮对话能力，能够结合上下文理解用户意图。\", \"verdict\": \"supported\", \"evidence\": \"星语产品具备三大核心特性：一是多轮对话能力，能够结合上下文理解用户意图\"}, {\"text\": \"星语产品具备知识库挂载特性，支持企业上传私有文档构建专属问答库。\", \"verdict\": \"supported\", \"evidence\": \"二是知识库挂载，支持企业上传私有文档构建专属问答库\"}, {\"text\": \"星语产品具备权限管控特性，可根据部门与角色设置数据访问范围。\", \"verdict\": \"supported\", \"evidence\": \"三是权限管控，可根据部门与角色设置数据访问范围\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星语产品具备多轮对话能力，能够结合上下文理解用户意图。\", \"verdict\": \"supported\", \"evidence\": \"星语产品具备三大核心特性：一是多轮对话能力，能够结合上下文理解用户意图\"}, {\"text\": \"星语产品具备知识库挂载特性，支持企业上传私有文档构建专属问答库。\", \"verdict\": \"supported\", \"evidence\": \"二是知识库挂载，支持企业上传私有文档构建专属问答库\"}, {\"text\": \"星语产品具备权限管控特性，可根据部门与角色设置数据访问范围。\", \"verdict\": \"supported\", \"evidence\": \"三是权限管控，可根据部门与角色设置数据访问范围\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -191,7 +191,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}, \"trace_status\": \"empty_answer\", \"trace_attempts\": 1}",
           "case_type": "negative"
         },
         {
@@ -204,7 +204,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}, \"trace_status\": \"empty_answer\", \"trace_attempts\": 1}",
           "case_type": "negative"
         },
         {
@@ -217,7 +217,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}, \"trace_status\": \"empty_answer\", \"trace_attempts\": 1}",
           "case_type": "negative"
         }
       ],
@@ -232,7 +232,7 @@
           "answer_relevancy": 0.775068134241428,
           "answer_correctness": 0.15522937058932856,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -245,7 +245,7 @@
           "answer_relevancy": 0.8312069132228603,
           "answer_correctness": 0.1479090206468746,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫“星语”.\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫“星语”.\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -258,7 +258,7 @@
           "answer_relevancy": 0.5553635113282824,
           "answer_correctness": 0.7675989212527271,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}, \"trace_status\": \"model_empty\", \"trace_attempts\": 1}",
           "case_type": "positive"
         },
         {
@@ -271,7 +271,7 @@
           "answer_relevancy": 0.6765240636045402,
           "answer_correctness": 0.16420269655980846,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中没有提及编号为「XH-2024」的金融行业审计批次的具体幻觉段落定位结果。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中没有提及编号为「XH-2024」的金融行业审计批次的具体幻觉段落定位结果。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal_explanation\"}}",
           "case_type": "negative"
         },
         {
@@ -284,7 +284,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.1328201304932766,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中没有提到星语产品在医疗行业与「仁和医疗集团」合作部署的私有化实例及其单卡推理时延的具体实测数据。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中没有提到星语产品在医疗行业与「仁和医疗集团」合作部署的私有化实例及其单卡推理时延的具体实测数据。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal_explanation\"}}",
           "case_type": "negative"
         },
         {
@@ -297,7 +297,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.14822871749589564,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中并未提及星语验证器忠实度检测引擎的具体比对阈值调整对回答准确率的影响，特别是在金融领域的具体数据变化。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"文档中并未提及星语验证器忠实度检测引擎的具体比对阈值调整对回答准确率的影响，特别是在金融领域的具体数据变化。\", \"verdict\": \"fabrication\", \"evidence\": \"\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal_explanation\"}}",
           "case_type": "negative"
         }
       ],
@@ -312,7 +312,7 @@
           "answer_relevancy": 1.0000000000000002,
           "answer_correctness": 0.9052293705893286,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技最新一轮B轮融资金额达5亿元人民币。\", \"verdict\": \"supported\", \"evidence\": \"星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -325,7 +325,7 @@
           "answer_relevancy": 0.9843952279651738,
           "answer_correctness": 0.14559596363409544,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫做“星语”\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}, {\"text\": \"该产品基于自研的千亿参数大模型\", \"verdict\": \"supported\", \"evidence\": \"该产品基于自研的千亿参数大模型\"}, {\"text\": \"主打企业级知识问答场景\", \"verdict\": \"supported\", \"evidence\": \"主打企业级知识问答场景\"}, {\"text\": \"支持本地化部署\", \"verdict\": \"supported\", \"evidence\": \"星语支持本地化部署\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星云科技于2023年发布的智能助手产品叫做“星语”\", \"verdict\": \"supported\", \"evidence\": \"星云科技于2023年发布了其首款智能助手产品“星语”。\"}, {\"text\": \"该产品基于自研的千亿参数大模型\", \"verdict\": \"supported\", \"evidence\": \"该产品基于自研的千亿参数大模型\"}, {\"text\": \"主打企业级知识问答场景\", \"verdict\": \"supported\", \"evidence\": \"主打企业级知识问答场景\"}, {\"text\": \"支持本地化部署\", \"verdict\": \"supported\", \"evidence\": \"星语支持本地化部署\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -338,7 +338,7 @@
           "answer_relevancy": 0.9808174777232513,
           "answer_correctness": 0.19987017601179863,
           "context_recall": 1.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"星语产品具备的三大核心特性之一是多轮对话能力，能够结合上下文理解用户意图。\", \"verdict\": \"supported\", \"evidence\": \"星语产品具备三大核心特性：一是多轮对话能力，能够结合上下文理解用户意图\"}, {\"text\": \"星语产品具备的三大核心特性之二是知识库挂载，支持企业上传私有文档构建专属问答库。\", \"verdict\": \"supported\", \"evidence\": \"二是知识库挂载，支持企业上传私有文档构建专属问答库\"}, {\"text\": \"星语产品具备的三大核心特性之三是权限管控，可根据部门与角色设置数据访问范围。\", \"verdict\": \"supported\", \"evidence\": \"三是权限管控，可根据部门与角色设置数据访问范围。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"星语产品具备的三大核心特性之一是多轮对话能力，能够结合上下文理解用户意图。\", \"verdict\": \"supported\", \"evidence\": \"星语产品具备三大核心特性：一是多轮对话能力，能够结合上下文理解用户意图\"}, {\"text\": \"星语产品具备的三大核心特性之二是知识库挂载，支持企业上传私有文档构建专属问答库。\", \"verdict\": \"supported\", \"evidence\": \"二是知识库挂载，支持企业上传私有文档构建专属问答库\"}, {\"text\": \"星语产品具备的三大核心特性之三是权限管控，可根据部门与角色设置数据访问范围。\", \"verdict\": \"supported\", \"evidence\": \"三是权限管控，可根据部门与角色设置数据访问范围。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"normal\"}}",
           "case_type": "positive"
         },
         {
@@ -351,7 +351,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}, \"trace_status\": \"empty_answer\", \"trace_attempts\": 1}",
           "case_type": "negative"
         },
         {
@@ -364,7 +364,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": [{\"text\": \"根据提供的文档，无法回答该问题。\", \"verdict\": \"supported\", \"evidence\": \"星语单卡推理时延控制在200毫秒以内，能满足绝大多数实时问答场景的响应要求。\"}]}",
+          "hallucination_trace": "{\"statements\": [{\"text\": \"根据提供的文档，无法回答该问题。\", \"verdict\": \"supported\", \"evidence\": \"星语单卡推理时延控制在200毫秒以内，能满足绝大多数实时问答场景的响应要求。\"}], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}}",
           "case_type": "negative"
         },
         {
@@ -377,7 +377,7 @@
           "answer_relevancy": 0.0,
           "answer_correctness": 0.9189139860457287,
           "context_recall": 0.0,
-          "hallucination_trace": "{\"statements\": []}",
+          "hallucination_trace": "{\"statements\": [], \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"answer_mode\": \"refusal\"}, \"trace_status\": \"empty_answer\", \"trace_attempts\": 1}",
           "case_type": "negative"
         }
       ]
@@ -474,7 +474,8 @@
       "历史记录与HTML未保存原始gate_message；API字符串字段保留空字符串，未生成门禁理由。",
       "根目录用例CSV没有独立run ID；同次产物依据唯一summary/history匹配、相同测试集、HTML指标与追踪统计、产物时间和图表字节核验确认。",
       "chart_path与html_path指向根目录共享当前产物，后续评测可能覆盖；它们不是冻结快照链接。",
-      "contexts和hallucination_trace保持CSV原始字符串；缺失数值为null，数值0保留。"
+      "contexts和hallucination_trace保持CSV原始字符串；缺失数值为null，数值0保留。",
+      "为修复旧快照缺失的 answer_mode 诊断字段，基于回答文本补写了确定性分类元数据（refusal/refusal_explanation/normal）及配套 trace_status/trace_attempts；未改动 statements/verdict/evidence，未重算指标或门禁。"
     ]
   }
 }

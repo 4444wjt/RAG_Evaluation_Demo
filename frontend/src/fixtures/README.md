@@ -21,7 +21,8 @@
 - summary 直接取原历史 models；summary_df 取匹配的 summary CSV，内容相等。
 - model_dfs 的键保持完整原模型名；记录保持 CSV 原列和行序。
 - 仅将指标列的 CSV 数值转换为 JSON number，空白/NaN 转为 null；0 与 null 严格区分。
-- question、answer、ground_truth、contexts、case_type、hallucination_trace 文本保持原值。contexts 仍是 CSV 原字符串；hallucination_trace 仍是 JSON 文本字符串，内含原 statements、verdict 和 evidence，不新增、不改写。
+- question、answer、ground_truth、contexts、case_type、hallucination_trace 文本保持原值。contexts 仍是 CSV 原字符串；hallucination_trace 仍是 JSON 文本字符串，内含原 statements、verdict 和 evidence。
+- 为修复旧快照 `hallucination_trace` 缺失 `answer_mode` 诊断字段（导致负向样本的模型拒答无法被前端识别、被误标为「无法评估」），本版基于回答文本补写了确定性分类元数据 `answer_mode`（refusal/refusal_explanation/normal）及配套 `trace_status`/`trace_attempts`；未改动 statements、verdict、evidence，未重算指标或门禁。
 - gate_passed 原值为 true；total_elapsed_seconds 原值为 518.73。门禁不根据阈值重算。
 - 原历史和 HTML **未保存 gate_message**。为满足 API 字符串形状，该字段是空字符串；provenance.missing_fields 记录此缺失。界面应显示“原始门禁说明未记录”，不生成或推导门禁原因。
 - chart_path 与 html_path 指向根目录现有本地产物。路径是共享当前产物，后续评测可能覆盖，不是冻结快照链接；离线快照数据本身仍保留在 demo.json。
@@ -40,7 +41,7 @@
 | `eval_history.json` | 170374 | `4e8904fd656949be8d8ec2c941fc86d911984629a18eff551a0dff0b61333f1b` |
 | `result_chart.png` | 80253 | `5ef7a3641eaa915a11126917b1e8c984f5a3724332913de55d9065896aee7946` |
 
-生成的 `demo.json` SHA-256：`368e0e9bcda159c5ab3cfb2e9f59eaa03e431c5278bff0ee1a17c13e53a69946`。
+生成的 `demo.json` SHA-256：`20290882fadbb68942f2c754262614e0858d8595d06a8b2e970fec1c7b4dfb7b`。
 
 ## 转换与验证
 

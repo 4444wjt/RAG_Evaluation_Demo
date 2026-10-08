@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "snapshotVersion": "20260930-1958",
-  "snapshotSha256": "368e0e9bcda159c5ab3cfb2e9f59eaa03e431c5278bff0ee1a17c13e53a69946",
+  "snapshotSha256": "20290882fadbb68942f2c754262614e0858d8595d06a8b2e970fec1c7b4dfb7b",
   "gateRuleReview": {
     "status": "unverified",
     "reviewer": null,
@@ -49,7 +49,12 @@
       "reviewDraft": {
         "question": "星云科技最新一轮B轮融资金额是多少？",
         "answerSummary": "星云科技最新一轮B轮融资金额达5亿元人民币。",
-        "machineVerdict": { "caseType": "positive", "faithfulness": 1.0, "traceVerdict": "supported", "statementCount": 1 },
+        "machineVerdict": {
+          "caseType": "positive",
+          "faithfulness": 1.0,
+          "traceVerdict": "supported",
+          "statementCount": 1
+        },
         "evidenceLocation": "检索上下文第1条「星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币」；标准答案 ground_truth 为「5亿元人民币」。",
         "suggestedChecks": [
           "核对回答金额「5亿元人民币」与上下文表述是否一致",
@@ -95,7 +100,12 @@
       "reviewDraft": {
         "question": "星语产品具备哪三大核心特性？",
         "answerSummary": "多轮对话能力、知识库挂载、权限管控三大特性（与标准答案一致）。",
-        "machineVerdict": { "caseType": "positive", "faithfulness": 1.0, "traceVerdict": "supported", "statementCount": 3 },
+        "machineVerdict": {
+          "caseType": "positive",
+          "faithfulness": 1.0,
+          "traceVerdict": "supported",
+          "statementCount": 3
+        },
         "evidenceLocation": "上下文第1条「星语产品具备三大核心特性：一是多轮对话能力…二是知识库挂载…三是权限管控…」。",
         "suggestedChecks": [
           "逐条核对三大特性是否与原文一致、有无遗漏或增补",
@@ -122,7 +132,12 @@
       "reviewDraft": {
         "question": "星语验证器在2024年发布时，针对编号「XH-2024」的金融行业审计批次，记录了哪些具体的幻觉段落定位结果？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "hallucination_trace 为 {\"statements\": []}；上下文中不存在「XH-2024」相关信息。",
         "suggestedChecks": [
           "确认这是负样本（文档未提及 XH-2024），拒答是否合理",
@@ -150,7 +165,12 @@
       "reviewDraft": {
         "question": "星语产品在医疗行业落地时，与「仁和医疗集团」合作部署的私有化实例，其单卡推理时延实测数据是多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "hallucination_trace 为 {\"statements\": []}；上下文有「星语单卡推理时延控制在200毫秒以内」但无「仁和医疗集团」的实测数据。",
         "suggestedChecks": [
           "拒答是否合理（问题索要文档未提及的具体实测数据）",
@@ -177,7 +197,12 @@
       "reviewDraft": {
         "question": "如果星语验证器的忠实度检测引擎将比对阈值从默认值调整为0.85，在金融领域测试中回答准确率会变化多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "hallucination_trace 为 {\"statements\": []}；上下文无「阈值0.85→准确率变化」的因果数据。",
         "suggestedChecks": [
           "拒答是否合理（假设性问题、文档无此数据）",
@@ -204,7 +229,12 @@
       "reviewDraft": {
         "question": "星语产品具备哪三大核心特性？",
         "answerSummary": "完整列出三大核心特性（多轮对话能力 / 知识库挂载 / 权限管控），内容与标准答案一致。",
-        "machineVerdict": { "caseType": "positive", "faithfulness": 1.0, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "positive",
+          "faithfulness": 1.0,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "上下文第1条明确包含三大特性原文；但 hallucination_trace 为 {\"statements\": []}（本应有 3 条 supported 却为 0 条）。",
         "suggestedChecks": [
           "核心样本：回答正确完整但 Trace 为空，疑似逐句抽取遗漏（应 3 条 supported 却 0 条）",
@@ -239,7 +269,12 @@
       "reviewDraft": {
         "question": "星语验证器在2024年发布时，针对编号「XH-2024」的金融行业审计批次，记录了哪些具体的幻觉段落定位结果？",
         "answerSummary": "根据提供的文档，无法回答该问题。文档中没有提及编号为「XH-2024」的金融行业审计批次的具体幻觉段落定位结果。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": 0.0, "traceVerdict": "fabrication", "statementCount": 1 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": 0.0,
+          "traceVerdict": "fabrication",
+          "statementCount": 1
+        },
         "evidenceLocation": "唯一语句「文档中没有提及编号为XH-2024的…」被判 fabrication，evidence 为空字符串；上下文中确实不存在 XH-2024。",
         "suggestedChecks": [
           "重点：拒答的补充解释句（文档确实没提及）被判 fabrication 是否为误判——该句是正确陈述，并非无依据编造",
@@ -274,7 +309,12 @@
       "reviewDraft": {
         "question": "星语产品在医疗行业落地时，与「仁和医疗集团」合作部署的私有化实例，其单卡推理时延实测数据是多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。文档中没有提到星语产品在医疗行业与「仁和医疗集团」合作部署的私有化实例及其单卡推理时延的具体实测数据。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": 0.5, "traceVerdict": "fabrication", "statementCount": 1 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": 0.5,
+          "traceVerdict": "fabrication",
+          "statementCount": 1
+        },
         "evidenceLocation": "语句「文档中没有提到…」被判 fabrication，evidence 为空；上下文无「仁和医疗集团」实测数据。",
         "suggestedChecks": [
           "拒答的补充解释句被判 fabrication 是否误判",
@@ -308,7 +348,12 @@
       "reviewDraft": {
         "question": "如果星语验证器的忠实度检测引擎将比对阈值从默认值调整为0.85，在金融领域测试中回答准确率会变化多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。文档中并未提及星语验证器忠实度检测引擎的具体比对阈值调整对回答准确率的影响，特别是在金融领域的具体数据变化。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": 0.0, "traceVerdict": "fabrication", "statementCount": 1 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": 0.0,
+          "traceVerdict": "fabrication",
+          "statementCount": 1
+        },
         "evidenceLocation": "语句「文档中并未提及…」被判 fabrication，evidence 为空；上下文无该因果数据。",
         "suggestedChecks": [
           "拒答补充句被判 fabrication 是否误判",
@@ -360,7 +405,12 @@
       "reviewDraft": {
         "question": "星云科技于2023年发布的智能助手产品叫什么？",
         "answerSummary": "星云科技于2023年发布的智能助手产品叫做「星语」，并补充其基于自研千亿参数大模型、主打企业级知识问答、支持本地化部署。",
-        "machineVerdict": { "caseType": "positive", "faithfulness": 1.0, "traceVerdict": "supported", "statementCount": 4 },
+        "machineVerdict": {
+          "caseType": "positive",
+          "faithfulness": 1.0,
+          "traceVerdict": "supported",
+          "statementCount": 4
+        },
         "evidenceLocation": "上下文第1条「星云科技于2023年发布了其首款智能助手产品“星语”。该产品基于自研的千亿参数大模型，主打企业级知识问答场景。星语支持本地化部署」。",
         "suggestedChecks": [
           "4 条语句的 evidence 是否各自与原文对应",
@@ -387,7 +437,12 @@
       "reviewDraft": {
         "question": "星语验证器在2024年发布时，针对编号「XH-2024」的金融行业审计批次，记录了哪些具体的幻觉段落定位结果？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "hallucination_trace 为 {\"statements\": []}；上下文无「XH-2024」。",
         "suggestedChecks": [
           "拒答是否合理",
@@ -421,7 +476,12 @@
       "reviewDraft": {
         "question": "星语产品在医疗行业落地时，与「仁和医疗集团」合作部署的私有化实例，其单卡推理时延实测数据是多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "supported", "statementCount": 1 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "supported",
+          "statementCount": 1
+        },
         "evidenceLocation": "唯一语句「根据提供的文档，无法回答该问题。」被判 supported，但 evidence 为「星语单卡推理时延控制在200毫秒以内，能满足绝大多数实时问答场景的响应要求」——该片段与「无法回答」的陈述不构成支持关系。",
         "suggestedChecks": [
           "重点：拒答句被判 supported，但其引用证据是无关的「200毫秒」片段，引用支持关系不足/错误",
@@ -449,7 +509,12 @@
       "reviewDraft": {
         "question": "如果星语验证器的忠实度检测引擎将比对阈值从默认值调整为0.85，在金融领域测试中回答准确率会变化多少？",
         "answerSummary": "根据提供的文档，无法回答该问题。",
-        "machineVerdict": { "caseType": "negative", "faithfulness": null, "traceVerdict": "empty", "statementCount": 0 },
+        "machineVerdict": {
+          "caseType": "negative",
+          "faithfulness": null,
+          "traceVerdict": "empty",
+          "statementCount": 0
+        },
         "evidenceLocation": "hallucination_trace 为 {\"statements\": []}；上下文无该因果数据。",
         "suggestedChecks": [
           "拒答是否合理",

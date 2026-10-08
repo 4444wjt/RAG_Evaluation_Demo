@@ -17,8 +17,8 @@ function resultWith(models: Record<string, ResultRow[]> = {}): EvaluationResult 
   };
 }
 
-function rowWith(trace: ResultRow['hallucination_trace']): ResultRow {
-  return { question: '原始测试问题', answer: '原始模型回答', contexts: '原始上下文', hallucination_trace: trace };
+function rowWith(trace: ResultRow['hallucination_trace'], extra: Partial<ResultRow> = {}): ResultRow {
+  return { question: '原始测试问题', answer: '原始模型回答', contexts: '原始上下文', hallucination_trace: trace, ...extra };
 }
 
 function textFile(name: string, text: () => Promise<string>): File {
@@ -52,21 +52,21 @@ describe('TraceView 原始溯源', () => {
 
   it('缺少 Trace 字段时说明处理原因未记录', () => {
     render(<TraceView result={resultWith({ model: [rowWith('')] })} />);
-    expect(screen.getByRole('heading', { name: '历史证据链未记录' })).toBeInTheDocument();
-    expect(screen.getByText('当前记录没有 Trace 字段，无法判断是未执行、生成失败还是保存缺失。')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '证据链信息未保留' })).toBeInTheDocument();
+    expect(screen.getByText('该条记录未保存逐句证据链，无法据此判断回答是否有依据。')).toBeInTheDocument();
   });
 
   it('旧记录只有空数组时不冒充纯拒答或生成失败', () => {
     render(<TraceView result={resultWith({ model: [rowWith(JSON.stringify({ statements: [] }))] })} />);
-    expect(screen.getByRole('heading', { name: '历史证据链未记录' })).toBeInTheDocument();
-    expect(screen.getByText('历史记录只保存了空陈述列表，未保存生成、解析或过滤阶段；不能据此判断回答是否有依据。')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '证据链信息未保留' })).toBeInTheDocument();
+    expect(screen.getByText('该条记录只保存了空陈述列表，未保存生成、解析或过滤阶段；无法据此判断回答是否有依据。')).toBeInTheDocument();
     expect(screen.queryByText(/零幻觉|无幻觉|0%|0 个幻觉/)).not.toBeInTheDocument();
   });
 
   it('纯拒答显示无需验证事实陈述', () => {
     const trace = JSON.stringify({ statements: [], trace_status: 'empty_answer', trace_attempts: 1, trace_diagnostics: { answer_mode: 'refusal' } });
-    render(<TraceView result={resultWith({ model: [{ ...rowWith(trace), answer: '根据提供的文档，无法回答该问题。' }] })} />);
-    expect(screen.getByRole('status', { name: '可靠性判断：符合预期' })).toBeInTheDocument();
+    render(<TraceView result={resultWith({ model: [{ ...rowWith(trace), answer: '根据提供的文档，无法回答该问题。', case_type: 'negative' }] })} />);
+    expect(screen.getByRole('status', { name: '可靠性判断：正确拒答' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: '该回答未产生需要验证的事实陈述' })).toBeInTheDocument();
     expect(screen.getByText('该回答是纯拒答，未产生需要验证的事实陈述。')).toBeInTheDocument();
   });
@@ -108,33 +108,36 @@ describe('TraceView 原始溯源', () => {
     expect(screen.getByText(/历史记录没有可靠的回答类型元数据/)).toBeInTheDocument();
   });
 
-  it('可靠性判断层按优先级区分六种状态', () => {
+  it('可靠性判断层按优先级区分状态并标注方向', () => {
     const evidenceReady = JSON.stringify({ statements: [{ text: '有依据', verdict: 'supported', evidence: '原文证据' }], trace_status: 'ok', trace_diagnostics: { answer_mode: 'normal' } });
     const unsupported = JSON.stringify({ statements: [{ text: '无依据', verdict: 'fabrication', evidence: '' }], trace_status: 'ok', trace_diagnostics: { answer_mode: 'normal' } });
     const refusal = JSON.stringify({ statements: [], trace_status: 'empty_answer', trace_diagnostics: { answer_mode: 'refusal' } });
+    const unexpectedRefusal = JSON.stringify({ statements: [], trace_status: 'empty_answer', trace_diagnostics: { answer_mode: 'refusal' } });
     const noTrace = JSON.stringify({ statements: [], trace_status: 'model_empty', trace_diagnostics: { answer_mode: 'normal' } });
     const traceError = '{broken-json';
     const legacy = JSON.stringify({ statements: [] });
     const result = resultWith({ model: [
       { ...rowWith(evidenceReady), contexts: ['原文证据'] },
       { ...rowWith(unsupported), contexts: [] },
-      { ...rowWith(refusal), answer: '根据材料无法回答。' },
+      { ...rowWith(refusal), answer: '根据材料无法回答。', case_type: 'negative' },
+      { ...rowWith(unexpectedRefusal), answer: '根据材料无法回答。', case_type: 'positive' },
       { ...rowWith(noTrace), answer: '正常回答。' },
       { ...rowWith(traceError), answer: '异常回答。' },
       { ...rowWith(legacy), answer: '历史回答。' },
     ] });
     render(<TraceView result={result} />);
-    expect(screen.getByRole('status', { name: '可靠性判断：可验证' })).toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[1]);
-    expect(screen.getByRole('status', { name: '可靠性判断：存在风险' })).toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[2]);
-    expect(screen.getByRole('status', { name: '可靠性判断：符合预期' })).toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[3]);
-    expect(screen.getByRole('status', { name: '可靠性判断：需要检查' })).toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[4]);
-    expect(screen.getByRole('status', { name: '可靠性判断：评测链路异常' })).toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[5]);
-    expect(screen.getByRole('status', { name: '可靠性判断：无法判断' })).toBeInTheDocument();
+    const verify = (index: number, label: string, direction: string) => {
+      if (index > 0) fireEvent.click(screen.getAllByRole('button', { name: /原始测试问题/ })[index]);
+      const status = screen.getByRole('status', { name: `可靠性判断：${label}` });
+      expect(within(status).getByText(direction)).toBeInTheDocument();
+    };
+    verify(0, '可验证', '利好');
+    verify(1, '存在风险', '模型风险');
+    verify(2, '正确拒答', '利好');
+    verify(3, '异常拒答', '待复核');
+    verify(4, '需要检查', '待复核');
+    verify(5, '评测链路异常', '链路异常');
+    verify(6, '信息不足', '无法评估');
   });
 
   it('区分候选陈述被过滤与模型返回空数组两种未生成原因', () => {

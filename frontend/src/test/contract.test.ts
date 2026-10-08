@@ -271,9 +271,15 @@ describe('metric display and immutable demo evidence', () => {
   });
 
   it('preserves raw trace strings, existing evidence, empty statements, and per-case zero versus null', () => {
-    expect(rawTrace(DEEPSEEK, 0)).toBe('{"statements": [{"text": "星云科技最新一轮B轮融资金额达5亿元人民币。", "verdict": "supported", "evidence": "星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。"}]}');
-    expect(rawTrace(DEEPSEEK, 3)).toBe('{"statements": []}');
-    expect(rawTrace(QWEN, 3)).toBe('{"statements": [{"text": "文档中没有提及编号为「XH-2024」的金融行业审计批次的具体幻觉段落定位结果。", "verdict": "fabrication", "evidence": ""}]}');
+    const ds0 = JSON.parse(rawTrace(DEEPSEEK, 0));
+    expect(ds0.statements).toEqual([{ text: '星云科技最新一轮B轮融资金额达5亿元人民币。', verdict: 'supported', evidence: '星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。' }]);
+    expect(ds0.trace_diagnostics.answer_mode).toBe('normal');
+    const ds3 = JSON.parse(rawTrace(DEEPSEEK, 3));
+    expect(ds3.statements).toEqual([]);
+    expect(ds3.trace_diagnostics.answer_mode).toBe('refusal');
+    const qw3 = JSON.parse(rawTrace(QWEN, 3));
+    expect(qw3.statements).toEqual([{ text: '文档中没有提及编号为「XH-2024」的金融行业审计批次的具体幻觉段落定位结果。', verdict: 'fabrication', evidence: '' }]);
+    expect(qw3.trace_diagnostics.answer_mode).toBe('refusal_explanation');
     expect(demoResult.model_dfs[QWEN][0].faithfulness).toBe(0);
     expect(demoResult.model_dfs[GLM][0].faithfulness).toBeNull();
     expect(demoResult.model_dfs[DEEPSEEK][3]).toMatchObject({ faithfulness: null, context_precision: 0, case_type: 'negative' });

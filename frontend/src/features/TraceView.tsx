@@ -11,7 +11,8 @@ type Selection = { result: EvaluationResult | null; model: string; index: number
 type AnswerMode = 'normal' | 'refusal' | 'refusal_explanation' | 'premise_correction' | 'unknown';
 type TraceData = { statements: Statement[] | null; status: string | null; attempts: number | null; answerMode: AnswerMode | null; diagnostics?: Record<string, unknown> };
 type Tone = 'positive' | 'info' | 'warning' | 'danger' | 'neutral';
-type TraceState = 'evidence_ready' | 'refusal' | 'no_trace' | 'filtered_all' | 'trace_error' | 'legacy' | 'unsupported';
+type TraceState = 'evidence_ready' | 'refusal' | 'unexpected_refusal' | 'no_trace' | 'filtered_all' | 'trace_error' | 'legacy' | 'unsupported';
+type Direction = '利好' | '待复核' | '链路异常' | '模型风险' | '无法评估';
 
 const verdictLabels: Record<Verdict, string> = {
   supported: '有依据',
@@ -22,7 +23,7 @@ const verdictLabels: Record<Verdict, string> = {
 
 const answerModeCopy: Record<AnswerMode, { label: string; description: string; tone: Tone }> = {
   normal: { label: '正常回答', description: '模型对问题给出了事实性回答。', tone: 'positive' },
-  refusal: { label: '资料不足拒答', description: '模型明确表示当前材料不足以回答，未生成无依据事实。', tone: 'info' },
+  refusal: { label: '明确拒答', description: '模型明确表示当前材料不足以回答，未编造无依据事实。', tone: 'info' },
   refusal_explanation: { label: '拒答说明', description: '模型拒绝回答，并附带原因说明。', tone: 'info' },
   premise_correction: { label: '前提纠正', description: '模型指出问题前提不成立，并给出纠正说明。', tone: 'positive' },
   unknown: { label: '回答类型未记录', description: '历史数据缺少回答类型字段，无法确认模型回答属于何种类型。', tone: 'neutral' },
@@ -70,25 +71,27 @@ function readTrace(value: JsonValue | undefined): TraceData {
 
 const traceStateCopy: Record<TraceState, { label: string; description: string; tone: Tone }> = {
   evidence_ready: { label: '证据链已生成', description: '回答中的事实陈述已生成逐句判定，并关联检索依据。', tone: 'positive' },
-  refusal: { label: '未产生事实陈述', description: '回答未产生需要验证的事实陈述，因此没有逐句证据链。', tone: 'info' },
+  refusal: { label: '无事实陈述需验证', description: '模型拒答未产生需要验证的事实陈述，因此没有逐句证据链。', tone: 'info' },
+  unexpected_refusal: { label: '异常拒答', description: '该正向用例应可依据材料回答，但模型选择了拒答，需要检查。', tone: 'warning' },
   no_trace: { label: '证据链未生成', description: '模型已生成回答，但当前记录无法建立回答与检索依据的逐句对应关系。', tone: 'warning' },
   filtered_all: { label: '证据链未生成（候选未通过校验）', description: '模型返回了候选陈述，但全部未通过原文校验而被过滤，无法建立回答与检索依据的逐句对应关系。', tone: 'warning' },
   trace_error: { label: 'Trace生成异常', description: 'Trace处理过程发生异常，未完成证据链分析。', tone: 'danger' },
-  legacy: { label: '历史证据链未记录', description: '历史数据缺少诊断字段，无法判断当时未生成证据链的具体原因。', tone: 'neutral' },
+  legacy: { label: '证据链信息未保留', description: '该条记录未保存回答类型与逐句证据链，无法建立回答与检索依据的对应关系。', tone: 'neutral' },
   unsupported: { label: '存在无依据陈述', description: '部分回答陈述未在当前检索上下文中找到支持。', tone: 'danger' },
 };
 
-const reliabilityCopy: Record<TraceState, { label: string; description: string; tone: Tone; icon: 'shield' | 'file' | 'alert' | 'trace' }> = {
-  evidence_ready: { label: '可验证', description: '回答中的事实陈述已生成逐句证据关系，可以检查回答是否被上下文支持。', tone: 'positive', icon: 'shield' },
-  refusal: { label: '符合预期', description: '当前检索材料未提供相关信息，模型未生成无依据事实，避免产生幻觉。', tone: 'info', icon: 'file' },
-  no_trace: { label: '需要检查', description: '模型已生成回答，但当前无法建立回答与检索依据的逐句对应关系。该状态不代表回答一定错误。', tone: 'warning', icon: 'alert' },
-  filtered_all: { label: '需要检查', description: '模型返回了候选陈述，但全部未通过原文校验而被过滤。需要检查过滤规则是否误删了正常陈述。', tone: 'warning', icon: 'alert' },
-  trace_error: { label: '评测链路异常', description: 'Trace处理过程失败，无法完成证据验证。', tone: 'danger', icon: 'alert' },
-  legacy: { label: '无法判断', description: '历史数据缺少必要诊断字段，无法确认当时未生成证据链的具体原因。', tone: 'neutral', icon: 'trace' },
-  unsupported: { label: '存在风险', description: '部分回答陈述未在当前检索上下文中找到支持。', tone: 'danger', icon: 'alert' },
+const reliabilityCopy: Record<TraceState, { label: string; description: string; tone: Tone; icon: 'shield' | 'file' | 'alert' | 'trace'; direction: Direction }> = {
+  evidence_ready: { label: '可验证', description: '回答中的事实陈述已生成逐句证据关系，可以检查回答是否被上下文支持。', tone: 'positive', icon: 'shield', direction: '利好' },
+  refusal: { label: '正确拒答', description: '模型正确识别到检索材料未提供相关信息，选择拒答而非编造，避免了幻觉。', tone: 'info', icon: 'file', direction: '利好' },
+  unexpected_refusal: { label: '异常拒答', description: '模型在该正向用例上未给出应有回答，可能漏答；需检查检索或生成环节。', tone: 'warning', icon: 'alert', direction: '待复核' },
+  no_trace: { label: '需要检查', description: '模型已生成回答，但当前无法建立回答与检索依据的逐句对应关系。该状态不代表回答一定错误。', tone: 'warning', icon: 'alert', direction: '待复核' },
+  filtered_all: { label: '需要检查', description: '模型返回了候选陈述，但全部未通过原文校验而被过滤。需要检查过滤规则是否误删了正常陈述。', tone: 'warning', icon: 'alert', direction: '待复核' },
+  trace_error: { label: '评测链路异常', description: 'Trace处理过程失败，无法完成证据验证。', tone: 'danger', icon: 'alert', direction: '链路异常' },
+  legacy: { label: '信息不足', description: '该条记录缺少回答类型与逐句证据链信息，无法评估该回答是否有依据；这属于记录本身的信息边界，与本次评测链路无关。', tone: 'neutral', icon: 'trace', direction: '无法评估' },
+  unsupported: { label: '存在风险', description: '部分回答陈述未在当前检索上下文中找到支持。', tone: 'danger', icon: 'alert', direction: '模型风险' },
 };
 
-function resolveTraceState(trace: TraceData, answerMode: AnswerMode, statements: Statement[] | null): TraceState {
+function resolveTraceState(trace: TraceData, answerMode: AnswerMode, statements: Statement[] | null, caseType: JsonValue | undefined): TraceState {
   const hasStatements = Boolean(statements && statements.length > 0);
 
   // 优先级 1：Trace 生成异常（调用失败 / JSON 解析失败 / 结构无效）
@@ -103,7 +106,7 @@ function resolveTraceState(trace: TraceData, answerMode: AnswerMode, statements:
   }
 
   // 优先级 3：拒答类型
-  if (answerMode === 'refusal' || answerMode === 'refusal_explanation') return 'refusal';
+  if (answerMode === 'refusal' || answerMode === 'refusal_explanation') return caseType === 'negative' ? 'refusal' : 'unexpected_refusal';
 
   // 优先级 3b：候选陈述全部被过滤（区别于模型返回空数组）
   if (trace.status === 'filtered_all') return 'filtered_all';
@@ -129,9 +132,9 @@ function emptyTraceMessage(status: string | null): { title: string; body: string
     case 'invalid_structure': return { title: 'Trace生成异常', body: 'Trace 返回内容缺少有效的 statements 列表，请检查原始记录。' };
     case 'call_error': return { title: 'Trace生成异常', body: '回答已生成，但逐句证据链未生成，无法建立回答与检索依据的对应关系。调用阶段未完成。' };
     case 'disabled': return { title: '证据链未生成', body: '本次评测未执行逐句溯源。' };
-    case 'legacy_empty': return { title: '历史证据链未记录', body: '历史记录只保存了空陈述列表，未保存生成、解析或过滤阶段；不能据此判断回答是否有依据。' };
-    case 'missing': return { title: '历史证据链未记录', body: '当前记录没有 Trace 字段，无法判断是未执行、生成失败还是保存缺失。' };
-    default: return { title: '历史证据链未记录', body: '当前记录没有可读取的逐句判定，处理原因未记录；不能据此判断幻觉情况。' };
+    case 'legacy_empty': return { title: '证据链信息未保留', body: '该条记录只保存了空陈述列表，未保存生成、解析或过滤阶段；无法据此判断回答是否有依据。' };
+    case 'missing': return { title: '证据链信息未保留', body: '该条记录未保存逐句证据链，无法据此判断回答是否有依据。' };
+    default: return { title: '证据链信息未保留', body: '该条记录没有可读取的逐句判定，处理原因未保留；无法据此判断幻觉情况。' };
   }
 }
 
@@ -192,7 +195,7 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
   const statements = trace.statements;
   const contexts = row ? readContexts(row.contexts) : [];
   const answerMode = trace.answerMode ?? 'unknown';
-  const traceState = resolveTraceState(trace, answerMode, statements);
+  const traceState = resolveTraceState(trace, answerMode, statements, row?.case_type);
   const traceStateValue = traceStateCopy[traceState];
   const reliabilityValue = reliabilityCopy[traceState];
 
@@ -249,19 +252,22 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
               <span className="trace-reliability-icon"><Icon name={reliabilityValue.icon} size={21} /></span>
               <div className="trace-reliability-content">
                 <div className="trace-status-stack">
-                  <div className="trace-status-level">
+                  <div className="trace-status-level trace-status-level--minor">
                     <span className="trace-status-level-label">回答状态</span>
                     <strong className={`trace-status-level-value trace-status-level-value--${answerModeCopy[answerMode].tone}`}>{answerModeCopy[answerMode].label}</strong>
                     <p className="trace-status-level-desc">{answerModeCopy[answerMode].description}</p>
                   </div>
-                  <div className="trace-status-level">
+                  <div className="trace-status-level trace-status-level--minor">
                     <span className="trace-status-level-label">证据链状态</span>
                     <strong className={`trace-status-level-value trace-status-level-value--${traceStateValue.tone}`}>{traceStateValue.label}</strong>
                     <p className="trace-status-level-desc">{traceStateValue.description}</p>
                   </div>
                   <div className="trace-status-level trace-status-level--reliability">
                     <span className="trace-status-level-label">可靠性判断</span>
-                    <strong className={`trace-status-level-value trace-status-level-value--${reliabilityValue.tone}`}>{reliabilityValue.label}</strong>
+                    <div className="trace-verdict-line">
+                      <strong className={`trace-verdict-value trace-status-level-value--${reliabilityValue.tone}`}>{reliabilityValue.label}</strong>
+                      <span className="trace-verdict-direction">{reliabilityValue.direction}</span>
+                    </div>
                     <p className="trace-status-level-desc">{reliabilityValue.description}</p>
                   </div>
                 </div>
