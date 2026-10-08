@@ -1,8 +1,19 @@
 import { readFileSync } from 'node:fs';
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import type { EvaluationResult } from '../src/api/types';
 
 const fixture = JSON.parse(readFileSync(new URL('../src/fixtures/demo.json', import.meta.url), 'utf8')) as { result: EvaluationResult };
+
+async function themeBackground(page: Page, token: string) {
+  return page.evaluate((name) => {
+    const probe = document.createElement('span');
+    probe.style.backgroundColor = `var(${name})`;
+    document.body.append(probe);
+    const color = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  }, token);
+}
 
 test.beforeEach(async ({ page }) => {
   await page.route('http://127.0.0.1:5173/api/**', async (route) => {
@@ -11,22 +22,27 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 1080 }, { width: 390, height: 844 }]) {
-  test(`all views fit ${viewport.width}px and demo never posts`, async ({ page }) => {
+for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 800 }, { width: 1280, height: 1080 }, { width: 390, height: 844 }, { width: 320, height: 844 }]) {
+  test(`all views fit ${viewport.width}x${viewport.height}px and demo never posts`, async ({ page }) => {
     let posts = 0;
     page.on('request', (request) => { if (request.method() === 'POST') posts += 1; });
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
     await page.setViewportSize(viewport);
-    await page.goto('/');
+    await page.goto('/#/lab');
     await expect(page.getByText('暂无评测结果', { exact: true })).toBeVisible();
     await page.screenshot({ path: `test-results/${viewport.width}-empty.png`, fullPage: true });
     await page.getByRole('button', { name: '加载演示', exact: true }).click();
     await expect(page.getByText('PASS', { exact: true })).toBeVisible();
     await expect(page.locator('.evaluation-chart-canvas svg')).toBeVisible();
     if (viewport.width === 1920) {
-      const chart = await page.locator('.evaluation-chart').boundingBox();
-      expect(chart!.y + chart!.height).toBeLessThanOrEqual(viewport.height);
+      // The conclusion and KPIs precede the chart; the page may scroll.
+      const chartElement = page.locator('.evaluation-chart');
+      await chartElement.scrollIntoViewIfNeeded();
+      const chart = await chartElement.boundingBox();
+      expect(chart!.height).toBeCloseTo(360, 0);
+      expect(chart!.y).toBeGreaterThanOrEqual(0);
+      expect(chart!.y + chart!.height).toBeLessThanOrEqual(viewport.height + 1);
     }
     for (const name of ['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告']) {
       await page.getByRole('navigation').getByRole('button', { name, exact: true }).click();
@@ -52,7 +68,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 390, height: 844
       if (request.url().includes('/api/')) apiRequests += 1;
     });
     await page.setViewportSize(viewport);
-    await page.goto('/');
+    await page.goto('/#/lab');
     await expect(page.getByText('服务可连接', { exact: true })).toBeVisible();
     await page.getByRole('button', { name: '加载演示', exact: true }).click();
     const selector = page.getByRole('combobox', { name: '当前摘要模型', exact: true });
@@ -87,7 +103,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 390, height: 844
 
 test('first model column remains opaque and fixed while table scrolls', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 1080 });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
   await page.getByRole('navigation').getByRole('button', { name: '多模型对比', exact: true }).click();
   const wrapper = page.locator('.comparison-table-scroll');
@@ -114,7 +130,7 @@ test('current model gate follows positive metrics while preserving the original 
     if (request.method() === 'POST') posts += 1;
   });
   await page.setViewportSize({ width: 1920, height: 1080 });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await expect(page.getByText('服务可连接', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
   await expect(page.locator('.evaluation-chart-canvas svg')).toBeVisible();
@@ -130,14 +146,14 @@ test('current model gate follows positive metrics while preserving the original 
     await expect(page.locator('.gate-value')).toHaveText(model.gate);
     await expect(page.locator('.gate-label')).toHaveText('当前模型质量门禁');
     await expect(page.locator('.gate-subject dd')).toHaveText(model.label);
-    await expect(page.locator('.gate-range dd')).toHaveText('3 条 positive 用例');
+    await expect(page.locator('.gate-range dd')).toHaveText('3 条正向用例');
     await expect(page.locator('[data-gate-field="pos_faithfulness"] dd > span')).toHaveText(model.faith);
     await expect(page.locator('[data-gate-field="pos_context_precision"] dd > span')).toHaveText('100.0%');
     for (const metric of ['pos_faithfulness', 'pos_context_precision']) {
       await expect(page.locator(`[data-gate-field="${metric}"] dd > small`)).toHaveText('门槛 ≥ 80.0%');
     }
     await expect(page.locator('.original-gate')).toHaveText('原始评测门禁：PASS');
-    await expect(page.locator('.gate-interpretation')).toHaveText('门禁结论仅反映规则检查，不代表所有模型指标优秀。');
+    await expect(page.locator('.gate-interpretation')).toHaveText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。');
     await expect(page.locator('.result-context-note')).toHaveText('当前模型用于指标查看，不代表最佳模型；门禁展示按该模型的正向指标及已有阈值检查，原始记录保持不变。');
     await expect(page.locator('.ability-section .section-heading p')).toHaveText('图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。');
     expect(await page.locator('.evaluation-chart-canvas svg').innerHTML()).toBe(chartBeforeSelection);
@@ -177,7 +193,7 @@ test('mock evaluation preserves zero thresholds and original gate=false while co
     await wait;
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(result) });
   });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
   await page.getByRole('checkbox', { name: '沿用后端默认阈值' }).uncheck();
@@ -209,7 +225,7 @@ test('mock evaluation preserves zero thresholds and original gate=false while co
 
 test('model cards, manual sliders and reset remain usable from keyboard', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
   const model = page.getByRole('button', { name: '选择 DeepSeek', exact: true });
   await model.focus();
@@ -234,7 +250,7 @@ test('HTML report is read locally, isolated, and cannot execute or fetch externa
     if (request.method() === 'POST') posts += 1;
     if (request.url().includes('example.invalid')) outside.push(request.url());
   });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('navigation').getByRole('button', { name: '评测报告', exact: true }).click();
   await page.getByLabel('选择本地 HTML 报告', { exact: true }).setInputFiles({ name: 'local-report.html', mimeType: 'text/html', buffer: Buffer.from('<html><head><style>body{color:#223344}</style></head><body><h1>离线报告</h1><script>parent.document.body.dataset.reportExecuted="yes"</script><img src="https://example.invalid/image.png"><a href="https://example.invalid">remote</a></body></html>') });
   const frame = page.locator('iframe');
@@ -264,7 +280,7 @@ test('check configuration gives visible feedback on the same page, calls health 
       await route.fulfill({ status: 500, contentType: 'application/json', body: '{}' });
     }
   });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await expect(page.getByText('服务可连接', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
   await page.getByRole('button', { name: '开始评测', exact: true }).click();
@@ -299,7 +315,7 @@ for (const mode of ['auto', 'custom']) {
       posts.push(route.request().postDataJSON());
       await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(fixture.result) });
     });
-    await page.goto('/');
+    await page.goto('/#/lab');
     await page.getByRole('button', { name: '新建评测', exact: true }).click();
     await page.getByRole('combobox', { name: '测试集来源', exact: true }).selectOption('benchmark');
     await page.getByRole('spinbutton', { name: '基准样本数量', exact: true }).fill('');
@@ -318,7 +334,7 @@ for (const mode of ['auto', 'custom']) {
 
 test('Gold design tokens keep primary actions distinct from neutral data and workspace surfaces', async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
-  await page.goto('/');
+  await page.goto('/#/lab');
   const tokens = await page.evaluate(() => {
     const style = getComputedStyle(document.documentElement);
     return Object.fromEntries(['--brand', '--accent', '--info', '--success', '--warning', '--danger', '--demo', '--bg-page', '--bg-workspace', '--bg-surface', '--bg-elevated', '--text-primary', '--text-secondary', '--text-muted'].map((name) => [name, style.getPropertyValue(name).trim().toLowerCase()]));
@@ -333,7 +349,7 @@ test('Gold design tokens keep primary actions distinct from neutral data and wor
   expect(await page.locator('html').evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(8, 11, 16)');
   expect(await page.locator('body').evaluate((node) => getComputedStyle(node).fontSize)).toBe('15px');
   expect(await page.locator('h1').evaluate((node) => getComputedStyle(node).fontSize)).toBe('32px');
-  const primary = page.getByRole('button', { name: '新建评测', exact: true });
+  const primary = page.getByRole('button', { name: '配置评测', exact: true });
   expect(await primary.evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(242, 200, 121)');
   expect(await primary.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(8, 11, 16)');
   expect(await page.locator('.nav-item.active').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(242, 200, 121)');
@@ -346,11 +362,12 @@ test('Gold design tokens keep primary actions distinct from neutral data and wor
     expect(await metric.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(245, 247, 250)');
     expect(await metric.evaluate((node) => getComputedStyle(node).fontSize)).toBe('38px');
   }
-  await primary.click();
+  await page.getByRole('button', { name: '新建评测', exact: true }).click();
   expect(await page.locator('.experiment-workspace').evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(16, 22, 31)');
   expect(await page.locator('.stage-content').first().evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(21, 27, 36)');
+  const selectedBackground = await themeBackground(page, '--bg-selected');
   for (const model of await page.locator('.model-card.selected').all()) {
-    expect(['rgb(16, 22, 31)', 'rgb(21, 27, 36)', 'rgb(27, 36, 48)']).toContain(await model.evaluate((node) => getComputedStyle(node).backgroundColor));
+    expect(await model.evaluate((node) => getComputedStyle(node).backgroundColor)).toBe(selectedBackground);
     expect(await model.locator('.model-check.checked').evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(242, 200, 121)');
   }
   await page.getByRole('checkbox', { name: '沿用后端默认阈值' }).uncheck();
@@ -367,7 +384,7 @@ test('Demo Gold, Warning Amber, Cyan running and Red failure remain separate vis
     await pending;
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(result) });
   });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
   expect(await page.locator('.badge.demo').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(242, 200, 121)');
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
@@ -401,7 +418,7 @@ test('Trace verdicts preserve semantics while selection and evidence use restrai
   await page.route('**/api/evaluate', async (route) => {
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(result) });
   });
-  await page.goto('/');
+  await page.goto('/#/lab');
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
   await page.getByRole('button', { name: '开始评测', exact: true }).click();
   await expect(page.getByText('WARNING', { exact: true })).toBeVisible();
@@ -419,7 +436,7 @@ test('Trace verdicts preserve semantics while selection and evidence use restrai
     expect(await badge.evaluate((node) => getComputedStyle(node).color)).toBe(verdict.color);
   }
   const selected = page.locator('.trace-case.is-selected');
-  expect(['rgb(16, 22, 31)', 'rgb(21, 27, 36)', 'rgb(27, 36, 48)']).toContain(await selected.evaluate((node) => getComputedStyle(node).backgroundColor));
+  expect(await selected.evaluate((node) => getComputedStyle(node).backgroundColor)).toBe(await themeBackground(page, '--bg-selected'));
   expect(await selected.evaluate((node) => getComputedStyle(node).borderLeftColor)).toBe('rgb(242, 200, 121)');
   expect(await page.locator('.trace-model-id').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(89, 195, 209)');
   expect(await page.locator('.trace-answer').evaluate((node) => getComputedStyle(node).fontSize)).toBe('15px');

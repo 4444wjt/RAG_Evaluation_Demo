@@ -10,34 +10,40 @@ import { modelName } from '../utils/format';
 
 vi.mock('echarts/core', () => ({ init: vi.fn(), use: vi.fn() }));
 
+type ChartTextStyle = { color: string; fontFamily: string; fontSize: number };
+
 type ChartOption = {
   animation: boolean;
   backgroundColor: string;
   color: string[];
-  legend: { data?: string[]; top: number; left: string; icon: string };
+  legend?: { data?: string[]; top: number; left: string; icon: string; textStyle: ChartTextStyle };
   aria: { enabled: boolean };
   series: Array<{
     name: string;
     data: Array<number | null | { value: number | null; itemStyle?: { color: string } }>;
     itemStyle?: { color: string };
-    label?: { show: boolean; formatter: (params: { value: number | null }) => string };
+    label?: ChartTextStyle & { show: boolean; position?: string; formatter: (params: { value: number | null }) => string };
   }>;
   tooltip: {
     renderMode: string;
     backgroundColor: string;
     borderColor: string;
-    textStyle: { color: string };
+    textStyle: ChartTextStyle;
     axisPointer: { shadowStyle: { color: string } };
     valueFormatter: (value: unknown) => string;
   };
-  xAxis: { data: string[]; axisLabel: { color: string }; axisLine: { lineStyle: { color: string } } };
-  yAxis: { min: number; max?: number; axisLabel: { color: string }; splitLine: { lineStyle: { color: string } } };
+  xAxis: { data?: string[]; axisLabel: ChartTextStyle; axisLine: { lineStyle: { color: string } } };
+  yAxis: { min?: number; max?: number; data?: string[]; axisLabel: ChartTextStyle; splitLine?: { lineStyle: { color: string } }; axisLine?: { lineStyle: { color: string } } };
   media: Array<{ query?: { maxWidth: number }; option: { series?: Array<{ label: { show: boolean } }> } }>;
 };
 
 const chart = { setOption: vi.fn(), resize: vi.fn(), dispose: vi.fn() };
 const resizeObservers: MockResizeObserver[] = [];
 const chartThemeTokens = {
+  '--font-family': '"UI Theme Test", sans-serif',
+  '--font-size-label': '14px',
+  '--font-size-caption': '11px',
+  '--chart-text': '#f5f7fa',
   '--chart-axis': '#a7b0be',
   '--chart-grid': 'rgba(255, 255, 255, 0.08)',
   '--chart-tooltip-bg': '#1b2430',
@@ -94,11 +100,22 @@ describe('evaluation charts', () => {
     expect(option.xAxis.axisLabel.color).toBe(chartThemeTokens['--chart-axis']);
     expect(option.yAxis.axisLabel.color).toBe(chartThemeTokens['--chart-axis']);
     expect(option.xAxis.axisLine.lineStyle.color).toBe(chartThemeTokens['--chart-grid']);
-    expect(option.yAxis.splitLine.lineStyle.color).toBe(chartThemeTokens['--chart-grid']);
+    if (option.yAxis.splitLine) {
+      expect(option.yAxis.splitLine.lineStyle.color).toBe(chartThemeTokens['--chart-grid']);
+    }
     expect(option.tooltip.backgroundColor).toBe(chartThemeTokens['--chart-tooltip-bg']);
     expect(option.tooltip.borderColor).toBe(chartThemeTokens['--chart-tooltip-border']);
     expect(option.tooltip.textStyle.color).toBe(chartThemeTokens['--chart-tooltip-text']);
     expect(option.tooltip.axisPointer.shadowStyle.color).toBe(chartThemeTokens['--chart-pointer']);
+    if (option.legend) {
+      expect(option.legend.textStyle).toMatchObject({ color: chartThemeTokens['--chart-text'], fontFamily: chartThemeTokens['--font-family'], fontSize: 14 });
+    }
+    expect(option.tooltip.textStyle).toMatchObject({ fontFamily: chartThemeTokens['--font-family'], fontSize: 14 });
+    expect(option.xAxis.axisLabel).toMatchObject({ fontFamily: chartThemeTokens['--font-family'], fontSize: 11 });
+    expect(option.yAxis.axisLabel).toMatchObject({ fontFamily: chartThemeTokens['--font-family'], fontSize: 11 });
+    if (option.series[0].label) {
+      expect(option.series[0].label).toMatchObject({ color: chartThemeTokens['--chart-text'], fontFamily: chartThemeTokens['--font-family'], fontSize: 11 });
+    }
     expect(option.color).toEqual(originalModelColors);
     expect(option.color).not.toContain('#f2c879');
   });
@@ -119,8 +136,8 @@ describe('evaluation charts', () => {
     expect(option.color).toEqual(originalModelColors);
     expect(option.series.map((series) => series.itemStyle?.color)).toEqual(expectedColors);
     expect(option.series.map((series) => series.name)).toEqual(rows.map((row) => modelName(row.model)));
-    expect(option.legend).toMatchObject({ top: 8, left: 'center', icon: 'roundRect' });
-    expect(option.legend.data).toBeUndefined();
+    expect(option.legend!).toMatchObject({ top: 8, left: 'center', icon: 'roundRect' });
+    expect(option.legend!.data).toBeUndefined();
     option.series.forEach((series, index) => {
       expect(series.name).toBe(modelName(rows[index].model));
       expect(series.itemStyle?.color).toBe(expectedColors[index]);
@@ -137,18 +154,19 @@ describe('evaluation charts', () => {
     expect(option.color).toEqual(originalModelColors);
     expect(colors).toEqual([...originalModelColors, originalModelColors[0]]);
     expect(colors[2]).toBe('#cba575');
-    expect(option.xAxis.data).toEqual(rows.map((row) => modelName(row.model)));
+    expect(option.yAxis.data).toEqual(rows.map((row) => modelName(row.model)));
     expect(option.series[0].name).toBe('评测耗时');
-    expect(option.legend.data).toBeUndefined();
+    expect(option.legend).toBeUndefined();
   });
 
   it('retains readable environment defaults when no CSS theme is available', () => {
     render(<AbilityChart rows={fixture.result.summary_df} />);
     const option = latestOption();
 
-    expect(option.xAxis.axisLabel.color).toBe('#a5b1c0');
-    expect(option.yAxis.splitLine.lineStyle.color).toBe('rgba(165, 177, 192, 0.12)');
-    expect(option.tooltip.backgroundColor).toBe('#10161f');
+    expect(option.xAxis.axisLabel.color).toBe('#a7b0be');
+    expect(option.yAxis.splitLine!.lineStyle.color).toBe('rgba(255, 255, 255, 0.08)');
+    expect(option.tooltip.backgroundColor).toBe('#1b2430');
+    expect(option.legend!.textStyle.color).toBe('#f5f7fa');
     expect(option.backgroundColor).toBe('transparent');
     expect(option.color).toEqual(originalModelColors);
   });
@@ -171,7 +189,24 @@ describe('evaluation charts', () => {
     expect(screen.getByRole('img')).toHaveStyle({ height: '500px' });
     expect(option.series[0].label?.show).toBe(true);
     expect(option.series[0].label?.formatter({ value: 0.498 })).toBe('49.8%');
-    expect(option.media.find((item) => item.query?.maxWidth === 700)?.option.series?.every((series) => !series.label.show)).toBe(true);
+    expect(option.media.find((item) => item.query?.maxWidth === 380)?.option.series?.every((series) => !series.label.show)).toBe(true);
+  });
+
+  it('supports a compact presentation height without changing chart values or model colors', () => {
+    render(<AbilityChart rows={fixture.result.summary_df} height={360} />);
+    expect(screen.getByRole('img')).toHaveStyle({ height: '360px' });
+    expect(screen.getByRole('img').parentElement).toHaveStyle({ height: '360px' });
+    expect(latestOption().color).toEqual(originalModelColors);
+    latestOption().series.forEach((series, index) => {
+      expect(series.data).toEqual(METRICS.map((metric) => fixture.result.summary_df[index][metric.key]));
+    });
+  });
+
+  it('uses the requested compact height when ability metrics are unavailable', () => {
+    render(<AbilityChart rows={[]} height={360} />);
+    expect(screen.getByRole('status')).toHaveStyle({ minHeight: '360px' });
+    expect(screen.getByText('能力指标暂不可用')).toBeVisible();
+    expect(echarts.init).not.toHaveBeenCalled();
   });
 
   it('preserves null datapoints and distinguishes a true zero from unavailable metrics', () => {
@@ -211,7 +246,7 @@ describe('evaluation charts', () => {
     const rows: ResultRow[] = [{ model: 'missing-duration', elapsed_seconds: null }, ...fixture.result.summary_df];
     render(<DurationChart rows={rows} />);
     const option = latestOption();
-    expect(option.xAxis.data).toEqual(rows.map((row) => modelName(row.model)));
+    expect(option.yAxis.data).toEqual(rows.map((row) => modelName(row.model)));
     expect(option.series[0].data.map((datum) => typeof datum === 'object' && datum !== null ? datum.value : datum)).toEqual(rows.map((row) => row.elapsed_seconds));
     expect(option.tooltip.renderMode).toBe('richText');
     expect(option.tooltip.valueFormatter(289.77)).toBe('289.8s');

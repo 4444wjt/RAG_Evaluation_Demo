@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized-public-copy",
+  "sourceRunId": "20261005T101847Z-pilot-c72cb679",
+  "sourceRunManifestSha256": "e752648b21085e3de31e2bf5967973f8de1141f29ab9d02713a7581657eb51d0",
+  "preparedAt": "2026-10-05T12:31:01.2938785Z",
+  "experimentIdentity": {
+    "originalStatus": "completed",
+    "purpose": "draft-token-pilot",
+    "sentenceAdapter": "original-ragas-0.1.21-pre-fix",
+    "notANewEvaluation": true,
+    "authorConfirmed": false,
+    "requestedModelId": "deepseek-chat",
+    "observedProviderModelNames": [
+      {
+        "name": "deepseek-flash",
+        "completedCalls": 64
+      }
+    ],
+    "answerCount": 5,
+    "completedCalls": 64,
+    "promptTokens": 102375,
+    "completionTokens": 4580,
+    "totalTokens": 106955,
+    "cachedPromptTokens": 40955,
+    "uncachedPromptTokens": 61420,
+    "actualCharge": null,
+    "missingFaithfulnessCount": 2,
+    "emptyTraceCount": 2,
+    "gatePassed": true
+  },
+  "integrity": {
+    "sourceRunUntouched": true,
+    "originalManifestCopiedByteForByte": true,
+    "fileHashAlgorithm": "SHA-256",
+    "publicFileInventoryExcludes": [
+      "public-manifest.json",
+      "SHA256SUMS.txt"
+    ],
+    "externalChecksumFile": "SHA256SUMS.txt",
+    "externalChecksumExcludesOnlyItself": true,
+    "note": "原件和公开副本hash分别记录；外部清单覆盖本manifest，避免自引用。"
+  },
+  "runnerSupplement": {
+    "path": "runner/run_evidence.py",
+    "recordedSha256": "6cc1a3e9bfad419cbfa47df78a0cff41f0820ff7896096288834fe88dfd530ca",
+    "sourceStoredDuringOriginalRun": false,
+    "copiedAfterRunByHashMatch": true,
+    "note": "该文件是在公开整理阶段按原manifest已有hash匹配补存，不改写原run，也不声称原run当时保存了runner源码。"
+  },
+  "limitations": [
+    "本轮中文句子兼容修正前预跑；不是修正后的验证或25题正式实验。",
+    "5题参考材料仍未作者人工确认；旧13条核验不能代替本批确认。",
+    "生成、Ragas、Trace使用同一模型，存在self-Judge偏差。",
+    "PASS只表示保存规则检查通过；缺失指标与空Trace不能证明回答正确或无幻觉。",
+    "本轮使用同机既有依赖与Embedding缓存；没有不可变Embedding权重版本。",
+    "模型返回名称不等同不可变权重版本；token观察不等于费用账单。",
+    "调用记录及本地日志不保证覆盖提供方HTTP层内部重试。",
+    "文件hash说明材料对应，不是独立第三方认证。"
+  ],
+  "files": [
+    {
+      "path": "api-response.json",
+      "bytes": 15750,
+      "origin": "copied-original-file",
+      "sourceReference": "api-response.json",
+      "originalSha256": "2d62587e535a16639e419d82512c656aba2713308a201d41b53502311c7ed0b5",
+      "publicSha256": "de4f72ba1b3aec309428b90bf105a5e8b2fbe2728fa193f573e3f24eecb939b2",
+      "redactions": [
+        {
+          "kind": "portable-artifact-path",
+          "fields": [
+            "chart_path",
+            "html_path"
+          ],
+          "count": 2,
+          "replacements": {
+            "chart_path": "project/result_chart.png",
+            "html_path": "project/ragas_report.html"
+          }
+        }
+      ]
+    },
+    {
+      "path": "llm-events.jsonl",
+      "bytes": 399032,
+      "origin": "copied-original-file",
+      "sourceReference": "llm-events.jsonl",
+      "originalSha256": "022ce10ff59c5f9331c686a40a7bacf3ce344cc2c79d3b93dd685ea30cb86002",
+      "publicSha256": "022ce10ff59c5f9331c686a40a7bacf3ce344cc2c79d3b93dd685ea30cb86002",
+      "redactions": []
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 9130,
+      "origin": "copied-original-file",
+      "sourceReference": "manifest.json",
+      "originalSha256": "e752648b21085e3de31e2bf5967973f8de1141f29ab9d02713a7581657eb51d0",
+      "publicSha256": "e752648b21085e3de31e2bf5967973f8de1141f29ab9d02713a7581657eb51d0",
+      "redactions": []
+    },
+    {
+      "path": "packages.json",
+      "bytes": 5346,
+      "origin": "copied-original-file",
+      "sourceReference": "packages.json",
+      "originalSha256": "59782dcdeec0b0fb09ddbbe88a5ed6592bf7e4856c067619443b15e05c2c08bc",
+      "publicSha256": "59782dcdeec0b0fb09ddbbe88a5ed6592bf7e4856c067619443b15e05c2c08bc",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/__init__.py",
+      "bytes": 0,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/__init__.py",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/adapters/__init__.py",
+      "bytes": 0,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/adapters/__init__.py",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/adapters/models/__init__.py",
+      "bytes": 214,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/adapters/models/__init__.py",
+      "originalSha256": "fee726f1a13daa437ea92013ecfd2aef7468dfb53d1e192e3db5b6ae34befcf8",
+      "publicSha256": "fee726f1a13daa437ea92013ecfd2aef7468dfb53d1e192e3db5b6ae34befcf8",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/adapters/models/base.py",
+      "bytes": 409,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/adapters/models/base.py",
+      "originalSha256": "6b540c586c73acbb38c5385b7d9513ac36b63867244d2781f5ada3bba2794a7e",
+      "publicSha256": "6b540c586c73acbb38c5385b7d9513ac36b63867244d2781f5ada3bba2794a7e",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/adapters/models/openai_compatible.py",
+      "bytes": 2034,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/adapters/models/openai_compatible.py",
+      "originalSha256": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791",
+      "publicSha256": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/adapters/models/registry.py",
+      "bytes": 528,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/adapters/models/registry.py",
+      "originalSha256": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230",
+      "publicSha256": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/api/__init__.py",
+      "bytes": 80,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/api/__init__.py",
+      "originalSha256": "1e6bc5b72b6278487e68d6f72b57d968b18269cfac50ca8883bda9bcb599c9b4",
+      "publicSha256": "1e6bc5b72b6278487e68d6f72b57d968b18269cfac50ca8883bda9bcb599c9b4",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/api/app.py",
+      "bytes": 1933,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/api/app.py",
+      "originalSha256": "a777e47aa60ff0ba001e66c6e7c275bd2929eb3351662750e682a9bb46379ab3",
+      "publicSha256": "a777e47aa60ff0ba001e66c6e7c275bd2929eb3351662750e682a9bb46379ab3",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/api/schemas.py",
+      "bytes": 1214,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/api/schemas.py",
+      "originalSha256": "3de02a3f49a94b0a5a088c1b793bc83e8eea7208c2a6be340453ea1748413d35",
+      "publicSha256": "3de02a3f49a94b0a5a088c1b793bc83e8eea7208c2a6be340453ea1748413d35",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/api/serialization.py",
+      "bytes": 1822,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/api/serialization.py",
+      "originalSha256": "68d5f806b581f96c4bf75d9af5be372b11dae69160063974bd4f21f4671b670a",
+      "publicSha256": "68d5f806b581f96c4bf75d9af5be372b11dae69160063974bd4f21f4671b670a",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/api/service.py",
+      "bytes": 5438,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/api/service.py",
+      "originalSha256": "06a171658a4051afec93d2bd58d52ea4eed4daed2344522677767ae05a9ec44d",
+      "publicSha256": "06a171658a4051afec93d2bd58d52ea4eed4daed2344522677767ae05a9ec44d",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/config.py",
+      "bytes": 2680,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/config.py",
+      "originalSha256": "8924782aefa70cf80bec88edf0b9cb6f952d848d96375cae55e05431a4dedec8",
+      "publicSha256": "8924782aefa70cf80bec88edf0b9cb6f952d848d96375cae55e05431a4dedec8",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/core/__init__.py",
+      "bytes": 0,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/core/__init__.py",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/core/gate.py",
+      "bytes": 3599,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/core/gate.py",
+      "originalSha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+      "publicSha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/core/pipeline.py",
+      "bytes": 25555,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/core/pipeline.py",
+      "originalSha256": "8ca798a875c79abcc14688f41b45b7ff7bfc17ccdd3029a40373d68cc2fc86a6",
+      "publicSha256": "8ca798a875c79abcc14688f41b45b7ff7bfc17ccdd3029a40373d68cc2fc86a6",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/core/types.py",
+      "bytes": 5173,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/core/types.py",
+      "originalSha256": "2ef5e5e488e04edd7b92858cf1d601841024945df4101b37ab4a458b44be66c4",
+      "publicSha256": "2ef5e5e488e04edd7b92858cf1d601841024945df4101b37ab4a458b44be66c4",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/core/utils.py",
+      "bytes": 3908,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/core/utils.py",
+      "originalSha256": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef",
+      "publicSha256": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/__init__.py",
+      "bytes": 2752,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/__init__.py",
+      "originalSha256": "ed5d8b6a403dabe6fabe9755ad69e53a558cf179b772ca466b52bf8518f0d780",
+      "publicSha256": "ed5d8b6a403dabe6fabe9755ad69e53a558cf179b772ca466b52bf8518f0d780",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/charts.py",
+      "bytes": 12619,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/charts.py",
+      "originalSha256": "4bf2d439df1d94a35685ca9d092e9e0623692b7722ee7be6b11fe1446cd65b01",
+      "publicSha256": "4bf2d439df1d94a35685ca9d092e9e0623692b7722ee7be6b11fe1446cd65b01",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/evaluation_chart.py",
+      "bytes": 5252,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/evaluation_chart.py",
+      "originalSha256": "9aa25be1829f19c326dd088ba2a0a4f62e18169a785f46a292c74b1bc1874305",
+      "publicSha256": "9aa25be1829f19c326dd088ba2a0a4f62e18169a785f46a292c74b1bc1874305",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/excel.py",
+      "bytes": 555,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/excel.py",
+      "originalSha256": "aa287e877b19fa6c080e12fee97d683301abffb130a54e0c2d332a69dc336fba",
+      "publicSha256": "aa287e877b19fa6c080e12fee97d683301abffb130a54e0c2d332a69dc336fba",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/html.py",
+      "bytes": 6169,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/html.py",
+      "originalSha256": "a7cf5971fc86874388b3639be07aa9f975476f27d1d55c2eb85dbe8b94c4defd",
+      "publicSha256": "a7cf5971fc86874388b3639be07aa9f975476f27d1d55c2eb85dbe8b94c4defd",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/reporting/pdf.py",
+      "bytes": 1402,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/reporting/pdf.py",
+      "originalSha256": "073ed57400405970777a76685b7dab8262ff468cb90fbd93d0e3cd11d19342fc",
+      "publicSha256": "073ed57400405970777a76685b7dab8262ff468cb90fbd93d0e3cd11d19342fc",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/__init__.py",
+      "bytes": 735,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/__init__.py",
+      "originalSha256": "cd8d1a0a50a2c077cdf9994cf5902aaa50eb9ce11c63aa1d1762384936ea258f",
+      "publicSha256": "cd8d1a0a50a2c077cdf9994cf5902aaa50eb9ce11c63aa1d1762384936ea258f",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/answering.py",
+      "bytes": 651,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/answering.py",
+      "originalSha256": "96b752635d16f30d2fbf8f45393f22ed62d38460d6599a8360b656d08f6da5f5",
+      "publicSha256": "96b752635d16f30d2fbf8f45393f22ed62d38460d6599a8360b656d08f6da5f5",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/documents.py",
+      "bytes": 1194,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/documents.py",
+      "originalSha256": "8cc9dc977650e48160b39fc11633d695f72f26b75e6ccb30be66ece7ae27211d",
+      "publicSha256": "8cc9dc977650e48160b39fc11633d695f72f26b75e6ccb30be66ece7ae27211d",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/negatives.py",
+      "bytes": 15262,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/negatives.py",
+      "originalSha256": "189e5b9c7b20b478cc49f68c4fa55486386e08be55dd2e3f06ad110f27aa5102",
+      "publicSha256": "189e5b9c7b20b478cc49f68c4fa55486386e08be55dd2e3f06ad110f27aa5102",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/retriever.py",
+      "bytes": 715,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/retriever.py",
+      "originalSha256": "879e6bc6307e308e984a5c918cf37af903ae1e7f6a31bf7c1707fc797508e9b8",
+      "publicSha256": "879e6bc6307e308e984a5c918cf37af903ae1e7f6a31bf7c1707fc797508e9b8",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/testsets.py",
+      "bytes": 6328,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/testsets.py",
+      "originalSha256": "32446f6698c9f6e4bf3140f40595824a2b9a738779a371bf7e706b85bc140541",
+      "publicSha256": "32446f6698c9f6e4bf3140f40595824a2b9a738779a371bf7e706b85bc140541",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/services/trace.py",
+      "bytes": 2930,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/services/trace.py",
+      "originalSha256": "c4b10b6f159062f357363f51602fea3b75157852192acad6f8f2334387ad72a8",
+      "publicSha256": "c4b10b6f159062f357363f51602fea3b75157852192acad6f8f2334387ad72a8",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/storage/__init__.py",
+      "bytes": 355,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/storage/__init__.py",
+      "originalSha256": "a91a32f12ea8ee6250e2cd77cb40b351d044c5ec35c4c10a5367619cca60b63f",
+      "publicSha256": "a91a32f12ea8ee6250e2cd77cb40b351d044c5ec35c4c10a5367619cca60b63f",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/storage/base.py",
+      "bytes": 566,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/storage/base.py",
+      "originalSha256": "00cededa92a1fcf72612140ec46dbc60aa82e721b25432fd6d0269e7397bce5f",
+      "publicSha256": "00cededa92a1fcf72612140ec46dbc60aa82e721b25432fd6d0269e7397bce5f",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/storage/json_history.py",
+      "bytes": 3166,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/storage/json_history.py",
+      "originalSha256": "d448cf1642c17d8de0c16ae4b657589f0322086ac694210764702c6f0edcdf50",
+      "publicSha256": "d448cf1642c17d8de0c16ae4b657589f0322086ac694210764702c6f0edcdf50",
+      "redactions": []
+    },
+    {
+      "path": "project/backend/storage/local_artifacts.py",
+      "bytes": 1021,
+      "origin": "copied-original-file",
+      "sourceReference": "project/backend/storage/local_artifacts.py",
+      "originalSha256": "74200ee7ba9d924f31346d4ae01b9f37607435676e80fb3b577c739a9ab05623",
+      "publicSha256": "74200ee7ba9d924f31346d4ae01b9f37607435676e80fb3b577c739a9ab05623",
+      "redactions": []
+    },
+    {
+      "path": "project/eval_history.json",
+      "bytes": 1121,
+      "origin": "copied-original-file",
+      "sourceReference": "project/eval_history.json",
+      "originalSha256": "cca926e6709df847270b4afc775b23b18e94393ff48d263eaaa3c78072f6e627",
+      "publicSha256": "cca926e6709df847270b4afc775b23b18e94393ff48d263eaaa3c78072f6e627",
+      "redactions": []
+    },
+    {
+      "path": "project/multi_model_summary.csv",
+      "bytes": 482,
+      "origin": "copied-original-file",
+      "sourceReference": "project/multi_model_summary.csv",
+      "originalSha256": "ad92136521d071c2dd619e45ee0cd9e9e6483e28bfe98a6eaa00b752f7f633e5",
+      "publicSha256": "ad92136521d071c2dd619e45ee0cd9e9e6483e28bfe98a6eaa00b752f7f633e5",
+      "redactions": []
+    },
+    {
+      "path": "project/ragas_report_deepseek-chat.csv",
+      "bytes": 13770,
+      "origin": "copied-original-file",
+      "sourceReference": "project/ragas_report_deepseek-chat.csv",
+      "originalSha256": "e3abadb8dcaa9fd468c5aeb42095e843ee6ad2a17d830ca394e957278b08c314",
+      "publicSha256": "e3abadb8dcaa9fd468c5aeb42095e843ee6ad2a17d830ca394e957278b08c314",
+      "redactions": []
+    },
+    {
+      "path": "project/ragas_report.html",
+      "bytes": 93529,
+      "origin": "copied-original-file",
+      "sourceReference": "project/ragas_report.html",
+      "originalSha256": "1c85d3007bda8fae58188e7b8f2ad9bff032a2839fbd7337ca3e5231704a5f62",
+      "publicSha256": "1c85d3007bda8fae58188e7b8f2ad9bff032a2839fbd7337ca3e5231704a5f62",
+      "redactions": []
+    },
+    {
+      "path": "project/result_chart.png",
+      "bytes": 66645,
+      "origin": "copied-original-file",
+      "sourceReference": "project/result_chart.png",
+      "originalSha256": "d07b572f6bddcb314f6da2d772c97ec585d16c6b19cdf411a83c7038e34f8c4b",
+      "publicSha256": "d07b572f6bddcb314f6da2d772c97ec585d16c6b19cdf411a83c7038e34f8c4b",
+      "redactions": []
+    },
+    {
+      "path": "project/scenarios/competition_25/case-manifest.json",
+      "bytes": 36285,
+      "origin": "copied-original-file",
+      "sourceReference": "project/scenarios/competition_25/case-manifest.json",
+      "originalSha256": "e6430b8ff91345226fd1b80ce99aa05cd57d6b9156c1d186caf18ffdcbe16ede",
+      "publicSha256": "e6430b8ff91345226fd1b80ce99aa05cd57d6b9156c1d186caf18ffdcbe16ede",
+      "redactions": []
+    },
+    {
+      "path": "project/scenarios/competition_25/pilot.json",
+      "bytes": 1444,
+      "origin": "copied-original-file",
+      "sourceReference": "project/scenarios/competition_25/pilot.json",
+      "originalSha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9",
+      "publicSha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9",
+      "redactions": []
+    },
+    {
+      "path": "project/scenarios/competition_25/testset.json",
+      "bytes": 6812,
+      "origin": "copied-original-file",
+      "sourceReference": "project/scenarios/competition_25/testset.json",
+      "originalSha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f",
+      "publicSha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f",
+      "redactions": []
+    },
+    {
+      "path": "project/scenarios/deposit_insurance.txt",
+      "bytes": 4340,
+      "origin": "copied-original-file",
+      "sourceReference": "project/scenarios/deposit_insurance.txt",
+      "originalSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+      "publicSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+      "redactions": []
+    },
+    {
+      "path": "README.md",
+      "bytes": 6844,
+      "origin": "publication-documentation",
+      "sourceReference": null,
+      "originalSha256": null,
+      "publicSha256": "32759ce4811b26192efa5936abdc1764632f6614d9dc32e758e2ec6f2ba9ecce",
+      "redactions": []
+    },
+    {
+      "path": "request.json",
+      "bytes": 272,
+      "origin": "copied-original-file",
+      "sourceReference": "request.json",
+      "originalSha256": "5cb27fedf6f74ff7f24f57f6f6e8c95ec4652c1a08c5bca505488d549ba53515",
+      "publicSha256": "5cb27fedf6f74ff7f24f57f6f6e8c95ec4652c1a08c5bca505488d549ba53515",
+      "redactions": []
+    },
+    {
+      "path": "requirements_new.txt",
+      "bytes": 3593,
+      "origin": "copied-original-file",
+      "sourceReference": "requirements_new.txt",
+      "originalSha256": "9948ab27dbb1b77597a5ed952755065fe018346495774a40b8f6c7dd6c55331d",
+      "publicSha256": "9948ab27dbb1b77597a5ed952755065fe018346495774a40b8f6c7dd6c55331d",
+      "redactions": []
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 740,
+      "origin": "copied-original-file",
+      "sourceReference": "requirements.txt",
+      "originalSha256": "69b81adb9bc4dd56826eef33192b997007157a37d2cbcede972c9190ea8406e4",
+      "publicSha256": "69b81adb9bc4dd56826eef33192b997007157a37d2cbcede972c9190ea8406e4",
+      "redactions": []
+    },
+    {
+      "path": "runner/run_evidence.py",
+      "bytes": 18013,
+      "origin": "post-run-hash-matched-supplement",
+      "sourceReference": "runnerSha256 in original manifest; runner source was not stored in original run",
+      "originalSha256": "6cc1a3e9bfad419cbfa47df78a0cff41f0820ff7896096288834fe88dfd530ca",
+      "publicSha256": "6cc1a3e9bfad419cbfa47df78a0cff41f0820ff7896096288834fe88dfd530ca",
+      "redactions": []
+    },
+    {
+      "path": "server.log",
+      "bytes": 5610,
+      "origin": "copied-original-file",
+      "sourceReference": "server.log",
+      "originalSha256": "0022f8236fc86786373bd403ba93e9e5dd7b15a3ce14ea5bbc399dd31edf0da0",
+      "publicSha256": "6ac58203f7b419e44bddd13f155caa4d2f25ef159e1708a2b6f256133f1a10bf",
+      "redactions": [
+        {
+          "kind": "archive-root-path",
+          "count": 4,
+          "replacement": "<ARCHIVE>",
+          "note": "只替换原归档绝对根目录，其他日志原文保留。"
+        }
+      ]
+    }
+  ]
+}

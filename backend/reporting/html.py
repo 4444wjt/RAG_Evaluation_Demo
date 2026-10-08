@@ -1,6 +1,9 @@
 """HTML 报告生成（与 main.generate_html_report 一致）。"""
 import base64
+import json
+from collections import Counter
 from datetime import datetime
+from html import escape
 
 import pandas as pd
 
@@ -13,7 +16,7 @@ from . import build_display_df, TRACE_DISPLAY_COLUMNS
 
 def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_OUTPUT,
                          faith_threshold=FAITH_THRESHOLD, ctx_prec_threshold=CTX_PREC_THRESHOLD,
-                         total_elapsed=None):
+                         total_elapsed=None, *, case_counts=None, model_dfs=None):
     """生成带配置说明的HTML报告"""
     with open(chart_path, "rb") as f:
         chart_base64 = base64.b64encode(f.read()).decode("utf-8")
@@ -45,13 +48,59 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         columns=["模型名称", *TRACE_DISPLAY_COLUMNS.values()], fill_value="-"
     )
     trace_table = trace_df.to_html(index=False, border=0, escape=True)
+    if case_counts is None:
+        case_description = "本次实际题集数量未提供（不使用默认配置推断）"
+    else:
+        case_description = (
+            f"{case_counts.get('total', 0)} 条问题："
+            f"{case_counts.get('positive', 0)} 条正向用例 + "
+            f"{case_counts.get('negative', 0)} 条负样本（对抗测试）"
+        )
+        if case_counts.get("other", 0):
+            case_description += f" + {case_counts['other']} 条其他类型"
+
+    status_labels = {
+        "ok": "逐句结果已保存", "partial": "部分陈述未通过校验",
+        "empty_answer": "纯拒答，模型返回空数组", "model_empty": "模型返回空数组",
+        "filtered_all": "候选陈述全部未通过校验", "parse_error": "JSON 解析失败",
+        "invalid_structure": "输出结构异常", "call_error": "调用失败",
+        "disabled": "Trace 未开启", "legacy_nonempty": "有逐句结果，未记录处理状态",
+        "legacy_empty": "空数组，历史原因未记录", "missing": "缺少 Trace 字段",
+    }
+    status_rows = []
+    for model, frame in (model_dfs or {}).items():
+        records = frame.to_dict(orient="records") if isinstance(frame, pd.DataFrame) else frame
+        counts = Counter()
+        for record in records:
+            value = record.get("hallucination_trace")
+            if value is None:
+                counts["missing"] += 1
+                continue
+            try:
+                trace = json.loads(value) if isinstance(value, str) else value
+            except (ValueError, TypeError):
+                counts["parse_error"] += 1
+                continue
+            if not isinstance(trace, dict) or not isinstance(trace.get("statements"), list):
+                counts["invalid_structure"] += 1
+                continue
+            status = trace.get("trace_status")
+            counts[status if isinstance(status, str) else "legacy_nonempty" if trace["statements"] else "legacy_empty"] += 1
+        for status, count in counts.items():
+            label = status_labels.get(status, "未知处理状态")
+            status_rows.append(f"<tr><td>{escape(str(model))}</td><td>{label}</td><td>{count}</td></tr>")
+    trace_status_table = (
+        '<h3>Trace 处理状态</h3><table><thead><tr><th>模型</th><th>处理结果</th><th>回答数</th></tr></thead>'
+        f"<tbody>{''.join(status_rows)}</tbody></table>"
+        if status_rows else ""
+    )
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>RAG 评测报告 {VERSION}</title>
+<title>鉴真全域 VeriScope AI · 评测报告 {VERSION}</title>
 <style>
     body {{ font-family: 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif; background: #f5f5f5; margin: 0; padding: 40px; }}
     .container {{ max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }}
@@ -75,7 +124,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
 </head>
 <body>
 <div class="container">
-    <h1>RAG 幻觉自动化评测报告</h1>
+    <h1>鉴真全域 VeriScope AI · 评测报告</h1>
     <p class="meta">
         <b>版本号：</b>{VERSION}<br>
         <b>生成时间：</b>{now}<br>
@@ -87,7 +136,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
     <div class="config-box">
         <b>测试配置：</b><br>
         · 质量门禁阈值：忠实度 ≥ {faith_threshold}，上下文精度 ≥ {ctx_prec_threshold}<br>
-        · 测试集构成：{TEST_QA_NUM}条正向用例 + 3条负样本（对抗测试）<br>
+        · 测试集构成：{case_description}<br>
         · 检索 Top-K：{TOP_K} &nbsp;|&nbsp; 文本块大小：{CHUNK_SIZE} 字符 &nbsp;|&nbsp; 重叠：{CHUNK_OVERLAP} 字符
     </div>
 
@@ -119,16 +168,19 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
 
     <h2>幻觉溯源与归因</h2>
     <div class="table-scroll trace-table">{trace_table}</div>
+    {trace_status_table}
     <p class="trace-note">语句幻觉占比 =（事实错误数 + 无依据编造数）/ 有效溯源语句总数；
         正向语句幻觉占比仅统计正向用例。缺失或无有效陈述的占比显示“−”。
-        此处为 LLM 归因结果，不等同于上表“幻觉率”，不参与综合得分和门禁。</p>
+        语句数为已保存记录的计数，0 不证明回答无幻觉；空数组、失败和未开启分别呈现。
+        此处为 LLM 归因结果，不等同于上表“幻觉率”，不参与综合得分和门禁。
+        原文引用存在只说明能够定位，语义支持仍是裁判判断。</p>
 
     <div class="chart">
         <h2>可视化图表</h2>
         <img src="data:image/png;base64,{chart_base64}" alt="评测图表">
     </div>
 
-    <div class="footer">由 RAG 幻觉自动化评测工具 {VERSION} 生成</div>
+    <div class="footer">由 鉴真全域 VeriScope AI 生成 · {VERSION}</div>
 </div>
 </body>
 </html>"""

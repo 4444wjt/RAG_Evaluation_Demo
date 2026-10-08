@@ -1,0 +1,28 @@
+{
+  "authorizationSource": "本会话用户明确授权一次单模型5题验证",
+  "caseIds": [
+    "D06",
+    "C02",
+    "C05",
+    "N01",
+    "F03"
+  ],
+  "requestedModel": "deepseek-chat",
+  "requestedBudget": {
+    "currency": "CNY",
+    "amount": 2,
+    "kind": "expected-budget-not-automatic-cap"
+  },
+  "automaticCostStop": false,
+  "draftMaterialAuthorized": true,
+  "formalReferenceStandard": false,
+  "sentenceAdapterVersion": "zh-sentence-v1",
+  "wholeBatchRerunAuthorized": false,
+  "successCriteria": [
+    "中文句子完整进入两个兼容指标的裁判提示",
+    "调用记录与结果产物归档完整"
+  ],
+  "requireScoreIncrease": false,
+  "requireGatePass": false,
+  "note": "沿用已确认提供方、五项指标、Trace及阈值；不增加重试，不扩到25题，不覆盖旧结果。费用无账单时只能估算。"
+}

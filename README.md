@@ -1,356 +1,223 @@
-# RAG 大模型幻觉自动化评测工具
+# 鉴真全域 VeriScope AI
 
-> 面向大模型 RAG 应用“幻觉”痛点的轻量化自动化评测工具，基于 LangChain、Ragas 与 Chroma，支持三模型横向对比与质量门禁。
+**让 RAG 的回答，经得起证据检查。**
 
-## 📖 项目背景
-当前基于 RAG（检索增强生成）的大模型应用广泛落地，但“幻觉”（模型一本正经地胡说八道）严重影响可靠性。传统人工抽检效率低且不可复现。本项目通过自动化手段，从“检索 + 生成”两个环节量化评测 RAG 系统，并给出可落地的发布门禁。
+**大模型幻觉检测、证据追踪与质量门禁平台。**
 
-## ✨ 核心功能
-1. **多格式文档加载切分**：支持 `.txt` / `.pdf` / `.docx` / `.md`，自动分段存入 Chroma 向量库。
-2. **测试集三来源**：大模型自动出题、自定义测试集（`.json` / `.csv`）、TruthfulQA 基准。
-3. **RAG 链路评测**：执行检索与问答，收集上下文、回答与参考答案。
-4. **量化指标评测**：基于 Ragas 计算 5 项核心指标（详见下文指标说明）。
-5. **质量门禁**：只看正向用例的忠实度与上下文精度，双阈值判定“通过 / 不通过”。
-6. **三模型横向对比**：DeepSeek / Qwen / GLM-5.2-Fast 一键对比，输出可视化图表。
-7. **报告导出**：CSV / HTML / Excel / PDF 多格式，附质量趋势图与评测历史。
+鉴真全域 VeriScope AI 是面向 RAG 大模型应用的大模型幻觉检测与可信评测平台。将多模型问答、Ragas 指标、逐句溯源和 Quality Gate 汇聚到一个研究工作台，帮助使用者从实验结论回查回答依据。
 
-## 🛠️ 技术架构
-- 语言：Python 3.11.9
-- 编排框架：LangChain
-- 评测框架：Ragas
-- 向量库：Chroma
-- Embedding：HuggingFace（`BAAI/bge-small-zh-v1.5`）
-- 被测模型：DeepSeek（`deepseek-chat`）、Qwen（`Qwen2.5-7B-Instruct`）、GLM（`glm-5.2-fast-preview`）
-- 界面：Gradio Web
+项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
-## 🚀 快速开始
-### 1. 环境准备
-```bash
+[快速启动](#快速启动) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
+
+[作品介绍](docs/competition/project-introduction.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
+
+![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
+
+## 背景问题
+
+RAG 检索到了文档，并不意味着回答中的每一句陈述都有依据。只看一个平均分，也难以解释错误出现在哪里，或据此判断应用是否达到发布要求。
+
+本项目围绕三个问题组织评测：
+
+- **回答是否有依据？** 保留检索上下文、模型回答、参考答案和逐句判定记录。
+- **模型差异体现在哪里？** 在同一测试集上呈现多模型的指标、风险统计和耗时。
+- **实验是否达到规则门槛？** 将样本范围、正向指标、阈值与原始门禁记录分开展示。
+
+## 核心能力
+
+| 能力 | 已有实现 |
+|---|---|
+| RAG 可靠性验证 | 文档处理、Chroma 检索、模型问答及 Ragas 评测；支持自动出题、自定义测试集和 TruthfulQA 入口 |
+| 逐句证据追踪 | 展示原始回答、原子陈述、有依据／事实错误／无依据编造等原判定，以及对应证据与检索原文 |
+| Quality Gate 质量门禁 | 后端按首个有效评测模型的正向忠实度与正向上下文精度判定；默认阈值各为 0.8 |
+| 多模型评测 | DeepSeek、Qwen2.5-7B、GLM-5.2-Fast；统一测试集，呈现已有指标与耗时 |
+| 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
+| 比赛展示 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
+
+Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
+
+**解释边界：** PASS 仅表示对应样本和门槛的规则检查通过，不等于所有指标优秀或每条回答正确。逐句判定依赖原始溯源记录，不是额外的独立真实性保证。缺失指标不填为零，空溯源不代表没有幻觉。
+
+**可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工材料通过现有 JSON 单独录入，不覆盖机器结果、不生成准确率；该核验仅覆盖冻结 Demo 的 13 条定向样本，不代表总体准确率、独立认证或模型复跑验证。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
+
+**当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景，不是跨领域 Benchmark：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。该结果不代表总体准确率或独立裁判可靠性；新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
+
+## 技术架构
+
+| 模块 | 技术与职责 |
+|---|---|
+| Frontend | React 19、TypeScript、Vite、Apache ECharts、原生 CSS；首页与六个工作台视图 |
+| Backend | Python、FastAPI；参数／项目路径校验、同步评测调用、结果序列化 |
+| Evaluation Pipeline | LangChain、Chroma、本地 Embedding、Ragas；文档 → 测试集 → 检索与回答 → 指标与溯源 → 门禁与报告 |
+| Model Adapter | 既有 OpenAI-compatible 模型适配；模型配置和凭据读取集中管理 |
+| Compatibility | `main.py` 保留 CLI 和 Gradio；报告、存储、服务与核心评测分层在 `backend/` |
+
+前端开发服务将 `/api` 代理到本地后端。评测为同步请求，后端按单进程执行保护运行；当前没有任务队列、取消或真实阶段进度接口。详细边界见 [架构说明](docs/architecture/README.md)。
+
+### 目录结构
+
+```text
+RAG-Reliability-Lab/
+├── frontend/                 # 比赛首页与研究工作台
+├── backend/                  # API、core、services、adapters、reporting、storage
+├── docs/
+│   ├── images/               # README 引用的正式 PNG
+│   ├── screenshots/          # 截图来源说明
+│   ├── architecture/         # 技术架构
+│   └── demo/                 # 演示步骤与历史评测说明
+├── tests/                    # Python 离线测试
+├── scenarios/                # 既有场景文档与记录
+├── main.py                   # 兼容 CLI / Gradio 入口
+├── requirements.txt          # 原有 Python 依赖约束
+├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── .gitignore
+└── .env.example
+```
+
+项目品牌为鉴真全域 VeriScope AI；现有远端仓库和本地目录名称未强制重命名。仓库保留架构、用户、演示和贡献文档；内部交接、提示词及阶段记录不作为公开项目文档。
+
+## 快速启动
+
+建议 Python 3.11、Node.js 24。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
+
+### 1. 获取项目
+
+使用 GitHub 或 Gitee 任一仓库。本地目录可以命名为 `RAG-Reliability-Lab`：
+
+```powershell
+git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
+cd RAG-Reliability-Lab
+```
+
+Gitee 当前配置地址见文末；发布前需维护者确认目标仓库。
+
+### 2. 仅看比赛演示：不需要模型密钥
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。
+
+### 3. 配置真实评测环境
+
+另开终端，在项目根目录执行：
+
+```powershell
 python -m venv venv
-venv\Scripts\activate   # Windows
-pip install -r requirements.txt
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -Destination .env }
 ```
 
-### 2. 配置密钥
-复制 `.env.example` 为 `.env`，填入三个模型的密钥（均为环境变量名）：
-- `OPENAI_API_KEY`：DeepSeek
-- `SILICONFLOW_API_KEY`：Qwen
-- `DASHSCOPE_API_KEY`：GLM-5.2-Fast（阿里云百炼）
+如果 `.env` 已存在，请保留已有文件并按模板补充配置，不覆盖现有密钥。
 
-> 密钥只可作为环境变量注入，严禁写入仓库。
+在本地 `.env` 填入凭据：
 
-Embedding 模型需提前下载至本地（`models/bge-small-zh-v1.5` 或 HuggingFace 缓存），运行时不会联网下载。
+| 变量 | 用途 |
+|---|---|
+| `OPENAI_API_KEY` | 现有 DeepSeek 适配器使用的变量，填写 DeepSeek 凭据 |
+| `SILICONFLOW_API_KEY` | Qwen / SiliconFlow 凭据 |
+| `DASHSCOPE_API_KEY` | GLM-5.2-Fast / 百炼凭据 |
+| `DEEPSEEK_MODEL` / `DEEPSEEK_BASE_URL` | 已有 DeepSeek 配置覆盖项 |
+| `QWEN_MODEL` / `QWEN_BASE_URL` | 已有 Qwen 配置覆盖项 |
+| `RAG_ENABLE_TRACE` | 既有溯源开关，默认 1；设为 0 关闭额外溯源调用 |
+| `EMBEDDING_MODEL` | 可选，指定已准备好的本地 Embedding 路径／缓存模型 |
 
-### 3. 运行
-```bash
-# 命令行评测（demo.txt + 自动生成测试集 + 三模型）
-python main.py --doc demo.txt
+预先准备 `BAAI/bge-small-zh-v1.5`，放在 `models/bge-small-zh-v1.5/` 或可用的 Hugging Face 本地缓存。引擎以离线方式加载，不会在评测时自动下载模型。
 
-# 指定自定义测试集 / 基准测试
-python main.py --doc demo.txt --testset testset_example.json
-python main.py --benchmark "TruthfulQA" --limit 20
+密钥只存放在本地 `.env` 或后端环境变量中；不要写进源码、截图、Issue 或 `VITE_*` 前端变量。真实评测会调用提供方服务并产生费用。
 
-# 启动 Web 界面
-python main.py --web           # 默认端口 7860
-python main.py --web --port 8080
-```
+### 4. 启动后端
 
-命令行参数：
-| 参数 | 说明 |
-| --- | --- |
-| `--doc` | 评测文档路径 |
-| `--testset` | 自定义测试集（`.json` / `.csv`） |
-| `--benchmark` | 基准测试（如 `TruthfulQA`） |
-| `--limit` | 基准测试条数（默认 20） |
-| `--web` | 启动 Gradio Web 界面 |
-| `--port` | Web 端口（默认 7860） |
-
-## 📊 评测指标
-| 指标 | 英文 | 含义 |
-| --- | --- | --- |
-| 忠实度 | Faithfulness | 回答是否都能在检索到的上下文中找到依据（幻觉检测核心） |
-| 上下文精度 | Context Precision | 检索到的上下文与问题的相关程度 |
-| 答案相关性 | Answer Relevancy | 回答与问题的相关程度 |
-| 事实一致性 | Answer Correctness | 回答与标准答案的事实一致性 |
-| 回答完整性 | Context Recall | 标准答案中应被检索到的信息是否被覆盖 |
-
-派生指标：
-- **幻觉率** = `1 − 正向忠实度`
-- **综合得分** = `(正向忠实度 + 正向上下文精度) / 2`
-- **拒答准确率** = `负样本中正确拒答（命中“无法回答/未提及”等措辞）的数量 / 负样本总数`（负样本的 ground_truth 为“文档未提及”，期望模型拒答而非编造）
-
-## 🚦 质量门禁
-门禁只依据**正向用例**（有答案可依的题目）计算，避免“拒绝回答”的负向用例拉高分数：
-
-- 正向忠实度 ≥ 阈值（默认 `0.8`）
-- 正向上下文精度 ≥ 阈值（默认 `0.8`）
-
-两项同时满足才判为“通过，允许发布”，否则“不通过”。主评测模型取**第一个成功完成评测的模型**。
-
-## 对抗性负样本生成
-
-自动出题模式默认生成 3 条文档相关负样本，替代固定的常识问题。优先覆盖三类：真实实体的缺失细节、虚构实体/关系嫁接、篡改数值条件后追问不存在的实验结果。简单是非题或能用原文直接纠错作答的问题不应标为“文档未提及”。自定义测试集、TruthfulQA 和演示数据不受影响。
-
-- **先生成，再审查**：复用正向出题的 LLM，一次批量请求 6 个候选，再用另一条审查提示批量复核；默认最多增加 2 次应用层调用，不逐条调用、不在生成器内重试。底层客户端原有重试设置保持不变。生成/审查的输出上限分别为 2200/1600 token。
-- **控制上下文成本**：生成阶段均匀选择最多 12 个片段，总文本不超过 6000 字符；审查阶段最多 12000 字符，长文优先保留候选来源和相关段落。文档作为数据单独传入，不拼入系统指令。
-- **过滤伪负样本**：验证锚点与逐字原文证据，扫描全文排除已出现的“虚构细节”，与正向题及其他候选做标点/全半角归一化和近似去重；只接收明确通过审查的题目，优先保留不同攻击类型。
-- **保守兜底**：生成或审查失败、候选不足时，用文档短句和全文未出现的 `NX-…` 虚构记录编号构造缺失细节问题，补足 3 条。日志分别给出“已审查生成”和“本地兜底”数量，不输出原始提供方异常。兜底问题更容易识别，不能将它们视为与 LLM 对抗候选等难度。
-- **兼容返回结构**：每题仍为 `question`、`ground_truth="文档未提及"`、`contexts=[]`、`case_type="negative"`。证据和攻击类型仅供内部过滤；不改 Ragas 指标、score、门禁或下游组件。
-
-**审查边界**：生成与审查复用同一个模型，不能保证完全消除标签错误。长文未全量送入审查时，只有能提供原文矛盾证据的候选才会被保留；证据真实性可做本地验证，其语义是否足以排除问题前提仍依赖模型判断，建议人工抽检。跨段落复杂推断容易误标，本版没有单独增加此类策略。
-
-离线验证（假模型响应，不读 `.env`、不访问 API）：
+在项目根目录执行：
 
 ```powershell
-.\venv\Scripts\python.exe -m pytest -q tests/test_negative_generation.py
-.\venv\Scripts\python.exe -m pytest -q tests
-.\venv\Scripts\python.exe -m py_compile main.py
+.\venv\Scripts\python.exe -m uvicorn backend.api.app:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-真实效果验证建议：在已配置好的环境里对同一份文档运行自动出题，检查日志中的生成/兜底数量，并查看 `ragas_report_<model>.csv` 内 `case_type=negative` 的问题及回答。抽查问题是否确实无文档答案、是否与主题相关、回答是否拒绝虚构细节；三模型仍共用同一套测试题。“幻觉率”来自正向忠实度，不能替代负样本的“拒答准确率”；后者为新增指标（负样本正确拒答比例，命中“无法回答/未提及”等措辞计为拒答），见下方“真实场景案例”的实测结果。
+前端继续通过 `npm run dev` 启动。进入工作区配置项目内文档路径、测试集、模型和阈值，再开始评测。
 
-## 🧪 真实评测案例
-以 `demo.txt`（星云科技产品介绍）为评测文档，自动生成 3 正向 + 3 负向测试集，门禁阈值 0.8，三模型对比结果如下：
+`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物，公网部署仍需单独配置代理和访问控制。
 
-| 模型 | 忠实度 | 上下文精度 | 答案相关性 | 事实一致性 | 回答完整性 | 幻觉率 | 综合得分 | 耗时 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| deepseek-chat | 1.0000 | 0.4583 | 0.4877 | 0.5354 | 1.0000 | 0.0000 | **0.9584** | 71s |
-| Qwen2.5-7B | 0.5833 | 0.5000 | 0.2914 | 0.1543 | 0.4667 | 0.3333 | **0.8334** | 265s |
-| GLM-5.2-Fast | 1.0000 | 0.8333 | 0.4788 | 0.9158 | 0.6667 | 0.0000 | **0.9584** | 1267s |
-
-门禁结论：主评测模型 `deepseek-chat`，正向忠实度 1.0000（≥0.8）、正向上下文精度 0.9167（≥0.8）→ **✅ 门禁通过**。
-
-- DeepSeek 与 GLM 忠实度满分、幻觉率为 0；GLM 事实一致性（0.9158）三模型最高，但耗时最长（深度思考所致，见已知限制）。
-- Qwen 忠实度偏低、幻觉率 0.3333，体现工具对不同模型的区分能力。
-
-图表与产物：`result_chart.png`（对比柱状图）、`trend_chart.png`（质量趋势）、`ragas_report.html`、`multi_model_summary.csv`、各模型 `ragas_report_*.csv` 及 `eval_history.json`。
-
-## ⚠️ 已知限制
-1. **GLM-5.2-Fast 深度思考已通过 `extra_body` 关闭**：阿里云百炼上的 `glm-5.2-fast-preview` 默认启用 reasoning 模式，未关闭时每次调用会额外产生大量 `reasoning_tokens`，拖慢评测并增加成本。已在 `get_llm` 中针对百炼/GLM 模型传入 `extra_body={"enable_thinking": False}` 关闭思考（仅作用于此模型，不影响 DeepSeek / Qwen）。实测「只回复OK」单次调用：开启思考 `completion_tokens=95`（其中 `reasoning_tokens=92`）/ 耗时 2.07s；关闭后 `completion_tokens=1`（`reasoning_tokens=0`）/ 耗时 1.06s。
-2. **Embedding 依赖本地模型**：初始化时使用 `local_files_only=True`，不联网下载，需提前将 `bge-small-zh-v1.5` 放入本地缓存或 `models/` 目录。
-3. **自定义 CSV 空值处理已在 Phase 4-B 修复**：CSV/TXT 加载后先将 pandas 识别的缺失值填为 `""`，不再将缺失值转成 `"nan"`；原缺陷测试已转为普通回归测试，历史评测产物不重算。
-
-## 📁 输出产物
-- 汇总对比：`multi_model_summary.csv`
-- 单模型明细：`ragas_report_<model>.csv`
-- HTML 报告：`ragas_report.html`
-- 图表：`result_chart.png`、`trend_chart.png`
-- 评测历史：`eval_history.json`
-
-## 📂 项目结构
-```
-main.py                # CLI / Gradio / 兼容入口，保留旧管线
-backend/
-  config.py            # 配置
-  core/                # 类型、总编排、指标聚合与门禁
-  adapters/models/     # 模型适配器
-  services/            # 文档、检索、问答、测试集、负样本、溯源
-  storage/             # 实验历史与本地产物存储
-  reporting/           # 图表、HTML / Excel / PDF 报告
-  api/                 # Phase 4-C-1：FastAPI 应用工厂与健康检查
-archive/diagnostics/phase_3_b_10/  # 历史诊断快照，不加入 pytest
-tests/                 # 现有离线测试与测试依赖
-scenarios/             # 公开场景文档；运行归档保留在本地
-demo.txt               # 演示文档
-requirements.txt       # 当前依赖版本，工程冻结不升级
-Dockerfile             # 现有 Gradio 容器入口
-.env.example           # 环境变量占位模板
-CHANGELOG.md           # 变更记录
-CONTRIBUTING.md        # 贡献指南
-PHASE_3_B_10_FREEZE_REPORT.md  # 本轮整理与验收状态
-LICENSE                # 开源协议
-```
-
-## 后端架构与兼容入口
-
-后端沿用 config / core / adapters / services / storage / reporting 六层。`main.py` 的 `run_pipeline` 是兼容入口，委托 `backend.core.pipeline.evaluate`，仍保留 `_legacy_run_pipeline` 供兼容与回滚参考；本轮不删除旧管线、不改变参数或返回结构。
-
-Phase 3-B-10 冻结时的后端清单为 29 个 Python 文件、2410 行（含 `__init__.py`）。Phase 4-C-1 仅新增独立 API 骨架，原六层保持不变；React、评测 API 接线与 Docker Compose 仍属后续阶段。模型执行顺序、Ragas 五项指标、trace、score、门禁、失败语义和历史结构保持原有行为。
-
-## 本地 FastAPI 接口（Phase 4-C）
-
-当前接口提供应用工厂 `backend.api.app.create_app`、ASGI 入口 `backend.api.app:app`、`GET /health` 和同步 `POST /evaluate`。启动与健康检查不导入评测引擎或配置，不读取 `.env`，不初始化 Embedding、向量库或模型；实际评测请求才延迟调用原 `backend.core.pipeline.evaluate`。
-
-使用现有虚拟环境，在项目根目录启动本地单 worker 服务（不使用 reload）：
+### 5. 保留的 CLI / Gradio 入口
 
 ```powershell
-.\venv\Scripts\python.exe -m uvicorn backend.api.app:app --host 127.0.0.1 --port 8000 --workers 1
+.\venv\Scripts\python.exe main.py --doc demo.txt --testset testset_example.json
+.\venv\Scripts\python.exe main.py --web
 ```
 
-另开终端检查服务存活：
+Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；入口参数、模型工厂和请求校验仍有区别，不能据此认定不同入口的运行条件完全相同。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
+
+## Demo 截图
+
+下列图片来自已有产品页面与快照 `20260930-1958`，不是本轮重新执行的模型评测。
+
+### 笔记本展示
+
+![1280×800 比赛首页](docs/images/landing-laptop.png)
+
+### 实验结论与质量门禁
+
+![质量门禁章节](docs/images/evidence-desktop.png)
+
+### 逐句判定与原始证据
+
+![3× 无损逐句证据预览](docs/images/evidence-trace-3x.png)
+
+原生预览的 3× PNG 为 3198×846；保留原文与“有依据”判定，没有放大旧图片。出处见 [截图说明](docs/screenshots/README.md)，推荐展示步骤见 [演示指南](docs/demo/README.md)。
+
+## Roadmap
+
+已完成：
+
+- [x] 评测引擎分层、CLI / Gradio 兼容入口和 FastAPI 本地接口。
+- [x] 多模型指标、逐句溯源、正向 Quality Gate 与报告能力。
+- [x] React 总览、工作区、模型对比、幻觉分析与报告预览。
+- [x] 中文比赛首页、Gold Design System 与清晰证据展示。
+- [x] 开源文档、环境模板、发布排除规则和第三方许可记录。
+
+后续方向（尚未承诺完成）：
+
+- [ ] 扩大测试覆盖与更强对抗样本，明确生成／裁判模型带来的偏差。
+- [ ] 完善固定测试集回归、结果出处与可复现记录。
+- [ ] 加强生产部署的鉴权、资源隔离及长任务管理。
+- [ ] 补充持续前端验收和更完整的开发者文档。
+
+## 开源贡献
+
+欢迎提交脱敏的问题报告、文档改进、可复现测试和有明确验证依据的改动。提交前阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，保持模型 IDs、指标口径、门禁与演示数据的一致性。
+
+前端验证：
 
 ```powershell
-Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8000/health
+cd frontend
+npm test
+npm run typecheck
+npm run build
+npm run test:browser -- browser-tests/landing.spec.ts
 ```
 
-返回 `{"status":"ok"}`，不代表密钥、Embedding 或模型可用，也不提供忙碌状态。以下 POST 示例会调用真实模型；本阶段离线验收未执行这些使用命令。示例模型名称为默认配置，如已重命名，应使用本地 `MODELS_CONFIG` 的当前名称。
+Python 离线验证（项目根目录）：
 
 ```powershell
-$requestBody = @{
-    doc_path = "demo.txt"
-    testset_path = "testset_example.json"
-    model_names = @("deepseek-chat")
-    faith_threshold = 0.8
-    ctx_prec_threshold = 0.8
-} | ConvertTo-Json
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/evaluate -ContentType "application/json" -Body $requestBody -TimeoutSec 3600
-```
-
-请求仅接受以下字段，拒绝未知字段：
-
-| 字段 | 默认值 / 规则 |
-| --- | --- |
-| `doc_path` | `null`，使用 `demo.txt`；只接受受控项目相对路径 |
-| `testset_path` | `null`，可选自定义测试集 |
-| `benchmark` | `null`，当前仅支持 `truthful_qa` |
-| `benchmark_limit` | `20`，正整数 |
-| `model_names` | `null` 表示全部配置模型；非空列表且名称必须存在于 `MODELS_CONFIG` |
-| `faith_threshold` | `null` 沿用引擎默认值；范围 `[0,1]`，保留 `0.0` |
-| `ctx_prec_threshold` | `null` 沿用引擎默认值；范围 `[0,1]`，保留 `0.0` |
-| `version_label` | `null`，沿用原历史记录 version 语义 |
-
-文档允许根目录 `demo.txt` 或 `scenarios/` 内的 `.txt` / `.md` / `.pdf` / `.docx`。测试集允许根目录 `testset_example.json`、`testset_example.csv`，或 `scenarios/` 内的 `.json` / `.csv` / `.txt`。请求路径和解析后的真实路径都必须在允许范围内；拒绝绝对路径、目录越界及符号链接越界。只检查实际使用的测试集路径，优先级保持 **benchmark → 自定义测试集 → 自动生成**。模型名单不重排、不去重，实际执行顺序仍由原引擎的 `MODELS_CONFIG` 决定。
-
-成功响应保持原八字段，不增加指标：
-
-| 字段 | JSON 表示 |
-| --- | --- |
-| `summary` | 原 summary 字典列表 |
-| `summary_df` | DataFrame 转记录列表 |
-| `gate_passed` | 原布尔值，`false` 仍返回 HTTP 200 |
-| `gate_message` | 原门禁消息 |
-| `chart_path` | 服务器本地当前图表路径 |
-| `html_path` | 服务器本地当前报告路径 |
-| `model_dfs` | 模型名称 → DataFrame 记录列表 |
-| `total_elapsed_seconds` | 原耗时 |
-
-NumPy 值转换为 Python 原生类型；缺失及非有限数值转 `null`，保留 `0`、`false` 和 trace 字符串内容，不修改引擎返回对象。图表和报告路径不是下载 URL 或独立运行快照，后续评测会覆盖共享目录中的当前产物。
-
-| HTTP 状态 | 含义 |
-| --- | --- |
-| `200` | 评测完成，包括门禁拦截及引擎已处理的部分模型失败 |
-| `422` | 请求参数、模型名称或文件类型不合法 |
-| `403` | 路径不在允许范围或禁止访问 |
-| `404` | 允许范围内的文件不存在 |
-| `409` | 同一 API 进程已有评测运行，不排队 |
-| `500` | 引擎、序列化或响应校验异常，返回固定安全文案 |
-
-同步请求需要足够长的读取超时；断开连接不表示评测已取消，不应自动重试。进程内锁覆盖执行、序列化及响应校验，异常后释放。API 与独立 Gradio / CLI 共用向量库、报告和历史路径，应交替执行真实评测；该锁不保护其他进程。不提供上传、任务轮询、数据库或任务队列，也不作为公开云服务部署。
-
-FastAPI、Uvicorn、Pydantic 已按现有环境版本补齐直接依赖声明，没有安装或升级依赖。Gradio / CLI 和 Docker 默认入口保持原样。Phase 4-C-4 使用离线 mock 完成回归验收，完整 pytest **227 passed**；实际验证结果及范围见 [PHASE_4_C_RECORD.md](PHASE_4_C_RECORD.md)。
-
-## 如何运行测试
-
-在项目根目录使用现有 Python 3.11 虚拟环境，无需安装或升级依赖：
-
-```powershell
-.\venv\Scripts\python.exe -m compileall -q main.py backend tests
+.\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
-离线测试沿用 `tests/pytest.ini`、原测试用例和断言，不需要 `.env`、API Key、本地 Embedding 或网络。本地与 CI 使用相同的源码编译范围（`main.py`、`backend/`、`tests/`），不遍历虚拟环境或本地运行产物。Phase 3-B-10 的完整仓库语法检查结果保留在冻结报告。
+既有 GitHub Actions 当前执行 Python 离线验证；此处列出前端验证命令不代表已新增前端 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
 
-冻结及 Phase 4-A 验收基线为 **176 passed、1 xfailed**，见 [PHASE_4_A_RECORD.md](PHASE_4_A_RECORD.md)。Phase 4-B 修复 CSV 空值并解除该缺陷测试的 xfail，实际验证结果见 [PHASE_4_B_RECORD.md](PHASE_4_B_RECORD.md)；下方 2026-09-28 的场景验证数字属于历史记录。
+## 许可与仓库
 
-自定义 CSV/TXT 测试集沿用 pandas 默认的缺失值识别，读取后统一填为 `""`：空 `question` 经原有规则过滤，空 `ground_truth` 保留为空字符串，空 `case_type` 默认 `positive`。CSV 的 `contexts` 仍为 `[]`；全部问题无效时仍抛出原异常。JSON 和 benchmark 加载不变。不额外清洗普通文本；正常输入的指标与门禁规则不变，原含缺失值的输入重跑后可能因有效样本或类型修正而得到不同结果，已保存的历史结果不会修改。
+本项目自有代码按 [MIT License](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。根目录 MIT 许可不替代第三方依赖的许可证。
 
-仓库托管在 Gitee。现有 `.github/workflows/ci.yml` 是 GitHub Actions 配置，不会在 Gitee 自动执行；本轮不新增 Gitee 流水线，以本地离线验收为准。
+当前本地 Git 配置的远端：
 
-## Phase 3-B-10 工程整理
+- GitHub：[`4444wjt/RAG_Evaluation_Demo`](https://github.com/4444wjt/RAG_Evaluation_Demo)，remote 为 `github`。
+- Gitee：[`i-am-a-bullshit/rag-hallucination-evaluator`](https://gitee.com/i-am-a-bullshit/rag-hallucination-evaluator)，remote 为 `origin`。
 
-- Git 的 `/models/` 仅排除根目录模型缓存，`backend/adapters/models/` 四个源码文件必须入库。
-- Docker 构建排除本地 work、backup、模型缓存、历史和临时报告，Dockerfile 与部署入口保持不变。
-- 五个诊断脚本原样复制归档并校验 SHA-256，根目录原件保留，不改写为测试。
-- 经确认的 16 项历史备份/运行产物仅取消 Git 跟踪，现存本地文件保留；`regenerate_report.py`、`requirements_new.txt` 恢复保留，它们不是当前主程序的入口或依赖安装清单。
-- `.env`、模型缓存、向量库、实时历史、浏览器资料及临时文件不入库。README 中的场景报告链接指向本地运行归档，不能当作仓库已提交的产物。
-- 回滚快照存放在仓库外；冻结提交与验收结果见 [Phase 3-B-10 Freeze Report](PHASE_3_B_10_FREEZE_REPORT.md)。
-
-## 真实场景案例
-
-本节使用真实公开行政法规节选，核验日期为 2026-09-28；不是仿真案例。仅整理条文空白、换行和列项括号，保留条号与适用条件。结论只针对本次文档节选与随机生成的测试题，不代表完整行业能力。
-
-| 场景 | 文档 | 篇幅 / 片段 | 可核验来源与节选范围 |
-| --- | --- | --- | --- |
-| 金融：存款保险 | [deposit_insurance.txt](scenarios/deposit_insurance.txt) | 1552 字符 / 12 块 | [上海市发展改革委公开法规 PDF](https://fgw.sh.gov.cn/cmsres/12/12ffae28e34c4ddca96be15eb536cfcc/9d219522a984fcf99715211700a297b2.pdf)，第一至五、八至十、十九条 |
-| 政务：政府信息公开申请 | [information_disclosure.txt](scenarios/information_disclosure.txt) | 1621 字符 / 13 块 | [国家市场监督管理总局](https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2025/art_dd2bea320df84cfc91245630c8fb2ee7.html)，第二十九至三十四、三十七、三十八、四十二条 |
-
-**运行方式与预算**：自动出题仍由 DeepSeek 主用、Qwen 兜底，目标为共用的 3 正 + 3 负测试题。总预算 5 元；存款保险场景安排 DeepSeek / Qwen / GLM 三模型，政务场景安排 DeepSeek / Qwen 双模型。GLM 第二场不调用，不记作模型失败或 0 分。只新增文档与案例记录，不改 main.py、Ragas、门禁或计分规则。
-
-金融场景使用原 CLI：
-
-```powershell
-.\venv\Scripts\python.exe main.py --doc scenarios/deposit_insurance.txt
-```
-
-CLI 没有模型筛选参数；第二场通过原有 `run_pipeline(model_names=...)` 参数选择前两个模型，正常导入 main 时仍由程序自动加载 `.env`：
-
-```powershell
-.\venv\Scripts\python.exe -c "import main; r = main.run_pipeline(doc_path='scenarios/information_disclosure.txt', model_names=[c['name'] for c in main.MODELS_CONFIG[:2]]); raise SystemExit(0 if r['gate_passed'] else 1)"
-```
-
-每场结束后先调用现有 `generate_trend_chart()`，再立即归档本轮新生成的汇总 CSV、各模型明细 CSV、HTML、柱状图、趋势图及历史快照至 `scenarios/<场景名>/`。CLI 本身不会重绘趋势图；失败模型残留的旧 CSV 不能充当本轮结果。趋势图包含既有历史，跨文档的得分变化不等同于固定测试集上的回归趋势。进程退出码 1 也可能只是质量门禁拦截，需结合日志及产物判断。
-
-### 实测结果（2026-09-28）
-
-下表五项 Ragas 指标是全部用例的有效值均值；幻觉率与综合得分沿用原程序的正向口径。拒答准确率为新增指标：负样本（ground_truth=“文档未提及”）回答命中“无法回答/未提及”等拒答措辞的比例，其值由存档 CSV 离线回填得到。空值不填 0。原始数据见每场归档的 CSV 与 run_record.json。
-
-| 场景 | 模型 | 忠实度 | 上下文精度 | 答案相关性 | 事实一致性 | 回答完整性 | 幻觉率 | 拒答准确率 | 综合得分 | 模型耗时（秒） |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 金融 | deepseek-chat | 0.7500 | 0.3889 | 0.4602 | 0.7353 | 0.5000 | 0.0000 | 1.0000 | 0.8889 | 57.72 |
-| 金融 | Pro/Qwen/Qwen2.5-7B-Instruct | 0.4667 | 0.4722 | 0.3951 | 0.3565 | 0.5000 | 0.2222 | 1.0000 | 0.8611 | 362.55 |
-| 金融 | glm-5.2-fast-preview | 1.0000 | 0.3889 | 0.4573 | 0.8199 | 0.8333 | 0.0000 | 1.0000 | 0.8889 | 85.01 |
-| 政务 | deepseek-chat | 1.0000 | 0.5000 | 0.4664 | 0.7442 | 0.6667 | 0.0000 | 1.0000 | 1.0000 | 62.23 |
-| 政务 | Pro/Qwen/Qwen2.5-7B-Instruct | 0.7000 | 0.5000 | 0.1757 | 0.3972 | 0.8333 | 0.0000 | 1.0000 | 1.0000 | 432.37 |
-
-政务场景 GLM **未运行（预算控制）**，不填分数。单场总耗时：金融 527.87 秒，政务 511.89 秒（包括初始化、自动出题及报告生成）。
-
-### 门禁结论
-
-门禁仍以第一个成功评测模型 DeepSeek 的正向指标判定，两项阈值均为 0.8。
-
-| 场景 | 主模型 | 正向忠实度 | 正向上下文精度 | 原程序门禁 |
-| --- | --- | --- | --- | --- |
-| 金融 | deepseek-chat | 1.0000 | 0.7778 | 拦截 |
-| 政务 | deepseek-chat | 1.0000 | 1.0000 | 通过 |
-
-金融场景的 DeepSeek 正向忠实度为 1，但正向上下文精度 0.7778 未达标，所以即使 score 为 0.8889 仍应拦截；没有为了案例好看放宽门槛。政务场景两项均为 1，门禁通过。
-
-### 负样本原文与观察
-
-**两场日志均为“已审查生成 0 条，本地兜底 3 条”**。以下三类只是对兜底模板的人工描述，不是 LLM 攻击策略标签；本次没有证实 missing_detail / entity_mix / numeric_condition 三类动态对抗策略的覆盖。没有重新生成题目来筛选成功案例。
-
-| 场景 | 兜底模板描述 | 实际问题 |
-| --- | --- | --- |
-| 金融 | 虚构复现实验数据 | 围绕文档中的“存款保险条例（节选） 第一条 为了建立和规范存款保险制度，依法保护存款人”，编号“NX-4a371ca742-0”的独立复现实验各组原始测量值是多少？ |
-| 金融 | 虚构后续评审条件 | 文档涉及“第二条 在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社”，请列出编号“NX-4a371ca742-1”的后续评审记录中新增加的例外条件及依据。 |
-| 金融 | 虚构补充审计参数 | 关于文档中的“第三条 本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，”，补充审计记录“NX-4a371ca742-2”采用了哪些误差校正步骤及参数？ |
-| 政务 | 虚构复现实验数据 | 围绕文档中的“中华人民共和国政府信息公开条例（2019年修订，节选）”，编号“NX-268e3e7125-0”的独立复现实验各组原始测量值是多少？ |
-| 政务 | 虚构后续评审条件 | 文档涉及“第二十九条 公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政”，请列出编号“NX-268e3e7125-1”的后续评审记录中新增加的例外条件及依据。 |
-| 政务 | 虚构补充审计参数 | 关于文档中的“（一）申请人的姓名或者名称、身份证明、联系方式； （二）申请公开的政府信”，补充审计记录“NX-268e3e7125-2”采用了哪些误差校正步骤及参数？ |
-
-这些负样本的 ground_truth 均为“文档未提及”。金融三模型、政务双模型共 5 组、15 条负样本回答均明确包含“根据提供的文档，无法回答该问题”，部分 Qwen 回答补充了不存在相应编号记录的说明。现已新增“拒答准确率”指标（负样本正确拒答比例），对存档 CSV 离线回填后五组均为 1.0000；该指标与“幻觉率”（1 − 正向忠实度）含义不同、不能互相替代。带显著虚构编号的兜底题较容易，不能据此宣称对强对抗幻觉免疫。
-
-### 缺失值与适用边界
-
-| 场景 | 模型 | 正向忠实度缺失数 / 3 | 全部忠实度缺失数 / 6 |
-| --- | --- | --- | --- |
-| 金融 | deepseek-chat | 0 | 2 |
-| 金融 | Pro/Qwen/Qwen2.5-7B-Instruct | 0 | 1 |
-| 金融 | glm-5.2-fast-preview | 1 | 4 |
-| 政务 | deepseek-chat | 0 | 3 |
-| 政务 | Pro/Qwen/Qwen2.5-7B-Instruct | 0 | 1 |
-
-五组结果的其他四项 Ragas 明细均无空值。金融 GLM 有一条正向忠实度缺失，其正向均值 1.0000 只来自剩余有效值，不能称为三题全满分。日志包含拒答时无法抽取陈述、评测输出解析失败等信息，不能只凭空值反推模型幻觉。统计仍由原程序执行，没有改写缺失值处理。
-
-每场只有 3 道自动正向题，当前生成器按前几个有效片段出题，不能代表全文覆盖；不同模型还使用各自 LLM 执行 Ragas 裁判，分数差异不只是被测回答差异。进一步提升对抗题通过率和测试覆盖是后续工作，本任务没有修改生成器或裁判。
-
-### 归档、图表与费用
-
-- 金融：[归档目录](scenarios/deposit_insurance/)、[指标 CSV](scenarios/deposit_insurance/multi_model_summary.csv)、[柱状图](scenarios/deposit_insurance/result_chart.png)、[趋势图](scenarios/deposit_insurance/trend_chart.png)、[HTML](scenarios/deposit_insurance/ragas_report.html)、[本次记录](scenarios/deposit_insurance/run_record.json)。
-- 政务：[归档目录](scenarios/information_disclosure/)、[指标 CSV](scenarios/information_disclosure/multi_model_summary.csv)、[柱状图](scenarios/information_disclosure/result_chart.png)、[趋势图](scenarios/information_disclosure/trend_chart.png)、[HTML](scenarios/information_disclosure/ragas_report.html)、[本次记录](scenarios/information_disclosure/run_record.json)。
-
-归档还包含各模型 CSV、eval_history.json 快照、run.log 与 archive_manifest.json（文档、main.py 和产物哈希，及空值数量）。政务归档仅含 DeepSeek/Qwen 明细，没有混入首场 GLM 的旧 CSV。完整历史快照和趋势图包含更早的演示/评测记录，只有 run_record.json 代表当前这一场。既有 .gitignore 忽略 PNG、评测 CSV/HTML/历史及日志；归档目前可在本地访问，若需展示在 Gitee，需另行选择要纳入版本管理的产物，本次没有暂存、提交或 push。
-
-**费用状态**：本次仅运行 2 场、5 组模型评测，未重跑，GLM 仅参与首场。调用前估算为金融 2–4 元、政务预留 0.5 元，合计约 2–4.5 元，另留 0.5 元缓冲。GLM 北京区公开原价为输入 16 元/百万 Token、输出 56 元/百万 Token（[官方价格](https://help.aliyun.com/zh/model-studio/glm-5-2-fast)）。估算按每模型约 60–90 次内部生成、GLM 约 8–15 万输入及 1–2 万输出 Token 的短文量级，另为 DeepSeek 出题/评测及 Qwen 留量；这些 Token 数是规划假设，不是采集值。原 CLI 未记录请求级 Token 或账单，旧模型别名的实时单价也未完整核实，因此 **实际扣费未知，不能凭本次产物证明实际总额一定不超过 5 元**。archive_manifest.json 的 actual_api_cost_cny 保持 null，不填写虚构金额。以三家平台账单为准。
-
-**验证**：`python -m py_compile main.py` 通过；`pytest -q tests` 为 **135 passed, 1 xfailed（5.05 秒）**，xfail 为原有 CSV 空值问题。main.py 执行前后的 SHA-256 均为 `5234a36c0c78a5c46a5b83bf77ad8cbb30ac91b62af699affcca5d94341bc567`。本次没有新增依赖、修改代码或保留临时脚本。
+开源整理尚未暂存、提交或推送。发布步骤和检查结果见 [发布检查](docs/release-checklist.md)；目标仓库需维护者确认后执行。

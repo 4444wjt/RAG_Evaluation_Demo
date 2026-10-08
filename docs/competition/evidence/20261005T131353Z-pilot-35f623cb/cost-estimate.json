@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "estimate-not-billing-record",
+  "currency": "CNY",
+  "actualCharge": null,
+  "actualChargeStatus": "unknown",
+  "pricingSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "pricingObservedAt": "2026-10-05T13:18:32.078546+00:00",
+  "requestedModel": "deepseek-chat",
+  "responseModel": "deepseek-flash",
+  "pricingModel": "deepseek-flash",
+  "observedUsage": {
+    "cacheHitInputTokens": 84736,
+    "cacheMissInputTokens": 21943,
+    "outputTokens": 5317
+  },
+  "ratesCnyPerMillionTokens": {
+    "offPeak": {
+      "cacheHitInput": 0.02,
+      "cacheMissInput": 1,
+      "output": 4
+    },
+    "peak": {
+      "cacheHitInput": 0.04,
+      "cacheMissInput": 2,
+      "output": 8
+    }
+  },
+  "estimatedOffPeakCny": 0.04490572,
+  "estimatedPeakCny": 0.08981144,
+  "applicableEstimateCny": 0.04490572,
+  "basis": "本轮UTC约13:13-13:15，不在官方高峰时段；按实际返回名称对应的Flash公开单价估算。",
+  "assumptions": [
+    "实际账单按返回模型名称对应公开单价计费；旧请求别名deepseek-chat的账户结算规则未独立核实。",
+    "未取得账户账单、折扣或赠送余额使用详情，不能作为实际扣费证明。",
+    "日志token不保证覆盖HTTP内部重试。"
+  ],
+  "expectedBudgetCny": 2,
+  "automaticCostCap": false
+}

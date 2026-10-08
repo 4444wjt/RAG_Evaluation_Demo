@@ -1,61 +1,63 @@
 # 贡献指南
 
-感谢你考虑为本项目做贡献。本项目是面向大模型 RAG 应用「幻觉」痛点的轻量化自动化评测工具，欢迎以任何形式参与共建。
+欢迎为鉴真全域 VeriScope AI 提交可复现的问题报告、文档改进、展示优化和测试。先查看根目录 README、docs/architecture/README.md 与现有 Issue，避免重复工作。
 
-## 如何参与
+## 报告问题
 
-### 报告问题（Issue）
+请提供操作系统、Python／Node.js 版本、入口和复现步骤、期望与实际行为、脱敏日志及最小样例。UI 问题附截图和视口尺寸；评测问题说明测试集、模型、阈值、缺失值和结果出处。
 
-提交问题前，请先在已有 Issue / PR 中搜索，避免重复。
+不要粘贴 .env、API Key、Token、密码、私有文档或未获授权的真实评测数据。报告安全问题时先联系维护者，不在公开 Issue 中发布可利用凭据。
 
-一个高质量的问题报告应包含：
+## 提交改动
 
-- **环境信息**：操作系统、Python 版本、依赖安装方式（`venv` / Docker）、`pip list` 中关键包版本。
-- **复现步骤**：从启动命令到出错的完整步骤，尽量精简、可复现。
-- **期望 vs 实际行为**：你期望发生什么、实际发生了什么。
-- **日志 / 报错**：完整的报错栈（`traceback`）或终端输出。
-- **最小样例**：触发问题的文档 / 测试集片段（脱敏后）。
+1. Fork 确认的目标仓库，从 master 建立聚焦的 feat/、fix/、docs/ 分支。
+2. 一个改动解决一个问题，说明修改范围和验证方法，保留现有入口与项目约定。
+3. 不携带 node_modules、venv、模型权重、向量库、测试缓存和运行报告；新截图放到 docs/images/ 并注明来源。
+4. 提交前检查文件清单和脱敏结果，再向维护者发起 Pull Request。
 
-> ⚠️ 不要在任何 Issue 中粘贴 `.env`、API Key、Token 等敏感信息。
+项目同时配置了 GitHub（remote github）和 Gitee（remote origin）。贡献者推送自己的 Fork；不要照搬维护者远端名称或对原仓库强制推送。
 
-### 提交代码（Pull Request）
+## 设计与实现约定
 
-1. 先 Fork 本仓库，克隆到你本地。
-2. 从 `master` 切出功能分支，命名遵循 `feat/描述`、`fix/描述`、`docs/描述`。
-3. 在分支上完成改动并提交（小而聚焦的提交优于大而全的提交）。
-4. 推送到你的 Fork，发起 Pull Request，描述清楚「改了什么、为什么改、如何验证」。
+- 前端沿用 React、TypeScript、Vite、原生 CSS 与 Gold #F2C879，保留 PASS／FAIL／WARNING 语义色、MODEL_COLORS、完整模型名称和模型 IDs。
+- 保留悬停、键盘焦点、禁用状态和减少动态效果支持。首页展示优先检查 1920×1080 与 1280×800，证据文字保持清晰。
+- Python 使用 4 空格缩进。新增依赖应先说明必要性及许可证，不能顺便升级原有冻结依赖。
+- 指标、score、正负样本和门禁口径的改动必须单独提出设计、兼容性与验证材料；不要把业务变更混入 UI 或文档精修。
+- 前端、API 合同和后端分别明确改动范围，不绕过路径校验或把提供方凭据暴露到浏览器。
+- 演示数据、快照出处和原始记录保持真实；缺失值不填成零，静态预览不标为实时结果。
 
-## 代码规范
+## 验证
 
-- 遵循 [PEP 8](https://peps.python.org/pep-0008/)，使用 4 空格缩进。
-- 函数、变量命名清晰，注释只解释「为什么」，不解释「做什么」。
-- 不新增第三方依赖：如确有必要（例如新增文件格式解析），请说明理由并在 PR 中同步更新 `requirements.txt`。
-- 不修改核心评测逻辑：`faithfulness` / `context_precision` 等指标的 **score 口径**、门禁判定逻辑保持不变，除非明确说明并附带评测结果对比。
+按改动范围执行，并在 PR 中如实记录命令、结果和未覆盖内容。
 
-## 提交前自检
+前端（frontend/）：
 
-在提交任何改动前，请确认以下两步通过：
-
-```bash
-# 1. 语法校验
-python -m py_compile main.py
-
-# 2. 跑测试（离线，不需要 API Key、.env 或模型）
-python -m pip install -r tests/requirements.txt
-python -m pytest -q tests
+```powershell
+npm ci
+npm test
+npm run typecheck
+npm run build
+npm run test:browser -- browser-tests/landing.spec.ts
 ```
 
-测试无需密钥、无需联网、不会修改项目历史与报告文件。新增功能请同时补充对应单元测试。
+首页桌面测试使用本地 Chrome / Edge；可用 PHASE5_BROWSER_PATH 指定浏览器位置。工作台改动需要再运行对应浏览器用例或完整浏览器套件。测试产物放在被忽略的 test-results/。
 
-## 代码审查重点
+Python 离线测试（项目根目录）：
 
-维护者在 Review 时主要关注：
+```powershell
+.\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
+.\venv\Scripts\python.exe -m compileall -q main.py backend tests
+.\venv\Scripts\python.exe -m pytest -q tests
+```
 
-- 是否破坏了门禁红（不通过）/ 绿（通过）的语义色与判定口径。
-- 是否引入新的第三方依赖或改动 `requirements.txt` 版本约束。
-- 是否触碰 `.env` 或输出任何密钥。
-- 测试是否通过、是否有相应新增用例。
+使用离线样例和 mock 验证，不将真实模型调用作为默认测试步骤；真实调用需说明必要性、预算和使用授权。文档改动至少检查本地链接、图片、环境示例和忽略规则。
 
-## 行为准则
+## 许可
 
-保持友善、专业、就事论事。对不同意见保持开放，聚焦技术本身。
+本项目自有代码采用现有 MIT LICENSE，保留原版权声明。第三方代码和依赖继续遵循各自许可证；查看 frontend/THIRD_PARTY_NOTICES.md、frontend/licenses/ 与依赖包元数据。提交新增组件或依赖前，应确认来源、许可证兼容性并保留所需声明。
+
+贡献内容应为本人有权提交的代码、文档或素材，并与对应文件的许可要求兼容。
+
+## 审查与交流
+
+PR 说明“改了什么、为什么改、如何验证”，附必要的前后截图或复现记录。保持专业、尊重他人，聚焦具体证据；不要用未经验证的性能或可靠性结论替代测试。

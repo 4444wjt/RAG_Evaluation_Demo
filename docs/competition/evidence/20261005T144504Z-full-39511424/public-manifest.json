@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized-public-evidence",
+  "sourceRun": "work/competition/runs/20261005T144504Z-full-39511424",
+  "scope": "单一金融材料25题固定场景；非跨领域Benchmark、总体准确率或独立裁判证明。",
+  "requestedModel": "deepseek-chat",
+  "actualReturnedModels": {
+    "deepseek-flash": 325
+  },
+  "sentenceAdapterVersion": "zh-sentence-v1",
+  "ragasVersion": "0.1.21",
+  "caseCount": 25,
+  "gate": {
+    "passed": false,
+    "positiveFaithfulness": 0.7375,
+    "positiveContextPrecision": 0.9833,
+    "thresholds": {
+      "faithfulness": 0.8,
+      "contextPrecision": 0.8
+    }
+  },
+  "sanitization": [
+    "redact machine-local absolute paths",
+    "redact credential-like values if present",
+    "omit .env, vector cache, model cache and virtual environment"
+  ],
+  "originalRunUnchanged": true,
+  "analysisStatus": "AI辅助分析、待人工确认",
+  "files": [
+    {
+      "path": "analysis.json",
+      "publicSha256": "98419d22685ef4acabaff9b7f3be0ab5590afb24c10b1abe81629dd0144871db",
+      "generatedFrom": "offline analysis or public index"
+    },
+    {
+      "path": "analysis.md",
+      "publicSha256": "b42fba05d22739a527e8e633c92b8246f4e7d433c014d2410dbc620b993d90db",
+      "generatedFrom": "offline analysis or public index"
+    },
+    {
+      "path": "answers.json",
+      "publicSha256": "f4264c62eb230217740b12939d359d8d90cc0c5d3cdd1de436e0d01ce9df15a2",
+      "sourceRunPath": "answers.json",
+      "sourceSha256": "f4264c62eb230217740b12939d359d8d90cc0c5d3cdd1de436e0d01ce9df15a2"
+    },
+    {
+      "path": "api-response.json",
+      "publicSha256": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "sourceRunPath": "api-response.json",
+      "sourceSha256": "f93bc7f60cafb95d2f3a927e51e5c8732c101cfb602ec796b3a89805134f79c4"
+    },
+    {
+      "path": "inputs/case-manifest.json",
+      "publicSha256": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba",
+      "sourcePath": "scenarios/competition_25/case-manifest.json",
+      "sourceSha256": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba"
+    },
+    {
+      "path": "inputs/deposit_insurance.txt",
+      "publicSha256": "359d73e05853b9fcb379bdc44c7d66e939db09e2f5af5d260f22ad796fd3720a",
+      "sourcePath": "scenarios/deposit_insurance.txt",
+      "sourceSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+    },
+    {
+      "path": "inputs/testset.json",
+      "publicSha256": "1bfb16fdcebc9210c6c076a30a1e4962b0a3ad421c36ff7f6a180fa5c80a5dd7",
+      "sourcePath": "scenarios/competition_25/testset.json",
+      "sourceSha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f"
+    },
+    {
+      "path": "llm-events.jsonl",
+      "publicSha256": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131",
+      "sourceRunPath": "llm-events.jsonl",
+      "sourceSha256": "42dc25b7f84b7e7cac9ad1b2e341b5de4c35dc06bd88ae8e8f0e616eaf5f448e"
+    },
+    {
+      "path": "manifest.json",
+      "publicSha256": "06ab32381e4171ce02c314e7bbb2cb380da5dec7f392ab0c65742004eceaca4f",
+      "sourceRunPath": "manifest.json",
+      "sourceSha256": "06ab32381e4171ce02c314e7bbb2cb380da5dec7f392ab0c65742004eceaca4f"
+    },
+    {
+      "path": "metrics.json",
+      "publicSha256": "97370dec129beb509719ec4cc978719c85b15c574f934e5fa9de7d484bd3ee91",
+      "sourceRunPath": "metrics.json",
+      "sourceSha256": "97370dec129beb509719ec4cc978719c85b15c574f934e5fa9de7d484bd3ee91"
+    },
+    {
+      "path": "packages.json",
+      "publicSha256": "59782dcdeec0b0fb09ddbbe88a5ed6592bf7e4856c067619443b15e05c2c08bc",
+      "sourceRunPath": "packages.json",
+      "sourceSha256": "59782dcdeec0b0fb09ddbbe88a5ed6592bf7e4856c067619443b15e05c2c08bc"
+    },
+    {
+      "path": "prompt-definitions.json",
+      "publicSha256": "32bba886332cd3588324e2957157087fc92e19522c375164ce7b3e19a9dc4431",
+      "sourceRunPath": "prompt-definitions.json",
+      "sourceSha256": "32bba886332cd3588324e2957157087fc92e19522c375164ce7b3e19a9dc4431"
+    },
+    {
+      "path": "README.md",
+      "publicSha256": "372710eee3c5ab90d703e35b4ac0117509d20f4b57ea4071309fcaf004306c16",
+      "generatedFrom": "offline analysis or public index"
+    },
+    {
+      "path": "report/multi_model_summary.csv",
+      "publicSha256": "f74c9ff7c5338934b8ccfddd568a9d3eafea772a66a7df586eca0b25b7136f42",
+      "sourceRunPath": "project/multi_model_summary.csv",
+      "sourceSha256": "f74c9ff7c5338934b8ccfddd568a9d3eafea772a66a7df586eca0b25b7136f42"
+    },
+    {
+      "path": "report/ragas_report.html",
+      "publicSha256": "79e009f1537b5d48823b0e63cd0fe67b3f3636588e86aebea69efd857efa73cd",
+      "sourceRunPath": "project/ragas_report.html",
+      "sourceSha256": "79e009f1537b5d48823b0e63cd0fe67b3f3636588e86aebea69efd857efa73cd"
+    },
+    {
+      "path": "report/ragas_report_deepseek-chat.csv",
+      "publicSha256": "3004c086022171ae3935957dc98b2eb94adf89774ac3c7165b97e4913877b1f7",
+      "sourceRunPath": "project/ragas_report_deepseek-chat.csv",
+      "sourceSha256": "d4e7a47942bec81fe35160c4f95ee8f7ee13b6054aa89093c461070d60019d9a"
+    },
+    {
+      "path": "report/result_chart.png",
+      "publicSha256": "d8df7b7e0f081351aaaad04ae0d3ac941a45418075cdce0dc90482771e8ddc1b",
+      "sourceRunPath": "project/result_chart.png",
+      "sourceSha256": "d8df7b7e0f081351aaaad04ae0d3ac941a45418075cdce0dc90482771e8ddc1b"
+    },
+    {
+      "path": "request.json",
+      "publicSha256": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147",
+      "sourceRunPath": "request.json",
+      "sourceSha256": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147"
+    },
+    {
+      "path": "result-coverage.json",
+      "publicSha256": "a4208812dd383de6f77cfbb0d30fd20df8aa9a1e17ac66f5785b34960ea8aeb0",
+      "sourceRunPath": "result-coverage.json",
+      "sourceSha256": "a4208812dd383de6f77cfbb0d30fd20df8aa9a1e17ac66f5785b34960ea8aeb0"
+    },
+    {
+      "path": "runner/run_evidence.py",
+      "publicSha256": "251f46da53b15af8ac6205dea34f5e4604b76d1dbbc56e49c2f19f52a47919f3",
+      "sourcePath": "tools/competition/run_evidence.py",
+      "sourceSha256": "73290ca86f32f32fe9cd0ed0a9157e7e9244d0a3b533670825ac54db01d249cf"
+    },
+    {
+      "path": "runtime.json",
+      "publicSha256": "0860cb8d10e09034164d5fc74c31616592bd2c18684d5722e8539845f497e39f",
+      "sourceRunPath": "runtime.json",
+      "sourceSha256": "0860cb8d10e09034164d5fc74c31616592bd2c18684d5722e8539845f497e39f"
+    },
+    {
+      "path": "server.log",
+      "publicSha256": "23c259f48e5d57e390f4fd1084436fe3da86d7bed4510cdd8520e9ade3a40bde",
+      "sourceRunPath": "server.log",
+      "sourceSha256": "895e03d4c08db1fc8beafd8b5a42e0d588714aa2aa8ce3d6a10faeb7831f704d"
+    },
+    {
+      "path": "traces.json",
+      "publicSha256": "6da51f66b171d99d4383892c7c74d4c5f53c34c3ce51049f8b887cee6cb187dc",
+      "sourceRunPath": "traces.json",
+      "sourceSha256": "6da51f66b171d99d4383892c7c74d4c5f53c34c3ce51049f8b887cee6cb187dc"
+    },
+    {
+      "path": "usage.json",
+      "publicSha256": "1c2f202ec72934fb4d5009f00cd68b9d523a4ae704af60cd6c8eebaddb3bfe0e",
+      "sourceRunPath": "usage.json",
+      "sourceSha256": "1c2f202ec72934fb4d5009f00cd68b9d523a4ae704af60cd6c8eebaddb3bfe0e"
+    }
+  ]
+}

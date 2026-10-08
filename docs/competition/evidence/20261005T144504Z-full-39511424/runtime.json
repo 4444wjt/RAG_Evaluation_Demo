@@ -1,0 +1,255 @@
+{
+  "capturedAt": "2026-10-05T14:45:07.789185+00:00",
+  "sentenceAdapterVersion": "zh-sentence-v1",
+  "versions": {
+    "sentenceAdapterVersion": "zh-sentence-v1",
+    "traceVersion": {
+      "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+      "hashKind": "literal-template-utf8",
+      "path": "backend/services/trace.py"
+    },
+    "promptVersions": {
+      "generator": {
+        "sha256": "7c0233e4f36559a1496d343742f5d359d1bc5fca58ee609e3b582b259a48d243",
+        "hashKind": "f-string-ast-including-placeholder-expressions",
+        "path": "backend/services/answering.py"
+      },
+      "trace": {
+        "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+        "hashKind": "literal-template-utf8",
+        "path": "backend/services/trace.py"
+      },
+      "ragas": {
+        "faithfulness": {
+          "nli_statements_message": {
+            "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+            "hashKind": "canonical-json-utf8"
+          },
+          "statement_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_precision": {
+          "context_precision_prompt": {
+            "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_relevancy": {
+          "question_generation": {
+            "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_correctness": {
+          "correctness_prompt": {
+            "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+            "hashKind": "canonical-json-utf8"
+          },
+          "long_form_answer_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_recall": {
+          "context_recall_prompt": {
+            "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+            "hashKind": "canonical-json-utf8"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "ragas": "0.1.21",
+      "pysbd": "0.3.4",
+      "langchain-core": "0.2.43",
+      "langchain-openai": "0.1.25",
+      "langchain-community": "0.2.19",
+      "openai": "1.109.1",
+      "sentence-transformers": "6.1.0",
+      "transformers": "5.17.0",
+      "torch": "2.14.0",
+      "huggingface-hub": "1.32.0",
+      "chromadb": "1.5.9",
+      "datasets": "5.0.1"
+    },
+    "ragasPrompts": {
+      "faithfulness": {
+        "nli_statements_message": {
+          "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+          "hashKind": "canonical-json-utf8"
+        },
+        "statement_prompt": {
+          "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "context_precision": {
+        "context_precision_prompt": {
+          "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "answer_relevancy": {
+        "question_generation": {
+          "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "answer_correctness": {
+        "correctness_prompt": {
+          "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+          "hashKind": "canonical-json-utf8"
+        },
+        "long_form_answer_prompt": {
+          "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "context_recall": {
+        "context_recall_prompt": {
+          "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+          "hashKind": "canonical-json-utf8"
+        }
+      }
+    }
+  },
+  "configuration": {
+    "generator": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "status": "unknown",
+        "value": null,
+        "reason": "以llm-events.jsonl中的逐次提供方响应为准，尚未调用。"
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "ragasJudge": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "status": "unknown",
+        "value": null,
+        "reason": "以llm-events.jsonl中的逐次提供方响应为准，尚未调用。"
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "traceJudge": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "status": "unknown",
+        "value": null,
+        "reason": "以llm-events.jsonl中的逐次提供方响应为准，尚未调用。"
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "traceEnabled": true,
+    "chunkSize": 200,
+    "chunkOverlap": 30,
+    "topK": 4,
+    "reuseVectorDb": false,
+    "ragasMaxWorkers": 1,
+    "evaluationTimeout": 300,
+    "ragasRunConfig": {
+      "max_retries": 10,
+      "max_wait": 60,
+      "log_tenacity": false,
+      "seed": 42,
+      "max_workers": 1,
+      "timeout": 300,
+      "exception_types": [
+        "builtins.Exception"
+      ]
+    },
+    "metricParameters": {
+      "faithfulness": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      },
+      "context_precision": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      },
+      "answer_relevancy": {
+        "strictness": 1
+      },
+      "answer_correctness": {
+        "weights": [
+          0.75,
+          0.25
+        ],
+        "max_retries": 1
+      },
+      "context_recall": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      }
+    },
+    "gateThresholds": {
+      "faithfulness": 0.8,
+      "contextPrecision": 0.8
+    },
+    "embedding": {
+      "configuredIdentifier": "BAAI/bge-small-zh-v1.5",
+      "localFilesOnly": true,
+      "implementation": "langchain_community.embeddings.HuggingFaceEmbeddings",
+      "resolvedSource": {
+        "status": "unknown",
+        "value": null,
+        "reason": "现有流水线未暴露实际加载路径，本工具不推测缓存命中。"
+      },
+      "weightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未取得实际加载权重的不可变版本。"
+      },
+      "weightsSha256": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未对实际加载的Embedding权重进行观测。"
+      }
+    }
+  }
+}

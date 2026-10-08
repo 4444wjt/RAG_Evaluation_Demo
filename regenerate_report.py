@@ -143,7 +143,7 @@ html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>RAG 评测报告 {VERSION}</title>
+<title>鉴真全域 VeriScope AI · 评测报告 {VERSION}</title>
 <style>
     body {{ font-family: 'Microsoft YaHei', sans-serif; background: #f5f5f5; margin: 0; padding: 40px; }}
     .container {{ max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }}
@@ -164,7 +164,7 @@ html = f"""<!DOCTYPE html>
 </head>
 <body>
 <div class="container">
-    <h1>RAG 幻觉自动化评测报告</h1>
+    <h1>鉴真全域 VeriScope AI · 评测报告</h1>
     <p class="meta">
         <b>版本号：</b>{VERSION}<br>
         <b>生成时间：</b>{now}<br>
@@ -209,7 +209,7 @@ html = f"""<!DOCTYPE html>
         <img src="data:image/png;base64,{chart_base64}" alt="评测图表">
     </div>
 
-    <div class="footer">由 RAG 幻觉自动化评测工具 {VERSION} 生成</div>
+    <div class="footer">由 鉴真全域 VeriScope AI 生成 · {VERSION}</div>
 </div>
 </body>
 </html>"""

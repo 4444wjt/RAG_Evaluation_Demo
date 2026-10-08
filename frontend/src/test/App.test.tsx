@@ -65,6 +65,8 @@ describe('Workspace UI integration with mocked API', () => {
     await userEvent.click(screen.getByRole('button', { name: '加载演示' }));
     expect(screen.getByText('PASS')).toBeInTheDocument();
     expect(screen.getByText('演示快照')).toBeInTheDocument();
+    expect(screen.getByText('演示门禁范围')).toBeInTheDocument();
+    expect(screen.getByText('当前快照包含 6 个问题、3 个模型、18 条回答。')).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);
     await userEvent.click(screen.getByRole('button', { name: '多模型对比' }));
     expect(screen.getByRole('table')).toBeInTheDocument();
@@ -92,7 +94,7 @@ describe('Workspace UI integration with mocked API', () => {
     expect(screen.getByText('17')).toBeInTheDocument();
     expect(screen.getByText('0.0%')).toBeInTheDocument();
     expect(screen.getByText('真实评测结果')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('阈值来自本次显式提交参数。')).toBeInTheDocument();
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(1);
@@ -294,6 +296,25 @@ describe('Current model quality gate transparency', () => {
   const rule = '原始门禁采用首个有效评测模型的正向指标；当前卡片检查所选模型，不改写原始记录。';
   const callbacks = { onConfigure: vi.fn(), onDemo: vi.fn(), onCompare: vi.fn(), onTrace: vi.fn() };
 
+  it('separates the conclusion from four KPIs and keeps original records in a collapsed disclosure', async () => {
+    render(<OverviewView result={sample()} gateProvenance={demo.provenance} {...callbacks}/>);
+    const gate = screen.getByRole('region', { name: '当前模型质量门禁' });
+    const metrics = screen.getByRole('region', { name: '评测核心指标' });
+    expect(gate.nextElementSibling).toBe(metrics);
+    expect(within(gate).getByRole('heading', { name: '当前模型质量门禁', level: 2 })).toBeInTheDocument();
+    expect(within(gate).getByRole('status')).toHaveAttribute('aria-live', 'polite');
+    expect(metrics.querySelectorAll('.metric-tile')).toHaveLength(4);
+    expect(metrics.querySelector('.quality-gate')).toBeNull();
+    expect(within(gate).getByText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。')).toBeVisible();
+    const details = gate.querySelector('details')!;
+    expect(details).not.toHaveAttribute('open');
+    expect(within(details).getByText(selectionNote)).not.toBeVisible();
+    await userEvent.click(within(details).getByText('门禁依据与原始记录'));
+    expect(details).toHaveAttribute('open');
+    expect(within(details).getByText(selectionNote)).toBeVisible();
+    expect(within(details).getByText('原始评测门禁：PASS')).toBeVisible();
+  });
+
   it('checks each demo model using positive metrics and stored thresholds without overwriting the original PASS or posting', async () => {
     const original = structuredClone(demo);
     render(<App/>);
@@ -304,8 +325,8 @@ describe('Current model quality gate transparency', () => {
       await userEvent.selectOptions(screen.getByRole('combobox', { name: '当前摘要模型' }), model.id);
       const gate = screen.getByText(model.gate).closest('.quality-gate')!;
       expect(within(gate as HTMLElement).getByText('当前模型质量门禁')).toBeInTheDocument();
-      expect(within(gate as HTMLElement).getByText(interpretation)).toBeInTheDocument();
-      expectGateContext(model.label, '3 条 positive 用例', model.label === 'Qwen2.5-7B' ? '33.3%' : '100.0%', '100.0%');
+      expect(within(gate as HTMLElement).getByText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。')).toBeInTheDocument();
+      expectGateContext(model.label, '3 条正向用例', model.label === 'Qwen2.5-7B' ? '33.3%' : '100.0%', '100.0%');
       expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
       expectSummaryValues(model.values);
     }
@@ -337,7 +358,7 @@ describe('Current model quality gate transparency', () => {
     await userEvent.selectOptions(screen.getByRole('combobox', { name: '当前摘要模型' }), summaryModels[1].id);
     const gate = screen.getByText('WARNING').closest('.quality-gate')!;
     expect(within(gate as HTMLElement).getByText(interpretation)).toBeInTheDocument();
-    expectGateContext('Qwen2.5-7B', '3 条 positive 用例', '暂无数据', '暂无数据', '门槛未提供', '门槛未提供');
+    expectGateContext('Qwen2.5-7B', '3 条正向用例', '暂无数据', '暂无数据', '门槛未提供', '门槛未提供');
     expect(screen.getByText(`原始评测门禁：${gatePassed ? 'PASS' : 'FAIL'}`)).toBeInTheDocument();
     expect(screen.getByText('正向指标或阈值缺失，无法完成检查')).toBeInTheDocument();
     expect(screen.getByText('原始门禁说明未记录。')).toBeInTheDocument();
@@ -371,7 +392,7 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={result} gateProvenance={demo.provenance} {...callbacks}/>);
     expect(screen.getByText(gate)).toBeInTheDocument();
     expect(screen.getByText(reason)).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', `${(faith * 100).toFixed(1)}%`, `${(context * 100).toFixed(1)}%`);
+    expectGateContext('DeepSeek', '3 条正向用例', `${(faith * 100).toFixed(1)}%`, `${(context * 100).toFixed(1)}%`);
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
     expect(result).toEqual(original);
   });
@@ -389,7 +410,7 @@ describe('Current model quality gate transparency', () => {
     result.gate_passed = false;
     render(<OverviewView result={result} gateProvenance={demo.provenance} {...callbacks}/>);
     expect(screen.getByText(gate)).toBeInTheDocument();
-    expectGateContext(label, '3 条 positive 用例', `${faith * 100}.0%`, '100.0%');
+    expectGateContext(label, '3 条正向用例', `${faith * 100}.0%`, '100.0%');
     expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
     expect(result.gate_passed).toBe(false);
   });
@@ -402,7 +423,7 @@ describe('Current model quality gate transparency', () => {
     const original = structuredClone(result);
     render(<OverviewView result={result} gateProvenance={demo.provenance} {...callbacks}/>);
     expect(screen.getByText('WARNING')).toBeInTheDocument();
-    expectGateContext('DeepSeek', 'positive 用例 · 数量未返回', '暂无数据', '100.0%');
+    expectGateContext('DeepSeek', '正向用例 · 数量未返回', '暂无数据', '100.0%');
     expect(screen.getByText('正向指标或阈值缺失，无法完成检查')).toBeInTheDocument();
     expect(result).toEqual(original);
   });
@@ -416,7 +437,7 @@ describe('Current model quality gate transparency', () => {
     const originals = structuredClone({ result, provenance });
     render(<OverviewView result={result} gateProvenance={provenance} {...callbacks}/>);
     expect(screen.getByText('WARNING')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛未提供');
+    expectGateContext('DeepSeek', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛未提供');
     expect(screen.getByText('已有阈值来自演示快照的原始运行记录；缺失项不作推断。')).toBeInTheDocument();
     expect({ result, provenance }).toEqual(originals);
   });
@@ -431,7 +452,7 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={result} gateRequest={submittedConfig} {...callbacks}/>);
     expect(screen.getByText('PASS')).toBeInTheDocument();
     expect(screen.getByText('两项正向指标均达到门槛')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
     expect({ result, submittedConfig }).toEqual(original);
   });
@@ -453,7 +474,7 @@ describe('Current model quality gate transparency', () => {
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     await screen.findByText('真实评测结果');
     expect(screen.getByText('PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%');
     await openWorkspace();
     fireEvent.change(screen.getByRole('spinbutton', { name: '忠实度门禁阈值' }), { target: { value: '0.9' } });
     fireEvent.change(screen.getByRole('spinbutton', { name: '上下文精度门禁阈值' }), { target: { value: '0.95' } });
@@ -462,12 +483,12 @@ describe('Current model quality gate transparency', () => {
     expect(screen.getByText('WARNING')).toBeInTheDocument();
     expect(screen.getByText('上次结果 · 本次尚未更新')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
     await act(async () => { finish(response({}, 500)); });
     await screen.findByText('本次评测未完成');
     expect(screen.getByText('WARNING')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(2);
     expect(JSON.parse(calls[0][1].body)).toMatchObject({ faith_threshold: 0.8, ctx_prec_threshold: 0.8 });
@@ -488,18 +509,18 @@ describe('Current model quality gate transparency', () => {
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
     expect(screen.getByText('上次结果 · 本次尚未更新')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%');
     const completed = sample();
     completed.gate_passed = false;
     await act(async () => { finish(response(completed)); });
     await screen.findByText('真实评测结果');
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('PASS')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
     await openWorkspace();
     fireEvent.change(screen.getByRole('spinbutton', { name: '忠实度门禁阈值' }), { target: { value: '0.6' } });
     await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
-    expectGateContext('DeepSeek', '3 条 positive 用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(1);
   });
 });
@@ -591,5 +612,33 @@ describe('configuration check feedback', () => {
     await act(async () => { finish(response(sample())); });
     await screen.findByText('WARNING');
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
+  });
+});
+
+
+describe('Verification navigation regression', () => {
+  it('adds a sixth read-only view without evaluating or changing the existing demo', async () => {
+    const { webcrypto } = await import('node:crypto');
+    vi.stubGlobal('crypto', webcrypto);
+    render(<App/>);
+    const nav = screen.getByRole('navigation', { name: '工作区导航' });
+    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告', '评测验证']);
+    await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
+    expect(screen.getByText('尚未加载可核验结果')).toBeVisible();
+    await userEvent.click(screen.getByRole('button', { name: '加载演示' }));
+    await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
+    await screen.findByRole('table');
+    const scope = screen.getByRole('region', { name: '人工核验范围' });
+    expect([...scope.querySelectorAll('dt')].map(element => element.textContent)).toEqual(['已检查', '待核验', '未纳入']);
+    const counts = [...scope.querySelectorAll('dd')].map(element => Number.parseInt(element.textContent ?? '', 10));
+    expect(counts[0] + counts[1]).toBe(13);
+    expect(counts[2]).toBe(5);
+    for (const label of ['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告']) {
+      await userEvent.click(within(nav).getByRole('button', { name: label }));
+      expect(screen.getByRole('heading', { level: 1, name: label })).toBeVisible();
+    }
+    await userEvent.click(within(nav).getByRole('button', { name: '评测总览' }));
+    expect(screen.getByRole('region', { name: '当前模型质量门禁' })).toHaveTextContent('PASS');
+    expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);
   });
 });

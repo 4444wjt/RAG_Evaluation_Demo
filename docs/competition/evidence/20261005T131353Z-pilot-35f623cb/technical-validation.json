@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "kind": "post-run-offline-evidence-inspection",
+  "checkedAt": "2026-10-05T13:18:32.076546+00:00",
+  "sentenceAdapterVersion": "zh-sentence-v1",
+  "checks": [
+    {
+      "caseId": "D06",
+      "passed": true,
+      "answerHasChinese": true,
+      "referenceHasChinese": true,
+      "answerAllNonWhitespaceCharactersPreserved": true,
+      "referenceAllNonWhitespaceCharactersPreserved": true,
+      "answerSentenceInput": "0:根据提供的参考资料，存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "referenceSentenceInput": "0:人民币50万元。",
+      "faithfulnessAndCorrectnessUseSameAnswerPromptTemplate": true,
+      "answerPromptObservedCount": 2,
+      "referencePromptObservedCount": 1,
+      "answerCallIds": [
+        "afed1d36-189f-4267-9763-4daec3c780fd",
+        "c83ef216-280d-4f69-99e5-a309a4193726"
+      ],
+      "referenceCallIds": [
+        "823bf54b-c569-45f2-aba4-d506c4dd5ce5"
+      ],
+      "answerPromptSha256": "31b5c70540c209e651bf181d3fd921ccc947d1a4dc2105874c4c6c51853cc552",
+      "referencePromptSha256": "c1a2d3a09f1614cf786951931ddb7d03fb5a1ce267c759609e0ec4653126ee5b"
+    },
+    {
+      "caseId": "C02",
+      "passed": true,
+      "answerHasChinese": true,
+      "referenceHasChinese": true,
+      "answerAllNonWhitespaceCharactersPreserved": true,
+      "referenceAllNonWhitespaceCharactersPreserved": true,
+      "answerSentenceInput": "0:根据提供的文档，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算，因此该存款人的资金总额为49万元本金加2万元利息，合计51万元；由于最高偿付限额为人民币50万元，所以在限额内实行全额偿付的金额为50万元，而超出最高偿付限额的1万元部分，依法从投保机构清算财产中受偿。",
+      "referenceSentenceInput": "0:本金与利息、各被保险账户合并计算共51万元；最高偿付限额内为50万元，超过限额的1万元依法从投保机构清算财产中受偿。",
+      "faithfulnessAndCorrectnessUseSameAnswerPromptTemplate": true,
+      "answerPromptObservedCount": 2,
+      "referencePromptObservedCount": 1,
+      "answerCallIds": [
+        "9176ecaa-7c57-4718-b296-eaf8d0d44c53",
+        "0b110cc4-d23c-427f-bd3e-bcdb1b02ae0f"
+      ],
+      "referenceCallIds": [
+        "03279889-2704-4321-8419-34725f84066d"
+      ],
+      "answerPromptSha256": "548a04d01d16a2f227b1927e3bbf6f8cffddb38738d26b59f272345f7e24586d",
+      "referencePromptSha256": "dc8c624a0364cc010097be742f008357ff9c9b5f1d60ab9ce75b65ad88b38fc4"
+    },
+    {
+      "caseId": "C05",
+      "passed": true,
+      "answerHasChinese": true,
+      "referenceHasChinese": true,
+      "answerAllNonWhitespaceCharactersPreserved": true,
+      "referenceAllNonWhitespaceCharactersPreserved": true,
+      "answerSentenceInput": "0:根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一，且存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "referenceSentenceInput": "0:属于第十九条列明情形，存款人可要求在条例限额内偿付被保险存款；管理机构应在该情形发生之日起7个工作日内足额偿付。",
+      "faithfulnessAndCorrectnessUseSameAnswerPromptTemplate": true,
+      "answerPromptObservedCount": 2,
+      "referencePromptObservedCount": 1,
+      "answerCallIds": [
+        "f6a78b2d-07b2-430e-aab4-ba67123715eb",
+        "aae3bf67-b571-4a37-a105-91acd1a39ef2"
+      ],
+      "referenceCallIds": [
+        "f006ccc0-6331-4a93-8e6d-97c6f6a52d40"
+      ],
+      "answerPromptSha256": "b7ca3f3540c68e34bf627e0c8f0762b927bf303de782416d983e4087254ad2e9",
+      "referencePromptSha256": "1a84cb6bf98815f43c52b3383c0185d8086f5d3a2507b8f276c69e5db7586cbc"
+    },
+    {
+      "caseId": "N01",
+      "passed": true,
+      "answerHasChinese": true,
+      "referenceHasChinese": true,
+      "answerAllNonWhitespaceCharactersPreserved": true,
+      "referenceAllNonWhitespaceCharactersPreserved": true,
+      "answerSentenceInput": "0:根据提供的文档，无法回答该问题。",
+      "referenceSentenceInput": "0:文档未提及",
+      "faithfulnessAndCorrectnessUseSameAnswerPromptTemplate": true,
+      "answerPromptObservedCount": 2,
+      "referencePromptObservedCount": 1,
+      "answerCallIds": [
+        "9b45a8f7-f0c1-4cee-857a-dff6fa2dc57b",
+        "bd6c0bd2-873e-407b-81f6-701d5043e1fe"
+      ],
+      "referenceCallIds": [
+        "02940594-e8bc-4934-a743-e09b65e3a9cf"
+      ],
+      "answerPromptSha256": "1f68cf28ea137aa48dbc357945ce33fb46e7d6a3613c4450914809694cd286c6",
+      "referencePromptSha256": "cfebde2141ca2369edaa08ea8db9f485fdb6ee2d01acb9605ebeb374fc535623"
+    },
+    {
+      "caseId": "F03",
+      "passed": true,
+      "answerHasChinese": true,
+      "referenceHasChinese": true,
+      "answerAllNonWhitespaceCharactersPreserved": true,
+      "referenceAllNonWhitespaceCharactersPreserved": true,
+      "answerSentenceInput": "0:根据提供的文档，无法回答该问题。",
+      "referenceSentenceInput": "0:不对。\n1:按节选，交纳保费的主体是投保机构；投保机构按规定每6个月交纳一次保费。",
+      "faithfulnessAndCorrectnessUseSameAnswerPromptTemplate": true,
+      "answerPromptObservedCount": 2,
+      "referencePromptObservedCount": 1,
+      "answerCallIds": [
+        "8ca3e36a-8baa-4be0-a723-7fa03111dd58",
+        "2e1dd5d1-0523-4bbf-87cb-f0f0861f1fa3"
+      ],
+      "referenceCallIds": [
+        "cb4e1a67-b526-41eb-8746-847de59c8a44"
+      ],
+      "answerPromptSha256": "0786e297843556e86c5218711b60cae405ff6d4ae33c66baccac540cc04cbe5d",
+      "referencePromptSha256": "823cc2dc48994b78004caf5501dd7411f5f92c7a1c786dcce8c275b8fa2f1914"
+    }
+  ],
+  "allChineseInputChecksPassed": true,
+  "matchedStatementExtractionPrompts": 15,
+  "completeCallPairs": true,
+  "recordedCompletedCalls": 65,
+  "allCallsHaveProviderUsage": true,
+  "requiredArtifacts": [
+    "runner/run_evidence.py",
+    "run-authorization.json",
+    "packages.json",
+    "request.json",
+    "runtime.json",
+    "prompt-definitions.json",
+    "api-response.json",
+    "llm-events.jsonl",
+    "server.log",
+    "usage.json",
+    "answers.json",
+    "metrics.json",
+    "traces.json",
+    "result-coverage.json",
+    "project/ragas_report.html",
+    "project/ragas_report_deepseek-chat.csv",
+    "project/multi_model_summary.csv",
+    "project/result_chart.png",
+    "project/eval_history.json"
+  ],
+  "requiredArtifactsPresent": true,
+  "gatePassed": false,
+  "successDoesNotRequireGatePassOrScoreIncrease": true,
+  "limitations": [
+    "回答提示在两个指标间相同；使用每题两条完全匹配的独立调用验证覆盖，不从parentRunId推断唯一指标角色。",
+    "输入完整不证明AI Judge正确；本次参考材料仍待人工确认。",
+    "仍有2条空Trace，不能仅凭空列表判断原因。",
+    "没有账单；日志可能不覆盖SDK内部HTTP重试。"
+  ]
+}

@@ -19,7 +19,7 @@ def create_app(
 ) -> FastAPI:
     """Create the API without loading configuration, models or pipeline modules."""
     application = FastAPI(
-        title="RAG Reliability Lab API",
+        title="鉴真全域 VeriScope AI API",
         version="0.1.0",
         description="Local synchronous evaluation API. Health reports service liveness only.",
     )

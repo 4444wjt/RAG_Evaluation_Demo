@@ -4,3 +4,5 @@ coverage/
 test-results/
 *.tsbuildinfo
 .env*
+!public/landing/quality-gate.png
+!public/landing/evidence-trace.png

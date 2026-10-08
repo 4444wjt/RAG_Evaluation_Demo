@@ -1,5 +1,5 @@
 # ==================================================
-# RAG幻觉自动化评测工具
+# 鉴真全域 VeriScope AI
 # 功能：文档加载 → 向量化 → 自动生成测试集 → RAG问答 → Ragas评测 → 多模型对比 → 分层质量门禁 → HTML报告
 # ==================================================
 
@@ -702,35 +702,12 @@ TRACE_PROMPT_TEMPLATE = """你是严谨的事实核查员。以下问题、回�
 
 
 def trace_hallucinations(question, answer, contexts, ground_truth, llm) -> dict:
-    """一次调用完成语句归因；调用、解析或结构失败时返回空结果。"""
-    try:
-        prompt = TRACE_PROMPT_TEMPLATE.format(
-            question=question, answer=answer, ground_truth=ground_truth,
-            contexts_text=json.dumps(contexts, ensure_ascii=False),
-        )
-        data = safe_json_loads(llm.invoke(prompt).content)
-        if not isinstance(data, dict) or not isinstance(data.get("statements"), list):
-            return {"statements": []}
-        cleaned = []
-        for statement in data["statements"]:
-            if not isinstance(statement, dict):
-                continue
-            text = statement.get("text")
-            verdict = statement.get("verdict")
-            evidence = statement.get("evidence")
-            if (not isinstance(text, str) or not text.strip()
-                    or verdict not in ("supported", "fact_error", "fabrication")
-                    or not isinstance(evidence, str)):
-                continue
-            # 不把模型编造的引用当作溯源证据，也不把无效判定默认为 supported。
-            if evidence and not any(evidence in ctx for ctx in contexts):
-                continue
-            if verdict in ("supported", "fact_error") and not evidence:
-                continue
-            cleaned.append({"text": text.strip(), "verdict": verdict, "evidence": evidence})
-        return {"statements": cleaned}
-    except Exception:
-        return {"statements": []}
+    """兼容入口：复用当前 Trace 服务的解析、校验和空结果状态。"""
+    from backend.services.trace import trace_hallucinations as service_trace
+
+    # 历史 helper 保留仅含 statements 的返回合同；当前 CLI、Gradio 和
+    # Web API 由 backend.core.pipeline.evaluate 保存完整处理诊断。
+    return {"statements": service_trace(question, answer, contexts, ground_truth, llm)["statements"]}
 
 
 TRACE_DISPLAY_COLUMNS = {
@@ -783,7 +760,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>RAG 评测报告 {VERSION}</title>
+<title>鉴真全域 VeriScope AI · 评测报告 {VERSION}</title>
 <style>
     body {{ font-family: 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif; background: #f5f5f5; margin: 0; padding: 40px; }}
     .container {{ max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }}
@@ -807,7 +784,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
 </head>
 <body>
 <div class="container">
-    <h1>RAG 幻觉自动化评测报告</h1>
+    <h1>鉴真全域 VeriScope AI · 评测报告</h1>
     <p class="meta">
         <b>版本号：</b>{VERSION}<br>
         <b>生成时间：</b>{now}<br>
@@ -860,7 +837,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         <img src="data:image/png;base64,{chart_base64}" alt="评测图表">
     </div>
 
-    <div class="footer">由 RAG 幻觉自动化评测工具 {VERSION} 生成</div>
+    <div class="footer">由 鉴真全域 VeriScope AI 生成 · {VERSION}</div>
 </div>
 </body>
 </html>"""
@@ -1177,7 +1154,7 @@ def _legacy_run_pipeline(doc_path=None, testset_path=None, benchmark=None, bench
                 pass
 
     print("=" * 50)
-    print(f"🚀 RAG幻觉自动化评测工具 {VERSION} 启动")
+    print(f"🚀 鉴真全域 VeriScope AI {VERSION} 启动")
     print("=" * 50)
     print("[健壮性] 已内置空值过滤、异常重试、超时保护、JSON格式容错")
 
@@ -1723,7 +1700,7 @@ def export_report_pdf(result, path):
     disp = build_display_df(result["summary_df"])
     fig1, ax1 = plt.subplots(figsize=(10, 3 + 0.5 * len(disp)))
     ax1.axis('off')
-    ax1.set_title('RAG 幻觉评测报告', fontsize=16, pad=16)
+    ax1.set_title('鉴真全域 VeriScope AI · 幻觉评测报告', fontsize=16, pad=16)
     tbl = ax1.table(cellText=disp.values, colLabels=disp.columns, cellLoc='center', loc='center')
     tbl.auto_set_font_size(False)
     tbl.set_fontsize(11)
@@ -2028,6 +2005,7 @@ body { background: var(--bg-page) !important; }
 footer, button.settings, #settings-button, button.show-api { display: none !important; }
 .lab-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 0 0 22px; border-bottom: 1px solid var(--border); }
 .lab-brand { font-size: 26px; line-height: 1.2; font-weight: 650; letter-spacing: -.035em; }
+.lab-brand span { margin-left: 8px; color: var(--brand); font-size: .72em; letter-spacing: .04em; }
 .lab-position { margin-top: 10px; font-size: 15px; color: var(--text-primary); }
 .lab-name { margin-top: 6px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
 .lab-version { white-space: nowrap; font-size: 12px; color: var(--text-secondary); padding: 6px 10px; border: 1px solid var(--border); border-radius: 5px; }
@@ -2570,11 +2548,11 @@ html, body { overflow-x: clip; }
     _running_chart = placeholder_chart(os.path.join(BASE_DIR, "placeholder_running.png"), text="评测运行中，请稍候…")
     _init_history = history_to_dataframe()
 
-    with gr.Blocks(title="RAG Reliability Lab") as demo:
+    with gr.Blocks(title="鉴真全域 VeriScope AI") as demo:
         gr.HTML(
-            f"<header class='lab-header'><div><div class='lab-brand'>RAG Reliability Lab</div>"
-            "<div class='lab-position'>检测回答幻觉，追溯事实依据，守住发布门禁。</div>"
-            "<div class='lab-name'>RAG大模型幻觉自动化评测与质量门禁系统（兼容DeepSeek与智谱GLM）</div>"
+            f"<header class='lab-header'><div><div class='lab-brand'>鉴真全域 <span>VeriScope AI</span></div>"
+            "<div class='lab-position'>大模型幻觉检测、证据追踪与质量门禁平台</div>"
+            "<div class='lab-name'>大模型幻觉检测与可信评测平台（兼容 DeepSeek、Qwen 与 GLM）</div>"
             f"</div><div class='lab-version'>评测工作台 / {VERSION}</div></header>"
         )
         last_result = gr.State(None)
@@ -2697,7 +2675,7 @@ html, body { overflow-x: clip; }
 
 # ========== 6. 入口 ==========
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="RAG幻觉自动化评测工具")
+    parser = argparse.ArgumentParser(description="鉴真全域 VeriScope AI：大模型幻觉检测与可信评测平台")
     parser.add_argument("--testset", type=str, default=None,
                         help="自定义测试集路径(.json/.csv)，不传则自动生成")
     parser.add_argument("--benchmark", type=str, default=None,

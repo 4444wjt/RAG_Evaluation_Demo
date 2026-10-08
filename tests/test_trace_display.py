@@ -1,5 +1,9 @@
+import json
+
 import pandas as pd
 import pytest
+
+from backend.reporting.html import generate_html_report
 
 
 def test_trace_display_counts_ratios_and_missing(app):
@@ -41,3 +45,27 @@ def test_html_trace_table_and_missing_values(app, tmp_path):
     assert "old&lt;record&gt;" in trace and "<td>-</td>" in trace
     assert "nan" not in trace and "None" not in trace
     assert 'overflow-x: auto' in html
+
+
+def test_backend_report_uses_actual_case_counts_and_trace_statuses(tmp_path):
+    chart = tmp_path / "chart.png"
+    chart.write_bytes(b"offline-image")
+    output = tmp_path / "backend-report.html"
+    frame = pd.DataFrame({
+        "hallucination_trace": [
+            json.dumps({"statements": [], "trace_status": "empty_answer", "trace_attempts": 1}),
+            json.dumps({"statements": [], "trace_status": "parse_error", "trace_attempts": 1}),
+            json.dumps({"statements": [{"text": "a", "verdict": "supported", "evidence": "原文"}], "trace_status": "ok"}),
+        ]
+    })
+    generate_html_report(
+        [{"model": "deepseek-chat", "faithfulness": 0.5}],
+        chart_path=str(chart), output_path=str(output),
+        case_counts={"total": 25, "positive": 20, "negative": 5, "other": 0},
+        model_dfs={"deepseek-chat": frame},
+    )
+    html = output.read_text(encoding="utf-8")
+    assert "25 条问题：20 条正向用例 + 5 条负样本" in html
+    assert "纯拒答，模型返回空数组" in html
+    assert "JSON 解析失败" in html
+    assert "逐句结果已保存" in html

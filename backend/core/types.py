@@ -34,6 +34,9 @@ class TraceStatement(TypedDict, total=False):
 class TraceResult(TypedDict, total=False):
     """trace_hallucinations 的返回值。"""
     statements: List[TraceStatement]
+    trace_status: str  # ok / empty_answer / model_empty / parse_error 等
+    trace_attempts: int
+    trace_diagnostics: Dict[str, Any]
 
 
 class SummaryEntry(TypedDict, total=False):

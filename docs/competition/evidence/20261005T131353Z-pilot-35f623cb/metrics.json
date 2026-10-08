@@ -1,0 +1,44 @@
+{
+  "deepseek-chat": [
+    {
+      "rowIndex": 0,
+      "faithfulness": 1.0,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.9463711622949591,
+      "answer_correctness": 0.6651244308956532,
+      "context_recall": 1.0
+    },
+    {
+      "rowIndex": 1,
+      "faithfulness": 0.4,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.8525838685920195,
+      "answer_correctness": 0.8913974095573218,
+      "context_recall": 1.0
+    },
+    {
+      "rowIndex": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.880657461710859,
+      "answer_correctness": 0.9436830793125093,
+      "context_recall": 1.0
+    },
+    {
+      "rowIndex": 3,
+      "faithfulness": 0.0,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.9189139860457287,
+      "context_recall": 1.0
+    },
+    {
+      "rowIndex": 4,
+      "faithfulness": 0.0,
+      "context_precision": 0.9166666666361111,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.09466890816424287,
+      "context_recall": 1.0
+    }
+  ]
+}

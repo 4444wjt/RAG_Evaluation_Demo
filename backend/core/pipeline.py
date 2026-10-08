@@ -8,9 +8,10 @@ Phase 3-B-4 迁移单模型成功路径指标聚合为 aggregate_model_metrics�
 Phase 3-B-5 迁移单模型完整编排 + 多模型循环为 run_models。
 Phase 3-B-7-B 迁移 evaluate 总编排：按旧 run_pipeline 顺序串起
 prepare_resources → prepare_testset → run_models → summary/CSV → chart → HTML → gate → history。
-复用 backend.services 的叶子函数与 backend.config 的常量，行为与旧 main.py 完全一致。
+复用 backend.services 的叶子函数与 backend.config 的常量，编排与评分定义沿用旧流程；
+Web 的中文陈述输入使用独立兼容层，旧 main.py 保持原行为。
 
-依赖方向：本模块只 import backend.config / backend.services.* / 同级 types，
+依赖方向：本模块只 import backend.config / backend.services.* / backend.adapters / 同级 types，
 以及外部 ragas/datasets 依赖；禁止反向 import main.py，避免循环依赖。
 """
 import json
@@ -23,10 +24,9 @@ import pandas as pd
 from datasets import Dataset
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from ragas import evaluate as ragas_evaluate, RunConfig
-from ragas.metrics import (
-    faithfulness, context_precision,
-    answer_relevancy, answer_correctness, context_recall,
-)
+from ragas.metrics import context_precision, answer_relevancy, context_recall
+
+from backend.adapters.ragas_compat import ChineseAnswerCorrectness, ChineseFaithfulness
 
 from backend.config import (
     BASE_DIR, DOC_PATH, SUMMARY_OUTPUT, HTML_OUTPUT, CHART_PATH,
@@ -38,7 +38,7 @@ from backend.services.documents import load_and_split_doc
 from backend.services.retriever import build_vector_store
 from backend.services.testsets import generate_testset, load_custom_testset, load_benchmark
 from backend.services.answering import rag_answer
-from backend.services.trace import trace_hallucinations
+from backend.services.trace import trace_hallucinations, trace_unavailable
 
 from backend.reporting import generate_html_report, generate_evaluation_chart
 from backend.storage.json_history import save_eval_record
@@ -46,9 +46,13 @@ from backend.storage.json_history import save_eval_record
 from .gate import check_quality_gate
 from .types import EvaluationRequest, RunResources, EvaluationResult, RawModelEvaluation, SummaryEntry, ModelLoopResult
 
-# 与 main.py 一致的 5 项 Ragas 指标；DeepSeek/阿里百炼仅支持 n=1，
+# 与 main.py 一致的 5 项指标及评分定义，仅 Web 使用中文陈述输入兼容实例；
+# DeepSeek/阿里百炼仅支持 n=1，
 # answer_relevancy 默认 strictness=3 会触发多采样而全部返回 None，故固定为 1
-RAGAS_METRICS = [faithfulness, context_precision, answer_relevancy, answer_correctness, context_recall]
+RAGAS_METRICS = [
+    ChineseFaithfulness(), context_precision, answer_relevancy,
+    ChineseAnswerCorrectness(), context_recall,
+]
 answer_relevancy.strictness = 1
 
 
@@ -223,7 +227,7 @@ def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled):
         ans = eval_data["answer"][i]
         trace = trace_hallucinations(
             eval_data["question"][i], ans, ctxs, eval_data["ground_truth"][i], llm
-        ) if trace_enabled else {"statements": []}
+        ) if trace_enabled else trace_unavailable()
         trace_list.append(json.dumps(trace, ensure_ascii=False))
         stmts = trace.get("statements", [])
         for s in stmts:
@@ -481,7 +485,7 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
                 pass
 
     print("=" * 50)
-    print(f"🚀 RAG幻觉自动化评测工具 {VERSION} 启动")
+    print(f"🚀 鉴真全域 VeriScope AI {VERSION} 启动")
     print("=" * 50)
     print("[健壮性] 已内置空值过滤、异常重试、超时保护、JSON格式容错")
 
@@ -529,6 +533,13 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         faith_threshold=faith_threshold,
         ctx_prec_threshold=ctx_prec_threshold,
         total_elapsed=total_elapsed,
+        case_counts={
+            "total": len(resources["testset"]),
+            "positive": sum(item.get("case_type", "positive") == "positive" for item in resources["testset"]),
+            "negative": sum(item.get("case_type", "positive") == "negative" for item in resources["testset"]),
+            "other": sum(item.get("case_type", "positive") not in ("positive", "negative") for item in resources["testset"]),
+        },
+        model_dfs=model_dfs,
     )
 
     # 12. 质量门禁

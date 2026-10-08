@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "kind": "offline-analysis-not-human-review",
+  "sourceRunId": "20261005T131353Z-pilot-35f623cb",
+  "comparisonRunId": "20261005T101847Z-pilot-c72cb679",
+  "preparedAt": "2026-10-05T13:56:58.867729+00:00",
+  "sourceManifestSha256": "b810bce4fde8cb062c28a89a7c1b1a948520e704783d1a50e325d163e78c3f2c",
+  "oldManifestSha256": "e752648b21085e3de31e2bf5967973f8de1141f29ab9d02713a7581657eb51d0",
+  "gateAnalysis": {
+    "model": "deepseek-chat",
+    "positiveCases": [
+      "D06",
+      "C02",
+      "C05",
+      "F03"
+    ],
+    "excludedNegativeCases": [
+      "N01"
+    ],
+    "faithfulness": {
+      "values": [
+        1.0,
+        0.4,
+        1.0,
+        0.0
+      ],
+      "validCount": 4,
+      "positiveCount": 4,
+      "mean": 0.6,
+      "threshold": 0.8,
+      "passed": false
+    },
+    "contextPrecision": {
+      "values": [
+        0.9999999999,
+        0.9999999999,
+        0.99999999995,
+        0.9166666666361111
+      ],
+      "validCount": 4,
+      "positiveCount": 4,
+      "mean": 0.9792,
+      "threshold": 0.8,
+      "passed": true
+    },
+    "trigger": "正向Faithfulness均值0.6000低于0.8，非指标缺失触发。",
+    "traceIsGateInput": false,
+    "answerCorrectnessIsGateInput": false,
+    "warningCasesOnly": [
+      "C02",
+      "N01",
+      "F03"
+    ],
+    "warningThreshold": 0.5,
+    "note": "告警仅打印；N01是负向题，不进入门禁。整体Faithfulness0.48不是门禁比较值。"
+  },
+  "emptyTraceAnalysis": [
+    {
+      "caseId": "N01",
+      "question": "根据提供节选，某一家具体投保银行当前实际适用的风险差别费率是多少？",
+      "fullAnswer": "根据提供的文档，无法回答该问题。",
+      "reference": "文档未提及",
+      "contexts": [
+        "第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。",
+        "第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。",
+        "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。",
+        "第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。"
+      ],
+      "traceCallId": "164b01f4-a40f-4c31-b825-2f38935e60fe",
+      "startedAt": "2026-10-05T13:15:13.973171+00:00",
+      "completedAt": "2026-10-05T13:15:14.461133+00:00",
+      "callErrorObserved": false,
+      "rawReturnedText": "{\"statements\": []}",
+      "rawJsonParseable": true,
+      "returnedStatementsCount": 0,
+      "extraTopLevelFields": [],
+      "extraFieldsConsumedAsStatementVerdicts": false,
+      "finishReason": "stop",
+      "classification": "成功调用返回空statements，输入回答为单纯拒答；未观测调用或JSON解析错误。",
+      "answerAssessment": "检索上下文给费率规则但未给具体银行费率，拒答与材料不足相符；仍需作者确认。",
+      "limitations": [
+        "没有独立的运行时解析事件日志，不能宣称所有异常路径都被监测。",
+        "无法证明模型选择拒答或附加字段的内部原因。",
+        "空Trace不证明回答正确、无幻觉或整体判定可信。"
+      ]
+    },
+    {
+      "caseId": "F03",
+      "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+      "fullAnswer": "根据提供的文档，无法回答该问题。",
+      "reference": "不对。按节选，交纳保费的主体是投保机构；投保机构按规定每6个月交纳一次保费。",
+      "contexts": [
+        "第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。",
+        "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。",
+        "（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。",
+        "第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。"
+      ],
+      "traceCallId": "546e0231-f0ec-4e57-9632-8019d3b1a55e",
+      "startedAt": "2026-10-05T13:15:14.462140+00:00",
+      "completedAt": "2026-10-05T13:15:15.240529+00:00",
+      "callErrorObserved": false,
+      "rawReturnedText": "{\"statements\": [], \"verdict\": \"fabrication\", \"evidence\": \"\"}",
+      "rawJsonParseable": true,
+      "returnedStatementsCount": 0,
+      "extraTopLevelFields": [
+        "evidence",
+        "verdict"
+      ],
+      "extraFieldsConsumedAsStatementVerdicts": false,
+      "finishReason": "stop",
+      "classification": "成功调用返回空statements，输入回答为单纯拒答；未观测调用或JSON解析错误。",
+      "answerAssessment": "上下文明确缴费主体为投保机构，存在可纠正原问题前提的依据；拒答合理性待作者核验。",
+      "limitations": [
+        "没有独立的运行时解析事件日志，不能宣称所有异常路径都被监测。",
+        "无法证明模型选择拒答或附加字段的内部原因。",
+        "空Trace不证明回答正确、无幻觉或整体判定可信。"
+      ]
+    }
+  ],
+  "promptInputComparison": {
+    "oldExtractionPrompts": 15,
+    "oldEmptySentenceInputs": 15,
+    "newExtractionPrompts": 15,
+    "newEmptySentenceInputs": 0,
+    "scope": "Faithfulness的5条回答及Answer Correctness的5条回答、5条参考答案；两指标回答模板相同，每题两次调用覆盖。",
+    "referenceInputBefore": "5条为空",
+    "referenceInputAfter": "5条完整非空",
+    "judgeCorrectnessNotCertified": true
+  },
+  "oldCoverage": {
+    "faithfulness": {
+      "allValid": 3,
+      "positiveValid": 3
+    },
+    "context_precision": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "answer_relevancy": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "answer_correctness": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "context_recall": {
+      "allValid": 5,
+      "positiveValid": 4
+    }
+  },
+  "newCoverage": {
+    "faithfulness": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "context_precision": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "answer_relevancy": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "answer_correctness": {
+      "allValid": 5,
+      "positiveValid": 4
+    },
+    "context_recall": {
+      "allValid": 5,
+      "positiveValid": 4
+    }
+  },
+  "comparison": [
+    {
+      "caseId": "D06",
+      "sameQuestion": true,
+      "sameReference": true,
+      "sameContexts": true,
+      "sameAnswer": false,
+      "oldAnswer": "根据提供的参考资料，存款保险的最高偿付限额为人民币50万元。",
+      "newAnswer": "根据提供的参考资料，存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "oldMetrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.9463711622949591,
+        "answer_correctness": 0.173887356874797,
+        "context_recall": 1.0
+      },
+      "newMetrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.9463711622949591,
+        "answer_correctness": 0.6651244308956532,
+        "context_recall": 1.0
+      },
+      "oldTrace": {
+        "statements": [
+          {
+            "text": "存款保险的最高偿付限额为人民币50万元。",
+            "verdict": "supported",
+            "evidence": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+          }
+        ]
+      },
+      "newTrace": {
+        "statements": [
+          {
+            "text": "存款保险实行限额偿付。",
+            "verdict": "supported",
+            "evidence": "存款保险实行限额偿付"
+          },
+          {
+            "text": "存款保险的最高偿付限额为人民币50万元。",
+            "verdict": "supported",
+            "evidence": "最高偿付限额为人民币50万元"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "C02",
+      "sameQuestion": true,
+      "sameReference": true,
+      "sameContexts": true,
+      "sameAnswer": false,
+      "oldAnswer": "根据参考资料第五条规定，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算，因此该存款人本金49万元与利息2万元合计为51万元，其中在最高偿付限额人民币50万元以内的部分实行全额偿付，超出最高偿付限额的1万元部分则依法从投保机构清算财产中受偿。",
+      "newAnswer": "根据提供的文档，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算，因此该存款人的资金总额为49万元本金加2万元利息，合计51万元；由于最高偿付限额为人民币50万元，所以在限额内实行全额偿付的金额为50万元，而超出最高偿付限额的1万元部分，依法从投保机构清算财产中受偿。",
+      "oldMetrics": {
+        "faithfulness": 0.5,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.8755417885257545,
+        "answer_correctness": 0.9697560667507164,
+        "context_recall": 1.0
+      },
+      "newMetrics": {
+        "faithfulness": 0.4,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.8525838685920195,
+        "answer_correctness": 0.8913974095573218,
+        "context_recall": 1.0
+      },
+      "oldTrace": {
+        "statements": [
+          {
+            "text": "根据参考资料第五条规定，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "该存款人本金49万元与利息2万元合计为51万元。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "其中在最高偿付限额人民币50万元以内的部分实行全额偿付。",
+            "verdict": "supported",
+            "evidence": "存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "超出最高偿付限额的1万元部分则依法从投保机构清算财产中受偿。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          }
+        ]
+      },
+      "newTrace": {
+        "statements": [
+          {
+            "text": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "该存款人的资金总额为49万元本金加2万元利息，合计51万元。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "最高偿付限额为人民币50万元。",
+            "verdict": "supported",
+            "evidence": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+          },
+          {
+            "text": "在限额内实行全额偿付的金额为50万元。",
+            "verdict": "supported",
+            "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          },
+          {
+            "text": "超出最高偿付限额的1万元部分，依法从投保机构清算财产中受偿。",
+            "verdict": "supported",
+            "evidence": "超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "C05",
+      "sameQuestion": true,
+      "sameReference": true,
+      "sameContexts": true,
+      "sameAnswer": true,
+      "oldAnswer": "根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一，且存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "newAnswer": "根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一，且存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "oldMetrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.49999999995,
+        "answer_relevancy": 0.8972648098590833,
+        "answer_correctness": 0.7936830793125094,
+        "context_recall": 1.0
+      },
+      "newMetrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.880657461710859,
+        "answer_correctness": 0.9436830793125093,
+        "context_recall": 1.0
+      },
+      "oldTrace": {
+        "statements": [
+          {
+            "text": "人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+            "verdict": "supported",
+            "evidence": "（三）人民法院裁定受理对投保机构的破产申请；"
+          },
+          {
+            "text": "存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+            "verdict": "supported",
+            "evidence": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+          }
+        ]
+      },
+      "newTrace": {
+        "statements": [
+          {
+            "text": "人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+            "verdict": "supported",
+            "evidence": "（三）人民法院裁定受理对投保机构的破产申请；"
+          },
+          {
+            "text": "存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+            "verdict": "supported",
+            "evidence": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "N01",
+      "sameQuestion": true,
+      "sameReference": true,
+      "sameContexts": true,
+      "sameAnswer": true,
+      "oldAnswer": "根据提供的文档，无法回答该问题。",
+      "newAnswer": "根据提供的文档，无法回答该问题。",
+      "oldMetrics": {
+        "faithfulness": null,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.9189139860457287,
+        "context_recall": 1.0
+      },
+      "newMetrics": {
+        "faithfulness": 0.0,
+        "context_precision": 0.9999999999,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.9189139860457287,
+        "context_recall": 1.0
+      },
+      "oldTrace": {
+        "statements": []
+      },
+      "newTrace": {
+        "statements": []
+      }
+    },
+    {
+      "caseId": "F03",
+      "sameQuestion": true,
+      "sameReference": true,
+      "sameContexts": true,
+      "sameAnswer": true,
+      "oldAnswer": "根据提供的文档，无法回答该问题。",
+      "newAnswer": "根据提供的文档，无法回答该问题。",
+      "oldMetrics": {
+        "faithfulness": null,
+        "context_precision": 0.9166666666361111,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.09466890816424287,
+        "context_recall": 1.0
+      },
+      "newMetrics": {
+        "faithfulness": 0.0,
+        "context_precision": 0.9166666666361111,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.09466890816424287,
+        "context_recall": 1.0
+      },
+      "oldTrace": {
+        "statements": []
+      },
+      "newTrace": {
+        "statements": []
+      }
+    }
+  ],
+  "oldPositiveFaithfulness": 0.8333,
+  "newPositiveFaithfulness": 0.6,
+  "oldPositiveContextPrecision": 0.8542,
+  "newPositiveContextPrecision": 0.9792,
+  "changedAnswerCases": [
+    "D06",
+    "C02"
+  ],
+  "tokenObservation": {
+    "startedCalls": 65,
+    "completedCalls": 65,
+    "errorEvents": 0,
+    "callsWithTokenUsage": 65,
+    "promptTokens": 106679,
+    "completionTokens": 5317,
+    "totalTokens": 111996,
+    "cacheHitTokens": 84736,
+    "callsWithCacheUsage": 65,
+    "cacheCoverage": "reported",
+    "actualReturnedModels": {
+      "deepseek-flash": 65
+    },
+    "callsWithoutReturnedModel": 0,
+    "observationStatus": "observed",
+    "unreadableEventLines": 0,
+    "actualCharge": null,
+    "actualChargeStatus": "unknown",
+    "note": "观察到的LangChain调用及提供方返回token，不保证覆盖HTTP层重试；缺失用量不按零消耗解释，实际费用未取得账单。"
+  },
+  "costEstimate": {
+    "schemaVersion": 1,
+    "kind": "estimate-not-billing-record",
+    "currency": "CNY",
+    "actualCharge": null,
+    "actualChargeStatus": "unknown",
+    "pricingSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "pricingObservedAt": "2026-10-05T13:18:32.078546+00:00",
+    "requestedModel": "deepseek-chat",
+    "responseModel": "deepseek-flash",
+    "pricingModel": "deepseek-flash",
+    "observedUsage": {
+      "cacheHitInputTokens": 84736,
+      "cacheMissInputTokens": 21943,
+      "outputTokens": 5317
+    },
+    "ratesCnyPerMillionTokens": {
+      "offPeak": {
+        "cacheHitInput": 0.02,
+        "cacheMissInput": 1,
+        "output": 4
+      },
+      "peak": {
+        "cacheHitInput": 0.04,
+        "cacheMissInput": 2,
+        "output": 8
+      }
+    },
+    "estimatedOffPeakCny": 0.04490572,
+    "estimatedPeakCny": 0.08981144,
+    "applicableEstimateCny": 0.04490572,
+    "basis": "本轮UTC约13:13-13:15，不在官方高峰时段；按实际返回名称对应的Flash公开单价估算。",
+    "assumptions": [
+      "实际账单按返回模型名称对应公开单价计费；旧请求别名deepseek-chat的账户结算规则未独立核实。",
+      "未取得账户账单、折扣或赠送余额使用详情，不能作为实际扣费证明。",
+      "日志token不保证覆盖HTTP内部重试。"
+    ],
+    "expectedBudgetCny": 2,
+    "automaticCostCap": false
+  },
+  "authorConfirmed": false,
+  "humanReviewStatusNotModified": true,
+  "limits": [
+    "这是AI离线整理与核对，不是作者新增人工核验。",
+    "D06/C02回答变化，未适配的Context Precision在C05也变化，不能将所有分数变化归因于适配。",
+    "生成、Ragas和Trace仍同源裁判；模型输出有波动。",
+    "旧新分数保留，不修改门禁、公式、题集、参考答案或旧核验包。",
+    "25题尚未作者确认或付费授权。"
+  ]
+}

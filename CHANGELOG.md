@@ -6,17 +6,17 @@
 
 ## [1.2.0] - 未发布
 
-### Phase 3-B-10 工程冻结（2026-10-01）
+### 工程与仓库维护（2026-10-01）
 - 后端迁移基线完整入库，保留 main.py 兼容层；本轮未修改业务代码、测试断言或依赖版本。
 - 修正根目录模型缓存忽略规则，补齐 Docker 本地资料排除，历史诊断脚本原样复制归档。
 - 经确认取消跟踪16项旧备份/运行产物，恢复保留两个旧源码/配置；现存本地文件未删除。
-- 原工作目录与干净Git检出的离线测试均为176 passed、1 xfailed；项目源码编译通过。全目录venv编译例外见 PHASE_3_B_10_FREEZE_REPORT.md。
+- 原工作目录与干净 Git 检出的离线测试均为 176 passed、1 xfailed；项目源码编译通过。
 
 ### 新增
 - 第三个评测模型 **GLM-5.2-Fast**（阿里云百炼），三模型横向对比（DeepSeek / Qwen2.5-7B / GLM-5.2-Fast）。
 - 基准数据集接入 **TruthfulQA**（`truthfulqa/truthful_qa`），新增 `--benchmark`、`--limit` 命令行参数。
 - 多格式文档加载：`.txt` / `.md` / `.pdf` / `.docx`，按扩展名分流（TextLoader / PyPDFLoader / Docx2txtLoader）。
-- 早期单元测试套件（当时为 `86 passed, 1 xfailed`；当前工程冻结验收见 `PHASE_3_B_10_FREEZE_REPORT.md`），覆盖格式转换、JSON 容错、测试集加载、历史记录、三模型演示、门禁边界、score 计算。
+- 早期单元测试套件（当时为 `86 passed, 1 xfailed`），覆盖格式转换、JSON 容错、测试集加载、历史记录、三模型演示、门禁边界、score 计算。
 - 深蓝科技色系 UI 主题、青→蓝标题渐变、隐藏 Gradio 右上角设置按钮。
 
 ### 修复

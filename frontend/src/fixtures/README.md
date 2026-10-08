@@ -1,4 +1,4 @@
-# Phase 5 离线演示快照
+# 离线演示快照
 
 `demo.json` 是已有评测产物的冻结数据转换。没有调用模型 API、运行评测、重算指标、改变门禁或补写逐句证据。
 
@@ -46,4 +46,19 @@
 
 使用项目现有 `venv/Scripts/python.exe`（Python 3.11.9）与标准库 csv/json/hashlib/html.parser/base64；不创建环境，不安装依赖。转换前核验 source 一致性，写出 UTF-8 JSON 且拒绝 NaN/Infinity。转换后再次核验 8 字段、summary/history 精确相等、18 条用例、零值/空值、trace 文本及源哈希。
 
-本目录只保存演示 fixture 与说明，不改 backend、main.py、API 结构、现有测试或原产物；不提交、不推送。
+本快照转换不改 backend、main.py、API 结构或原产物。
+
+## 人工核验包
+
+`credibility-review.json` 绑定 `demo.json` 的完整文件 SHA-256 和版本，预选 13/18 条回答。作者 Kk 于 2026-10-05 完成逐条核验：一致 3 条、存在分歧 5 条、无法确认 5 条，无待核验记录。AI 辅助整理材料，最终结论由作者确认；不是独立复核、总体准确率或模型复跑证明。页面支持一致、分歧、无法确认和未核验，人工结论单独呈现，不覆盖机器原判定。录入要求见 [比赛演示指南](../../../docs/demo/README.md)。
+
+## 门禁拦截验证历史案例
+
+`financial-failure-case.json` 摘取金融场景 `20260928-1313` 的原始运行记录及 DeepSeek 的 3 条正向明细，供核验页单独展示。不是新一轮评测，不并入 `demo.json` 或人工核验包。
+
+- `run` 原样保留 `scenarios/deposit_insurance/run_record.json`，包括原始 `gate_passed=false`、阈值和模型指标，不重算门禁或指标。
+- `positiveRows` 保留 CSV 原始列、文本与数值字符串，并记录原行索引。明细不含逐句 Trace，不新增机器判定。
+- 明细 CSV SHA-256 `9f0b8bfba482a3a299f8d1407b694f499dc9a93027261c07f8677f3ef0b6dd0a` 已与原归档清单一致性核对。`provenance.sourceHashes` 同时记录运行文件及清单的完整字节哈希。
+- 正向上下文精度的保存均值为 `0.7778`，页面沿用现有一位百分比格式显示 `77.8%`；来源详情保留原始数值。阈值仍为 `0.8`。
+- 历史案例保留当时 CLI 运行材料，不以当前代码追认其完整执行条件。当前 CLI / Gradio 经 `main.py.run_pipeline` 委托共享后端编排；保留的 `_legacy_run_pipeline` 并非正常入口。历史案例仍不证明当前 API 已复跑。原归档未保存门禁说明；展示的原因是原始指标与阈值对照，不能冒充原始说明。
+- 公开展示使用本 fixture；本地原始 CSV/HTML/日志仍受现有忽略规则管理，不要求克隆后存在这些归档产物。

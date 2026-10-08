@@ -1,0 +1,414 @@
+{
+  "faithfulness": {
+    "nli_statements_message": {
+      "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "nli_statements",
+        "instruction": "Your task is to judge the faithfulness of a series of statements based on a given context. For each statement you must return verdict as 1 if the statement can be directly inferred based on the context or 0 if the statement can not be directly inferred based on the context.",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/StatementFaithfulnessAnswer\"}, \"definitions\": {\"StatementFaithfulnessAnswer\": {\"title\": \"StatementFaithfulnessAnswer\", \"type\": \"object\", \"properties\": {\"statement\": {\"title\": \"Statement\", \"description\": \"the original statement, word-by-word\", \"type\": \"string\"}, \"reason\": {\"title\": \"Reason\", \"description\": \"the reason of the verdict\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"description\": \"the verdict(0/1) of the faithfulness.\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"verdict\"]}}}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "context": "John is a student at XYZ University. He is pursuing a degree in Computer Science. He is enrolled in several courses this semester, including Data Structures, Algorithms, and Database Management. John is a diligent student and spends a significant amount of time studying and completing assignments. He often stays late in the library to work on his projects.",
+            "statements": [
+              "John is majoring in Biology.",
+              "John is taking a course on Artificial Intelligence.",
+              "John is a dedicated student.",
+              "John has a part-time job."
+            ],
+            "answer": [
+              {
+                "statement": "John is majoring in Biology.",
+                "reason": "John's major is explicitly mentioned as Computer Science. There is no information suggesting he is majoring in Biology.",
+                "verdict": 0
+              },
+              {
+                "statement": "John is taking a course on Artificial Intelligence.",
+                "reason": "The context mentions the courses John is currently enrolled in, and Artificial Intelligence is not mentioned. Therefore, it cannot be deduced that John is taking a course on AI.",
+                "verdict": 0
+              },
+              {
+                "statement": "John is a dedicated student.",
+                "reason": "The context states that he spends a significant amount of time studying and completing assignments. Additionally, it mentions that he often stays late in the library to work on his projects, which implies dedication.",
+                "verdict": 1
+              },
+              {
+                "statement": "John has a part-time job.",
+                "reason": "There is no information given in the context about John having a part-time job.",
+                "verdict": 0
+              }
+            ]
+          },
+          {
+            "context": "Photosynthesis is a process used by plants, algae, and certain bacteria to convert light energy into chemical energy.",
+            "statements": [
+              "Albert Einstein was a genius."
+            ],
+            "answer": [
+              {
+                "statement": "Albert Einstein was a genius.",
+                "reason": "The context and statement are unrelated",
+                "verdict": 0
+              }
+            ]
+          }
+        ],
+        "input_keys": [
+          "context",
+          "statements"
+        ],
+        "output_key": "answer",
+        "output_type": "json",
+        "language": "english"
+      }
+    },
+    "statement_prompt": {
+      "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "long_form_answer",
+        "instruction": "Given a question, an answer, and sentences from the answer analyze the complexity of each sentence given under 'sentences' and break down each sentence into one or more fully understandable statements while also ensuring no pronouns are used in each statement. Format the outputs in JSON.",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/Statements\"}, \"definitions\": {\"Statements\": {\"title\": \"Statements\", \"type\": \"object\", \"properties\": {\"sentence_index\": {\"title\": \"Sentence Index\", \"description\": \"Index of the sentence from the statement list\", \"type\": \"integer\"}, \"simpler_statements\": {\"title\": \"Simpler Statements\", \"description\": \"the simpler statements\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"sentence_index\", \"simpler_statements\"]}}}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "question": "Who was Albert Einstein and what is he best known for?",
+            "answer": "He was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. He was best known for developing the theory of relativity, he also made important contributions to the development of the theory of quantum mechanics.",
+            "sentences": "\n        0:He was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. \n        1:He was best known for developing the theory of relativity, he also made important contributions to the development of the theory of quantum mechanics.\n        ",
+            "analysis": [
+              {
+                "sentence_index": 0,
+                "simpler_statements": [
+                  "Albert Einstein was a German-born theoretical physicist.",
+                  "Albert Einstein is recognized as one of the greatest and most influential physicists of all time."
+                ]
+              },
+              {
+                "sentence_index": 1,
+                "simpler_statements": [
+                  "Albert Einstein was best known for developing the theory of relativity.",
+                  "Albert Einstein also made important contributions to the development of the theory of quantum mechanics."
+                ]
+              }
+            ]
+          }
+        ],
+        "input_keys": [
+          "question",
+          "answer",
+          "sentences"
+        ],
+        "output_key": "analysis",
+        "output_type": "json",
+        "language": "english"
+      }
+    }
+  },
+  "context_precision": {
+    "context_precision_prompt": {
+      "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "context_precision",
+        "instruction": "Given question, answer and context verify if the context was useful in arriving at the given answer. Give verdict as \"1\" if useful and \"0\" if not with json output.",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"description\": \"Answer for the verification task wether the context was useful.\", \"type\": \"object\", \"properties\": {\"reason\": {\"title\": \"Reason\", \"description\": \"Reason for verification\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"description\": \"Binary (0/1) verdict of verification\", \"type\": \"integer\"}}, \"required\": [\"reason\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "question": "What can you tell me about albert Albert Einstein?",
+            "context": "Albert Einstein (14 March 1879 – 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass–energy equivalence formula E = mc2, which arises from relativity theory, has been called \"the world's most famous equation\". He received the 1921 Nobel Prize in Physics \"for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect\", a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.",
+            "answer": "Albert Einstein born in 14 March 1879 was German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905. Einstein moved to Switzerland in 1895",
+            "verification": {
+              "reason": "The provided context was indeed useful in arriving at the given answer. The context includes key information about Albert Einstein's life and contributions, which are reflected in the answer.",
+              "verdict": 1
+            }
+          },
+          {
+            "question": "who won 2020 icc world cup?",
+            "context": "The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.",
+            "answer": "England",
+            "verification": {
+              "reason": "the context was useful in clarifying the situation regarding the 2020 ICC World Cup and indicating that England was the winner of the tournament that was intended to be held in 2020 but actually took place in 2022.",
+              "verdict": 1
+            }
+          },
+          {
+            "question": "What is the tallest mountain in the world?",
+            "context": "The Andes is the longest continental mountain range in the world, located in South America. It stretches across seven countries and features many of the highest peaks in the Western Hemisphere. The range is known for its diverse ecosystems, including the high-altitude Andean Plateau and the Amazon rainforest.",
+            "answer": "Mount Everest.",
+            "verification": {
+              "reason": "the provided context discusses the Andes mountain range, which, while impressive, does not include Mount Everest or directly relate to the question about the world's tallest mountain.",
+              "verdict": 0
+            }
+          }
+        ],
+        "input_keys": [
+          "question",
+          "context",
+          "answer"
+        ],
+        "output_key": "verification",
+        "output_type": "json",
+        "language": "english"
+      }
+    }
+  },
+  "answer_relevancy": {
+    "question_generation": {
+      "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "question_generation",
+        "instruction": "Generate a question for the given answer and Identify if answer is noncommittal. Give noncommittal as 1 if the answer is noncommittal and 0 if the answer is committal. A noncommittal answer is one that is evasive, vague, or ambiguous. For example, \"I don't know\" or \"I'm not sure\" are noncommittal answers",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"question\": {\"title\": \"Question\", \"type\": \"string\"}, \"noncommittal\": {\"title\": \"Noncommittal\", \"type\": \"integer\"}}, \"required\": [\"question\", \"noncommittal\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "answer": "Albert Einstein was born in Germany.",
+            "context": "Albert Einstein was a German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time",
+            "output": {
+              "question": "Where was Albert Einstein born?",
+              "noncommittal": 0
+            }
+          },
+          {
+            "answer": "It can change its skin color based on the temperature of its environment.",
+            "context": "A recent scientific study has discovered a new species of frog in the Amazon rainforest that has the unique ability to change its skin color based on the temperature of its environment.",
+            "output": {
+              "question": "What unique ability does the newly discovered species of frog have?",
+              "noncommittal": 0
+            }
+          },
+          {
+            "answer": "Everest",
+            "context": "The tallest mountain on Earth, measured from sea level, is a renowned peak located in the Himalayas.",
+            "output": {
+              "question": "What is the tallest mountain on Earth?",
+              "noncommittal": 0
+            }
+          },
+          {
+            "answer": "I don't know about the  groundbreaking feature of the smartphone invented in 2023 as am unaware of information beyond 2022. ",
+            "context": "In 2023, a groundbreaking invention was announced: a smartphone with a battery life of one month, revolutionizing the way people use mobile technology.",
+            "output": {
+              "question": "What was the groundbreaking feature of the smartphone invented in 2023?",
+              "noncommittal": 1
+            }
+          }
+        ],
+        "input_keys": [
+          "answer",
+          "context"
+        ],
+        "output_key": "output",
+        "output_type": "json",
+        "language": "english"
+      }
+    }
+  },
+  "answer_correctness": {
+    "correctness_prompt": {
+      "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "answer_correctness",
+        "instruction": "Given a ground truth and an answer statements, analyze each statement and classify them in one of the following categories:\n\n- TP (true positive): statements that are present in answer that are also directly supported by the one or more statements in ground truth,\n- FP (false positive): statements present in the answer but not directly supported by any statement in ground truth,\n- FN (false negative): statements found in the ground truth but not present in answer.\n\nEach statement can only belong to one of the categories. Provide a reason for each classification.\n",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"TP\": {\"title\": \"Tp\", \"type\": \"array\", \"items\": {\"type\": \"object\"}}, \"FP\": {\"title\": \"Fp\", \"type\": \"array\", \"items\": {\"type\": \"object\"}}, \"FN\": {\"title\": \"Fn\", \"type\": \"array\", \"items\": {\"type\": \"object\"}}}, \"required\": [\"TP\", \"FP\", \"FN\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "question": "What powers the sun and what is its primary function?",
+            "answer": [
+              "The sun is powered by nuclear fission, similar to nuclear reactors on Earth.",
+              "The primary function of the sun is to provide light to the solar system."
+            ],
+            "ground_truth": [
+              "The sun is powered by nuclear fusion, where hydrogen atoms fuse to form helium.",
+              "This fusion process in the sun's core releases a tremendous amount of energy.",
+              "The energy from the sun provides heat and light, which are essential for life on Earth.",
+              "The sun's light plays a critical role in Earth's climate system.",
+              "Sunlight helps to drive the weather and ocean currents."
+            ],
+            "classification": {
+              "TP": [
+                {
+                  "statement": "The primary function of the sun is to provide light to the solar system.",
+                  "reason": "This statement is somewhat supported by the ground truth mentioning the sun providing light and its roles, though it focuses more broadly on the sun's energy."
+                }
+              ],
+              "FP": [
+                {
+                  "statement": "The sun is powered by nuclear fission, similar to nuclear reactors on Earth.",
+                  "reason": "This statement is incorrect and contradicts the ground truth which states that the sun is powered by nuclear fusion."
+                }
+              ],
+              "FN": [
+                {
+                  "statement": "The sun is powered by nuclear fusion, where hydrogen atoms fuse to form helium.",
+                  "reason": "This accurate description of the sun’s power source is not included in the answer."
+                },
+                {
+                  "statement": "This fusion process in the sun's core releases a tremendous amount of energy.",
+                  "reason": "This process and its significance are not mentioned in the answer."
+                },
+                {
+                  "statement": "The energy from the sun provides heat and light, which are essential for life on Earth.",
+                  "reason": "The answer only mentions light, omitting the essential aspects of heat and its necessity for life, which the ground truth covers."
+                },
+                {
+                  "statement": "The sun's light plays a critical role in Earth's climate system.",
+                  "reason": "This broader impact of the sun’s light on Earth's climate system is not addressed in the answer."
+                },
+                {
+                  "statement": "Sunlight helps to drive the weather and ocean currents.",
+                  "reason": "The effect of sunlight on weather patterns and ocean currents is omitted in the answer."
+                }
+              ]
+            }
+          },
+          {
+            "question": "What is the boiling point of water?",
+            "answer": [
+              "The boiling point of water is 100 degrees Celsius at sea level"
+            ],
+            "ground_truth": [
+              "The boiling point of water is 100 degrees Celsius (212 degrees Fahrenheit) at sea level.",
+              "The boiling point of water can change with altitude."
+            ],
+            "classification": {
+              "TP": [
+                {
+                  "statement": "The boiling point of water is 100 degrees Celsius at sea level",
+                  "reason": "This statement is directly supported by the ground truth which specifies the boiling point of water as 100 degrees Celsius at sea level."
+                }
+              ],
+              "FP": [],
+              "FN": [
+                {
+                  "statement": "The boiling point of water can change with altitude.",
+                  "reason": "This additional information about how the boiling point of water can vary with altitude is not mentioned in the answer."
+                }
+              ]
+            }
+          }
+        ],
+        "input_keys": [
+          "question",
+          "answer",
+          "ground_truth"
+        ],
+        "output_key": "classification",
+        "output_type": "json",
+        "language": "english"
+      }
+    },
+    "long_form_answer_prompt": {
+      "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "long_form_answer",
+        "instruction": "Given a question, an answer, and sentences from the answer analyze the complexity of each sentence given under 'sentences' and break down each sentence into one or more fully understandable statements while also ensuring no pronouns are used in each statement. Format the outputs in JSON.",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/Statements\"}, \"definitions\": {\"Statements\": {\"title\": \"Statements\", \"type\": \"object\", \"properties\": {\"sentence_index\": {\"title\": \"Sentence Index\", \"description\": \"Index of the sentence from the statement list\", \"type\": \"integer\"}, \"simpler_statements\": {\"title\": \"Simpler Statements\", \"description\": \"the simpler statements\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"sentence_index\", \"simpler_statements\"]}}}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "question": "Who was Albert Einstein and what is he best known for?",
+            "answer": "He was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. He was best known for developing the theory of relativity, he also made important contributions to the development of the theory of quantum mechanics.",
+            "sentences": "\n        0:He was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. \n        1:He was best known for developing the theory of relativity, he also made important contributions to the development of the theory of quantum mechanics.\n        ",
+            "analysis": [
+              {
+                "sentence_index": 0,
+                "simpler_statements": [
+                  "Albert Einstein was a German-born theoretical physicist.",
+                  "Albert Einstein is recognized as one of the greatest and most influential physicists of all time."
+                ]
+              },
+              {
+                "sentence_index": 1,
+                "simpler_statements": [
+                  "Albert Einstein was best known for developing the theory of relativity.",
+                  "Albert Einstein also made important contributions to the development of the theory of quantum mechanics."
+                ]
+              }
+            ]
+          }
+        ],
+        "input_keys": [
+          "question",
+          "answer",
+          "sentences"
+        ],
+        "output_key": "analysis",
+        "output_type": "json",
+        "language": "english"
+      }
+    }
+  },
+  "context_recall": {
+    "context_recall_prompt": {
+      "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+      "hashKind": "canonical-json-utf8",
+      "definition": {
+        "name": "context_recall",
+        "instruction": "Given a context, and an answer, analyze each sentence in the answer and classify if the sentence can be attributed to the given context or not. Use only \"Yes\" (1) or \"No\" (0) as a binary classification. Output json with reason.",
+        "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"array\", \"items\": {\"$ref\": \"#/definitions/ContextRecallClassificationAnswer\"}, \"definitions\": {\"ContextRecallClassificationAnswer\": {\"title\": \"ContextRecallClassificationAnswer\", \"type\": \"object\", \"properties\": {\"statement\": {\"title\": \"Statement\", \"type\": \"string\"}, \"attributed\": {\"title\": \"Attributed\", \"type\": \"integer\"}, \"reason\": {\"title\": \"Reason\", \"type\": \"string\"}}, \"required\": [\"statement\", \"attributed\", \"reason\"]}}}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+        "examples": [
+          {
+            "question": "What can you tell me about albert Albert Einstein?",
+            "context": "Albert Einstein (14 March 1879 - 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called 'the world's most famous equation'. He received the 1921 Nobel Prize in Physics 'for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect', a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.",
+            "answer": "Albert Einstein born in 14 March 1879 was  German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905.  Einstein moved to Switzerland in 1895",
+            "classification": [
+              {
+                "statement": "Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time.",
+                "attributed": 1,
+                "reason": "The date of birth of Einstein is mentioned clearly in the context."
+              },
+              {
+                "statement": "He received the 1921 Nobel Prize in Physics for his services to theoretical physics.",
+                "attributed": 1,
+                "reason": "The exact sentence is present in the given context."
+              },
+              {
+                "statement": "He published 4 papers in 1905.",
+                "attributed": 0,
+                "reason": "There is no mention about papers he wrote in the given context."
+              },
+              {
+                "statement": "Einstein moved to Switzerland in 1895.",
+                "attributed": 0,
+                "reason": "There is no supporting evidence for this in the given context."
+              }
+            ]
+          },
+          {
+            "question": "who won 2020 icc world cup?",
+            "context": "The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.",
+            "answer": "England",
+            "classification": [
+              {
+                "statement": "England won the 2022 ICC Men's T20 World Cup.",
+                "attributed": 1,
+                "reason": "From context it is clear that England defeated Pakistan to win the World Cup."
+              }
+            ]
+          },
+          {
+            "question": "What is the primary fuel for the Sun?",
+            "context": "NULL",
+            "answer": "Hydrogen",
+            "classification": [
+              {
+                "statement": "The Sun's primary fuel is hydrogen.",
+                "attributed": 0,
+                "reason": "The context contains no information"
+              }
+            ]
+          }
+        ],
+        "input_keys": [
+          "question",
+          "context",
+          "answer"
+        ],
+        "output_key": "classification",
+        "output_type": "json",
+        "language": "english"
+      }
+    }
+  }
+}

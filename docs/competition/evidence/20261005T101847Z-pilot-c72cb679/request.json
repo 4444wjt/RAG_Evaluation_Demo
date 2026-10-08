@@ -1,0 +1,10 @@
+{
+  "doc_path": "scenarios/deposit_insurance.txt",
+  "testset_path": "scenarios/competition_25/pilot.json",
+  "model_names": [
+    "deepseek-chat"
+  ],
+  "faith_threshold": 0.8,
+  "ctx_prec_threshold": 0.8,
+  "version_label": "20261005T101847Z-pilot-c72cb679"
+}

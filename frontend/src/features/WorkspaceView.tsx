@@ -40,14 +40,14 @@ export function WorkspaceView({ config, onChange, onRun, running, hasLiveResult,
       <Stage number="01" name="Dataset">
         <div className="stage-heading"><h3>数据输入</h3><p>使用已放入项目目录的文档；自定义测试集可选。</p></div>
         <div className="dataset-grid">
-          <div className="control-surface"><label className="field-label" htmlFor="dataset-preset"><Icon name="folder"/>评测文档</label>
+          <div className="workspace-field"><label className="field-label" htmlFor="dataset-preset"><Icon name="folder"/>评测文档</label>
             <select id="dataset-preset" value={DATASETS.some((item) => item.path === config.docPath) ? config.docPath : '__custom__'} onChange={(event) => update({ docPath: event.target.value === '__custom__' ? '' : event.target.value })}>
               {DATASETS.map((item) => <option key={item.path} value={item.path}>{item.label}</option>)}<option value="__custom__">其他项目内文档</option>
             </select>
             <label className="sr-only" htmlFor="doc-path">评测文档相对路径</label><input id="doc-path" value={config.docPath} onChange={(event) => update({ docPath: event.target.value })} placeholder="demo.txt 或 scenarios/ 下的文档" autoComplete="off" spellCheck={false}/>
             <small>TXT / PDF / DOCX / MD · 路径由服务端检查</small>
           </div>
-          <div className="control-surface"><label className="field-label" htmlFor="testset-mode"><Icon name="layers"/>测试集来源</label>
+          <div className="workspace-field"><label className="field-label" htmlFor="testset-mode"><Icon name="layers"/>测试集来源</label>
             <select id="testset-mode" value={config.testsetMode} onChange={(event) => update({ testsetMode: event.target.value as WorkspaceConfig['testsetMode'] })}>
               <option value="auto">基于文档自动生成</option><option value="custom">已有自定义测试集</option><option value="benchmark">TruthfulQA 基准</option>
             </select>
@@ -60,7 +60,10 @@ export function WorkspaceView({ config, onChange, onRun, running, hasLiveResult,
         <div className="model-grid">{MODELS.map((model) => {
           const selected = config.modelNames.includes(model.id);
           return <button type="button" className={`model-card ${selected ? 'selected' : ''}`} aria-pressed={selected} aria-label={`选择 ${model.label}`} key={model.id} onClick={() => toggleModel(model.id)}>
-            <span className="model-card-top"><span className="model-identity"><span className="model-avatar">{model.initials}</span><strong>{model.label}</strong></span><span className="model-status"><span className={`model-check ${selected ? 'checked' : ''}`} aria-hidden="true">{selected && <Icon name="check" size={13}/>}</span>{selected ? '已选择' : '可选择'}</span></span>
+            <span className="model-card-top">
+              <span className="model-identity"><strong title={model.label}>{model.label}</strong></span>
+              <span className="model-status"><span className={`model-check ${selected ? 'checked' : ''}`} aria-hidden="true">{selected && <Icon name="check" size={13}/>}</span>{selected ? '已选择' : '可选择'}</span>
+            </span>
             <span className="model-detail">{model.detail}</span>
           </button>;
         })}</div>
@@ -71,7 +74,7 @@ export function WorkspaceView({ config, onChange, onRun, running, hasLiveResult,
         <div className="parameter-grid">{[
           { key: 'faithThreshold' as const, label: '忠实度门禁阈值', note: '用于判断回答是否忠实于检索上下文。' },
           { key: 'contextThreshold' as const, label: '上下文精度门禁阈值', note: '用于判断检索上下文是否与问题相关。' },
-        ].map((parameter) => <div className="control-surface parameter-control" key={parameter.key}>
+        ].map((parameter) => <div className="workspace-field parameter-control" key={parameter.key}>
           <div className="parameter-heading"><label htmlFor={parameter.key}>{parameter.label}</label>{config.useDefaultThresholds ? <span className="badge neutral">后端默认</span> : <div className="parameter-value"><input aria-label={parameter.label} id={parameter.key} type="number" min={0} max={1} step={0.05} value={Number.isFinite(config[parameter.key]) ? config[parameter.key] : ''} onChange={(event) => update({ [parameter.key]: event.currentTarget.valueAsNumber })}/><button className="reset-button" type="button" aria-label={`重置${parameter.label}`} title="恢复手动预设 0.8" onClick={() => update({ [parameter.key]: 0.8 })}><Icon name="refresh" size={14}/></button></div>}</div>
           <p>{parameter.note}</p>
           {config.useDefaultThresholds ? <span className="parameter-default">实际阈值由服务端配置提供</span> : <input type="range" aria-label={`${parameter.label}滑条`} min={0} max={1} step={0.05} value={Number.isFinite(config[parameter.key]) ? config[parameter.key] : 0} onChange={(event) => update({ [parameter.key]: event.currentTarget.valueAsNumber })}/>}

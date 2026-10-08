@@ -8,7 +8,7 @@ from .negatives import (
     _negative_context,
     _fallback_negative_testset,
 )
-from .trace import trace_hallucinations, TRACE_PROMPT_TEMPLATE
+from .trace import trace_hallucinations, trace_unavailable, TRACE_PROMPT_TEMPLATE
 
 __all__ = [
     "load_and_split_doc",
@@ -22,5 +22,6 @@ __all__ = [
     "_negative_context",
     "_fallback_negative_testset",
     "trace_hallucinations",
+    "trace_unavailable",
     "TRACE_PROMPT_TEMPLATE",
 ]

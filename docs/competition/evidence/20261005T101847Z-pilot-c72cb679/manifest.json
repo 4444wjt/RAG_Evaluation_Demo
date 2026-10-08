@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-web-api-independent-run",
+  "status": "completed",
+  "preparedAt": "2026-10-05T10:18:47.474301+00:00",
+  "codeCommit": "ce97b4af0551c4894aa64d86541d94da6b0b9a19",
+  "workingTreeDirty": true,
+  "runtime": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "runnerSha256": "6cc1a3e9bfad419cbfa47df78a0cff41f0820ff7896096288834fe88dfd530ca",
+  "sourceFiles": [
+    {
+      "path": "backend/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/adapters/models/__init__.py",
+      "sha256": "fee726f1a13daa437ea92013ecfd2aef7468dfb53d1e192e3db5b6ae34befcf8"
+    },
+    {
+      "path": "backend/adapters/models/base.py",
+      "sha256": "6b540c586c73acbb38c5385b7d9513ac36b63867244d2781f5ada3bba2794a7e"
+    },
+    {
+      "path": "backend/adapters/models/openai_compatible.py",
+      "sha256": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791"
+    },
+    {
+      "path": "backend/adapters/models/registry.py",
+      "sha256": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230"
+    },
+    {
+      "path": "backend/api/__init__.py",
+      "sha256": "1e6bc5b72b6278487e68d6f72b57d968b18269cfac50ca8883bda9bcb599c9b4"
+    },
+    {
+      "path": "backend/api/app.py",
+      "sha256": "a777e47aa60ff0ba001e66c6e7c275bd2929eb3351662750e682a9bb46379ab3"
+    },
+    {
+      "path": "backend/api/schemas.py",
+      "sha256": "3de02a3f49a94b0a5a088c1b793bc83e8eea7208c2a6be340453ea1748413d35"
+    },
+    {
+      "path": "backend/api/serialization.py",
+      "sha256": "68d5f806b581f96c4bf75d9af5be372b11dae69160063974bd4f21f4671b670a"
+    },
+    {
+      "path": "backend/api/service.py",
+      "sha256": "06a171658a4051afec93d2bd58d52ea4eed4daed2344522677767ae05a9ec44d"
+    },
+    {
+      "path": "backend/config.py",
+      "sha256": "8924782aefa70cf80bec88edf0b9cb6f952d848d96375cae55e05431a4dedec8"
+    },
+    {
+      "path": "backend/core/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/core/gate.py",
+      "sha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae"
+    },
+    {
+      "path": "backend/core/pipeline.py",
+      "sha256": "8ca798a875c79abcc14688f41b45b7ff7bfc17ccdd3029a40373d68cc2fc86a6"
+    },
+    {
+      "path": "backend/core/types.py",
+      "sha256": "2ef5e5e488e04edd7b92858cf1d601841024945df4101b37ab4a458b44be66c4"
+    },
+    {
+      "path": "backend/core/utils.py",
+      "sha256": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef"
+    },
+    {
+      "path": "backend/reporting/__init__.py",
+      "sha256": "ed5d8b6a403dabe6fabe9755ad69e53a558cf179b772ca466b52bf8518f0d780"
+    },
+    {
+      "path": "backend/reporting/charts.py",
+      "sha256": "4bf2d439df1d94a35685ca9d092e9e0623692b7722ee7be6b11fe1446cd65b01"
+    },
+    {
+      "path": "backend/reporting/evaluation_chart.py",
+      "sha256": "9aa25be1829f19c326dd088ba2a0a4f62e18169a785f46a292c74b1bc1874305"
+    },
+    {
+      "path": "backend/reporting/excel.py",
+      "sha256": "aa287e877b19fa6c080e12fee97d683301abffb130a54e0c2d332a69dc336fba"
+    },
+    {
+      "path": "backend/reporting/html.py",
+      "sha256": "a7cf5971fc86874388b3639be07aa9f975476f27d1d55c2eb85dbe8b94c4defd"
+    },
+    {
+      "path": "backend/reporting/pdf.py",
+      "sha256": "073ed57400405970777a76685b7dab8262ff468cb90fbd93d0e3cd11d19342fc"
+    },
+    {
+      "path": "backend/services/__init__.py",
+      "sha256": "cd8d1a0a50a2c077cdf9994cf5902aaa50eb9ce11c63aa1d1762384936ea258f"
+    },
+    {
+      "path": "backend/services/answering.py",
+      "sha256": "96b752635d16f30d2fbf8f45393f22ed62d38460d6599a8360b656d08f6da5f5"
+    },
+    {
+      "path": "backend/services/documents.py",
+      "sha256": "8cc9dc977650e48160b39fc11633d695f72f26b75e6ccb30be66ece7ae27211d"
+    },
+    {
+      "path": "backend/services/negatives.py",
+      "sha256": "189e5b9c7b20b478cc49f68c4fa55486386e08be55dd2e3f06ad110f27aa5102"
+    },
+    {
+      "path": "backend/services/retriever.py",
+      "sha256": "879e6bc6307e308e984a5c918cf37af903ae1e7f6a31bf7c1707fc797508e9b8"
+    },
+    {
+      "path": "backend/services/testsets.py",
+      "sha256": "32446f6698c9f6e4bf3140f40595824a2b9a738779a371bf7e706b85bc140541"
+    },
+    {
+      "path": "backend/services/trace.py",
+      "sha256": "c4b10b6f159062f357363f51602fea3b75157852192acad6f8f2334387ad72a8"
+    },
+    {
+      "path": "backend/storage/__init__.py",
+      "sha256": "a91a32f12ea8ee6250e2cd77cb40b351d044c5ec35c4c10a5367619cca60b63f"
+    },
+    {
+      "path": "backend/storage/base.py",
+      "sha256": "00cededa92a1fcf72612140ec46dbc60aa82e721b25432fd6d0269e7397bce5f"
+    },
+    {
+      "path": "backend/storage/json_history.py",
+      "sha256": "d448cf1642c17d8de0c16ae4b657589f0322086ac694210764702c6f0edcdf50"
+    },
+    {
+      "path": "backend/storage/local_artifacts.py",
+      "sha256": "74200ee7ba9d924f31346d4ae01b9f37607435676e80fb3b577c739a9ab05623"
+    },
+    {
+      "path": "scenarios/deposit_insurance.txt",
+      "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+    },
+    {
+      "path": "scenarios/competition_25/testset.json",
+      "sha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f"
+    },
+    {
+      "path": "scenarios/competition_25/pilot.json",
+      "sha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9"
+    },
+    {
+      "path": "scenarios/competition_25/case-manifest.json",
+      "sha256": "e6430b8ff91345226fd1b80ce99aa05cd57d6b9156c1d186caf18ffdcbe16ede"
+    }
+  ],
+  "sourceTreeSha256": "8704bc8ad0571a8c1f3115db4b21ba9780ec372ee6304186a021137de682dc00",
+  "caseIds": [
+    "D06",
+    "C02",
+    "C05",
+    "N01",
+    "F03"
+  ],
+  "authorValidation": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "note": null
+  },
+  "request": {
+    "doc_path": "scenarios/deposit_insurance.txt",
+    "testset_path": "scenarios/competition_25/pilot.json",
+    "model_names": [
+      "deepseek-chat"
+    ],
+    "faith_threshold": 0.8,
+    "ctx_prec_threshold": 0.8,
+    "version_label": "20261005T101847Z-pilot-c72cb679"
+  },
+  "limitations": [
+    "生成、Ragas Judge与Trace使用当前同一模型；不是独立裁判。",
+    "不是旧冻结Demo复跑、阈值校准或总体准确率证明。",
+    "同机隔离源码目录使用既有Python依赖与Embedding缓存，不是全新操作系统验证。",
+    "实际扣费仅能由作者账单确认，token观测不是账单。",
+    "用户授权使用5题待确认草稿测量消耗，不代表参考答案已由作者核验。"
+  ],
+  "purpose": "draft-token-pilot",
+  "authorConfirmed": false,
+  "startedAt": "2026-10-05T10:18:47.529028+00:00",
+  "configuration": {
+    "generatorModel": "deepseek-chat",
+    "ragasJudgeModel": "deepseek-chat",
+    "traceJudgeModel": "deepseek-chat",
+    "endpoint": "https://api.deepseek.com",
+    "temperature": 0,
+    "traceEnabled": true,
+    "chunkSize": 200,
+    "chunkOverlap": 30,
+    "topK": 4,
+    "embedding": "BAAI/bge-small-zh-v1.5",
+    "llmTimeout": 180,
+    "llmMaxRetries": 2,
+    "evaluationTimeout": 300,
+    "promptVersion": "source hashes plus observed expanded messages in llm-events.jsonl"
+  },
+  "httpStatus": 200,
+  "answerCount": 5,
+  "gatePassed": true,
+  "gateMessage": "✅ 质量门禁通过，允许发布",
+  "finishedAt": "2026-10-05T10:20:04.433511+00:00",
+  "wallSeconds": 76.56,
+  "tokenObservation": {
+    "startedCalls": 64,
+    "completedCalls": 64,
+    "errorEvents": 0,
+    "callsWithTokenUsage": 64,
+    "promptTokens": 102375,
+    "completionTokens": 4580,
+    "actualCharge": null,
+    "note": "观察到的LangChain调用及提供方返回token，不保证覆盖HTTP层重试；实际费用未取得账单。"
+  },
+  "artifacts": [
+    {
+      "path": "project/eval_history.json",
+      "bytes": 1121,
+      "sha256": "cca926e6709df847270b4afc775b23b18e94393ff48d263eaaa3c78072f6e627"
+    },
+    {
+      "path": "project/multi_model_summary.csv",
+      "bytes": 482,
+      "sha256": "ad92136521d071c2dd619e45ee0cd9e9e6483e28bfe98a6eaa00b752f7f633e5"
+    },
+    {
+      "path": "project/ragas_report.html",
+      "bytes": 93529,
+      "sha256": "1c85d3007bda8fae58188e7b8f2ad9bff032a2839fbd7337ca3e5231704a5f62"
+    },
+    {
+      "path": "project/ragas_report_deepseek-chat.csv",
+      "bytes": 13770,
+      "sha256": "e3abadb8dcaa9fd468c5aeb42095e843ee6ad2a17d830ca394e957278b08c314"
+    },
+    {
+      "path": "project/result_chart.png",
+      "bytes": 66645,
+      "sha256": "d07b572f6bddcb314f6da2d772c97ec585d16c6b19cdf411a83c7038e34f8c4b"
+    }
+  ]
+}

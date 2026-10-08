@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "kind": "formal-run-authorization",
+  "status": "awaiting_budget_and_paid_authorization",
+  "preparedAt": "2026-10-05",
+  "scope": "25题 × 单模型",
+  "datasetId": "competition-25-v1",
+  "caseCount": 25,
+  "caseIds": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09",
+    "D10",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "N01",
+    "N02",
+    "N03",
+    "N04",
+    "N05",
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05"
+  ],
+  "authorValidation": {
+    "status": "confirmed",
+    "reviewer": "Kk",
+    "reviewedAt": "2026-10-05",
+    "adjustments": "无"
+  },
+  "frozenInputs": [
+    {
+      "path": "scenarios/competition_25/testset.json",
+      "sha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f",
+      "purpose": "25题正式输入"
+    },
+    {
+      "path": "scenarios/deposit_insurance.txt",
+      "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+      "purpose": "唯一检索原文"
+    },
+    {
+      "path": "scenarios/competition_25/case-manifest.json",
+      "sha256": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba",
+      "purpose": "题目、依据、预期行为与作者确认绑定"
+    },
+    {
+      "path": "scenarios/competition_25/pilot.json",
+      "sha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9",
+      "purpose": "既有5题预跑输入，仅作历史基线，不纳入本次25题运行"
+    }
+  ],
+  "modelScope": {
+    "requestedModel": "deepseek-chat",
+    "modelCount": 1,
+    "actualReturnedModel": "运行时逐次记录，当前未知",
+    "endpoint": "沿用现有本地配置，运行时记录；本授权单不复制密钥",
+    "expandToThreeModels": false
+  },
+  "evaluationConfig": {
+    "ragasVersion": "0.1.21",
+    "sentenceAdapterVersion": "zh-sentence-v1",
+    "embedding": {
+      "model": "BAAI/bge-small-zh-v1.5",
+      "revision": "unknown，运行时记录实际来源"
+    },
+    "metrics": [
+      "Faithfulness",
+      "Context Precision",
+      "Answer Relevancy",
+      "Answer Correctness",
+      "Context Recall"
+    ],
+    "answerCorrectnessWeights": [
+      0.75,
+      0.25
+    ],
+    "qualityGateThresholds": {
+      "positiveFaithfulness": 0.8,
+      "positiveContextPrecision": 0.8
+    },
+    "trace": "沿用现有配置，运行时记录实际开关与结果覆盖",
+    "parameters": "沿用当前Web API配置，不修改题集、评分公式、Trace或门禁",
+    "modelRequest": {
+      "temperature": 0,
+      "modelTimeoutSeconds": 180,
+      "modelSdkMaxRetries": 2,
+      "maxTokens": "unknown，沿用提供方默认上限并在运行时记录"
+    },
+    "runConfig": {
+      "maxWorkers": 1,
+      "metricDeadlineSeconds": 300,
+      "seed": 42,
+      "note": "沿用现有Ragas配置；不为本次运行临时提高重试或修改阈值。"
+    },
+    "traceConfig": "沿用现有Trace开关；实际traceEnabled、非空/空/解析失败分别写入运行归档。"
+  },
+  "expectedUsage": {
+    "basisRun": {
+      "archive": "20261005T131353Z-pilot-35f623cb",
+      "caseCount": 5,
+      "totalTokens": 111996,
+      "completedLogicalCalls": 65,
+      "returnedModel": "deepseek-flash"
+    },
+    "singleModel25Estimate": {
+      "totalTokens": 559980,
+      "completedLogicalCalls": 325,
+      "method": "按修复后5题观察值线性外推，仅为预算估算；缓存比例、输入长度、重试和返回长度会变化"
+    },
+    "costEstimateCny": {
+      "offPeak": 0.2245,
+      "peak": 0.4491,
+      "basis": "按修复后5题实际返回模型deepseek-flash公开单价线性外推",
+      "actualCharge": "unknown，未取得账单；不代表实际扣费",
+      "pricingMayDiffer": true
+    }
+  },
+  "retryLimits": {
+    "modelSdkMaxRetries": 2,
+    "modelSdkMeaning": "首次请求加最多2次HTTP重试；不是整批调用上限",
+    "ragasRunConfigMaxRetries": 10,
+    "ragasMeaning": "沿用现有RunConfig；仅对既有可重试异常路径生效，包含首次尝试",
+    "metricJsonRepairMaxRetries": 1,
+    "wholeBatchAutomaticRerun": false,
+    "failedResults": "保留失败、缺失指标和空Trace记录，不自动整批重跑"
+  },
+  "budgetAndAuthorization": {
+    "budgetStatus": "待用户单独确认人民币预算",
+    "paidExecutionAuthorization": false,
+    "automaticCostStop": false,
+    "notice": "当前工具没有费用超额自动停止能力，需人工监控账户余额和账单。"
+  },
+  "archiveRules": {
+    "newArchivePattern": "work/competition/runs/<UTC>-full-<id>/",
+    "overwriteOldResults": false,
+    "keepOldRuns": true,
+    "noCommit": true,
+    "noPush": true
+  },
+  "successBoundary": [
+    "完成一次25题单模型真实运行并保存完整产物",
+    "记录中文兼容版本、实际响应模型、token与结果覆盖",
+    "不以分数上涨或PASS作为成功条件",
+    "不将结果表述为总体准确率、独立认证或公平模型排名"
+  ]
+}

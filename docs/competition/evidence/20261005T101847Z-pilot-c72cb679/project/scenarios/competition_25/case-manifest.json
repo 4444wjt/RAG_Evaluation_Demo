@@ -1,0 +1,848 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "competition-25-v1",
+  "title": "存款保险法规节选：25题参赛评测案例",
+  "status": "awaiting_author_validation",
+  "scope": "同一法规节选的25个不同问题，部分共享法条；不是统计独立样本、总体准确率基准或法律咨询。",
+  "preparation": "AI依据已有公开法规节选整理问题、参考答案草稿与定位材料；作者尚未逐题确认。本批不继承旧13条冻结Demo回答的人工核验。",
+  "inputs": [
+    {
+      "path": "scenarios/competition_25/testset.json",
+      "sha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f",
+      "caseCount": 25
+    },
+    {
+      "path": "scenarios/competition_25/pilot.json",
+      "sha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9",
+      "caseCount": 5
+    }
+  ],
+  "categoryCounts": {
+    "direct": 10,
+    "conditional": 5,
+    "missing": 5,
+    "false_premise": 5
+  },
+  "caseTypeCounts": {
+    "positive": 20,
+    "negative": 5
+  },
+  "classification": "材料缺失题采用negative和文档未提及；可依据原文纠正错误前提的题采用positive，不能当成拒答样本。",
+  "retrieval": "testset.json和pilot.json不含contexts。下面references只是作者确认与回查材料，不注入检索；现有Web API仍从文档真实检索上下文。",
+  "authorValidation": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewedAt": null,
+    "note": null
+  },
+  "pilot": [
+    {
+      "id": "D06",
+      "pilotIndex": 0,
+      "rowIndex": 5
+    },
+    {
+      "id": "C02",
+      "pilotIndex": 1,
+      "rowIndex": 11
+    },
+    {
+      "id": "C05",
+      "pilotIndex": 2,
+      "rowIndex": 14
+    },
+    {
+      "id": "N01",
+      "pilotIndex": 3,
+      "rowIndex": 15
+    },
+    {
+      "id": "F03",
+      "pilotIndex": 4,
+      "rowIndex": 22
+    }
+  ],
+  "document": {
+    "path": "scenarios/deposit_insurance.txt",
+    "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+    "title": "存款保险条例（节选）",
+    "url": "https://fgw.sh.gov.cn/cmsres/12/12ffae28e34c4ddca96be15eb536cfcc/9d219522a984fcf99715211700a297b2.pdf",
+    "excerpt": "本地材料选录第一至五、第八至十、第十九条；来源PDF第1—3页及第5—6页。未扩大或改写原文。",
+    "rights": "原文是官方行政法规文本；保留来源与节选范围，不将其表述为项目自有MIT原创。中华人民共和国著作权法第五条列明法律、法规等不适用本法。",
+    "rightsReference": "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+  },
+  "testsetSha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f",
+  "pilotSha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9",
+  "pilotIds": [
+    "D06",
+    "C02",
+    "C05",
+    "N01",
+    "F03"
+  ],
+  "cases": [
+    {
+      "id": "D01",
+      "rowIndex": 0,
+      "category": "direct",
+      "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+      "groundTruth": "保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+      "caseType": "positive",
+      "expectedBehavior": "列出原文目的，不扩展政策成效。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E01",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 3,
+          "quote": "第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。"
+        }
+      ]
+    },
+    {
+      "id": "D02",
+      "rowIndex": 1,
+      "category": "direct",
+      "question": "节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？",
+      "groundTruth": "在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构。",
+      "caseType": "positive",
+      "expectedBehavior": "保留吸收存款和境内条件。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E02",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 5,
+          "quote": "第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。"
+        }
+      ]
+    },
+    {
+      "id": "D03",
+      "rowIndex": 2,
+      "category": "direct",
+      "question": "存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？",
+      "groundTruth": "投保机构向存款保险基金管理机构交纳保费，由存款保险基金管理机构依照条例向存款人偿付被保险存款。",
+      "caseType": "positive",
+      "expectedBehavior": "区分投保机构、管理机构、存款人。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E04",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 8,
+          "quote": "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        }
+      ]
+    },
+    {
+      "id": "D04",
+      "rowIndex": 3,
+      "category": "direct",
+      "question": "节选中被保险存款包括哪些币种的存款？",
+      "groundTruth": "包括投保机构吸收的人民币存款和外币存款，但仍受第四条所列除外规定限制。",
+      "caseType": "positive",
+      "expectedBehavior": "不能回答所有外币资产都受保护。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E05",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 10,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ]
+    },
+    {
+      "id": "D05",
+      "rowIndex": 4,
+      "category": "direct",
+      "question": "第四条列出的不属于被保险存款范围的存款有哪些？",
+      "groundTruth": "金融机构同业存款、投保机构高级管理人员在本投保机构的存款，以及存款保险基金管理机构规定不予保险的其他存款。",
+      "caseType": "positive",
+      "expectedBehavior": "保留本投保机构的限制。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E05",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 10,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ]
+    },
+    {
+      "id": "D06",
+      "rowIndex": 5,
+      "category": "direct",
+      "question": "根据节选，存款保险的最高偿付限额是多少？",
+      "groundTruth": "人民币50万元。",
+      "caseType": "positive",
+      "expectedBehavior": "按冻结节选回答，不当作截至2026年的最新调整证明。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E06",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 12,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。"
+        }
+      ]
+    },
+    {
+      "id": "D07",
+      "rowIndex": 6,
+      "category": "direct",
+      "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+      "groundTruth": "在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+      "caseType": "positive",
+      "expectedBehavior": "不能说取得存款人全部债权。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E08",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 14,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ]
+    },
+    {
+      "id": "D08",
+      "rowIndex": 7,
+      "category": "direct",
+      "question": "存款保险费率由哪两部分构成？",
+      "groundTruth": "基准费率和风险差别费率。",
+      "caseType": "positive",
+      "expectedBehavior": "不补造费率数值。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E11",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 20,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。"
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "rowIndex": 8,
+      "category": "direct",
+      "question": "按节选，投保机构应交保费按照哪些因素计算？",
+      "groundTruth": "按照本投保机构的被保险存款和管理机构确定的适用费率计算，具体办法由管理机构规定。",
+      "caseType": "positive",
+      "expectedBehavior": "不自造费率公式细节。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E13",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 23,
+          "quote": "第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。"
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "rowIndex": 9,
+      "category": "direct",
+      "question": "投保机构应定期报送哪些与存款保险有关的资料？",
+      "groundTruth": "被保险存款余额、存款结构情况，以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。",
+      "caseType": "positive",
+      "expectedBehavior": "按列明范围回答。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E14",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 24,
+          "quote": "投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。"
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "rowIndex": 10,
+      "category": "conditional",
+      "question": "中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？",
+      "groundTruth": "两类分支机构原则上不适用第二条前款规定；中国与其他国家或地区对存款保险制度另有安排的除外。",
+      "caseType": "positive",
+      "expectedBehavior": "同时说明范围与例外，不作绝对否定。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E02",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 5,
+          "quote": "第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。"
+        },
+        {
+          "referenceId": "E03",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 6,
+          "quote": "投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "rowIndex": 11,
+      "category": "conditional",
+      "question": "假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？",
+      "groundTruth": "本金与利息、各被保险账户合并计算共51万元；最高偿付限额内为50万元，超过限额的1万元依法从投保机构清算财产中受偿。",
+      "caseType": "positive",
+      "expectedBehavior": "49万元和2万元是题目明确假设，不是原文数据；不能保证超限1万元最终全额受偿。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E06",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 12,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。"
+        },
+        {
+          "referenceId": "E07",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 13,
+          "quote": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "rowIndex": 12,
+      "category": "conditional",
+      "question": "最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？",
+      "groundTruth": "中国人民银行会同国务院有关部门根据规定因素调整，报国务院批准后公布执行。",
+      "caseType": "positive",
+      "expectedBehavior": "不能省略批准与公布执行。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E06",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 12,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "rowIndex": 13,
+      "category": "conditional",
+      "question": "条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？",
+      "groundTruth": "前者在管理机构规定的期限内办理；后者自工商行政管理部门颁发营业执照之日起6个月内办理。",
+      "caseType": "positive",
+      "expectedBehavior": "不能把6个月一律套用所有机构。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E10",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 17,
+          "quote": "第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。"
+        },
+        {
+          "referenceId": "E10",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 18,
+          "quote": "本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "rowIndex": 14,
+      "category": "conditional",
+      "question": "人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？",
+      "groundTruth": "属于第十九条列明情形，存款人可要求在条例限额内偿付被保险存款；管理机构应在该情形发生之日起7个工作日内足额偿付。",
+      "caseType": "positive",
+      "expectedBehavior": "保留裁定受理、限额、被保险存款、工作日四个条件。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E06",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 12,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 27,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款："
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 28,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 29,
+          "quote": "（二）存款保险基金管理机构实施被撤销投保机构的清算；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 30,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 31,
+          "quote": "（四）经国务院批准的其他情形。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 32,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ]
+    },
+    {
+      "id": "N01",
+      "rowIndex": 15,
+      "category": "missing",
+      "question": "根据提供节选，某一家具体投保银行当前实际适用的风险差别费率是多少？",
+      "groundTruth": "文档未提及",
+      "caseType": "negative",
+      "expectedBehavior": "不得编造具体费率或用行业常识补数值；可以说明节选只给出费率决定机制。",
+      "absenceReview": {
+        "scope": "仅核对冻结的 scenarios/deposit_insurance.txt 全部文本，不代表完整法规或现实事实不存在",
+        "note": "全文没有具体银行及其费率数值；第九条只规定决定机制。"
+      },
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E11",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 20,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。"
+        },
+        {
+          "referenceId": "E12",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 21,
+          "quote": "各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。"
+        }
+      ]
+    },
+    {
+      "id": "N02",
+      "rowIndex": 16,
+      "category": "missing",
+      "question": "根据提供节选，存款人申请偿付时应拨打哪个官方受理电话号码？",
+      "groundTruth": "文档未提及",
+      "caseType": "negative",
+      "expectedBehavior": "不得从网络记忆补受理电话。",
+      "absenceReview": {
+        "scope": "仅核对冻结的 scenarios/deposit_insurance.txt 全部文本，不代表完整法规或现实事实不存在",
+        "note": "全文无受理电话号码；第十九条有偿付条件但无受理联系方式。"
+      },
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 27,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款："
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 28,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 29,
+          "quote": "（二）存款保险基金管理机构实施被撤销投保机构的清算；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 30,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 31,
+          "quote": "（四）经国务院批准的其他情形。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 32,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ]
+    },
+    {
+      "id": "N03",
+      "rowIndex": 17,
+      "category": "missing",
+      "question": "根据提供节选，存款人申请偿付必须提交的完整材料清单是什么？",
+      "groundTruth": "文档未提及",
+      "caseType": "negative",
+      "expectedBehavior": "不得把投保机构报送资料说成存款人申请材料清单。",
+      "absenceReview": {
+        "scope": "仅核对冻结的 scenarios/deposit_insurance.txt 全部文本，不代表完整法规或现实事实不存在",
+        "note": "全文未列存款人申请材料；第十条是投保机构报送资料。"
+      },
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E14",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 24,
+          "quote": "投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 27,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款："
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 28,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 29,
+          "quote": "（二）存款保险基金管理机构实施被撤销投保机构的清算；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 30,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 31,
+          "quote": "（四）经国务院批准的其他情形。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 32,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ]
+    },
+    {
+      "id": "N04",
+      "rowIndex": 18,
+      "category": "missing",
+      "question": "根据提供节选，某投保机构清算时，超过50万元部分最终能按多少百分比受偿？",
+      "groundTruth": "文档未提及",
+      "caseType": "negative",
+      "expectedBehavior": "不得承诺清偿比例。",
+      "absenceReview": {
+        "scope": "仅核对冻结的 scenarios/deposit_insurance.txt 全部文本，不代表完整法规或现实事实不存在",
+        "note": "第五条只说依法从清算财产中受偿；全文没有具体机构资产、债务及实际清偿率。"
+      },
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E07",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 13,
+          "quote": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+        }
+      ]
+    },
+    {
+      "id": "N05",
+      "rowIndex": 19,
+      "category": "missing",
+      "question": "根据提供节选，社会保险基金和住房公积金存款的具体偿付比例与执行步骤是什么？",
+      "groundTruth": "文档未提及",
+      "caseType": "negative",
+      "expectedBehavior": "可以说明办法另行制定，不能补具体比例与步骤。",
+      "absenceReview": {
+        "scope": "仅核对冻结的 scenarios/deposit_insurance.txt 全部文本，不代表完整法规或现实事实不存在",
+        "note": "第五条明确具体办法另行制定；节选没有收录该办法。"
+      },
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E09",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 15,
+          "quote": "社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。"
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "rowIndex": 20,
+      "category": "false_premise",
+      "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+      "groundTruth": "不对。存款保险实行限额偿付，最高限额为人民币50万元；超过限额部分依法从投保机构清算财产中受偿，节选不保证该部分全额受偿。",
+      "caseType": "positive",
+      "expectedBehavior": "纠正前提，不能直接认可，也不应一律拒答。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E06",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 12,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。"
+        },
+        {
+          "referenceId": "E07",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 13,
+          "quote": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "rowIndex": 21,
+      "category": "false_premise",
+      "question": "外币存款不属于存款保险保障范围，对吗？请按第四条说明。",
+      "groundTruth": "不对。被保险存款包括投保机构吸收的人民币和外币存款，但金融机构同业存款等列明除外存款不在其中。",
+      "caseType": "positive",
+      "expectedBehavior": "纠正币种前提，保留例外。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E05",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 10,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "rowIndex": 22,
+      "category": "false_premise",
+      "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+      "groundTruth": "不对。按节选，交纳保费的主体是投保机构；投保机构按规定每6个月交纳一次保费。",
+      "caseType": "positive",
+      "expectedBehavior": "纠正缴费主体，不额外宣称银行绝不会转嫁任何成本。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E04",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 8,
+          "quote": "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        },
+        {
+          "referenceId": "E15",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 25,
+          "quote": "投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "rowIndex": 23,
+      "category": "false_premise",
+      "question": "第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？",
+      "groundTruth": "不支持。原文是7个工作日，不是7个自然日，且应依照条例偿付。",
+      "caseType": "positive",
+      "expectedBehavior": "纠正时间单位。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 27,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款："
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 28,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 29,
+          "quote": "（二）存款保险基金管理机构实施被撤销投保机构的清算；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 30,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 31,
+          "quote": "（四）经国务院批准的其他情形。"
+        },
+        {
+          "referenceId": "E16",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 32,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "rowIndex": 24,
+      "category": "false_premise",
+      "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+      "groundTruth": "不对。第四条明确将投保机构高级管理人员在本投保机构的存款列为除外。",
+      "caseType": "positive",
+      "expectedBehavior": "纠正特定身份与机构范围，不能扩展为其在所有银行的存款均不受保。",
+      "authorValidation": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": null
+      },
+      "evidence": [
+        {
+          "referenceId": "E05",
+          "path": "scenarios/deposit_insurance.txt",
+          "line": 10,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ]
+    }
+  ]
+}

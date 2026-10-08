@@ -170,3 +170,39 @@ eval_history.json
 node_modules/
 onetake/
 .trae/
+
+# Open-source release: credentials and machine-local configuration
+.env.*
+!/.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+*.local.json
+*.local.yaml
+*.local.yml
+*.local.toml
+.codex/
+.agents/
+.playwright-mcp/
+
+# Tooling and local validation output
+.vite/
+playwright-report/
+test-results/
+blob-report/
+coverage/
+*.tsbuildinfo
+.ruff_cache/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Reviewed presentation images and frontend product assets only
+!/docs/images/*.png
+!/docs/screenshots/*.png
+!/frontend/public/landing/*.png
