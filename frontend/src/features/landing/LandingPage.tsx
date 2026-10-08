@@ -9,10 +9,10 @@ import './landing.css';
 export type LabTarget = 'lab' | 'demo' | 'workspace';
 
 const capabilities = [
-  { icon: 'layers', title: '评测工作区', description: '选择数据与模型，配置评测参数。' },
+  { icon: 'layers', title: '测试用例集', description: '选择数据与模型，配置测试用例。' },
   { icon: 'chart', title: '多模型对比', description: '在同一测试集上比较指标与耗时。' },
-  { icon: 'trace', title: '幻觉分析', description: '从用例进入逐句判断与上下文证据。' },
-  { icon: 'file', title: '评测报告', description: '导入并查看已有 HTML 评测报告。' },
+  { icon: 'trace', title: '逐句断言', description: '从用例进入逐句判断与上下文证据。' },
+  { icon: 'file', title: '报告交付', description: '导入并查看已有 HTML 评测报告。' },
 ] as const;
 
 export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void }) {
@@ -35,7 +35,7 @@ export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void 
     <main id="landing-content" className="landing-main" tabIndex={-1}>
       <ResearchField enabled={motionEnabled}/>
       <section className="landing-hero" aria-labelledby="landing-title">
-        <div className="landing-hero-copy"><h1 id="landing-title">让 <b className="landing-latin">RAG</b> 的回答，<br/>经得起<span>证据检查。</span></h1><p className="landing-intro">从多模型评测到逐句证据溯源，<br className="landing-desktop-break"/>让每一次可靠性判断，都有可检查的依据。</p><div className="landing-actions"><a className="btn btn-primary" href="#/lab/demo" onClick={enter('demo')}><Icon name="play" size={17}/>查看演示</a><a className="landing-text-link" href="#/lab/workspace" onClick={enter('workspace')}>配置评测<Icon name="arrow" size={17}/></a></div><p className="landing-demo-note">已有评测快照 · 无需连接模型服务</p><div className="landing-models"><span>多模型，统一评测视角</span><ul aria-label="演示包含的模型"><li>DeepSeek</li><li>Qwen2.5-7B</li><li>GLM-5.2-Fast</li></ul></div></div>
+        <div className="landing-hero-copy"><h1 id="landing-title">把 <b className="landing-latin">AI</b> 应用的可靠性，<br/>交付成<span>可检查的测试结论。</span></h1><p className="landing-intro">从测试用例到逐句证据溯源，<br className="landing-desktop-break"/>让每一次可靠性判断，都有可检查的依据。</p><div className="landing-actions"><a className="btn btn-primary" href="#/lab/demo" onClick={enter('demo')}><Icon name="play" size={17}/>查看演示</a><a className="landing-text-link" href="#/lab/workspace" onClick={enter('workspace')}>配置评测<Icon name="arrow" size={17}/></a></div><p className="landing-demo-note">已有评测快照 · 无需连接模型服务</p><div className="landing-models"><span>多模型，统一测试视角</span><ul aria-label="演示包含的模型"><li>DeepSeek</li><li>Qwen2.5-7B</li><li>GLM-5.2-Fast</li></ul></div></div>
         <EvidenceFlow enabled={motionEnabled}/>
       </section>
       <section className="landing-proof" id="verification" aria-labelledby="verification-title"><div className="landing-section-heading"><h2 id="verification-title">看见结论，也看见依据。</h2><p>从实验结果继续追问，直到回答中的每一句陈述。</p></div>
@@ -50,8 +50,8 @@ export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void 
         </article>
       </section>
       <section className="landing-capabilities" id="platform" aria-labelledby="platform-title"><div className="landing-section-heading"><h2 id="platform-title">一条完整的评测路径。</h2></div><dl>{capabilities.map((item, index) => <div key={item.title}><dt><span className="landing-capability-node" aria-hidden="true"><Icon name={item.icon} size={22}/><span>{String(index + 1).padStart(2, '0')}</span></span><span>{item.title}</span></dt><dd>{item.description}</dd></div>)}</dl></section>
-      <section className="landing-closing"><div><h2>从一份真实快照开始。</h2><p>进入实验工作台，亲自检查模型的回答与依据。</p></div><a className="btn btn-primary" href="#/lab/demo" onClick={enter('demo')}>查看演示<Icon name="arrow" size={17}/></a></section>
+      <section className="landing-closing"><div><h2>从一份真实快照开始。</h2><p>进入工作台，亲自检查模型的回答与依据。</p></div><a className="btn btn-primary" href="#/lab/demo" onClick={enter('demo')}>查看演示<Icon name="arrow" size={17}/></a></section>
     </main>
-    <footer className="landing-footer"><span>鉴真全域 VeriScope AI</span><span>评测结果 / 事实判断 / 上下文证据</span><a href="#/lab/workspace" onClick={enter('workspace')}>配置评测<Icon name="arrow" size={14}/></a></footer>
+    <footer className="landing-footer"><span>鉴真全域 VeriScope AI</span><span>测试用例 / 逐句断言 / 质量门禁</span><a href="#/lab/workspace" onClick={enter('workspace')}>配置评测<Icon name="arrow" size={14}/></a></footer>
   </div>;
 }

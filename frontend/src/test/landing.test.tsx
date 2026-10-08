@@ -11,7 +11,7 @@ describe('Landing page', () => {
   afterEach(() => { vi.restoreAllMocks(); vi.useRealTimers(); });
   it('explains the five stages and labels the demonstration', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('让 RAG 的回答，经得起证据检查。');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('把 AI 应用的可靠性，交付成可检查的测试结论。');
     for (const name of ['提出问题', '检索上下文', '模型回答', '核对证据', '质量门禁']) expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText(name)).toBeInTheDocument();
     for (const name of ['Question', 'Retrieval Context', 'Answer', 'Evidence Check', 'Quality Gate']) expect(screen.queryByText(name)).not.toBeInTheDocument();
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('Landing page', () => {
   it('presents the existing platform capabilities in their workflow order', () => {
     const { container } = render(<LandingPage onEnter={vi.fn()}/>);
     const titles = [...container.querySelectorAll('.landing-capabilities dt')].map(node => node.textContent?.replace(/^\d{2}/, ''));
-    expect(titles).toEqual(['评测工作区', '多模型对比', '幻觉分析', '评测报告']);
+    expect(titles).toEqual(['测试用例集', '多模型对比', '逐句断言', '报告交付']);
     expect(container.querySelectorAll('.landing-capabilities dd')).toHaveLength(4);
     expect(screen.getByText('导入并查看已有 HTML 评测报告。')).toBeInTheDocument();
   });
