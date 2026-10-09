@@ -5,3 +5,22 @@ numpy
 pandas
 fastapi
 httpx
+
+# 测试在收集阶段实际导入的运行时依赖（版本由上方 -c 约束钉住）。
+# 只列测试所需子集，避免把 torch/transformers/chromadb/gradio 等
+# 大型运行时依赖拉进 CI。
+datasets
+ragas
+langchain
+langchain-community
+langchain-core
+langchain-openai
+langchain-text-splitters
+matplotlib
+python-dotenv
+openpyxl
+
+# pyarrow 是 datasets 的传递依赖，且未被 requirements.txt 钉住。
+# pyarrow 26.x 在运行时要求 numpy>=2，与本项目钉住的 numpy==1.26.4
+# 冲突（pip check 不报、收集阶段才失败），故在此显式约束。
+pyarrow<26
