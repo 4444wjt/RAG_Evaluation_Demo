@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="600" viewBox="0 0 920 600" font-family="'Microsoft YaHei','PingFang SC','Noto Sans SC',sans-serif">
+  <rect width="920" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7.5" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#7a869a"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="26" font-size="16" font-weight="700" fill="#1a1a1a">鉴真全域 VeriScope AI · 技术架构</text>
+
+  <!-- A: user -->
+  <rect x="340" y="42" width="240" height="44" rx="8" fill="#f5f7fa" stroke="#c3ccd8"/>
+  <text x="460" y="69" font-size="14" fill="#1f2430" text-anchor="middle">用户 / 评测方（浏览器）</text>
+  <line x1="460" y1="86" x2="460" y2="104" stroke="#7a869a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- B: frontend -->
+  <rect x="40" y="106" width="840" height="60" rx="8" fill="#fdf7e8" stroke="#e8cf94"/>
+  <text x="60" y="130" font-size="14" font-weight="700" fill="#6b5a2e">React 前端工作台</text>
+  <text x="60" y="152" font-size="12.5" fill="#6b5a2e">评测总览 · 评测工作区 · 多模型对比 · 逐句溯源 · 报告交付 · 评测验证</text>
+  <line x1="460" y1="166" x2="460" y2="184" stroke="#7a869a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- C: api -->
+  <rect x="180" y="186" width="560" height="44" rx="8" fill="#f5f7fa" stroke="#c3ccd8"/>
+  <text x="460" y="213" font-size="14" fill="#1f2430" text-anchor="middle">FastAPI 本地接口（同步评测 · 参数校验 · 结果序列化）</text>
+  <line x1="460" y1="230" x2="460" y2="248" stroke="#7a869a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- D: pipeline -->
+  <rect x="40" y="250" width="840" height="126" rx="8" fill="#f4f8fd" stroke="#b9cde4"/>
+  <text x="60" y="274" font-size="14" font-weight="700" fill="#26456b">评测编排 · backend.core.pipeline.evaluate</text>
+
+  <!-- 7 steps -->
+  <g font-size="12" fill="#1f2430" text-anchor="middle">
+    <rect x="52" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="106" y="312">文档加载</text><text x="106" y="328" font-size="11" fill="#5a6675">切分</text>
+
+    <rect x="170" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="224" y="312">测试集生成</text><text x="224" y="328" font-size="11" fill="#5a6675">自动/自定义/负样本</text>
+
+    <rect x="288" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="342" y="312">Chroma 检索</text><text x="342" y="328" font-size="11" fill="#5a6675">本地 Embedding</text>
+
+    <rect x="406" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="460" y="312">模型问答</text><text x="460" y="328" font-size="11" fill="#5a6675">多模型适配</text>
+
+    <rect x="524" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="578" y="312">Ragas 指标</text><text x="578" y="328" font-size="11" fill="#5a6675">5 项</text>
+
+    <rect x="642" y="292" width="108" height="46" rx="6" fill="#ffffff" stroke="#b9cde4"/>
+    <text x="696" y="312">逐句溯源</text><text x="696" y="328" font-size="11" fill="#5a6675">Trace 判定</text>
+
+    <rect x="760" y="292" width="108" height="46" rx="6" fill="#fdf3f3" stroke="#e0b4b4"/>
+    <text x="814" y="312">质量门禁</text><text x="814" y="328" font-size="11" fill="#8a4b4b">Quality Gate</text>
+  </g>
+  <g stroke="#b9cde4" stroke-width="1.2" marker-end="url(#arrow)">
+    <line x1="160" y1="315" x2="168" y2="315"/>
+    <line x1="278" y1="315" x2="286" y2="315"/>
+    <line x1="396" y1="315" x2="404" y2="315"/>
+    <line x1="514" y1="315" x2="522" y2="315"/>
+    <line x1="632" y1="315" x2="640" y2="315"/>
+    <line x1="750" y1="315" x2="758" y2="315"/>
+  </g>
+  <text x="60" y="364" font-size="12" fill="#41566e">链路：文档 → 测试集 → 检索 → 问答 → 指标 → 溯源 → 门禁 → 报告 → 复核</text>
+  <line x1="300" y1="376" x2="300" y2="404" stroke="#7a869a" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <line x1="620" y1="376" x2="620" y2="404" stroke="#7a869a" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+  <!-- E1: adapters -->
+  <rect x="40" y="406" width="410" height="104" rx="8" fill="#f7f7fb" stroke="#c8c8dc"/>
+  <text x="60" y="430" font-size="13.5" font-weight="700" fill="#33355a">模型适配器（OpenAI-compatible）</text>
+  <g font-size="12" fill="#3a3d55" text-anchor="middle">
+    <rect x="60" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="120" y="469">DeepSeek</text>
+    <rect x="190" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="250" y="469">Qwen2.5-7B</text>
+    <rect x="320" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="380" y="469">GLM-5.2-Fast</text>
+  </g>
+
+  <!-- E2: storage & delivery -->
+  <rect x="470" y="406" width="410" height="104" rx="8" fill="#f7f7fb" stroke="#c8c8dc"/>
+  <text x="490" y="430" font-size="13.5" font-weight="700" fill="#33355a">存储与交付</text>
+  <g font-size="12" fill="#3a3d55" text-anchor="middle">
+    <rect x="490" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="550" y="463">Chroma 向量库</text><text x="550" y="478" font-size="10.5" fill="#5a6675">本地持久化</text>
+    <rect x="620" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="680" y="463">报告导出</text><text x="680" y="478" font-size="10.5" fill="#5a6675">CSV/HTML/XLSX/PDF</text>
+    <rect x="750" y="444" width="120" height="40" rx="6" fill="#ffffff" stroke="#c8c8dc"/>
+    <text x="810" y="463">人工复核</text><text x="810" y="478" font-size="10.5" fill="#5a6675">SHA-256 绑定</text>
+  </g>
+
+  <text x="40" y="548" font-size="11.5" fill="#6b7280">说明：前端演示基于冻结快照；真实评测需在本地配置模型密钥后运行，评测为同步请求。第三方组件与依赖按各自许可使用。</text>
+  <text x="40" y="570" font-size="11.5" fill="#6b7280">本图仅表示模块与数据流向，不代表性能或部署承诺。</text>
+</svg>
