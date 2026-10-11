@@ -36,8 +36,10 @@
   --primary-hover: color-mix(in srgb, var(--brand) 85%, var(--text-primary));
   --primary-active: color-mix(in srgb, var(--brand) 88%, var(--bg-page));
   /* Cards are layered by a faint top highlight and a soft drop shadow, so their borders can stay quiet. */
-  --surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 32px -20px rgba(0, 0, 0, 0.7);
+  --surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(2, 5, 12, 0.45), 0 18px 36px -22px rgba(2, 5, 12, 0.85);
   --border-surface: rgba(255, 255, 255, 0.06);
+  /* A faint top-down sheen gives flat cards some volume without glows. */
+  --surface-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 140px);
   --workspace-shadow: var(--surface-shadow);
   --chart-text: var(--text-primary);
   --chart-axis: var(--text-secondary);
@@ -52,7 +54,10 @@
   --radius-badge: 6px;
   --control-height: 40px;
   --control-height-compact: 32px;
-  --font-family: 'Inter Variable', Inter, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
+  /* Geist draws Latin and digits; self-hosted Noto Sans SC (variable, split by unicode-range so a page only fetches the slices it uses) draws Chinese with real weight steps instead of YaHei's two. */
+  --font-family: 'Geist Variable', 'Noto Sans SC Variable', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  /* Data figures use Geist Mono so numbers line up like an instrument read-out; Chinese falls back to the sans stack. */
+  --font-mono: 'Geist Mono Variable', 'SFMono-Regular', Consolas, 'PingFang SC', 'Microsoft YaHei', monospace;
   --font-size-page: 32px;
   --font-size-section: 20px;
   --font-size-subheading: 16px;
@@ -71,7 +76,11 @@
 }
 * { box-sizing: border-box; }
 ::selection { background: var(--brand); color: var(--text-on-accent); }
+html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; }
+/* Fine film grain over the whole app breaks the flat digital dark; it never intercepts input. */
+body::after { content: ''; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .045; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+p { text-wrap: pretty; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 button, a, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
@@ -101,7 +110,7 @@ svg { flex-shrink: 0; }
 .sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 28px 18px 20px; border-right: 1px solid var(--border-subtle); background: var(--bg-workspace); }
 .brand { display: flex; align-items: center; gap: 10px; margin: 0 4px 44px; }
 .brand-mark { display: grid; place-items: center; width: 36px; height: 42px; color: var(--brand); background: color-mix(in srgb, var(--brand) 14%, transparent); border-radius: 10px; }
-.brand strong { font-size: 15px; font-weight: 650; letter-spacing: -.5px; white-space: nowrap; background: linear-gradient(108deg, color-mix(in srgb, var(--brand) 26%, var(--text-primary)), var(--brand) 44%, color-mix(in srgb, var(--brand) 70%, var(--text-primary)) 78%, var(--text-primary)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.brand strong { font-size: 15px; font-weight: 650; letter-spacing: -.3px; white-space: nowrap; color: var(--text-primary); }
 .brand small { display: block; margin-top: 3px; font-size: 12px; color: var(--text-secondary); }
 .navigation-label { font-size: 12px; color: var(--text-secondary); padding: 0 14px; margin-bottom: 12px; }
 .sidebar nav { display: flex; flex-direction: column; gap: 6px; }
@@ -117,7 +126,9 @@ svg { flex-shrink: 0; }
 .sidebar-foot > small { color: var(--text-secondary); font-size: 12px; line-height: 1.8; display: block; }
 .sidebar-repo { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: var(--text-secondary); font-size: 12px; }
 .sidebar-repo:hover { color: var(--brand); }
-.main-shell { min-width: 0; }
+.main-shell { position: relative; isolation: isolate; min-width: 0; }
+/* Canvas texture: a fine dot grid under a faint warm light, fading out below the first screen. Colours stay on the tokens. */
+.main-shell::before { content: ''; position: absolute; inset: 0 0 auto; height: min(1100px, 100%); z-index: -1; pointer-events: none; background: radial-gradient(ellipse 60% 42% at 18% 0%, color-mix(in srgb, var(--brand) 11%, transparent), transparent 72%), radial-gradient(circle, rgba(255, 255, 255, 0.085) 1px, transparent 1.3px) 0 0 / 24px 24px; mask-image: linear-gradient(to bottom, #000 0, #000 35%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 35%, transparent 100%); }
 .topbar { height: 58px; padding: 0 36px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); background: var(--bg-workspace); }
 .breadcrumb { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-secondary); }
 .breadcrumb strong { color: var(--text-primary); font-weight: 500; }
@@ -128,7 +139,7 @@ svg { flex-shrink: 0; }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: var(--control-height-compact); height: var(--control-height-compact); padding: 0; border: 1px solid transparent; background: transparent; color: var(--text-secondary); border-radius: var(--radius-control); transition: background var(--feedback-duration), border-color var(--feedback-duration), color var(--feedback-duration); }
 .icon-button:not(:disabled):hover { color: var(--text-primary); background: var(--bg-elevated); }
 .icon-button:not(:disabled):active { background: var(--bg-surface); border-color: var(--border-strong); }
-main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
+main { padding: 32px 36px 18px; max-width: 1600px; margin: 0 auto; }
 /* 主内容区 tabindex=-1，点击后会获得焦点并画出浏览器默认焦点环（浅色 1px，视觉上像白框）。
    该元素无法通过 Tab 到达，键盘用户不会受影响；与登录页 .landing-main:focus 的处理保持一致。 */
 #main-content:focus { outline: none; }
@@ -136,6 +147,8 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .comparison-table-scroll:focus:not(:focus-visible) { outline: none; }
 .page-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
 .page-heading p { margin-top: 6px; font-size: 14px; color: var(--text-secondary); }
+/* Mono only for small read-outs (durations, step indices, raw values); display figures stay in Geist with tabular digits. */
+.result-toolbar strong, .stage-track > span, .gate-details dd, .parameter-value input, .trace-case-number, .evidence-sequence, .landing-capability-node > span { font-family: var(--font-mono); }
 .page-actions { display: flex; gap: 12px; flex-shrink: 0; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--control-height); padding: 8px 16px; border: 1px solid transparent; border-radius: var(--radius-control); font-size: var(--font-size-label); font-weight: 600; transition: background var(--feedback-duration), border-color var(--feedback-duration), color var(--feedback-duration), transform var(--feedback-duration); white-space: nowrap; }
 .btn:not(:disabled):active { transform: translateY(1px); }
@@ -191,14 +204,17 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .gate-reason { color: var(--text-secondary); font-size: var(--font-size-body); line-height: 1.6; overflow-wrap: anywhere; }
 .blocked .gate-reason { color: var(--danger); }
 .uncertain .gate-reason { color: var(--warning); }
-.gate-interpretation { padding: 0 24px 12px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
-.gate-snapshot-scope { padding: 0 24px 8px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+/* Scope and interpretation read as one footnote band under the verdict, not as body copy competing with it. */
+.gate-interpretation { padding: 0 24px 14px; color: var(--text-secondary); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.gate-snapshot-scope { margin: 4px 24px 0; padding: 12px 0 2px; border-top: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
 .kpi-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius); margin-bottom: 24px; overflow: hidden; }
 .metric-tile { padding: 16px 24px; position: relative; min-width: 0; }
 .metric-tile + .metric-tile::before { content: ''; position: absolute; width: 1px; background: var(--border-subtle); left: 0; top: 24px; bottom: 24px; }
 .metric-tile > span { display: block; font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
-.metric-tile strong { display: block; margin: 4px 0; font-size: 38px; line-height: 1.25; letter-spacing: -1px; font-weight: 550; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.metric-tile strong { display: block; margin: 4px 0; font-size: 38px; line-height: 1.25; letter-spacing: -1.5px; font-weight: 500; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .metric-tile strong.metric-missing { font-size: 18px; min-height: 47.5px; display: flex; align-items: center; letter-spacing: 0; font-weight: 500; color: var(--text-secondary); }
+/* A zero count is not a headline: it stays legible but recedes. It is neutral, not green, because an empty trace does not prove there is no hallucination. */
+.metric-tile strong.metric-zero { color: var(--text-secondary); font-weight: 400; }
 .metric-tile small { display: block; color: var(--text-secondary); font-size: 12px; line-height: 1.6; }
 .evaluation-chart { position: relative; width: 100%; min-width: 0; }
 .evaluation-chart .evaluation-chart-canvas { width: 100%; min-width: 0; }
@@ -206,8 +222,6 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .evaluation-chart .evaluation-chart-fallback { position: absolute; inset: 0; background: var(--bg-workspace); }
 .evaluation-chart-unavailable strong { color: var(--text-primary); font-size: var(--font-size-subheading); font-weight: 500; }
 .ability-section { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden; }
-.quality-gate, .kpi-strip, .ability-section { border-color: var(--border-surface); box-shadow: var(--surface-shadow); }
-.ability-section .section-heading h2::before { content: ''; display: inline-block; width: 3px; height: 16px; margin-right: 10px; border-radius: 2px; vertical-align: -1px; background: var(--brand); }
 .ability-section .evaluation-chart-fallback { background: var(--bg-surface); }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px 4px; }
 .section-heading p { margin-top: 6px; font-size: 13px; color: var(--text-secondary); }
@@ -216,10 +230,10 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .analysis-entry { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border: 1px solid var(--border-subtle); background: var(--bg-workspace); border-radius: var(--radius); text-align: left; transition: background var(--feedback-duration), border-color var(--feedback-duration), transform var(--feedback-duration); min-width: 0; }
 .analysis-entry > span { min-width: 0; overflow-wrap: anywhere; }
 .analysis-entry > svg:first-child { color: var(--text-secondary); }
-.analysis-entry > svg:last-child { margin-left: auto; color: var(--text-secondary); }
+.analysis-entry > .slide-arrow { margin-left: auto; }
 .analysis-entry strong { display: block; font-size: 14px; font-weight: 500; }
 .analysis-entry small { display: block; margin-top: 3px; color: var(--text-secondary); font-size: 12px; }
-.analysis-entry:hover { border-color: var(--border-strong); background: var(--bg-hover); }
+.analysis-entry:hover { border-color: var(--border-strong); background: var(--bg-hover); transform: translateY(-2px); box-shadow: var(--surface-shadow), 0 14px 28px -18px rgba(2, 5, 12, 0.9); }
 .analysis-entry:active { transform: translateY(1px); }
 .gate-details { border-top: 1px solid var(--border-subtle); }
 .gate-details summary { display: flex; align-items: center; gap: 8px; min-height: var(--control-height); padding: 8px 24px; font-size: 13px; cursor: pointer; list-style: none; border-radius: 0 0 var(--radius) var(--radius); transition: background var(--feedback-duration); }
@@ -263,6 +277,13 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .configuration-feedback small { display: block; color: var(--text-secondary); line-height: 1.7; }
 .configuration-feedback:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .experiment-workspace { border: 1px solid transparent; border-radius: var(--radius); background: var(--bg-workspace); box-shadow: var(--workspace-shadow); padding: 24px 24px 16px; }
+.quality-gate, .kpi-strip, .ability-section, .analysis-entry, .experiment-workspace { border-color: var(--border-surface); box-shadow: var(--surface-shadow); background-image: var(--surface-sheen); }
+.experiment-workspace { border-color: transparent; }
+/* The verdict card carries a status rule along its top edge, so the conclusion reads first. */
+.quality-gate { --gate-accent: var(--success); position: relative; overflow: hidden; }
+.quality-gate.blocked { --gate-accent: var(--danger); }
+.quality-gate.uncertain { --gate-accent: var(--warning); }
+.quality-gate::before { content: ''; position: absolute; inset: 0 0 auto; height: 2px; background: linear-gradient(90deg, var(--gate-accent), color-mix(in srgb, var(--gate-accent) 20%, transparent) 70%, transparent); pointer-events: none; }
 .workspace-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
 .workspace-heading h2 { font-size: var(--font-size-section); }
 .workspace-heading p { margin-top: 5px; font-size: 12px; color: var(--text-secondary); }
@@ -291,9 +312,23 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .control-description { font-size: 13px; color: var(--text-secondary); padding: 7px 0; max-width: 54ch; line-height: 1.7; }
 .inline-label { font-size: 12px; display: block; margin: 0 0 7px; color: var(--text-secondary); }
 .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
-.model-card { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); text-align: left; transition: background var(--feedback-duration), border-color var(--feedback-duration), transform var(--feedback-duration); min-width: 0; }
+.model-card { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); text-align: left; transition: background var(--feedback-duration), border-color var(--feedback-duration), transform 240ms cubic-bezier(.2, .8, .2, 1), box-shadow 240ms ease; min-width: 0; }
 .model-card:not(:disabled):hover { border-color: var(--border-strong); background: var(--bg-hover); }
 .model-card:not(:disabled):active { transform: translateY(1px); }
+/* Sliding selection: a rail in the model's chart colour grows up the left edge when selected,
+   a sheen sweeps across on hover, and the card lifts slightly. */
+.model-card { position: relative; overflow: hidden; isolation: isolate; }
+.model-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--model-color, var(--border-strong)); transform: scaleY(0); transform-origin: 50% 100%; transition: transform .38s cubic-bezier(.2, .8, .2, 1); }
+.model-card.selected::before { transform: scaleY(1); }
+.model-card:not(.selected):not(:disabled):hover::before { transform: scaleY(.35); }
+.model-card::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.06) 50%, transparent 65%); transform: translateX(-100%); }
+.model-card:not(:disabled):hover::after { transform: translateX(100%); transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
+.model-card:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 14px 28px -18px rgba(2, 5, 12, 0.9); }
+.model-swatch { width: 8px; height: 8px; margin-right: 8px; flex-shrink: 0; border-radius: 2px; background: var(--model-color, var(--border-strong)); }
+.model-check.checked svg { animation: model-check-pop .32s cubic-bezier(.34, 1.56, .64, 1); }
+.model-status-text { display: inline-block; animation: model-status-in .28s cubic-bezier(.2, .8, .2, 1); }
+@keyframes model-check-pop { from { transform: scale(0); } }
+@keyframes model-status-in { from { opacity: 0; transform: translateY(6px); } }
 /* Selection stays neutral; only the check mark carries the brand colour, so gold keeps pointing at the primary action. */
 .model-card.selected { background: var(--bg-selected); border-color: var(--border-strong); }
 .model-card.selected:not(:disabled):hover { border-color: var(--text-secondary); background: var(--bg-selected-hover); }
@@ -328,7 +363,19 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
 .demo-provenance p { margin-top: 8px; }
 .demo-provenance ul { overflow-wrap: anywhere; }
 .page-footer { margin-top: 30px; border-top: 1px solid var(--border-subtle); padding: 16px 0 0; display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--text-secondary); }
-@media (min-width: 1600px) { main { padding: 35px 46px 20px; } .topbar { padding: 0 46px; } .metric-tile { padding-left: 28px; } }
+/* Ring-and-arrow affordance. Motion adapted from "modern-stingray-68" by xopc333 on Uiverse.io (MIT License):
+   on hover/focus of the card, the neutral ring shrinks away, a brand ring settles in, and a new arrow slides in from the left. */
+.slide-arrow { --ring: 36px; position: relative; display: inline-block; flex-shrink: 0; width: var(--ring); height: var(--ring); overflow: hidden; border-radius: 50%; color: var(--text-secondary); transition: color .3s ease; }
+.slide-arrow::before, .slide-arrow::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; }
+.slide-arrow::before { border: 1.5px solid var(--border-strong); transition: opacity .4s cubic-bezier(.77, 0, .175, 1) 80ms, transform .5s cubic-bezier(.455, .03, .515, .955) 80ms; }
+.slide-arrow::after { border: 1.5px solid var(--brand); transform: scale(1.3); opacity: 0; transition: opacity .4s cubic-bezier(.165, .84, .44, 1), transform .5s cubic-bezier(.25, .46, .45, .94); }
+.slide-arrow-track { position: absolute; top: 0; left: 0; display: flex; transform: translateX(calc(var(--ring) * -1)); transition: transform .4s cubic-bezier(.65, 0, .35, 1); }
+.slide-arrow-track svg { box-sizing: content-box; width: 16px; height: 16px; padding: 10px; }
+:is(.analysis-entry, .landing-proof-link):is(:hover, :focus-visible) .slide-arrow { color: var(--brand); }
+:is(.analysis-entry, .landing-proof-link):is(:hover, :focus-visible) .slide-arrow::before { opacity: 0; transform: scale(.7); transition: opacity .4s cubic-bezier(.165, .84, .44, 1), transform .5s cubic-bezier(.25, .46, .45, .94); }
+:is(.analysis-entry, .landing-proof-link):is(:hover, :focus-visible) .slide-arrow::after { opacity: 1; transform: scale(1); transition: opacity .4s cubic-bezier(.77, 0, .175, 1) 80ms, transform .5s cubic-bezier(.455, .03, .515, .955) 80ms; }
+:is(.analysis-entry, .landing-proof-link):is(:hover, :focus-visible) .slide-arrow-track { transform: translateX(0); }
+@media (min-width: 1600px) { main { padding: 35px 46px 20px; } .topbar { padding: 0 max(46px, calc((100% - 1600px) / 2 + 46px)); } .metric-tile { padding-left: 28px; } }
 @media (max-width: 1199px) { .app-shell { grid-template-columns: 206px minmax(0, 1fr); } .brand { gap: 6px; } .brand strong { font-size: 13px; } main { padding: 25px 24px 16px; } .topbar { padding: 0 24px; } .workspace-stage { grid-template-columns: 76px minmax(0, 1fr); } .experiment-workspace { padding: 20px 20px 10px; } .metric-tile { padding: 16px; } .metric-tile strong { font-size: 29px; } .gate-summary { grid-template-columns: 160px minmax(0, 1fr); gap: 16px; padding: 16px; } .gate-label { font-size: 13px; } .gate-context { gap: 16px; } .gate-metrics { gap: 16px; } .overview-bottom { gap: 12px; } .analysis-entry { padding: 16px 12px; gap: 8px; } }
 @media (max-width: 899px) {
   .app-shell { display: block; }
@@ -345,6 +392,7 @@ main { padding: 32px 36px 18px; max-width: 1900px; margin: 0 auto; }
   .gate-context { grid-template-columns: minmax(0, 1fr); }
   .gate-model-context { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .gate-interpretation { padding-left: 16px; padding-right: 16px; }
+  .gate-snapshot-scope { margin-left: 16px; margin-right: 16px; }
   .gate-details summary, .gate-details > div { padding-left: 16px; padding-right: 16px; }
   .metric-tile { padding: 17px; }
   .dataset-grid, .parameter-grid { grid-template-columns: minmax(0, 1fr); }

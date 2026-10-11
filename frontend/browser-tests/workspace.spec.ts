@@ -358,7 +358,8 @@ test('Gold design tokens keep primary actions distinct from neutral data and wor
   expect(await page.locator('.ability-section h2').evaluate((node) => getComputedStyle(node).fontSize)).toBe('20px');
   expect(await page.locator('.gate-value').evaluate((node) => getComputedStyle(node).fontSize)).toBe('48px');
   expect(await page.locator('.gate-value').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(52, 211, 153)');
-  for (const metric of await page.locator('.metric-tile strong').all()) {
+  // Zero counts are intentionally muted (.metric-zero); every other figure keeps the primary ink.
+  for (const metric of await page.locator('.metric-tile strong:not(.metric-zero)').all()) {
     expect(await metric.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(245, 247, 250)');
     expect(await metric.evaluate((node) => getComputedStyle(node).fontSize)).toBe('38px');
   }

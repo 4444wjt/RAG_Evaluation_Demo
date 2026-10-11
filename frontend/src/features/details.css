@@ -250,7 +250,7 @@
 .report-path-row + .report-path-row { border-top: 1px solid var(--border-subtle); }
 .report-path-label { display: flex; align-items: center; gap: 9px; color: var(--text-secondary); font-size: 13px; }
 .report-path-label > svg { flex-shrink: 0; color: var(--info); }
-.report-path-value { display: block; min-width: 0; padding: 5px 0; color: var(--text-primary); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; user-select: all; }
+.report-path-value { display: block; min-width: 0; padding: 5px 0; color: var(--text-primary); font-family: var(--font-mono); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; user-select: all; }
 .report-path-missing { color: var(--text-secondary); font-size: 13px; padding: 5px 0; }
 .report-copy-button { min-height: var(--control-height-compact); padding: 4px 10px; font-size: var(--font-size-caption); white-space: nowrap; }
 .report-path-note { margin: 0; padding: 4px 20px 16px; color: var(--text-secondary); font-size: 12px; line-height: 1.8; }

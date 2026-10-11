@@ -36,6 +36,7 @@
   border-radius: var(--radius);
   background: var(--bg-workspace);
   box-shadow: var(--surface-shadow);
+  background-image: var(--surface-sheen);
 }
 
 .comparison-view .comparison-main-panel {
@@ -59,16 +60,6 @@
   line-height: 1.5;
 }
 
-.comparison-view .comparison-main-panel .comparison-panel-heading h2::before {
-  display: inline-block;
-  width: 3px;
-  height: 16px;
-  margin-right: 10px;
-  border-radius: 2px;
-  background: var(--brand);
-  vertical-align: -1px;
-  content: '';
-}
 
 .comparison-view .comparison-source-note {
   flex: none;

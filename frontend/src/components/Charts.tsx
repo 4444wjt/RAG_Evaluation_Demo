@@ -7,7 +7,7 @@ import { AriaComponent, AxisPointerComponent, GridComponent, LegendComponent, Ma
 import type { AriaComponentOption, AxisPointerComponentOption, GridComponentOption, LegendComponentOption, TooltipComponentOption } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
 import type { ResultRow } from '../api/types';
-import { METRICS } from '../config';
+import { METRICS, MODEL_COLORS } from '../config';
 import { modelName, numberValue, percent, seconds } from '../utils/format';
 import { Icon } from './Icon';
 
@@ -15,7 +15,6 @@ echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, AriaCom
 
 type EChartsOption = ComposeOption<BarSeriesOption | GridComponentOption | TooltipComponentOption | LegendComponentOption | AriaComponentOption | AxisPointerComponentOption>;
 
-const MODEL_COLORS = ['#59c3d1', '#9297ed', '#cba575', '#8fb8d1', '#bd98b4', '#b0c391'];
 const FONT_FAMILY = 'Inter, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif';
 const AXIS_COLOR = '#a7b0be';
 const GRID_COLOR = 'rgba(255, 255, 255, 0.08)';
@@ -73,7 +72,7 @@ function modelSeries(rows: ResultRow[], keys: readonly string[], showValues: boo
     data: keys.map((key) => numberValue(row[key])),
     barMaxWidth: 34,
     barGap: '25%',
-    itemStyle: { color: MODEL_COLORS[index % MODEL_COLORS.length], borderRadius: [3, 3, 0, 0] },
+    itemStyle: { color: MODEL_COLORS[index % MODEL_COLORS.length], borderRadius: [4, 4, 0, 0] },
     label: { show: showValues, position: 'top', color: theme.text, fontFamily: theme.fontFamily, fontSize: theme.captionSize, formatter: (params) => ratioLabel(params.value) },
     emphasis: { focus: 'series' },
   }));
@@ -253,7 +252,7 @@ export function DurationChart({ rows }: { rows: ResultRow[] }) {
         barMaxWidth: 30,
         data: rows.map((row, index) => ({
           value: numberValue(row.elapsed_seconds),
-          itemStyle: { color: MODEL_COLORS[index % MODEL_COLORS.length], borderRadius: [0, 3, 3, 0] },
+          itemStyle: { color: MODEL_COLORS[index % MODEL_COLORS.length], borderRadius: [0, 4, 4, 0] },
         })),
         label: {
           show: true,

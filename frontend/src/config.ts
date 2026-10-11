@@ -3,6 +3,11 @@ export const REPO_URL = 'https://github.com/4444wjt/RAG_Evaluation_Demo';
 /** Public demo builds set VITE_READ_ONLY=1: the workbench shows snapshots only and never starts a paid evaluation. */
 export const READ_ONLY = import.meta.env.VITE_READ_ONLY === '1';
 
+/** Validated with the dataviz palette checker on the #151b24 surface (dark, all pairs for the first three, adjacent for six):
+ *  lightness band, chroma floor, CVD ΔE ≥ 9.4, normal-vision ΔE ≥ 19.3, ≥ 3:1 contrast. Brand gold and status colours stay out.
+ *  Charts and the workspace model cards share these, so a model keeps one colour across the app. */
+export const MODEL_COLORS = ['#3987e5', '#d95926', '#199e70', '#9085e9', '#d55181', '#c98500'];
+
 /** Public model IDs only. Update these if the local backend names are overridden. */
 export const MODELS = [
   { id: 'deepseek-chat', label: 'DeepSeek', detail: 'DeepSeek 通用对话模型', initials: 'DS' },

@@ -52,7 +52,7 @@ const chartThemeTokens = {
   '--chart-pointer': 'rgba(255, 255, 255, 0.04)',
   '--chart-background': 'transparent',
 };
-const originalModelColors = ['#59c3d1', '#9297ed', '#cba575', '#8fb8d1', '#bd98b4', '#b0c391'];
+const originalModelColors = ['#3987e5', '#d95926', '#199e70', '#9085e9', '#d55181', '#c98500'];
 
 class MockResizeObserver {
   observe = vi.fn();
@@ -153,7 +153,7 @@ describe('evaluation charts', () => {
 
     expect(option.color).toEqual(originalModelColors);
     expect(colors).toEqual([...originalModelColors, originalModelColors[0]]);
-    expect(colors[2]).toBe('#cba575');
+    expect(colors[2]).toBe('#199e70');
     expect(option.yAxis.data).toEqual(rows.map((row) => modelName(row.model)));
     expect(option.series[0].name).toBe('评测耗时');
     expect(option.legend).toBeUndefined();

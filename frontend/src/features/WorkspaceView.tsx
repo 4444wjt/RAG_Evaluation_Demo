@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { DATASETS, MODELS } from '../config';
+import type { CSSProperties } from 'react';
+import { DATASETS, MODEL_COLORS, MODELS } from '../config';
 import { Icon } from '../components/Icon';
 import type { WorkspaceConfig } from '../state';
 
@@ -59,12 +60,12 @@ export function WorkspaceView({ config, onChange, onRun, running, readOnly = fal
       </Stage>
       <Stage number="02" name="模型">
         <div className="stage-heading"><div><h3>模型选择</h3><p>选择本次参与评测的模型，支持多选。</p></div><span className="muted selection-count">已选择 {config.modelNames.length} 个</span></div>
-        <div className="model-grid">{MODELS.map((model) => {
+        <div className="model-grid">{MODELS.map((model, index) => {
           const selected = config.modelNames.includes(model.id);
-          return <button type="button" className={`model-card ${selected ? 'selected' : ''}`} aria-pressed={selected} aria-label={`选择 ${model.label}`} key={model.id} onClick={() => toggleModel(model.id)}>
+          return <button type="button" className={`model-card ${selected ? 'selected' : ''}`} aria-pressed={selected} aria-label={`选择 ${model.label}`} key={model.id} onClick={() => toggleModel(model.id)} style={{ '--model-color': MODEL_COLORS[index % MODEL_COLORS.length] } as CSSProperties}>
             <span className="model-card-top">
-              <span className="model-identity"><strong title={model.label}>{model.label}</strong></span>
-              <span className="model-status"><span className={`model-check ${selected ? 'checked' : ''}`} aria-hidden="true">{selected && <Icon name="check" size={13}/>}</span>{selected ? '已选择' : '可选择'}</span>
+              <span className="model-identity"><span className="model-swatch" aria-hidden="true"/><strong title={model.label}>{model.label}</strong></span>
+              <span className="model-status"><span className={`model-check ${selected ? 'checked' : ''}`} aria-hidden="true">{selected && <Icon name="check" size={13}/>}</span><span className="model-status-text" key={selected ? 'on' : 'off'}>{selected ? '已选择' : '可选择'}</span></span>
             </span>
             <span className="model-detail">{model.detail}</span>
           </button>;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '../../components/Icon';
+import { SlideArrow } from '../../components/SlideArrow';
 import { REPO_URL } from '../../config';
 import { EvidenceFlow } from './EvidenceFlow';
 import { EvidenceJourney } from './EvidenceJourney';
@@ -43,12 +44,12 @@ export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void 
       <section className="landing-proof" id="verification" aria-labelledby="verification-title"><div className="landing-section-heading"><h2 id="verification-title">从一个分数，追到原文那一句。</h2><p>点开任意一条回答，从模型原话看到它引用的原文。</p></div>
         <article className="landing-proof-row">
           <div className="landing-proof-copy"><Icon name="shield" size={25}/><h3>先看总分和阈值</h3><p>每个模型、每道题、每项指标分别列出，够没够线一眼看到。</p></div>
-          <figure><a className="landing-proof-link" href="#/lab/demo" onClick={enter('demo')} aria-label="进入演示查看质量门禁"><div className="landing-preview-heading"><Icon name="shield" size={16}/><span>质量门禁</span><span className="landing-preview-source">DeepSeek</span></div><QualityGatePreview/><span className="landing-preview-action">进入实验工作台<Icon name="arrow" size={14}/></span></a><figcaption>真实界面 · 演示快照 20260930-1958 · 非本次实时评测</figcaption></figure>
+          <figure><a className="landing-proof-link" href="#/lab/demo" onClick={enter('demo')} aria-label="进入演示查看质量门禁"><div className="landing-preview-heading"><Icon name="shield" size={16}/><span>质量门禁</span><span className="landing-preview-source">DeepSeek</span></div><QualityGatePreview/><span className="landing-preview-action">进入实验工作台<SlideArrow/></span></a><figcaption>真实界面 · 演示快照 20260930-1958 · 非本次实时评测</figcaption></figure>
         </article>
         <EvidenceJourney enabled={motionEnabled}/>
         <article className="landing-proof-row landing-proof-reverse landing-proof-evidence">
           <div className="landing-proof-copy"><Icon name="trace" size={25}/><h3>再逐句看有没有据</h3><p>模型每说一句，旁边就是它引用的原文；没有引用的会被标出来。</p></div>
-          <figure><a className="landing-proof-link" href="#/lab/demo" onClick={enter('demo')} aria-label="进入演示检查原始证据"><div className="landing-preview-heading"><Icon name="trace" size={16}/><span>逐句溯源</span><span className="landing-preview-source">原始记录</span></div><EvidenceTracePreview/><span className="landing-preview-action">进入实验工作台<Icon name="arrow" size={14}/></span></a><figcaption>真实界面 · 同一演示快照中的逐句证据</figcaption></figure>
+          <figure><a className="landing-proof-link" href="#/lab/demo" onClick={enter('demo')} aria-label="进入演示检查原始证据"><div className="landing-preview-heading"><Icon name="trace" size={16}/><span>逐句溯源</span><span className="landing-preview-source">原始记录</span></div><EvidenceTracePreview/><span className="landing-preview-action">进入实验工作台<SlideArrow/></span></a><figcaption>真实界面 · 同一演示快照中的逐句证据</figcaption></figure>
         </article>
       </section>
       <section className="landing-capabilities" id="platform" aria-labelledby="platform-title"><div className="landing-section-heading"><h2 id="platform-title">从选题到出报告，就四步。</h2></div><dl>{capabilities.map((item, index) => <div key={item.title}><dt><span className="landing-capability-node" aria-hidden="true"><Icon name={item.icon} size={22}/><span>{String(index + 1).padStart(2, '0')}</span></span><span>{item.title}</span></dt><dd>{item.description}</dd></div>)}</dl></section>

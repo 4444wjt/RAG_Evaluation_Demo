@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { DemoFixture, EvaluationResult } from '../api/types';
 import type { WorkspaceConfig } from '../state';
 import { Icon } from '../components/Icon';
+import { SlideArrow } from '../components/SlideArrow';
 import { AbilityChart } from '../components/Charts';
 import { count, modelName, numberValue, percent, seconds, textValue } from '../utils/format';
 
@@ -97,12 +98,12 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
       <details className="gate-details"><summary><Icon name="shield" size={16}/>门禁依据与原始记录<Icon name="chevron" size={15}/></summary><div><p className="muted result-context-note">当前模型用于指标查看，不代表最佳模型；门禁展示按该模型的正向指标及已有阈值检查，原始记录保持不变。</p><p className="original-gate">{`原始评测门禁：${result.gate_passed ? 'PASS' : 'FAIL'}`}</p><p>{textValue(result.gate_message, '原始门禁说明未记录。')}</p><p className="muted">原始门禁采用首个有效评测模型的正向指标；当前卡片检查所选模型，不改写原始记录。</p><p className="muted">{thresholdNote}</p><p className="muted">下列两项属于当前摘要模型，不用于重写原始评测门禁。</p><dl><div><dt>正向忠实度</dt><dd>{summaryValue(selected?.pos_faithfulness, percent)}</dd></div><div><dt>正向上下文精度</dt><dd>{summaryValue(selected?.pos_context_precision, percent)}</dd></div><div><dt>总评测耗时</dt><dd>{seconds(result.total_elapsed_seconds)}</dd></div></dl></div></details>
     </section>
     <section className="kpi-strip" aria-label="评测核心指标">
-      {cards.map((card) => <div className="metric-tile" key={card.label}><span>{card.label}</span><strong className={card.value === '暂无数据' ? 'metric-missing' : undefined}>{card.value}</strong><small>{card.note}</small></div>)}
+      {cards.map((card) => <div className="metric-tile" key={card.label}><span>{card.label}</span><strong className={card.value === '暂无数据' ? 'metric-missing' : card.value === '0' ? 'metric-zero' : undefined}>{card.value}</strong><small>{card.note}</small></div>)}
     </section>
     <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><AbilityChart rows={result.summary_df} height={360} gateLine={gateLine}/></section>
     <div className="overview-bottom">
-      <button className="analysis-entry" onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><Icon name="arrow"/></button>
-      <button className="analysis-entry" onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><Icon name="arrow"/></button>
+      <button className="analysis-entry" onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><SlideArrow/></button>
+      <button className="analysis-entry" onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><SlideArrow/></button>
     </div>
   </>;
 }
