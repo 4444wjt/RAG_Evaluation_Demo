@@ -1,0 +1,46 @@
+# 质量门禁接入 CI 的示例：对已归档的评测结果离线重新执行门禁裁决，不调用模型、不需要密钥。
+# 裁决不通过时本步骤失败（退出码 1），可作为合并或发布前的卡口。
+# 仅手动触发，不参与日常 CI；默认输入是 25 题正式运行（真实 FAIL），因此默认运行结果为失败，用来演示拦截。
+name: Quality gate example
+
+on:
+  workflow_dispatch:
+    inputs:
+      result:
+        description: "评测结果 JSON（API 返回体或演示快照）"
+        required: true
+        default: docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json
+        type: choice
+        options:
+          - docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json
+          - frontend/src/fixtures/demo.json
+      faith:
+        description: "正向忠实度阈值"
+        required: true
+        default: "0.8"
+      ctx:
+        description: "正向上下文精度阈值"
+        required: true
+        default: "0.8"
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install gate dependencies
+        run: python -m pip install -c requirements.txt numpy pandas
+
+      - name: Replay quality gate
+        env:
+          RESULT: ${{ inputs.result }}
+          FAITH: ${{ inputs.faith }}
+          CTX: ${{ inputs.ctx }}
+        run: python scripts/gate_replay.py "$RESULT" --faith "$FAITH" --ctx "$CTX"

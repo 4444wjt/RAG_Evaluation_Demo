@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/4444wjt/RAG_Evaluation_Demo/master/schemas/review-archive.v1.schema.json",
+  "title": "VeriScope 人工核验存档 v1",
+  "description": "人工核验结论与机器原判定并列保存的存档格式。人工字段不覆盖机器结果；存档通过 snapshotVersion 与 snapshotSha256 绑定一份冻结评测快照。说明见 docs/review-archive-format.md。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "snapshotVersion", "snapshotSha256", "gateRuleReview", "reproduction", "records"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "snapshotVersion": { "$ref": "#/$defs/nonEmptyString", "description": "被核验的冻结快照版本号。" },
+    "snapshotSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "被核验快照文件的完整 SHA-256（小写十六进制）。" },
+    "gateRuleReview": { "$ref": "#/$defs/check", "description": "门禁规则本身是否经过人工检查。" },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshotReplay", "modelRerun"],
+      "properties": {
+        "snapshotReplay": { "$ref": "#/$defs/check", "description": "用快照重放能否得到相同结果。" },
+        "modelRerun": { "$ref": "#/$defs/check", "description": "重新调用模型能否复现结论。" }
+      }
+    },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "pattern": "\\S" },
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role"],
+      "properties": {
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "role": { "enum": ["author", "independent"], "description": "author 为作者自审，independent 为独立复核。" }
+      }
+    },
+    "check": {
+      "description": "一项整体检查。未检查时其余字段必须全部为 null，不允许预填结论。",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reviewer", "reviewedAt", "note"],
+          "properties": {
+            "status": { "const": "unverified" },
+            "reviewer": { "type": "null" },
+            "reviewedAt": { "type": "null" },
+            "note": { "type": "null" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reviewer", "reviewedAt", "note"],
+          "properties": {
+            "status": { "enum": ["verified", "uncertain"] },
+            "reviewer": { "$ref": "#/$defs/reviewer" },
+            "reviewedAt": { "$ref": "#/$defs/date" },
+            "note": { "$ref": "#/$defs/nonEmptyString" }
+          }
+        }
+      ]
+    },
+    "machineVerdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["caseType", "faithfulness", "traceVerdict", "statementCount"],
+      "description": "机器原判定的只读摘录，供核验时对照，不被人工字段改写。",
+      "properties": {
+        "caseType": { "enum": ["positive", "negative"] },
+        "faithfulness": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "traceVerdict": { "enum": ["supported", "fact_error", "fabrication", "empty"] },
+        "statementCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "reviewDraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answerSummary", "machineVerdict", "evidenceLocation", "suggestedChecks"],
+      "description": "核验前整理的材料：问题、回答摘要、机器原判定与建议检查项。",
+      "properties": {
+        "question": { "$ref": "#/$defs/nonEmptyString" },
+        "answerSummary": { "$ref": "#/$defs/nonEmptyString" },
+        "machineVerdict": { "$ref": "#/$defs/machineVerdict" },
+        "evidenceLocation": { "$ref": "#/$defs/nonEmptyString" },
+        "suggestedChecks": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" } }
+      }
+    },
+    "statementReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statementIndex", "humanVerdict", "reason", "evidence"],
+      "properties": {
+        "statementIndex": { "type": "integer", "minimum": 0, "description": "对应机器 Trace 中原子陈述的下标。" },
+        "humanVerdict": { "enum": ["supported", "fact_error", "fabrication", "not_applicable", "uncertain"] },
+        "reason": { "$ref": "#/$defs/nonEmptyString" },
+        "evidence": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/nonEmptyString" }], "description": "人工给出的原文依据；没有则为 null。" }
+      }
+    },
+    "answerReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["extraction", "refusal", "reason"],
+      "properties": {
+        "extraction": { "enum": ["complete", "missing", "not_applicable", "uncertain"], "description": "原子陈述是否完整覆盖回答。" },
+        "refusal": { "enum": ["reasonable", "questionable", "not_applicable", "uncertain"], "description": "拒答处理是否合理。" },
+        "reason": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelId", "rowIndex", "focus", "status", "reviewer", "reviewedAt", "answerReview", "statementReviews"],
+      "properties": {
+        "modelId": { "$ref": "#/$defs/nonEmptyString" },
+        "rowIndex": { "type": "integer", "minimum": 0 },
+        "focus": { "$ref": "#/$defs/nonEmptyString", "description": "本条预选的核验关注点。" },
+        "status": { "enum": ["pending", "agree", "disagree", "uncertain"] },
+        "reviewer": true,
+        "reviewedAt": true,
+        "answerReview": true,
+        "statementReviews": { "type": "array" },
+        "reviewDraft": { "$ref": "#/$defs/reviewDraft" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "pending" } } },
+          "then": {
+            "description": "待核验记录不得预填任何人工结论。",
+            "properties": {
+              "reviewer": { "type": "null" },
+              "reviewedAt": { "type": "null" },
+              "answerReview": { "type": "null" },
+              "statementReviews": { "maxItems": 0 }
+            }
+          },
+          "else": {
+            "properties": {
+              "reviewer": { "$ref": "#/$defs/reviewer" },
+              "reviewedAt": { "$ref": "#/$defs/date" },
+              "answerReview": { "$ref": "#/$defs/answerReview" },
+              "statementReviews": { "items": { "$ref": "#/$defs/statementReview" } }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "status": { "const": "agree" } } },
+          "then": {
+            "description": "「一致」不能与存在遗漏、拒答存疑或逐句无法确认同时成立。",
+            "properties": {
+              "answerReview": {
+                "properties": {
+                  "extraction": { "enum": ["complete", "not_applicable"] },
+                  "refusal": { "enum": ["reasonable", "not_applicable"] }
+                }
+              },
+              "statementReviews": { "items": { "properties": { "humanVerdict": { "not": { "const": "uncertain" } } } } }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
