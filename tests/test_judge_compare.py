@@ -71,3 +71,9 @@ def test_archived_summary_is_reproducible(raw, tmp_path):
         if (archive / name).exists():
             (copy / name).write_bytes((archive / name).read_bytes())
     assert jc.analyze(copy) == saved
+
+
+def test_parse_contexts_handles_numpy_array_text():
+    assert jc.parse_contexts("['甲。'\n '乙，丙']") == ["甲。", "乙，丙"]
+    assert jc.parse_contexts(["a", "b"]) == ["a", "b"]
+    assert all(len(row["contexts"]) == 4 for row in jc.load_rows("demo"))

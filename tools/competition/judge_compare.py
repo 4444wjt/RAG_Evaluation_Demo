@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 from contextlib import redirect_stdout
 from contextvars import ContextVar
 from datetime import datetime, timezone
@@ -21,6 +22,7 @@ from pathlib import Path
 import statistics
 import sys
 from threading import Lock
+import tokenize
 
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
@@ -55,10 +57,21 @@ def load_rows(source: str) -> list[dict]:
     for model, items in model_dfs.items():
         for index, item in enumerate(items):
             rows.append({'source': source, 'model': model, 'rowIndex': index, 'question': item['question'], 'answer': item['answer'],
-                         'contexts': list(item['contexts']), 'ground_truth': item['ground_truth'], 'case_type': item.get('case_type', 'positive'),
+                         'contexts': parse_contexts(item['contexts']), 'ground_truth': item['ground_truth'], 'case_type': item.get('case_type', 'positive'),
                          'original': {'faithfulness': number(item.get('faithfulness')), 'context_precision': number(item.get('context_precision')),
                                       'trace': parse_trace(item.get('hallucination_trace'))}})
     return rows
+
+
+def parse_contexts(value) -> list[str]:
+    """演示快照把 contexts 存成 numpy 数组的打印文本（字符串之间没有逗号），逐个取出字符串字面量。"""
+    if isinstance(value, list):
+        return [str(item) for item in value]
+    if isinstance(value, str):
+        tokens = [ast.literal_eval(tok.string) for tok in tokenize.generate_tokens(io.StringIO(value).readline) if tok.type == tokenize.STRING]
+        if tokens:
+            return tokens
+    raise ValueError('无法解析 contexts')
 
 
 def number(value):
