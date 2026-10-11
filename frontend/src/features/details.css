@@ -202,13 +202,13 @@
 .trace-no-statements > svg { flex-shrink: 0; margin-top: 2px; }
 .trace-no-statements h5 { margin: 0 0 6px; color: var(--text-primary); font-size: 14px; font-weight: 500; }
 .trace-no-statements p { margin: 0; font-size: 13px; line-height: 1.8; }
-.trace-processing-record { margin-top: 12px; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--bg-workspace); overflow: hidden; }
+.trace-processing-record { margin-top: 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-workspace); overflow: hidden; }
 .trace-processing-record summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 13px; color: var(--text-secondary); cursor: pointer; font-size: 12px; }
 .trace-processing-record > div { display: grid; gap: 12px; padding: 0 13px 13px; color: var(--text-secondary); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
 .trace-processing-record p { margin: 0; }
 .trace-processing-record dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin: 0; }
 .trace-processing-record dl div { min-width: 0; }
-.trace-processing-record dt { color: var(--text-muted); margin-bottom: 2px; }
+.trace-processing-record dt { color: var(--text-secondary); margin-bottom: 2px; }
 .trace-processing-record dd { margin: 0; color: var(--text-primary); overflow-wrap: anywhere; word-break: break-word; }
 .trace-processing-record ul { margin: 0; padding-left: 18px; }
 .trace-processing-record h5 { margin: 0 0 5px; color: var(--text-primary); font-size: 12px; }

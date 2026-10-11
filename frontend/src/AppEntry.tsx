@@ -1,13 +1,14 @@
 import { Component, lazy, Suspense, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { LandingPage } from './features/landing/LandingPage';
-import type { LabTarget } from './features/landing/LandingPage';
+import { parseLabHash } from './labRoute';
+import type { LabTarget, LabView } from './labRoute';
 
 const Dashboard = lazy(() => import('./App'));
-const isLab = () => /^#\/lab(?:\/(?:demo|workspace))?$/.test(window.location.hash);
-const initialTarget = (): LabTarget => window.location.hash.endsWith('/demo') ? 'demo' : window.location.hash.endsWith('/workspace') ? 'workspace' : 'lab';
+const isLab = () => parseLabHash(window.location.hash) !== null;
+const initialEntry = (): { target: LabTarget; view?: LabView } => parseLabHash(window.location.hash) ?? { target: 'lab' };
 const markEntryHandled = () => window.history.replaceState({ ...window.history.state, labEntryHandled: true }, '');
-export type EntryRequest = { id: number; target: LabTarget };
+export type EntryRequest = { id: number; target: LabTarget; view?: LabView };
 
 class DashboardBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -20,7 +21,7 @@ class DashboardBoundary extends Component<{ children: ReactNode }, { failed: boo
 export default function AppEntry() {
   const [showLab, setShowLab] = useState(isLab);
   const [visited, setVisited] = useState(isLab);
-  const [entry, setEntry] = useState<EntryRequest>(() => ({ id: 0, target: initialTarget() }));
+  const [entry, setEntry] = useState<EntryRequest>(() => ({ id: 0, ...initialEntry() }));
 
   useEffect(() => {
     if (isLab()) markEntryHandled();
@@ -30,7 +31,7 @@ export default function AppEntry() {
       if (next) {
         // History navigation resumes the mounted workbench without replaying an entry action.
         if (!window.history.state?.labEntryHandled) {
-          setEntry((previous) => ({ id: previous.id + 1, target: initialTarget() }));
+          setEntry((previous) => ({ id: previous.id + 1, ...initialEntry() }));
           markEntryHandled();
         }
         setVisited(true);

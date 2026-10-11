@@ -41,7 +41,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
     await expect(gate.locator('.gate-reason')).toHaveCSS('font-size', '14px');
     for (const field of ['pos_faithfulness', 'pos_context_precision']) {
       await expect(gate.locator(`[data-gate-field="${field}"] dd > span`)).toHaveCSS('font-size', '24px');
-      await expect(gate.locator(`[data-gate-field="${field}"] dd > small`)).toHaveText('门槛 ≥ 80.0%');
+      await expect(gate.locator(`[data-gate-field="${field}"] dd > small`).first()).toHaveText('门槛 ≥ 80.0%');
     }
     const keyMetrics = await gate.locator('.gate-metrics > div').all();
     expect(Math.abs((await keyMetrics[0].boundingBox())!.y - (await keyMetrics[1].boundingBox())!.y)).toBeLessThan(1);
@@ -133,7 +133,7 @@ test('model hover, selected and keyboard focus have distinct feedback', async ({
   await expect(model).toHaveCSS('background-color', await themeBackground(page, '--bg-selected'));
   await model.hover();
   await expect(model).toHaveCSS('background-color', await themeBackground(page, '--bg-selected-hover'));
-  await expect(model).toHaveCSS('border-top-color', 'rgb(242, 200, 121)');
+  await expect(model).toHaveCSS('border-top-color', 'rgb(167, 176, 190)');
   await page.mouse.move(0, 0);
   await page.keyboard.press('Tab');
   await model.focus();

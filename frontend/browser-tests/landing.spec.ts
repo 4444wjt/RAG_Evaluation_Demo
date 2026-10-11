@@ -8,7 +8,7 @@ for (const viewport of [{width:1920,height:1080},{width:1280,height:800}]) {
     const api: string[] = [];
     page.on('request', request => { if (request.url().includes('/api/')) api.push(request.url()); });
     await page.goto('/');
-    await expect(page.getByRole('heading', {level:1})).toContainText('让 RAG 的回答，经得起证据检查。');
+    await expect(page.getByRole('heading', {level:1})).toContainText('都能逐句查到出处。');
     await expect(page.getByRole('list', {name:'证据验证流程'}).locator('li')).toHaveCount(5);
     await expect(page.locator('.landing-proof img')).toHaveCount(0);
     await expect(page.getByRole('region', {name:'DeepSeek 演示快照质量门禁'})).toBeAttached();
@@ -126,7 +126,7 @@ test('demo works without backend and survives home/back navigation', async ({ pa
   await page.getByRole('button',{name:'多模型对比',exact:true}).click();
   await expect(page.getByRole('table')).toBeVisible();
   await page.getByRole('button',{name:'返回首页',exact:true}).click();
-  await expect(page.getByRole('heading',{level:1})).toContainText('让 RAG 的回答，经得起证据检查。');
+  await expect(page.getByRole('heading',{level:1})).toContainText('都能逐句查到出处。');
   await page.goBack();
   await expect(page.getByRole('table')).toBeVisible();
   await page.getByRole('button',{name:'返回首页',exact:true}).click();

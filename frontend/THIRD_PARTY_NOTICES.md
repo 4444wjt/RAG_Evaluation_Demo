@@ -17,6 +17,7 @@ The landing background in `src/features/landing/ResearchField.tsx` is an origina
 | [React](https://github.com/react/react/blob/v19.3.0/LICENSE) and React DOM | MIT; copy at `licenses/LICENSE-react-19.3.0.txt` |
 | [Apache ECharts 6.1.0](https://github.com/apache/echarts/blob/6.1.0/LICENSE) | Apache-2.0; copy at `licenses/LICENSE-echarts-6.1.0.txt` |
 | Apache ECharts embedded D3 components | BSD 3-Clause; copy at `licenses/LICENSE-echarts-d3-6.1.0.txt` |
+| [Inter Variable 5.3.0](https://github.com/rsms/inter) via `@fontsource-variable/inter` | SIL Open Font License 1.1; self-hosted font files, copy at `licenses/LICENSE-inter-5.3.0.txt` |
 
 The bundled runtime notices are copied into the production build as `public/landing/third-party-licenses.txt`. Pinned versions and the complete dependency tree are recorded in `package.json` and `package-lock.json`. Development and other transitive dependencies retain their respective upstream licenses; review their package metadata when redistributing those packages or a development environment.
 

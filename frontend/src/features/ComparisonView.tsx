@@ -32,6 +32,25 @@ const RATIO_COLUMNS = new Set([
   'refusal_accuracy', 'hallucination_rate', 'hallucination_ratio', 'pos_trace_hallucination_ratio',
 ]);
 
+/** Only columns with an unambiguous direction are highlighted; negative-case metrics, raw scores and plain counts are left neutral. */
+const HIGHER_IS_BETTER = new Set([
+  'faithfulness', 'context_precision', 'answer_relevancy', 'answer_correctness', 'context_recall',
+  'pos_faithfulness', 'pos_context_precision', 'refusal_accuracy',
+]);
+const LOWER_IS_BETTER = new Set([
+  'hallucination_rate', 'hallucination_ratio', 'pos_trace_hallucination_ratio',
+  'hallucination_statement_count', 'trace_fact_error_count', 'trace_fabrication_count', 'elapsed_seconds',
+]);
+
+/** The best value of a column, or null when the column has no direction, fewer than two values, or no spread. */
+function bestValue(rows: ResultRow[], key: string): number | null {
+  if (!HIGHER_IS_BETTER.has(key) && !LOWER_IS_BETTER.has(key)) return null;
+  const values = rows.map((row) => numberValue(row[key])).filter((value): value is number => value !== null);
+  if (values.length < 2) return null;
+  const best = HIGHER_IS_BETTER.has(key) ? Math.max(...values) : Math.min(...values);
+  return values.every((value) => value === best) ? null : best;
+}
+
 function formatCell(key: string, value: JsonValue | undefined): string {
   if (value === null || value === undefined) return '—';
   if (RATIO_COLUMNS.has(key)) return percent(value);
@@ -47,6 +66,7 @@ function formatCell(key: string, value: JsonValue | undefined): string {
 
 function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
   const columns = [...new Set(rows.flatMap((row) => Object.keys(row)))].filter((key) => key !== 'model');
+  const best = new Map(columns.map((key) => [key, bestValue(rows, key)]));
 
   return <div className="comparison-table-scroll" tabIndex={0} role="region" aria-label="完整模型指标表，可横向滚动">
     <table className="comparison-table">
@@ -68,7 +88,8 @@ function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
           </th>
           {columns.map((key) => {
             const value = formatCell(key, row[key]);
-            return <td key={key} className={value === '—' ? 'comparison-missing' : ''}><span title={value}>{value}</span></td>;
+            const isBest = best.get(key) !== null && numberValue(row[key]) === best.get(key);
+            return <td key={key} className={value === '—' ? 'comparison-missing' : isBest ? 'comparison-best' : ''}><span title={isBest ? `${value}（本列最佳）` : value}>{value}</span></td>;
           })}
         </tr>)}
       </tbody>
@@ -111,7 +132,7 @@ export function ComparisonView({ result }: { result: EvaluationResult | null }) 
       </div>
 
       <section className="comparison-panel comparison-table-panel" aria-labelledby="comparison-metrics-title">
-        <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-metrics-title">完整指标</h2><p>保留全部原始指标与追踪字段，横向滚动查看更多。</p></div><span className="comparison-source-note">— 表示缺失</span></div>
+        <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-metrics-title">完整指标</h2><p>保留全部原始指标与追踪字段，横向滚动查看更多。</p></div><span className="comparison-source-note"><span className="comparison-best-key">绿色</span>为本列最佳 · — 表示缺失</span></div>
         <OriginalMetricsTable rows={rows} />
       </section>
     </>}

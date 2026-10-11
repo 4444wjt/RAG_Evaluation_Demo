@@ -96,6 +96,6 @@ export function EvidenceFlow({ enabled = true }: { enabled?: boolean }) {
         </li>)}
       </ol>
     </div>
-    <p className="evidence-footnote">流程示意：逐句证据与门禁指标分别呈现。门禁按样本与阈值判定，不等同于单条回答判断，也不代表所有指标优秀。</p>
+    <p className="evidence-footnote">逐句证据看的是单条回答有没有依据，门禁看的是整批样本有没有达标——两回事，都不代表模型全面合格。</p>
   </div>;
 }

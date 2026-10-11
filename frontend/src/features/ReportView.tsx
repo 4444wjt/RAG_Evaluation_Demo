@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { EvaluationResult } from '../api/types';
 import { Icon } from '../components/Icon';
+import { READ_ONLY } from '../config';
 import './details.css';
+
+/** Public builds show only the file name: the frozen snapshot records absolute paths from the author's machine. */
+const fileName = (path: string) => path.split(/[\\/]/).pop() || path;
 
 type ImportedReport = { result: EvaluationResult | null; name: string; document: string };
 type Notice = { kind: 'success' | 'error'; text: string };
@@ -114,9 +118,9 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
       <div className="report-path-heading"><h3>本地产物路径</h3><span>来自当前结果</span></div>
       <div className="report-paths">{paths.map((path) => <div className="report-path-row" key={path.label}>
         <div className="report-path-label"><Icon name={path.icon} size={17} /><span>{path.label}</span></div>
-        {path.value ? <><code className="report-path-value" tabIndex={0}>{path.value}</code><button type="button" className="btn btn-ghost report-copy-button" aria-label={`复制${path.label}本地路径`} onClick={() => void copyPath(path.value!)}><Icon name="copy" size={15} /><span>复制路径</span></button></> : <span className="report-path-missing">{result ? '当前结果未记录路径' : '尚未载入评测结果'}</span>}
+        {path.value && READ_ONLY ? <code className="report-path-value" tabIndex={0}>{fileName(path.value)}</code> : path.value ? <><code className="report-path-value" tabIndex={0}>{path.value}</code><button type="button" className="btn btn-ghost report-copy-button" aria-label={`复制${path.label}本地路径`} onClick={() => void copyPath(path.value!)}><Icon name="copy" size={15} /><span>复制路径</span></button></> : <span className="report-path-missing">{result ? '当前结果未记录路径' : '尚未载入评测结果'}</span>}
       </div>)}</div>
-      <p className="report-path-note">路径指向本地文件。请从本地选择报告导入；文件可能被后续评测覆盖。</p>
+      <p className="report-path-note">{READ_ONLY ? '这些是评测时在本机生成的产物，公开站点不提供下载；可导入你自己的 HTML 报告预览。' : '路径指向本地文件。请从本地选择报告导入；文件可能被后续评测覆盖。'}</p>
       {copyNotice && <p className={`report-notice report-notice--${copyNotice.kind}`} role="status">{copyNotice.text}</p>}
     </div>
 

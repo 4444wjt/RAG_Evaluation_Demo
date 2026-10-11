@@ -290,7 +290,7 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
                   ? contexts.findIndex((context) => context.text.includes(statement.evidence)) : -1;
                 const evidenceState = statement.evidence.trim() ? (matchingContext >= 0 ? '引用已定位' : '引用未匹配') : '无引用';
                 return <article className={`trace-statement trace-statement--${statement.verdict}`} key={index}>
-                  <div className="trace-statement-heading"><span>断言 {index + 1}</span><div className="trace-statement-badges"><span className={`badge trace-verdict trace-verdict--${statement.verdict}`}>{verdictLabels[statement.verdict]}</span><span className={`trace-evidence-status trace-evidence-status--${evidenceState === '引用已定位' ? 'matched' : evidenceState === '引用未匹配' ? 'unmatched' : 'empty'}`}>{evidenceState}</span></div></div>
+                  <div className="trace-statement-heading"><span>陈述 {index + 1}</span><div className="trace-statement-badges"><span className={`badge trace-verdict trace-verdict--${statement.verdict}`}>{verdictLabels[statement.verdict]}</span><span className={`trace-evidence-status trace-evidence-status--${evidenceState === '引用已定位' ? 'matched' : evidenceState === '引用未匹配' ? 'unmatched' : 'empty'}`}>{evidenceState}</span></div></div>
                   <p className="trace-statement-text">{statement.text}</p>
                   {statement.verdict === 'unknown' && statement.originalVerdict && <p className="trace-unknown-verdict">原始判定值：{statement.originalVerdict}</p>}
                   <div className="trace-evidence">

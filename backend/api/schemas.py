@@ -13,7 +13,7 @@ class EvaluateRequest(BaseModel):
     doc_path: str | None = None
     testset_path: str | None = None
     benchmark: Literal["truthful_qa"] | None = None
-    benchmark_limit: int = Field(default=20, gt=0)
+    benchmark_limit: int = Field(default=20, gt=0, le=50)
     model_names: list[str] | None = Field(default=None, min_length=1)
     faith_threshold: float | None = Field(default=None, ge=0, le=1)
     ctx_prec_threshold: float | None = Field(default=None, ge=0, le=1)

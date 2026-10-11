@@ -44,6 +44,9 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
   const thresholdNote = gateProvenance && (faithGateThreshold !== null || contextGateThreshold !== null)
     ? '已有阈值来自演示快照的原始运行记录；缺失项不作推断。'
     : manualThresholds ? '阈值来自本次显式提交参数。' : '未随结果返回的运行阈值不作推断。';
+  // 能力图上的门禁参考线：只有两项阈值都取得到时才画，缺失项不作推断。
+  const gateLine: readonly [number, number] | undefined = faithGateThreshold !== null && contextGateThreshold !== null
+    ? [faithGateThreshold, contextGateThreshold] : undefined;
   const positiveFaithfulness = numberValue(selected?.pos_faithfulness);
   const positiveContextPrecision = numberValue(selected?.pos_context_precision);
   // This display check never changes the engine's recorded gate_passed.
@@ -96,7 +99,7 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
     <section className="kpi-strip" aria-label="评测核心指标">
       {cards.map((card) => <div className="metric-tile" key={card.label}><span>{card.label}</span><strong className={card.value === '暂无数据' ? 'metric-missing' : undefined}>{card.value}</strong><small>{card.note}</small></div>)}
     </section>
-    <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><AbilityChart rows={result.summary_df} height={360}/></section>
+    <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><AbilityChart rows={result.summary_df} height={360} gateLine={gateLine}/></section>
     <div className="overview-bottom">
       <button className="analysis-entry" onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><Icon name="arrow"/></button>
       <button className="analysis-entry" onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><Icon name="arrow"/></button>

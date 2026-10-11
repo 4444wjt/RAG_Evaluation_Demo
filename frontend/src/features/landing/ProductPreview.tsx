@@ -38,7 +38,7 @@ export function EvidenceTracePreview() {
     <div className="trace-section-heading"><h4>逐句判定</h4><span>来自原始溯源记录</span></div>
     <div className="trace-statements">
       <article className="trace-statement trace-statement--supported">
-        <div className="trace-statement-heading"><span>断言 1</span><span className="badge trace-verdict trace-verdict--supported">有依据</span></div>
+        <div className="trace-statement-heading"><span>陈述 1</span><span className="badge trace-verdict trace-verdict--supported">有依据</span></div>
         <p className="trace-statement-text">星云科技最新一轮B轮融资金额达5亿元人民币。</p>
         <div className="trace-evidence">
           <div className="trace-evidence-label"><Icon name="file" size={14}/><span>原始判定证据</span></div>

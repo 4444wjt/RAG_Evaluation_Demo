@@ -531,6 +531,22 @@ def test_post_evaluate_controlled_files_and_benchmark_precedence(tmp_path):
     """)
 
 
+def test_post_evaluate_read_only_mode_blocks_before_engine(tmp_path):
+    _run_evaluation_http(tmp_path, r"""
+        fake = Mock(return_value=sample_result())
+        with patch.dict(os.environ, {"VERISCOPE_READ_ONLY": "1"}):
+            with client_for(fake) as client:
+                response = client.post("/evaluate", json={})
+                assert response.status_code == 423, response.text
+                assert isinstance(response.json()["detail"], str)
+                assert client.get("/health").json() == {"status": "ok"}
+        assert fake.call_count == 0
+        with client_for(fake, 1) as client:
+            assert client.post("/evaluate", json={"benchmark_limit": 51}).status_code == 422
+        assert fake.call_count == 0
+    """)
+
+
 def test_post_evaluate_request_errors_are_safe_and_do_not_call_engine(tmp_path):
     _run_evaluation_http(tmp_path, r"""
         fake = Mock(return_value=sample_result())

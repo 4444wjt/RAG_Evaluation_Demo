@@ -1,6 +1,7 @@
 """Local synchronous API, with lazy evaluation engine initialization."""
 
 from collections.abc import Callable, Mapping
+import os
 from pathlib import Path
 from typing import Any
 
@@ -40,6 +41,9 @@ def create_app(
 
     @application.post("/evaluate", response_model=EvaluateResponse, tags=["evaluation"])
     def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
+        # Read per request so a public demo deployment can switch it via environment alone.
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点未开放在线评测。")
         return run_evaluation(request, evaluator, project_root=project_root)
 
     return application

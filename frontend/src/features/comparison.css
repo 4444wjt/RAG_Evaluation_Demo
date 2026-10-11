@@ -32,9 +32,10 @@
 .comparison-view .comparison-panel {
   min-width: 0;
   padding: 20px 24px 18px;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-surface);
   border-radius: var(--radius);
   background: var(--bg-workspace);
+  box-shadow: var(--surface-shadow);
 }
 
 .comparison-view .comparison-main-panel {
@@ -208,6 +209,12 @@
 
 .comparison-view .comparison-table .comparison-missing {
   color: var(--text-secondary);
+}
+
+.comparison-view .comparison-table .comparison-best,
+.comparison-view .comparison-best-key {
+  color: var(--success);
+  font-weight: 600;
 }
 
 .comparison-view .comparison-empty {

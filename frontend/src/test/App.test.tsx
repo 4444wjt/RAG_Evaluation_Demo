@@ -544,7 +544,7 @@ describe('configuration check feedback', () => {
     await waitFor(() => expect(feedback).toHaveTextContent('本地参数检查通过，服务可连接。'));
     expect(feedback).toHaveTextContent('不会验证文件是否存在、模型或凭据是否可用');
     expect(feedback).toHaveFocus();
-    expect(screen.getByRole('heading', { name: 'Experiment Workspace' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '评测配置' })).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/health')).toHaveLength(healthCalls + 1);
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(1);
     expect(screen.getByRole('button', { name: '开始评测' })).toBeEnabled();

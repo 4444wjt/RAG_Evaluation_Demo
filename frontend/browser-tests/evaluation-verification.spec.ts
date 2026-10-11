@@ -46,7 +46,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       }));
       expect(layout).toEqual({ overflow: false, font: '14px', selects: [40, 40] });
       await page.screenshot({ path: resolve(`test-results/credibility-refinement/verification-${viewport.width}x${viewport.height}.png`), fullPage: true });
-      const failure = page.getByRole('region', { name: '历史失败案例' });
+      const failure = page.getByRole('region', { name: '门禁拦截验证' });
       await failure.getByText('查看问题、指标与门禁依据', { exact: true }).click();
       await expect(failure.getByRole('region', { name: '金融场景原始问题' }).locator('article')).toHaveCount(3);
       const questions = failure.getByRole('region', { name: '金融场景原始问题' }).locator('article');
@@ -98,7 +98,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       await expect(page.getByRole('region', { name: '当前模型质量门禁' })).toContainText('PASS');
       expect(evaluations).toEqual([]);
       await page.getByRole('button', { name: '返回首页' }).click();
-      await expect(page.getByRole('heading', { level: 1 })).toContainText('让 RAG 的回答');
+      await expect(page.getByRole('heading', { level: 1 })).toContainText('都能逐句查到出处。');
     });
 
     test('live results cannot inherit demo verification and stale notices remain intact', async ({ page }) => {

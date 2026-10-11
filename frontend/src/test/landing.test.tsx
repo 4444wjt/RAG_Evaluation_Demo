@@ -11,11 +11,11 @@ describe('Landing page', () => {
   afterEach(() => { vi.restoreAllMocks(); vi.useRealTimers(); });
   it('explains the five stages and labels the demonstration', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('把 AI 应用的可靠性，交付成可检查的测试结论。');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('AI 的每个回答，都能逐句查到出处。');
     for (const name of ['提出问题', '检索上下文', '模型回答', '核对证据', '质量门禁']) expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText(name)).toBeInTheDocument();
     for (const name of ['Question', 'Retrieval Context', 'Answer', 'Evidence Check', 'Quality Gate']) expect(screen.queryByText(name)).not.toBeInTheDocument();
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.getByText(/门禁按样本与阈值判定/)).toBeInTheDocument();
+    expect(screen.getByText(/门禁看的是整批样本有没有达标/)).toBeInTheDocument();
     expect(screen.getByText(/无需连接模型服务/)).toBeInTheDocument();
   });
 
@@ -55,7 +55,7 @@ describe('Landing page', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
     expect(screen.getByText('真实界面 · 演示快照 20260930-1958 · 非本次实时评测')).toBeInTheDocument();
     expect(screen.getByText('真实界面 · 同一演示快照中的逐句证据')).toBeInTheDocument();
-    expect(screen.getByText(/不等同于单条回答判断，也不代表所有指标优秀/)).toBeInTheDocument();
+    expect(screen.getByText(/都不代表模型全面合格/)).toBeInTheDocument();
     const gate = screen.getByRole('region', { name: 'DeepSeek 演示快照质量门禁' });
     expect(gate).toHaveTextContent('演示门禁范围');
     expect(gate).toHaveTextContent('当前快照包含 6 个问题、3 个模型、18 条回答。');
@@ -92,7 +92,7 @@ describe('Landing page', () => {
   it('presents the existing platform capabilities in their workflow order', () => {
     const { container } = render(<LandingPage onEnter={vi.fn()}/>);
     const titles = [...container.querySelectorAll('.landing-capabilities dt')].map(node => node.textContent?.replace(/^\d{2}/, ''));
-    expect(titles).toEqual(['测试用例集', '多模型对比', '逐句断言', '报告交付']);
+    expect(titles).toEqual(['选题与模型', '多模型对比', '逐句核对', '查看报告']);
     expect(container.querySelectorAll('.landing-capabilities dd')).toHaveLength(4);
     expect(screen.getByText('导入并查看已有 HTML 评测报告。')).toBeInTheDocument();
   });
@@ -181,7 +181,7 @@ describe('Landing page', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
     expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText('质量门禁').closest('li')).toHaveAttribute('aria-current', 'step');
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.getByText(/流程示意：逐句证据与门禁指标分别呈现/)).toBeInTheDocument();
+    expect(screen.getByText(/逐句证据看的是单条回答有没有依据/)).toBeInTheDocument();
   });
 
   it('clears pending playback timers when the landing page unmounts', () => {

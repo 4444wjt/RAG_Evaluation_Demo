@@ -150,7 +150,7 @@ test('current model gate follows positive metrics while preserving the original 
     await expect(page.locator('[data-gate-field="pos_faithfulness"] dd > span')).toHaveText(model.faith);
     await expect(page.locator('[data-gate-field="pos_context_precision"] dd > span')).toHaveText('100.0%');
     for (const metric of ['pos_faithfulness', 'pos_context_precision']) {
-      await expect(page.locator(`[data-gate-field="${metric}"] dd > small`)).toHaveText('门槛 ≥ 80.0%');
+      await expect(page.locator(`[data-gate-field="${metric}"] dd > small`).first()).toHaveText('门槛 ≥ 80.0%');
     }
     await expect(page.locator('.original-gate')).toHaveText('原始评测门禁：PASS');
     await expect(page.locator('.gate-interpretation')).toHaveText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。');
@@ -212,7 +212,7 @@ test('mock evaluation preserves zero thresholds and original gate=false while co
   await expect(page.locator('.original-gate')).toHaveText('原始评测门禁：FAIL');
   await expect(page.locator('.gate-subject dd')).toHaveText('DeepSeek');
   for (const metric of ['pos_faithfulness', 'pos_context_precision']) {
-    await expect(page.locator(`[data-gate-field="${metric}"] dd > small`)).toHaveText('门槛 ≥ 0.0%');
+    await expect(page.locator(`[data-gate-field="${metric}"] dd > small`).first()).toHaveText('门槛 ≥ 0.0%');
   }
   await expect(page.locator('.gate-interpretation')).toHaveText('门禁结论仅反映规则检查，不代表所有模型指标优秀。');
   await expect(page.locator('.metric-tile').filter({ hasText: '幻觉语句数' })).toContainText('17');
@@ -325,7 +325,7 @@ for (const mode of ['auto', 'custom']) {
     await expect(page.locator('.original-gate')).toHaveText('原始评测门禁：PASS');
     expect(await page.locator('.gate-value').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(245, 158, 11)');
     for (const metric of ['pos_faithfulness', 'pos_context_precision']) {
-      await expect(page.locator(`[data-gate-field="${metric}"] dd > small`)).toHaveText('门槛未提供');
+      await expect(page.locator(`[data-gate-field="${metric}"] dd > small`).first()).toHaveText('门槛未提供');
     }
     expect(posts).toHaveLength(1);
     expect(posts[0]).toMatchObject({ benchmark: null, benchmark_limit: 20, testset_path: mode === 'custom' ? 'testset_example.csv' : null });

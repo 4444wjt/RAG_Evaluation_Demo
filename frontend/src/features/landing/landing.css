@@ -1,4 +1,5 @@
-.landing-page { max-width: 1536px; margin-inline: auto; padding-inline: 48px; }
+/* clip, not hidden: the decorative research field bleeds 48px sideways and must not cause horizontal scroll on phones. */
+.landing-page { max-width: 1536px; margin-inline: auto; padding-inline: 48px; overflow-x: clip; }
 .landing-header { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--border-subtle); }
 .landing-brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 24px; letter-spacing: 0; }
 .landing-brand > svg { flex-shrink: 0; color: var(--brand); }
@@ -13,7 +14,7 @@
 .landing-hero { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; padding: 72px 0 88px; }
 .research-field { position: absolute; inset: 0 -48px; z-index: -1; pointer-events: none; overflow: hidden; background: radial-gradient(ellipse at 62% 40%, color-mix(in srgb, var(--brand) 5%, transparent), transparent 68%) top / 100% var(--field-hero-height, 700px) no-repeat; mask-image: linear-gradient(to bottom, transparent, #000 var(--field-fade-in, 84px), #000 var(--field-fade-down, 560px), rgb(0 0 0 / .6) var(--field-hero-height, 700px), rgb(0 0 0 / .6) 96%, transparent); }
 .research-field canvas { display: block; width: 100%; height: 100%; }
-.landing-hero h1 { font-size: clamp(42px, 3.34vw, 64px); font-weight: 800; line-height: 1.16; letter-spacing: -.025em; text-wrap: balance; font-kerning: normal; }
+.landing-hero h1 { font-size: clamp(54px, 3.34vw, 64px); font-weight: 800; line-height: 1.16; letter-spacing: -.025em; text-wrap: balance; font-kerning: normal; }
 .landing-latin { font-weight: inherit; letter-spacing: -.04em; }
 .landing-hero h1 span { color: var(--brand); }
 /* Static platinum and Gold, using the existing text-clipping pattern and tokens. */
@@ -144,6 +145,7 @@
 .landing-closing p { margin-top: 12px; }
 .landing-footer { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; padding: 24px 0 32px; border-top: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); }
 .landing-footer a { display: inline-flex; gap: 8px; align-items: center; }
+.landing-footer-links { display: inline-flex; flex-wrap: wrap; gap: 8px 24px; }
 .landing-skip { position: absolute; top: 8px; left: 16px; transform: translateY(-160%); padding: 12px; background: var(--bg-elevated); z-index: 10; }
 .landing-skip:focus { transform: none; }
 .landing-load-state { padding: 48px 24px; max-width: 640px; margin: 80px auto; }.landing-load-state p { margin: 16px 0 24px; }
@@ -159,6 +161,9 @@
   .landing-capabilities dl > div { padding-inline: 16px; }
   .landing-closing { padding: 40px 32px; margin-bottom: 72px; }
 }
+/* Narrow desktops: scale the headline down instead of letting 「处。」 drop to a line of its own. */
+@media (min-width: 900px) { .landing-hero h1 span { white-space: nowrap; } }
+@media (min-width: 900px) and (max-width: 1199px) { .landing-hero h1 { font-size: clamp(40px, 4.4vw, 54px); } }
 @media (max-width: 899px) { .landing-page { padding-inline: 24px; }.landing-header { min-height: 80px; }.landing-header nav { gap: 16px; }.landing-header nav > a:not(.btn) { display: none; }.landing-hero { grid-template-columns: 1fr; gap: 40px; }.landing-hero h1 { font-size: clamp(36px, 6vw, 48px); }.landing-models { margin-top: 32px; }.landing-section-heading { display: block; }.landing-section-heading p { margin-top: 12px; }.landing-proof-row, .landing-proof-reverse { grid-template-columns: 1fr; gap: 24px; }.landing-proof-reverse .landing-proof-copy { order: 0; }.landing-capabilities dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }.landing-closing { align-items: flex-start; }.evidence-pulse, .evidence-node { animation: none; } }
 @media (max-width: 540px) { .landing-page { padding-inline: 20px; }.landing-header { flex-wrap: wrap; padding-block: 20px; gap: 16px; }.landing-brand { font-size: 16px; }.landing-header nav .btn { min-height: 40px; }.landing-hero { padding-block: 40px; }.landing-hero h1 { font-size: 34px; }.landing-intro { font-size: 16px; }.landing-desktop-break { display: none; }.landing-actions { gap: 20px; }.landing-page .btn-primary { padding-inline: 20px; }.evidence-flow { padding: 16px; }.evidence-step { gap: 12px; }.evidence-step-copy strong { font-size: 15px; }.evidence-step-copy > div { gap: 0 8px; }.evidence-step-copy p { font-size: 12px; }.evidence-end { display: none; }.landing-proof, .landing-capabilities { padding-block: 40px; }.landing-section-heading h2, .landing-closing h2 { font-size: 25px; }.landing-capabilities dl { grid-template-columns: 1fr; gap: 24px; }.landing-closing { flex-direction: column; padding: 24px 0 40px; }.landing-footer { flex-direction: column; }.landing-models ul { gap: 8px 16px; } }
 .landing-page[data-motion="off"] :is(.landing-hero-copy, .evidence-flow) { animation: none; }

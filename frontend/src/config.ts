@@ -1,3 +1,8 @@
+export const REPO_URL = 'https://github.com/4444wjt/RAG_Evaluation_Demo';
+
+/** Public demo builds set VITE_READ_ONLY=1: the workbench shows snapshots only and never starts a paid evaluation. */
+export const READ_ONLY = import.meta.env.VITE_READ_ONLY === '1';
+
 /** Public model IDs only. Update these if the local backend names are overridden. */
 export const MODELS = [
   { id: 'deepseek-chat', label: 'DeepSeek', detail: 'DeepSeek 通用对话模型', initials: 'DS' },

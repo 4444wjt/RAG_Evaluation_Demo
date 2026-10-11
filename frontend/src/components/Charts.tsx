@@ -3,7 +3,7 @@ import * as echarts from 'echarts/core';
 import type { ComposeOption } from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import type { BarSeriesOption } from 'echarts/charts';
-import { AriaComponent, AxisPointerComponent, GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
+import { AriaComponent, AxisPointerComponent, GridComponent, LegendComponent, MarkLineComponent, TooltipComponent } from 'echarts/components';
 import type { AriaComponentOption, AxisPointerComponentOption, GridComponentOption, LegendComponentOption, TooltipComponentOption } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
 import type { ResultRow } from '../api/types';
@@ -11,7 +11,7 @@ import { METRICS } from '../config';
 import { modelName, numberValue, percent, seconds } from '../utils/format';
 import { Icon } from './Icon';
 
-echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, AriaComponent, AxisPointerComponent, SVGRenderer]);
+echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, AriaComponent, AxisPointerComponent, MarkLineComponent, SVGRenderer]);
 
 type EChartsOption = ComposeOption<BarSeriesOption | GridComponentOption | TooltipComponentOption | LegendComponentOption | AriaComponentOption | AxisPointerComponentOption>;
 
@@ -46,6 +46,26 @@ function chartTheme() {
   };
 }
 
+/** 门禁门槛参考线：只在门禁实际检查的两个指标（忠实度、上下文精度）上绘制，
+ *  不做成全宽横线，避免把"整体均值"误读成"门禁判定量"。 */
+function gateMarkLine(labels: string[], gateLine: readonly [number, number], theme: ReturnType<typeof chartTheme>): BarSeriesOption['markLine'] {
+  return {
+    silent: true,
+    symbol: 'none',
+    animation: false,
+    lineStyle: { color: 'rgba(255, 255, 255, 0.5)', type: 'dashed', width: 1.5 },
+    label: {
+      show: true,
+      position: 'insideEndTop',
+      formatter: '门禁门槛',
+      color: theme.axis,
+      fontFamily: theme.fontFamily,
+      fontSize: theme.captionSize,
+    },
+    data: [[{ coord: [labels[0], gateLine[0]] }, { coord: [labels[1], gateLine[1]] }]],
+  };
+}
+
 function modelSeries(rows: ResultRow[], keys: readonly string[], showValues: boolean, theme: ReturnType<typeof chartTheme>): BarSeriesOption[] {
   return rows.map((row, index) => ({
     name: modelName(row.model),
@@ -59,8 +79,11 @@ function modelSeries(rows: ResultRow[], keys: readonly string[], showValues: boo
   }));
 }
 
-function ratioOption(rows: ResultRow[], labels: string[], keys: readonly string[], description: string, showValues = false): EChartsOption {
+function ratioOption(rows: ResultRow[], labels: string[], keys: readonly string[], description: string, showValues = false, gateLine?: readonly [number, number]): EChartsOption {
   const theme = chartTheme();
+  const series = modelSeries(rows, keys, showValues, theme);
+  // 只在第一条系列上挂门槛线，避免多系列重复绘制同一条线。
+  if (gateLine && series.length > 0) series[0].markLine = gateMarkLine(labels, gateLine, theme);
   return {
     animation: false,
     backgroundColor: theme.background,
@@ -106,7 +129,7 @@ function ratioOption(rows: ResultRow[], labels: string[], keys: readonly string[
       axisLabel: { color: theme.axis, fontFamily: theme.fontFamily, fontSize: theme.captionSize, formatter: (value: number) => `${Math.round(value * 100)}%` },
       splitLine: { lineStyle: { color: theme.grid, type: 'dashed' } },
     },
-    series: modelSeries(rows, keys, showValues, theme),
+    series,
     media: [
       { query: { maxWidth: 380 }, option: { series: rows.map(() => ({ type: 'bar', label: { show: false } })) } },
       { query: { maxWidth: 540 }, option: { xAxis: { axisLabel: { fontSize: theme.captionSize } }, grid: { bottom: 32, right: 8 } } },
@@ -163,10 +186,13 @@ function UnavailableChart({ title, height }: { title: string; height: number }) 
   </div>;
 }
 
-export function AbilityChart({ rows, height = 500 }: { rows: ResultRow[]; height?: number }) {
+export function AbilityChart({ rows, height = 500, gateLine }: { rows: ResultRow[]; height?: number; gateLine?: readonly [number, number] }) {
   const keys = METRICS.map((metric) => metric.key);
-  const description = `五项模型能力对比：${METRICS.map((metric) => metric.label).join('、')}。按评测返回顺序展示，百分比越高越好。缺失指标不绘制。`;
-  const option = useMemo(() => ratioOption(rows, METRICS.map((metric) => metric.label), METRICS.map((metric) => metric.key), description, true), [rows, description]);
+  const base = `五项模型能力对比：${METRICS.map((metric) => metric.label).join('、')}。按评测返回顺序展示，百分比越高越好。缺失指标不绘制。`;
+  const description = gateLine
+    ? `${base}虚线为门禁门槛，仅画在门禁实际检查的忠实度与上下文精度两项上。`
+    : base;
+  const option = useMemo(() => ratioOption(rows, METRICS.map((metric) => metric.label), METRICS.map((metric) => metric.key), description, true, gateLine), [rows, description, gateLine]);
   const available = rows.some((row) => keys.some((key) => numberValue(row[key]) !== null));
   if (!available) return <UnavailableChart title="能力指标暂不可用" height={height} />;
   return <ChartCanvas option={option} label={description} height={height} />;
