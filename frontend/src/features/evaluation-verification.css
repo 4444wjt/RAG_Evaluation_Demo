@@ -135,3 +135,10 @@
   .verification-failure-gate dl { grid-template-columns: 1fr; }
   .verification-provenance dl { grid-template-columns: 1fr; }
 }
+
+/* Counts and the review-status ring sit side by side; the scope note spans below. */
+.verification-scope { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 40px; }
+.verification-scope > .verification-counts { margin: 0; }
+.verification-scope > .donut { grid-row: 1 / span 2; grid-column: 2; }
+.verification-scope > p { grid-column: 1; margin-top: 16px; }
+@media (max-width: 899px) { .verification-scope { grid-template-columns: minmax(0, 1fr); } .verification-scope > .donut, .verification-scope > p { grid-column: 1; grid-row: auto; } }

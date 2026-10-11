@@ -344,3 +344,11 @@
   .trace-context summary,
   .trace-context summary > svg { transition: none; }
 }
+
+/* Verdict composition panel at the top of the trace view. */
+.trace-mix { margin-bottom: 24px; padding: 20px 24px 16px; border: 1px solid var(--border-surface); border-radius: var(--radius); background: var(--bg-surface); background-image: var(--surface-sheen); box-shadow: var(--surface-shadow); }
+.trace-mix-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 12px; }
+.trace-mix-heading h2 { font-size: var(--font-size-section); }
+.trace-mix-heading p { margin-top: 6px; font-size: 13px; }
+.trace-mix-heading .viz-legend { margin: 4px 0 0; }
+@media (max-width: 540px) { .trace-mix { padding: 16px; } }

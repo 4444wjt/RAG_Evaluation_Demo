@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { DemoFixture, EvaluationResult, ResultSource } from '../api/types';
 import { Icon } from '../components/Icon';
+import { Donut } from '../components/Donut';
 import { modelName, percent, textValue } from '../utils/format';
 import demoRaw from '../fixtures/demo.json?raw';
 import reviewData from '../fixtures/credibility-review.json';
@@ -32,6 +33,7 @@ const targets: Record<string, number[]> = {
   'glm-5.2-fast-preview': [1, 3, 4, 5],
 };
 const statusLabels: Record<ReviewStatus, string> = { pending: '待核验', agree: '一致', disagree: '不一致', uncertain: '无法确认' };
+const statusColors: Record<ReviewStatus, string> = { agree: 'var(--success)', disagree: 'var(--danger)', uncertain: 'var(--warning)', pending: 'var(--text-secondary)' };
 const verdictLabels: Record<string, string> = { supported: '有依据', fact_error: '事实错误', fabrication: '无依据编造', not_applicable: '不适用', uncertain: '无法确认' };
 const extractionLabels = { complete: '抽取完整', missing: '存在遗漏', not_applicable: '不适用', uncertain: '无法确认' };
 const refusalLabels = { reasonable: '处理合理', questionable: '需要复查', not_applicable: '不适用', uncertain: '无法确认' };
@@ -196,6 +198,7 @@ export function EvaluationVerificationView({ result, source, reviewBundle = revi
   return <div className="verification-view">
     <section className="verification-scope" aria-label="人工核验范围">
       <dl className="verification-counts"><div><dt>已检查</dt><dd>{bundle.records.length - pending}<span>条</span></dd></div><div><dt>待核验</dt><dd>{pending}<span>条</span></dd></div><div><dt>未纳入</dt><dd>{totalAnswers - bundle.records.length}<span>条</span></dd></div></dl>
+      <Donut label={`人工核验 ${bundle.records.length} 条：${(['agree', 'disagree', 'uncertain', 'pending'] as const).map((status) => `${statusLabels[status]} ${bundle.records.filter((record) => record.status === status).length}`).join('，')}`} centerValue={String(bundle.records.length - pending)} centerLabel="条已核验" segments={(['agree', 'disagree', 'uncertain', 'pending'] as const).map((status) => ({ key: status, label: statusLabels[status], value: bundle.records.filter((record) => record.status === status).length, color: statusColors[status] }))}/>
       <p>预选 {bundle.records.length}/{totalAnswers} 条回答，关联 {selectedStatements}/{totalStatements} 条逐句记录。已检查包含“无法确认”；定向核验范围不代表整体准确率。</p>
     </section>
     <section className="verification-records" aria-labelledby="verification-records-title">

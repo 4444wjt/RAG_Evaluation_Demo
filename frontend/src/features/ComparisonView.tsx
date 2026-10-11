@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import type { EvaluationResult, JsonValue, ResultRow } from '../api/types';
 import { AbilityChart, DurationChart, RiskChart } from '../components/Charts';
+import { HeatMatrix } from '../components/HeatMatrix';
 import { Icon } from '../components/Icon';
 import { count, modelName, numberValue, percent, seconds } from '../utils/format';
 import './comparison.css';
@@ -99,6 +101,7 @@ function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
 
 export function ComparisonView({ result }: { result: EvaluationResult | null }) {
   const rows = result?.summary_df ?? [];
+  const [mode, setMode] = useState<'matrix' | 'bars'>('matrix');
 
   return <div className="comparison-view">
     <header className="comparison-header">
@@ -111,20 +114,33 @@ export function ComparisonView({ result }: { result: EvaluationResult | null }) 
       <h2>{result ? '本次结果没有模型汇总' : '还没有可对比的结果'}</h2>
       <p>运行一次评测或加载示例结果，即可查看模型能力、风险指标和完整数据。</p>
     </section> : <>
-      <section className="comparison-panel comparison-main-panel" aria-labelledby="comparison-ability-title">
+      <div className="comparison-view-bar">
+        <div className="view-switch" role="group" aria-label="对比视图">
+          <button type="button" aria-pressed={mode === 'matrix'} onClick={() => setMode('matrix')}>热力表</button>
+          <button type="button" aria-pressed={mode === 'bars'} onClick={() => setMode('bars')}>柱状图</button>
+        </div>
+      </div>
+
+      {mode === 'matrix' ? <section className="comparison-panel comparison-main-panel comparison-matrix-panel" aria-labelledby="comparison-matrix-title">
+        <div className="comparison-panel-heading section-heading">
+          <div><h2 id="comparison-matrix-title">指标矩阵</h2><p>颜色越亮表现越好；幻觉率按越低越好着色。</p></div>
+          <span className="comparison-source-note">Ragas 指标与风险统计</span>
+        </div>
+        <HeatMatrix rows={rows} />
+      </section> : <section className="comparison-panel comparison-main-panel" aria-labelledby="comparison-ability-title">
         <div className="comparison-panel-heading section-heading">
           <div><h2 id="comparison-ability-title">模型能力</h2><p>五项能力分别比较，百分比越高越好。</p></div>
           <span className="comparison-source-note">Ragas 指标</span>
         </div>
         <AbilityChart rows={rows} />
         <p className="comparison-chart-note">缺失指标不绘制；完整数值可在下方指标表中查看。</p>
-      </section>
+      </section>}
 
-      <div className="comparison-support-grid">
-        <section className="comparison-panel" aria-labelledby="comparison-risk-title">
+      <div className={`comparison-support-grid${mode === 'matrix' ? ' is-single' : ''}`}>
+        {mode === 'bars' && <section className="comparison-panel" aria-labelledby="comparison-risk-title">
           <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-risk-title">风险指标</h2><p>幻觉率越低越好；拒答准确率越高越好。</p></div></div>
           <RiskChart rows={rows} />
-        </section>
+        </section>}
         <section className="comparison-panel" aria-labelledby="comparison-duration-title">
           <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-duration-title">评测耗时</h2><p>各模型本次评测总耗时，单位为秒。</p></div></div>
           <DurationChart rows={rows} />

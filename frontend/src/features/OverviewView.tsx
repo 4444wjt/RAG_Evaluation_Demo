@@ -4,7 +4,7 @@ import type { DemoFixture, EvaluationResult } from '../api/types';
 import type { WorkspaceConfig } from '../state';
 import { Icon } from '../components/Icon';
 import { SlideArrow } from '../components/SlideArrow';
-import { AbilityChart } from '../components/Charts';
+import { MetricBars } from '../components/MetricBars';
 import { count, modelName, numberValue, percent, seconds, textValue } from '../utils/format';
 
 function summaryValue(value: unknown, format: (value: unknown) => string): string {
@@ -100,7 +100,7 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
     <section className="kpi-strip" aria-label="评测核心指标">
       {cards.map((card) => <div className="metric-tile" key={card.label}><span>{card.label}</span><strong className={card.value === '暂无数据' ? 'metric-missing' : card.value === '0' ? 'metric-zero' : undefined}>{card.value}</strong><small>{card.note}</small></div>)}
     </section>
-    <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><AbilityChart rows={result.summary_df} height={360} gateLine={gateLine}/></section>
+    <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><MetricBars rows={result.summary_df} gateLine={gateLine}/></section>
     <div className="overview-bottom">
       <button className="analysis-entry" onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><SlideArrow/></button>
       <button className="analysis-entry" onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><SlideArrow/></button>

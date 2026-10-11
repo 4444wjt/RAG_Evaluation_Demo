@@ -275,3 +275,7 @@
   .comparison-view .comparison-table .comparison-model-cell { min-width: 156px; max-width: 172px; }
   .comparison-view .comparison-table .comparison-model-cell > small { max-width: 144px; }
 }
+
+.comparison-view .comparison-view-bar { display: flex; justify-content: flex-end; margin: -4px 0 -4px; }
+.comparison-view .comparison-support-grid.is-single { grid-template-columns: minmax(0, 1fr); }
+.comparison-view .comparison-matrix-panel .heat-matrix-scroll { padding: 4px 0 4px; }

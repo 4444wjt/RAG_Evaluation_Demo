@@ -124,6 +124,24 @@ svg { flex-shrink: 0; }
 .sidebar-foot { margin-top: auto; padding: 16px 10px 0; }
 .sidebar-rule { display: block; height: 1px; background: var(--border-subtle); margin-bottom: 22px; }
 .sidebar-foot > small { color: var(--text-secondary); font-size: 12px; line-height: 1.8; display: block; }
+.sidebar-run { margin: 28px 4px 0; padding: 14px; border: 1px solid var(--border-surface); border-radius: var(--radius-control); background-image: var(--surface-sheen); box-shadow: var(--surface-shadow); font-size: 12px; color: var(--text-secondary); }
+.sidebar-run-label { display: block; margin-bottom: 10px; font-size: 12px; }
+.sidebar-run-gate { display: flex; align-items: center; gap: 8px; margin: 0; font-family: var(--font-mono); font-size: 12px; color: var(--success); }
+.sidebar-run-gate.blocked { color: var(--danger); }
+.sidebar-run-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 18%, transparent); }
+.sidebar-run-gate.blocked .sidebar-run-dot { background: var(--danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 18%, transparent); }
+.sidebar-run-source { margin: 8px 0 12px; font-size: 12px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sidebar-run ul { display: grid; gap: 8px; margin: 0; padding: 12px 0; list-style: none; border-block: 1px solid var(--border-subtle); color: var(--text-primary); }
+.sidebar-run li { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.sidebar-run-model { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sidebar-run-more { color: var(--text-secondary); }
+.sidebar-run-swatch { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.sidebar-run-time { margin: 10px 0 0; font-family: var(--font-mono); }
+.sidebar-run-empty { margin: 28px 14px 0; font-size: 12px; color: var(--text-secondary); }
+/* The sidebar must never clip: on shorter screens the run card condenses, then hides; anything added later scrolls inside the sidebar. */
+.sidebar { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+@media (min-width: 900px) and (max-height: 860px) { .sidebar-run ul, .sidebar-run-time { display: none; } .sidebar-run-source { margin-bottom: 0; } }
+@media (min-width: 900px) and (max-height: 700px) { .sidebar-run, .sidebar-run-empty { display: none; } }
 .sidebar-repo { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: var(--text-secondary); font-size: 12px; }
 .sidebar-repo:hover { color: var(--brand); }
 .main-shell { position: relative; isolation: isolate; min-width: 0; }
@@ -382,7 +400,7 @@ main { padding: 32px 36px 18px; max-width: 1600px; margin: 0 auto; }
   .sidebar { position: relative; height: auto; padding: 16px 20px 12px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
   .brand { margin: 0 0 15px; }
   .brand strong { font-size: 15px; }
-  .navigation-label, .sidebar-foot { display: none; }
+  .navigation-label, .sidebar-foot, .sidebar-run, .sidebar-run-empty { display: none; }
   .sidebar nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; }
   .nav-item { justify-content: center; padding: 9px 4px; gap: 7px; font-size: 12px; }
   .nav-active-mark { display: none; }

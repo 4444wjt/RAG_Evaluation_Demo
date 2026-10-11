@@ -34,13 +34,16 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
     await page.screenshot({ path: `test-results/${viewport.width}-empty.png`, fullPage: true });
     await page.getByRole('button', { name: '加载演示', exact: true }).click();
     await expect(page.getByText('PASS', { exact: true })).toBeVisible();
-    await expect(page.locator('.evaluation-chart-canvas svg')).toBeVisible();
+    // The overview shows the five ability metrics as one row each, one bar per model.
+    await expect(page.locator('.metric-bars')).toBeVisible();
+    await expect(page.locator('.metric-bars-row')).toHaveCount(5);
+    await expect(page.locator('.metric-bar')).toHaveCount(15);
     if (viewport.width === 1920) {
-      // The conclusion and KPIs precede the chart; the page may scroll.
-      const chartElement = page.locator('.evaluation-chart');
+      // The conclusion and KPIs precede the metric bars; the page may scroll, but the block fits one screen.
+      const chartElement = page.locator('.metric-bars');
       await chartElement.scrollIntoViewIfNeeded();
       const chart = await chartElement.boundingBox();
-      expect(chart!.height).toBeCloseTo(360, 0);
+      expect(chart!.height).toBeLessThanOrEqual(viewport.height);
       expect(chart!.y).toBeGreaterThanOrEqual(0);
       expect(chart!.y + chart!.height).toBeLessThanOrEqual(viewport.height + 1);
     }
@@ -133,8 +136,8 @@ test('current model gate follows positive metrics while preserving the original 
   await page.goto('/#/lab');
   await expect(page.getByText('服务可连接', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
-  await expect(page.locator('.evaluation-chart-canvas svg')).toBeVisible();
-  const chartBeforeSelection = await page.locator('.evaluation-chart-canvas svg').innerHTML();
+  await expect(page.locator('.metric-bars')).toBeVisible();
+  const chartBeforeSelection = await page.locator('.metric-bars').innerHTML();
   const requestsBeforeSelection = apiRequests;
   const selector = page.getByRole('combobox', { name: '当前摘要模型', exact: true });
   for (const model of [
@@ -156,7 +159,7 @@ test('current model gate follows positive metrics while preserving the original 
     await expect(page.locator('.gate-interpretation')).toHaveText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。');
     await expect(page.locator('.result-context-note')).toHaveText('当前模型用于指标查看，不代表最佳模型；门禁展示按该模型的正向指标及已有阈值检查，原始记录保持不变。');
     await expect(page.locator('.ability-section .section-heading p')).toHaveText('图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。');
-    expect(await page.locator('.evaluation-chart-canvas svg').innerHTML()).toBe(chartBeforeSelection);
+    expect(await page.locator('.metric-bars').innerHTML()).toBe(chartBeforeSelection);
   }
   await selector.selectOption('Pro/Qwen/Qwen2.5-7B-Instruct');
   expect(fixture.result.summary[1]).toMatchObject({ faithfulness: 0.25, answer_correctness: 0.2527, context_recall: 0.3333 });

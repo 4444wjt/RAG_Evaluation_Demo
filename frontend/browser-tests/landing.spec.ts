@@ -124,14 +124,14 @@ test('demo works without backend and survives home/back navigation', async ({ pa
   await page.getByRole('link',{name:'查看演示'}).first().click();
   await expect(page.getByText('PASS',{exact:true})).toBeVisible();
   await page.getByRole('button',{name:'多模型对比',exact:true}).click();
-  await expect(page.getByRole('table')).toBeVisible();
+  await expect(page.getByRole('table', { name: /各模型的全部原始指标/ })).toBeVisible();
   await page.getByRole('button',{name:'返回首页',exact:true}).click();
   await expect(page.getByRole('heading',{level:1})).toContainText('都能逐句查到出处。');
   await page.goBack();
-  await expect(page.getByRole('table')).toBeVisible();
+  await expect(page.getByRole('table', { name: /各模型的全部原始指标/ })).toBeVisible();
   await page.getByRole('button',{name:'返回首页',exact:true}).click();
   await page.getByRole('link',{name:'进入工作台'}).click();
-  await expect(page.getByRole('table')).toBeVisible();
+  await expect(page.getByRole('table', { name: /各模型的全部原始指标/ })).toBeVisible();
   expect(posts).toEqual([]);
 });
 

@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as echarts from 'echarts/core';
 import type { EvaluationResult, ResultRow } from '../api/types';
@@ -307,22 +307,22 @@ describe('evaluation charts', () => {
 describe('comparison metrics table', () => {
   it('keeps all original and trace fields in a semantic table with original row order', () => {
     render(<ComparisonView result={fixture.result} />);
-    const table = screen.getByRole('table');
+    const table = screen.getByRole('table', { name: /各模型的全部原始指标/ });
     const expectedKeys = Object.keys(fixture.result.summary_df[0]);
-    expect(screen.getAllByRole('columnheader')).toHaveLength(expectedKeys.length);
+    expect(within(table).getAllByRole('columnheader')).toHaveLength(expectedKeys.length);
     expectedKeys.filter((key) => key !== 'model').forEach((key) => {
       expect(table.querySelector(`thead th[title="${key}"]`)).not.toBeNull();
     });
-    expect(screen.getAllByRole('rowheader').map((header) => header.querySelector('span')?.textContent)).toEqual(fixture.result.summary_df.map((row) => modelName(row.model)));
+    expect(within(table).getAllByRole('rowheader').map((header) => header.querySelector('span')?.textContent)).toEqual(fixture.result.summary_df.map((row) => modelName(row.model)));
     expect(screen.getByRole('region', { name: '完整模型指标表，可横向滚动' })).toHaveClass('comparison-table-scroll');
-    expect(screen.getAllByRole('rowheader').every((header) => header.classList.contains('comparison-model-cell'))).toBe(true);
+    expect(within(table).getAllByRole('rowheader').every((header) => header.classList.contains('comparison-model-cell'))).toBe(true);
   });
 
   it('preserves later-row extension fields and displays missing values as unavailable', () => {
     const result: EvaluationResult = { ...fixture.result, summary_df: [{ model: 'first', faithfulness: null }, { model: 'second', faithfulness: 0, custom_evidence_count: 2 }] };
     render(<ComparisonView result={result} />);
     expect(screen.getByRole('columnheader', { name: /custom_evidence_count\s*条/ })).toBeInTheDocument();
-    expect(screen.getByRole('table')).toHaveTextContent('0.0%');
-    expect(screen.getByRole('table')).toHaveTextContent('—');
+    expect(screen.getByRole('table', { name: /各模型的全部原始指标/ })).toHaveTextContent('0.0%');
+    expect(screen.getByRole('table', { name: /各模型的全部原始指标/ })).toHaveTextContent('—');
   });
 });

@@ -69,7 +69,7 @@ describe('Workspace UI integration with mocked API', () => {
     expect(screen.getByText('当前快照包含 6 个问题、3 个模型、18 条回答。')).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);
     await userEvent.click(screen.getByRole('button', { name: '多模型对比' }));
-    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getByRole('table', { name: /各模型的全部原始指标/ })).toBeInTheDocument();
     await userEvent.click(screen.getByRole('button', { name: '幻觉分析' }));
     expect(screen.getByRole('heading', { name: '逐句溯源' })).toBeInTheDocument();
   });

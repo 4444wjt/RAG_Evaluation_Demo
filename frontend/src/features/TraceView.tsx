@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import type { EvaluationResult, JsonValue } from '../api/types';
+import { Fragment, useState } from 'react';
+import type { EvaluationResult, JsonValue, ResultRow } from '../api/types';
+import { MODEL_COLORS } from '../config';
 import { Icon } from '../components/Icon';
 import { modelName, textValue } from '../utils/format';
+import '../components/viz.css';
 import './details.css';
 
 type Verdict = 'supported' | 'fact_error' | 'fabrication' | 'unknown';
@@ -184,6 +186,38 @@ function caseLabel(value: JsonValue | undefined): string {
   return textValue(value, '类型未记录');
 }
 
+const MIX_ORDER: Verdict[] = ['supported', 'fact_error', 'fabrication', 'unknown'];
+
+/** Counts the original per-statement verdicts of every answer; answers without statements are reported separately, never as "no hallucination". */
+function verdictMix(rows: ResultRow[]) {
+  const counts: Record<Verdict, number> = { supported: 0, fact_error: 0, fabrication: 0, unknown: 0 };
+  let withoutStatements = 0;
+  for (const row of rows) {
+    const statements = readTrace(row.hallucination_trace).statements;
+    if (!statements || statements.length === 0) { withoutStatements += 1; continue; }
+    for (const statement of statements) counts[statement.verdict] += 1;
+  }
+  return { counts, total: MIX_ORDER.reduce((sum, verdict) => sum + counts[verdict], 0), withoutStatements };
+}
+
+function VerdictMix({ result, models, current, onSelect }: { result: EvaluationResult; models: string[]; current: string; onSelect: (model: string) => void }) {
+  const order = result.summary_df.map((row) => row.model);
+  return <section className="trace-mix" aria-labelledby="trace-mix-title">
+    <div className="trace-mix-heading"><div><h2 id="trace-mix-title">逐句判定构成</h2><p className="muted">按各模型全部回答的原始逐句记录统计；点击一行查看该模型明细。</p></div>
+      <p className="viz-legend viz-legend-inline">{MIX_ORDER.map((verdict) => <Fragment key={verdict}><i className={`verdict-${verdict}`} />{verdictLabels[verdict]}</Fragment>)}</p></div>
+    <div className="verdict-mix">{models.map((name, index) => {
+      const mix = verdictMix(result.model_dfs[name] ?? []);
+      const colorIndex = order.indexOf(name);
+      const summary = MIX_ORDER.filter((verdict) => mix.counts[verdict] > 0).map((verdict) => `${verdictLabels[verdict]} ${mix.counts[verdict]} 句`).join('，');
+      return <button type="button" key={name} className="verdict-mix-row" aria-pressed={name === current} onClick={() => onSelect(name)} aria-label={`${modelName(name)}：${summary || '无逐句陈述'}${mix.withoutStatements ? `；另有 ${mix.withoutStatements} 条回答无逐句陈述` : ''}`}>
+        <span className="verdict-mix-name"><i style={{ background: MODEL_COLORS[(colorIndex >= 0 ? colorIndex : index) % MODEL_COLORS.length] }} />{modelName(name)}</span>
+        <span className={`verdict-mix-bar${mix.total === 0 ? ' is-empty' : ''}`} aria-hidden="true">{MIX_ORDER.filter((verdict) => mix.counts[verdict] > 0).map((verdict) => <span key={verdict} className={`verdict-${verdict}`} style={{ flex: mix.counts[verdict] }} />)}</span>
+        <span className="verdict-mix-count" aria-hidden="true"><strong>{`${mix.total} 句`}</strong>{mix.withoutStatements > 0 && ` · ${mix.withoutStatements} 条无陈述`}</span>
+      </button>;
+    })}</div>
+  </section>;
+}
+
 export function TraceView({ result }: { result: EvaluationResult | null }) {
   const [selection, setSelection] = useState<Selection>({ result: null, model: '', index: 0 });
   const models = result ? Object.keys(result.model_dfs) : [];
@@ -200,6 +234,7 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
   const reliabilityValue = reliabilityCopy[traceState];
 
   return <section className="trace-view" aria-labelledby="trace-view-title">
+    {result && models.length > 0 && <VerdictMix result={result} models={models} current={model} onSelect={(name) => setSelection({ result, model: name, index: 0 })} />}
     <header className="trace-toolbar">
       <div>
         <h2 id="trace-view-title">逐句溯源</h2>

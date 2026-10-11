@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { checkHealth, ConnectionError, evaluate, isEvaluationResult } from './api/client';
-import type { DemoFixture } from './api/types';
+import type { DemoFixture, EvaluationResult } from './api/types';
 import { Icon } from './components/Icon';
 import type { IconName } from './components/Icon';
 import { OverviewView } from './features/OverviewView';
@@ -11,14 +11,16 @@ import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
 import { EvaluationVerificationView } from './features/EvaluationVerificationView';
 import demoData from './fixtures/demo.json';
-import { READ_ONLY, REPO_URL } from './config';
+import { MODEL_COLORS, READ_ONLY, REPO_URL } from './config';
 import { labHash, parseLabHash } from './labRoute';
 import type { LabView } from './labRoute';
 import { initialConfig, initialRunState, runReducer, toRequest, validateConfig } from './state';
-import { seconds } from './utils/format';
+import { modelName, seconds } from './utils/format';
 import type { EntryRequest } from './AppEntry';
 
 const demo = demoData as DemoFixture;
+const demoRun = demo.provenance.run as { version?: unknown } | undefined;
+const demoVersion = typeof demoRun?.version === 'string' ? demoRun.version : demo.provenance.label;
 type DashboardView = LabView;
 const navigation: { id: DashboardView; label: string; icon: IconName; title: string; description: string }[] = [
   { id: 'overview', label: '评测总览', icon: 'overview', title: '评测总览', description: '从质量门禁到逐句证据，检查模型回答的可靠性。' },
@@ -28,6 +30,19 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
   { id: 'verification', label: '评测验证', icon: 'check', title: '评测验证', description: '查看人工核验状态与原始依据。' },
 ];
+
+/** Sidebar context card. Labels carry their own prefix ("门禁 PASS", "来源 · …") so they never duplicate a field shown in the main view. */
+function SidebarRun({ result, source }: { result: EvaluationResult; source: string }) {
+  const rows = result.summary_df.filter((row) => typeof row.model === 'string' && row.model.length > 0);
+  const shown = rows.slice(0, 4);
+  return <section className="sidebar-run" aria-label="当前评测">
+    <span className="sidebar-run-label">当前评测</span>
+    <p className={`sidebar-run-gate ${result.gate_passed ? 'passed' : 'blocked'}`}><span className="sidebar-run-dot" aria-hidden="true"/>{`原始门禁 ${result.gate_passed ? 'PASS' : 'FAIL'}`}</p>
+    <p className="sidebar-run-source" title={source}>{source}</p>
+    <ul aria-label="参评模型">{shown.map((row, index) => <li key={String(row.model)} title={String(row.model)}><span className="sidebar-run-swatch" aria-hidden="true" style={{ background: MODEL_COLORS[index % MODEL_COLORS.length] }}/><span className="sidebar-run-model">{modelName(row.model)}</span></li>)}{rows.length > shown.length && <li className="sidebar-run-more">{`另有 ${rows.length - shown.length} 个模型`}</li>}</ul>
+    <p className="sidebar-run-time">{`总耗时 ${seconds(result.total_elapsed_seconds)}`}</p>
+  </section>;
+}
 
 export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequest; onHome?: () => void }) {
   const [view, setView] = useState<DashboardView>('overview');
@@ -147,7 +162,8 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   return <div className="app-shell">
     <aside className="sidebar"><a className="brand" href={labHash('overview', isDemo)} onClick={(event) => { event.preventDefault(); navigate('overview'); }}><span className="brand-mark"><Icon name="shield" size={27}/></span><span><strong>鉴真全域</strong><small>VeriScope AI</small></span></a>
       <span className="navigation-label">实验工作台</span><nav aria-label="工作区导航">{navigation.map((item) => <button key={item.id} className={`nav-item ${view === item.id ? 'active' : ''}`} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><Icon name={item.icon}/><span>{item.label}</span>{view === item.id && <span className="nav-active-mark"/>}</button>)}</nav>
-      <div className="sidebar-foot"><span className="sidebar-rule"/><small>AI 回答的逐句核对与质量门禁</small><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>GitHub 源码 · MIT</a></div>
+      {run.result ? <SidebarRun result={run.result} source={isDemo ? `演示快照 ${demoVersion}` : '来源 · 本次接口返回'}/> : <p className="sidebar-run-empty">尚未载入评测结果</p>}
+      <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>GitHub 源码 · MIT</a></div>
     </aside>
     <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div><div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div></header>
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>

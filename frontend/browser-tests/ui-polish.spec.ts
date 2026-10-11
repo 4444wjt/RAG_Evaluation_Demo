@@ -47,7 +47,8 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
     expect(Math.abs((await keyMetrics[0].boundingBox())!.y - (await keyMetrics[1].boundingBox())!.y)).toBeLessThan(1);
     await expect(gate.locator('.gate-interpretation')).toBeVisible();
     await expect(gate.locator('.gate-details')).not.toHaveAttribute('open');
-    await expect(page.locator('.ability-section .evaluation-chart-canvas')).toHaveCSS('height', '360px');
+    await expect(page.locator('.ability-section .metric-bars-row')).toHaveCount(5);
+    await expect(page.locator('.ability-section .metric-bar')).toHaveCount(15);
     const entries = await page.locator('.overview-bottom .analysis-entry').all();
     expect(entries).toHaveLength(2);
     expect(Math.abs((await entries[0].boundingBox())!.width - (await entries[1].boundingBox())!.width)).toBeLessThan(1);
@@ -57,6 +58,9 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
     await expect(gate.locator('.gate-reason')).toHaveText('正向忠实度低于门槛');
     await expect(gate.locator('.gate-status-block')).toHaveCSS('background-color', await themeBackground(page, '--danger-surface'));
     await page.getByRole('navigation').getByRole('button', { name: '多模型对比', exact: true }).click();
+    // Comparison opens on the heat matrix; the grouped bar charts remain one switch away at their original height.
+    await expect(page.locator('.heat-matrix')).toBeVisible();
+    await page.getByRole('button', { name: '柱状图', exact: true }).click();
     await expect(page.locator('.evaluation-chart-canvas').first()).toHaveCSS('height', '500px');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width + 1);
   });
