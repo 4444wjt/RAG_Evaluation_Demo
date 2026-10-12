@@ -206,3 +206,7 @@ Thumbs.db
 !/docs/images/*.png
 !/docs/screenshots/*.png
 !/frontend/public/landing/*.png
+
+# 本地设计评审存档与预览配置
+.impeccable/
+.claude/launch.json

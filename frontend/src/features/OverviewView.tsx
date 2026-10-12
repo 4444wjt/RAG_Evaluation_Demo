@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { DemoFixture, EvaluationResult } from '../api/types';
 import type { WorkspaceConfig } from '../state';
 import { Icon } from '../components/Icon';
 import { SlideArrow } from '../components/SlideArrow';
 import { MetricBars } from '../components/MetricBars';
+import { FormalRunReplay } from './FormalRunReplay';
 import { count, modelName, numberValue, percent, seconds, textValue } from '../utils/format';
 
 function summaryValue(value: unknown, format: (value: unknown) => string): string {
@@ -16,15 +17,35 @@ function displayRecord(value: unknown): Record<string, unknown> | null {
     ? value as Record<string, unknown> : null;
 }
 
-export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, demoDisabled = false, resultMeta, gateProvenance, gateRequest }: { result: EvaluationResult | null; onConfigure: () => void; onDemo: () => void; onCompare: () => void; onTrace: () => void; demoDisabled?: boolean; resultMeta?: ReactNode; gateProvenance?: DemoFixture['provenance']; gateRequest?: WorkspaceConfig | null }) {
+const settledGates = new WeakMap<object, Set<string>>();
+
+/** 门槛结算只在某次载入的某个模型第一次出现时播放一次。a、b 两个类名交替，换模型时不必重新挂载就能重启 CSS 动画，读屏播报也不受影响。 */
+function useGateSettle(load: object | null, model: string): string | undefined {
+  const [settle, setSettle] = useState<string>();
+  const parity = useRef(false);
+  // Layout effect: the class lands before paint, so the final verdict never flashes before the motion.
+  useLayoutEffect(() => {
+    if (!load || !model) return;
+    const seen = settledGates.get(load) ?? new Set<string>();
+    if (seen.has(model)) return;
+    seen.add(model);
+    settledGates.set(load, seen);
+    parity.current = !parity.current;
+    setSettle(parity.current ? 'gate-settle-a' : 'gate-settle-b');
+  }, [load, model]);
+  return settle;
+}
+
+export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompare, onTrace, demoDisabled = false, resultMeta, gateProvenance, gateRequest }: { result: EvaluationResult | null; resultLoad?: object; onConfigure: () => void; onDemo: () => void; onCompare: () => void; onTrace: () => void; demoDisabled?: boolean; resultMeta?: ReactNode; gateProvenance?: DemoFixture['provenance']; gateRequest?: WorkspaceConfig | null }) {
   const [selection, setSelection] = useState<{ result: EvaluationResult | null; model: string }>({ result: null, model: '' });
-  if (!result) return <section className="initial-state"><div className="initial-mark"><Icon name="shield" size={34}/></div><div><h2>暂无评测结果</h2><p>完成一次评测，查看模型能力、幻觉证据与质量门禁。</p><div className="initial-actions"><button className="btn btn-primary" onClick={onConfigure}><Icon name="play"/>配置评测</button><button className="btn btn-secondary" onClick={onDemo} disabled={demoDisabled}>查看演示结果</button></div></div><div className="initial-guide"><span>01 数据</span><Icon name="chevron" size={14}/><span>02 模型</span><Icon name="chevron" size={14}/><span>03 评测</span><Icon name="chevron" size={14}/><span>04 证据</span></div></section>;
-  const models = result.summary.filter((row) => typeof row.model === 'string' && row.model.length > 0);
+  const models = result ? result.summary.filter((row) => typeof row.model === 'string' && row.model.length > 0) : [];
   const defaultModel = models.find((row) => numberValue(row.faithfulness) !== null);
-  const selected = selection.result === result
+  const selected = result && selection.result === result
     ? models.find((row) => row.model === selection.model) ?? defaultModel
     : defaultModel;
   const selectedModel = typeof selected?.model === 'string' ? selected.model : '';
+  const gateSettle = useGateSettle(result ? resultLoad ?? result : null, selectedModel);
+  if (!result) return <section className="initial-state"><div className="initial-mark"><Icon name="shield" size={34}/></div><div><h2>暂无评测结果</h2><p>完成一次评测，查看模型能力、幻觉证据与质量门禁。</p><div className="initial-actions"><button className="btn btn-primary" onClick={onConfigure}><Icon name="play"/>配置评测</button><button className="btn btn-secondary" onClick={onDemo} disabled={demoDisabled}>查看演示结果</button></div></div><div className="initial-guide"><span>01 数据</span><Icon name="chevron" size={14}/><span>02 模型</span><Icon name="chevron" size={14}/><span>03 评测</span><Icon name="chevron" size={14}/><span>04 证据</span></div></section>;
   const gateRows = selectedModel ? result.model_dfs[selectedModel] : undefined;
   const positiveCount = Array.isArray(gateRows)
     ? gateRows.filter((row) => row.case_type === 'positive').length : null;
@@ -63,14 +84,15 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
   const gateReason = currentModelGatePassed === null ? '正向指标或阈值缺失，无法完成检查'
     : currentModelGatePassed ? '两项正向指标均达到门槛' : `${belowThreshold.join('、')}低于门槛`;
   const cards = [
-    { label: '幻觉语句数', value: summaryValue(selected?.hallucination_statement_count, count), note: '现有逐句统计' },
+    { label: '幻觉语句数', value: summaryValue(selected?.hallucination_statement_count, count), note: numberValue(selected?.trace_statement_count) === null ? '现有逐句统计' : `共核对 ${count(selected?.trace_statement_count)} 句陈述` },
     { label: '事实错误数', value: summaryValue(selected?.trace_fact_error_count, count), note: '与文档事实不一致' },
     { label: '无依据编造数', value: summaryValue(selected?.trace_fabrication_count, count), note: '缺少上下文支持' },
     { label: '拒答准确率', value: summaryValue(selected?.refusal_accuracy, percent), note: '负向用例表现' },
   ];
   return <>
     <div className="result-context"><div className="summary-model-control"><label htmlFor="summary-model">当前摘要模型</label><select id="summary-model" value={selectedModel} disabled={!models.length} onChange={(event) => setSelection({ result, model: event.target.value })}>{!selectedModel && <option value="" disabled>暂无有效摘要模型</option>}{models.map((row) => <option key={String(row.model)} value={String(row.model)}>{modelName(row.model)}</option>)}</select></div>{resultMeta}</div>
-    <section className={`quality-gate ${gateClass}`} aria-labelledby="current-gate-title">
+    {gateProvenance && <FormalRunReplay/>}
+    <section className={`quality-gate ${gateClass}${gateSettle ? ` ${gateSettle}` : ''}`} aria-labelledby="current-gate-title">
       <div className="gate-summary">
         <div className="gate-status-block">
           <h2 className="gate-label" id="current-gate-title"><Icon name="shield" size={16}/>当前模型质量门禁</h2>
@@ -91,6 +113,7 @@ export function OverviewView({ result, onConfigure, onDemo, onCompare, onTrace, 
             </dl>
           </div>
           <p className="gate-reason">{gateReason}</p>
+          {currentModelGatePassed !== null && currentModelGatePassed !== result.gate_passed && <p className="gate-divergence">{`原始门禁为 ${result.gate_passed ? 'PASS' : 'FAIL'}，按首个有效模型判定，与当前模型结论不同。`}</p>}
         </div>
       </div>
       {gateProvenance && <p className="gate-snapshot-scope">当前快照包含 {snapshotQuestionCount} 个问题、{Object.keys(result.model_dfs).length} 个模型、{snapshotRows.length} 条回答。</p>}

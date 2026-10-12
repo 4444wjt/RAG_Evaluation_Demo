@@ -222,6 +222,7 @@ main { padding: 32px 36px 18px; max-width: 1600px; margin: 0 auto; }
 .gate-reason { color: var(--text-secondary); font-size: var(--font-size-body); line-height: 1.6; overflow-wrap: anywhere; }
 .blocked .gate-reason { color: var(--danger); }
 .uncertain .gate-reason { color: var(--warning); }
+.gate-divergence { margin-top: -6px; color: var(--text-secondary); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
 /* Scope and interpretation read as one footnote band under the verdict, not as body copy competing with it. */
 .gate-interpretation { padding: 0 24px 14px; color: var(--text-secondary); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
 .gate-snapshot-scope { margin: 4px 24px 0; padding: 12px 0 2px; border-top: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
@@ -302,6 +303,60 @@ main { padding: 32px 36px 18px; max-width: 1600px; margin: 0 auto; }
 .quality-gate.blocked { --gate-accent: var(--danger); }
 .quality-gate.uncertain { --gate-accent: var(--warning); }
 .quality-gate::before { content: ''; position: absolute; inset: 0 0 auto; height: 2px; background: linear-gradient(90deg, var(--gate-accent), color-mix(in srgb, var(--gate-accent) 20%, transparent) 70%, transparent); pointer-events: none; }
+/* 门槛结算：状态线从指标列（输入）一侧长向判定块（结论），线到达后判定才着色、落定，表达「判定由指标对照门槛推出」。
+   只挂在总览的 .gate-settle-a / -b 上（落地页预览没有这两个类）；默认状态就是最终画面，reduced-motion 时直接静止在终帧。 */
+.quality-gate:is(.gate-settle-a, .gate-settle-b)::before { transform-origin: right; }
+.quality-gate.gate-settle-a::before { animation: gate-rule-a 360ms cubic-bezier(.16, 1, .3, 1) backwards; }
+.quality-gate.gate-settle-b::before { animation: gate-rule-b 360ms cubic-bezier(.16, 1, .3, 1) backwards; }
+.gate-settle-a .gate-status-block { animation: gate-surface-a var(--feedback-duration) ease-out 240ms backwards; }
+.gate-settle-b .gate-status-block { animation: gate-surface-b var(--feedback-duration) ease-out 240ms backwards; }
+.gate-settle-a :is(.gate-value, .gate-description) { animation: gate-verdict-a var(--feedback-duration) ease-out 240ms backwards; }
+.gate-settle-b :is(.gate-value, .gate-description) { animation: gate-verdict-b var(--feedback-duration) ease-out 240ms backwards; }
+@keyframes gate-rule-a { from { transform: scaleX(0); } }
+@keyframes gate-rule-b { from { transform: scaleX(0); } }
+@keyframes gate-surface-a { from { background-color: var(--bg-control); } }
+@keyframes gate-surface-b { from { background-color: var(--bg-control); } }
+@keyframes gate-verdict-a { from { opacity: 0; } }
+@keyframes gate-verdict-b { from { opacity: 0; } }
+/* 正式运行回放：25 题正式运行的冻结证据，演示「逐句判定 → 逐题得分 → 门禁」这条真实的计分链。
+   DOM 里始终是最终值；只有 .replay-animated 时，[data-at] 元素按 --at 依次显现，进入视口前停在第 0 帧。 */
+.formal-replay { margin-bottom: 16px; padding: 16px 24px 14px; border: 1px solid var(--border-surface); border-radius: var(--radius); background: var(--bg-surface); background-image: var(--surface-sheen); box-shadow: var(--surface-shadow); min-width: 0; }
+.formal-replay-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; }
+.formal-replay-head h2 { font-size: var(--font-size-subheading); }
+.formal-replay-source { margin-top: 2px; font-size: 12px; color: var(--text-secondary); }
+.formal-replay-steps { display: flex; gap: 16px; margin: 0; padding: 0; list-style: none; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+.formal-replay-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; margin-top: 10px; }
+.replay-check { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.replay-question { font-size: var(--font-size-body); font-weight: 500; }
+.replay-question span, .replay-context span { margin-right: 8px; color: var(--text-secondary); font-weight: 400; }
+.replay-answer, .replay-context { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; font-size: 13px; color: var(--text-secondary); }
+.replay-context { padding-left: 10px; border-left: 1px solid var(--border-strong); font-size: 12px; }
+.replay-statements { display: grid; gap: 4px; margin: 4px 0 0; padding: 0; list-style: none; }
+.replay-statements li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 12px; padding: 3px 10px; border-radius: var(--radius-control); background: var(--bg-control); font-size: 13px; }
+.replay-statements strong { font-size: 12px; font-weight: 500; white-space: nowrap; color: var(--success); }
+.replay-statements .unsupported strong { color: var(--danger); }
+.replay-score { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.replay-score-note { font-size: 12px; color: var(--text-secondary); }
+.replay-cells { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.replay-cells li { position: relative; display: grid; place-items: center; min-height: 40px; padding: 4px 2px 6px; overflow: hidden; border: 1px solid transparent; border-radius: var(--radius-badge); background: var(--bg-control); font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; line-height: 1.3; }
+.replay-cells li.refusal { border-style: dashed; border-color: var(--border-strong); background: transparent; color: var(--text-secondary); }
+.replay-cells small { font-family: var(--font-family); font-size: 11px; }
+.replay-cells i { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--text-secondary); transform: scaleX(var(--score)); transform-origin: left; }
+.replay-gate { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 2px 16px; font-size: 13px; }
+.replay-gate-badge { grid-row: span 2; font-size: 24px; font-weight: 600; letter-spacing: -.4px; color: var(--danger); }
+.replay-gate-badge.passed { color: var(--success); }
+.replay-gate-note { grid-column: 1 / -1; font-size: 12px; color: var(--text-secondary); }
+.formal-replay-scope { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-subtle); font-size: 12px; line-height: 1.7; color: var(--text-secondary); }
+.replay-animated [data-at] { animation: replay-in var(--dur, 360ms) cubic-bezier(.16, 1, .3, 1) var(--at) backwards; }
+.replay-animated .replay-cells i[data-at] { animation-name: replay-bar; animation-duration: 420ms; }
+.replay-animated .formal-replay-steps li { animation: replay-step var(--span) linear var(--at); }
+.replay-animated:not(.is-running) :is([data-at], .formal-replay-steps li) { animation-play-state: paused; }
+@keyframes replay-in { from { opacity: 0; transform: translateY(4px); } }
+@keyframes replay-bar { from { transform: scaleX(0); } }
+@keyframes replay-step { from, to { color: var(--brand); } }
+@media (max-width: 899px) { .formal-replay { padding: 14px 16px 12px; } .formal-replay-body { grid-template-columns: minmax(0, 1fr); gap: 14px; } .formal-replay-steps { gap: 10px; } }
+/* 手机上回答原文由下方逐句陈述完整呈现，只保留题目、检索原文与逐句判定。 */
+@media (max-width: 540px) { .replay-answer { display: none; } .replay-statements li { font-size: 12px; } .replay-cells { gap: 4px; } .replay-cells li { min-height: 36px; font-size: 11px; } }
 .workspace-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
 .workspace-heading h2 { font-size: var(--font-size-section); }
 .workspace-heading p { margin-top: 5px; font-size: 12px; color: var(--text-secondary); }

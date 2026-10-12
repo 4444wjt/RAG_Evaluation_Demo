@@ -51,6 +51,8 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const [formError, setFormError] = useState<string | null>(null);
   const [health, setHealth] = useState<'checking' | 'connected' | 'disconnected'>('checking');
   const [configurationCheck, setConfigurationCheck] = useState<ConfigurationCheck | null>(null);
+  // A fresh token per loaded result lets the overview replay the gate settle on every load, but not when switching views.
+  const [resultLoad, setResultLoad] = useState<object>(() => ({}));
   const inflight = useRef(false);
   const configurationInflight = useRef(false);
   const healthRequest = useRef(0);
@@ -124,6 +126,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     if (inflight.current || configurationInflight.current) return;
     if (!isEvaluationResult(demo.result)) { setFormError('演示快照结构不完整。'); return; }
     dispatch({ type: 'demo', result: demo.result });
+    setResultLoad({});
     setFormError(null);
     setConfigurationCheck(null);
     setView('overview');
@@ -149,7 +152,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     dispatch({ type: 'start', config });
     try {
       const result = await evaluate(toRequest(config));
-      if (mounted.current) { dispatch({ type: 'complete', result }); setView('overview'); }
+      if (mounted.current) { dispatch({ type: 'complete', result }); setResultLoad({}); setView('overview'); }
     } catch (error) {
       if (mounted.current) dispatch({ type: 'fail', message: error instanceof Error ? error.message : '评测未完成，请检查服务日志。', uncertain: error instanceof ConnectionError });
     } finally {
@@ -170,7 +173,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
         {view !== 'overview' && resultMeta}
-        {view === 'overview' && <OverviewView result={run.result} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
+        {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
         {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
         {view === 'trace' && <TraceView result={run.result}/>}

@@ -315,6 +315,47 @@ describe('Current model quality gate transparency', () => {
     expect(within(details).getByText('原始评测门禁：PASS')).toBeVisible();
   });
 
+  it('shows the formal-run replay above the demo gate with its source, the Ragas-versus-Trace scope and the refusal note', () => {
+    render(<OverviewView result={sample()} gateProvenance={demo.provenance} {...callbacks}/>);
+    const replay = screen.getByRole('region', { name: '正式运行回放' });
+    expect(replay.nextElementSibling).toBe(screen.getByRole('region', { name: '当前模型质量门禁' }));
+    expect(within(replay).getByText('来源：25 题正式运行 · DeepSeek · 20261005T144504Z（冻结证据，非本页演示快照）')).toBeInTheDocument();
+    expect(within(replay).getByText(/自研 Trace，与门禁并列、不参与计算/)).toBeInTheDocument();
+    expect(within(replay).getByText('门禁 FAIL')).toBeInTheDocument();
+    expect(within(replay).getByText('正向忠实度 73.8% · 门槛 ≥ 80.0%')).toBeInTheDocument();
+    expect(within(replay).getByText('4 题为拒答（按 0 计）；其余 16 题均值 92.2%')).toBeInTheDocument();
+    expect(within(replay).getByText('每题得分 = 原文支持的陈述占比，共 52 句')).toBeInTheDocument();
+    expect(within(replay).getAllByText('拒答')).toHaveLength(4);
+    expect(within(replay).getByText('裁判判为原文不支持')).toBeInTheDocument();
+    // jsdom has no IntersectionObserver: the final frame is shown without animation classes.
+    expect(replay).not.toHaveClass('replay-animated');
+  });
+
+  it('does not show the formal-run replay next to a live result', () => {
+    render(<OverviewView result={sample()} {...callbacks}/>);
+    expect(screen.queryByRole('region', { name: '正式运行回放' })).not.toBeInTheDocument();
+  });
+
+  it('settles the gate once per result and model, and states divergence from the original gate and the traced sentence base', async () => {
+    render(<App/>);
+    await screen.findByText('服务可连接');
+    await userEvent.click(screen.getByRole('button', { name: '加载演示' }));
+    const gate = () => screen.getByRole('region', { name: '当前模型质量门禁' });
+    const tileNote = () => screen.getByText('幻觉语句数').closest('.metric-tile')!.querySelector('small')!.textContent;
+    expect(gate()).toHaveClass('gate-settle-a');
+    expect(gate().querySelector('.gate-divergence')).toBeNull();
+    expect(tileNote()).toBe('共核对 5 句陈述');
+    const selector = screen.getByRole('combobox', { name: '当前摘要模型' });
+    await userEvent.selectOptions(selector, summaryModels[1].id);
+    expect(gate()).toHaveClass('gate-settle-b');
+    expect(gate().querySelector('.gate-divergence')).toHaveTextContent('原始门禁为 PASS，按首个有效模型判定，与当前模型结论不同。');
+    await userEvent.selectOptions(selector, summaryModels[0].id);
+    expect(gate()).toHaveClass('gate-settle-b');
+    await userEvent.selectOptions(selector, summaryModels[2].id);
+    expect(gate()).toHaveClass('gate-settle-a');
+    expect(tileNote()).toBe('共核对 9 句陈述');
+  });
+
   it('checks each demo model using positive metrics and stored thresholds without overwriting the original PASS or posting', async () => {
     const original = structuredClone(demo);
     render(<App/>);

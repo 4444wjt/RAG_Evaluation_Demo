@@ -1,0 +1,187 @@
+{
+  "source": {
+    "runId": "20261005T144504Z-full-39511424",
+    "model": "deepseek-chat",
+    "evidence": "docs/competition/evidence/20261005T144504Z-full-39511424",
+    "sha256": {
+      "api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131",
+      "request.json": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147"
+    }
+  },
+  "thresholds": {
+    "faithfulness": 0.8,
+    "context_precision": 0.8
+  },
+  "gate": {
+    "passed": false,
+    "posFaithfulness": 0.7375,
+    "posContextPrecision": 0.9833
+  },
+  "detail": {
+    "rowIndex": 0,
+    "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+    "answer": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+    "context": "存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。",
+    "statements": [
+      {
+        "statement": "建立存款保险制度的目的是为了建立和规范存款保险制度。",
+        "verdict": 0
+      },
+      {
+        "statement": "建立存款保险制度的目的是依法保护存款人的合法权益。",
+        "verdict": 1
+      },
+      {
+        "statement": "建立存款保险制度的目的是及时防范和化解金融风险。",
+        "verdict": 1
+      },
+      {
+        "statement": "建立存款保险制度的目的是维护金融稳定。",
+        "verdict": 1
+      }
+    ]
+  },
+  "rows": [
+    {
+      "rowIndex": 0,
+      "supported": 3,
+      "total": 4,
+      "faithfulness": 0.75,
+      "refusal": false
+    },
+    {
+      "rowIndex": 1,
+      "supported": 4,
+      "total": 4,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 2,
+      "supported": 4,
+      "total": 4,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 3,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 4,
+      "supported": 3,
+      "total": 3,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 5,
+      "supported": 1,
+      "total": 1,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 6,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 7,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 8,
+      "supported": 1,
+      "total": 2,
+      "faithfulness": 0.5,
+      "refusal": false
+    },
+    {
+      "rowIndex": 9,
+      "supported": 5,
+      "total": 5,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 10,
+      "supported": 3,
+      "total": 3,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 11,
+      "supported": 3,
+      "total": 6,
+      "faithfulness": 0.5,
+      "refusal": false
+    },
+    {
+      "rowIndex": 12,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 13,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 14,
+      "supported": 2,
+      "total": 2,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 20,
+      "supported": 0,
+      "total": 1,
+      "faithfulness": 0.0,
+      "refusal": true
+    },
+    {
+      "rowIndex": 21,
+      "supported": 4,
+      "total": 4,
+      "faithfulness": 1.0,
+      "refusal": false
+    },
+    {
+      "rowIndex": 22,
+      "supported": 0,
+      "total": 1,
+      "faithfulness": 0.0,
+      "refusal": true
+    },
+    {
+      "rowIndex": 23,
+      "supported": 0,
+      "total": 1,
+      "faithfulness": 0.0,
+      "refusal": true
+    },
+    {
+      "rowIndex": 24,
+      "supported": 0,
+      "total": 1,
+      "faithfulness": 0.0,
+      "refusal": true
+    }
+  ]
+}
