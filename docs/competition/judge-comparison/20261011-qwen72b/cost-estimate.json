@@ -1,0 +1,36 @@
+{
+  "kind": "estimate-not-billing-record",
+  "currency": "CNY",
+  "actualCharge": null,
+  "actualChargeStatus": "unknown",
+  "ratesCnyPerMillionTokens": {
+    "deepseek": {
+      "input": 2.0,
+      "output": 8.0
+    },
+    "qwen72b": {
+      "input": 4.13,
+      "output": 4.13
+    }
+  },
+  "pricingSources": {
+    "deepseek": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "qwen72b": "https://siliconflow.cn/pricing"
+  },
+  "note": "DeepSeek 按高峰时段未命中缓存的输入单价保守估算；实际费用以供应商账单为准。",
+  "byJudge": {
+    "deepseek": {
+      "calls": 178,
+      "promptTokens": 287854,
+      "completionTokens": 14091,
+      "estimatedCny": 0.6884
+    },
+    "qwen72b": {
+      "calls": 496,
+      "promptTokens": 786817,
+      "completionTokens": 34174,
+      "estimatedCny": 3.3907
+    }
+  },
+  "estimatedTotalCny": 4.0791
+}

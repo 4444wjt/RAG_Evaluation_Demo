@@ -1,0 +1,22 @@
+{
+  "startedCalls": 702,
+  "completedCalls": 674,
+  "errorEvents": 24,
+  "callsWithTokenUsage": 674,
+  "promptTokens": 1074671,
+  "completionTokens": 48265,
+  "totalTokens": 1122936,
+  "cacheHitTokens": 661973,
+  "callsWithCacheUsage": 674,
+  "cacheCoverage": "reported",
+  "actualReturnedModels": {
+    "deepseek-flash": 178,
+    "Qwen/Qwen2.5-72B-Instruct": 496
+  },
+  "callsWithoutReturnedModel": 0,
+  "observationStatus": "observed",
+  "unreadableEventLines": 0,
+  "actualCharge": null,
+  "actualChargeStatus": "unknown",
+  "note": "观察到的LangChain调用及提供方返回token，不保证覆盖HTTP层重试；缺失用量不按零消耗解释，实际费用未取得账单。"
+}

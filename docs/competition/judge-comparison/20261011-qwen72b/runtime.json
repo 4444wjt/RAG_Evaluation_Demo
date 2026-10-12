@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "ragas": "0.1.21",
+    "pysbd": "0.3.4",
+    "langchain-core": "0.2.43",
+    "langchain-openai": "0.1.25",
+    "langchain-community": "0.2.19",
+    "openai": "1.109.1",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "huggingface-hub": "1.32.0",
+    "chromadb": "1.5.9",
+    "datasets": "5.0.1"
+  },
+  "sources": {
+    "sentenceAdapterVersion": "zh-sentence-v1",
+    "traceVersion": {
+      "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+      "hashKind": "literal-template-utf8",
+      "path": "backend/services/trace.py"
+    },
+    "promptVersions": {
+      "generator": {
+        "sha256": "7c0233e4f36559a1496d343742f5d359d1bc5fca58ee609e3b582b259a48d243",
+        "hashKind": "f-string-ast-including-placeholder-expressions",
+        "path": "backend/services/answering.py"
+      },
+      "trace": {
+        "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+        "hashKind": "literal-template-utf8",
+        "path": "backend/services/trace.py"
+      },
+      "ragas": {
+        "status": "unknown",
+        "value": null,
+        "reason": "在隔离API进程启动后记录实际指标实例的提示词。"
+      }
+    }
+  },
+  "python": "3.11.9"
+}

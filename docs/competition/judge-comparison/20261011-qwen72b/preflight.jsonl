@@ -1,0 +1,6 @@
+{"judge": "deepseek", "requestedModel": "deepseek-chat", "returnedModel": "deepseek-flash", "reply": "OK"}
+{"judge": "qwen72b", "requestedModel": "Qwen/Qwen2.5-72B-Instruct", "returnedModel": "Qwen/Qwen2.5-72B-Instruct", "reply": "OK"}
+{"judge": "deepseek", "requestedModel": "deepseek-chat", "returnedModel": "deepseek-flash", "reply": "OK"}
+{"judge": "qwen72b", "requestedModel": "Qwen/Qwen2.5-72B-Instruct", "returnedModel": "Qwen/Qwen2.5-72B-Instruct", "reply": "OK"}
+{"judge": "deepseek", "requestedModel": "deepseek-chat", "returnedModel": "deepseek-flash", "reply": "OK"}
+{"judge": "qwen72b", "requestedModel": "Qwen/Qwen2.5-72B-Instruct", "returnedModel": "Qwen/Qwen2.5-72B-Instruct", "reply": "OK"}

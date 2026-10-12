@@ -1,0 +1,32 @@
+{
+  "kind": "judge-comparison",
+  "groups": {
+    "self-rerun": {
+      "source": "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json",
+      "judge": "deepseek-chat"
+    },
+    "independent": {
+      "source": "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json",
+      "judge": "Qwen/Qwen2.5-72B-Instruct"
+    },
+    "demo-independent": {
+      "source": "frontend/src/fixtures/demo.json",
+      "judge": "Qwen/Qwen2.5-72B-Instruct"
+    }
+  },
+  "metrics": [
+    "faithfulness",
+    "context_precision",
+    "hallucination_trace"
+  ],
+  "gateThreshold": 0.8,
+  "temperature": 0,
+  "budgetCny": 10.0,
+  "maxCalls": 900,
+  "answersRegenerated": false,
+  "sourceSha256": {
+    "full": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+    "demo": "20290882fadbb68942f2c754262614e0858d8595d06a8b2e970fec1c7b4dfb7b",
+    "reviews": "f72a8a86478a6f4de18afb9b4fe6dc590b765469f54aac38d9be8f4e36ef350c"
+  }
+}

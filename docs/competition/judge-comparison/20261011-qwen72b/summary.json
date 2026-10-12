@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "rowsJudged": {
+    "demo-independent": 18,
+    "independent": 25,
+    "self-rerun": 25
+  },
+  "fullRun": {
+    "rows": 25,
+    "gate": {
+      "original": {
+        "posFaithfulness": 0.7375,
+        "posContextPrecision": 0.9833,
+        "passed": false
+      },
+      "self-rerun": {
+        "posFaithfulness": 0.7583,
+        "posContextPrecision": 0.9833,
+        "passed": false
+      },
+      "independent": {
+        "posFaithfulness": 0.7233,
+        "posContextPrecision": 0.9389,
+        "passed": false
+      }
+    },
+    "vsOriginal": {
+      "self-rerun": {
+        "faithfulness": {
+          "pairs": 25,
+          "compared": 25,
+          "missingEitherSide": 0,
+          "meanAbsDiff": 0.0167,
+          "medianAbsDiff": 0.0,
+          "maxAbsDiff": 0.25,
+          "identical": 23,
+          "crossing0.8": 1,
+          "crossing0.5": 0
+        },
+        "context_precision": {
+          "pairs": 25,
+          "compared": 25,
+          "missingEitherSide": 0,
+          "meanAbsDiff": 0.04,
+          "medianAbsDiff": 0.0,
+          "maxAbsDiff": 1.0,
+          "identical": 24,
+          "crossing0.8": 1,
+          "crossing0.5": 1
+        },
+        "traceLabel": {
+          "compared": 25,
+          "agree": 23,
+          "agreementRate": 0.92,
+          "matrix": {
+            "supported": {
+              "supported": 16,
+              "empty": 2
+            },
+            "empty": {
+              "empty": 7
+            }
+          }
+        }
+      },
+      "independent": {
+        "faithfulness": {
+          "pairs": 25,
+          "compared": 25,
+          "missingEitherSide": 0,
+          "meanAbsDiff": 0.0953,
+          "medianAbsDiff": 0.0,
+          "maxAbsDiff": 0.5,
+          "identical": 19,
+          "crossing0.8": 6,
+          "crossing0.5": 0
+        },
+        "context_precision": {
+          "pairs": 25,
+          "compared": 25,
+          "missingEitherSide": 0,
+          "meanAbsDiff": 0.1267,
+          "medianAbsDiff": 0.0,
+          "maxAbsDiff": 1.0,
+          "identical": 15,
+          "crossing0.8": 5,
+          "crossing0.5": 2
+        },
+        "traceLabel": {
+          "compared": 25,
+          "agree": 18,
+          "agreementRate": 0.72,
+          "matrix": {
+            "supported": {
+              "supported": 16,
+              "hallucination": 1,
+              "empty": 1
+            },
+            "empty": {
+              "supported": 2,
+              "hallucination": 3,
+              "empty": 2
+            }
+          }
+        }
+      }
+    },
+    "selfRerunVsIndependent": {
+      "faithfulness": {
+        "pairs": 25,
+        "compared": 25,
+        "missingEitherSide": 0,
+        "meanAbsDiff": 0.0787,
+        "medianAbsDiff": 0.0,
+        "maxAbsDiff": 0.5,
+        "identical": 20,
+        "crossing0.8": 5,
+        "crossing0.5": 0
+      },
+      "traceLabel": {
+        "compared": 25,
+        "agree": 19,
+        "agreementRate": 0.76,
+        "matrix": {
+          "supported": {
+            "supported": 16
+          },
+          "empty": {
+            "supported": 2,
+            "hallucination": 4,
+            "empty": 3
+          }
+        }
+      }
+    }
+  },
+  "demo": {
+    "rows": 18,
+    "traceLabelAllRows": {
+      "compared": 18,
+      "agree": 14,
+      "agreementRate": 0.7778,
+      "matrix": {
+        "supported": {
+          "supported": 8,
+          "empty": 1
+        },
+        "hallucination": {
+          "hallucination": 1,
+          "empty": 2
+        },
+        "empty": {
+          "supported": 1,
+          "empty": 5
+        }
+      }
+    },
+    "traceLabelExcludingSameFamily": {
+      "compared": 12,
+      "agree": 11,
+      "agreementRate": 0.9167,
+      "matrix": {
+        "supported": {
+          "supported": 6,
+          "empty": 1
+        },
+        "empty": {
+          "empty": 5
+        }
+      }
+    },
+    "reviewedRecords": [
+      {
+        "modelId": "deepseek-chat",
+        "rowIndex": 0,
+        "focus": "正常对照",
+        "humanStatus": "agree",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "supported",
+        "independentLabel": "supported",
+        "originalFaithfulness": 1.0,
+        "independentFaithfulness": 1.0
+      },
+      {
+        "modelId": "deepseek-chat",
+        "rowIndex": 2,
+        "focus": "正常对照",
+        "humanStatus": "agree",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "supported",
+        "independentLabel": "supported",
+        "originalFaithfulness": 1.0,
+        "independentFaithfulness": 1.0
+      },
+      {
+        "modelId": "deepseek-chat",
+        "rowIndex": 3,
+        "focus": "空 Trace 检查",
+        "humanStatus": "uncertain",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "empty",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "deepseek-chat",
+        "rowIndex": 4,
+        "focus": "空 Trace 检查",
+        "humanStatus": "uncertain",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "empty",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "deepseek-chat",
+        "rowIndex": 5,
+        "focus": "空 Trace 检查",
+        "humanStatus": "uncertain",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "empty",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "Pro/Qwen/Qwen2.5-7B-Instruct",
+        "rowIndex": 2,
+        "focus": "抽取遗漏检查",
+        "humanStatus": "disagree",
+        "sameFamilyAsJudge": true,
+        "originalLabel": "empty",
+        "independentLabel": "supported",
+        "originalFaithfulness": 1.0,
+        "independentFaithfulness": 1.0
+      },
+      {
+        "modelId": "Pro/Qwen/Qwen2.5-7B-Instruct",
+        "rowIndex": 3,
+        "focus": "拒答判定检查",
+        "humanStatus": "disagree",
+        "sameFamilyAsJudge": true,
+        "originalLabel": "hallucination",
+        "independentLabel": "empty",
+        "originalFaithfulness": 0.0,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "Pro/Qwen/Qwen2.5-7B-Instruct",
+        "rowIndex": 4,
+        "focus": "拒答判定检查",
+        "humanStatus": "disagree",
+        "sameFamilyAsJudge": true,
+        "originalLabel": "hallucination",
+        "independentLabel": "empty",
+        "originalFaithfulness": 0.5,
+        "independentFaithfulness": 0.6666666666666666
+      },
+      {
+        "modelId": "Pro/Qwen/Qwen2.5-7B-Instruct",
+        "rowIndex": 5,
+        "focus": "拒答判定检查",
+        "humanStatus": "disagree",
+        "sameFamilyAsJudge": true,
+        "originalLabel": "hallucination",
+        "independentLabel": "hallucination",
+        "originalFaithfulness": 0.0,
+        "independentFaithfulness": 0.6666666666666666
+      },
+      {
+        "modelId": "glm-5.2-fast-preview",
+        "rowIndex": 1,
+        "focus": "正常对照",
+        "humanStatus": "agree",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "supported",
+        "independentLabel": "supported",
+        "originalFaithfulness": 1.0,
+        "independentFaithfulness": 1.0
+      },
+      {
+        "modelId": "glm-5.2-fast-preview",
+        "rowIndex": 3,
+        "focus": "空 Trace 检查",
+        "humanStatus": "uncertain",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "empty",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "glm-5.2-fast-preview",
+        "rowIndex": 4,
+        "focus": "引用支持检查",
+        "humanStatus": "disagree",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "supported",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      },
+      {
+        "modelId": "glm-5.2-fast-preview",
+        "rowIndex": 5,
+        "focus": "空 Trace 检查",
+        "humanStatus": "uncertain",
+        "sameFamilyAsJudge": false,
+        "originalLabel": "empty",
+        "independentLabel": "empty",
+        "originalFaithfulness": null,
+        "independentFaithfulness": 0.0
+      }
+    ],
+    "labelChangeByHumanStatusExcludingSameFamily": {
+      "agree": {
+        "records": 3,
+        "labelChanged": 0
+      },
+      "uncertain": {
+        "records": 5,
+        "labelChanged": 0
+      },
+      "disagree": {
+        "records": 1,
+        "labelChanged": 1
+      }
+    },
+    "note": "演示快照的原分数早于 zh-sentence-v1 中文兼容层，Faithfulness 差异同时包含兼容层与裁判两种因素；Trace 不受兼容层影响。"
+  }
+}
