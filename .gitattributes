@@ -148,3 +148,8 @@
 
 # 该文件记录时为混合换行（前 559 行 CRLF、末行 LF），任何换行转换都无法复原，故按原始字节存储、不做转换。
 /docs/competition/evidence/20261005T101847Z-pilot-c72cb679/public-manifest.json -text
+
+# 裁判证据敏感性实验：材料选样与运行、分析档案的哈希按写出时的原始字节记录，按原样存储、不做换行转换。
+/docs/competition/judge-sensitivity/selection.json -text
+/docs/competition/judge-sensitivity/run-20261012/** -text
+/docs/competition/judge-sensitivity/analysis-20261012/** -text

@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>裁判证据敏感性验证 · 鉴真全域 VeriScope AI</title><style>
+:root{color-scheme:dark;--bg:#0b0e12;--surface:#141a21;--line:#2a323d;--gold:#F2C879;--text:#edf0f4;--muted:#abb4c1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 system-ui,"Microsoft YaHei",sans-serif}
+main{max-width:1440px;margin:auto;padding:56px 48px 80px}h1,h2,h3,h4,h5,p{margin:0}h1{font-size:48px;line-height:1.25;margin:12px 0 24px}h2{font-size:28px;margin:40px 0 16px}h3{font-size:22px;line-height:1.5}h4{font-size:18px;margin:24px 0 12px}h5{font-size:16px}
+p,pre,dd,td,summary,li{overflow-wrap:anywhere;word-break:break-word}p,dd{white-space:pre-wrap}p+p{margin-top:12px}.muted,.boundary{color:var(--muted)}.eyebrow,.status,.claim>span{color:var(--gold)}.eyebrow{font-size:14px;margin-bottom:8px}.boundary{border-left:3px solid var(--gold);padding:12px 20px;margin:24px 0;background:#11161c}
+table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:14px 12px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600}th:first-child{width:23%}th:last-child{width:23%}.sample{margin-top:28px;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}.sample>header{padding:28px 28px 16px}.claim{margin:0 28px 24px;padding:16px 20px;border-left:2px solid var(--gold);background:#10151b}.claim>span{font-size:13px}.claim>p{font-size:18px;margin-top:8px}
+details{border-top:1px solid var(--line)}summary{cursor:pointer;padding:16px 28px;font-size:16px;font-weight:600}summary:hover{background:#1b222b}summary:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}summary>span{display:block;color:var(--muted);font-size:14px;font-weight:400;margin-left:19px}.inner{padding:8px 28px 28px;min-width:0}pre{font:13px/1.8 ui-monospace,Consolas,monospace;white-space:pre-wrap;background:#0f141a;border:1px solid var(--line);border-radius:6px;padding:16px;margin:12px 0;max-width:100%}
+dl{margin:0}dt{color:var(--muted);font-size:13px;margin-top:12px}dd{margin:3px 0 0;font-size:14px}.context{margin:12px 0;padding:16px 20px;border:1px solid var(--line);border-radius:6px}.context>p{margin-top:8px;font-size:14px}.judges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.judge{min-width:0;border:1px solid var(--line);padding:20px;border-radius:6px}.judge>h5{overflow-wrap:anywhere}.status{font-size:14px;margin-top:8px}footer{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:20px}ul,ol{padding-left:24px}.synthetic,summary>span.synthetic{color:var(--gold)}
+</style></head><body><main>
+<header><p class="eyebrow">鉴真全域 VeriScope AI · 独立实验</p><h1>裁判证据敏感性验证</h1><p>6 条固定陈述 · 2 个裁判 · 60 个计划请求；有效判定 59，缺少结果 0。</p><p class="muted">材料确认：30/30 个变体；未确认的预期仅为 AI 辅助草稿。</p></header>
+<aside class="boundary">这是固定陈述的裁判行为实验，不是模型排名或总体准确率估计。引用已定位仅说明文字存在，不证明语义支持。合成证据仅用于本实验；结果不能证明生产 Trace 流程更准确，也不改变 Quality Gate。<p>本报告由工具离线整理，结果解释仍需人工确认。是否完成真实调用，以各请求状态为准。</p></aside>
+<h2>判定与配对统计</h2><p class="muted">有效分母只计结构有效返回；未人工确认的草稿不计算预期符合数量。</p>
+<table><thead><tr><th>裁判</th><th>条件</th><th>有效 / 计划</th><th>已确认材料</th><th>符合预期 / 有效分母</th><th>异常及缺失</th></tr></thead><tbody><tr><td>deepseek-chat</td><td>原始证据</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>deepseek-chat</td><td>原样重复</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>deepseek-chat</td><td>顺序变化</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>deepseek-chat</td><td>依据移除</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>deepseek-chat</td><td>明确矛盾</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>Qwen/Qwen2.5-72B-Instruct</td><td>原始证据</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>Qwen/Qwen2.5-72B-Instruct</td><td>原样重复</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>Qwen/Qwen2.5-72B-Instruct</td><td>顺序变化</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr><tr><td>Qwen/Qwen2.5-72B-Instruct</td><td>依据移除</td><td>5 / 6</td><td>6</td><td>5 / 5</td><td>JSON 解析失败 1</td></tr><tr><td>Qwen/Qwen2.5-72B-Instruct</td><td>明确矛盾</td><td>6 / 6</td><td>6</td><td>6 / 6</td><td>无</td></tr></tbody></table>
+<h4>原样重复与顺序变化</h4><p class="muted">仅比较标签一致性，不表示判定正确。</p><ul><li>deepseek-chat · 原样重复：相同标签 6 / 有效配对 6；不可比较 0 / 计划配对 6。</li><li>deepseek-chat · 顺序变化：相同标签 6 / 有效配对 6；不可比较 0 / 计划配对 6。</li><li>Qwen/Qwen2.5-72B-Instruct · 原样重复：相同标签 6 / 有效配对 6；不可比较 0 / 计划配对 6。</li><li>Qwen/Qwen2.5-72B-Instruct · 顺序变化：相同标签 6 / 有效配对 6；不可比较 0 / 计划配对 6。</li></ul>
+<h4>两个裁判在哪些条件不同</h4><p class="muted">标签差异是待解释现象，不代表裁判排名。</p><ul><li>原始证据：不同标签 0 / 有效配对 6；不可比较 0。</li><li>原样重复：不同标签 0 / 有效配对 6；不可比较 0。</li><li>顺序变化：不同标签 0 / 有效配对 6；不可比较 0。</li><li>依据移除：不同标签 0 / 有效配对 5；不可比较 1。</li><li>明确矛盾：不同标签 0 / 有效配对 6；不可比较 0。</li></ul>
+<h2>逐条材料与实际结果</h2><p class="muted">先读固定陈述，再展开证据变体。引用定位与语义支持分别检查。</p><article class="sample"><header><p class="eyebrow">D03 · D03</p><h3>存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？</h3></header><div class="claim"><span>固定陈述</span><p>存款保险制度中，由投保机构向存款保险基金管理机构交纳保费。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择交纳保费主体这一既有陈述；原Trace第0项，直接依据仅在第0片段。其他片段涉及偿付、债权、制度目的及触发条件，没有交纳保费主体。合成矛盾将主体明确替换为存款人并排除投保机构。</p><h4>作者待检查事项</h4><ol><li>核对原陈述只讨论交纳保费主体，不把同一回答的偿付主体一并判定。</li><li>核对移除第0片段后，其余片段没有直接或可明确推出的交费主体依据。</li><li>矛盾片段是合成测试，不是真实法规；确认主体替换与固定陈述明确冲突。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据参考资料第三条规定，存款保险制度中，由投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，而由存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 2,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 605,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 606,
+    &quot;runId&quot;: &quot;6a0dc30a-eedc-412a-a58b-2a7e744108b8&quot;
+  },
+  &quot;statementIndex&quot;: 0
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 59,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 141,
+  &quot;prompt_tokens&quot;: 525,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 584
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 99,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 573,
+  &quot;prompt_tokens&quot;: 573,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 672
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确规定“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 58,
+  &quot;prompt_cache_hit_tokens&quot;: 128,
+  &quot;prompt_cache_miss_tokens&quot;: 397,
+  &quot;prompt_tokens&quot;: 525,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 128
+  },
+  &quot;total_tokens&quot;: 583
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 99,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 413,
+  &quot;prompt_tokens&quot;: 573,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 672
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -4,13 +4,13 @@
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+ 【片段 2】
+-存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+-社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+-
+-【片段 3】
+ 存款保险条例（节选）
+ 
+ 第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。
++
++【片段 3】
++存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
++社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+ 
+ 【片段 4】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 3</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 59,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 525,
+  &quot;prompt_tokens&quot;: 525,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 584
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出，投保机构向存款保险基金管理机构交纳保费。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 94,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 573,
+  &quot;prompt_tokens&quot;: 573,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 667
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,18 +1,13 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+-
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+-
+-【片段 2】
+ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+ 社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+ 
+-【片段 3】
++【片段 2】
+ 存款保险条例（节选）
+ 
+ 第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。
+ 
+-【片段 4】
++【片段 3】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 2</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 3</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文仅涉及存款保险基金管理机构偿付被保险存款及存款人有权要求偿付的情形，未提及投保机构交纳保费的相关规定，无法支持或否定该陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 50,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 421,
+  &quot;prompt_tokens&quot;: 421,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 471
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">JSON 解析失败</p><dl><dt>请求编号</dt><dd>D03--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 207,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 298,
+  &quot;prompt_tokens&quot;: 458,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 665
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,5 +1,5 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
++第三条　本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ </pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文第三条明确写明是“存款人而非投保机构向存款保险基金管理机构交纳保费”，与陈述“由投保机构向存款保险基金管理机构交纳保费”直接矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 79,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 528,
+  &quot;prompt_tokens&quot;: 528,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 607
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D03--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文明确指出，存款保险制度中是由存款人而非投保机构向存款保险基金管理机构交纳保费。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第三条　本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 107,
+  &quot;prompt_cache_hit_tokens&quot;: 224,
+  &quot;prompt_cache_miss_tokens&quot;: 352,
+  &quot;prompt_tokens&quot;: 576,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 224
+  },
+  &quot;total_tokens&quot;: 683
+}</dd></dl></section></div></div></details></article><article class="sample"><header><p class="eyebrow">D04 · D04</p><h3>节选中被保险存款包括哪些币种的存款？</h3></header><div class="claim"><span>固定陈述</span><p>被保险存款包括投保机构吸收的外币存款。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择原Trace第1项的外币存款陈述。其余片段的人民币偿付限额与境外机构规则不等同于外币存款保障范围。合成矛盾显式排除外币存款。</p><h4>作者待检查事项</h4><ol><li>原始陈述为条文概括，仍受同条除外存款约束；不能理解为所有外币存款无例外保障。</li><li>核对移除后没有其他外币存款保障依据，不将境外机构等同于外币存款。</li><li>确认合成的外币排除规则与固定陈述冲突，且其余片段未重述原规则。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据提供的文档，被保险存款包括投保机构吸收的人民币存款和外币存款。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>被保险存款包括投保机构吸收的人民币存款和外币存款。</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 3,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 607,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 608,
+    &quot;runId&quot;: &quot;4dc22c1d-462f-4904-9e52-a2d41644f75f&quot;
+  },
+  &quot;statementIndex&quot;: 1
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 164,
+  &quot;prompt_tokens&quot;: 548,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 610
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出被保险存款包括投保机构吸收的外币存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 85,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 594,
+  &quot;prompt_tokens&quot;: 594,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 679
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 548,
+  &quot;prompt_tokens&quot;: 548,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 610
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出被保险存款包括投保机构吸收的外币存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 85,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 594,
+  &quot;prompt_tokens&quot;: 594,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 679
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -1,17 +1,17 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+-
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
++第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
++投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。
+ 
+ 【片段 2】
+ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+ 同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+ 
+ 【片段 3】
++第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
++
++第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
++
++【片段 4】
+ 存款保险条例（节选）
+ 
+ 第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。
+-
+-【片段 4】
+-第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+-投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 4</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 548,
+  &quot;prompt_tokens&quot;: 548,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 610
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出被保险存款包括投保机构吸收的外币存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 85,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 594,
+  &quot;prompt_tokens&quot;: 594,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 679
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,17 +1,12 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+-
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+-
+-【片段 2】
+ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+ 同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+ 
+-【片段 3】
++【片段 2】
+ 存款保险条例（节选）
+ 
+ 第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。
+ 
+-【片段 4】
++【片段 3】
+ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+ 投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 2</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 3</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>三个上下文片段均未提及被保险存款所包含的币种，也未说明外币存款是否属于被保险存款，因此无法支持或否定该陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 48,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 444,
+  &quot;prompt_tokens&quot;: 444,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 492
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文没有明确提到被保险存款是否包括外币存款。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 28,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 479,
+  &quot;prompt_tokens&quot;: 479,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 507
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,7 +1,7 @@
+ 【片段 1】
+ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
++第四条　被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+ 【片段 2】
+ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>存款保险条例（节选）
+
+第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文第四条明确写明被保险存款仅包括人民币存款，不包括外币存款，与陈述“包括外币存款”直接矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 66,
+  &quot;prompt_cache_hit_tokens&quot;: 128,
+  &quot;prompt_cache_miss_tokens&quot;: 422,
+  &quot;prompt_tokens&quot;: 550,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 128
+  },
+  &quot;total_tokens&quot;: 616
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D04--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文中明确指出被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 96,
+  &quot;prompt_cache_hit_tokens&quot;: 224,
+  &quot;prompt_cache_miss_tokens&quot;: 373,
+  &quot;prompt_tokens&quot;: 597,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 224
+  },
+  &quot;total_tokens&quot;: 693
+}</dd></dl></section></div></div></details></article><article class="sample"><header><p class="eyebrow">D05 · D05</p><h3>第四条列出的不属于被保险存款范围的存款有哪些？</h3></header><div class="claim"><span>固定陈述</span><p>根据参考资料第四条，不属于被保险存款范围的存款包括金融机构同业存款。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择原Trace第0项的金融机构同业存款排除规则。移除整个第0片段，避免删除排除短语后留下普遍纳入规则形成反向暗示。矛盾副本明确纳入同业存款并移除其原排除位置。</p><h4>作者待检查事项</h4><ol><li>检查原始陈述只针对同业存款，不将另两种除外存款作为本条固定陈述。</li><li>核对删整片段后的第十九条和第五条未另行定义同业存款保险范围。</li><li>核对合成副本没有同时保留同业存款被排除的文字，显式纳入不是原法规内容。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款、投保机构的高级管理人员在本投保机构的存款，以及存款保险基金管理机构规定不予保险的其他存款。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 4,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 609,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 610,
+    &quot;runId&quot;: &quot;e0d4a285-2871-490b-86b0-9fd52d410a43&quot;
+  },
+  &quot;statementIndex&quot;: 0
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>第四条明确列出被保险存款的除外情形，其中包括金融机构同业存款，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 67,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 168,
+  &quot;prompt_tokens&quot;: 552,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 619
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的第四条明确指出了金融机构同业存款不属于被保险存款范围。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 86,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 445,
+  &quot;prompt_tokens&quot;: 605,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 691
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>第四条明确将被保险存款限定为投保机构吸收的人民币存款和外币存款，并规定金融机构同业存款属于除外情形，因此该陈述与上下文一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 97,
+  &quot;prompt_cache_hit_tokens&quot;: 128,
+  &quot;prompt_cache_miss_tokens&quot;: 424,
+  &quot;prompt_tokens&quot;: 552,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 128
+  },
+  &quot;total_tokens&quot;: 649
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的第四条明确指出了不属于被保险存款范围的存款，其中包括金融机构同业存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 90,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 445,
+  &quot;prompt_tokens&quot;: 605,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 695
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -1,18 +1,18 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+-
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+-
+-【片段 2】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；
+ （三）人民法院裁定受理对投保机构的破产申请；
+ （四）经国务院批准的其他情形。
+ 
+-【片段 3】
++【片段 2】
+ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+ 同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
++
++【片段 3】
++第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
++
++第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+ 【片段 4】
+ （四）经国务院批准的其他情形。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第2段（第四条）明确列出被保险存款的除外情形，其中包括金融机构同业存款，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 73,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 552,
+  &quot;prompt_tokens&quot;: 552,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 625
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的第四条明确指出了不属于被保险存款范围的存款，其中包括金融机构同业存款。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 90,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 445,
+  &quot;prompt_tokens&quot;: 605,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 695
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,19 +1,14 @@
+ 【片段 1】
+-第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+-
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+-
+-【片段 2】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；
+ （三）人民法院裁定受理对投保机构的破产申请；
+ （四）经国务院批准的其他情形。
+ 
+-【片段 3】
++【片段 2】
+ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+ 同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+ 
+-【片段 4】
++【片段 3】
+ （四）经国务院批准的其他情形。
+ 存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 2</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 3</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>提供的上下文片段仅涉及第十九条、第五条及第十九条第四项相关内容，均未出现关于“第四条”或“不属于被保险存款范围的存款”的规定，无法支持或否定该陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 56,
+  &quot;prompt_cache_hit_tokens&quot;: 256,
+  &quot;prompt_cache_miss_tokens&quot;: 192,
+  &quot;prompt_tokens&quot;: 448,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 256
+  },
+  &quot;total_tokens&quot;: 504
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文中没有提到第四条的内容，也没有提及不属于被保险存款范围的存款。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 32,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 490,
+  &quot;prompt_tokens&quot;: 490,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 522
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,7 +1,7 @@
+ 【片段 1】
+ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+-第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
++第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。金融机构同业存款明确属于被保险存款，不在除外范围。但是，投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+ 【片段 2】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。金融机构同业存款明确属于被保险存款，不在除外范围。但是，投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文第四条明确写明“金融机构同业存款明确属于被保险存款，不在除外范围”，与陈述所称“不属于被保险存款范围”相矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>金融机构同业存款明确属于被保险存款，不在除外范围。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 68,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 561,
+  &quot;prompt_tokens&quot;: 561,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 629
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D05--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文中的第四条明确指出金融机构同业存款属于被保险存款，不在除外范围。这与陈述中说的金融机构同业存款不属于被保险存款范围相矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>金融机构同业存款明确属于被保险存款，不在除外范围。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 72,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 614,
+  &quot;prompt_tokens&quot;: 614,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 686
+}</dd></dl></section></div></div></details></article><article class="sample"><header><p class="eyebrow">D06 · D06</p><h3>根据节选，存款保险的最高偿付限额是多少？</h3></header><div class="claim"><span>固定陈述</span><p>存款保险的最高偿付限额为人民币50万元。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择原Trace第0项的当前最高偿付限额。四个实际检索片段仅第0段给出具体限额；其余段只涉及偿付时间、债权和触发情形。合成矛盾仅改变50万元为30万元。</p><h4>作者待检查事项</h4><ol><li>核对原文50万元及现有陈述一致。</li><li>确认移除后的其余片段未给出50万元；不得用法规常识替代当前证据。</li><li>条文允许未来调整但未记载已调整，本合成副本直接改写当前限额，不能解释成真实政策变化。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据提供的参考资料，存款保险的最高偿付限额为人民币50万元。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 5,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 611,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 612,
+    &quot;runId&quot;: &quot;c56b287a-f67b-4e53-aca7-65d2300e3fa4&quot;
+  },
+  &quot;statementIndex&quot;: 0
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 2</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 3</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 63,
+  &quot;prompt_cache_hit_tokens&quot;: 256,
+  &quot;prompt_cache_miss_tokens&quot;: 245,
+  &quot;prompt_tokens&quot;: 501,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 256
+  },
+  &quot;total_tokens&quot;: 564
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 551,
+  &quot;prompt_tokens&quot;: 551,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 613
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 2</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 3</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 64,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 501,
+  &quot;prompt_tokens&quot;: 501,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 565
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 391,
+  &quot;prompt_tokens&quot;: 551,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 613
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -1,14 +1,14 @@
+ 【片段 1】
+-第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+-同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
++存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
++社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+ 
+ 【片段 2】
+ （四）经国务院批准的其他情形。
+ 存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。
+ 
+ 【片段 3】
+-存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+-社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
++第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
++同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+ 
+ 【片段 4】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 2</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 3</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第2条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 66,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 501,
+  &quot;prompt_tokens&quot;: 501,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 567
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 3</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 224,
+  &quot;prompt_cache_miss_tokens&quot;: 327,
+  &quot;prompt_tokens&quot;: 551,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 224
+  },
+  &quot;total_tokens&quot;: 613
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,16 +1,12 @@
+ 【片段 1】
+-第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+-同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+-
+-【片段 2】
+ （四）经国务院批准的其他情形。
+ 存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。
+ 
+-【片段 3】
++【片段 2】
+ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+ 社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+ 
+-【片段 4】
++【片段 3】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 2</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 3</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>三个上下文片段均未提及存款保险的最高偿付限额具体数额，无法支持或否定“人民币50万元”这一陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 41,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 401,
+  &quot;prompt_tokens&quot;: 401,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 442
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文中没有提到存款保险的最高偿付限额的具体数值。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 28,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 442,
+  &quot;prompt_tokens&quot;: 442,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 470
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,5 +1,5 @@
+ 【片段 1】
+-第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
++第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+ 同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。
+ 
+ 【片段 2】</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。
+同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。</p></section><section class="context"><h5>片段 2</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 3</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 4</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文明确记载最高偿付限额为人民币30万元，而非50万元，与陈述矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 59,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 501,
+  &quot;prompt_tokens&quot;: 501,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 560
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D06--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文中的最高偿付限额为人民币30万元，与陈述中的50万元不符。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 64,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 551,
+  &quot;prompt_tokens&quot;: 551,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 615
+}</dd></dl></section></div></div></details></article><article class="sample"><header><p class="eyebrow">D07 · D07</p><h3>管理机构偿付被保险存款后，在债权关系上取得什么权利？</h3></header><div class="claim"><span>固定陈述</span><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择原Trace第0项的偿付后债权顺序事实。只有第0片段说明同一清偿顺序，其他片段没有债权取得顺序。合成副本把相同改为不同，保留其他条件。</p><h4>作者待检查事项</h4><ol><li>核对固定陈述中的偿付前提及偿付金额范围均未变化。</li><li>核对移除后其余片段不能给出债权清偿顺序。</li><li>确认不同与相同对固定陈述构成明确冲突，不进一步假设具体优先级。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据提供的文档，存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 6,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 613,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 614,
+    &quot;runId&quot;: &quot;631f271e-a74e-46f2-a73c-ee3a8e665006&quot;
+  },
+  &quot;statementIndex&quot;: 0
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0段原文直接载明：存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权，与待核查陈述完全一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 94,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 527,
+  &quot;prompt_tokens&quot;: 527,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 621
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的描述与陈述完全一致，支持了该陈述。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 68,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 420,
+  &quot;prompt_tokens&quot;: 580,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 648
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0个片段逐字包含待核查陈述的内容，明确说明存款保险基金管理机构偿付被保险存款后，在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 91,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 143,
+  &quot;prompt_tokens&quot;: 527,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 618
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的描述与待核查陈述完全一致，支持该陈述。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 69,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 420,
+  &quot;prompt_tokens&quot;: 580,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 649
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -1,19 +1,19 @@
+ 【片段 1】
+-存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+-社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+-
+-【片段 2】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；
+ （三）人民法院裁定受理对投保机构的破产申请；
+ （四）经国务院批准的其他情形。
+ 
+-【片段 3】
++【片段 2】
+ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+-【片段 4】
++【片段 3】
+ （四）经国务院批准的其他情形。
+ 存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。
++
++【片段 4】
++存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
++社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><section class="context"><h5>片段 4</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第3个片段明确载明：存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权，与待核查陈述完全一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 4</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 94,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 143,
+  &quot;prompt_tokens&quot;: 527,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 621
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的内容明确支持了该陈述，指出存款保险基金管理机构在偿付被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 4</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 97,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 580,
+  &quot;prompt_tokens&quot;: 580,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 677
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,19 +1,15 @@
+ 【片段 1】
+-存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
+-社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+-
+-【片段 2】
+ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+ （一）存款保险基金管理机构担任投保机构的接管组织；
+ （二）存款保险基金管理机构实施被撤销投保机构的清算；
+ （三）人民法院裁定受理对投保机构的破产申请；
+ （四）经国务院批准的其他情形。
+ 
+-【片段 3】
++【片段 2】
+ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+-【片段 4】
++【片段 3】
+ （四）经国务院批准的其他情形。
+ 存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>三个上下文片段均未提及存款保险基金管理机构偿付后取得债权或清偿顺序相关权利的内容，无法支持或否定该陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 43,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 469,
+  &quot;prompt_tokens&quot;: 469,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 512
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文没有提到存款保险基金管理机构偿付存款人的被保险存款后，取得该存款人对投保机构相同清偿顺序的债权的内容。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 46,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 355,
+  &quot;prompt_tokens&quot;: 515,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 561
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,5 +1,5 @@
+ 【片段 1】
+-存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。
++存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。
+ 社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。
+ 
+ 【片段 2】</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。
+社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。</p></section><section class="context"><h5>片段 2</h5><p>第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：
+（一）存款保险基金管理机构担任投保机构的接管组织；
+（二）存款保险基金管理机构实施被撤销投保机构的清算；
+（三）人民法院裁定受理对投保机构的破产申请；
+（四）经国务院批准的其他情形。</p></section><section class="context"><h5>片段 3</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 4</h5><p>（四）经国务院批准的其他情形。
+存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文第0条明确表述为“取得该存款人对投保机构不同清偿顺序的债权”，而待核查陈述称“相同清偿顺序的债权”，二者在“相同/不同清偿顺序”上直接矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 97,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 527,
+  &quot;prompt_tokens&quot;: 527,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 624
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D07--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文中的描述与待核查陈述中的描述存在矛盾，上下文指出存款保险基金管理机构在偿付金额范围内取得的是不同清偿顺序的债权，而待核查陈述中描述的是相同清偿顺序的债权。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 104,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 580,
+  &quot;prompt_tokens&quot;: 580,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 684
+}</dd></dl></section></div></div></details></article><article class="sample"><header><p class="eyebrow">D08 · D08</p><h3>存款保险费率由哪两部分构成？</h3></header><div class="claim"><span>固定陈述</span><p>存款保险费率由基准费率和风险差别费率两部分构成。</p></div><div class="inner"><h4>选取理由 · AI 辅助整理</h4><p>选择原Trace第0项的两类费率组成。其他片段虽提适用费率、保费计算和交费义务，但没有费率组成。合成副本明确排除风险差别费率，未改变回答或陈述。</p><h4>作者待检查事项</h4><ol><li>将费率组成与适用费率确定因素区分，后者提及风险不自动等于风险差别费率这一组成项。</li><li>核对删除第0片段后没有剩余两部分组成的证据。</li><li>确认合成副本排除风险差别费率，后续风险状况因素不是恢复该组成项的独立证据。</li></ol></div><details><summary>原始回答与来源</summary><div class="inner"><p>根据参考资料第九条规定，存款保险费率由基准费率和风险差别费率两部分构成。</p><h4>历史机器判定 · 不是本次实验结果</h4><p>supported</p><h4>历史引用 · 不是本次裁判返回</h4><p>第九条　存款保险费率由基准费率和风险差别费率构成。</p><h4>来源与原调用日志定位</h4><pre>{
+  &quot;modelId&quot;: &quot;deepseek-chat&quot;,
+  &quot;rowIndex&quot;: 7,
+  &quot;sourceLog&quot;: {
+    &quot;actualModel&quot;: &quot;deepseek-flash&quot;,
+    &quot;path&quot;: &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;,
+    &quot;requestLine&quot;: 615,
+    &quot;requestedModel&quot;: &quot;deepseek-chat&quot;,
+    &quot;responseLine&quot;: 616,
+    &quot;runId&quot;: &quot;62874c2a-56b4-45a6-bcb6-08df005dde9b&quot;
+  },
+  &quot;statementIndex&quot;: 0
+}
+</pre></div></details><details class="variant"><summary>原始证据<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--original--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 384,
+  &quot;prompt_cache_miss_tokens&quot;: 192,
+  &quot;prompt_tokens&quot;: 576,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 384
+  },
+  &quot;total_tokens&quot;: 638
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--original--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 59,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 459,
+  &quot;prompt_tokens&quot;: 619,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 678
+}</dd></dl></section></div></div></details><details class="variant"><summary>原样重复<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>与原始证据完全相同。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--repeat--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 256,
+  &quot;prompt_cache_miss_tokens&quot;: 320,
+  &quot;prompt_tokens&quot;: 576,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 256
+  },
+  &quot;total_tokens&quot;: 638
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--repeat--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 59,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 619,
+  &quot;prompt_tokens&quot;: 619,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 678
+}</dd></dl></section></div></div></details><details class="variant"><summary>顺序变化<span>已人工确认的预期：有依据</span></summary><div class="inner"><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 顺序变化
+@@ -8,10 +8,10 @@
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+ 【片段 3】
++第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
++投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。
++
++【片段 4】
+ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+ 投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+ 投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。
+-
+-【片段 4】
+-第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+-投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><section class="context"><h5>片段 4</h5><p>第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--shuffle--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 62,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 576,
+  &quot;prompt_tokens&quot;: 576,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 638
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--shuffle--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>有依据</dd><dt>判定理由</dt><dd>上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>存款保险费率由基准费率和风险差别费率构成。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 56,
+  &quot;prompt_cache_hit_tokens&quot;: 160,
+  &quot;prompt_cache_miss_tokens&quot;: 459,
+  &quot;prompt_tokens&quot;: 619,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 160
+  },
+  &quot;total_tokens&quot;: 675
+}</dd></dl></section></div></div></details><details class="variant"><summary>依据移除<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：依据不足</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 依据移除
+@@ -1,17 +1,13 @@
+ 【片段 1】
+-第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+-各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。
+-
+-【片段 2】
+ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+ 
+ 第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。
+ 
+-【片段 3】
++【片段 2】
+ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+ 投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+ 投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。
+ 
+-【片段 4】
++【片段 3】
+ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+ 投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 2</h5><p>第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。</p></section><section class="context"><h5>片段 3</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--removal--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>三个上下文片段均未提及存款保险费率的具体构成，无法确认或否定该陈述。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 34,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 496,
+  &quot;prompt_tokens&quot;: 496,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 530
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--removal--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>依据不足</dd><dt>判定理由</dt><dd>上下文没有提到存款保险费率的具体构成部分。</dd><dt>引用检查</dt><dd>无引用</dd><dt>引用说明</dt><dd>“依据不足”可以没有引用；“有依据”或“证据矛盾”缺少引用时仍需检查。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 25,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 537,
+  &quot;prompt_tokens&quot;: 537,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 562
+}</dd></dl></section></div></div></details><details class="variant"><summary>明确矛盾<span class="synthetic">合成测试材料，不是真实法规</span><span>已人工确认的预期：证据矛盾</span></summary><div class="inner"><h4 class="synthetic">合成测试材料，不是真实法规</h4><dl><dt>确认状态</dt><dd>已确认</dd><dt>确认者</dt><dd>Kk</dd><dt>日期</dt><dd>2026-10-12</dd><dt>确认说明</dt><dd>作者逐条核对并确认；依据沿用 selection.json 中本题核对要点（作者认可）。</dd></dl><h4>证据差异</h4><pre>--- 原始证据
++++ 明确矛盾
+@@ -1,5 +1,5 @@
+ 【片段 1】
+-第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
++第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+ 各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。
+ 
+ 【片段 2】</pre><h4>本次提供的全部证据</h4><section class="context"><h5>片段 1</h5><p>第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。
+各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。</p></section><section class="context"><h5>片段 2</h5><p>第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。
+
+第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。</p></section><section class="context"><h5>片段 3</h5><p>第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。
+投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。
+投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。</p></section><section class="context"><h5>片段 4</h5><p>第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。
+投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。</p></section><h4>实际请求与判定</h4><div class="judges"><section class="judge"><h5>deepseek-chat</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--contradiction--deepseek</dd><dt>实际响应模型</dt><dd>deepseek-flash</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文第0条明确表述存款保险费率仅由基准费率构成，不包含风险差别费率，与陈述“由基准费率和风险差别费率两部分构成”直接矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 79,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 579,
+  &quot;prompt_tokens&quot;: 579,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 658
+}</dd></dl></section><section class="judge"><h5>Qwen/Qwen2.5-72B-Instruct</h5><p class="status">已返回判定</p><dl><dt>请求编号</dt><dd>D08--contradiction--qwen72b</dd><dt>实际响应模型</dt><dd>Qwen/Qwen2.5-72B-Instruct</dd><dt>机器判定</dt><dd>证据矛盾</dd><dt>判定理由</dt><dd>上下文中的第九条明确指出存款保险费率仅由基准费率构成，不包含风险差别费率，这与待核查陈述相矛盾。</dd><dt>引用检查</dt><dd>引用已定位</dd><dt>片段 1</dt><dd>第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。</dd><dt>用量原记录</dt><dd>{
+  &quot;completion_tokens&quot;: 71,
+  &quot;prompt_cache_hit_tokens&quot;: 0,
+  &quot;prompt_cache_miss_tokens&quot;: 622,
+  &quot;prompt_tokens&quot;: 622,
+  &quot;prompt_tokens_details&quot;: {
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;total_tokens&quot;: 693
+}</dd></dl></section></div></div></details></article>
+<h2>选择范围、异常与文件校验</h2><details><summary>跳过材料与未归属记录</summary><div class="inner"><pre>{
+  &quot;duplicateRecords&quot;: [],
+  &quot;skipped&quot;: [
+    {
+      &quot;caseId&quot;: &quot;D01&quot;,
+      &quot;reason&quot;: &quot;制度目的属于宽泛概括；删除第一条后，第三条维护存款安全的规定仍可能形成间接语义支持，难以把预期唯一固定为依据不足。&quot;
+    },
+    {
+      &quot;caseId&quot;: &quot;D02&quot;,
+      &quot;reason&quot;: &quot;第二条投保义务与第八条办理投保、第十条交保费及第三条投保机构定义在多个实际检索片段相互关联；单点删除/反转会留下隐含支持或条文间冲突。&quot;
+    }
+  ],
+  &quot;unexpectedRecords&quot;: []
+}
+</pre></div></details>
+<details><summary>来源文件 SHA-256</summary><div class="inner"><pre>{
+  &quot;docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json&quot;: &quot;769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d&quot;,
+  &quot;docs/competition/evidence/20261005T144504Z-full-39511424/inputs/case-manifest.json&quot;: &quot;975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba&quot;,
+  &quot;docs/competition/evidence/20261005T144504Z-full-39511424/inputs/deposit_insurance.txt&quot;: &quot;359d73e05853b9fcb379bdc44c7d66e939db09e2f5af5d260f22ad796fd3720a&quot;,
+  &quot;docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl&quot;: &quot;30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131&quot;
+}
+</pre></div></details>
+<footer><p>用量缺失为未知，不按 0 计。费用需按经确认的供应商单价估算，不代表实际扣费；本工具不提供供应商费用自动封顶。</p><p>定向材料不代表总体准确率、独立认证或模型排名。一次重复不能估计完整波动分布。原始回答、指标与门禁保持原样。</p></footer>
+</main></body></html>

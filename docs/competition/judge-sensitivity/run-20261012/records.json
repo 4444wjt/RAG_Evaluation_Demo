@@ -1,0 +1,1737 @@
+[
+  {
+    "requestId": "D04--repeat--qwen72b",
+    "sampleId": "D04",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出被保险存款包括投保机构吸收的外币存款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 594,
+      "completion_tokens": 85,
+      "total_tokens": 679,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 594
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--original--qwen72b",
+    "sampleId": "D04",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出被保险存款包括投保机构吸收的外币存款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 594,
+      "completion_tokens": 85,
+      "total_tokens": 679,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 594
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--removal--qwen72b",
+    "sampleId": "D06",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文中没有提到存款保险的最高偿付限额的具体数值。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 442,
+      "completion_tokens": 28,
+      "total_tokens": 470,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 442
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--removal--deepseek",
+    "sampleId": "D07",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "三个上下文片段均未提及存款保险基金管理机构偿付后取得债权或清偿顺序相关权利的内容，无法支持或否定该陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 469,
+      "completion_tokens": 43,
+      "total_tokens": 512,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 469
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--original--qwen72b",
+    "sampleId": "D03",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 573,
+      "completion_tokens": 99,
+      "total_tokens": 672,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 573
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--contradiction--qwen72b",
+    "sampleId": "D05",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文中的第四条明确指出金融机构同业存款属于被保险存款，不在除外范围。这与陈述中说的金融机构同业存款不属于被保险存款范围相矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "金融机构同业存款明确属于被保险存款，不在除外范围。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 614,
+      "completion_tokens": 72,
+      "total_tokens": 686,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 614
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--removal--deepseek",
+    "sampleId": "D04",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "三个上下文片段均未提及被保险存款所包含的币种，也未说明外币存款是否属于被保险存款，因此无法支持或否定该陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 444,
+      "completion_tokens": 48,
+      "total_tokens": 492,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 444
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--repeat--deepseek",
+    "sampleId": "D06",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 501,
+      "completion_tokens": 64,
+      "total_tokens": 565,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 501
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--removal--deepseek",
+    "sampleId": "D03",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文仅涉及存款保险基金管理机构偿付被保险存款及存款人有权要求偿付的情形，未提及投保机构交纳保费的相关规定，无法支持或否定该陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 421,
+      "completion_tokens": 50,
+      "total_tokens": 471,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 421
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--shuffle--qwen72b",
+    "sampleId": "D04",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出被保险存款包括投保机构吸收的外币存款。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 594,
+      "completion_tokens": 85,
+      "total_tokens": 679,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 594
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--removal--qwen72b",
+    "sampleId": "D04",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文没有明确提到被保险存款是否包括外币存款。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 479,
+      "completion_tokens": 28,
+      "total_tokens": 507,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 479
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--original--deepseek",
+    "sampleId": "D06",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 501,
+      "completion_tokens": 63,
+      "total_tokens": 564,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 245
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--shuffle--qwen72b",
+    "sampleId": "D08",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 619,
+      "completion_tokens": 56,
+      "total_tokens": 675,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 459
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--original--qwen72b",
+    "sampleId": "D06",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 551,
+      "completion_tokens": 62,
+      "total_tokens": 613,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 551
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--contradiction--qwen72b",
+    "sampleId": "D06",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文中的最高偿付限额为人民币30万元，与陈述中的50万元不符。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 551,
+      "completion_tokens": 64,
+      "total_tokens": 615,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 551
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--repeat--qwen72b",
+    "sampleId": "D05",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第四条明确指出了不属于被保险存款范围的存款，其中包括金融机构同业存款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 605,
+      "completion_tokens": 90,
+      "total_tokens": 695,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 445
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--shuffle--deepseek",
+    "sampleId": "D07",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第3个片段明确载明：存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权，与待核查陈述完全一致。",
+      "citations": [
+        {
+          "contextIndex": 3,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 527,
+      "completion_tokens": 94,
+      "total_tokens": 621,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 143
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--shuffle--deepseek",
+    "sampleId": "D05",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第2段（第四条）明确列出被保险存款的除外情形，其中包括金融机构同业存款，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 552,
+      "completion_tokens": 73,
+      "total_tokens": 625,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 552
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--repeat--deepseek",
+    "sampleId": "D04",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 548,
+      "completion_tokens": 62,
+      "total_tokens": 610,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 548
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--contradiction--qwen72b",
+    "sampleId": "D08",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文中的第九条明确指出存款保险费率仅由基准费率构成，不包含风险差别费率，这与待核查陈述相矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 622,
+      "completion_tokens": 71,
+      "total_tokens": 693,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 622
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--shuffle--qwen72b",
+    "sampleId": "D07",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的内容明确支持了该陈述，指出存款保险基金管理机构在偿付被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+      "citations": [
+        {
+          "contextIndex": 3,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 580,
+      "completion_tokens": 97,
+      "total_tokens": 677,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 580
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--contradiction--qwen72b",
+    "sampleId": "D03",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文明确指出，存款保险制度中是由存款人而非投保机构向存款保险基金管理机构交纳保费。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三条　本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 576,
+      "completion_tokens": 107,
+      "total_tokens": 683,
+      "prompt_tokens_details": {
+        "cached_tokens": 224
+      },
+      "prompt_cache_hit_tokens": 224,
+      "prompt_cache_miss_tokens": 352
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--shuffle--deepseek",
+    "sampleId": "D08",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 576,
+      "completion_tokens": 62,
+      "total_tokens": 638,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 576
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--contradiction--deepseek",
+    "sampleId": "D05",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第四条明确写明“金融机构同业存款明确属于被保险存款，不在除外范围”，与陈述所称“不属于被保险存款范围”相矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "金融机构同业存款明确属于被保险存款，不在除外范围。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 561,
+      "completion_tokens": 68,
+      "total_tokens": 629,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 561
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--original--deepseek",
+    "sampleId": "D07",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段原文直接载明：存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权，与待核查陈述完全一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 527,
+      "completion_tokens": 94,
+      "total_tokens": 621,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 527
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--removal--deepseek",
+    "sampleId": "D06",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "三个上下文片段均未提及存款保险的最高偿付限额具体数额，无法支持或否定“人民币50万元”这一陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 401,
+      "completion_tokens": 41,
+      "total_tokens": 442,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 401
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--repeat--deepseek",
+    "sampleId": "D05",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "第四条明确将被保险存款限定为投保机构吸收的人民币存款和外币存款，并规定金融机构同业存款属于除外情形，因此该陈述与上下文一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 552,
+      "completion_tokens": 97,
+      "total_tokens": 649,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 424
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--contradiction--deepseek",
+    "sampleId": "D04",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第四条明确写明被保险存款仅包括人民币存款，不包括外币存款，与陈述“包括外币存款”直接矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 550,
+      "completion_tokens": 66,
+      "total_tokens": 616,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 422
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--contradiction--qwen72b",
+    "sampleId": "D04",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文中明确指出被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款仅包括投保机构吸收的人民币存款，不包括外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 597,
+      "completion_tokens": 96,
+      "total_tokens": 693,
+      "prompt_tokens_details": {
+        "cached_tokens": 224
+      },
+      "prompt_cache_hit_tokens": 224,
+      "prompt_cache_miss_tokens": 373
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--removal--qwen72b",
+    "sampleId": "D08",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文没有提到存款保险费率的具体构成部分。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 537,
+      "completion_tokens": 25,
+      "total_tokens": 562,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 537
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--original--qwen72b",
+    "sampleId": "D07",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的描述与陈述完全一致，支持了该陈述。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 580,
+      "completion_tokens": 68,
+      "total_tokens": 648,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 420
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--original--qwen72b",
+    "sampleId": "D05",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第四条明确指出了金融机构同业存款不属于被保险存款范围。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 605,
+      "completion_tokens": 86,
+      "total_tokens": 691,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 445
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--shuffle--qwen72b",
+    "sampleId": "D03",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出，投保机构向存款保险基金管理机构交纳保费。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 573,
+      "completion_tokens": 94,
+      "total_tokens": 667,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 573
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--contradiction--deepseek",
+    "sampleId": "D03",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第三条明确写明是“存款人而非投保机构向存款保险基金管理机构交纳保费”，与陈述“由投保机构向存款保险基金管理机构交纳保费”直接矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "本条例所称存款保险，是指存款人而非投保机构向存款保险基金管理机构交纳保费"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 528,
+      "completion_tokens": 79,
+      "total_tokens": 607,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 528
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--removal--qwen72b",
+    "sampleId": "D03",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "parse_error",
+    "result": null,
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 458,
+      "completion_tokens": 207,
+      "total_tokens": 665,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 298
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--removal--qwen72b",
+    "sampleId": "D05",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文中没有提到第四条的内容，也没有提及不属于被保险存款范围的存款。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 490,
+      "completion_tokens": 32,
+      "total_tokens": 522,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 490
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--original--deepseek",
+    "sampleId": "D05",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "第四条明确列出被保险存款的除外情形，其中包括金融机构同业存款，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 552,
+      "completion_tokens": 67,
+      "total_tokens": 619,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 168
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--shuffle--deepseek",
+    "sampleId": "D06",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第2条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 501,
+      "completion_tokens": 66,
+      "total_tokens": 567,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 501
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--contradiction--deepseek",
+    "sampleId": "D06",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文明确记载最高偿付限额为人民币30万元，而非50万元，与陈述矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币30万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 501,
+      "completion_tokens": 59,
+      "total_tokens": 560,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 501
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--original--qwen72b",
+    "sampleId": "D08",
+    "variant": "original",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 619,
+      "completion_tokens": 59,
+      "total_tokens": 678,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 459
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--repeat--qwen72b",
+    "sampleId": "D07",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的描述与待核查陈述完全一致，支持该陈述。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 580,
+      "completion_tokens": 69,
+      "total_tokens": 649,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 420
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--contradiction--qwen72b",
+    "sampleId": "D07",
+    "variant": "contradiction",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文中的描述与待核查陈述中的描述存在矛盾，上下文指出存款保险基金管理机构在偿付金额范围内取得的是不同清偿顺序的债权，而待核查陈述中描述的是相同清偿顺序的债权。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 580,
+      "completion_tokens": 104,
+      "total_tokens": 684,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 580
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--repeat--qwen72b",
+    "sampleId": "D08",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的描述与陈述完全一致，明确指出存款保险费率由基准费率和风险差别费率构成。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 619,
+      "completion_tokens": 59,
+      "total_tokens": 678,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 619
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--removal--qwen72b",
+    "sampleId": "D07",
+    "variant": "removal",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "上下文没有提到存款保险基金管理机构偿付存款人的被保险存款后，取得该存款人对投保机构相同清偿顺序的债权的内容。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 515,
+      "completion_tokens": 46,
+      "total_tokens": 561,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 355
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--original--deepseek",
+    "sampleId": "D04",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 548,
+      "completion_tokens": 62,
+      "total_tokens": 610,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 164
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--removal--deepseek",
+    "sampleId": "D08",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "三个上下文片段均未提及存款保险费率的具体构成，无法确认或否定该陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 496,
+      "completion_tokens": 34,
+      "total_tokens": 530,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 496
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--shuffle--qwen72b",
+    "sampleId": "D05",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第四条明确指出了不属于被保险存款范围的存款，其中包括金融机构同业存款。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 605,
+      "completion_tokens": 90,
+      "total_tokens": 695,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 445
+    },
+    "error": null
+  },
+  {
+    "requestId": "D04--shuffle--deepseek",
+    "sampleId": "D04",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第四条明确写明被保险存款包括投保机构吸收的人民币存款和外币存款，因此该陈述得到支持。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 548,
+      "completion_tokens": 62,
+      "total_tokens": 610,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 548
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--shuffle--deepseek",
+    "sampleId": "D03",
+    "variant": "shuffle",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 525,
+      "completion_tokens": 59,
+      "total_tokens": 584,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 525
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--repeat--deepseek",
+    "sampleId": "D07",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0个片段逐字包含待核查陈述的内容，明确说明存款保险基金管理机构偿付被保险存款后，在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 527,
+      "completion_tokens": 91,
+      "total_tokens": 618,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 143
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--repeat--qwen72b",
+    "sampleId": "D06",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 551,
+      "completion_tokens": 62,
+      "total_tokens": 613,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 391
+    },
+    "error": null
+  },
+  {
+    "requestId": "D07--contradiction--deepseek",
+    "sampleId": "D07",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第0条明确表述为“取得该存款人对投保机构不同清偿顺序的债权”，而待核查陈述称“相同清偿顺序的债权”，二者在“相同/不同清偿顺序”上直接矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构不同清偿顺序的债权。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 527,
+      "completion_tokens": 97,
+      "total_tokens": 624,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 527
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--repeat--deepseek",
+    "sampleId": "D08",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 576,
+      "completion_tokens": 62,
+      "total_tokens": 638,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 320
+    },
+    "error": null
+  },
+  {
+    "requestId": "D06--shuffle--qwen72b",
+    "sampleId": "D06",
+    "variant": "shuffle",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "citations": [
+        {
+          "contextIndex": 2,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 551,
+      "completion_tokens": 62,
+      "total_tokens": 613,
+      "prompt_tokens_details": {
+        "cached_tokens": 224
+      },
+      "prompt_cache_hit_tokens": 224,
+      "prompt_cache_miss_tokens": 327
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--repeat--deepseek",
+    "sampleId": "D03",
+    "variant": "repeat",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确规定“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 525,
+      "completion_tokens": 58,
+      "total_tokens": 583,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 397
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--contradiction--deepseek",
+    "sampleId": "D08",
+    "variant": "contradiction",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第0条明确表述存款保险费率仅由基准费率构成，不包含风险差别费率，与陈述“由基准费率和风险差别费率两部分构成”直接矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率仅由基准费率构成，不包含风险差别费率。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 579,
+      "completion_tokens": 79,
+      "total_tokens": 658,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 579
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--repeat--qwen72b",
+    "sampleId": "D03",
+    "variant": "repeat",
+    "judge": "qwen72b",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文明确指出，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "Qwen/Qwen2.5-72B-Instruct",
+    "usage": {
+      "prompt_tokens": 573,
+      "completion_tokens": 99,
+      "total_tokens": 672,
+      "prompt_tokens_details": {
+        "cached_tokens": 160
+      },
+      "prompt_cache_hit_tokens": 160,
+      "prompt_cache_miss_tokens": 413
+    },
+    "error": null
+  },
+  {
+    "requestId": "D08--original--deepseek",
+    "sampleId": "D08",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“存款保险费率由基准费率和风险差别费率构成”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第九条　存款保险费率由基准费率和风险差别费率构成。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 576,
+      "completion_tokens": 62,
+      "total_tokens": 638,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 192
+    },
+    "error": null
+  },
+  {
+    "requestId": "D03--original--deepseek",
+    "sampleId": "D03",
+    "variant": "original",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0条明确写明“投保机构向存款保险基金管理机构交纳保费”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 525,
+      "completion_tokens": 59,
+      "total_tokens": 584,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 141
+    },
+    "error": null
+  },
+  {
+    "requestId": "D05--removal--deepseek",
+    "sampleId": "D05",
+    "variant": "removal",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "insufficient",
+      "reason": "提供的上下文片段仅涉及第十九条、第五条及第十九条第四项相关内容，均未出现关于“第四条”或“不属于被保险存款范围的存款”的规定，无法支持或否定该陈述。",
+      "citations": [],
+      "citationStatus": "missing"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 448,
+      "completion_tokens": 56,
+      "total_tokens": 504,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 192
+    },
+    "error": null
+  }
+]

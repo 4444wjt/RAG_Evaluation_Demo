@@ -1,6 +1,6 @@
 # 本轮验收与运行状态
 
-材料日期：2026-10-06；正式运行日期：2026-10-05。区分历史执行记录、中文兼容层离线验证与真实模型运行；本文件不修改人工核验包状态。
+材料日期：2026-10-12（第 6 节）；2026-10-06（第 1–5 节）；正式运行日期：2026-10-05。区分历史执行记录、中文兼容层离线验证与真实模型运行；本文件不修改人工核验包状态。
 
 ## 1. 已有可回查材料
 
@@ -73,3 +73,12 @@ Ragas 0.1.21 的 `zh-sentence-v1` 仅修正中文及中英混排的句子输入�
 - 截图：`work/competition/demo-clean-20261006/screenshots/`；日志：`work/competition/desktop-browser-regression-20261006.log`、`desktop-ui-regression-20261006.log`。
 
 费用只有估算，没有账单，也没有费用自动封顶功能；本轮没有追加模型调用。
+
+## 6. 2026-10-12 提交前收口
+
+- 本机完整回归（Windows）：Python `venv/Scripts/python.exe -m pytest -q -p no:cacheprovider tests` **450 passed**；前端 `npm test` **174 passed**；浏览器回归 `npx playwright test` **48 passed**。均不调用模型。
+- CI：2026-10-12 新增 `.gitattributes`，按记录逐文件固定检出换行符后，提交 `c66de7b` 的 CI（run 38249233917）Python 与前端两个任务均通过；此前 Linux 检出后换行符不同导致完整性哈希校验失败。本节提交推送后的 CI 结果以 GitHub Actions 记录为准。
+- 门禁可信度四问：新增 [gate-credibility.md](gate-credibility.md)。其中 ④ 由 `tools/competition/gate_uncertainty.py` 离线计算，正向忠实度按题重抽 95% 区间为 55.0%–90.0%，跨过 0.8 门槛；门禁规则与已记录的 FAIL 不变。
+- 裁判证据敏感性实验：作者 Kk 于 2026-10-12 确认 30 项材料并单独授权，运行一次，60 / 60 个请求有返回；59 个有效判定全部符合预期，1 条解析失败如实保留。按返回用量估算约 ¥0.13，不是账单。档案见 [judge-sensitivity/run-20261012](judge-sensitivity/run-20261012/manifest.json)。
+- 5 题预跑的 `public-manifest.json` 记录时为混合换行，改为按原始字节存储，存储内容与记录的 SHA-256 一致。
+- 冻结演示快照、25 题正式运行证据、人工核验包、题集、参考答案与门禁阈值均未修改。

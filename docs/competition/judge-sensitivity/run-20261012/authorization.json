@@ -1,0 +1,50 @@
+{
+  "status": "authorized",
+  "authorizedBy": "Kk",
+  "authorizedAt": "2026-10-12",
+  "packageSha256": "4092d97f14cab0974f184835ed9f43d042e04530d023eeea729d03486ce11b77",
+  "configurationSha256": "dbb3a62076b47fdd7ac6c9a6788553230211a252bc9ed5cdf7607d46742b151c",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "toolSha256": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+  "toolFiles": {
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_sensitivity_report.py": "d9ca93dce6bf5caafa42622c9fc1412ed425d66bdbd20ed32f7c0a15572b16ab",
+    "tools/competition/judge_compare.py": "c93378e2f0d61c85920de18e01bd8f5ea7ded07631393fdc11e2b2628d6d2acf",
+    "tools/competition/run_evidence.py": "73290ca86f32f32fe9cd0ed0a9157e7e9244d0a3b533670825ac54db01d249cf"
+  },
+  "maxRequests": 60,
+  "maxRetries": 0,
+  "budgetCny": 10,
+  "outputDirectory": "docs/competition/judge-sensitivity/run-20261012",
+  "acceptNoHardBillingCap": true,
+  "allowPaidCalls": true,
+  "estimates": {
+    "deepseek": {
+      "requests": 30,
+      "inputPlanningTokens": 87681,
+      "outputMaxTokens": 23040,
+      "method": "UTF-8字节数加每请求256的消息开销代理；非实测token，不保证供应商计费上界。"
+    },
+    "qwen72b": {
+      "requests": 30,
+      "inputPlanningTokens": 87681,
+      "outputMaxTokens": 23040,
+      "method": "UTF-8字节数加每请求256的消息开销代理；非实测token，不保证供应商计费上界。"
+    }
+  },
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing（deepseek-flash 高峰价，缓存未命中，保守取值）",
+      "checkedAt": "2026-10-12"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "source": "https://siliconflow.cn/pricing（Qwen/Qwen2.5-72B-Instruct）",
+      "checkedAt": "2026-10-12"
+    }
+  },
+  "note": "作者 Kk 于 2026-10-12 确认 30 项材料并授权执行一次：最多 60 次请求，预算上限 ¥10；任一请求失败即停止、照实报告、不重跑；无供应商侧硬封顶。"
+}

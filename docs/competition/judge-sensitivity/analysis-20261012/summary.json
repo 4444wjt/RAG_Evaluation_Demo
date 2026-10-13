@@ -1,0 +1,276 @@
+{
+  "analysisMode": "offline",
+  "crossJudgeComparison": [
+    {
+      "differences": [],
+      "unavailablePairs": 0,
+      "validPairs": 6,
+      "variant": "original"
+    },
+    {
+      "differences": [],
+      "unavailablePairs": 0,
+      "validPairs": 6,
+      "variant": "repeat"
+    },
+    {
+      "differences": [],
+      "unavailablePairs": 0,
+      "validPairs": 6,
+      "variant": "shuffle"
+    },
+    {
+      "differences": [],
+      "unavailablePairs": 1,
+      "validPairs": 5,
+      "variant": "removal"
+    },
+    {
+      "differences": [],
+      "unavailablePairs": 0,
+      "validPairs": 6,
+      "variant": "contradiction"
+    }
+  ],
+  "duplicateRecords": [],
+  "experimentVersion": "judge-evidence-v1",
+  "judges": {
+    "deepseek": {
+      "pairedConsistency": {
+        "repeat": {
+          "plannedPairs": 6,
+          "sameVerdict": 6,
+          "unavailablePairs": 0,
+          "validPairs": 6
+        },
+        "shuffle": {
+          "plannedPairs": 6,
+          "sameVerdict": 6,
+          "unavailablePairs": 0,
+          "validPairs": 6
+        }
+      },
+      "variants": {
+        "contradiction": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "contradicted": 6
+          }
+        },
+        "original": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        },
+        "removal": {
+          "citations": {
+            "missing": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "insufficient": 6
+          }
+        },
+        "repeat": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        },
+        "shuffle": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        }
+      }
+    },
+    "qwen72b": {
+      "pairedConsistency": {
+        "repeat": {
+          "plannedPairs": 6,
+          "sameVerdict": 6,
+          "unavailablePairs": 0,
+          "validPairs": 6
+        },
+        "shuffle": {
+          "plannedPairs": 6,
+          "sameVerdict": 6,
+          "unavailablePairs": 0,
+          "validPairs": 6
+        }
+      },
+      "variants": {
+        "contradiction": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "contradicted": 6
+          }
+        },
+        "original": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        },
+        "removal": {
+          "citations": {
+            "missing": 5
+          },
+          "expectedComparison": {
+            "matches": 5,
+            "validDenominator": 5
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 5,
+            "parse_error": 1
+          },
+          "validVerdicts": 5,
+          "verdicts": {
+            "insufficient": 5
+          }
+        },
+        "repeat": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        },
+        "shuffle": {
+          "citations": {
+            "located": 6
+          },
+          "expectedComparison": {
+            "matches": 6,
+            "validDenominator": 6
+          },
+          "humanConfirmed": 6,
+          "planned": 6,
+          "states": {
+            "ok": 6
+          },
+          "validVerdicts": 6,
+          "verdicts": {
+            "supported": 6
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "这是固定陈述的裁判行为实验，不是模型排名或总体准确率估计。引用已定位仅说明文字存在，不证明语义支持。合成证据仅用于本实验；结果不能证明生产 Trace 流程更准确，也不改变 Quality Gate。",
+    "本报告由工具离线整理，结果解释仍需人工确认。",
+    "未确认材料的预期标签仅为草稿，不纳入预期符合统计。",
+    "一次重复仅显示该次差异，不能估计完整波动分布。"
+  ],
+  "plannedRequests": 60,
+  "recordCount": 60,
+  "requestStates": {
+    "ok": 59,
+    "parse_error": 1
+  },
+  "schemaVersion": 1,
+  "sourceFiles": {
+    "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/inputs/case-manifest.json": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/inputs/deposit_insurance.txt": "359d73e05853b9fcb379bdc44c7d66e939db09e2f5af5d260f22ad796fd3720a",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131"
+  },
+  "unexpectedRecords": []
+}

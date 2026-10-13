@@ -10,6 +10,7 @@
 
 ### 门禁审计与可信度（2026-10-11 至 2026-10-12）
 - 门禁可信度四问：从复算、换裁判、证据敏感性、结论确定性四个方面审计门禁本身，见 `docs/competition/gate-credibility.md`。
+- 裁判证据敏感性实验 `tools/competition/judge_sensitivity.py`：固定 6 条既有陈述，只改变提供给裁判的证据（原样重复、打乱顺序、移除依据、改成矛盾），两个裁判共 60 次请求；材料经作者逐条确认、付费单独授权，2026-10-12 运行一次，档案与离线分析见 `docs/competition/judge-sensitivity/`。
 - 结论确定性分析 `tools/competition/gate_uncertainty.py`：对 25 题正式运行按题重抽求门禁指标的区间，并比较计算口径；只读冻结证据，不改门禁规则与已记录的 FAIL。
 - 独立裁判对照：原裁判重判作噪声基线，另换 Qwen2.5-72B 对照，量化同源裁判偏差；结果与归档见 `docs/judge-comparison.md`。
 - 门禁回放 `scripts/gate_replay.py`：离线重新执行门禁裁决，不通过时以非零退出码结束。

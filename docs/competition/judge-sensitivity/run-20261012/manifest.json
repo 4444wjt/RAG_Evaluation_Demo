@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "judge-evidence-v1",
+  "finishedAt": "2026-10-13T02:45:10.526164+00:00",
+  "stopReason": "completed",
+  "attempts": 60,
+  "completedRecords": 60,
+  "plannedRequests": 60,
+  "missingUsage": 0,
+  "estimatedCostCny": 0.12680682000000001,
+  "actualBillCny": null,
+  "costNote": "不含缓存优惠的用量估算；不是实际扣费，没有供应商费用自动封顶。缺失用量时仅为已知部分。",
+  "sourceFiles": {
+    "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/inputs/case-manifest.json": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/inputs/deposit_insurance.txt": "359d73e05853b9fcb379bdc44c7d66e939db09e2f5af5d260f22ad796fd3720a",
+    "docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131"
+  },
+  "protectedSourcesUnchanged": true
+}
