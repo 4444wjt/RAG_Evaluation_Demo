@@ -145,3 +145,6 @@
 /scenarios/information_disclosure.txt text eol=lf
 /scenarios/competition_25/testset.json text eol=lf
 /scenarios/deposit_insurance.txt text eol=lf
+
+# 该文件记录时为混合换行（前 559 行 CRLF、末行 LF），任何换行转换都无法复原，故按原始字节存储、不做转换。
+/docs/competition/evidence/20261005T101847Z-pilot-c72cb679/public-manifest.json -text
