@@ -1,0 +1,37 @@
+# 一键部署：在 deploy/ 目录执行 ./deploy.sh，或 docker compose up -d --build。
+# 默认是只读演示站；改为可评测部署见 deploy/README.md。
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.api
+      args:
+        INSTALL: ${API_INSTALL:-demo}
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      VERISCOPE_READ_ONLY: ${VERISCOPE_READ_ONLY:-1}
+    expose:
+      - "8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.web
+      args:
+        VITE_READ_ONLY: ${VERISCOPE_READ_ONLY:-1}
+    environment:
+      VERISCOPE_READ_ONLY: ${VERISCOPE_READ_ONLY:-1}
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

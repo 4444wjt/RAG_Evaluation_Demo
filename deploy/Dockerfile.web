@@ -1,0 +1,16 @@
+# 前端静态站点 + nginx 反向代理。构建上下文为仓库根目录。
+# VITE_READ_ONLY=1（默认）构建只读演示版：工作台只展示快照，不提供在线评测入口。
+FROM node:24-slim AS build
+ARG VITE_READ_ONLY=1
+ENV VITE_READ_ONLY=$VITE_READ_ONLY
+WORKDIR /web
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build
+
+FROM nginx:1.27-alpine
+# 官方 nginx 镜像启动时会用环境变量渲染 /etc/nginx/templates/*.template。
+COPY deploy/nginx/default.conf.template /etc/nginx/templates/default.conf.template
+COPY --from=build /web/dist /usr/share/nginx/html
+EXPOSE 80

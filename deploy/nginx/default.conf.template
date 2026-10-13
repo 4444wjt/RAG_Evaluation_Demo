@@ -1,0 +1,48 @@
+# 由 nginx 官方镜像在启动时用环境变量渲染；${VERISCOPE_READ_ONLY} 来自 docker-compose。
+server {
+    listen 80;
+    server_name _;
+    server_tokens off;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # 前端路由使用 hash（#/lab/...），静态文件找不到时回到首页。
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /assets/ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # 不对外暴露接口文档。
+    location ~ ^/api/(docs|redoc|openapi\.json)$ {
+        return 404;
+    }
+
+    # 只读演示：评测请求在 nginx 层直接拒绝，后端也会因 VERISCOPE_READ_ONLY=1 返回 423（两层拦截）。
+    location = /api/evaluate {
+        set $veriscope_read_only "${VERISCOPE_READ_ONLY}";
+        if ($veriscope_read_only = "1") {
+            default_type application/json;
+            return 423 '{"detail":"公开演示站点未开放在线评测。"}';
+        }
+        client_max_body_size 1m;
+        # 评测是同步请求，可能持续数分钟。
+        proxy_read_timeout 1800s;
+        proxy_send_timeout 1800s;
+        proxy_pass http://api:8000/evaluate;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # 与前端开发代理一致：去掉 /api 前缀后转发给后端。
+    location /api/ {
+        limit_except GET HEAD { deny all; }
+        proxy_pass http://api:8000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
