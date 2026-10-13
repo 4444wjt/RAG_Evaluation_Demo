@@ -1,39 +1,39 @@
 # main.py 直接依赖
-gradio==6.28.0
+gradio==6.30.0
 httpx==0.28.1
 matplotlib==3.11.2
 numpy==1.26.4
 openpyxl==3.1.5
 pandas==3.0.6
-python-dotenv==1.2.3
+python-dotenv==1.2.4
 
 # FastAPI 本地接口骨架（沿用当前环境版本）
-fastapi==0.141.1
-uvicorn==0.53.0
-pydantic==2.13.5
+fastapi==0.143.0
+uvicorn==0.54.0
+pydantic==2.14.0
 
 # langchain 0.2.x 全家桶
 langchain==0.2.17
-langchain-community==0.2.19
+langchain-community==0.4.2
 langchain-core==0.2.43
 langchain-openai==0.1.25
 langchain-text-splitters==0.2.4
 
 # ragas 与数据层
-datasets==5.0.1
-ragas==0.1.21
+datasets==5.1.0
+ragas==0.4.3
 
 # 后端引擎与关键传递依赖
 chromadb==1.5.9
 huggingface_hub==1.32.0
 openai==1.109.1
 sentence-transformers==6.1.0
-torch==2.14.0
-transformers==5.17.0
+torch==2.14.1
+transformers==5.19.0
 
 # 关键传递依赖（防版本漂移）
 pysbd==0.3.4
 safetensors==0.8.0
 scikit-learn==1.9.1
 tiktoken==0.14.0
-tokenizers==0.23.2
+tokenizers==0.23.3
