@@ -63,3 +63,7 @@
 - 正向上下文精度的保存均值为 `0.7778`，页面沿用现有一位百分比格式显示 `77.8%`；来源详情保留原始数值。阈值仍为 `0.8`。
 - 历史案例保留当时 CLI 运行材料，不以当前代码追认其完整执行条件。当前 CLI / Gradio 经 `main.py.run_pipeline` 委托共享后端编排；保留的 `_legacy_run_pipeline` 并非正常入口。历史案例仍不证明当前 API 已复跑。原归档未保存门禁说明；展示的原因是原始指标与阈值对照，不能冒充原始说明。
 - 公开展示使用本 fixture；本地原始 CSV/HTML/日志仍受现有忽略规则管理，不要求克隆后存在这些归档产物。
+
+## 门禁审计
+
+`gate-audit.json` 由 [`tools/competition/build_audit_fixture.py`](../../../tools/competition/build_audit_fixture.py) 生成，供工作台「门禁审计」页使用，不手工编辑。它汇总门禁可信度四问（25 题正式运行的逐句重算与门禁回放、独立裁判对照、证据敏感性实验、按题重抽区间）、`tests/test_gate_properties.py` 中各性质测试的说明、`docs/competition/gate-self-check/` 的变异测试归档，以及两次同题预跑的回归对比。每个来源都核对归档哈希；`backend/core/gate.py` 与变异测试归档记录的哈希不一致时拒绝生成。`python tools/competition/build_audit_fixture.py --check` 校验已提交的文件，[`tests/test_audit_fixture.py`](../../../tests/test_audit_fixture.py) 在 CI 中执行同样的校验。

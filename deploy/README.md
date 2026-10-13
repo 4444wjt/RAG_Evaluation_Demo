@@ -89,4 +89,12 @@ compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS �
 
 尚未验证：`API_INSTALL=full` 的全量镜像构建与真实评测，以及 `WEB_BIND=0.0.0.0` 直接对外开放的情形。
 
+## 备用静态站：GitHub Pages
+
+服务器或隧道中断时，用 GitHub Pages 上的纯静态站兜底：[`.github/workflows/pages.yml`](../.github/workflows/pages.yml) 在 `frontend/` 变动时用同一份只读快照构建前端（`VITE_READ_ONLY=1`、`VITE_STATIC_SITE=1`、相对 base），发布到 https://4444wjt.github.io/RAG_Evaluation_Demo/。
+
+- 只有前端：首页、演示快照、各工作台视图和「门禁审计」都可查看；没有后端，不探测 API，顶栏显示「静态演示站 · 无后端」，不能发起评测。
+- 首次使用前，在仓库 Settings → Pages 把 Source 设为 “GitHub Actions”；之后每次推送自动更新，也可在 Actions 页手动运行 “Pages demo”。
+- 本地预览同一产物：在 `frontend/` 执行 `VITE_READ_ONLY=1 VITE_STATIC_SITE=1 npx vite build --base=./`，再用任意静态服务器打开 `dist/`。
+
 公网演示站的实际服务器配置未入库；本目录是按仓库代码编写的标准部署方式，与公网站点采用相同的只读机制。

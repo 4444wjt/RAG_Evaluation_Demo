@@ -156,3 +156,8 @@
 
 # 部署文件在 Linux 容器和服务器上执行，固定为 LF，避免从 Windows 检出后 shell 脚本和 Dockerfile 续行失效。
 /deploy/** text eol=lf
+
+# 门禁代码变异测试归档：mutation.junit.xml 为 mutmut 在 Windows 上原样导出（CRLF），其余为 LF；哈希由门禁审计页数据记录。
+/docs/competition/gate-self-check/mutation.junit.xml text eol=crlf
+/docs/competition/gate-self-check/manifest.json text eol=lf
+/docs/competition/gate-self-check/README.md text eol=lf

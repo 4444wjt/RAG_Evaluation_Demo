@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 1,
+  "recompute": {
+    "source": {
+      "runId": "20261005T144504Z-full-39511424",
+      "model": "deepseek-chat",
+      "evidence": "docs/competition/evidence/20261005T144504Z-full-39511424",
+      "sha256": {
+        "api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+        "llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131",
+        "request.json": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147"
+      }
+    },
+    "thresholds": {
+      "faithfulness": 0.8,
+      "context_precision": 0.8
+    },
+    "questions": 20,
+    "statements": 52,
+    "supported": 43,
+    "refusals": 4,
+    "recomputedFaithfulness": 0.7375,
+    "recordedFaithfulness": 0.7375,
+    "recordedContextPrecision": 0.9833,
+    "recordedPassed": false,
+    "recomputedPassed": false,
+    "replayedPassed": false
+  },
+  "judges": {
+    "source": {
+      "path": "docs/competition/judge-comparison/20261011-qwen72b/summary.json",
+      "sha256": "7f71a2c30d97b32fb1218da651ed69dd460e0f508e04c56ad95225ba028b4a18"
+    },
+    "questions": 25,
+    "runs": [
+      {
+        "key": "original",
+        "label": "原判定",
+        "posFaithfulness": 0.7375,
+        "posContextPrecision": 0.9833,
+        "passed": false
+      },
+      {
+        "key": "self-rerun",
+        "label": "原裁判重判",
+        "posFaithfulness": 0.7583,
+        "posContextPrecision": 0.9833,
+        "passed": false
+      },
+      {
+        "key": "independent",
+        "label": "Qwen2.5-72B",
+        "posFaithfulness": 0.7233,
+        "posContextPrecision": 0.9389,
+        "passed": false
+      }
+    ],
+    "noise": {
+      "faithfulness": {
+        "sameJudge": 0.0167,
+        "crossJudge": 0.0953,
+        "crossingSameJudge": 1,
+        "crossingCrossJudge": 6
+      },
+      "context_precision": {
+        "sameJudge": 0.04,
+        "crossJudge": 0.1267,
+        "crossingSameJudge": 1,
+        "crossingCrossJudge": 5
+      }
+    }
+  },
+  "sensitivity": {
+    "source": {
+      "path": "docs/competition/judge-sensitivity/analysis-20261012/summary.json",
+      "sha256": "eeb28ace7e5369d30cea40c93333cd61c83c4c64e64d1b4cc6d337fbd56e1d7e"
+    },
+    "statements": 6,
+    "cells": [
+      {
+        "judge": "deepseek",
+        "judgeLabel": "DeepSeek",
+        "variant": "original",
+        "variantLabel": "原始证据",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "deepseek",
+        "judgeLabel": "DeepSeek",
+        "variant": "repeat",
+        "variantLabel": "原样重复",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "deepseek",
+        "judgeLabel": "DeepSeek",
+        "variant": "shuffle",
+        "variantLabel": "打乱片段顺序",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "deepseek",
+        "judgeLabel": "DeepSeek",
+        "variant": "removal",
+        "variantLabel": "移除支持片段",
+        "expected": "依据不足",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "deepseek",
+        "judgeLabel": "DeepSeek",
+        "variant": "contradiction",
+        "variantLabel": "改成明确矛盾",
+        "expected": "矛盾",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "qwen72b",
+        "judgeLabel": "Qwen2.5-72B",
+        "variant": "original",
+        "variantLabel": "原始证据",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "qwen72b",
+        "judgeLabel": "Qwen2.5-72B",
+        "variant": "repeat",
+        "variantLabel": "原样重复",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "qwen72b",
+        "judgeLabel": "Qwen2.5-72B",
+        "variant": "shuffle",
+        "variantLabel": "打乱片段顺序",
+        "expected": "支持",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      },
+      {
+        "judge": "qwen72b",
+        "judgeLabel": "Qwen2.5-72B",
+        "variant": "removal",
+        "variantLabel": "移除支持片段",
+        "expected": "依据不足",
+        "planned": 6,
+        "valid": 5,
+        "matches": 5,
+        "parseErrors": 1
+      },
+      {
+        "judge": "qwen72b",
+        "judgeLabel": "Qwen2.5-72B",
+        "variant": "contradiction",
+        "variantLabel": "改成明确矛盾",
+        "expected": "矛盾",
+        "planned": 6,
+        "valid": 6,
+        "matches": 6,
+        "parseErrors": 0
+      }
+    ],
+    "totals": {
+      "planned": 60,
+      "valid": 59,
+      "matches": 59,
+      "parseErrors": 1
+    }
+  },
+  "certainty": {
+    "seed": 20261012,
+    "resamples": 20000,
+    "thresholds": {
+      "faithfulness": 0.8,
+      "context_precision": 0.8
+    },
+    "metrics": {
+      "faithfulness": {
+        "questions": 20,
+        "mean": 0.7375,
+        "bootstrap95": [
+          0.55,
+          0.9
+        ],
+        "shareOfResamplesAtOrAboveThreshold": 0.27895,
+        "state": "证据不足"
+      },
+      "context_precision": {
+        "questions": 20,
+        "mean": 0.9833333332449303,
+        "bootstrap95": [
+          0.9541666665879859,
+          0.9999999999074998
+        ],
+        "shareOfResamplesAtOrAboveThreshold": 1.0,
+        "state": "确定通过"
+      }
+    },
+    "views": {
+      "perQuestionRefusalAsZero": 0.7375,
+      "pooledStatements": {
+        "value": 0.8269230769230769,
+        "wilson95": [
+          0.702691358755192,
+          0.9061752560868979
+        ]
+      },
+      "perQuestionRefusalExcluded": 0.921875
+    }
+  },
+  "properties": {
+    "path": "tests/test_gate_properties.py",
+    "items": [
+      {
+        "test": "test_verdict_follows_threshold_rule_at_boundaries",
+        "description": "阈值边界：恰等于阈值放行，低一个浮点步长、缺失或 NaN 拦截。"
+      },
+      {
+        "test": "test_higher_scores_never_turn_pass_into_block",
+        "description": "分数升高，放行不会变成拦截。"
+      },
+      {
+        "test": "test_stricter_thresholds_never_turn_block_into_pass",
+        "description": "阈值调高，拦截不会变成放行。"
+      },
+      {
+        "test": "test_question_order_does_not_change_verdict",
+        "description": "打乱题目顺序，正向均值与裁决都不变。"
+      },
+      {
+        "test": "test_negative_cases_do_not_change_verdict",
+        "description": "任意增加负向题、任意给分，正向均值与裁决都不变。"
+      },
+      {
+        "test": "test_overall_means_including_negatives_do_not_change_verdict",
+        "description": "含负向题的整体均值不影响裁决。"
+      },
+      {
+        "test": "test_only_first_valid_model_is_judged",
+        "description": "只裁决第一个有效模型，其前后的模型不影响结论。"
+      },
+      {
+        "test": "test_single_case_warnings_list_low_cases_without_changing_verdict",
+        "description": "单题告警如实列出低分题，且不改变裁决。"
+      },
+      {
+        "test": "test_gate_log_reports_the_judged_model_and_means",
+        "description": "门禁日志如实打印被裁决的模型与各项均值。"
+      },
+      {
+        "test": "test_gate_does_not_modify_inputs",
+        "description": "门禁不修改传入的汇总与逐题数据。"
+      }
+    ]
+  },
+  "mutation": {
+    "tool": "mutmut 2.5.1",
+    "date": "2026-10-13",
+    "environment": "Windows，Python 3.11.9（本机一次运行）",
+    "target": "backend/core/gate.py",
+    "targetSha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+    "disabledMutationTypes": [
+      "string",
+      "fstring"
+    ],
+    "tests": [
+      "tests/test_backend_gate.py",
+      "tests/test_gate_properties.py",
+      "tests/test_gate_replay.py",
+      "tests/test_backend_pipeline.py"
+    ],
+    "source": {
+      "path": "docs/competition/gate-self-check/mutation.junit.xml",
+      "sha256": "ce4491ec167c34414742a533de220a9ef61bc7048567223018eafcb9269b7a0e",
+      "manifest": {
+        "path": "docs/competition/gate-self-check/manifest.json",
+        "sha256": "7d8ad4766f8f37e43b8a4a61cc3d4a55b63be811f8491de38c503c47eb79bd18"
+      }
+    },
+    "total": 42,
+    "killed": 39,
+    "survived": 3,
+    "timeouts": 0,
+    "mutants": [
+      {
+        "id": 1,
+        "line": 28,
+        "status": "killed"
+      },
+      {
+        "id": 2,
+        "line": 28,
+        "status": "killed"
+      },
+      {
+        "id": 3,
+        "line": 28,
+        "status": "survived"
+      },
+      {
+        "id": 4,
+        "line": 30,
+        "status": "killed"
+      },
+      {
+        "id": 5,
+        "line": 30,
+        "status": "survived"
+      },
+      {
+        "id": 6,
+        "line": 33,
+        "status": "killed"
+      },
+      {
+        "id": 7,
+        "line": 33,
+        "status": "killed"
+      },
+      {
+        "id": 8,
+        "line": 34,
+        "status": "killed"
+      },
+      {
+        "id": 9,
+        "line": 34,
+        "status": "killed"
+      },
+      {
+        "id": 10,
+        "line": 35,
+        "status": "killed"
+      },
+      {
+        "id": 11,
+        "line": 36,
+        "status": "killed"
+      },
+      {
+        "id": 12,
+        "line": 37,
+        "status": "killed"
+      },
+      {
+        "id": 13,
+        "line": 38,
+        "status": "killed"
+      },
+      {
+        "id": 14,
+        "line": 50,
+        "status": "killed"
+      },
+      {
+        "id": 15,
+        "line": 50,
+        "status": "survived"
+      },
+      {
+        "id": 16,
+        "line": 51,
+        "status": "killed"
+      },
+      {
+        "id": 17,
+        "line": 53,
+        "status": "killed"
+      },
+      {
+        "id": 18,
+        "line": 54,
+        "status": "killed"
+      },
+      {
+        "id": 19,
+        "line": 54,
+        "status": "killed"
+      },
+      {
+        "id": 20,
+        "line": 54,
+        "status": "killed"
+      },
+      {
+        "id": 21,
+        "line": 54,
+        "status": "killed"
+      },
+      {
+        "id": 22,
+        "line": 55,
+        "status": "killed"
+      },
+      {
+        "id": 23,
+        "line": 55,
+        "status": "killed"
+      },
+      {
+        "id": 24,
+        "line": 57,
+        "status": "killed"
+      },
+      {
+        "id": 25,
+        "line": 57,
+        "status": "killed"
+      },
+      {
+        "id": 26,
+        "line": 58,
+        "status": "killed"
+      },
+      {
+        "id": 27,
+        "line": 63,
+        "status": "killed"
+      },
+      {
+        "id": 28,
+        "line": 63,
+        "status": "killed"
+      },
+      {
+        "id": 29,
+        "line": 64,
+        "status": "killed"
+      },
+      {
+        "id": 30,
+        "line": 64,
+        "status": "killed"
+      },
+      {
+        "id": 31,
+        "line": 64,
+        "status": "killed"
+      },
+      {
+        "id": 32,
+        "line": 66,
+        "status": "killed"
+      },
+      {
+        "id": 33,
+        "line": 66,
+        "status": "killed"
+      },
+      {
+        "id": 34,
+        "line": 67,
+        "status": "killed"
+      },
+      {
+        "id": 35,
+        "line": 67,
+        "status": "killed"
+      },
+      {
+        "id": 36,
+        "line": 67,
+        "status": "killed"
+      },
+      {
+        "id": 37,
+        "line": 69,
+        "status": "killed"
+      },
+      {
+        "id": 38,
+        "line": 69,
+        "status": "killed"
+      },
+      {
+        "id": 39,
+        "line": 72,
+        "status": "killed"
+      },
+      {
+        "id": 40,
+        "line": 73,
+        "status": "killed"
+      },
+      {
+        "id": 41,
+        "line": 75,
+        "status": "killed"
+      },
+      {
+        "id": 42,
+        "line": 76,
+        "status": "killed"
+      }
+    ],
+    "survivors": [
+      {
+        "name": "Mutant #3",
+        "line": 28,
+        "original": "print(\"\\n\" + \"=\" * 50)",
+        "mutated": "print(\"\\n\" + \"=\" * 51)",
+        "note": "日志分隔线 \"=\" * 50 改为 51，只影响打印，不影响裁决。"
+      },
+      {
+        "name": "Mutant #5",
+        "line": 30,
+        "original": "print(\"=\" * 50)",
+        "mutated": "print(\"=\" * 51)",
+        "note": "日志分隔线 \"=\" * 50 改为 51，只影响打印，不影响裁决。"
+      },
+      {
+        "name": "Mutant #15",
+        "line": 50,
+        "original": "warning_flag = False",
+        "mutated": "warning_flag = None",
+        "note": "warning_flag 初值 False 改为 None，两者真假值相同，属于等价变异。"
+      }
+    ]
+  },
+  "regression": {
+    "baseline": {
+      "runId": "20261005T101847Z-pilot-c72cb679",
+      "path": "docs/competition/evidence/20261005T101847Z-pilot-c72cb679/api-response.json",
+      "sha256": "de4f72ba1b3aec309428b90bf105a5e8b2fbe2728fa193f573e3f24eecb939b2"
+    },
+    "candidate": {
+      "runId": "20261005T131353Z-pilot-35f623cb",
+      "path": "docs/competition/evidence/20261005T131353Z-pilot-35f623cb/api-response.json",
+      "sha256": "f42fade1c9317a6562f2e1f76d17d08feb8c3764ab0d29f43b9a69bdc8150ee1"
+    },
+    "baselinePassed": true,
+    "candidatePassed": false,
+    "resamples": 10000,
+    "seed": 20261013,
+    "confirmed": false,
+    "metrics": [
+      {
+        "key": "pos_faithfulness",
+        "label": "正向忠实度",
+        "baseline": 0.8333,
+        "candidate": 0.6,
+        "paired": 3,
+        "meanDelta": -0.0333,
+        "interval": [
+          -0.1,
+          0.0
+        ],
+        "noise": 0.0167,
+        "status": "可能退步",
+        "oneSided": 1
+      },
+      {
+        "key": "pos_context_precision",
+        "label": "正向上下文精度",
+        "baseline": 0.8542,
+        "candidate": 0.9792,
+        "paired": 4,
+        "meanDelta": 0.125,
+        "interval": [
+          0.0,
+          0.375
+        ],
+        "noise": 0.04,
+        "status": "未退步",
+        "oneSided": 0
+      }
+    ]
+  }
+}

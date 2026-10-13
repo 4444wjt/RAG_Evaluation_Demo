@@ -1,10 +1,10 @@
 import type { View } from './api/types';
 
-export type LabView = View | 'verification';
+export type LabView = View | 'verification' | 'audit';
 export type LabTarget = 'lab' | 'demo' | 'workspace';
 
 /** #/lab, #/lab/demo, #/lab/workspace keep their meaning; an optional trailing view segment deep-links a workbench view. */
-const LAB_HASH = /^#\/lab(?:\/(demo))?(?:\/(overview|workspace|comparison|trace|report|verification))?$/;
+const LAB_HASH = /^#\/lab(?:\/(demo))?(?:\/(overview|workspace|comparison|trace|report|verification|audit))?$/;
 
 export function parseLabHash(hash: string): { target: LabTarget; view?: LabView } | null {
   const match = LAB_HASH.exec(hash);

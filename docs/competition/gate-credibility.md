@@ -2,6 +2,8 @@
 
 质量门禁给出一个 PASS / FAIL。发布决策依赖这个结论，所以门禁本身也需要被检验：结论能不能复算，换个裁判会不会变，裁判是否真的依据证据，结论有多确定。本项目把这四件事作为对门禁的审计，每一问都对应一份可离线复算的证据。
 
+工作台的「门禁审计」页集中展示本文四问与附录的结论，数据由 [`tools/competition/build_audit_fixture.py`](../../tools/competition/build_audit_fixture.py) 从同一批冻结证据生成并核对哈希。
+
 这里不新增指标，也不改门禁规则：四问都在已有门禁之外进行，结果只说明门禁结论的可信程度，不用于改判。下文的数字都来自 [25 题正式运行](evidence/20261005T144504Z-full-39511424/README.md)（2026-10-05，DeepSeek，门禁 FAIL）。
 
 | 问题 | 方法 | 当前结论 | 状态 |
@@ -38,6 +40,8 @@ python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39
 - 逐题看，独立裁判与原判定的差异约是同裁判重判的 5–6 倍（Faithfulness 平均差 0.095 对 0.017，跨门槛的题 6 对 1）。
 
 边界：只做了一次运行，只换了一个裁判；独立裁判不等于正确裁判，分歧样本仍需人工核查。详见 [独立裁判对照](../judge-comparison.md)。
+
+做法参照：[FACTS Grounding](https://deepmind.google/blog/facts-grounding-a-new-benchmark-for-evaluating-the-factuality-of-large-language-models/) 用多个不同家族的裁判共同判定依据性，以减少单一裁判偏向自家模型的问题；[Reliability without Validity](https://arxiv.org/abs/2606.19544) 指出裁判重复判定一致，不代表判得对。本问的噪声基线只说明原裁判自身稳定，跨家族的差异才反映裁判选择对结论的影响。
 
 ## ③ 证据变了，裁判会跟着变吗？
 
@@ -94,11 +98,47 @@ python tools/competition/judge_sensitivity.py analyze --run docs/competition/jud
 - 区间跨过了门槛，所以这次拦截是保守拦截，不是「确定不达标」。对照 ② 也是如此：三次裁判给出的均值 0.72–0.76 都落在这个区间内。
 - 换成按陈述合并的口径，点估计会超过 0.8。门禁口径是事先设定的规则，拒答按 0 计也是有意的设计（正向题本应可答），这里只用于说明结论对口径敏感，**不能据此把 FAIL 改判为 PASS**。
 
+边界：这个区间**未考虑裁判本身的误差**，只反映题目抽样带来的波动，把每一条逐句判定都当作正确。裁判判错会让真实区间更宽。后续方向是参照 [ICML 2026：How to Correctly Report LLM-as-a-Judge Evaluations](https://proceedings.mlr.press/v306/lee26bl.html)，用非作者的独立人工标注估计裁判误差，再给出同时考虑两类不确定性的区间（已写入 [路线图](../../ROADMAP.md)）。
+
 证据：[`tools/competition/gate_uncertainty.py`](../../tools/competition/gate_uncertainty.py)，由 [`tests/test_gate_uncertainty.py`](../../tests/test_gate_uncertainty.py) 校验。脚本先核对证据哈希和逐句判定，固定随机种子，结果可重复。
 
 ```bash
 python tools/competition/gate_uncertainty.py
 ```
+
+## 附：门禁代码本身对不对
+
+四问审计的是门禁结论；这一节检验的是门禁代码 [`backend/core/gate.py`](../../backend/core/gate.py) 本身。检验只新增测试，门禁代码一行未改。
+
+**性质测试**（[`tests/test_gate_properties.py`](../../tests/test_gate_properties.py)，Hypothesis）：自动生成大量输入，检查对所有输入都应成立的规则。判定规则在测试中独立写出，不调用被测代码；固定随机序列（`derandomize`），结果可复现。
+
+| 性质 | 检查方式 |
+|---|---|
+| 阈值边界正确 | 分数取恰等于阈值、相差一个最小浮点步长、缺失、NaN 等，裁决与规则一致 |
+| 分数只升不降，结论不会从放行变为拦截 | 随机提高分数；反向也检查：阈值调高不会让拦截变成放行 |
+| 题目顺序不影响结论 | 打乱逐题顺序，经正式的 `aggregate_model_metrics` 重新汇总，正向均值与裁决不变 |
+| 负向样本不影响门禁 | 任意增加负向题、任意给分，正向均值与裁决不变 |
+| 其他 | 只看第一个有效模型；单用例告警只打印、不改裁决；日志如实打印均值；不修改输入 |
+
+**变异测试**（mutmut 2.5.1）：逐个「改坏」门禁代码（如把 `<` 改成 `<=`、把 `or` 改成 `and`、把下标 0 改成 1），看门禁相关测试能否发现。跳过只改日志文字的字符串类变异。
+
+| 结果 | 数量 |
+|---|---|
+| 生成的变异 | 42 |
+| 被测试抓住 | 39（92.9%） |
+| 存活 | 3 |
+
+存活的 3 个都不影响裁决：两个把日志分隔线 `"=" * 50` 改成 51 个字符；一个把 `warning_flag = False` 改成 `None`，两者真假值相同，属于无法被任何测试区分的等价变异。所有改变放行 / 拦截结论的变异都被抓住。
+
+- 本机运行的原始报告归档于 [`gate-self-check/`](gate-self-check/README.md)，并记录被测 `gate.py` 的 SHA-256；门禁代码改动后，「门禁审计」页的数据生成会拒绝使用这份旧结果。
+- CI 中的 [`mutation.yml`](../../.github/workflows/mutation.yml) 在门禁代码或门禁测试变动时于 Linux 上重新运行，结果写入作业摘要。
+- 本地复现（Linux 或 WSL；mutmut 2 在 Windows 上恢复文件时会改写换行符，运行后需 `git checkout -- backend/core/gate.py`）：
+
+```bash
+mutmut run --paths-to-mutate backend/core/gate.py --disable-mutation-types=string,fstring --runner "python -m pytest -x -q tests/test_backend_gate.py tests/test_gate_properties.py tests/test_gate_replay.py tests/test_backend_pipeline.py"
+```
+
+边界：变异得分说明测试能发现这些人工改动，不证明门禁代码没有其他缺陷；变异类型取 mutmut 默认集合（除字符串类）。做法参考 [An Empirical Evaluation of Property-Based Testing in Python](https://doi.org/10.1145/3764068)（OOPSLA 2025）。
 
 ## 边界
 

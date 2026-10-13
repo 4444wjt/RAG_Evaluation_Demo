@@ -10,6 +10,16 @@
 - 新增 `deploy/` 一键部署：docker-compose（api + web 两个容器）、nginx 反向代理与只读两层拦截、`deploy.sh`；默认只读演示且只监听本机，可切换为可评测部署。已在 Linux 云服务器上全新克隆实测（构建、只读拦截、状态码均符合预期），并修复测试中发现的 nginx `default_type` 位置错误。
 - 新增 CODE_OF_CONDUCT.md（参考 Contributor Covenant 2.1）。
 
+### 门禁接入 CI（2026-10-13）
+- `scripts/gate_replay.py` 新增 `--junit` 与 `--summary`：输出 JUnit XML 与 Markdown 结果表，CI 页面直接显示哪个门禁指标未达标、差多少；裁决与退出码不变。
+- 新增根目录 `action.yml`：门禁回放打包为 GitHub 复合 Action，其他仓库一步接入；日常 CI 新增 `gate-action` 任务自检（演示快照放行、25 题正式运行拦截）。`quality-gate-example.yml` 改用该 Action，并发布 JUnit 检查结果。
+- 回归对比 `backend/core/regression.py`：门禁回放与 Action 新增 `--baseline` / `baseline`，与基线逐题配对，按题重抽样求均值变化区间，并以同一裁判重判的实测波动为噪声底线；「确定退步」才拦截，「可能退步」只提示。以两次同题 5 题预跑为真实样例。
+- 门禁代码自检：新增 Hypothesis 性质测试（阈值边界、分数单调、题目顺序、负向样本等 10 条性质）与 mutmut 变异测试（42 个变异抓住 39 个，存活 3 个均不影响裁决），CI 新增 `mutation.yml`；门禁代码未改。见门禁可信度文档附录。
+- 新增 CITATION.cff（GitHub「Cite this repository」，可供 Zenodo 读取）、OpenSSF Scorecard 工作流 `scorecard.yml`（每周及推送时做供应链安全评分）与英文说明 README.en.md。
+- 工作台新增「门禁审计」视图（`#/lab/audit`）：集中展示门禁可信度四问、门禁代码自检（10 条性质、42 个变异抓住 39 个）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希，`gate.py` 改动后拒绝沿用旧的变异结果。变异测试原始报告归档于 `docs/competition/gate-self-check/`。首页未改动。
+- GitHub Pages 备用演示站：新增 `pages.yml`，用同一份只读快照构建纯静态前端（`VITE_STATIC_SITE=1` 时不探测 API，顶栏标明「静态演示站 · 无后端」），服务器或隧道中断时仍可打开。
+- ROADMAP 补里程碑、目标日期与 Issue / PR 响应时限；作品介绍补「上线前接入 CI 作回归门禁」用法。
+
 ## [1.2.0] - 2026-10-13
 
 > 定位演进说明：项目由早期的「RAG 大模型幻觉自动化评测工具」演进为「鉴真全域 VeriScope AI · 逐句核对与质量门禁平台」，为同一项目的持续演进（非新建项目）。2026-10-08 至 10-10 期间曾使用「AI 测试交付与质量门禁平台」的表述，2026-10-11 起统一为现名。

@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="3" tests="42" time="0.0">
+	<testsuite disabled="0" errors="0" failures="3" name="mutmut" skipped="0" tests="42" time="0">
+		<testcase name="Mutant #1" file="backend/core/gate.py" line="28">
+			<system-out>    print(&quot;\n&quot; + &quot;=&quot; * 50)</system-out>
+		</testcase>
+		<testcase name="Mutant #2" file="backend/core/gate.py" line="28">
+			<system-out>    print(&quot;\n&quot; + &quot;=&quot; * 50)</system-out>
+		</testcase>
+		<testcase name="Mutant #3" file="backend/core/gate.py" line="28">
+			<failure type="failure" message="bad_survived">--- backend/core/gate.py
++++ backend/core/gate.py
+@@ -25,7 +25,7 @@
+     返回：
+         GateResult — {&quot;gate_passed&quot;: bool, &quot;gate_message&quot;: str}
+     &quot;&quot;&quot;
+-    print(&quot;\n&quot; + &quot;=&quot; * 50)
++    print(&quot;\n&quot; + &quot;=&quot; * 51)
+     print(&quot;🔒 CI/CD 质量门禁校验&quot;)
+     print(&quot;=&quot; * 50)
+ 
+</failure>
+			<system-out>    print(&quot;\n&quot; + &quot;=&quot; * 50)</system-out>
+		</testcase>
+		<testcase name="Mutant #4" file="backend/core/gate.py" line="30">
+			<system-out>    print(&quot;=&quot; * 50)</system-out>
+		</testcase>
+		<testcase name="Mutant #5" file="backend/core/gate.py" line="30">
+			<failure type="failure" message="bad_survived">--- backend/core/gate.py
++++ backend/core/gate.py
+@@ -27,7 +27,7 @@
+     &quot;&quot;&quot;
+     print(&quot;\n&quot; + &quot;=&quot; * 50)
+     print(&quot;🔒 CI/CD 质量门禁校验&quot;)
+-    print(&quot;=&quot; * 50)
++    print(&quot;=&quot; * 51)
+ 
+     # 有效模型选择：只按 faithfulness is not None，取第一个（禁止排序/选最高分/选最佳）
+     valid_summary = [s for s in summary if s[&quot;faithfulness&quot;] is not None]
+</failure>
+			<system-out>    print(&quot;=&quot; * 50)</system-out>
+		</testcase>
+		<testcase name="Mutant #6" file="backend/core/gate.py" line="33">
+			<system-out>    valid_summary = [s for s in summary if s[&quot;faithfulness&quot;] is not None]</system-out>
+		</testcase>
+		<testcase name="Mutant #7" file="backend/core/gate.py" line="33">
+			<system-out>    valid_summary = [s for s in summary if s[&quot;faithfulness&quot;] is not None]</system-out>
+		</testcase>
+		<testcase name="Mutant #8" file="backend/core/gate.py" line="34">
+			<system-out>    first_model = valid_summary[0]</system-out>
+		</testcase>
+		<testcase name="Mutant #9" file="backend/core/gate.py" line="34">
+			<system-out>    first_model = valid_summary[0]</system-out>
+		</testcase>
+		<testcase name="Mutant #10" file="backend/core/gate.py" line="35">
+			<system-out>    faith_score = first_model[&quot;faithfulness&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #11" file="backend/core/gate.py" line="36">
+			<system-out>    ctx_score = first_model[&quot;context_precision&quot;]</system-out>
+		</testcase>
+		<testcase name="Mutant #12" file="backend/core/gate.py" line="37">
+			<system-out>    pos_faith = first_model.get(&quot;pos_faithfulness&quot;)</system-out>
+		</testcase>
+		<testcase name="Mutant #13" file="backend/core/gate.py" line="38">
+			<system-out>    pos_ctx = first_model.get(&quot;pos_context_precision&quot;)</system-out>
+		</testcase>
+		<testcase name="Mutant #14" file="backend/core/gate.py" line="50">
+			<system-out>    warning_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #15" file="backend/core/gate.py" line="50">
+			<failure type="failure" message="bad_survived">--- backend/core/gate.py
++++ backend/core/gate.py
+@@ -47,7 +47,7 @@
+ 
+     # 单用例异常告警（只打印，不影响 gate_passed）
+     print(&quot;\n[单用例异常告警]&quot;)
+-    warning_flag = False
++    warning_flag = None
+     if first_model[&quot;model&quot;] in model_dfs:
+         for idx, row in model_dfs[first_model[&quot;model&quot;]].iterrows():
+             faith_val = row.get(&quot;faithfulness&quot;)
+</failure>
+			<system-out>    warning_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #16" file="backend/core/gate.py" line="51">
+			<system-out>    if first_model[&quot;model&quot;] in model_dfs:</system-out>
+		</testcase>
+		<testcase name="Mutant #17" file="backend/core/gate.py" line="53">
+			<system-out>            faith_val = row.get(&quot;faithfulness&quot;)</system-out>
+		</testcase>
+		<testcase name="Mutant #18" file="backend/core/gate.py" line="54">
+			<system-out>            if faith_val is not None and not pd.isna(faith_val) and faith_val &lt; SINGLE_CASE_WARN_THRESHOLD:</system-out>
+		</testcase>
+		<testcase name="Mutant #19" file="backend/core/gate.py" line="54">
+			<system-out>            if faith_val is not None and not pd.isna(faith_val) and faith_val &lt; SINGLE_CASE_WARN_THRESHOLD:</system-out>
+		</testcase>
+		<testcase name="Mutant #20" file="backend/core/gate.py" line="54">
+			<system-out>            if faith_val is not None and not pd.isna(faith_val) and faith_val &lt; SINGLE_CASE_WARN_THRESHOLD:</system-out>
+		</testcase>
+		<testcase name="Mutant #21" file="backend/core/gate.py" line="54">
+			<system-out>            if faith_val is not None and not pd.isna(faith_val) and faith_val &lt; SINGLE_CASE_WARN_THRESHOLD:</system-out>
+		</testcase>
+		<testcase name="Mutant #22" file="backend/core/gate.py" line="55">
+			<system-out>                q_preview = str(row.get(&quot;question&quot;, &quot;&quot;))[:20]</system-out>
+		</testcase>
+		<testcase name="Mutant #23" file="backend/core/gate.py" line="55">
+			<system-out>                q_preview = str(row.get(&quot;question&quot;, &quot;&quot;))[:20]</system-out>
+		</testcase>
+		<testcase name="Mutant #24" file="backend/core/gate.py" line="57">
+			<system-out>                warning_flag = True</system-out>
+		</testcase>
+		<testcase name="Mutant #25" file="backend/core/gate.py" line="57">
+			<system-out>                warning_flag = True</system-out>
+		</testcase>
+		<testcase name="Mutant #26" file="backend/core/gate.py" line="58">
+			<system-out>    if not warning_flag:</system-out>
+		</testcase>
+		<testcase name="Mutant #27" file="backend/core/gate.py" line="63">
+			<system-out>    pass_flag = True</system-out>
+		</testcase>
+		<testcase name="Mutant #28" file="backend/core/gate.py" line="63">
+			<system-out>    pass_flag = True</system-out>
+		</testcase>
+		<testcase name="Mutant #29" file="backend/core/gate.py" line="64">
+			<system-out>    if pos_faith is None or pd.isna(pos_faith) or pos_faith &lt; faith_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #30" file="backend/core/gate.py" line="64">
+			<system-out>    if pos_faith is None or pd.isna(pos_faith) or pos_faith &lt; faith_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #31" file="backend/core/gate.py" line="64">
+			<system-out>    if pos_faith is None or pd.isna(pos_faith) or pos_faith &lt; faith_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #32" file="backend/core/gate.py" line="66">
+			<system-out>        pass_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #33" file="backend/core/gate.py" line="66">
+			<system-out>        pass_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #34" file="backend/core/gate.py" line="67">
+			<system-out>    if pos_ctx is None or pd.isna(pos_ctx) or pos_ctx &lt; ctx_prec_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #35" file="backend/core/gate.py" line="67">
+			<system-out>    if pos_ctx is None or pd.isna(pos_ctx) or pos_ctx &lt; ctx_prec_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #36" file="backend/core/gate.py" line="67">
+			<system-out>    if pos_ctx is None or pd.isna(pos_ctx) or pos_ctx &lt; ctx_prec_threshold:</system-out>
+		</testcase>
+		<testcase name="Mutant #37" file="backend/core/gate.py" line="69">
+			<system-out>        pass_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #38" file="backend/core/gate.py" line="69">
+			<system-out>        pass_flag = False</system-out>
+		</testcase>
+		<testcase name="Mutant #39" file="backend/core/gate.py" line="72">
+			<system-out>        gate_msg = &quot;✅ 质量门禁通过，允许发布&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #40" file="backend/core/gate.py" line="73">
+			<system-out>        print(&quot;\n&quot; + gate_msg)</system-out>
+		</testcase>
+		<testcase name="Mutant #41" file="backend/core/gate.py" line="75">
+			<system-out>        gate_msg = &quot;⛔ 质量门禁拦截，终止发布&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #42" file="backend/core/gate.py" line="76">
+			<system-out>        print(&quot;\n&quot; + gate_msg)</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>
+

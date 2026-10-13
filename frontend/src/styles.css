@@ -154,6 +154,7 @@ svg { flex-shrink: 0; }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-secondary); }
 .health-status.connected .status-dot { background: var(--info); }
 .health-status.disconnected .status-dot { background: var(--warning); }
+.health-status.static .status-dot { background: var(--demo); }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: var(--control-height-compact); height: var(--control-height-compact); padding: 0; border: 1px solid transparent; background: transparent; color: var(--text-secondary); border-radius: var(--radius-control); transition: background var(--feedback-duration), border-color var(--feedback-duration), color var(--feedback-duration); }
 .icon-button:not(:disabled):hover { color: var(--text-primary); background: var(--bg-elevated); }
 .icon-button:not(:disabled):active { background: var(--bg-surface); border-color: var(--border-strong); }

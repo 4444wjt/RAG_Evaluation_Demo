@@ -663,7 +663,7 @@ describe('Verification navigation regression', () => {
     vi.stubGlobal('crypto', webcrypto);
     render(<App/>);
     const nav = screen.getByRole('navigation', { name: '工作区导航' });
-    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告', '评测验证']);
+    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计']);
     await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
     expect(screen.getByText('尚未加载可核验结果')).toBeVisible();
     await userEvent.click(screen.getByRole('button', { name: '加载演示' }));
@@ -678,6 +678,12 @@ describe('Verification navigation regression', () => {
       await userEvent.click(within(nav).getByRole('button', { name: label }));
       expect(screen.getByRole('heading', { level: 1, name: label })).toBeVisible();
     }
+    await userEvent.click(within(nav).getByRole('button', { name: '门禁审计' }));
+    expect(screen.getByRole('heading', { level: 1, name: '门禁审计' })).toBeVisible();
+    expect(screen.getByRole('region', { name: '门禁可信度四问' })).toBeVisible();
+    // The audit reads frozen evidence only, so the loaded demo's toolbar and provenance stay out of it.
+    expect(screen.queryByText('演示快照', { selector: '.badge' })).not.toBeInTheDocument();
+    expect(screen.queryByText('查看演示数据来源')).not.toBeInTheDocument();
     await userEvent.click(within(nav).getByRole('button', { name: '评测总览' }));
     expect(screen.getByRole('region', { name: '当前模型质量门禁' })).toHaveTextContent('PASS');
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);

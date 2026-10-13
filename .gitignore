@@ -38,6 +38,9 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+# mutmut 变异测试的本地缓存与 HTML 报告
+.mutmut-cache
+/html/
 .tox/
 .nox/
 .coverage

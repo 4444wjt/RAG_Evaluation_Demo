@@ -10,8 +10,9 @@ import { ComparisonView } from './features/ComparisonView';
 import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
 import { EvaluationVerificationView } from './features/EvaluationVerificationView';
+import { GateAuditView } from './features/GateAuditView';
 import demoData from './fixtures/demo.json';
-import { MODEL_COLORS, READ_ONLY, REPO_URL } from './config';
+import { MODEL_COLORS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
 import { labHash, parseLabHash } from './labRoute';
 import type { LabView } from './labRoute';
 import { initialConfig, initialRunState, runReducer, toRequest, validateConfig } from './state';
@@ -29,6 +30,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'trace', label: '幻觉分析', icon: 'trace', title: '幻觉分析', description: '阅读模型回答，逐句检查事实判断与检索证据。' },
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
   { id: 'verification', label: '评测验证', icon: 'check', title: '评测验证', description: '查看人工核验状态与原始依据。' },
+  { id: 'audit', label: '门禁审计', icon: 'shield', title: '门禁审计', description: '检验门禁本身：结论能否复算、换裁判会不会变、有多确定，以及门禁代码对不对。' },
 ];
 
 /** Sidebar context card. Labels carry their own prefix ("门禁 PASS", "来源 · …") so they never duplicate a field shown in the main view. */
@@ -96,7 +98,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
 
   useEffect(() => {
     mounted.current = true;
-    void refreshHealth();
+    if (!STATIC_SITE) void refreshHealth();
     return () => { mounted.current = false; healthRequest.current += 1; };
   }, [refreshHealth]);
 
@@ -168,18 +170,19 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
       {run.result ? <SidebarRun result={run.result} source={isDemo ? `演示快照 ${demoVersion}` : '来源 · 本次接口返回'}/> : <p className="sidebar-run-empty">尚未载入评测结果</p>}
       <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>GitHub 源码 · MIT</a></div>
     </aside>
-    <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div><div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div></header>
+    <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div>{STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
-        {view !== 'overview' && resultMeta}
+        {view !== 'overview' && view !== 'audit' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
         {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
         {view === 'trace' && <TraceView result={run.result}/>}
         {view === 'report' && <ReportView result={run.result}/>}
         {view === 'verification' && <EvaluationVerificationView result={run.result} source={run.source}/>}
-        {run.source === 'demo' && view !== 'workspace' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
+        {view === 'audit' && <GateAuditView/>}
+        {run.source === 'demo' && view !== 'workspace' && view !== 'audit' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
         <footer className="page-footer"><span>鉴真全域 VeriScope AI</span><span>逐句核对 / 证据溯源 / 质量门禁</span></footer>
       </main>
     </div>

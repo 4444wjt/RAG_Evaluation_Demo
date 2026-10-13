@@ -1,0 +1,56 @@
+# 门禁代码的变异测试：用 mutmut 逐个「改坏」backend/core/gate.py，统计门禁相关测试能抓住多少个改动。
+# 跳过只改日志文字的 string / fstring 两类变异。只报告结果（作业摘要 + JUnit 产物），不因存活的变异判失败。
+# 门禁代码或门禁测试有变动时自动运行一次，也可在 Actions 页面手动触发。
+name: Gate mutation testing
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+    paths:
+      - backend/core/gate.py
+      - tests/test_backend_gate.py
+      - tests/test_gate_properties.py
+      - tests/test_gate_replay.py
+      - tests/test_backend_pipeline.py
+      - .github/workflows/mutation.yml
+
+jobs:
+  mutation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies and mutmut
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r tests/requirements.txt
+          python -m pip install mutmut==2.5.1
+
+      - name: Run mutmut on the quality gate
+        run: >-
+          mutmut run
+          --paths-to-mutate backend/core/gate.py
+          --disable-mutation-types=string,fstring
+          --runner "python -m pytest -x -q -p no:cacheprovider tests/test_backend_gate.py tests/test_gate_properties.py tests/test_gate_replay.py tests/test_backend_pipeline.py"
+          --no-progress --simple-output --CI
+
+      - name: Report mutation score
+        if: always()
+        run: |
+          mutmut results || true
+          mutmut junitxml --untested-policy=failure > mutation.junit.xml
+          python scripts/mutation_summary.py mutation.junit.xml >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload mutation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-mutation-report
+          path: mutation.junit.xml

@@ -3,6 +3,9 @@ export const REPO_URL = 'https://github.com/4444wjt/RAG_Evaluation_Demo';
 /** Public demo builds set VITE_READ_ONLY=1: the workbench shows snapshots only and never starts a paid evaluation. */
 export const READ_ONLY = import.meta.env.VITE_READ_ONLY === '1';
 
+/** The GitHub Pages fallback build also sets VITE_STATIC_SITE=1: there is no API behind it, so the workbench never probes one. */
+export const STATIC_SITE = import.meta.env.VITE_STATIC_SITE === '1';
+
 /** Validated with the dataviz palette checker on the #151b24 surface (dark, all pairs for the first three, adjacent for six):
  *  lightness band, chroma floor, CVD ΔE ≥ 9.4, normal-vision ΔE ≥ 19.3, ≥ 3:1 contrast. Brand gold and status colours stay out.
  *  Charts and the workspace model cards share these, so a model keeps one colour across the app. */

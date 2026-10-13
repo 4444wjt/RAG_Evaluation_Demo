@@ -1,0 +1,81 @@
+# VeriScope 质量门禁回放：在任意仓库的 GitHub Actions 中对已归档的评测结果离线重放门禁。
+# 不调用模型、不需要密钥；裁决不通过时本步骤失败（退出码 1），可作为合并或发布前的卡口。
+# 用法与输入说明见 docs/gate-replay.md。
+name: VeriScope Quality Gate Replay
+description: Replay the VeriScope quality gate on an archived RAG evaluation result. No model calls, no API keys.
+author: Ll
+branding:
+  icon: shield
+  color: blue
+
+inputs:
+  result:
+    description: 评测结果 JSON 的路径（相对于工作区；API 返回体或带 result 字段的快照）
+    required: true
+  faith:
+    description: 正向忠实度阈值
+    required: false
+    default: "0.8"
+  ctx:
+    description: 正向上下文精度阈值
+    required: false
+    default: "0.8"
+  baseline:
+    description: 基线评测结果 JSON 的路径；填写后逐题对比，确定退步时也拦截。留空则不对比
+    required: false
+    default: ""
+  junit:
+    description: JUnit XML 输出路径；留空则不输出
+    required: false
+    default: ""
+  summary:
+    description: 是否把结果表写入作业摘要（true / false）
+    required: false
+    default: "true"
+  python-version:
+    description: 运行门禁所用的 Python 版本
+    required: false
+    default: "3.11"
+
+outputs:
+  passed:
+    description: 门禁是否通过（true / false）
+    value: ${{ steps.replay.outputs.passed }}
+  exit-code:
+    description: 门禁回放的退出码（0 通过，1 拦截，2 输入无效）
+    value: ${{ steps.replay.outputs.exit-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install gate dependencies
+      shell: bash
+      run: python -m pip install --disable-pip-version-check -q -c "$GITHUB_ACTION_PATH/requirements.txt" numpy pandas
+
+    - name: Replay quality gate
+      id: replay
+      shell: bash
+      env:
+        RESULT: ${{ inputs.result }}
+        FAITH: ${{ inputs.faith }}
+        CTX: ${{ inputs.ctx }}
+        BASELINE: ${{ inputs.baseline }}
+        JUNIT: ${{ inputs.junit }}
+        SUMMARY: ${{ inputs.summary }}
+      run: |
+        args=("$RESULT" --faith "$FAITH" --ctx "$CTX")
+        if [ -n "$BASELINE" ]; then args+=(--baseline "$BASELINE"); fi
+        if [ -n "$JUNIT" ]; then args+=(--junit "$JUNIT"); fi
+        if [ "$SUMMARY" = "true" ] && [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then args+=(--summary "$GITHUB_STEP_SUMMARY"); fi
+        set +e
+        python "$GITHUB_ACTION_PATH/scripts/gate_replay.py" "${args[@]}"
+        code=$?
+        set -e
+        echo "exit-code=$code" >> "$GITHUB_OUTPUT"
+        if [ "$code" -eq 0 ]; then echo "passed=true" >> "$GITHUB_OUTPUT"; else echo "passed=false" >> "$GITHUB_OUTPUT"; fi
+        exit "$code"

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "tool": "mutmut 2.5.1",
+  "environment": "Windows，Python 3.11.9（本机一次运行）",
+  "target": "backend/core/gate.py",
+  "targetSha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+  "disabledMutationTypes": ["string", "fstring"],
+  "tests": [
+    "tests/test_backend_gate.py",
+    "tests/test_gate_properties.py",
+    "tests/test_gate_replay.py",
+    "tests/test_backend_pipeline.py"
+  ],
+  "report": "mutation.junit.xml",
+  "survivors": {
+    "Mutant #3": "日志分隔线 \"=\" * 50 改为 51，只影响打印，不影响裁决。",
+    "Mutant #5": "日志分隔线 \"=\" * 50 改为 51，只影响打印，不影响裁决。",
+    "Mutant #15": "warning_flag 初值 False 改为 None，两者真假值相同，属于等价变异。"
+  }
+}

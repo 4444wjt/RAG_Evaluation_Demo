@@ -26,21 +26,26 @@ on:
 jobs:
   gate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install gate dependencies
-        run: python -m pip install -c requirements.txt numpy pandas
-
+      # 使用仓库根目录的 action.yml；其他仓库写 uses: 4444wjt/RAG_Evaluation_Demo@<tag 或分支>。
+      # 结果表写入作业摘要，JUnit 报告由下一步发布到检查结果。
       - name: Replay quality gate
-        env:
-          RESULT: ${{ inputs.result }}
-          FAITH: ${{ inputs.faith }}
-          CTX: ${{ inputs.ctx }}
-        run: python scripts/gate_replay.py "$RESULT" --faith "$FAITH" --ctx "$CTX"
+        uses: ./
+        with:
+          result: ${{ inputs.result }}
+          faith: ${{ inputs.faith }}
+          ctx: ${{ inputs.ctx }}
+          junit: quality-gate.junit.xml
+
+      - name: Publish gate report
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: quality-gate.junit.xml
+          check_name: Quality gate report

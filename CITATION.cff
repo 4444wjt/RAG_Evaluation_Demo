@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "如果在研究或报告中使用了本软件，请按以下信息引用。If you use this software, please cite it as below."
+type: software
+title: "VeriScope AI（鉴真全域）: sentence-level verification and quality gate for RAG evaluation"
+abstract: >-
+  VeriScope AI splits RAG answers into atomic statements, checks each statement against
+  the retrieved context, and applies a quality gate (positive-sample faithfulness and
+  context precision, default thresholds 0.8) to decide whether a batch of answers may ship.
+  Gate verdicts can be replayed offline from archived results and wired into CI as a
+  regression gate. Metrics are computed with Ragas; this project adds sentence-level
+  evidence, gate decisions, and human-review archives bound to frozen snapshots.
+authors:
+  - alias: Ll
+repository-code: "https://github.com/4444wjt/RAG_Evaluation_Demo"
+license: MIT
+version: 1.2.0
+date-released: "2026-10-13"
+keywords:
+  - RAG
+  - LLM evaluation
+  - hallucination
+  - quality gate
+  - continuous integration
+  - Ragas

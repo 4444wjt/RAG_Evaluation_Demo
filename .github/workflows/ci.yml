@@ -29,6 +29,49 @@ jobs:
       - name: Run tests
         run: python -m pytest -q tests
 
+  # 自检仓库根目录的 action.yml：演示快照应放行，25 题正式运行（真实 FAIL）应拦截。
+  gate-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gate passes the demo snapshot
+        id: demo
+        uses: ./
+        with:
+          result: frontend/src/fixtures/demo.json
+          junit: gate-demo.junit.xml
+
+      - name: Gate compares against a baseline (same snapshot, no regression)
+        id: baseline
+        uses: ./
+        with:
+          result: frontend/src/fixtures/demo.json
+          baseline: frontend/src/fixtures/demo.json
+          summary: "false"
+
+      - name: Gate blocks the 25-question formal run (expected failure)
+        id: full
+        continue-on-error: true
+        uses: ./
+        with:
+          result: docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json
+          junit: gate-full.junit.xml
+
+      - name: Check gate outcomes and JUnit reports
+        env:
+          DEMO_PASSED: ${{ steps.demo.outputs.passed }}
+          BASELINE_PASSED: ${{ steps.baseline.outputs.passed }}
+          FULL_OUTCOME: ${{ steps.full.outcome }}
+        run: |
+          test "$DEMO_PASSED" = "true"
+          test "$BASELINE_PASSED" = "true"
+          test "$FULL_OUTCOME" = "failure"
+          grep -q 'failures="0"' gate-demo.junit.xml
+          grep -q 'failures="1"' gate-full.junit.xml
+          grep -q 'pos_faithfulness' gate-full.junit.xml
+
   frontend:
     runs-on: ubuntu-latest
     defaults:
