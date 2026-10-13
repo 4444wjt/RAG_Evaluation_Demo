@@ -153,3 +153,6 @@
 /docs/competition/judge-sensitivity/selection.json -text
 /docs/competition/judge-sensitivity/run-20261012/** -text
 /docs/competition/judge-sensitivity/analysis-20261012/** -text
+
+# 部署文件在 Linux 容器和服务器上执行，固定为 LF，避免从 Windows 检出后 shell 脚本和 Dockerfile 续行失效。
+/deploy/** text eol=lf

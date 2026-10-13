@@ -30,7 +30,8 @@ services:
     environment:
       VERISCOPE_READ_ONLY: ${VERISCOPE_READ_ONLY:-1}
     ports:
-      - "${WEB_PORT:-8080}:80"
+      # 默认只绑定本机回环；公网访问请前置 TLS 反向代理，或在 .env 中设置 WEB_BIND=0.0.0.0。
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8080}:80"
     depends_on:
       api:
         condition: service_healthy

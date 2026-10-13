@@ -24,9 +24,10 @@ server {
 
     # 只读演示：评测请求在 nginx 层直接拒绝，后端也会因 VERISCOPE_READ_ONLY=1 返回 423（两层拦截）。
     location = /api/evaluate {
+        # default_type 不能写在 if 块内；后端响应自带 Content-Type，这里只影响下面的 423 内容。
+        default_type application/json;
         set $veriscope_read_only "${VERISCOPE_READ_ONLY}";
         if ($veriscope_read_only = "1") {
-            default_type application/json;
             return 423 '{"detail":"公开演示站点未开放在线评测。"}';
         }
         client_max_body_size 1m;

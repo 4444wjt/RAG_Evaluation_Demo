@@ -19,7 +19,7 @@ cd RAG_Evaluation_Demo/deploy
 3. 执行 `docker compose up -d --build`；
 4. 轮询 `/api/health`，就绪后打印访问地址。
 
-打开 `http://<服务器地址>:8080/`，演示入口为 `/#/lab/demo`。
+默认只监听本机：打开 `http://127.0.0.1:8080/`，演示入口为 `/#/lab/demo`。在服务器上对外提供访问时，建议前置 TLS 反向代理（见下文 HTTPS 一节）；确需直接开放端口时，在 `deploy/.env` 中设置 `WEB_BIND=0.0.0.0`，并确认防火墙或安全组规则。
 
 不用脚本时也可以直接执行：
 
@@ -72,9 +72,21 @@ compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS �
 
 ## 验证状态
 
-- **本机（Windows，无 Docker）已验证：**
-  - 后端在只装 `fastapi`、`uvicorn`、`pydantic`、`numpy`、`pandas` 的前提下（屏蔽 Ragas、LangChain、torch 等重型包），API 能正常启动；`/health` 返回 200，`VERISCOPE_READ_ONLY=1` 时 `/evaluate` 返回 423；
-  - 前端以 `VITE_READ_ONLY=1` 能正常构建；
-  - `docker-compose.yml` 是合法的 YAML，`deploy.sh` 通过 `sh -n` 语法检查。
-- **尚未验证：** 本机没有 Docker 和 nginx，镜像构建与容器运行还没有在本机实际执行；nginx 配置也没有用 `nginx -t` 检查过。
-- 公网演示站的实际服务器配置未入库；本目录是按仓库代码编写的标准部署方式，与公网站点采用相同的只读机制。
+2026-10-13 在一台 Linux 云服务器（Docker 29.9、Compose v5.6，2 核 3.5G 内存）上从 GitHub 全新克隆，以独立的 Compose 项目名执行 `./deploy.sh`，默认只读配置下的结果：
+
+| 检查 | 结果 |
+|---|---|
+| 两个镜像构建、容器启动 | 通过；api 健康检查为 healthy |
+| `GET /` | 200 |
+| `GET /api/health` | 200 |
+| `GET /api/docs`、`/api/redoc`、`/api/openapi.json` | 404 |
+| `POST /api/evaluate`（经 nginx） | 423，JSON 响应 |
+| `POST /evaluate`（绕过 nginx 直接请求后端） | 423 |
+| 对 `/api/` 其他路径发 POST | 403 |
+| nginx 配置 `nginx -t` | 通过 |
+
+这次服务器测试发现并修复了一处问题：`default_type` 原写在 `if` 块内，nginx 不允许，web 容器启动即退出；已移到 `location` 层。
+
+尚未验证：`API_INSTALL=full` 的全量镜像构建与真实评测，以及 `WEB_BIND=0.0.0.0` 直接对外开放的情形。
+
+公网演示站的实际服务器配置未入库；本目录是按仓库代码编写的标准部署方式，与公网站点采用相同的只读机制。

@@ -57,7 +57,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 | 层 | 内容 |
 |---|---|
 | 自研 | 逐句判定与证据定位（`backend/services/trace.py`：回答拆成原子陈述，逐句对应检索原文）；质量门禁裁决（`backend/core/gate.py`：正向样本双阈值，保留真实 FAIL）；人工核验存档（人工意见与机器判定并列保存、互不覆盖，绑定冻结快照 SHA-256，格式见 [人工核验存档格式](docs/review-archive-format.md)）；中文陈述兼容层 `zh-sentence-v1`（`backend/adapters/ragas_compat.py`） |
-| 复用 | 指标计算：Ragas 0.1.21；检索与模型调用：LangChain、Chroma、OpenAI-compatible 接口；界面：React、ECharts；部署：Docker Compose |
+| 复用 | 指标计算：Ragas 0.1.21；检索与模型调用：LangChain、Chroma、OpenAI-compatible 接口；界面：React、ECharts；部署：Docker Compose（[deploy/](deploy/README.md)） |
 
 阈值卡口本身并非本项目独有（例如 DeepEval 支持为指标设阈值并在 CI 中判定通过与否）。本项目的差异在于：门禁结论旁并列给出逐句核对证据，可回查到检索原文，并与人工核验的分歧放在同一份冻结快照里对照。该逐句证据与门禁并列呈现，不参与门禁计算；门禁由正向忠实度与正向上下文精度决定。以上比较基于各项目公开资料，不排除其内部已有类似实现。
 
@@ -102,6 +102,8 @@ RAG-Reliability-Lab/
 ## 快速启动
 
 建议 Python 3.11、Node.js 24。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
+
+只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`，详见 [部署说明](deploy/README.md)。
 
 ### 1. 获取项目
 
@@ -162,7 +164,7 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 
 前端继续通过 `npm run dev` 启动。进入工作区配置项目内文档路径、测试集、模型和阈值，再开始评测。
 
-`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物，公网部署仍需单独配置代理和访问控制。
+`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
 
 ### 5. 保留的 CLI / Gradio 入口
 
@@ -210,7 +212,7 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 
 ## 开源贡献
 
-欢迎提交脱敏的问题报告、文档改进、可复现测试和有明确验证依据的改动。提交前阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，保持模型 IDs、指标口径、门禁与演示数据的一致性。
+欢迎提交脱敏的问题报告、文档改进、可复现测试和有明确验证依据的改动。提交前阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [行为准则](CODE_OF_CONDUCT.md)，安全问题按 [SECURITY.md](SECURITY.md) 私下报告；保持模型 IDs、指标口径、门禁与演示数据的一致性。
 
 前端验证：
 
