@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全问题（请私下报告）
+    url: https://github.com/4444wjt/RAG_Evaluation_Demo/security/advisories/new
+    about: 漏洞、凭据泄露等安全问题请通过私密漏洞报告或 SECURITY.md 中的备用邮箱提交，不要公开发布。
+  - name: 贡献指南
+    url: https://github.com/4444wjt/RAG_Evaluation_Demo/blob/master/CONTRIBUTING.md
+    about: 提交前请先阅读贡献指南中的复现要求和验证命令。

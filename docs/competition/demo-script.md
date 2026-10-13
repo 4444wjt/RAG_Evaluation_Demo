@@ -27,6 +27,14 @@ npm run dev
 
 机器原判定与作者核验意见均按现有材料展示。历史金融 FAIL 的指标对照不能补写缺失的原始门禁说明，也不证明当前 API 已完成复跑。
 
+## 接入 CI 的门禁（约 15 秒，可放在结尾或补充镜头）
+
+| 画面与动作 | 讲述要点 |
+|---|---|
+| 终端执行 `python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json`，再执行 `echo $LASTEXITCODE`（PowerShell）显示 `1`；随后切到 [quality-gate-example.yml](../../.github/workflows/quality-gate-example.yml) | “典型用法是 RAG 应用上线前把它接进 CI 当回归门禁。这里重放的是 25 题正式运行：正向忠实度 0.7375 低于 0.8，门禁拦截，退出码为 1，CI 步骤随之失败。拦截来自已归档的真实运行，不调用模型、不需要密钥。” |
+
+该镜头只在本地重放已有归档。`quality-gate-example.yml` 为手动触发的示例工作流，默认输入就是这次真实 FAIL；录制时如在 GitHub 上触发，画面中的失败是预期的拦截演示，不是 CI 故障。
+
 ## 当前 API 新实验的补充展示
 
 三分钟演示后依次打开[旧版5题预跑](evidence/20261005T101847Z-pilot-c72cb679/README.md)和[修复后5题分析](evidence/20261005T131353Z-pilot-35f623cb/README.md)，说明两轮各自的版本、输入、token、逐题结果及报告。修复后只证明中文句子输入进入指标提示及归档完整，不表示五题全部正确；25题正式运行另有独立归档。

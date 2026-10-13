@@ -6,6 +6,8 @@
 
 鉴真全域 VeriScope AI 面向 RAG 问答应用：把模型回答拆成逐句，每一句对照检索原文核对是否有依据，再由质量门禁（Quality Gate）按阈值决定这批回答能否放行。题集、检索上下文、多模型回答、Ragas 指标、逐句判定、门禁记录和人工核验保存在同一条链路上，「回答是否可信」可以按「题集 → 逐句核对 → 门禁 → 报告 → 人工核验」逐条回查。
 
+**典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。** 已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
+
 项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
 [快速启动](#快速启动) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
@@ -227,7 +229,7 @@ Python 离线验证（项目根目录）：
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
-既有 GitHub Actions 当前执行 Python 离线验证；此处列出前端验证命令不代表已新增前端 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
+GitHub Actions 的 CI 在推送或向 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
 
 ## 许可与仓库
 
