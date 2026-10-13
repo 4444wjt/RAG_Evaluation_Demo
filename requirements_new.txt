@@ -95,7 +95,7 @@ narwhals==2.26.0
 nest-asyncio==1.6.0
 networkx==3.6.1
 numexpr==2.14.2
-numpy==1.26.4
+numpy==2.5.3
 oauthlib==3.3.1
 onnxruntime==1.30.0
 openai==1.109.1
