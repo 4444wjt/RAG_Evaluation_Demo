@@ -32,4 +32,4 @@ hypothesis==6.169.0
 # pyarrow 是 datasets 的传递依赖，且未被 requirements.txt 钉住。
 # pyarrow 26.x 在运行时要求 numpy>=2，与本项目钉住的 numpy==1.26.4
 # 冲突（pip check 不报、收集阶段才失败），故在此显式约束。
-pyarrow<26
+pyarrow<27
