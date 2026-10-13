@@ -7,11 +7,11 @@
    均值下降不超过这个幅度时，无法与裁判自身波动区分。
 两层都成立才判「确定退步」，否则只提示「可能退步」。
 
-纯函数：不调用模型、不写文件，不修改输入；只依赖 numpy / pandas / 标准库。
+纯函数：不调用模型、不写文件，不修改输入；只依赖标准库。
+重抽样使用可移植的 Mulberry32 伪随机数（与常见 JavaScript 参考实现逐位一致）、整数拒绝采样与顺序求和，
+不依赖 numpy 的随机数实现：同一种子在任何平台上得到相同区间，其他语言照此实现即可复现。
 """
 import math
-
-import numpy as np
 
 METRICS = (
     ("pos_faithfulness", "faithfulness", "正向忠实度"),
@@ -53,15 +53,50 @@ def _keyed(rows):
     return keyed
 
 
+MASK32 = 0xFFFFFFFF
+
+
+def mulberry32(seed):
+    """Mulberry32：32 位整数运算的小型伪随机数，便于在 JavaScript 中逐位复现。返回取下一个 uint32 的函数。"""
+    state = seed & MASK32
+
+    def next_u32():
+        nonlocal state
+        state = (state + 0x6D2B79F5) & MASK32
+        t = ((state ^ (state >> 15)) * (state | 1)) & MASK32
+        t = ((t + (((t ^ (t >> 7)) * (t | 61)) & MASK32)) & MASK32) ^ t
+        return (t ^ (t >> 14)) & MASK32
+
+    return next_u32
+
+
+def _below(next_u32, n):
+    """[0, n) 内的均匀整数：拒绝采样，避免取模偏差。"""
+    limit = (MASK32 + 1) - (MASK32 + 1) % n
+    while True:
+        value = next_u32()
+        if value < limit:
+            return value % n
+
+
 def bootstrap_interval(deltas, resamples=BOOTSTRAP_RESAMPLES, seed=BOOTSTRAP_SEED):
-    """按题有放回重抽样，返回均值变化的 95% 区间（固定种子，结果可复现）。"""
-    values = np.asarray(deltas, dtype=float)
-    if values.size == 0:
+    """按题有放回重抽样，返回均值变化的 95% 区间（固定种子，结果可复现）。
+
+    取排序后第 2.5% 与第 97.5% 位置的重抽均值，与结论确定性分析（gate_uncertainty.py）口径相同。
+    """
+    values = [float(value) for value in deltas]
+    n = len(values)
+    if n == 0:
         return None
-    rng = np.random.default_rng(seed)
-    means = values[rng.integers(0, values.size, size=(resamples, values.size))].mean(axis=1)
-    low, high = np.percentile(means, [2.5, 97.5])
-    return float(low), float(high)
+    next_u32 = mulberry32(seed)
+    means = []
+    for _ in range(resamples):
+        total = 0.0
+        for _ in range(n):
+            total += values[_below(next_u32, n)]
+        means.append(total / n)
+    means.sort()
+    return means[resamples * 25 // 1000], means[resamples * 975 // 1000]
 
 
 def classify(mean_delta, interval, noise):

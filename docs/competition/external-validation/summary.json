@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "packageSha256": "a5a8d597c842b68f907d9083956cb917486b0e0053ac2e00439853b58c351a65",
+  "sources": {
+    "anah": {
+      "name": "ANAH",
+      "repository": "https://huggingface.co/datasets/opencompass/anah",
+      "revision": "12238ed44444a5ab4df100a1ef2b395cf49b624e",
+      "license": "Apache-2.0",
+      "citation": "Ji et al., ANAH: Analytical Annotation of Hallucinations in Large Language Models, ACL 2024"
+    },
+    "rgb": {
+      "name": "RGB",
+      "repository": "https://github.com/chen700564/RGB",
+      "revision": "65ec39e40e7dc9abb50e9bf1b4f32be3f6f16615",
+      "license": "CC BY-NC-SA 4.0（仅非商业使用）",
+      "citation": "Chen et al., Benchmarking Large Language Models in Retrieval-Augmented Generation, AAAI 2024"
+    }
+  },
+  "model": "deepseek-chat",
+  "returnedModels": {
+    "deepseek-flash": 500
+  },
+  "requests": 500,
+  "requestErrors": 0,
+  "usage": {
+    "inputTokens": 1147633,
+    "outputTokens": 47820,
+    "estimatedCostCny": 2.6778
+  },
+  "anah": {
+    "sentences": 300,
+    "traceFailed": 0,
+    "traceStatus": {
+      "ok": 297,
+      "partial": 2,
+      "model_empty": 1
+    },
+    "coverage": {
+      "count": 299,
+      "total": 300,
+      "rate": 0.9967,
+      "wilson95": [
+        0.9814,
+        0.9994
+      ]
+    },
+    "confusion": {
+      "none": {
+        "unverifiable": 25,
+        "none": 72,
+        "no_statement": 1,
+        "contradictory": 2
+      },
+      "contradictory": {
+        "contradictory": 49,
+        "unverifiable": 38,
+        "none": 13
+      },
+      "unverifiable": {
+        "none": 9,
+        "unverifiable": 85,
+        "contradictory": 6
+      }
+    },
+    "binary": {
+      "tp": 178,
+      "fp": 27,
+      "fn": 22,
+      "tn": 72,
+      "precision": 0.8683,
+      "precisionWilson95": [
+        0.8152,
+        0.9079
+      ],
+      "recall": 0.89,
+      "recallWilson95": [
+        0.8391,
+        0.9262
+      ],
+      "specificity": 0.7273,
+      "specificityWilson95": [
+        0.6323,
+        0.8053
+      ],
+      "f1": 0.879,
+      "balancedAccuracy": 0.8086
+    },
+    "perLabelExact": {
+      "none": {
+        "count": 72,
+        "total": 100,
+        "rate": 0.72,
+        "wilson95": [
+          0.6251,
+          0.7986
+        ]
+      },
+      "contradictory": {
+        "count": 49,
+        "total": 100,
+        "rate": 0.49,
+        "wilson95": [
+          0.3942,
+          0.5865
+        ]
+      },
+      "unverifiable": {
+        "count": 85,
+        "total": 100,
+        "rate": 0.85,
+        "wilson95": [
+          0.7672,
+          0.9069
+        ]
+      }
+    },
+    "note": "样本按标签分层、各类等量抽取，指标反映各类别上的表现，不等于 ANAH 总体分布下的数值；二分类把 矛盾 与 无法验证 都算作幻觉，未产出陈述的句子不计入准确率与召回率，单列为覆盖率。"
+  },
+  "rgb": {
+    "noise": {
+      "items": 40,
+      "answerFailed": 0,
+      "traceStatus": {
+        "ok": 40
+      },
+      "refusal": {
+        "count": 0,
+        "total": 40,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.0876
+        ]
+      },
+      "answeredFlaggedByTrace": {
+        "count": 0,
+        "total": 40,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.0876
+        ]
+      },
+      "accuracy": {
+        "count": 40,
+        "total": 40,
+        "rate": 1.0,
+        "wilson95": [
+          0.9124,
+          1.0
+        ]
+      },
+      "flaggedWhenCorrect": {
+        "count": 0,
+        "total": 40,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.0876
+        ]
+      },
+      "flaggedWhenWrong": {
+        "count": 0,
+        "total": 0,
+        "rate": null,
+        "wilson95": null
+      }
+    },
+    "reject": {
+      "items": 40,
+      "answerFailed": 0,
+      "traceStatus": {
+        "ok": 5,
+        "empty_answer": 34,
+        "filtered_all": 1
+      },
+      "refusal": {
+        "count": 35,
+        "total": 40,
+        "rate": 0.875,
+        "wilson95": [
+          0.7389,
+          0.9454
+        ]
+      },
+      "answeredFlaggedByTrace": {
+        "count": 1,
+        "total": 5,
+        "rate": 0.2,
+        "wilson95": [
+          0.0362,
+          0.6245
+        ]
+      }
+    },
+    "counterfactual": {
+      "items": 20,
+      "answerFailed": 0,
+      "traceStatus": {
+        "ok": 16,
+        "partial": 1,
+        "empty_answer": 3
+      },
+      "refusal": {
+        "count": 3,
+        "total": 20,
+        "rate": 0.15,
+        "wilson95": [
+          0.0524,
+          0.3604
+        ]
+      },
+      "answeredFlaggedByTrace": {
+        "count": 4,
+        "total": 17,
+        "rate": 0.2353,
+        "wilson95": [
+          0.0956,
+          0.4726
+        ]
+      },
+      "adoptedFakeAnswer": {
+        "count": 16,
+        "total": 20,
+        "rate": 0.8,
+        "wilson95": [
+          0.584,
+          0.9193
+        ]
+      },
+      "flaggedWhenAdopted": {
+        "count": 4,
+        "total": 16,
+        "rate": 0.25,
+        "wilson95": [
+          0.1018,
+          0.495
+        ]
+      }
+    }
+  }
+}

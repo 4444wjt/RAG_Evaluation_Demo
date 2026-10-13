@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link';
+export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen';
 const paths: Record<IconName, React.ReactNode> = {
   shield: <><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/></>,
   overview: <><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></>,
@@ -17,6 +17,8 @@ const paths: Record<IconName, React.ReactNode> = {
   chevron: <path d="m9 5 7 7-7 7"/>,
   folder: <path d="M3 6h7l2 3h9v11H3z"/>,
   link: <><path d="m10 14 4-4m-6 6-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m4 0 2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/></>,
+  pulse: <path d="M3 12h4l2-6 4 12 2-6h6"/>,
+  pen: <><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></>,
 };
 
 export function Icon({ name, size = 18, className = '', style }: { name: IconName; size?: number; className?: string; style?: CSSProperties }) {

@@ -54,11 +54,38 @@ describe('Gate audit view', () => {
     ]);
   });
 
+  it('attributes the formal-run FAIL to generation refusals on false-premise questions', () => {
+    render(<GateAuditView/>);
+    const panel = screen.getByRole('region', { name: '失败归因：该修检索还是生成' });
+    expect(within(panel).getByText('主要在生成')).toBeInTheDocument();
+    expect(within(panel).getByRole('img', { name: '正向忠实度 73.8%；生成拒答 拉低 20.0%，其余题未满分 拉低 6.3%；门槛 80.0%' })).toBeInTheDocument();
+    const rows = within(panel).getAllByRole('row').slice(1);
+    expect(rows.map((row) => [row.children[0].textContent, row.children[1].textContent, row.children[2].textContent])).toEqual([
+      ['#21', '生成拒答', '100.0% · 0.0000'], ['#23', '生成拒答', '100.0% · 0.0000'],
+      ['#24', '生成拒答', '100.0% · 0.0000'], ['#25', '生成拒答', '100.0% · 0.0000']]);
+    expect(within(panel).getByText(/问题带错误前提/)).toBeInTheDocument();
+  });
+
+  it('shows the external benchmark with its limitation stated next to the result', () => {
+    render(<GateAuditView/>);
+    const panel = screen.getByRole('region', { name: '外部基准：逐句核对本身准不准' });
+    expect(within(panel).getByText('幻觉召回 89.0%')).toBeInTheDocument();
+    const confusion = within(panel).getByRole('table');
+    expect(within(confusion).getAllByRole('row').slice(1).map((row) => [...row.children].map((cell) => cell.textContent))).toEqual([
+      ['无', '72', '2', '25', '1'], ['矛盾', '13', '49', '38', '0'], ['无法验证', '9', '6', '85', '0']]);
+    expect(within(panel).getByText('答对 40 / 40；正确回答被判有幻觉 0 / 40')).toBeInTheDocument();
+    expect(within(panel).getByText('只给出错误答案 11 题，逐句核对标出 3 题；其余照抄资料的判为有依据')).toBeInTheDocument();
+    expect(within(panel).getByText('查不出资料错误')).toBeInTheDocument();
+    expect(within(panel).getByText(/约为 0\.7178/)).toBeInTheDocument();
+  });
+
   it('links every source to the public repository and is reachable by deep link', () => {
     render(<GateAuditView/>);
     const links = screen.getAllByRole('link');
     expect(links.length).toBeGreaterThan(0);
-    for (const link of links) expect(link.getAttribute('href')).toMatch(/^https:\/\/github\.com\/4444wjt\/RAG_Evaluation_Demo\/blob\/master\/[\w./-]+$/);
+    const inApp = links.filter((link) => link.getAttribute('href')?.startsWith('#'));
+    expect(inApp.map((link) => link.getAttribute('href'))).toEqual(['#/lab/annotate']);
+    for (const link of links.filter((link) => !inApp.includes(link))) expect(link.getAttribute('href')).toMatch(/^https:\/\/github\.com\/4444wjt\/RAG_Evaluation_Demo\/blob\/master\/[\w./-]+$/);
     expect(parseLabHash('#/lab/audit')).toEqual({ target: 'lab', view: 'audit' });
     expect(parseLabHash('#/lab/demo/audit')).toEqual({ target: 'demo', view: 'audit' });
   });
@@ -67,5 +94,30 @@ describe('Gate audit view', () => {
     expect(audit.schemaVersion).toBe(1);
     expect(audit.mutation.targetSha256).toMatch(/^[0-9a-f]{64}$/);
     expect(audit.mutation.killed + audit.mutation.survived + audit.mutation.timeouts).toBe(audit.mutation.total);
+  });
+  it('separates the judge-error calibration into sensitivity, simulation and pending human calibration', () => {
+    render(<GateAuditView/>);
+    const panel = screen.getByRole('region', { name: '裁判判错校准：把裁判误差也算进区间' });
+    expect(within(panel).getByText(/已实现裁判误差分析工具和模拟验证，真实人工校准待完成/)).toBeInTheDocument();
+    expect(within(panel).getByText('人工校准待完成')).toBeInTheDocument();
+    const states = within(panel).getAllByRole('region');
+    expect(states.map((state) => [state.querySelector('h3')?.textContent, state.querySelector('.audit-chip')?.textContent])).toEqual([
+      ['敏感性分析', '已完成'], ['模拟验证', '已完成'], ['真实人工校准', '待标注']]);
+
+    const sensitivity = within(panel).getByRole('region', { name: '敏感性分析' });
+    expect(within(sensitivity).getByText('5 条', { selector: 'dd' })).toBeInTheDocument();
+    expect(within(within(sensitivity).getByRole('list', { name: '需要改判的陈述' })).getAllByRole('listitem')).toHaveLength(5);
+    expect(within(sensitivity).getByText(/不估计裁判实际判错了多少/)).toBeInTheDocument();
+
+    const simulation = within(panel).getByRole('region', { name: '模拟验证' });
+    const rows = within(simulation).getAllByRole('row').map((row) => row.textContent);
+    expect(rows).toContain(`校准校正·聚集${audit.calibration.simulation.coverage.invariant.leeClustered.map((v) => `${(v * 100).toFixed(1)}%`).join('–')}${audit.calibration.simulation.coverage.shifted.leeClustered.map((v) => `${(v * 100).toFixed(1)}%`).join('–')}`);
+    expect(within(simulation).getByText(/不代表门禁裁判的真实误差/)).toBeInTheDocument();
+
+    const human = within(panel).getByRole('region', { name: '真实人工校准' });
+    expect(audit.calibration.annotation.status).toBe('pending');
+    expect(within(human).getByText(/不用模型代替人工标注/)).toBeInTheDocument();
+    expect(within(human).getByText(/至少 10 题/)).toBeInTheDocument();
+    expect(within(human).getByRole('link', { name: '打开标注页' })).toHaveAttribute('href', '#/lab/annotate');
   });
 });

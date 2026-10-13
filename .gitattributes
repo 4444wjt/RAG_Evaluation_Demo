@@ -161,3 +161,22 @@
 /docs/competition/gate-self-check/mutation.junit.xml text eol=crlf
 /docs/competition/gate-self-check/manifest.json text eol=lf
 /docs/competition/gate-self-check/README.md text eol=lf
+
+# 外部基准验证归档：哈希记录在同目录 SHA256SUMS.txt，并由门禁审计页数据生成时核对。
+# README 与 SHA256SUMS.txt 为 LF；三个 JSON 由工具在 Windows 上写出（CRLF），按原样存储、不做换行转换。
+/docs/competition/external-validation/README.md text eol=lf
+/docs/competition/external-validation/SHA256SUMS.txt text eol=lf
+# CR 为归档原始行尾；保留默认空白检查，仅明确允许 CRLF，避免 --check 把每行 CR 误报为空白。
+/docs/competition/external-validation/authorization.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/competition/external-validation/items.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/competition/external-validation/summary.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# 鲁棒性体检归档：材料包的哈希绑定在授权文件中，各文件哈希记录在 SHA256SUMS.txt，
+# 由工作台「鲁棒性体检」页数据生成时核对；按写出时的原始字节存储、不做换行转换。
+/docs/competition/robustness/20261013-formal-run/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/competition/robustness/README.md text eol=lf
+
+# 裁判判错校准：模拟归档与说明均为 LF；simulation.json 的哈希记录在同目录 SHA256SUMS.txt，并由门禁审计页数据生成时核对。
+/docs/competition/judge-calibration/README.md text eol=lf
+/docs/competition/judge-calibration/SHA256SUMS.txt text eol=lf
+/docs/competition/judge-calibration/simulation.json text eol=lf

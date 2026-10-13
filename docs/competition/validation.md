@@ -82,3 +82,15 @@ Ragas 0.1.21 的 `zh-sentence-v1` 仅修正中文及中英混排的句子输入�
 - 裁判证据敏感性实验：作者 Kk 于 2026-10-12 确认 30 项材料并单独授权，运行一次，60 / 60 个请求有返回；59 个有效判定全部符合预期，1 条解析失败如实保留。按返回用量估算约 ¥0.13，不是账单。档案见 [judge-sensitivity/run-20261012](judge-sensitivity/run-20261012/manifest.json)。
 - 5 题预跑的 `public-manifest.json` 记录时为混合换行，改为按原始字节存储，存储内容与记录的 SHA-256 一致。
 - 冻结演示快照、25 题正式运行证据、人工核验包、题集、参考答案与门禁阈值均未修改。
+
+## 7. 2026-10-13 发布收口验证
+
+- 校准分析修正：未决标签保留每题全部陈述分母，只报告点估计上下界；端点区间不能保证包住混合赋值的区间，故有未决时 `interval`、`state` 置为 `null` 并写明原因。新增混合赋值反例与文本输出测试；无未决时保留既有计算，原 Quality Gate 不受影响。
+- 本机后端离线回归：`venv/Scripts/python.exe -B -m pytest -q -p no:cacheprovider tests`，**620 passed**（80.55 秒）。前端 `npm test` **195 passed**；`npm run build` 包含类型检查并成功完成，App chunk 922.25 kB 的体积告警如实保留。`compileall` 与 `git diff --check` 通过。
+- `build_audit_fixture.py --check`、`build_robustness_fixture.py --check`、`judge_calibration.py prepare --check` 均一致，不重新生成或覆盖冻结证据。
+- 现有桌面浏览器回归 `competition-release.spec.ts` **2 passed**（1920×1080、1280×800）。另用 Playwright／Chrome 检查门禁审计与人工标注两页的四种页面／尺寸组合：无页面脚本异常、无主页面横向溢出、无 `/api/evaluate` 请求。四张截图保存在本机 `frontend/test-results/release-closeout/`，不纳入公开仓库。
+- 修正前后 **208 个受保护文件 SHA-256 不变**，包括冻结 Demo、原作者核验包、正式题集、参考材料、门禁、Trace 与中文适配代码，以及既有实验归档。工作区九份清单的 188 项现有文件哈希一致。
+- 工作区文件齐全不等于公开克隆齐全：三个历史证据目录有 17 项被忽略的产物不进入仓库，缺项和校验方式见 [公开检出校验边界](reproducibility.md#公开检出校验边界)。不改历史校验清单，不把 `--ignore-missing` 的通过称为完整归档通过。
+- 原始 CRLF 归档在 `.gitattributes` 中保留 `-text`，并明确 `cr-at-eol`；保留行尾多余空白、空白末行和缩进空格的检查，避免暂存检查把合法回车逐行误报。归档本身的字节和哈希不变。
+- 以上测试在本机 Windows 环境完成；本批提交的真实 Linux CI、CodeQL、变异测试与 Pages 构建，以推送后的 GitHub Actions 记录为准，未提前写成通过。
+- 人工标注仍待完成：52 条材料没有填入模型生成的人工标签，也未将作者／AI 既有分析升级为非作者校准结果。本轮没有新增付费调用。

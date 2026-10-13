@@ -64,11 +64,48 @@ A gate's PASS / FAIL drives a release decision, so the gate itself is checked ([
 | Does a different judge change it? | Re-judged by the same judge and by Qwen2.5-72B: FAIL all three times; per-question differences across judges are 5–6× the same-judge noise |
 | Does the judge follow the evidence? | 6 fixed statements, evidence shuffled / removed / contradicted, 2 judges: 59 of 60 valid verdicts matched the expected labels; 1 parse failure kept for manual review |
 | How certain is the FAIL? | Question-level bootstrap 95% interval for positive faithfulness: 55.0%–90.0%, straddling 0.8 — a conservative block, not a certain failure |
+| Where did the FAIL come from? | Failure attribution (`backend/core/attribution.py`) splits the faithfulness gap by stage: all of it comes from 4 false-premise questions where retrieval found the evidence (recall 1.0) but the model refused instead of correcting the premise — a generation problem, not retrieval |
 | Is the gate code itself correct? | 10 Hypothesis property tests (threshold boundaries, monotonicity, question order, negative samples, …); mutation testing with mutmut: 39 of 42 mutants killed, the 3 survivors do not affect the verdict |
 
 The workbench's gate-audit view (门禁审计) shows these results together with a baseline-comparison example; its data is generated from the frozen evidence by `tools/competition/build_audit_fixture.py`, which checks every source hash and refuses to run if the gate code no longer matches the archived mutation run.
 
 These results come from one single-domain run and are not a general benchmark or an overall accuracy claim.
+
+## External benchmark: is the statement-level check itself accurate?
+
+The platform's statement-level check (`backend/services/trace.py`) splits each answer into atomic statements and cites the supporting source text. (The gate score itself comes from Ragas faithfulness, a separate judgment by the same model with a different prompt.) On 2026-10-13 the statement-level check was tested against two public, human-annotated Chinese datasets, calling the production code unchanged (500 requests, one authorized run, about ¥2.68 by returned usage; [details in Chinese](docs/competition/external-validation/README.md)):
+
+- **ANAH** (ACL 2024), 300 sentences with human hallucination labels, balanced by class:
+  - recall on hallucinated sentences 0.89 (95% CI 0.84–0.93);
+  - precision 0.87, about 0.72 once adjusted to the natural class ratio;
+  - specificity 0.73. The check is stricter than the human annotators: summarising or evaluative sentences are often marked unsupported.
+- **RGB** (AAAI 2024), 100 news questions:
+  - with noisy context, 0 of 40 correct answers were flagged;
+  - with irrelevant context, the model refused 87.5% of the time;
+  - when the context itself is wrong, answers that copy the error are mostly judged supported (3 of 11 flagged). This is the inherent limit of a faithfulness check: it tests agreement with the evidence, not whether the evidence is true.
+
+The archive keeps only item IDs and verdicts (no dataset text); the gate-audit view recomputes the summary from them and checks the hashes.
+
+## Robustness check-up and judge-error calibration
+
+**Robustness check-up** (`scripts/robustness_check.py`, view 鲁棒性体检): for any RAG application, the tool locates the supporting passages without a model and builds four evidence conditions — shuffled, noisy, support removed, counterfactual (numbers and modal words edited inside the evidence). It then checks both sides:
+
+- the judge: the same answer is re-checked against the changed evidence;
+- the application: it answers again from the changed evidence. The application can be called through a simple HTTP contract.
+
+One authorized run on the 20 positive questions (260 requests, about ¥0.47) gave these results:
+
+- Judge side: 57 of 58 checks met expectations; removed support was flagged 16 of 16 times.
+- Application side: it refused 19 of 20 times when support was removed, and never kept the original value under counterfactual evidence.
+
+See [details in Chinese](docs/competition/robustness/README.md).
+
+**Judge-error calibration** (`backend/core/judge_error.py`, view 人工标注): the gate interval above treats every statement verdict as correct. The project now implements intervals that account for both question sampling and judge error:
+
+- the calibration-based correction of Lee et al. (ICML 2026), extended to statements clustered by question through an effective sample size;
+- prediction-powered inference (PPI) for partial annotation.
+
+In a simulation with this run's question structure, the question-sampling-only interval covered the truth only 3%–53% of the time, while the clustered correction covered it 94%–96%. Only 5 answered statements were judged unsupported, and all 5 would have to flip to reach 0.80. Status: **the judge-error analysis tools and the simulation are done; the real human calibration is pending.** The judge's actual error rates require **independent human annotation by non-authors** (52 statements, about 30 minutes). The analysis protocol is fixed in advance: the gate's denominators are kept, unresolved statements are bounded rather than dropped, and partial annotation is used only for a consecutive prefix of at least 10 questions. Until the annotation is done, no corrected verdict is reported. See [details in Chinese](docs/competition/judge-calibration/README.md).
 
 ## Quick start
 
@@ -109,7 +146,7 @@ GitHub Actions runs the Python tests, the front-end unit tests with type checkin
 
 ## Limitations
 
-- One domain: the formal run uses excerpts of a single Chinese financial regulation; results do not generalise to other domains.
+- One domain: the formal run uses excerpts of a single Chinese financial regulation; results do not generalise to other domains. The statement-level check has been spot-checked on news (RGB), but the evaluation scenario itself is still single-domain.
 - Same-source judge: by default the evaluated model also acts as the Ragas judge; the independent-judge comparison above quantifies, but does not remove, this bias.
 - The 0.8 threshold is not yet calibrated against business outcomes.
 - No authentication or access isolation; the public demo is read-only.

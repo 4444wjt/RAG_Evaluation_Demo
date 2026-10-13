@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/4444wjt/RAG_Evaluation_Demo/master/schemas/judge-annotation.v1.schema.json",
+  "title": "VeriScope 裁判判错校准：人工标注结果 v1",
+  "description": "工作台「人工标注」页导出的标注结果，由 tools/competition/judge_calibration.py analyze 读取。packageId 绑定一份盲标注材料（frontend/src/fixtures/judge-annotation.json）。说明见 docs/competition/judge-calibration/README.md。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "packageId", "annotator", "notAuthor", "labels"],
+  "properties": {
+    "schema": { "const": "judge-annotation.v1" },
+    "packageId": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "所标注材料的 SHA-256。" },
+    "annotator": { "type": "string", "minLength": 1, "maxLength": 40, "pattern": "\\S", "description": "标注人代号，不必是真名。" },
+    "notAuthor": { "const": true, "description": "标注人确认未参与本项目的开发、题目与参考答案的编写；未确认的标注结果不参与分析。" },
+    "savedAt": { "type": "string", "description": "导出时间（ISO 8601）。" },
+    "labels": {
+      "type": "object",
+      "propertyNames": { "pattern": "^S[0-9]{2}$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label"],
+        "properties": {
+          "label": { "enum": ["支持", "矛盾", "无依据", "无法判断"] },
+          "fromQuestion": { "type": "boolean", "description": "陈述的内容只来自题目条件。" },
+          "note": { "type": "string", "maxLength": 500 }
+        }
+      }
+    }
+  }
+}

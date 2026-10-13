@@ -12,7 +12,7 @@
 
 [English](README.en.md) · [快速启动](#快速启动) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
 
-[作品介绍](docs/competition/project-introduction.md) · [门禁可信度四问](docs/competition/gate-credibility.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
+[作品介绍](docs/competition/project-introduction.md) · [门禁可信度四问](docs/competition/gate-credibility.md) · [外部基准验证](docs/competition/external-validation/README.md) · [鲁棒性体检](docs/competition/robustness/README.md) · [裁判判错校准](docs/competition/judge-calibration/README.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
 
 ![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
 
@@ -38,7 +38,9 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 | 多模型对比 | 多模型评测 | DeepSeek、Qwen2.5-7B、GLM-5.2-Fast；统一测试集，呈现已有指标与耗时 |
 | 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
 | 人工复核 | 评测验证 | 人工结论与机器原判定分开展示，核验材料绑定冻结快照版本与 SHA-256 |
-| 门禁自身 | 门禁审计 | 门禁可信度四问的结论与门禁代码自检（性质测试、变异测试）、回归对比样例集中展示；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
+| 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
+| 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
+| 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
 | 比赛展示 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
 
 Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
@@ -48,6 +50,26 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 **可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工材料通过现有 JSON 单独录入，不覆盖机器结果、不生成准确率；该核验仅覆盖冻结 Demo 的 13 条定向样本，不代表总体准确率、独立认证或模型复跑验证。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
 
 **当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景，不是跨领域 Benchmark：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。该结果不代表总体准确率或独立裁判可靠性；新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
+
+**外部基准：** 2026-10-13 用两个公开、带人工标注的中文数据集检验逐句核对本身，直接调用生产代码，500 次请求（经授权，按用量估算约 ¥2.68）。
+- **ANAH**（ACL 2024）逐句幻觉标注 300 句，各类等量抽取：有幻觉句子的召回率 0.89（95% 区间 0.84–0.93）；精确率 0.87，按实际比例折算约 0.72。人工判为无幻觉的句子有 27% 被判无依据，即核对比人工更严。
+- **RGB**（AAAI 2024）新闻领域 100 题：含噪声资料时 40 个正确回答全部判为有依据；资料无关时拒答 87.5%。资料本身含错误时，照抄错误的回答多半仍被判为有依据（11 题中只标出 3 题）。这是忠实度核对的固有边界：它检查回答与证据是否一致，不检查证据本身对不对。
+
+这是单次运行、单一裁判的抽样检验，不代表总体准确率，详见 [外部基准验证](docs/competition/external-validation/README.md)。
+
+**鲁棒性体检：** 2026-10-13 在 25 题正式运行的 20 道正向题上运行一次（260 次请求，经授权，按用量估算约 ¥0.47）。
+- 核对侧 58 项检验中 57 项符合预期：移除依据后 16 / 16 标出；反事实 9 / 10 判为矛盾，唯一漏判的改动落在修饰语上。
+- 生成侧移除依据后拒答 19 / 20；反事实条件下没有一题沿用原值顶替资料。
+- 打乱资料顺序后，两道错误前提题由拒答改为正确纠正，与失败归因的结论一致。
+
+详见 [鲁棒性体检](docs/competition/robustness/README.md)。
+
+**裁判判错校准：** 门禁区间原先把每条逐句判定都当作正确。现阶段：**已实现裁判误差分析工具和模拟验证，真实人工校准待完成。** 区间方法为 Lee et al. 的校准校正（推广到按题聚集）与 PPI，并在本次题目结构下做了模拟。
+- 只计题目抽样的区间，实际覆盖率只有 3%–53%；按题聚集的校正为 94%–96%。
+- 作答题中判为不支持的陈述只有 5 条，全部改判才到 80%。
+- 门禁裁判的真实误差**待非作者人工标注**（52 条，约 30 分钟，工作台「人工标注」页），完成前不报告校正后的结论。分析口径已事先写定：分母与门禁一致，未决陈述给上下界，部分标注只用从第一题起连续、至少 10 题的部分。
+
+详见 [裁判判错校准](docs/competition/judge-calibration/README.md)。
 
 完整性哈希基于文件原始字节；仓库通过 [`.gitattributes`](.gitattributes) 逐文件固定检出换行符，以保证各平台校验一致。
 
@@ -241,6 +263,6 @@ GitHub Actions 的 CI 在推送或向 master／main 发起 Pull Request 时执�
 当前本地 Git 配置的远端：
 
 - GitHub：[`4444wjt/RAG_Evaluation_Demo`](https://github.com/4444wjt/RAG_Evaluation_Demo)，remote 为 `github`。
-- Gitee：[`i-am-a-bullshit/rag-hallucination-evaluator`](https://gitee.com/i-am-a-bullshit/rag-hallucination-evaluator)，remote 为 `origin`。
+- Gitee：[`kkbushishou/rag-hallucination-evaluator`](https://gitee.com/kkbushishou/rag-hallucination-evaluator)，remote 为 `origin`。
 
-开源整理尚未暂存、提交或推送。发布步骤和检查结果见 [发布检查](docs/release-checklist.md)；目标仓库需维护者确认后执行。
+发布步骤和检查结果见 [发布检查](docs/release-checklist.md)；实际发布版本以仓库提交与 CI 记录为准。历史归档的公开缺项及校验边界见 [复现说明](docs/competition/reproducibility.md#公开检出校验边界)。

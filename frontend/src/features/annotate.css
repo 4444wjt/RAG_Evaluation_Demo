@@ -1,0 +1,67 @@
+.an-view .audit-panel-head { margin-bottom: 20px; }
+.an-view .audit-panel-head p { max-width: 52em; line-height: 1.75; }
+.an-view .audit-panel-head p + p { margin-top: 6px; }
+
+/* 说明区：左边是判断规则，右边是标注人身份 */
+.an-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); gap: 24px 40px; align-items: start; }
+.an-rules { display: grid; gap: 8px; max-width: 46em; margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.75; color: var(--text-primary); }
+.an-rules li::marker { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.an-identity { display: grid; gap: 14px; align-content: start; padding-left: 24px; border-left: 1px solid var(--border-subtle); }
+.an-identity label > span, .an-note > span { display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary); }
+.an-check { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.6; cursor: pointer; }
+.an-check input { width: auto; margin-top: 3px; }
+
+/* 标注区：左边读资料，右边下判断 */
+.an-item { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 36px; margin-bottom: 20px; }
+.an-context, .an-judge { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.an-judge { gap: 14px; }
+.an-context .audit-kicker ~ .audit-kicker { margin-top: 10px; }
+.an-question { font-size: 14px; line-height: 1.75; color: var(--text-secondary); }
+.an-passages { display: grid; gap: 10px; margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.85; }
+.an-passages li { padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); overflow-wrap: anywhere; }
+.an-passages li::marker { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.an-statement { margin: 0; padding: 16px 18px; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius: var(--radius-control); background: color-mix(in srgb, var(--accent) 8%, var(--bg-control)); font-size: 16px; font-weight: 600; line-height: 1.75; overflow-wrap: anywhere; }
+
+.an-labels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.an-label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: baseline; padding: 11px 14px; text-align: left; color: var(--text-primary); background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: var(--radius-control); cursor: pointer; }
+.an-label:hover { border-color: var(--text-secondary); }
+.an-label.is-selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.an-label kbd { grid-row: span 2; padding: 0 6px; border: 1px solid var(--border-strong); border-radius: 4px; font-family: var(--font-mono); font-size: 13px; }
+.an-label small { font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.an-note textarea { resize: vertical; }
+.an-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.an-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 6px; padding-top: 18px; border-top: 1px solid var(--border-subtle); }
+.an-cell { min-height: 32px; padding: 0; font-size: 13px; font-variant-numeric: tabular-nums; color: var(--text-secondary); background: transparent; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer; }
+.an-cell.is-done { color: var(--success); background: var(--success-surface); border-color: transparent; }
+.an-cell[aria-current='true'] { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+@media (max-width: 1199px) {
+  .an-intro, .an-item { grid-template-columns: minmax(0, 1fr); }
+  .an-identity { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 540px) {
+  .an-labels { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 颜色层次：正文中性，术语与判断按语义上色 */
+.an-kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+.an-kicker--question { color: var(--text-secondary); }
+.an-kicker--source { color: var(--info); }
+.an-kicker--statement { color: var(--brand); }
+.an-term { font-style: normal; font-weight: 600; color: var(--text-primary); }
+.an-term--support { color: var(--success); }
+.an-term--contradict { color: var(--danger); }
+.an-term--missing { color: var(--warning); }
+.an-term--unsure { color: var(--text-secondary); }
+.an-term--source { color: var(--info); }
+.an-label strong { font-size: 15px; }
+.an-label--support strong { color: var(--success); }
+.an-label--contradict strong { color: var(--danger); }
+.an-label--missing strong { color: var(--warning); }
+.an-label--unsure strong { color: var(--text-secondary); }
+.an-label--support.is-selected { border-color: var(--success); background: var(--success-surface); }
+.an-label--contradict.is-selected { border-color: var(--danger); background: var(--danger-surface); }
+.an-label--missing.is-selected { border-color: var(--warning); background: var(--warning-surface); }
+.an-label--unsure.is-selected { border-color: var(--text-secondary); background: color-mix(in srgb, var(--text-secondary) 12%, transparent); }
+.an-passages li::marker { color: var(--info); }

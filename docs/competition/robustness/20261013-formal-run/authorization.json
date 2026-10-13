@@ -1,0 +1,22 @@
+{
+  "packageSha256": "28f07f840b4ee829982d6edfd0e4eece8b53f7b1117cfb9ea773caefb4117ba3",
+  "authorizedBy": "Ll（2026-10-13 会话内确认）",
+  "authorizedAt": "2026-10-13T13:18:41+00:00",
+  "budgetCny": 5.0,
+  "maxPaidCalls": 260,
+  "maxHttpCalls": 0,
+  "maxRetries": 0,
+  "price": {
+    "inputCnyPerMillion": 2,
+    "outputCnyPerMillion": 8,
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing（缓存未命中价，保守取值）"
+  },
+  "toolSha256": {
+    "scripts/robustness_check.py": "371440ccb8a9d0c598d10ebc675758361e2a3ee65d2130a45fb69b011e1d12a6",
+    "backend/core/robustness.py": "85dcd0e154744da7a0dda3ea7d41fcb21cb7ab75f2615fae4d193f8936cd16f8",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/services/answering.py": "96b752635d16f30d2fbf8f45393f22ed62d38460d6599a8360b656d08f6da5f5",
+    "backend/core/attribution.py": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+  },
+  "note": "用户在会话中选择「授权，预算 ¥5」：260 次付费调用上限、不重试；服务商端无硬性封顶，由工具按累计花费停止。"
+}

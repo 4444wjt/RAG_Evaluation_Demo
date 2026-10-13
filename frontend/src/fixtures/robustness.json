@@ -1,0 +1,1181 @@
+{
+  "source": {
+    "archive": "docs/competition/robustness/20261013-formal-run",
+    "sha256": {
+      "authorization.json": "b7c5cad4c82266ba6bc76c26f24d16932b36c1fc1092b5d4ed8c32e07633b2a5",
+      "items.json": "e700f63a212225155b56b02a8f0be308b6ef3be5663455b33e0a5c65521d682d",
+      "package.json": "28f07f840b4ee829982d6edfd0e4eece8b53f7b1117cfb9ea773caefb4117ba3",
+      "records.jsonl": "c59273429f921fc81e4f65cc6ca086ae2e2a57a453b7a0dabdabd16d65c4e9b5",
+      "summary.json": "fa5711a7077baf5cad70a4ee56be90c95e9602201b9a0fa125b710002757f7f3"
+    },
+    "input": {
+      "format": "platform",
+      "model": "deepseek-chat",
+      "path": "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json",
+      "sha256": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "items": 20
+    },
+    "authorizedAt": "2026-10-13T13:18:41+00:00",
+    "budgetCny": 5.0,
+    "judgeModel": "deepseek-chat",
+    "returnedModels": {
+      "deepseek-flash": 260
+    },
+    "generator": {
+      "original": {
+        "items": 20,
+        "answerFailed": 0,
+        "refused": {
+          "count": 4,
+          "total": 20,
+          "rate": 0.2,
+          "wilson95": [
+            0.0807,
+            0.416
+          ]
+        },
+        "answeredFlagged": {
+          "count": 0,
+          "total": 16,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.1936
+          ]
+        },
+        "answeredNotFlagged": 16
+      },
+      "shuffle": {
+        "items": 20,
+        "answerFailed": 0,
+        "refused": {
+          "count": 2,
+          "total": 20,
+          "rate": 0.1,
+          "wilson95": [
+            0.0279,
+            0.301
+          ]
+        },
+        "answeredFlagged": {
+          "count": 1,
+          "total": 18,
+          "rate": 0.0556,
+          "wilson95": [
+            0.0099,
+            0.2576
+          ]
+        },
+        "answeredNotFlagged": 17,
+        "newlyRefused": 0,
+        "pairedWithOriginal": 20
+      },
+      "noise": {
+        "items": 20,
+        "answerFailed": 0,
+        "refused": {
+          "count": 4,
+          "total": 20,
+          "rate": 0.2,
+          "wilson95": [
+            0.0807,
+            0.416
+          ]
+        },
+        "answeredFlagged": {
+          "count": 2,
+          "total": 16,
+          "rate": 0.125,
+          "wilson95": [
+            0.035,
+            0.3602
+          ]
+        },
+        "answeredNotFlagged": 14,
+        "newlyRefused": 0,
+        "pairedWithOriginal": 20
+      },
+      "remove": {
+        "items": 20,
+        "answerFailed": 0,
+        "refused": {
+          "count": 19,
+          "total": 20,
+          "rate": 0.95,
+          "wilson95": [
+            0.7639,
+            0.9911
+          ]
+        },
+        "answeredFlagged": {
+          "count": 0,
+          "total": 1,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.7935
+          ]
+        },
+        "answeredNotFlagged": 1,
+        "newlyRefused": 15,
+        "pairedWithOriginal": 20
+      },
+      "counterfactual": {
+        "items": 13,
+        "answerFailed": 0,
+        "refused": {
+          "count": 8,
+          "total": 13,
+          "rate": 0.6154,
+          "wilson95": [
+            0.3552,
+            0.8229
+          ]
+        },
+        "answeredFlagged": {
+          "count": 0,
+          "total": 5,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.4345
+          ]
+        },
+        "answeredNotFlagged": 5,
+        "adoption": {
+          "followed": {
+            "count": 3,
+            "total": 7,
+            "rate": 0.4286,
+            "wilson95": [
+              0.1582,
+              0.7495
+            ]
+          },
+          "kept": {
+            "count": 0,
+            "total": 7,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.3543
+            ]
+          },
+          "both": {
+            "count": 0,
+            "total": 7,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.3543
+            ]
+          },
+          "neither": {
+            "count": 0,
+            "total": 7,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.3543
+            ]
+          },
+          "refused": {
+            "count": 4,
+            "total": 7,
+            "rate": 0.5714,
+            "wilson95": [
+              0.2505,
+              0.8418
+            ]
+          }
+        },
+        "flaggedWhenKept": {
+          "count": 0,
+          "total": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "newlyRefused": 5,
+        "pairedWithOriginal": 13
+      }
+    }
+  },
+  "parameters": {
+    "minShared": 5,
+    "dfRatio": 0.2,
+    "noiseCount": 2,
+    "poolSize": 11,
+    "dfLimit": 2
+  },
+  "jobs": {
+    "planned": 167,
+    "completed": 167
+  },
+  "calls": {
+    "paid": 260,
+    "http": 0,
+    "errors": 0
+  },
+  "usage": {
+    "inputTokens": 146676,
+    "outputTokens": 21496,
+    "estimatedCostCny": 0.4653
+  },
+  "items": 20,
+  "built": {
+    "original": 20,
+    "shuffle": 20,
+    "noise": 20,
+    "remove": 20,
+    "counterfactual": 13
+  },
+  "skipped": {
+    "original": {},
+    "shuffle": {},
+    "noise": {},
+    "remove": {},
+    "counterfactual": {
+      "依据中没有可改的数字或情态词": 7
+    }
+  },
+  "edits": {
+    "modal": 10,
+    "number": 7
+  },
+  "judge": {
+    "original": {
+      "flagged": {
+        "count": 0,
+        "total": 16,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ]
+      }
+    },
+    "shuffle": {
+      "unchanged": {
+        "count": 16,
+        "total": 16,
+        "rate": 1.0,
+        "wilson95": [
+          0.8064,
+          1.0
+        ]
+      },
+      "newlyFlagged": 0
+    },
+    "noise": {
+      "unchanged": {
+        "count": 16,
+        "total": 16,
+        "rate": 1.0,
+        "wilson95": [
+          0.8064,
+          1.0
+        ]
+      },
+      "newlyFlagged": 0
+    },
+    "remove": {
+      "flagged": {
+        "count": 16,
+        "total": 16,
+        "rate": 1.0,
+        "wilson95": [
+          0.8064,
+          1.0
+        ]
+      },
+      "baselineAlreadyFlagged": 0,
+      "rejectedEvidence": 0
+    },
+    "counterfactual": {
+      "flagged": {
+        "count": 9,
+        "total": 10,
+        "rate": 0.9,
+        "wilson95": [
+          0.5958,
+          0.9821
+        ]
+      },
+      "baselineAlreadyFlagged": 0,
+      "rejectedEvidence": 0,
+      "contradicted": {
+        "count": 9,
+        "total": 10,
+        "rate": 0.9,
+        "wilson95": [
+          0.5958,
+          0.9821
+        ]
+      },
+      "byEdit": {
+        "number": {
+          "count": 4,
+          "total": 4,
+          "rate": 1.0,
+          "wilson95": [
+            0.5101,
+            1.0
+          ]
+        },
+        "modal": {
+          "count": 5,
+          "total": 6,
+          "rate": 0.8333,
+          "wilson95": [
+            0.4365,
+            0.9699
+          ]
+        }
+      }
+    },
+    "failed": 0
+  },
+  "generator": {
+    "original": {
+      "items": 20,
+      "answerFailed": 0,
+      "refused": {
+        "count": 4,
+        "total": 20,
+        "rate": 0.2,
+        "wilson95": [
+          0.0807,
+          0.416
+        ]
+      },
+      "answeredFlagged": {
+        "count": 0,
+        "total": 16,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.1936
+        ]
+      },
+      "answeredNotFlagged": 16
+    },
+    "shuffle": {
+      "items": 20,
+      "answerFailed": 0,
+      "refused": {
+        "count": 2,
+        "total": 20,
+        "rate": 0.1,
+        "wilson95": [
+          0.0279,
+          0.301
+        ]
+      },
+      "answeredFlagged": {
+        "count": 1,
+        "total": 18,
+        "rate": 0.0556,
+        "wilson95": [
+          0.0099,
+          0.2576
+        ]
+      },
+      "answeredNotFlagged": 17,
+      "newlyRefused": 0,
+      "pairedWithOriginal": 20
+    },
+    "noise": {
+      "items": 20,
+      "answerFailed": 0,
+      "refused": {
+        "count": 4,
+        "total": 20,
+        "rate": 0.2,
+        "wilson95": [
+          0.0807,
+          0.416
+        ]
+      },
+      "answeredFlagged": {
+        "count": 2,
+        "total": 16,
+        "rate": 0.125,
+        "wilson95": [
+          0.035,
+          0.3602
+        ]
+      },
+      "answeredNotFlagged": 14,
+      "newlyRefused": 0,
+      "pairedWithOriginal": 20
+    },
+    "remove": {
+      "items": 20,
+      "answerFailed": 0,
+      "refused": {
+        "count": 19,
+        "total": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.7639,
+          0.9911
+        ]
+      },
+      "answeredFlagged": {
+        "count": 0,
+        "total": 1,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.7935
+        ]
+      },
+      "answeredNotFlagged": 1,
+      "newlyRefused": 15,
+      "pairedWithOriginal": 20
+    },
+    "counterfactual": {
+      "items": 13,
+      "answerFailed": 0,
+      "refused": {
+        "count": 8,
+        "total": 13,
+        "rate": 0.6154,
+        "wilson95": [
+          0.3552,
+          0.8229
+        ]
+      },
+      "answeredFlagged": {
+        "count": 0,
+        "total": 5,
+        "rate": 0.0,
+        "wilson95": [
+          0.0,
+          0.4345
+        ]
+      },
+      "answeredNotFlagged": 5,
+      "adoption": {
+        "followed": {
+          "count": 3,
+          "total": 7,
+          "rate": 0.4286,
+          "wilson95": [
+            0.1582,
+            0.7495
+          ]
+        },
+        "kept": {
+          "count": 0,
+          "total": 7,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.3543
+          ]
+        },
+        "both": {
+          "count": 0,
+          "total": 7,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.3543
+          ]
+        },
+        "neither": {
+          "count": 0,
+          "total": 7,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.3543
+          ]
+        },
+        "refused": {
+          "count": 4,
+          "total": 7,
+          "rate": 0.5714,
+          "wilson95": [
+            0.2505,
+            0.8418
+          ]
+        }
+      },
+      "flaggedWhenKept": {
+        "count": 0,
+        "total": 0,
+        "rate": null,
+        "wilson95": null
+      },
+      "newlyRefused": 5,
+      "pairedWithOriginal": 13
+    }
+  },
+  "matrix": [
+    {
+      "id": "D01",
+      "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "answered",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "D02",
+      "question": "节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "应当→无需"
+      ]
+    },
+    {
+      "id": "D03",
+      "question": "存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "D04",
+      "question": "节选中被保险存款包括哪些币种的存款？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "包括→不包括"
+      ]
+    },
+    {
+      "id": "D05",
+      "question": "第四条列出的不属于被保险存款范围的存款有哪些？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "D06",
+      "question": "根据节选，存款保险的最高偿付限额是多少？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "answered"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "followed",
+      "skipped": {},
+      "edits": [
+        "50万元→100万元"
+      ]
+    },
+    {
+      "id": "D07",
+      "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "flagged",
+        "noise": "flagged",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "D08",
+      "question": "存款保险费率由哪两部分构成？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "D09",
+      "question": "按节选，投保机构应交保费按照哪些因素计算？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "answered"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "clean"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "应当→无需"
+      ]
+    },
+    {
+      "id": "D10",
+      "question": "投保机构应定期报送哪些与存款保险有关的资料？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "应当→无需"
+      ]
+    },
+    {
+      "id": "C01",
+      "question": "中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "answered"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "不适用→适用"
+      ]
+    },
+    {
+      "id": "C02",
+      "question": "假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "answered"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "followed",
+      "skipped": {},
+      "edits": [
+        "50万元→100万元"
+      ]
+    },
+    {
+      "id": "C03",
+      "question": "最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    },
+    {
+      "id": "C04",
+      "question": "条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "refused",
+      "skipped": {},
+      "edits": [
+        "应当→无需",
+        "应当→无需",
+        "6个月→12个月"
+      ]
+    },
+    {
+      "id": "C05",
+      "question": "人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "answered",
+        "remove": "refused",
+        "counterfactual": "answered"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "followed",
+      "skipped": {},
+      "edits": [
+        "有权→无权",
+        "应当→无需",
+        "7个工→14个工"
+      ]
+    },
+    {
+      "id": "F01",
+      "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+      "answerIsRefusal": true,
+      "generator": {
+        "original": "refused",
+        "shuffle": "answered",
+        "noise": "refused",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": null,
+        "shuffle": null,
+        "noise": null,
+        "remove": null,
+        "counterfactual": null
+      },
+      "adoption": "refused",
+      "skipped": {},
+      "edits": [
+        "50万元→100万元"
+      ]
+    },
+    {
+      "id": "F02",
+      "question": "外币存款不属于存款保险保障范围，对吗？请按第四条说明。",
+      "answerIsRefusal": false,
+      "generator": {
+        "original": "answered",
+        "shuffle": "answered",
+        "noise": "flagged",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": "clean",
+        "shuffle": "clean",
+        "noise": "clean",
+        "remove": "flagged",
+        "counterfactual": "flagged"
+      },
+      "adoption": "not_applicable",
+      "skipped": {},
+      "edits": [
+        "包括→不包括"
+      ]
+    },
+    {
+      "id": "F03",
+      "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+      "answerIsRefusal": true,
+      "generator": {
+        "original": "refused",
+        "shuffle": "refused",
+        "noise": "refused",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": null,
+        "shuffle": null,
+        "noise": null,
+        "remove": null,
+        "counterfactual": null
+      },
+      "adoption": "refused",
+      "skipped": {},
+      "edits": [
+        "6个月→12个月"
+      ]
+    },
+    {
+      "id": "F04",
+      "question": "第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？",
+      "answerIsRefusal": true,
+      "generator": {
+        "original": "refused",
+        "shuffle": "refused",
+        "noise": "refused",
+        "remove": "refused",
+        "counterfactual": "refused"
+      },
+      "judge": {
+        "original": null,
+        "shuffle": null,
+        "noise": null,
+        "remove": null,
+        "counterfactual": null
+      },
+      "adoption": "refused",
+      "skipped": {},
+      "edits": [
+        "7个工→14个工"
+      ]
+    },
+    {
+      "id": "F05",
+      "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+      "answerIsRefusal": true,
+      "generator": {
+        "original": "refused",
+        "shuffle": "answered",
+        "noise": "refused",
+        "remove": "refused",
+        "counterfactual": null
+      },
+      "judge": {
+        "original": null,
+        "shuffle": null,
+        "noise": null,
+        "remove": null,
+        "counterfactual": null
+      },
+      "adoption": null,
+      "skipped": {
+        "counterfactual": "依据中没有可改的数字或情态词"
+      },
+      "edits": []
+    }
+  ],
+  "notes": [
+    {
+      "id": "D01:generator:remove",
+      "item": "D01",
+      "side": "generator",
+      "condition": "remove",
+      "kind": "移除依据后仍作答",
+      "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+      "answer": "根据提供的文档，建立存款保险制度的目的是：投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全。",
+      "statements": [
+        {
+          "text": "建立存款保险制度的目的是投保机构向存款保险基金管理机构交纳保费，形成存款保险基金。",
+          "verdict": "支持",
+          "evidence": "本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金"
+        },
+        {
+          "text": "建立存款保险制度的目的是存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款。",
+          "verdict": "支持",
+          "evidence": "存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款"
+        },
+        {
+          "text": "建立存款保险制度的目的是采取必要措施维护存款以及存款保险基金安全。",
+          "verdict": "支持",
+          "evidence": "并采取必要措施维护存款以及存款保险基金安全的制度"
+        }
+      ],
+      "remark": "依据被移除后，模型把第三条对存款保险的定义当成「目的」作答；核对按字面判为有依据。逐句核对只查有无依据，不查是否答对了题。"
+    },
+    {
+      "id": "D07:generator:shuffle",
+      "item": "D07",
+      "side": "generator",
+      "condition": "shuffle",
+      "kind": "核对新标出",
+      "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+      "answer": "根据参考资料中第四条的规定，存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+      "statements": [
+        {
+          "text": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+          "verdict": "支持",
+          "evidence": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        },
+        {
+          "text": "该规定出自参考资料中的第四条。",
+          "verdict": "无依据",
+          "evidence": ""
+        }
+      ],
+      "remark": "资料片段没有写这段条文的条号，回答却注明「第四条」；核对把这一句标为无依据，标得对。"
+    },
+    {
+      "id": "D07:generator:noise",
+      "item": "D07",
+      "side": "generator",
+      "condition": "noise",
+      "kind": "核对新标出",
+      "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+      "answer": "根据参考资料中《存款保险条例》第二条的规定，存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+      "statements": [
+        {
+          "text": "《存款保险条例》第二条规定了存款保险基金管理机构偿付存款人的被保险存款后取得相应债权。",
+          "verdict": "矛盾",
+          "evidence": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        },
+        {
+          "text": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+          "verdict": "支持",
+          "evidence": "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。"
+        }
+      ],
+      "remark": "加噪后回答把出处写成「第二条」；核对标为矛盾，标得对。打乱与加噪都会诱发编造出处。"
+    },
+    {
+      "id": "D09:judge:counterfactual",
+      "item": "D09",
+      "side": "judge",
+      "condition": "counterfactual",
+      "kind": "核对未标出",
+      "question": "按节选，投保机构应交保费按照哪些因素计算？",
+      "answer": "根据提供的文档，投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算。",
+      "statements": [
+        {
+          "text": "投保机构应当交纳的保费按照本投保机构的被保险存款计算。",
+          "verdict": "支持",
+          "evidence": "投保机构无需交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算"
+        },
+        {
+          "text": "投保机构应当交纳的保费按照存款保险基金管理机构确定的适用费率计算。",
+          "verdict": "支持",
+          "evidence": "投保机构无需交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算"
+        }
+      ],
+      "remark": "改动落在修饰语上（应当交纳的保费 → 无需交纳的保费），核对引用了改动后的原文仍判为支持。这一改动本身语义别扭，如实计为未标出。",
+      "edits": [
+        {
+          "context": 0,
+          "kind": "modal",
+          "before": "应当",
+          "after": "无需"
+        }
+      ]
+    },
+    {
+      "id": "F01:generator:shuffle",
+      "item": "F01",
+      "side": "generator",
+      "condition": "shuffle",
+      "kind": "改为作答",
+      "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+      "answer": "根据提供的文档，这种说法不对：第五条规定存款保险实行限额偿付，最高偿付限额为人民币50万元，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算后在最高偿付限额以内的实行全额偿付，而超出最高偿付限额的部分并不由存款保险基金保证全额偿付，而是依法从投保机构清算财产中受偿。",
+      "statements": [
+        {
+          "text": "存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+          "verdict": "支持",
+          "evidence": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        },
+        {
+          "text": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算后在最高偿付限额以内的实行全额偿付。",
+          "verdict": "支持",
+          "evidence": "同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；"
+        },
+        {
+          "text": "超出最高偿付限额的部分并不由存款保险基金保证全额偿付，而是依法从投保机构清算财产中受偿。",
+          "verdict": "支持",
+          "evidence": "超出最高偿付限额的部分，依法从投保机构清算财产中受偿。"
+        }
+      ],
+      "remark": "原样资料下拒答的错误前提题，只打乱资料顺序就改为依据原文纠正前提：这类题的拒答对资料顺序敏感，与失败归因「提示词只给了拒答出口」一致。"
+    },
+    {
+      "id": "F02:generator:noise",
+      "item": "F02",
+      "side": "generator",
+      "condition": "noise",
+      "kind": "核对新标出",
+      "question": "外币存款不属于存款保险保障范围，对吗？请按第四条说明。",
+      "answer": "不对。根据第四条，被保险存款包括投保机构吸收的人民币存款和外币存款，因此外币存款属于存款保险保障范围。",
+      "statements": [
+        {
+          "text": "外币存款不属于存款保险保障范围这一说法不对。",
+          "verdict": "矛盾",
+          "evidence": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        },
+        {
+          "text": "根据第四条，被保险存款包括投保机构吸收的人民币存款和外币存款。",
+          "verdict": "支持",
+          "evidence": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        },
+        {
+          "text": "外币存款属于存款保险保障范围。",
+          "verdict": "支持",
+          "evidence": "第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。"
+        }
+      ],
+      "remark": "回答本身正确；核对把「……这一说法不对」判为矛盾，是否定叠加句上的误判。"
+    },
+    {
+      "id": "F05:generator:shuffle",
+      "item": "F05",
+      "side": "generator",
+      "condition": "shuffle",
+      "kind": "改为作答",
+      "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+      "answer": "不对。根据参考资料第四条规定，被保险存款包括投保机构吸收的人民币存款和外币存款，但金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外，因此投保机构高级管理人员在本投保机构的存款不属于被保险存款，不纳入保险范围。",
+      "statements": [
+        {
+          "text": "投保机构高级管理人员在本投保机构的存款不属于被保险存款",
+          "verdict": "支持",
+          "evidence": "投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外"
+        },
+        {
+          "text": "投保机构高级管理人员在本投保机构的存款不纳入保险范围",
+          "verdict": "支持",
+          "evidence": "投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外"
+        }
+      ],
+      "remark": "同上：打乱顺序后改为正确纠正前提。"
+    }
+  ]
+}

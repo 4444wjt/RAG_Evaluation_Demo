@@ -37,6 +37,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from backend.config import CTX_PREC_THRESHOLD, FAITH_THRESHOLD  # noqa: E402
 from backend.core.gate import check_quality_gate  # noqa: E402
+from backend.core import attribution as attr  # noqa: E402
 from backend.core import regression as reg  # noqa: E402
 
 EXIT_PASS, EXIT_BLOCK, EXIT_INVALID = 0, 1, 2
@@ -198,7 +199,26 @@ def regression_summary_lines(comparison, baseline_source, baseline_passed, candi
     return lines
 
 
-def write_summary(path, source, model, checks, passed, archived, error=None, regression_lines=None):
+def attribution_lines(result):
+    """门禁拦截时的失败归因：问题出在检索还是生成。缺少逐题结果时返回空列表。"""
+    try:
+        report = attr.attribute(result)
+    except (ValueError, StopIteration):
+        return []
+    labels = [c for c in attr.CATEGORIES if c != attr.OK and report["counts"][c]]
+    if not labels:
+        return []
+    lines = ["#### 失败归因：该修检索还是生成", "", "| 类别 | 题数 | 拉低正向忠实度 | 建议 |", "|---|---|---|---|"]
+    advice = {item["category"]: item["advice"] for item in report["advice"]}
+    for c in labels:
+        lines.append(f"| {c} | {report['counts'][c]} | {report['faithfulnessLoss'][c]:.4f} | {advice.get(c, '—')} |")
+    if report["primaryStage"]:
+        lines += ["", f"主要问题在**{report['primaryStage']}**环节（检索 {report['retrievalLoss']:.4f}，生成 {report['generationLoss']:.4f}）。"
+                  "归因为诊断参考，不影响门禁裁决。"]
+    return lines + [""]
+
+
+def write_summary(path, source, model, checks, passed, archived, error=None, regression_lines=None, attribution=None):
     """向 path 追加一段 Markdown（GitHub Actions 作业摘要会渲染它）。"""
     if error:
         lines = ["### 质量门禁回放：无法执行", "", f"输入 `{source}`：{error}", ""]
@@ -217,6 +237,7 @@ def write_summary(path, source, model, checks, passed, archived, error=None, reg
             same = "一致" if archived == passed else "不一致（阈值或门禁逻辑与归档时不同）"
             lines.append(f"归档记录：{'PASS' if archived else 'FAIL'}，与本次回放{same}。")
         lines += ["回放只重新执行门禁裁决，不调用模型、不重新计算指标。", ""]
+        lines += attribution or []
         lines += regression_lines or []
     with open(path, "a", encoding="utf-8") as handle:
         handle.write("\n".join(lines) + "\n")
@@ -264,6 +285,10 @@ def main(argv=None):
         same = "一致" if archived == gate["gate_passed"] else "不一致（阈值或门禁逻辑与归档时不同）"
         print(f"\n归档记录：{'PASS' if archived else 'FAIL'}；本次回放：{'PASS' if gate['gate_passed'] else 'FAIL'}；{same}")
 
+    attribution = [] if gate["gate_passed"] else attribution_lines(result)
+    if attribution:
+        print("\n" + "\n".join(line for line in attribution if line))
+
     regression_lines = None
     if comparison is not None:
         print_regression(comparison, args.baseline, baseline_passed, gate["gate_passed"])
@@ -276,7 +301,8 @@ def main(argv=None):
         if args.junit:
             write_junit(args.junit, args.result, model, checks, comparison=comparison)
         if args.summary:
-            write_summary(args.summary, args.result, model, checks, gate["gate_passed"], archived, regression_lines=regression_lines)
+            write_summary(args.summary, args.result, model, checks, gate["gate_passed"], archived, regression_lines=regression_lines,
+                          attribution=attribution)
     blocked = not gate["gate_passed"] or (comparison is not None and comparison["confirmed"])
     return EXIT_BLOCK if blocked else EXIT_PASS
 

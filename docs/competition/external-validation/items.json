@@ -1,0 +1,3028 @@
+{
+  "packageSha256": "a5a8d597c842b68f907d9083956cb917486b0e0053ac2e00439853b58c351a65",
+  "seed": 20261013,
+  "anah": [
+    {
+      "id": "location:231:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:93:InternLM_answers:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:232:GPT3.5_answers_D:0:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:94:InternLM_answers:1:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:260:GPT3.5_answers_D:0:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:247:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:83:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:107:GPT3.5_answers_D:1:6",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "partial",
+      "predicted": "none"
+    },
+    {
+      "id": "event:90:GPT3.5_answers_D:1:5",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "partial",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:4:InternLM_answers:1:2",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:90:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:134:GPT3.5_answers_D:1:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:125:InternLM_answers:0:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:117:GPT3.5_answers_D:0:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:233:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:248:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:82:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:68:InternLM_answers:0:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:124:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:22:GPT3.5_answers_D:1:5",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:270:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:104:GPT3.5_answers_D:0:3",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:247:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:107:GPT3.5_answers_D:0:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:188:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:261:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:201:InternLM_answers:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:141:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:245:InternLM_answers:0:10",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:132:GPT3.5_answers_D:1:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:102:InternLM_answers:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:89:InternLM_answers:0:5",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:104:InternLM_answers:2:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:89:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:210:InternLM_answers:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:78:GPT3.5_answers_D:0:5",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:60:InternLM_answers:2:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:117:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:112:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:200:InternLM_answers:0:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:18:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:78:GPT3.5_answers_D:0:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:99:InternLM_answers:2:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:239:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "model_empty",
+      "predicted": "no_statement"
+    },
+    {
+      "id": "location:225:GPT3.5_answers_D:2:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:259:GPT3.5_answers_D:1:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:73:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:54:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:87:GPT3.5_answers_D:0:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:72:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:139:GPT3.5_answers_D:2:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:274:InternLM_answers:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:245:GPT3.5_answers_D:0:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:94:GPT3.5_answers_D:1:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:81:GPT3.5_answers_D:0:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:18:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:217:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:185:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:232:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:134:InternLM_answers:1:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:269:InternLM_answers:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:98:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:40:InternLM_answers:1:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:92:GPT3.5_answers_D:1:5",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:115:InternLM_answers:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:256:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:99:GPT3.5_answers_D:0:6",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:139:GPT3.5_answers_D:1:7",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:21:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:183:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:91:GPT3.5_answers_D:2:2",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:129:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:19:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "person:21:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:73:InternLM_answers:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:89:GPT3.5_answers_D:0:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:207:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:55:GPT3.5_answers_D:0:4",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:228:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:240:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:110:GPT3.5_answers_D:2:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:270:GPT3.5_answers_D:2:6",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:92:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:278:GPT3.5_answers_D:0:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:87:GPT3.5_answers_D:2:9",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:59:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:98:InternLM_answers:1:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:256:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:63:InternLM_answers:0:1",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:91:GPT3.5_answers_D:2:10",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:99:GPT3.5_answers_D:2:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:19:GPT3.5_answers_D:0:12",
+      "gold": "none",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:217:GPT3.5_answers_D:2:4",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:255:GPT3.5_answers_D:2:8",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:186:GPT3.5_answers_D:0:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:141:GPT3.5_answers_D:1:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:107:GPT3.5_answers_D:0:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:81:GPT3.5_answers_D:1:3",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:237:GPT3.5_answers_D:1:0",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:195:GPT3.5_answers_D:2:1",
+      "gold": "none",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:223:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:243:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:271:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:235:InternLM_answers:2:2",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:90:InternLM_answers:1:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:108:GPT3.5_answers_D:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:210:GPT3.5_answers_D:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:52:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:180:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:76:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:196:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:262:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:125:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:97:GPT3.5_answers_D:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:201:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:224:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:249:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:81:InternLM_answers:0:1",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:130:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:70:InternLM_answers:2:6",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:110:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:138:InternLM_answers:2:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:132:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:268:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:222:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:136:GPT3.5_answers_D:1:4",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:98:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:104:GPT3.5_answers_D:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:263:GPT3.5_answers_D:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:85:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:205:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:181:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:106:InternLM_answers:1:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:138:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:17:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:225:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:180:GPT3.5_answers_D:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:71:GPT3.5_answers_D:1:7",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:72:GPT3.5_answers_D:0:1",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:4:GPT3.5_answers_D:0:8",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:203:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:205:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:90:InternLM_answers:1:3",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:122:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:187:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:114:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:71:GPT3.5_answers_D:1:6",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:112:InternLM_answers:1:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:187:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:181:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:211:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:20:InternLM_answers:2:2",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:108:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:220:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:183:InternLM_answers:0:3",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:136:GPT3.5_answers_D:1:5",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:82:GPT3.5_answers_D:2:3",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:14:InternLM_answers:0:1",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:191:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:211:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:197:InternLM_answers:1:2",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:230:GPT3.5_answers_D:2:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:118:InternLM_answers:0:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:230:GPT3.5_answers_D:2:2",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:130:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:255:InternLM_answers:1:2",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:28:GPT3.5_answers_D:0:3",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:103:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:73:GPT3.5_answers_D:2:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:218:GPT3.5_answers_D:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:85:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:206:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:135:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:111:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:192:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:226:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:214:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:11:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:193:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:185:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:218:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:236:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:193:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:80:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:248:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:61:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:120:InternLM_answers:2:4",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:199:GPT3.5_answers_D:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:202:InternLM_answers:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:80:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:249:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:214:InternLM_answers:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "person:40:GPT3.5_answers_D:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:216:InternLM_answers:1:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:229:GPT3.5_answers_D:1:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "location:228:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:98:InternLM_answers:1:1",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:238:InternLM_answers:2:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:83:InternLM_answers:2:2",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:188:GPT3.5_answers_D:0:0",
+      "gold": "contradictory",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:129:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:70:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:114:InternLM_answers:2:4",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:55:GPT3.5_answers_D:1:7",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:62:GPT3.5_answers_D:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:74:GPT3.5_answers_D:2:6",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:80:InternLM_answers:1:6",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:20:GPT3.5_answers_D:2:8",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:97:InternLM_answers:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:11:InternLM_answers:0:6",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:102:GPT3.5_answers_D:2:9",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:264:InternLM_answers:2:9",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:216:InternLM_answers:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:204:GPT3.5_answers_D:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:60:InternLM_answers:1:7",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:206:GPT3.5_answers_D:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:70:InternLM_answers:2:7",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:120:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:49:InternLM_answers:0:2",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:242:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:221:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:143:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:24:InternLM_answers:2:3",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:242:InternLM_answers:1:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:74:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:143:GPT3.5_answers_D:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:78:InternLM_answers:1:5",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:101:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:239:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:70:InternLM_answers:2:4",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:271:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:108:InternLM_answers:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:101:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:9:GPT3.5_answers_D:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:267:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:49:InternLM_answers:0:1",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:107:InternLM_answers:0:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:89:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:52:InternLM_answers:1:6",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:215:InternLM_answers:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:223:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:100:InternLM_answers:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:273:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:264:InternLM_answers:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:78:GPT3.5_answers_D:1:11",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:200:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:106:InternLM_answers:1:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:100:GPT3.5_answers_D:1:6",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:227:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:63:InternLM_answers:0:3",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:9:GPT3.5_answers_D:0:10",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:84:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:202:GPT3.5_answers_D:0:6",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:69:GPT3.5_answers_D:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:212:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:62:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "event:99:GPT3.5_answers_D:0:4",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "event:80:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:222:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:24:InternLM_answers:2:6",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:96:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:124:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:83:GPT3.5_answers_D:2:12",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:197:InternLM_answers:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:106:InternLM_answers:2:5",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:122:InternLM_answers:1:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:263:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:204:GPT3.5_answers_D:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "event:83:GPT3.5_answers_D:2:5",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:194:GPT3.5_answers_D:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "person:14:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "annotation",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:277:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:73:InternLM_answers:2:5",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:106:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:268:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:113:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:279:GPT3.5_answers_D:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:266:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:69:InternLM_answers:1:8",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:235:InternLM_answers:2:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:269:InternLM_answers:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:261:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:277:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:96:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "thing:142:InternLM_answers:2:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:137:InternLM_answers:1:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:273:InternLM_answers:1:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:194:GPT3.5_answers_D:0:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:260:InternLM_answers:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:142:InternLM_answers:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:111:InternLM_answers:1:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:84:InternLM_answers:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:133:GPT3.5_answers_D:0:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:133:InternLM_answers:0:4",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:278:GPT3.5_answers_D:0:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:265:InternLM_answers:2:0",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "thing:121:InternLM_answers:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "contradictory"
+    },
+    {
+      "id": "thing:140:InternLM_answers:1:2",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    },
+    {
+      "id": "location:229:GPT3.5_answers_D:0:3",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "none"
+    },
+    {
+      "id": "location:266:InternLM_answers:2:1",
+      "gold": "unverifiable",
+      "sentenceSource": "aligned",
+      "traceStatus": "ok",
+      "predicted": "unverifiable"
+    }
+  ],
+  "rgb": [
+    {
+      "id": "rgb-noise:248",
+      "rgbId": "248",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:248",
+      "rgbId": "248",
+      "condition": "reject",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": true,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:104",
+      "rgbId": "104",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:104",
+      "rgbId": "104",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:176",
+      "rgbId": "176",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:176",
+      "rgbId": "176",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:256",
+      "rgbId": "256",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:256",
+      "rgbId": "256",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:51",
+      "rgbId": "51",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:51",
+      "rgbId": "51",
+      "condition": "reject",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:222",
+      "rgbId": "222",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:222",
+      "rgbId": "222",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:28",
+      "rgbId": "28",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:28",
+      "rgbId": "28",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:128",
+      "rgbId": "128",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:128",
+      "rgbId": "128",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:38",
+      "rgbId": "38",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:38",
+      "rgbId": "38",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:9",
+      "rgbId": "9",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:9",
+      "rgbId": "9",
+      "condition": "reject",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-noise:120",
+      "rgbId": "120",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:120",
+      "rgbId": "120",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:55",
+      "rgbId": "55",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:55",
+      "rgbId": "55",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:134",
+      "rgbId": "134",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:134",
+      "rgbId": "134",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:69",
+      "rgbId": "69",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:69",
+      "rgbId": "69",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:108",
+      "rgbId": "108",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:108",
+      "rgbId": "108",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:245",
+      "rgbId": "245",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:245",
+      "rgbId": "245",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:264",
+      "rgbId": "264",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:264",
+      "rgbId": "264",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:81",
+      "rgbId": "81",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:81",
+      "rgbId": "81",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:24",
+      "rgbId": "24",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:24",
+      "rgbId": "24",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:74",
+      "rgbId": "74",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:74",
+      "rgbId": "74",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:121",
+      "rgbId": "121",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:121",
+      "rgbId": "121",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:96",
+      "rgbId": "96",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:96",
+      "rgbId": "96",
+      "condition": "reject",
+      "traceStatus": "filtered_all",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:174",
+      "rgbId": "174",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:174",
+      "rgbId": "174",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:213",
+      "rgbId": "213",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:213",
+      "rgbId": "213",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:223",
+      "rgbId": "223",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:223",
+      "rgbId": "223",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:182",
+      "rgbId": "182",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:182",
+      "rgbId": "182",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:254",
+      "rgbId": "254",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:254",
+      "rgbId": "254",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:257",
+      "rgbId": "257",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:257",
+      "rgbId": "257",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:231",
+      "rgbId": "231",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:231",
+      "rgbId": "231",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:212",
+      "rgbId": "212",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:212",
+      "rgbId": "212",
+      "condition": "reject",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:131",
+      "rgbId": "131",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:131",
+      "rgbId": "131",
+      "condition": "reject",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:164",
+      "rgbId": "164",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:164",
+      "rgbId": "164",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:5",
+      "rgbId": "5",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:5",
+      "rgbId": "5",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:78",
+      "rgbId": "78",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:78",
+      "rgbId": "78",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:225",
+      "rgbId": "225",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:225",
+      "rgbId": "225",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:127",
+      "rgbId": "127",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:127",
+      "rgbId": "127",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:54",
+      "rgbId": "54",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:54",
+      "rgbId": "54",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:242",
+      "rgbId": "242",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:242",
+      "rgbId": "242",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:36",
+      "rgbId": "36",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:36",
+      "rgbId": "36",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-noise:255",
+      "rgbId": "255",
+      "condition": "noise",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true
+    },
+    {
+      "id": "rgb-reject:255",
+      "rgbId": "255",
+      "condition": "reject",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false
+    },
+    {
+      "id": "rgb-fact:29",
+      "rgbId": "29",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": true,
+      "correct": true,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:40",
+      "rgbId": "40",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:27",
+      "rgbId": "27",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": true,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:51",
+      "rgbId": "51",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": true,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:73",
+      "rgbId": "73",
+      "condition": "counterfactual",
+      "traceStatus": "partial",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:39",
+      "rgbId": "39",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:7",
+      "rgbId": "7",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:55",
+      "rgbId": "55",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:43",
+      "rgbId": "43",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true,
+      "adoptedFake": false
+    },
+    {
+      "id": "rgb-fact:74",
+      "rgbId": "74",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:83",
+      "rgbId": "83",
+      "condition": "counterfactual",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": false
+    },
+    {
+      "id": "rgb-fact:77",
+      "rgbId": "77",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:82",
+      "rgbId": "82",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:11",
+      "rgbId": "11",
+      "condition": "counterfactual",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": false
+    },
+    {
+      "id": "rgb-fact:1",
+      "rgbId": "1",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": true,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:95",
+      "rgbId": "95",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": true,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:14",
+      "rgbId": "14",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:41",
+      "rgbId": "41",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:5",
+      "rgbId": "5",
+      "condition": "counterfactual",
+      "traceStatus": "ok",
+      "refused": false,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": true
+    },
+    {
+      "id": "rgb-fact:25",
+      "rgbId": "25",
+      "condition": "counterfactual",
+      "traceStatus": "empty_answer",
+      "refused": true,
+      "flagged": false,
+      "correct": false,
+      "adoptedFake": false
+    }
+  ]
+}

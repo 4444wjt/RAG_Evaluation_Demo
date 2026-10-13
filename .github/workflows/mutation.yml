@@ -15,6 +15,9 @@ on:
       - tests/test_backend_pipeline.py
       - .github/workflows/mutation.yml
 
+permissions:
+  contents: read
+
 jobs:
   mutation:
     runs-on: ubuntu-latest

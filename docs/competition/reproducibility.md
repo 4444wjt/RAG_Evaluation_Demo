@@ -108,6 +108,49 @@ npm run preview
 
 观察到的token及调用数不一定包含HTTP内部重试，也不是扣费账单；`actualCharge` 保持为空，除非作者实际取得账单。模型温度0不保证服务响应逐字可复现。文件哈希说明材料对应，不是独立认证。
 
+## 公开检出校验边界
+
+原始运行目录保留完整产物；公开仓库只包含实际被 Git 跟踪的脱敏副本。下列 17 个历史产物在本机存在、列在旧 `SHA256SUMS.txt` 中，但被忽略规则排除，公开克隆不会取得它们。旧清单与历史证据保持原样，不据此宣称公开副本包含全部原始产物。
+
+| 公开归档目录（均位于 `docs/competition/evidence/`） | 公开检出缺项 |
+|---|---|
+| `20261005T101847Z-pilot-c72cb679` | 6 项 |
+| `20261005T131353Z-pilot-35f623cb` | 6 项 |
+| `20261005T144504Z-full-39511424` | 5 项 |
+
+前两个预跑各缺少相对于其归档目录的以下文件：
+
+```text
+project/eval_history.json
+project/multi_model_summary.csv
+project/ragas_report_deepseek-chat.csv
+project/ragas_report.html
+project/result_chart.png
+server.log
+```
+
+正式运行公开副本缺少：
+
+```text
+report/multi_model_summary.csv
+report/ragas_report_deepseek-chat.csv
+report/ragas_report.html
+report/result_chart.png
+server.log
+```
+
+完整原始归档使用 `sha256sum --check SHA256SUMS.txt`，缺文件或哈希不一致都应报告。上述公开副本可以使用 `--ignore-missing` 仅核对检出中实际存在的文件；通过只说明这些现有文件与清单一致，不代表完整归档验证通过。本机包含被忽略文件的工作区与公开克隆须分别说明。
+
+部分历史校验清单采用 CRLF。GNU 校验工具不能直接正确读取时，可在各自目录下临时去掉清单中的回车后校验，不改写清单或被校验文件：
+
+```bash
+tr -d '\r' < SHA256SUMS.txt | sha256sum --check --ignore-missing
+```
+
+`judge-sensitivity/run-20261012/` 与 `analysis-20261012/` 的清单属于这种情况；这两个公开目录没有上表中的缺项，验证完整性时应去掉 `--ignore-missing`。外部基准、鲁棒性和裁判校准三个新归档须对公开文件执行完整校验，不以忽略缺项掩盖失败。
+
+Git 的 `autocrlf`／`eol` 设置验证的是检出字节是否一致。Windows 上模拟 Linux 换行设置不能替代真实 Linux 测试运行，后者以 Linux 环境或 GitHub Actions 的实际结果为准。
+
 ## 离线回归
 
 ```powershell

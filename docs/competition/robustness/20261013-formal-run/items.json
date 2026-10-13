@@ -1,0 +1,1549 @@
+{
+  "packageSha256": "28f07f840b4ee829982d6edfd0e4eece8b53f7b1117cfb9ea773caefb4117ba3",
+  "rows": [
+    {
+      "id": "D01",
+      "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "D02",
+      "question": "节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "D03",
+      "question": "存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "D04",
+      "question": "节选中被保险存款包括哪些币种的存款？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "D05",
+      "question": "第四条列出的不属于被保险存款范围的存款有哪些？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "D06",
+      "question": "根据节选，存款保险的最高偿付限额是多少？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false,
+          "adoption": "followed"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "D07",
+      "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "D08",
+      "question": "存款保险费率由哪两部分构成？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "D09",
+      "question": "按节选，投保机构应交保费按照哪些因素计算？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "D10",
+      "question": "投保机构应定期报送哪些与存款保险有关的资料？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "C01",
+      "question": "中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "C02",
+      "question": "假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false,
+          "adoption": "followed"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "C03",
+      "question": "最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    },
+    {
+      "id": "C04",
+      "question": "条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "refused"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "C05",
+      "question": "人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false,
+          "adoption": "followed"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "F01",
+      "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+      "judge": {},
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "refused"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "F02",
+      "question": "外币存款不属于存款保险保障范围，对吗？请按第四条说明。",
+      "judge": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0
+        }
+      },
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": true,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "not_applicable"
+        }
+      },
+      "editKind": "modal"
+    },
+    {
+      "id": "F03",
+      "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+      "judge": {},
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "refused"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "F04",
+      "question": "第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？",
+      "judge": {},
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "flagged",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "counterfactual": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true,
+          "adoption": "refused"
+        }
+      },
+      "editKind": "number"
+    },
+    {
+      "id": "F05",
+      "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+      "judge": {},
+      "generator": {
+        "original": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "shuffle": {
+          "status": "ok",
+          "trace": "clean",
+          "traceStatus": "ok",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": false
+        },
+        "noise": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        },
+        "remove": {
+          "status": "ok",
+          "trace": "empty",
+          "traceStatus": "empty_answer",
+          "contradicted": false,
+          "rejectedEvidence": 0,
+          "answered": true,
+          "refused": true
+        }
+      },
+      "editKind": null
+    }
+  ]
+}

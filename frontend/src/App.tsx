@@ -11,6 +11,8 @@ import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
 import { EvaluationVerificationView } from './features/EvaluationVerificationView';
 import { GateAuditView } from './features/GateAuditView';
+import { RobustnessView } from './features/RobustnessView';
+import { AnnotateView } from './features/AnnotateView';
 import demoData from './fixtures/demo.json';
 import { MODEL_COLORS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
 import { labHash, parseLabHash } from './labRoute';
@@ -31,6 +33,8 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
   { id: 'verification', label: '评测验证', icon: 'check', title: '评测验证', description: '查看人工核验状态与原始依据。' },
   { id: 'audit', label: '门禁审计', icon: 'shield', title: '门禁审计', description: '检验门禁本身：结论能否复算、换裁判会不会变、有多确定，以及门禁代码对不对。' },
+  { id: 'robustness', label: '鲁棒性体检', icon: 'pulse', title: '鲁棒性体检', description: '打乱、加噪、移除依据、改成反事实：看被测应用和逐句核对是否真的依据资料。' },
+  { id: 'annotate', label: '人工标注', icon: 'pen', title: '人工标注', description: '请非作者逐条判断门禁所用的陈述能否由资料推出，用来估计裁判判错的程度。' },
 ];
 
 /** Sidebar context card. Labels carry their own prefix ("门禁 PASS", "来源 · …") so they never duplicate a field shown in the main view. */
@@ -174,7 +178,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
-        {view !== 'overview' && view !== 'audit' && resultMeta}
+        {view !== 'overview' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
         {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
@@ -182,7 +186,9 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         {view === 'report' && <ReportView result={run.result}/>}
         {view === 'verification' && <EvaluationVerificationView result={run.result} source={run.source}/>}
         {view === 'audit' && <GateAuditView/>}
-        {run.source === 'demo' && view !== 'workspace' && view !== 'audit' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
+        {view === 'robustness' && <RobustnessView/>}
+        {view === 'annotate' && <AnnotateView/>}
+        {run.source === 'demo' && view !== 'workspace' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
         <footer className="page-footer"><span>鉴真全域 VeriScope AI</span><span>逐句核对 / 证据溯源 / 质量门禁</span></footer>
       </main>
     </div>

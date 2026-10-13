@@ -92,6 +92,44 @@
 .audit-survivors th:first-child { width: 72px; }
 .audit-survivors td p { margin-top: 4px; font-size: 13px; }
 
+.audit-split { display: grid; gap: 8px; margin: 18px 0 14px; }
+.audit-split-track { position: relative; display: flex; height: 16px; border-radius: 8px; background: color-mix(in srgb, var(--text-primary) 6%, transparent); }
+.audit-split-track > i { display: block; height: 100%; min-width: 2px; }
+.audit-split-track > i:first-child { border-radius: 8px 0 0 8px; }
+.audit-split-track > i:last-of-type { border-radius: 0 8px 8px 0; }
+.audit-split--score { background: color-mix(in srgb, var(--success) 70%, var(--bg-control)); }
+.audit-split--generation { background: var(--danger); opacity: 0.85; }
+.audit-split--retrieval { background: var(--info); }
+.audit-split--rest { background: var(--text-muted); opacity: 0.6; }
+.audit-split-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font-size: 12px; color: var(--text-secondary); }
+.audit-split-legend li { display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.audit-split-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+.audit-flagged { width: 100%; min-width: 720px; border-collapse: collapse; text-align: left; font-size: 13px; }
+.audit-flagged caption { caption-side: top; padding-bottom: 8px; text-align: left; color: var(--text-secondary); font-size: 13px; }
+.audit-flagged tbody th, .audit-flagged td:nth-child(2), .audit-flagged td:nth-child(3) { white-space: nowrap; }
+.audit-flagged td:nth-child(3) { font-variant-numeric: tabular-nums; }
+.audit-flagged td:nth-child(4) { width: 40%; }
+.audit-flagged .audit-answer { margin-top: 4px; color: var(--danger); }
+.audit-panel > .audit-note + .audit-note { margin-top: 4px; }
+
+.audit-external { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; margin-bottom: 12px; }
+.audit-external-col { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.audit-external h3 { font-size: var(--font-size-subheading); font-weight: 600; }
+.audit-facts--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.audit-facts--three dd small { display: block; margin-left: 0; }
+.audit-confusion { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+.audit-confusion caption { caption-side: top; padding-bottom: 8px; text-align: left; color: var(--text-secondary); font-size: 13px; }
+.audit-confusion td { text-align: right; font-variant-numeric: tabular-nums; }
+.audit-confusion thead th:not(:first-child) { text-align: right; }
+.audit-confusion--hit { color: var(--success); font-weight: 700; }
+.audit-confusion--near { color: var(--warning); font-weight: 600; }
+.audit-confusion--miss { color: var(--danger); }
+.audit-conditions { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.audit-conditions li { padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); }
+.audit-conditions .audit-interval-head { margin-bottom: 4px; }
+.audit-conditions .audit-interval-head small { display: block; font-size: 12px; font-weight: 400; color: var(--text-secondary); }
+.audit-conditions p { font-size: 13px; color: var(--text-secondary); }
+
 .audit-table-scroll { overflow-x: auto; margin-bottom: 10px; }
 .audit-regression { min-width: 640px; }
 .audit-regression td { font-variant-numeric: tabular-nums; }
@@ -100,7 +138,7 @@
 .audit-boundary a { color: var(--text-secondary); }
 
 @media (max-width: 1199px) {
-  .audit-questions, .audit-selfcheck { grid-template-columns: minmax(0, 1fr); }
+  .audit-questions, .audit-selfcheck, .audit-external { grid-template-columns: minmax(0, 1fr); }
   .audit-subject { grid-template-columns: auto auto; }
   .audit-subject .audit-note { grid-column: 1 / -1; justify-self: start; max-width: none; }
 }
@@ -116,3 +154,33 @@
   .audit-mutants { grid-template-columns: repeat(14, minmax(0, 1fr)); }
   .audit-panel-head { flex-wrap: wrap; }
 }
+/* 裁判判错校准：三个状态各自成组，组内紧、组间松 */
+.audit-calibration .audit-panel-head { margin-bottom: 24px; }
+.audit-calibration .audit-panel-head p { max-width: 52em; line-height: 1.75; }
+.audit-calibration .audit-external { gap: 24px 48px; margin-bottom: 24px; }
+.audit-calibration .audit-external-col { gap: 18px; }
+.audit-calibration-head { display: grid; gap: 4px; }
+.audit-calibration-head .audit-interval-head { margin-bottom: 0; }
+.audit-calibration-scope { font-size: 14px; line-height: 1.7; color: var(--text-primary); }
+.audit-calibration-notes { display: grid; gap: 8px; }
+.audit-calibration-notes .audit-note { line-height: 1.75; }
+.audit-calibration-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.65; }
+.audit-calibration-list li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 12px; padding: 9px 14px; border-radius: var(--radius-control); background: var(--bg-control); }
+.audit-calibration-list span { color: var(--brand); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.audit-calibration .audit-confusion th, .audit-calibration .audit-confusion td { padding: 9px 10px; }
+.audit-calibration-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; margin-bottom: 16px; padding: 18px 22px; border: 1px dashed var(--warning); border-radius: var(--radius-control); background: color-mix(in srgb, var(--warning) 5%, transparent); }
+.audit-calibration-human { display: grid; gap: 8px; flex: 1 1 480px; max-width: 60em; }
+.audit-calibration-human .audit-interval-head { justify-content: flex-start; gap: 10px; margin-bottom: 0; }
+.audit-calibration-human h3 { font-size: var(--font-size-subheading); font-weight: 600; }
+.audit-calibration-human p { line-height: 1.75; }
+.audit-calibration .audit-note { font-size: 14px; }
+.audit-calibration .audit-confusion, .audit-calibration .audit-confusion caption { font-size: 14px; }
+.audit-calibration .audit-facts dt, .audit-calibration .audit-facts dd small { font-size: 13px; }
+.audit-calibration-status { font-size: 14px; }
+.audit-hl { font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.audit-hl--brand { color: var(--brand); }
+.audit-hl--info { color: var(--info); }
+.audit-hl--warning { color: var(--warning); }
+.audit-hl--danger { color: var(--danger); }
+.audit-row--ours th, .audit-row--ours td { color: var(--brand); font-weight: 600; }
+.audit-row--naive td { color: var(--danger); }

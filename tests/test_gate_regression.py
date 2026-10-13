@@ -131,6 +131,13 @@ def test_bootstrap_interval_is_reproducible():
     assert reg.bootstrap_interval(deltas) == reg.bootstrap_interval(deltas)
 
 
+def test_mulberry32_matches_javascript_reference():
+    # 期望值由常见 JavaScript 参考实现（Math.imul 版）在 Node 中计算得到
+    for seed, expected in ((reg.BOOTSTRAP_SEED, [329861852, 1730385991, 4036736596]), (1, [2693262067, 11749833, 2265367787])):
+        draw = reg.mulberry32(seed)
+        assert [draw() for _ in expected] == expected
+
+
 @settings(derandomize=True, database=None, deadline=None, max_examples=100)
 @given(base=st.lists(st.floats(0, 1), min_size=1, max_size=20), gains=st.data())
 def test_never_flags_regression_when_no_question_got_worse(base, gains):

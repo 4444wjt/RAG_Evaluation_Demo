@@ -593,5 +593,525 @@
         "oneSided": 0
       }
     ]
+  },
+  "attribution": {
+    "source": {
+      "runId": "20261005T144504Z-full-39511424",
+      "path": "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json",
+      "sha256": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d"
+    },
+    "model": "deepseek-chat",
+    "questions": 20,
+    "counts": {
+      "检索未找全": 0,
+      "检索排序差": 0,
+      "生成拒答": 4,
+      "生成无依据": 0,
+      "正常": 16,
+      "无法判断": 0
+    },
+    "faithfulnessLoss": {
+      "检索未找全": 0.0,
+      "检索排序差": 0.0,
+      "生成拒答": 0.2,
+      "生成无依据": 0.0,
+      "正常": 0.0625,
+      "无法判断": 0.0
+    },
+    "retrievalLoss": 0.0,
+    "generationLoss": 0.2,
+    "primaryStage": "生成",
+    "flagged": [
+      {
+        "index": 20,
+        "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+        "category": "生成拒答",
+        "stage": "生成",
+        "faithfulness": 0.0,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999,
+        "answer": "根据提供的文档，无法回答该问题。",
+        "groundTruth": "不对。存款保险实行限额偿付，最高限额为人民币50万元；超过限额部分依法从投保机构清算财产中受偿，节选不保证该部分全额受偿。"
+      },
+      {
+        "index": 22,
+        "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+        "category": "生成拒答",
+        "stage": "生成",
+        "faithfulness": 0.0,
+        "context_recall": 1.0,
+        "context_precision": 0.9166666666361111,
+        "answer": "根据提供的文档，无法回答该问题。",
+        "groundTruth": "不对。按节选，交纳保费的主体是投保机构；投保机构按规定每6个月交纳一次保费。"
+      },
+      {
+        "index": 23,
+        "question": "第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？",
+        "category": "生成拒答",
+        "stage": "生成",
+        "faithfulness": 0.0,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999,
+        "answer": "根据提供的文档，无法回答该问题。",
+        "groundTruth": "不支持。原文是7个工作日，不是7个自然日，且应依照条例偿付。"
+      },
+      {
+        "index": 24,
+        "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+        "category": "生成拒答",
+        "stage": "生成",
+        "faithfulness": 0.0,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999,
+        "answer": "根据提供的文档，无法回答该问题。",
+        "groundTruth": "不对。第四条明确将投保机构高级管理人员在本投保机构的存款列为除外。"
+      }
+    ],
+    "advice": [
+      {
+        "category": "生成拒答",
+        "advice": "检索已找到依据，模型仍拒答：放宽提示词中的拒答条件，或在提示中强调依据已提供。"
+      }
+    ],
+    "floors": {
+      "recall": 0.5,
+      "precision": 0.5,
+      "faithfulness": 0.5
+    }
+  },
+  "external": {
+    "sources": {
+      "anah": {
+        "name": "ANAH",
+        "repository": "https://huggingface.co/datasets/opencompass/anah",
+        "revision": "12238ed44444a5ab4df100a1ef2b395cf49b624e",
+        "license": "Apache-2.0",
+        "citation": "Ji et al., ANAH: Analytical Annotation of Hallucinations in Large Language Models, ACL 2024"
+      },
+      "rgb": {
+        "name": "RGB",
+        "repository": "https://github.com/chen700564/RGB",
+        "revision": "65ec39e40e7dc9abb50e9bf1b4f32be3f6f16615",
+        "license": "CC BY-NC-SA 4.0（仅非商业使用）",
+        "citation": "Chen et al., Benchmarking Large Language Models in Retrieval-Augmented Generation, AAAI 2024"
+      }
+    },
+    "model": "deepseek-chat",
+    "returnedModels": {
+      "deepseek-flash": 500
+    },
+    "requests": 500,
+    "requestErrors": 0,
+    "usage": {
+      "inputTokens": 1147633,
+      "outputTokens": 47820,
+      "estimatedCostCny": 2.6778
+    },
+    "budgetCny": 10.0,
+    "anah": {
+      "sentences": 300,
+      "traceFailed": 0,
+      "traceStatus": {
+        "ok": 297,
+        "partial": 2,
+        "model_empty": 1
+      },
+      "coverage": {
+        "count": 299,
+        "total": 300,
+        "rate": 0.9967,
+        "wilson95": [
+          0.9814,
+          0.9994
+        ]
+      },
+      "confusion": {
+        "none": {
+          "unverifiable": 25,
+          "none": 72,
+          "no_statement": 1,
+          "contradictory": 2
+        },
+        "contradictory": {
+          "contradictory": 49,
+          "unverifiable": 38,
+          "none": 13
+        },
+        "unverifiable": {
+          "none": 9,
+          "unverifiable": 85,
+          "contradictory": 6
+        }
+      },
+      "binary": {
+        "tp": 178,
+        "fp": 27,
+        "fn": 22,
+        "tn": 72,
+        "precision": 0.8683,
+        "precisionWilson95": [
+          0.8152,
+          0.9079
+        ],
+        "recall": 0.89,
+        "recallWilson95": [
+          0.8391,
+          0.9262
+        ],
+        "specificity": 0.7273,
+        "specificityWilson95": [
+          0.6323,
+          0.8053
+        ],
+        "f1": 0.879,
+        "balancedAccuracy": 0.8086
+      },
+      "perLabelExact": {
+        "none": {
+          "count": 72,
+          "total": 100,
+          "rate": 0.72,
+          "wilson95": [
+            0.6251,
+            0.7986
+          ]
+        },
+        "contradictory": {
+          "count": 49,
+          "total": 100,
+          "rate": 0.49,
+          "wilson95": [
+            0.3942,
+            0.5865
+          ]
+        },
+        "unverifiable": {
+          "count": 85,
+          "total": 100,
+          "rate": 0.85,
+          "wilson95": [
+            0.7672,
+            0.9069
+          ]
+        }
+      },
+      "note": "样本按标签分层、各类等量抽取，指标反映各类别上的表现，不等于 ANAH 总体分布下的数值；二分类把 矛盾 与 无法验证 都算作幻觉，未产出陈述的句子不计入准确率与召回率，单列为覆盖率。"
+    },
+    "rgb": {
+      "noise": {
+        "items": 40,
+        "answerFailed": 0,
+        "traceStatus": {
+          "ok": 40
+        },
+        "refusal": {
+          "count": 0,
+          "total": 40,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.0876
+          ]
+        },
+        "answeredFlaggedByTrace": {
+          "count": 0,
+          "total": 40,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.0876
+          ]
+        },
+        "accuracy": {
+          "count": 40,
+          "total": 40,
+          "rate": 1.0,
+          "wilson95": [
+            0.9124,
+            1.0
+          ]
+        },
+        "flaggedWhenCorrect": {
+          "count": 0,
+          "total": 40,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.0876
+          ]
+        },
+        "flaggedWhenWrong": {
+          "count": 0,
+          "total": 0,
+          "rate": null,
+          "wilson95": null
+        }
+      },
+      "reject": {
+        "items": 40,
+        "answerFailed": 0,
+        "traceStatus": {
+          "ok": 5,
+          "empty_answer": 34,
+          "filtered_all": 1
+        },
+        "refusal": {
+          "count": 35,
+          "total": 40,
+          "rate": 0.875,
+          "wilson95": [
+            0.7389,
+            0.9454
+          ]
+        },
+        "answeredFlaggedByTrace": {
+          "count": 1,
+          "total": 5,
+          "rate": 0.2,
+          "wilson95": [
+            0.0362,
+            0.6245
+          ]
+        }
+      },
+      "counterfactual": {
+        "items": 20,
+        "answerFailed": 0,
+        "traceStatus": {
+          "ok": 16,
+          "partial": 1,
+          "empty_answer": 3
+        },
+        "refusal": {
+          "count": 3,
+          "total": 20,
+          "rate": 0.15,
+          "wilson95": [
+            0.0524,
+            0.3604
+          ]
+        },
+        "answeredFlaggedByTrace": {
+          "count": 4,
+          "total": 17,
+          "rate": 0.2353,
+          "wilson95": [
+            0.0956,
+            0.4726
+          ]
+        },
+        "adoptedFakeAnswer": {
+          "count": 16,
+          "total": 20,
+          "rate": 0.8,
+          "wilson95": [
+            0.584,
+            0.9193
+          ]
+        },
+        "flaggedWhenAdopted": {
+          "count": 4,
+          "total": 16,
+          "rate": 0.25,
+          "wilson95": [
+            0.1018,
+            0.495
+          ]
+        }
+      }
+    },
+    "counterfactual": {
+      "answered": 17,
+      "onlyFake": 11,
+      "onlyFakeFlagged": 3,
+      "both": 5,
+      "correctOnly": 1
+    },
+    "adjusted": {
+      "pool": {
+        "none": 1406,
+        "contradictory": 531,
+        "unverifiable": 565
+      },
+      "prevalence": 0.438,
+      "precision": 0.7178
+    },
+    "source": {
+      "summary": {
+        "path": "docs/competition/external-validation/summary.json",
+        "sha256": "34fe6b1636987190e72c3516cac5d372089e97dea4c104be30fad001ee10b68c"
+      },
+      "items": {
+        "path": "docs/competition/external-validation/items.json",
+        "sha256": "bec89aab8108e890091e72e0461d6a4ea1a9f835d043618721004a99561cf815"
+      },
+      "authorization": {
+        "path": "docs/competition/external-validation/authorization.json",
+        "sha256": "530945cf0fa827edb2c54a59b9c17774a58adff80bb6bf414d1f07b27cd78642"
+      }
+    }
+  },
+  "calibration": {
+    "judgeValue": 0.7375,
+    "threshold": 0.8,
+    "statements": 52,
+    "judgedSupported": 43,
+    "questions": 20,
+    "flips": {
+      "overall": {
+        "flips": 2,
+        "after": 0.8375
+      },
+      "answeredOnly": {
+        "flips": 5,
+        "after": 0.8,
+        "statements": [
+          {
+            "caseId": "D09",
+            "statement": 1,
+            "text": "投保机构应当交纳的保费按照本投保机构的被保险存款计算。",
+            "refusal": false
+          },
+          {
+            "caseId": "D01",
+            "statement": 1,
+            "text": "建立存款保险制度的目的是为了建立和规范存款保险制度。",
+            "refusal": false
+          },
+          {
+            "caseId": "C02",
+            "statement": 2,
+            "text": "该存款人的资金总额为49万元本金加2万元利息，合计51万元。",
+            "refusal": false
+          },
+          {
+            "caseId": "C02",
+            "statement": 5,
+            "text": "超出最高偿付限额的部分为1万元。",
+            "refusal": false
+          },
+          {
+            "caseId": "C02",
+            "statement": 6,
+            "text": "超出最高偿付限额的1万元依法从投保机构清算财产中受偿。",
+            "refusal": false
+          }
+        ]
+      }
+    },
+    "tipping": [
+      {
+        "specificity": 1.0,
+        "sensitivity": 0.921875
+      },
+      {
+        "specificity": 0.95,
+        "sensitivity": 0.909375
+      },
+      {
+        "specificity": 0.9,
+        "sensitivity": 0.896875
+      }
+    ],
+    "simulation": {
+      "replicates": 2000,
+      "cells": 24,
+      "judgeRates": {
+        "q1": 0.7272727272727273,
+        "q1Counts": [
+          72,
+          99
+        ],
+        "q0": 0.89,
+        "q0Counts": [
+          178,
+          200
+        ],
+        "source": "docs/competition/external-validation/summary.json",
+        "sha256": "34fe6b1636987190e72c3516cac5d372089e97dea4c104be30fad001ee10b68c"
+      },
+      "calibrations": [
+        [
+          10,
+          40
+        ],
+        [
+          50,
+          50
+        ]
+      ],
+      "thetas": [
+        0.7,
+        0.8,
+        0.9
+      ],
+      "estimators": {
+        "naive": "只计题目抽样",
+        "leeIndependent": "校准校正·独立",
+        "leeClustered": "校准校正·聚集",
+        "ppi": "PPI（标注 10 题）",
+        "human": "全部人工标注"
+      },
+      "coverage": {
+        "invariant": {
+          "naive": [
+            0.0325,
+            0.527
+          ],
+          "leeIndependent": [
+            0.9045,
+            0.937
+          ],
+          "leeClustered": [
+            0.944,
+            0.96
+          ],
+          "ppi": [
+            0.926,
+            0.941
+          ],
+          "human": [
+            0.903,
+            0.966
+          ]
+        },
+        "shifted": {
+          "naive": [
+            0.001,
+            0.209
+          ],
+          "leeIndependent": [
+            0.762,
+            0.8235
+          ],
+          "leeClustered": [
+            0.817,
+            0.8875
+          ],
+          "ppi": [
+            0.926,
+            0.947
+          ],
+          "human": [
+            0.9005,
+            0.9595
+          ]
+        }
+      },
+      "naiveFailWhenPassing": [
+        0.4845,
+        0.5015
+      ],
+      "source": {
+        "path": "docs/competition/judge-calibration/simulation.json",
+        "sha256": "a020e1721fd0d1815872822399f58a7f4a37c336a8770c99ac711384826a1d5c"
+      }
+    },
+    "annotation": {
+      "status": "pending",
+      "statements": 52,
+      "questions": 20,
+      "packageId": "3dc45b1aa403defeaa1bc546b64278fbedc7c8e09f45887236dec7083f6b0210"
+    }
   }
 }

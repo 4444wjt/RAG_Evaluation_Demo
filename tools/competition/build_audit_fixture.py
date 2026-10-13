@@ -8,7 +8,11 @@
   ③ 证据敏感性：裁判证据敏感性实验的离线分析 summary.json；
   ④ 结论确定性：gate_uncertainty 按题重抽；
   自检：tests/test_gate_properties.py 中每条性质测试的说明，以及 docs/competition/gate-self-check 的变异测试归档；
-  回归对比：两次同题 5 题预跑，按 backend/core/regression.py 逐题对比。
+  回归对比：两次同题 5 题预跑，按 backend/core/regression.py 逐题对比；
+  失败归因：25 题正式运行，按 backend/core/attribution.py 逐题判断问题出在检索还是生成；
+  外部基准：docs/competition/external-validation 的汇总须能由同目录逐条判定重新算出；
+  裁判判错校准：未标注时的敏感性分析（由逐句判定重算），模拟归档须与当前题目结构和裁判误差设定一致，
+  盲标注材料须与证据重新生成的一致；人工标注完成前状态为「待标注」。
 
   python tools/competition/build_audit_fixture.py            写出 frontend/src/fixtures/gate-audit.json
   python tools/competition/build_audit_fixture.py --check    只校验已提交的文件是否与证据重新生成的结果一致
@@ -29,11 +33,14 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.core import regression  # noqa: E402
+from backend.core import attribution, regression  # noqa: E402
 from scripts import gate_replay  # noqa: E402
 from scripts.mutation_summary import summarize  # noqa: E402
 from tools.competition import build_replay_fixture as replay  # noqa: E402
+from tools.competition import external_validation  # noqa: E402
 from tools.competition import gate_uncertainty as uncertainty  # noqa: E402
+from tools.competition import judge_calibration  # noqa: E402
+from tools.competition import judge_error_simulation as simulation  # noqa: E402
 from tools.competition.run_evidence import sha256, write_json  # noqa: E402
 
 OUTPUT = ROOT / 'frontend' / 'src' / 'fixtures' / 'gate-audit.json'
@@ -41,6 +48,10 @@ EVIDENCE_ROOT = ROOT / 'docs' / 'competition' / 'evidence'
 JUDGE_COMPARISON = ROOT / 'docs' / 'competition' / 'judge-comparison' / '20261011-qwen72b'
 SENSITIVITY = ROOT / 'docs' / 'competition' / 'judge-sensitivity' / 'analysis-20261012'
 SELF_CHECK = ROOT / 'docs' / 'competition' / 'gate-self-check'
+EXTERNAL = ROOT / 'docs' / 'competition' / 'external-validation'
+CALIBRATION = ROOT / 'docs' / 'competition' / 'judge-calibration'
+# ANAH 可抽样句子的标签分布（prepare 的候选池，见外部验证 README），用于把等量抽样的精确率折算到实际比例
+ANAH_POOL = {'none': 1406, 'contradictory': 531, 'unverifiable': 565}
 PROPERTIES = ROOT / 'tests' / 'test_gate_properties.py'
 GATE = ROOT / 'backend' / 'core' / 'gate.py'
 REGRESSION_PAIR = ('20261005T101847Z-pilot-c72cb679', '20261005T131353Z-pilot-35f623cb')
@@ -191,10 +202,81 @@ def regression_example() -> dict:
             'confirmed': comparison['confirmed'], 'metrics': metrics}
 
 
+def attribution_example() -> dict:
+    folder = EVIDENCE_ROOT / replay.RUN_ID
+    result, source = _archived(folder, 'api-response.json')
+    report = attribution.attribute(result)
+    rows = result['model_dfs'][report['model']]
+    flagged = [{**{k: q[k] for k in ('index', 'question', 'category', 'stage', 'faithfulness', 'context_recall', 'context_precision')},
+                'answer': str(rows[q['index']].get('answer', '')), 'groundTruth': str(rows[q['index']].get('ground_truth', ''))}
+               for q in report['questions'] if q['stage']]
+    return {'source': {'runId': replay.RUN_ID, **source}, 'model': report['model'], 'questions': len(report['questions']),
+            'counts': report['counts'], 'faithfulnessLoss': report['faithfulnessLoss'],
+            'retrievalLoss': report['retrievalLoss'], 'generationLoss': report['generationLoss'],
+            'primaryStage': report['primaryStage'], 'flagged': flagged, 'advice': report['advice'],
+            'floors': {'recall': attribution.RECALL_FLOOR, 'precision': attribution.PRECISION_FLOOR,
+                       'faithfulness': attribution.FAITH_FLOOR}}
+
+
+def external() -> dict:
+    summary, summary_source = _archived(EXTERNAL, 'summary.json')
+    items, items_source = _archived(EXTERNAL, 'items.json')
+    auth, auth_source = _archived(EXTERNAL, 'authorization.json')
+    if not items['packageSha256'] == summary['packageSha256'] == auth['packageSha256']:
+        raise ValueError('外部验证的汇总、逐条判定与授权绑定的样本包哈希不一致。')
+    if (external_validation.analyze_anah(items['anah']) != summary['anah']
+            or external_validation.analyze_rgb(items['rgb']) != summary['rgb']):
+        raise ValueError('外部验证汇总不能由逐条判定重新算出。')
+    answered = [i for i in items['rgb'] if i['condition'] == 'counterfactual' and 'refused' in i and not i['refused']]
+    only_fake = [i for i in answered if i['adoptedFake'] and not i['correct']]
+    # 反事实条件按字符串细分：只给错误答案 / 正误并现（含数据特例，见归档 README）/ 只给正确答案
+    counterfactual = {'answered': len(answered), 'onlyFake': len(only_fake),
+                      'onlyFakeFlagged': sum(bool(i['flagged']) for i in only_fake),
+                      'both': sum(1 for i in answered if i['adoptedFake'] and i['correct']),
+                      'correctOnly': sum(1 for i in answered if i['correct'] and not i['adoptedFake'])}
+    binary = summary['anah']['binary']
+    prevalence = (ANAH_POOL['contradictory'] + ANAH_POOL['unverifiable']) / sum(ANAH_POOL.values())
+    hit, false_alarm = binary['recall'] * prevalence, (1 - binary['specificity']) * (1 - prevalence)
+    adjusted = {'pool': ANAH_POOL, 'prevalence': round(prevalence, 4), 'precision': round(hit / (hit + false_alarm), 4)}
+    return {'sources': summary['sources'], 'model': summary['model'], 'returnedModels': summary['returnedModels'],
+            'requests': summary['requests'], 'requestErrors': summary['requestErrors'], 'usage': summary['usage'],
+            'budgetCny': auth['budgetCny'], 'anah': summary['anah'], 'rgb': summary['rgb'], 'counterfactual': counterfactual,
+            'adjusted': adjusted,
+            'source': {'summary': summary_source, 'items': items_source, 'authorization': auth_source}}
+
+
+def calibration() -> dict:
+    report = judge_calibration.status()
+    sim, sim_source = _archived(CALIBRATION, 'simulation.json')
+    if sim['structure'] != simulation.formal_structure() or sim['judgeRates'] != simulation.judge_rates():
+        raise ValueError('模拟归档的题目结构或裁判误差设定与当前证据不一致。')
+    package, _ = judge_calibration.build_package()
+    if json.loads(judge_calibration.PACKAGE.read_text(encoding='utf-8')) != package:
+        raise ValueError('盲标注材料与证据重新生成的结果不一致。')
+    coverage = {}
+    for scenario in sim['settings']['scenarios']:
+        cells = [cell for cell in sim['cells'] if cell['scenario'] == scenario]
+        coverage[scenario] = {name: [min(c['estimators'][name]['coverage'] for c in cells),
+                                     max(c['estimators'][name]['coverage'] for c in cells)]
+                              for name in simulation.ESTIMATORS}
+    naive_fail = [c['estimators']['naive']['decisions']['确定不通过'] for c in sim['cells']
+                  if c['scenario'] == 'invariant' and c['theta'] == 0.9]
+    return {'judgeValue': report['judgeValue'], 'threshold': report['threshold'], 'statements': report['statements'],
+            'judgedSupported': report['judgedSupported'], 'questions': report['questions'],
+            'flips': report['flips'], 'tipping': report['tipping'],
+            'simulation': {'replicates': sim['replicates'], 'cells': len(sim['cells']), 'judgeRates': sim['judgeRates'],
+                           'calibrations': sim['settings']['calibrations'], 'thetas': sim['settings']['thetas'],
+                           'estimators': sim['estimators'], 'coverage': coverage,
+                           'naiveFailWhenPassing': [min(naive_fail), max(naive_fail)], 'source': sim_source},
+            'annotation': {'status': 'pending', 'statements': len(package['items']), 'questions': len(package['questions']),
+                           'packageId': package['packageId']}}
+
+
 def build() -> dict:
     return {'schemaVersion': 1, 'recompute': recompute(), 'judges': judges(), 'sensitivity': sensitivity(),
             'certainty': certainty(), 'properties': properties(), 'mutation': mutation(),
-            'regression': regression_example()}
+            'regression': regression_example(), 'attribution': attribution_example(), 'external': external(),
+            'calibration': calibration()}
 
 
 def main() -> int:
