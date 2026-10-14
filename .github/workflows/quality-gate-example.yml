@@ -34,7 +34,7 @@ jobs:
       checks: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 使用仓库根目录的 action.yml；其他仓库写 uses: 4444wjt/RAG_Evaluation_Demo@<tag 或分支>。
       # 结果表写入作业摘要，JUnit 报告由下一步发布到检查结果。
