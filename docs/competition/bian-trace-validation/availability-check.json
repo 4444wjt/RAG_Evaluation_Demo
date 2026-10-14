@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-13",
+  "checkKind": "public_source_availability",
+  "analysisOrigin": "AI辅助公开来源核查，不是人工数据确认或实验结果",
+  "status": "blocked_data_and_usage_terms_unconfirmed",
+  "dataset": {
+    "name": "Bi’anBench",
+    "officialDownloadUrl": null,
+    "version": null,
+    "fileSha256": null,
+    "usageTerms": null,
+    "redistributionTerms": null,
+    "selectedCount": 0
+  },
+  "execution": {
+    "adapterImplemented": false,
+    "modelRequests": 0,
+    "paidAuthorizationProvided": false,
+    "experimentCompleted": false
+  },
+  "sources": [
+    {
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2502.19209v1",
+      "version": "v1",
+      "finding": "论文摘要仍使用将发布数据与模型的表述，链接至 OpenSPG/KAG。论文版本不是已下载数据的版本。"
+    },
+    {
+      "kind": "paper_label_description",
+      "url": "https://arxiv.org/html/2502.19209v1",
+      "location": "Appendix A, Tables 9 and 10",
+      "finding": "PASS / 通过代表基准无幻觉标签；FAIL / 失败代表含幻觉标签。数据包含合成扰动；正式下载文件的格式和许可仍待确认。"
+    },
+    {
+      "kind": "official_repository",
+      "url": "https://api.github.com/repos/OpenSPG/KAG/commits/master",
+      "httpStatus": 200,
+      "repository": "OpenSPG/KAG",
+      "defaultBranch": "master",
+      "commitSha": "fdab15b3929d2ee40dfcdd388f90233096a6afc9",
+      "codeLicense": "Apache-2.0",
+      "finding": "已定位官方代码版本；代码许可证不能代替尚未取得的基准数据使用条件。"
+    },
+    {
+      "kind": "repository_path_inventory",
+      "url": "https://api.github.com/repos/OpenSPG/KAG/git/trees/fdab15b3929d2ee40dfcdd388f90233096a6afc9?recursive=1",
+      "httpStatus": 200,
+      "entryCount": 1474,
+      "truncated": false,
+      "pathSearchPattern": "(?i)bian|bi.anbench|hallucin|狴犴",
+      "matchingPaths": [],
+      "benchmarkDirectories": [
+        "kag/open_benchmark/2wiki",
+        "kag/open_benchmark/AffairQA",
+        "kag/open_benchmark/common_component",
+        "kag/open_benchmark/hotpotqa",
+        "kag/open_benchmark/musique",
+        "kag/open_benchmark/prqa",
+        "kag/open_benchmark/utils"
+      ],
+      "finding": "固定版本文件路径中没有识别出 Bi’an 数据文件；未使用其他基准替代。未逐个审查所有文件内容。"
+    },
+    {
+      "kind": "official_document",
+      "url": "https://raw.githubusercontent.com/OpenSPG/KAG/fdab15b3929d2ee40dfcdd388f90233096a6afc9/README.md",
+      "httpStatus": 200,
+      "sha256OfDecodedTextReencodedUtf8": "64686eef8a5b8aeadb5c6ddf7a3684b70a8269055f65569e5efab806dc098d6d",
+      "finding": "未检出 Bi’an 数据发布说明；摘要标识来源文本，不是数据集校验值。"
+    },
+    {
+      "kind": "official_document",
+      "url": "https://raw.githubusercontent.com/OpenSPG/KAG/fdab15b3929d2ee40dfcdd388f90233096a6afc9/README_cn.md",
+      "httpStatus": 200,
+      "sha256OfDecodedTextReencodedUtf8": "c77cfa96565a8b7fe2cff42d9231e66e997ecf46c22ce907a451d1e7a056e748",
+      "finding": "未检出 Bi’an 数据发布说明；摘要标识来源文本，不是数据集校验值。"
+    },
+    {
+      "kind": "repository_code_license",
+      "url": "https://raw.githubusercontent.com/OpenSPG/KAG/fdab15b3929d2ee40dfcdd388f90233096a6afc9/LICENSE",
+      "httpStatus": 200,
+      "sha256OfDecodedTextReencodedUtf8": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "finding": "读取到 Apache License 声明；未据此赋予未知数据文件相同许可。"
+    },
+    {
+      "kind": "official_release_index",
+      "url": "https://api.github.com/repos/OpenSPG/KAG/releases?per_page=100",
+      "httpStatus": 200,
+      "releaseTags": ["v0.8.0", "v0.7.1", "v0.7", "v0.6", "v0.5.1", "v0.5"],
+      "uploadedAssetCount": 0,
+      "finding": "六个 Release 的上传附件列表均为空；不包括 GitHub 自动生成的源码包，不据此断言所有历史都没有数据。"
+    },
+    {
+      "kind": "dataset_index_search",
+      "url": "https://huggingface.co/api/datasets?search=BiAnBench&limit=100",
+      "httpStatus": 200,
+      "resultCount": 0
+    },
+    {
+      "kind": "dataset_index_search",
+      "url": "https://huggingface.co/api/datasets?search=Bi%27an&limit=100",
+      "httpStatus": 200,
+      "resultCount": 0
+    },
+    {
+      "kind": "dataset_author_index",
+      "url": "https://huggingface.co/api/datasets?author=OpenSPG&limit=100",
+      "httpStatus": 200,
+      "returnedIds": ["OpenSPG/KAG-Thinker-training-dataset"],
+      "finding": "未确认与本实验对应的 Bi’an 数据集；未使用 KAG-Thinker 训练数据替代。"
+    },
+    {
+      "kind": "repository_index_search",
+      "url": "https://api.github.com/search/repositories?q=BiAnBench",
+      "httpStatus": 200,
+      "resultCount": 0
+    }
+  ],
+  "decision": {
+    "continueToSampling": false,
+    "continueToImplementation": false,
+    "continueToPaidRun": false,
+    "reason": "批准计划要求先确认官方数据和使用条件；本次均未确认，停在准备阶段。",
+    "resumeRequires": [
+      "可取得的官方数据文件或作者确认的正式入口与版本",
+      "适用于该数据的使用条件及拟公开内容的再分发条件"
+    ]
+  },
+  "limitations": [
+    "公开入口核查不是穷尽性证明，不能据此断言数据从未发布。",
+    "未检查所有分支、全部历史、全部仓库文件内容或需申请的数据。",
+    "索引和来源页面可能后续变化；当前核查不替代运行前固定版本与数据文件哈希。",
+    "没有实验输入文件，因此没有样本哈希、预测结果、准确率或实际费用估算。"
+  ]
+}

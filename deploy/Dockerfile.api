@@ -19,6 +19,7 @@ RUN if [ "$INSTALL" = "full" ]; then \
 
 # 只复制 API 与评测引擎需要的目录，不带入前端、证据归档或本地运行产物。
 COPY main.py ./
+COPY demo.txt testset_example.csv testset_example.json ./
 COPY backend ./backend
 COPY scenarios ./scenarios
 

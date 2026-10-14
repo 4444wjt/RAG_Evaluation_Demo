@@ -56,7 +56,7 @@ Threshold gates are not unique to this project (DeepEval, for example, can fail 
 
 ## Auditing the gate
 
-A gate's PASS / FAIL drives a release decision, so the gate itself is checked ([details in Chinese](docs/competition/gate-credibility.md)). All numbers come from the 25-question formal run of 2026-10-05 (DeepSeek, gate FAIL: positive faithfulness 0.7375 < 0.8, context precision 0.9833).
+A gate's PASS / FAIL drives a release decision, so the gate itself is checked ([details in Chinese](docs/competition/gate-credibility.md)). All numbers come from the 25-question formal run of 2026-10-05 (DeepSeek-V4.1-Flash: requested `deepseek-chat`, the server returned `deepseek-flash`; gate FAIL: positive faithfulness 0.7375 < 0.8, context precision 0.9833).
 
 | Question | Result |
 |---|---|
@@ -106,6 +106,10 @@ See [details in Chinese](docs/competition/robustness/README.md).
 - prediction-powered inference (PPI) for partial annotation.
 
 In a simulation with this run's question structure, the question-sampling-only interval covered the truth only 3%–53% of the time, while the clustered correction covered it 94%–96%. Only 5 answered statements were judged unsupported, and all 5 would have to flip to reach 0.80. Status: **the judge-error analysis tools and the simulation are done; the real human calibration is pending.** The judge's actual error rates require **independent human annotation by non-authors** (52 statements, about 30 minutes). The analysis protocol is fixed in advance: the gate's denominators are kept, unresolved statements are bounded rather than dropped, and partial annotation is used only for a consecutive prefix of at least 10 questions. Until the annotation is done, no corrected verdict is reported. See [details in Chinese](docs/competition/judge-calibration/README.md).
+
+**What the platform adds:** for the same FAIL, the plain Ragas average is 0.59, because it counts 5 correct refusals on negative questions as 0. The platform reports 0.7375 on positive questions and explains it: all 40 statements in the answered questions are grounded; 76% of the gap comes from 4 refusals on false-premise questions, so the fix is the prompt, not retrieval; and the interval spans the threshold, so the block is conservative. See [details in Chinese](docs/competition/value-comparison.md).
+
+**External case:** on 2026-10-14 the platform checked the default knowledge-base prompt of [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) (authorized, 100 requests, about ¥0.15). Same model and same retrieved contexts; only the prompt changed. On the 5 false-premise questions, its prompt refused 2 and this project's own prompt refused 3. For two of them (F03, F04) the contexts contain the text needed to correct the premise, yet both prompts answered "cannot answer". Both prompts correctly refused all 5 unanswerable questions, and every answered statement was grounded. Only the default prompt was tested, not the project's real deployments. See [details in Chinese](docs/competition/cases/langchain-chatchat/README.md).
 
 ## Quick start
 

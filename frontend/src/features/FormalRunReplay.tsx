@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import replayData from '../fixtures/formal-run-replay.json';
+import { DEEPSEEK_VERSION } from '../config';
 import { percent } from '../utils/format';
 
 // Generated from the frozen 25-question run by tools/competition/build_replay_fixture.py; never edited by hand.
@@ -40,7 +41,7 @@ export function FormalRunReplay() {
   return <section ref={ref} className={`formal-replay${animated ? ` replay-animated${running ? ' is-running' : ''}` : ''}`} aria-labelledby="formal-replay-title">
     <div className="formal-replay-inner" key={cycle}>
       <div className="formal-replay-head">
-        <div><h2 id="formal-replay-title">正式运行回放</h2><p className="formal-replay-source">{`来源：25 题正式运行 · DeepSeek · ${runLabel}（冻结证据，非本页演示快照）`}</p></div>
+        <div><h2 id="formal-replay-title">正式运行回放</h2><p className="formal-replay-source">{`来源：25 题正式运行 · ${DEEPSEEK_VERSION} · ${runLabel}（冻结证据，非本页演示快照）`}</p></div>
         <ol className="formal-replay-steps" aria-label="回放步骤">{STEPS.map((step, index) => <li key={step} style={at([0, 600, 2600, 3800][index], { '--span': `${[600, 2000, 1200, 1200][index]}ms` })}>{step}</li>)}</ol>
       </div>
       <div className="formal-replay-body">

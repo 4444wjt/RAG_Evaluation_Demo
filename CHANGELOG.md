@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 价值对照与外部案例（2026-10-14）
+- 新增 `docs/competition/value-comparison.md`：同一次 25 题正式运行，对照只看 Ragas 总分（0.59，正确拒答的负向题被计 0 分）、看逐题表格与用本平台各能回答什么；数据全部来自冻结证据，不调用模型。
+- 新增 `tools/competition/prompt_case.py`：同一模型、同一批固定资料，只换问答提示词，比较外部 RAG 项目默认提示词与本项目提示的作答行为；授权绑定材料包与代码哈希，按预算与请求数上限停止，不重试。
+- 外部案例 `docs/competition/cases/langchain-chatchat/`：Langchain-Chatchat 默认知识库提示词在 5 道错误前提题中拒答 2 道（本项目提示拒答 3 道），F03、F04 资料有依据仍被两者拒答；经授权运行一次，100 次请求，约 ¥0.15。
+
 ### 部署与治理（2026-10-13，v1.2.0 之后）
 - 新增 `deploy/` 一键部署：docker-compose（api + web 两个容器）、nginx 反向代理与只读两层拦截、`deploy.sh`；默认只读演示且只监听本机，可切换为可评测部署。已在 Linux 云服务器上全新克隆实测（构建、只读拦截、状态码均符合预期），并修复测试中发现的 nginx `default_type` 位置错误。
 - 新增 CODE_OF_CONDUCT.md（参考 Contributor Covenant 2.1）。

@@ -6,7 +6,7 @@ import { Icon } from '../components/Icon';
 import { SlideArrow } from '../components/SlideArrow';
 import { MetricBars } from '../components/MetricBars';
 import { FormalRunReplay } from './FormalRunReplay';
-import { count, modelName, numberValue, percent, seconds, textValue } from '../utils/format';
+import { count, modelName, numberValue, percent, seconds, swatch, textValue } from '../utils/format';
 
 function summaryValue(value: unknown, format: (value: unknown) => string): string {
   return numberValue(value) === null ? '暂无数据' : format(value);
@@ -90,7 +90,7 @@ export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompar
     { label: '拒答准确率', value: summaryValue(selected?.refusal_accuracy, percent), note: '负向用例表现' },
   ];
   return <>
-    <div className="result-context"><div className="summary-model-control"><label htmlFor="summary-model">当前摘要模型</label><select id="summary-model" value={selectedModel} disabled={!models.length} onChange={(event) => setSelection({ result, model: event.target.value })}>{!selectedModel && <option value="" disabled>暂无有效摘要模型</option>}{models.map((row) => <option key={String(row.model)} value={String(row.model)}>{modelName(row.model)}</option>)}</select></div>{resultMeta}</div>
+    <div className="result-context"><div className="summary-model-control"><label htmlFor="summary-model">当前摘要模型</label><span className="model-select" style={swatch(models.findIndex((row) => row.model === selectedModel))}><select id="summary-model" value={selectedModel} disabled={!models.length} onChange={(event) => setSelection({ result, model: event.target.value })}>{!selectedModel && <option value="" disabled>暂无有效摘要模型</option>}{models.map((row, index) => <option key={String(row.model)} value={String(row.model)} className="model-option" style={swatch(index)}>{modelName(row.model)}</option>)}</select></span></div>{resultMeta}</div>
     {gateProvenance && <FormalRunReplay/>}
     <section className={`quality-gate ${gateClass}${gateSettle ? ` ${gateSettle}` : ''}`} aria-labelledby="current-gate-title">
       <div className="gate-summary">
@@ -125,8 +125,8 @@ export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompar
     </section>
     <section className="ability-section"><div className="section-heading"><div><h2>模型评测能力分析</h2><p>图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。</p></div><span className="subtle-tag">数值越高表现越好</span></div><MetricBars rows={result.summary_df} gateLine={gateLine}/></section>
     <div className="overview-bottom">
-      <button className="analysis-entry" onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><SlideArrow/></button>
-      <button className="analysis-entry" onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><SlideArrow/></button>
+      <button className="analysis-entry" data-spotlight onClick={onCompare}><Icon name="chart" size={24}/><span><strong>比较模型表现</strong><small>查看完整指标与模型耗时</small></span><SlideArrow/></button>
+      <button className="analysis-entry" data-spotlight onClick={onTrace}><Icon name="trace" size={24}/><span><strong>检查幻觉证据</strong><small>展开回答、原子陈述与检索原文</small></span><SlideArrow/></button>
     </div>
   </>;
 }

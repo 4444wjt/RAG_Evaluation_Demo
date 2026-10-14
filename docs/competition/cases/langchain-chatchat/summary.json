@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "run": "docs/competition/evidence/20261005T144504Z-full-39511424",
+    "model": "deepseek-chat",
+    "sha256": {
+      "docs/competition/evidence/20261005T144504Z-full-39511424/api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "docs/competition/evidence/20261005T144504Z-full-39511424/inputs/case-manifest.json": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba"
+    }
+  },
+  "model": {
+    "name": "deepseek-chat",
+    "temperature": 0
+  },
+  "returnedModels": {
+    "deepseek-flash": 100
+  },
+  "arms": {
+    "platform": {
+      "label": "本项目 rag_answer",
+      "completed": 25,
+      "errors": 0,
+      "byCategory": {
+        "D": {
+          "label": "直接问答",
+          "questions": 10,
+          "refused": 0,
+          "statements": 21,
+          "supported": 21,
+          "refusedIds": []
+        },
+        "C": {
+          "label": "组合推理",
+          "questions": 5,
+          "refused": 0,
+          "statements": 15,
+          "supported": 15,
+          "refusedIds": []
+        },
+        "F": {
+          "label": "错误前提",
+          "questions": 5,
+          "refused": 3,
+          "statements": 4,
+          "supported": 4,
+          "refusedIds": [
+            "F01",
+            "F03",
+            "F04"
+          ]
+        },
+        "N": {
+          "label": "资料无答案",
+          "questions": 5,
+          "refused": 5,
+          "statements": 0,
+          "supported": 0,
+          "refusedIds": [
+            "N01",
+            "N02",
+            "N03",
+            "N04",
+            "N05"
+          ]
+        }
+      },
+      "unsupportedStatements": [],
+      "traceStatus": {
+        "ok": 17,
+        "empty_answer": 8
+      },
+      "traceFailed": []
+    },
+    "langchain-chatchat": {
+      "label": "Langchain-Chatchat 默认知识库提示词",
+      "completed": 25,
+      "errors": 0,
+      "byCategory": {
+        "D": {
+          "label": "直接问答",
+          "questions": 10,
+          "refused": 0,
+          "statements": 17,
+          "supported": 17,
+          "refusedIds": []
+        },
+        "C": {
+          "label": "组合推理",
+          "questions": 5,
+          "refused": 0,
+          "statements": 13,
+          "supported": 13,
+          "refusedIds": []
+        },
+        "F": {
+          "label": "错误前提",
+          "questions": 5,
+          "refused": 2,
+          "statements": 8,
+          "supported": 8,
+          "refusedIds": [
+            "F03",
+            "F04"
+          ]
+        },
+        "N": {
+          "label": "资料无答案",
+          "questions": 5,
+          "refused": 5,
+          "statements": 0,
+          "supported": 0,
+          "refusedIds": [
+            "N01",
+            "N02",
+            "N03",
+            "N04",
+            "N05"
+          ]
+        }
+      },
+      "unsupportedStatements": [],
+      "traceStatus": {
+        "ok": 18,
+        "model_empty": 7
+      },
+      "traceFailed": []
+    }
+  },
+  "usage": {
+    "requests": 100,
+    "errors": 0,
+    "inputTokens": 49139,
+    "outputTokens": 6088,
+    "costCny": 0.147
+  },
+  "scope": "一次运行、一个领域、25 题、一个模型；只换问答提示词。不计算 Ragas 指标，不给门禁结论，不代表被测项目实际部署的效果。"
+}

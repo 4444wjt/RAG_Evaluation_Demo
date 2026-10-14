@@ -72,7 +72,7 @@ def _check_isolated_api(entry_point, tmp_path):
                 assert response.status_code == 200
                 assert response.json() == {"status": "ok"}
                 if sys.argv[2] == "scope":
-                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate"}
+                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate", "/inputs"}
                     assert client.post("/evaluate", json={"resources": {}}).status_code == 422
                     assert client.post("/uploads").status_code == 404
         finally:
@@ -101,7 +101,7 @@ def test_asgi_entry_point_exposes_health(tmp_path):
     _check_isolated_api("asgi", tmp_path)
 
 
-def test_api_has_evaluation_but_no_upload_endpoint(tmp_path):
+def test_api_exposes_raw_inputs_but_no_legacy_upload_endpoint(tmp_path):
     _check_isolated_api("scope", tmp_path)
 
 

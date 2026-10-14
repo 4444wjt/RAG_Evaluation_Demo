@@ -49,7 +49,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 
 **可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工材料通过现有 JSON 单独录入，不覆盖机器结果、不生成准确率；该核验仅覆盖冻结 Demo 的 13 条定向样本，不代表总体准确率、独立认证或模型复跑验证。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
 
-**当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景，不是跨领域 Benchmark：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。该结果不代表总体准确率或独立裁判可靠性；新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
+**当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景，不是跨领域 Benchmark：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`，按 DeepSeek 官方[模型页](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)即 DeepSeek-V4.1-Flash；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。该结果不代表总体准确率或独立裁判可靠性；新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
 
 **外部基准：** 2026-10-13 用两个公开、带人工标注的中文数据集检验逐句核对本身，直接调用生产代码，500 次请求（经授权，按用量估算约 ¥2.68）。
 - **ANAH**（ACL 2024）逐句幻觉标注 300 句，各类等量抽取：有幻觉句子的召回率 0.89（95% 区间 0.84–0.93）；精确率 0.87，按实际比例折算约 0.72。人工判为无幻觉的句子有 27% 被判无依据，即核对比人工更严。
@@ -70,6 +70,10 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 - 门禁裁判的真实误差**待非作者人工标注**（52 条，约 30 分钟，工作台「人工标注」页），完成前不报告校正后的结论。分析口径已事先写定：分母与门禁一致，未决陈述给上下界，部分标注只用从第一题起连续、至少 10 题的部分。
 
 详见 [裁判判错校准](docs/competition/judge-calibration/README.md)。
+
+**用了本平台好在哪：** 同一次 FAIL，只看 Ragas 总分是 0.59（把 5 道正确拒答的负向题算作 0 分）。本平台给出正向题 0.7375，并说明：作答题 40 条陈述都有原文依据；拦截的 76% 来自 4 道错误前提题的拒答，该修提示词而不是检索；区间跨门槛，属于保守拦截。详见 [同一次 FAIL 的三种看法](docs/competition/value-comparison.md)。
+
+**外部案例：** 2026-10-14 检验了 [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) 的默认知识库提示词（经授权，100 次请求，约 ¥0.15）。同一模型、同一批资料，只换提示词：5 道错误前提题中，它拒答 2 道，本项目自己的提示拒答 3 道；其中 F03、F04 两道资料里有纠正所需的原文，两种提示都回答「无法回答」。资料无答案的 5 道题两者都正确拒答，作答的陈述逐句核对全部有原文依据。只测了默认提示词，不代表该项目的实际部署效果。详见 [外部案例](docs/competition/cases/langchain-chatchat/README.md)。
 
 完整性哈希基于文件原始字节；仓库通过 [`.gitattributes`](.gitattributes) 逐文件固定检出换行符，以保证各平台校验一致。
 
@@ -185,7 +189,7 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 .\venv\Scripts\python.exe -m uvicorn backend.api.app:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-前端继续通过 `npm run dev` 启动。进入工作区配置项目内文档路径、测试集、模型和阈值，再开始评测。
+前端继续通过 `npm run dev` 启动。进入工作区，默认可直接选择项目自带示例，也可切换“电脑文件”选择或拖入资料，再配置测试集、模型和阈值。文档支持 TXT / PDF / DOCX / MD，自定义测试集支持 JSON / CSV / TXT，单个文件最多 10 MiB；导入会保存到当前评测服务的 `work/uploads/`，不会调用模型。确认配置后点击“开始评测”。已有项目文件的手动路径入口位于高级选项中。
 
 `/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
 

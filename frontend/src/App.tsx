@@ -37,6 +37,12 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'annotate', label: '人工标注', icon: 'pen', title: '人工标注', description: '请非作者逐条判断门禁所用的陈述能否由资料推出，用来估计裁判判错的程度。' },
 ];
 
+/** Sidebar groups: the evaluation itself, then the checks on it. Each group keeps its own tone. */
+const NAV_GROUPS: { id: string; label: string; tone: 'eval' | 'audit'; views: DashboardView[] }[] = [
+  { id: 'nav-group-eval', label: '评测', tone: 'eval', views: ['overview', 'workspace', 'comparison', 'trace', 'report'] },
+  { id: 'nav-group-audit', label: '验证与审计', tone: 'audit', views: ['verification', 'audit', 'robustness', 'annotate'] },
+];
+
 /** Sidebar context card. Labels carry their own prefix ("门禁 PASS", "来源 · …") so they never duplicate a field shown in the main view. */
 function SidebarRun({ result, source }: { result: EvaluationResult; source: string }) {
   const rows = result.summary_df.filter((row) => typeof row.model === 'string' && row.model.length > 0);
@@ -78,6 +84,19 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     window.history.replaceState({ ...window.history.state, labView: view }, '');
     window.history.pushState({ labEntryHandled: true, labView: next }, '', hash);
   };
+
+  // Cards marked data-spotlight light up under the pointer; one listener serves them all.
+  useEffect(() => {
+    const move = (event: PointerEvent) => {
+      const card = (event.target as Element | null)?.closest?.<HTMLElement>('[data-spotlight]');
+      if (!card) return;
+      const box = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${event.clientX - box.left}px`);
+      card.style.setProperty('--my', `${event.clientY - box.top}px`);
+    };
+    window.addEventListener('pointermove', move, { passive: true });
+    return () => window.removeEventListener('pointermove', move);
+  }, []);
 
   useEffect(() => {
     if (!onHome) return;
@@ -170,7 +189,10 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
 
   return <div className="app-shell">
     <aside className="sidebar"><a className="brand" href={labHash('overview', isDemo)} onClick={(event) => { event.preventDefault(); navigate('overview'); }}><span className="brand-mark"><Icon name="shield" size={27}/></span><span><strong>鉴真全域</strong><small>VeriScope AI</small></span></a>
-      <span className="navigation-label">实验工作台</span><nav aria-label="工作区导航">{navigation.map((item) => <button key={item.id} className={`nav-item ${view === item.id ? 'active' : ''}`} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><Icon name={item.icon}/><span>{item.label}</span>{view === item.id && <span className="nav-active-mark"/>}</button>)}</nav>
+      <nav aria-label="工作区导航">{NAV_GROUPS.map((group) => <div key={group.id} className={`nav-group nav-group--${group.tone}`} role="group" aria-labelledby={group.id}>
+        <span className="nav-group-label" id={group.id}>{group.label}</span>
+        {group.views.map((id) => navigation.find((item) => item.id === id)!).map((item) => <button key={item.id} className={`nav-item ${view === item.id ? 'active' : ''}`} title={item.description} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><span className="nav-icon" aria-hidden="true"><Icon name={item.icon} size={17}/></span><span>{item.label}</span></button>)}
+      </div>)}</nav>
       {run.result ? <SidebarRun result={run.result} source={isDemo ? `演示快照 ${demoVersion}` : '来源 · 本次接口返回'}/> : <p className="sidebar-run-empty">尚未载入评测结果</p>}
       <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>GitHub 源码 · MIT</a></div>
     </aside>

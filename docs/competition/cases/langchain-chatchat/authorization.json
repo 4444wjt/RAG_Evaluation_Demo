@@ -1,0 +1,20 @@
+{
+  "packageSha256": "774ed8e53406699746849ce6f9c0ae339a8e2c55829ffdb8de45870e30c141ef",
+  "authorizedBy": "Ll（2026-10-13 会话内确认「同意」）",
+  "authorizedAt": "2026-10-14T03:55:57+00:00",
+  "budgetCny": 2.0,
+  "maxRequests": 120,
+  "maxRetries": 0,
+  "price": {
+    "inputCnyPerMillion": 2,
+    "outputCnyPerMillion": 8,
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing（缓存未命中价，保守取值）"
+  },
+  "toolSha256": {
+    "tools/competition/prompt_case.py": "6f3dbe4fabf4006267407edc9daf340576371e1968024f704841e70cc9e57c00",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/services/answering.py": "96b752635d16f30d2fbf8f45393f22ed62d38460d6599a8360b656d08f6da5f5",
+    "backend/core/attribution.py": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+  },
+  "note": "用户在会话中对「最多 120 次调用、上限 ¥2、不重试」回复「同意」。"
+}

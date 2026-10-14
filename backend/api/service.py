@@ -2,6 +2,7 @@
 
 from collections.abc import Callable, Mapping
 import os
+import re
 from pathlib import Path, PureWindowsPath
 from threading import Lock
 from typing import Any
@@ -31,6 +32,10 @@ def _allowed_location(relative: Path, root_files: set[str]) -> bool:
         len(relative.parts) == 1 and relative.name in root_files
     ) or (
         len(relative.parts) > 1 and relative.parts[0] == "scenarios"
+    ) or (
+        len(relative.parts) == 3
+        and relative.parts[:2] == ("work", "uploads")
+        and re.fullmatch(r"[0-9a-f]{32}\.[a-z0-9]+", relative.name) is not None
     )
 
 

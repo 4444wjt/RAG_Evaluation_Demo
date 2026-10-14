@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon } from '../components/Icon';
-import { REPO_URL } from '../config';
+import { DEEPSEEK_VERSION, REPO_URL } from '../config';
 import { percent } from '../utils/format';
 import auditData from '../fixtures/gate-audit.json';
 import './gate-audit.css';
@@ -20,7 +20,7 @@ function Chip({ tone, children }: { tone: Tone; children: ReactNode }) {
 }
 
 function Question({ id, index, title, verdict, tone, source, children }: { id: string; index: string; title: string; verdict: string; tone: Tone; source: { label: string; path: string }; children: ReactNode }) {
-  return <article className="audit-question" aria-labelledby={`${id}-title`}>
+  return <article className={`audit-question audit-question--${tone}`} aria-labelledby={`${id}-title`}>
     <header><span className="audit-index" aria-hidden="true">{index}</span><h3 id={`${id}-title`}>{title}</h3><Chip tone={tone}>{verdict}</Chip></header>
     <div className="audit-question-body">{children}</div>
     <a className="audit-source" href={sourceLink(source.path)} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>{source.label}</a>
@@ -330,11 +330,11 @@ export function GateAuditView() {
   const r = audit.recompute;
   return <div className="audit-view">
     <section className="audit-subject" aria-label="审计对象">
-      <div><span className="audit-kicker">审计对象</span><p>{`25 题正式运行 · DeepSeek · ${r.source.runId.split('-')[0]}`}</p></div>
+      <div><span className="audit-kicker">审计对象</span><p>{`25 题正式运行 · ${DEEPSEEK_VERSION} · ${r.source.runId.split('-')[0]}`}</p></div>
       <div><span className="audit-kicker">原始门禁</span><p><Chip tone="danger">{gateLabel(r.recordedPassed)}</Chip>{`正向忠实度 ${percent(r.recordedFaithfulness)} < 门槛 ${percent(r.thresholds.faithfulness)}`}</p></div>
       <p className="audit-note">本页数据由 tools/competition/build_audit_fixture.py 从冻结证据生成并核对哈希：不调用模型，不改门禁规则，也不改判已记录的 FAIL。与「加载演示」的快照无关。</p>
     </section>
-    <section className="audit-panel" aria-labelledby="audit-questions-title">
+    <section className="audit-panel audit-panel--open" aria-labelledby="audit-questions-title">
       <div className="audit-panel-head"><div><h2 id="audit-questions-title">门禁可信度四问</h2><p>门禁给出的 PASS / FAIL 决定能否发布，所以门禁结论本身也要被检验。</p></div></div>
       <div className="audit-questions"><Recompute/><Judges/><Sensitivity/><Certainty/></div>
     </section>

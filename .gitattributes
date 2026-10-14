@@ -180,3 +180,13 @@
 /docs/competition/judge-calibration/README.md text eol=lf
 /docs/competition/judge-calibration/SHA256SUMS.txt text eol=lf
 /docs/competition/judge-calibration/simulation.json text eol=lf
+
+# 外部案例（Langchain-Chatchat 默认提示词）：哈希记录在同目录 SHA256SUMS.txt。
+# README 与 SHA256SUMS.txt 为 LF；三个 JSON 由工具在 Windows 上写出（CRLF），按原样存储、不做换行转换。
+/docs/competition/cases/langchain-chatchat/README.md text eol=lf
+/docs/competition/cases/langchain-chatchat/SHA256SUMS.txt text eol=lf
+/docs/competition/cases/langchain-chatchat/authorization.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/competition/cases/langchain-chatchat/items.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/competition/cases/langchain-chatchat/summary.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# 运行时的工具副本（LF），哈希与 authorization.json 中记录的一致；运行后工具只改了分析口径。
+/docs/competition/cases/langchain-chatchat/runner/prompt_case.py text eol=lf

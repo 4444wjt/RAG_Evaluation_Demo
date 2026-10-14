@@ -1,7 +1,8 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen';
+export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen' | 'upload';
 const paths: Record<IconName, React.ReactNode> = {
+  upload: <><path d="M12 16V3m-4 4 4-4 4 4M4 15v5h16v-5"/></>,
   shield: <><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/></>,
   overview: <><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></>,
   layers: <><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5m-18 5 9 5 9-5"/></>,

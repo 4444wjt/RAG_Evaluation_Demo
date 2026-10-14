@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import type { EvaluationResult, JsonValue, ResultRow } from '../api/types';
 import { MODEL_COLORS } from '../config';
 import { Icon } from '../components/Icon';
-import { modelName, textValue } from '../utils/format';
+import { modelName, swatch, textValue } from '../utils/format';
 import '../components/viz.css';
 import './details.css';
 
@@ -242,9 +242,9 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
       </div>
       {models.length > 0 && <label className="trace-model-field">
         <span>检查模型</span>
-        <select className="field trace-model-select" value={model} onChange={(event) => setSelection({ result, model: event.target.value, index: 0 })}>
-          {models.map((name) => <option key={name} value={name}>{modelName(name)}</option>)}
-        </select>
+        <span className="model-select" style={swatch(models.indexOf(model))}><select className="field trace-model-select" value={model} onChange={(event) => setSelection({ result, model: event.target.value, index: 0 })}>
+          {models.map((name, index) => <option key={name} value={name} className="model-option" style={swatch(index)}>{modelName(name)}</option>)}
+        </select></span>
       </label>}
     </header>
 

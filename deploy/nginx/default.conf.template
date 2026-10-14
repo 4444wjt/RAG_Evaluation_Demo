@@ -39,6 +39,21 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
+    # 本地可评测部署允许导入；公开只读站在读取文件前拒绝。
+    location = /api/inputs {
+        default_type application/json;
+        set $veriscope_read_only "${VERISCOPE_READ_ONLY}";
+        if ($veriscope_read_only = "1") {
+            return 423 '{"detail":"公开演示站点未开放资料导入。"}';
+        }
+        client_max_body_size 10m;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 120s;
+        proxy_pass http://api:8000/inputs;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
     # 与前端开发代理一致：去掉 /api 前缀后转发给后端。
     location /api/ {
         limit_except GET HEAD { deny all; }

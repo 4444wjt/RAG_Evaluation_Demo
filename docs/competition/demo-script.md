@@ -57,7 +57,7 @@ npm run dev
 ## 25题正式运行主线（约60秒）
 
 1. 打开[正式运行证据](evidence/20261005T144504Z-full-39511424/README.md)，先说明这是同一金融材料的25题固定场景，不是跨领域 Benchmark。
-2. 展示请求模型 `deepseek-chat` 与实际返回模型 `deepseek-flash`、Ragas 0.1.21、`zh-sentence-v1`、325次调用和558,958 token。
+2. 展示请求模型 `deepseek-chat` 与实际返回模型 `deepseek-flash`（官方对应 DeepSeek-V4.1-Flash）、Ragas 0.1.21、`zh-sentence-v1`、325次调用和558,958 token。
 3. 展示原始 FAIL：正向 Faithfulness 0.7375 低于0.8；正向 Context Precision 0.9833 达标。强调不调阈值、不把Trace争议直接当作门禁原因。
 4. 展示F01/F03/F04/F05拒答、C02/D09指标与Trace差异、C03/D08低分、N03/N05拒答Trace差异；说明离线解释均为“AI辅助分析、待人工确认”。
 5. 结尾说明费用仍是估算，没有自动封顶；本次没有扩展三模型或追加调用。

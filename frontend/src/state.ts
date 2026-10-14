@@ -1,5 +1,6 @@
 import type { EvaluateRequest, EvaluationResult, ResultSource } from './api/types';
 import { MODELS } from './config';
+import type { ImportedInput } from './api/inputFiles';
 
 export interface WorkspaceConfig {
   docPath: string;
@@ -10,6 +11,8 @@ export interface WorkspaceConfig {
   useDefaultThresholds: boolean;
   faithThreshold: number;
   contextThreshold: number;
+  docImport?: ImportedInput;
+  testsetImport?: ImportedInput;
 }
 
 export const initialConfig: WorkspaceConfig = {
@@ -36,7 +39,7 @@ export function toRequest(config: WorkspaceConfig): EvaluateRequest {
 
 export function validateConfig(config: WorkspaceConfig): string | null {
   if (!config.modelNames.length) return '请至少选择一个模型。';
-  if (config.testsetMode === 'custom' && !config.testsetPath.trim()) return '请填写自定义测试集的项目相对路径。';
+  if (config.testsetMode === 'custom' && !config.testsetPath.trim()) return '请先选择或导入自定义测试集。';
   if (config.testsetMode === 'benchmark' && (!Number.isInteger(config.benchmarkLimit) || config.benchmarkLimit < 1)) return '基准样本数量必须是正整数。';
   if (!config.useDefaultThresholds && [config.faithThreshold, config.contextThreshold].some((value) => !Number.isFinite(value) || value < 0 || value > 1)) return '门禁阈值必须介于 0 和 1 之间。';
   return null;

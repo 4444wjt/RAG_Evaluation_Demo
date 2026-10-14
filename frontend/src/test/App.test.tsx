@@ -319,7 +319,7 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={sample()} gateProvenance={demo.provenance} {...callbacks}/>);
     const replay = screen.getByRole('region', { name: '正式运行回放' });
     expect(replay.nextElementSibling).toBe(screen.getByRole('region', { name: '当前模型质量门禁' }));
-    expect(within(replay).getByText('来源：25 题正式运行 · DeepSeek · 20261005T144504Z（冻结证据，非本页演示快照）')).toBeInTheDocument();
+    expect(within(replay).getByText('来源：25 题正式运行 · DeepSeek-V4.1-Flash · 20261005T144504Z（冻结证据，非本页演示快照）')).toBeInTheDocument();
     expect(within(replay).getByText(/自研 Trace，与门禁并列、不参与计算/)).toBeInTheDocument();
     expect(within(replay).getByText('门禁 FAIL')).toBeInTheDocument();
     expect(within(replay).getByText('正向忠实度 73.8% · 门槛 ≥ 80.0%')).toBeInTheDocument();

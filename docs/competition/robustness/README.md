@@ -16,7 +16,7 @@
 - **授权**：付费调用经用户在会话中单独授权，预算 ¥5，最多 260 次请求，不重试。材料包与运行代码的 SHA-256 均绑定在 [authorization.json](20261013-formal-run/authorization.json) 中。
 - **调用**：260 次请求全部返回，没有失败，167 / 167 项任务完成。
 - **费用**：按返回用量估算 ¥0.47（输入 146,676 token，输出 21,496 token），不是账单。运行前估算的上限是 ¥2.04。
-- **模型**：请求模型为 `deepseek-chat`，服务端返回的模型名为 `deepseek-flash`，260 次均如此。核对与作答都直接调用生产代码，没有另写提示词。
+- **模型**：请求模型为 `deepseek-chat`，服务端返回的模型名为 `deepseek-flash`，260 次均如此；按 DeepSeek 官方[模型页](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)即 DeepSeek-V4.1-Flash。核对与作答都直接调用生产代码，没有另写提示词。
 - **输入**：只读取冻结证据（`api-response.json`，SHA-256 `76986504…fadb9d`），不改动它。
 
 ## 五种资料条件

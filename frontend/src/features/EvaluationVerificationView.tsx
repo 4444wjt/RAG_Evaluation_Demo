@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { DemoFixture, EvaluationResult, ResultSource } from '../api/types';
 import { Icon } from '../components/Icon';
 import { Donut } from '../components/Donut';
-import { modelName, percent, textValue } from '../utils/format';
+import { modelName, percent, swatch, textValue } from '../utils/format';
 import demoRaw from '../fixtures/demo.json?raw';
 import reviewData from '../fixtures/credibility-review.json';
 import failureCase from '../fixtures/financial-failure-case.json';
@@ -202,7 +202,7 @@ export function EvaluationVerificationView({ result, source, reviewBundle = revi
       <p>预选 {bundle.records.length}/{totalAnswers} 条回答，关联 {selectedStatements}/{totalStatements} 条逐句记录。已检查包含“无法确认”；定向核验范围不代表整体准确率。</p>
     </section>
     <section className="verification-records" aria-labelledby="verification-records-title">
-      <div className="verification-section-heading"><div><h2 id="verification-records-title">核验记录</h2><p>按真实核验材料展示结论；机器原判定保持不变。</p></div><div className="verification-filters"><label>模型<select aria-label="模型" value={model} onChange={event => { setModel(event.target.value); setExpanded(null); }}><option value="all">全部模型</option>{Object.keys(targets).map(id => <option key={id} value={id}>{modelName(id)}</option>)}</select></label><label>核验状态<select aria-label="核验状态" value={status} onChange={event => { setStatus(event.target.value); setExpanded(null); }}><option value="all">全部状态</option>{Object.entries(statusLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label></div></div>
+      <div className="verification-section-heading"><div><h2 id="verification-records-title">核验记录</h2><p>按真实核验材料展示结论；机器原判定保持不变。</p></div><div className="verification-filters"><label>模型<span className="model-select" style={swatch(Object.keys(targets).indexOf(model))}><select aria-label="模型" value={model} onChange={event => { setModel(event.target.value); setExpanded(null); }}><option value="all">全部模型</option>{Object.keys(targets).map((id, index) => <option key={id} value={id} className="model-option" style={swatch(index)}>{modelName(id)}</option>)}</select></span></label><label>核验状态<select aria-label="核验状态" value={status} onChange={event => { setStatus(event.target.value); setExpanded(null); }}><option value="all">全部状态</option>{Object.entries(statusLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label></div></div>
       <div className="verification-table-scroll"><table className="verification-table"><caption className="verification-visually-hidden">预选回答的人工核验记录</caption><thead><tr><th scope="col">模型</th><th scope="col">问题</th><th scope="col">核验重点</th><th scope="col">状态</th><th scope="col">详情</th></tr></thead>{filtered.map(record => {
         const key = `${record.modelId}:${record.rowIndex}`;
         const detailId = `verification-detail-${Object.keys(targets).indexOf(record.modelId)}-${record.rowIndex}`;

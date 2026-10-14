@@ -44,8 +44,8 @@ docker compose up -d --build
 
 `VERISCOPE_READ_ONLY=1`（默认）时：
 
-- **nginx 层**：`POST /api/evaluate` 直接返回 HTTP 423；`/api/` 下其他路径只允许 GET 与 HEAD；`/api/docs`、`/api/redoc`、`/api/openapi.json` 返回 404。
-- **后端层**：`/evaluate` 在读取请求参数前检查 `VERISCOPE_READ_ONLY`，同样返回 423（[backend/api/app.py](../backend/api/app.py)）。
+- **nginx 层**：`POST /api/evaluate` 和 `POST /api/inputs` 直接返回 HTTP 423；`/api/` 下其他路径只允许 GET 与 HEAD；`/api/docs`、`/api/redoc`、`/api/openapi.json` 返回 404。
+- **后端层**：`/evaluate` 与 `/inputs` 同样检查 `VERISCOPE_READ_ONLY` 并拒绝写入；资料导入在读取文件正文前返回 423（[backend/api/app.py](../backend/api/app.py)）。
 - **前端**：以 `VITE_READ_ONLY=1` 构建，工作台只展示快照，不显示评测入口。
 
 ## 改为可评测部署
@@ -64,6 +64,7 @@ SILICONFLOW_API_KEY=...
 - 全量依赖包含 torch 等大型包，镜像构建明显更慢、更大。
 - 评测需要本地可用的 Embedding 模型（见根目录 `.env.example` 的 `EMBEDDING_MODEL` 说明）；引擎评测时不联网下载模型。
 - 评测是同步请求，可能持续数分钟；nginx 对 `/api/evaluate` 的超时设为 30 分钟。
+- 可评测模式允许从电脑导入资料和测试集，单个文件最多 10 MiB；nginx 与后端均限制大小。内置示例随 API 镜像提供。导入文件保存到容器 `/app/work/uploads/`，默认没有持久卷，重建容器后需重新导入；导入成功只说明文件已保存，内容格式仍由既有评测流程检查。
 - 这样部署会开放付费模型调用。请自行加上访问控制（例如反向代理鉴权或仅限内网访问），不要直接暴露在公网。
 
 ## HTTPS
@@ -88,6 +89,8 @@ compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS �
 这次服务器测试发现并修复了一处问题：`default_type` 原写在 `if` 块内，nginx 不允许，web 容器启动即退出；已移到 `location` 层。
 
 尚未验证：`API_INSTALL=full` 的全量镜像构建与真实评测，以及 `WEB_BIND=0.0.0.0` 直接对外开放的情形。
+
+后续新增的 `/api/inputs` 代理和示例文件复制规则不属于上述服务器验收记录。本轮仅完成本地 API / 前端离线验证，未重建或修改线上容器。
 
 ## 备用静态站：GitHub Pages
 

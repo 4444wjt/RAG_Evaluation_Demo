@@ -11,9 +11,14 @@ export const STATIC_SITE = import.meta.env.VITE_STATIC_SITE === '1';
  *  Charts and the workspace model cards share these, so a model keeps one colour across the app. */
 export const MODEL_COLORS = ['#3987e5', '#d95926', '#199e70', '#9085e9', '#d55181', '#c98500'];
 
+/** 有服务端返回记录的 DeepSeek 运行（25 题正式运行、外部基准、鲁棒性体检）：请求 deepseek-chat（旧别名），服务端返回 deepseek-flash。
+ *  DeepSeek 官方「模型 & 价格」页与 2026-09-10 更新日志：deepseek-flash 对应 DeepSeek-V4.1-Flash（https://api-docs.deepseek.com/zh-cn/quick_start/pricing）。
+ *  演示快照没有记录服务端返回的模型名，所以通用标签仍写 DeepSeek，不推断它的版本。 */
+export const DEEPSEEK_VERSION = 'DeepSeek-V4.1-Flash';
+
 /** Public model IDs only. Update these if the local backend names are overridden. */
 export const MODELS = [
-  { id: 'deepseek-chat', label: 'DeepSeek', detail: 'DeepSeek 通用对话模型', initials: 'DS' },
+  { id: 'deepseek-chat', label: 'DeepSeek', detail: 'deepseek-chat 为旧别名，服务端返回 deepseek-flash（V4.1-Flash）', initials: 'DS' },
   { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', detail: '通义千问 7B 指令模型', initials: 'QW' },
   { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', detail: '智谱 GLM · 阿里云百炼', initials: 'GL' },
 ] as const;
