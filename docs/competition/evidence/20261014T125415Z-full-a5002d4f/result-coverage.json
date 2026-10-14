@@ -1,0 +1,36 @@
+{
+  "models": {
+    "deepseek-chat": {
+      "answerCount": 25,
+      "metrics": {
+        "faithfulness": {
+          "valid": 25,
+          "missing": 0
+        },
+        "context_precision": {
+          "valid": 25,
+          "missing": 0
+        },
+        "answer_relevancy": {
+          "valid": 25,
+          "missing": 0
+        },
+        "answer_correctness": {
+          "valid": 25,
+          "missing": 0
+        },
+        "context_recall": {
+          "valid": 25,
+          "missing": 0
+        }
+      },
+      "trace": {
+        "nonempty": 17,
+        "empty": 8,
+        "missing": 0,
+        "invalid": 0
+      }
+    }
+  },
+  "note": "运行完成、指标覆盖与Trace覆盖分别记录。空Trace可能来自拒答、抽取、调用或解析，不能据空列表确认原因；不重算分数或门禁。"
+}

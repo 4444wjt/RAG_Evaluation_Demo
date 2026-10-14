@@ -112,6 +112,7 @@ def test_evaluate_request_defaults():
         "benchmark": None,
         "benchmark_limit": 20,
         "model_names": None,
+        "judge_model_name": None,
         "faith_threshold": None,
         "ctx_prec_threshold": None,
         "version_label": None,
@@ -129,7 +130,7 @@ def test_evaluate_request_preserves_zero_thresholds_and_model_order():
         "ctx_prec_threshold": 0.0,
         "version_label": "实验备注\n第二行",
     }
-    assert EvaluateRequest.model_validate(supplied).model_dump() == supplied
+    assert EvaluateRequest.model_validate(supplied).model_dump() == {**supplied, "judge_model_name": None}
 
 
 @pytest.mark.parametrize("supplied", [

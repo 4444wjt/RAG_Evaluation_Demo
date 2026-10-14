@@ -8,6 +8,8 @@ export interface WorkspaceConfig {
   testsetPath: string;
   benchmarkLimit: number;
   modelNames: string[];
+  /** Empty/absent preserves self-judging; this model need not be one of the tested models. */
+  judgeModelName?: string;
   useDefaultThresholds: boolean;
   faithThreshold: number;
   contextThreshold: number;
@@ -31,6 +33,7 @@ export function toRequest(config: WorkspaceConfig): EvaluateRequest {
     benchmark: config.testsetMode === 'benchmark' ? 'truthful_qa' : null,
     benchmark_limit: benchmarkLimit,
     model_names: [...config.modelNames],
+    ...(config.judgeModelName ? { judge_model_name: config.judgeModelName } : {}),
     faith_threshold: config.useDefaultThresholds ? null : config.faithThreshold,
     ctx_prec_threshold: config.useDefaultThresholds ? null : config.contextThreshold,
     version_label: null,

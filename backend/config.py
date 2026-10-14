@@ -56,9 +56,14 @@ EVAL_TIMEOUT = 300
 ENABLE_TRACE = os.environ.get("RAG_ENABLE_TRACE", "1") != "0"
 
 # ====================== 多模型配置（安全版：环境变量读取密钥） ======================
+DEEPSEEK_MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
+
 MODELS_CONFIG = [
     {
-        "name": os.environ.get("DEEPSEEK_MODEL", "deepseek-chat"),
+        "name": DEEPSEEK_MODEL,
+        # 旧别名 deepseek-chat 实测由服务端返回 deepseek-flash；DeepSeek 官方「模型 & 价格」页写明其版本为 DeepSeek-V4.1-Flash。
+        # 改用其他模型名时显示原名，不套用这个版本号。
+        "display_name": "DeepSeek-V4.1-Flash" if DEEPSEEK_MODEL in ("deepseek-chat", "deepseek-flash") else DEEPSEEK_MODEL,
         "base_url": os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"),
         "api_key_env": "OPENAI_API_KEY"
     },

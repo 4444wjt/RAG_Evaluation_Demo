@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { checkHealth, ConnectionError, evaluate, isEvaluationResult } from './api/client';
 import type { DemoFixture, EvaluationResult } from './api/types';
+import { BrandMark } from './components/BrandMark';
 import { Icon } from './components/Icon';
 import type { IconName } from './components/Icon';
 import { OverviewView } from './features/OverviewView';
@@ -11,12 +12,14 @@ import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
 import { EvaluationVerificationView } from './features/EvaluationVerificationView';
 import { GateAuditView } from './features/GateAuditView';
+import { FixVerificationView } from './features/FixVerificationView';
 import { RobustnessView } from './features/RobustnessView';
 import { AnnotateView } from './features/AnnotateView';
 import { ModelsView } from './features/ModelsView';
 import { fetchModels } from './api/models';
 import type { ModelEntry } from './api/models';
 import demoData from './fixtures/demo.json';
+import sourceRegistry from './fixtures/source-registry.json';
 import { MODEL_COLORS, MODELS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
 import { labHash, parseLabHash } from './labRoute';
 import type { LabView } from './labRoute';
@@ -25,8 +28,11 @@ import { modelName, seconds } from './utils/format';
 import type { EntryRequest } from './AppEntry';
 
 const demo = demoData as DemoFixture;
-const demoRun = demo.provenance.run as { version?: unknown } | undefined;
+const demoRun = demo.provenance.run as { version?: unknown; doc_name?: unknown } | undefined;
 const demoVersion = typeof demoRun?.version === 'string' ? demoRun.version : demo.provenance.label;
+const demoSource = sourceRegistry.documents.find((entry) => entry.path === demoRun?.doc_name);
+// Only the frozen demo is bound to the registered source; live API results have no document hash.
+const demoDocument = demoSource ? { path: demoSource.path, sha256: demoSource.sha256 } : null;
 type DashboardView = LabView;
 const navigation: { id: DashboardView; label: string; icon: IconName; title: string; description: string }[] = [
   { id: 'overview', label: '评测总览', icon: 'overview', title: '评测总览', description: '从质量门禁到逐句证据，检查模型回答的可靠性。' },
@@ -37,6 +43,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
   { id: 'verification', label: '评测验证', icon: 'check', title: '评测验证', description: '查看人工核验状态与原始依据。' },
   { id: 'audit', label: '门禁审计', icon: 'shield', title: '门禁审计', description: '检验门禁本身：结论能否复算、换裁判会不会变、有多确定，以及门禁代码对不对。' },
+  { id: 'fix', label: '修复验证', icon: 'wrench', title: '修复验证', description: '门禁拦下之后：找到原因、改一句提示词、同条件重跑，并换一批新题再验证。逐题对照两次运行。' },
   { id: 'robustness', label: '鲁棒性体检', icon: 'pulse', title: '鲁棒性体检', description: '打乱、加噪、移除依据、改成反事实：看被测应用和逐句核对是否真的依据资料。' },
   { id: 'annotate', label: '人工标注', icon: 'pen', title: '人工标注', description: '请非作者逐条判断门禁所用的陈述能否由资料推出，用来估计裁判判错的程度。' },
 ];
@@ -44,7 +51,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
 /** Sidebar groups: the evaluation itself, then the checks on it. Each group keeps its own tone. */
 const NAV_GROUPS: { id: string; label: string; tone: 'eval' | 'audit'; views: DashboardView[] }[] = [
   { id: 'nav-group-eval', label: '评测', tone: 'eval', views: ['overview', 'workspace', 'models', 'comparison', 'trace', 'report'] },
-  { id: 'nav-group-audit', label: '验证与审计', tone: 'audit', views: ['verification', 'audit', 'robustness', 'annotate'] },
+  { id: 'nav-group-audit', label: '验证与审计', tone: 'audit', views: ['verification', 'audit', 'fix', 'robustness', 'annotate'] },
 ];
 
 /** Sidebar context card. Labels carry their own prefix ("门禁 PASS", "来源 · …") so they never duplicate a field shown in the main view. */
@@ -210,30 +217,31 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const resultMeta = run.result && <div className="result-toolbar"><div><span className={`badge ${run.source === 'demo' ? 'demo' : 'neutral'}`}>{run.source === 'demo' ? '演示快照' : '真实评测结果'}</span>{stale && <span className="badge warning">上次结果 · 本次尚未更新</span>}<span className="muted">{run.source === 'demo' ? demo.provenance.label : '本次接口返回结果'}</span></div><span className="muted">总评测耗时 <strong>{seconds(run.result.total_elapsed_seconds)}</strong></span></div>;
 
   return <div className="app-shell">
-    <aside className="sidebar"><a className="brand" href={labHash('overview', isDemo)} onClick={(event) => { event.preventDefault(); navigate('overview'); }}><span className="brand-mark"><Icon name="shield" size={27}/></span><span><strong>鉴真全域</strong><small>VeriScope AI</small></span></a>
+    <aside className="sidebar"><a className="brand" href={labHash('overview', isDemo)} onClick={(event) => { event.preventDefault(); navigate('overview'); }}><span className="brand-mark"><BrandMark size={26}/></span><span><strong>鉴真全域</strong><small>VeriScope AI</small></span></a>
       <nav aria-label="工作区导航">{NAV_GROUPS.map((group) => <div key={group.id} className={`nav-group nav-group--${group.tone}`} role="group" aria-labelledby={group.id}>
         <span className="nav-group-label" id={group.id}>{group.label}</span>
         {group.views.map((id) => navigation.find((item) => item.id === id)!).map((item) => <button key={item.id} className={`nav-item ${view === item.id ? 'active' : ''}`} title={item.description} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><span className="nav-icon" aria-hidden="true"><Icon name={item.icon} size={17}/></span><span>{item.label}</span></button>)}
       </div>)}</nav>
       {run.result ? <SidebarRun result={run.result} source={isDemo ? `演示快照 ${demoVersion}` : '来源 · 本次接口返回'}/> : <p className="sidebar-run-empty">尚未载入评测结果</p>}
-      <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>GitHub 源码 · MIT</a></div>
+      <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>Gitee 源码 · MIT</a></div>
     </aside>
     <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div>{STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
-        {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && resultMeta}
+        {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'annotate' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
         {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels}/>}
         {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
-        {view === 'trace' && <TraceView result={run.result}/>}
+        {view === 'trace' && <TraceView result={run.result} document={run.source === 'demo' ? demoDocument : null}/>}
         {view === 'report' && <ReportView result={run.result}/>}
         {view === 'verification' && <EvaluationVerificationView result={run.result} source={run.source}/>}
         {view === 'audit' && <GateAuditView/>}
+        {view === 'fix' && <FixVerificationView/>}
         {view === 'robustness' && <RobustnessView/>}
         {view === 'annotate' && <AnnotateView/>}
-        {run.source === 'demo' && view !== 'workspace' && view !== 'models' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
+        {run.source === 'demo' && view !== 'workspace' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'annotate' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
         <footer className="page-footer"><span>鉴真全域 VeriScope AI</span><span>逐句核对 / 证据溯源 / 质量门禁</span></footer>
       </main>
     </div>

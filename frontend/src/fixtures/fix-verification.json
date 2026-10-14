@@ -1,0 +1,1185 @@
+{
+  "source": {
+    "baseline": {
+      "path": "docs/competition/evidence/20261005T144504Z-full-39511424",
+      "sha256": {
+        "api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+        "request.json": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147",
+        "analysis.json": "98419d22685ef4acabaff9b7f3be0ab5590afb24c10b1abe81629dd0144871db",
+        "manifest.json": "06ab32381e4171ce02c314e7bbb2cb380da5dec7f392ab0c65742004eceaca4f",
+        "prompt-definitions.json": "32bba886332cd3588324e2957157087fc92e19522c375164ce7b3e19a9dc4431"
+      }
+    },
+    "fixed": {
+      "path": "docs/competition/evidence/20261014T073859Z-full-1c6f091f",
+      "sha256": {
+        "api-response.json": "482c390ce8314f738f50904e6bb7b72238036f72589b3bb73c178f125663dd35",
+        "request.json": "1de0d3ef7dd97614e7ffad270a31b27e779afa5b9617343d056fa31b237f9164",
+        "manifest.json": "18712689bb7a3eb11ac86b080b0a145bebf787413080c66cbfdc39e0cfe27f9a",
+        "prompt-definitions.json": "32bba886332cd3588324e2957157087fc92e19522c375164ce7b3e19a9dc4431"
+      }
+    },
+    "judge": {
+      "path": "docs/competition/evidence/20261014T125415Z-full-a5002d4f",
+      "sha256": {
+        "api-response.json": "2d3357d172dc6871e79b5abf452337a94784394f1426878bfd289e5503f025bf",
+        "request.json": "07c13490e5ed7a56b78f7ee07067520bf4270bccd01c1a7e61edd51c7ea2f2ac"
+      }
+    },
+    "heldout": {
+      "path": "docs/competition/heldout-fix/20261014-deepseek",
+      "sha256": {
+        "summary.json": "17e8492479199529f54233435fb9c51bfb7cc0d27047c0a99d39e0c3676f3029",
+        "items.json": "02ea6ed83a3e70d21b8c6ea2098cde6acdc134c882cf2a3a34a249e4249458e8",
+        "package.json": "cbda8aa9b51a11eb07e25fd38e1e3480b9012b7d223f27c091d1e19bea6c785c",
+        "records.jsonl": "492157ccacb1b0336f139f524539fe934cfb55a1d8ea8466d104afed28f56d84"
+      }
+    }
+  },
+  "model": "deepseek-chat",
+  "fix": {
+    "commit": "b90a14c",
+    "line": "如果问题中的说法或前提与参考资料不一致，请依据参考资料指出并纠正，不要拒答。"
+  },
+  "code": {
+    "commits": {
+      "baseline": "ce97b4a",
+      "fixed": "b90a14c"
+    },
+    "gateSame": true,
+    "judgePromptsSame": true,
+    "sourceFiles": 46,
+    "changed": [
+      "backend/api/app.py",
+      "backend/api/input_files.py",
+      "backend/api/schemas.py",
+      "backend/api/service.py",
+      "backend/core/attribution.py",
+      "backend/core/judge_error.py",
+      "backend/core/model_registry.py",
+      "backend/core/pipeline.py",
+      "backend/core/regression.py",
+      "backend/core/robustness.py",
+      "backend/core/types.py",
+      "backend/reporting/html.py",
+      "backend/services/__init__.py",
+      "backend/services/answering.py",
+      "backend/services/trace.py",
+      "main.py"
+    ]
+  },
+  "formal": {
+    "thresholds": {
+      "faithfulness": 0.8,
+      "contextPrecision": 0.8
+    },
+    "request": {
+      "compared": [
+        "ctx_prec_threshold",
+        "doc_path",
+        "faith_threshold",
+        "model_names",
+        "testset_path"
+      ],
+      "docPath": "scenarios/deposit_insurance.txt",
+      "testsetPath": "scenarios/competition_25/testset.json"
+    },
+    "sameContexts": 25,
+    "gate": {
+      "before": {
+        "passed": false,
+        "replayed": false,
+        "posFaithfulness": 0.7375,
+        "posContextPrecision": 0.9833,
+        "refusalAccuracy": 1.0,
+        "answerCorrectness": 0.6581,
+        "certainty": {
+          "low": 0.55,
+          "high": 0.9,
+          "state": "证据不足"
+        }
+      },
+      "after": {
+        "passed": true,
+        "replayed": true,
+        "posFaithfulness": 0.8607,
+        "posContextPrecision": 0.9833,
+        "refusalAccuracy": 1.0,
+        "answerCorrectness": 0.7296,
+        "certainty": {
+          "low": 0.7286,
+          "high": 0.9667,
+          "state": "证据不足"
+        }
+      }
+    },
+    "regression": {
+      "meanDelta": 0.1232,
+      "interval": [
+        -0.025,
+        0.2923
+      ],
+      "noise": 0.0167,
+      "status": "未退步",
+      "paired": 20,
+      "drops": [
+        {
+          "id": "D08",
+          "delta": -0.6667
+        }
+      ],
+      "contextPrecisionStatus": "未退步"
+    },
+    "contribution": {
+      "corrected": 0.1357,
+      "rest": -0.0125,
+      "correctedIds": [
+        "F01",
+        "F03",
+        "F05"
+      ],
+      "restCount": 17
+    },
+    "categories": [
+      {
+        "id": "direct",
+        "label": "直接问答",
+        "questions": 10,
+        "refusedBefore": 0,
+        "refusedAfter": 0,
+        "faithfulnessBefore": 0.925,
+        "faithfulnessAfter": 0.9
+      },
+      {
+        "id": "conditional",
+        "label": "条件判断",
+        "questions": 5,
+        "refusedBefore": 0,
+        "refusedAfter": 0,
+        "faithfulnessBefore": 0.9,
+        "faithfulnessAfter": 0.9
+      },
+      {
+        "id": "missing",
+        "label": "资料无答案",
+        "questions": 5,
+        "refusedBefore": 5,
+        "refusedAfter": 5,
+        "faithfulnessBefore": null,
+        "faithfulnessAfter": null
+      },
+      {
+        "id": "false_premise",
+        "label": "错误前提",
+        "questions": 5,
+        "refusedBefore": 4,
+        "refusedAfter": 1,
+        "faithfulnessBefore": 0.2,
+        "faithfulnessAfter": 0.7428
+      }
+    ],
+    "rows": [
+      {
+        "id": "D01",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+        "groundTruth": "保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+        "sameAnswer": true,
+        "faithfulnessDelta": 0.25,
+        "change": "judge_only",
+        "before": {
+          "answer": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+          "refusal": false,
+          "faithfulness": 0.75,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D02",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？",
+        "groundTruth": "在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构应当依照本条例的规定投保存款保险。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第二条规定，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（统称投保机构）应当依照本条例的规定投保存款保险，但投保机构在中华人民共和国境外设立的分支机构以及外国银行在中华人民共和国境内设立的分支机构不适用该规定，除非中华人民共和国与其他国家或者地区之间对存款保险制度另有安排。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D03",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？",
+        "groundTruth": "投保机构向存款保险基金管理机构交纳保费，由存款保险基金管理机构依照条例向存款人偿付被保险存款。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据参考资料第三条规定，存款保险制度中，由投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，而由存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第三条规定，存款保险制度中是由投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，而由存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D04",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "节选中被保险存款包括哪些币种的存款？",
+        "groundTruth": "包括投保机构吸收的人民币存款和外币存款，但仍受第四条所列除外规定限制。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，被保险存款包括投保机构吸收的人民币存款和外币存款。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第四条，被保险存款包括投保机构吸收的人民币存款和外币存款，但金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D05",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "第四条列出的不属于被保险存款范围的存款有哪些？",
+        "groundTruth": "金融机构同业存款、投保机构高级管理人员在本投保机构的存款，以及存款保险基金管理机构规定不予保险的其他存款。",
+        "sameAnswer": true,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款、投保机构的高级管理人员在本投保机构的存款，以及存款保险基金管理机构规定不予保险的其他存款。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款、投保机构的高级管理人员在本投保机构的存款，以及存款保险基金管理机构规定不予保险的其他存款。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D06",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "根据节选，存款保险的最高偿付限额是多少？",
+        "groundTruth": "人民币50万元。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的参考资料，存款保险的最高偿付限额为人民币50万元。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的参考资料，存款保险实行限额偿付，最高偿付限额为人民币50万元，且中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整该限额，报国务院批准后公布执行。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D07",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "管理机构偿付被保险存款后，在债权关系上取得什么权利？",
+        "groundTruth": "在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料，存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D08",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "存款保险费率由哪两部分构成？",
+        "groundTruth": "基准费率和风险差别费率。",
+        "sameAnswer": false,
+        "faithfulnessDelta": -0.6667,
+        "change": "down",
+        "before": {
+          "answer": "根据参考资料第九条规定，存款保险费率由基准费率和风险差别费率两部分构成。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第九条，存款保险费率由基准费率和风险差别费率两部分构成。",
+          "refusal": false,
+          "faithfulness": 0.3333,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D09",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "按节选，投保机构应交保费按照哪些因素计算？",
+        "groundTruth": "按照本投保机构的被保险存款和管理机构确定的适用费率计算，具体办法由管理机构规定。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.1667,
+        "change": "up",
+        "before": {
+          "answer": "根据提供的文档，投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算。",
+          "refusal": false,
+          "faithfulness": 0.5,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第十条，投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。",
+          "refusal": false,
+          "faithfulness": 0.6667,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "D10",
+        "category": "direct",
+        "caseType": "positive",
+        "question": "投保机构应定期报送哪些与存款保险有关的资料？",
+        "groundTruth": "被保险存款余额、存款结构情况，以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第十条，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "C01",
+        "category": "conditional",
+        "caseType": "positive",
+        "question": "中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？",
+        "groundTruth": "两类分支机构原则上不适用第二条前款规定；中国与其他国家或地区对存款保险制度另有安排的除外。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，中国投保机构的境外分支机构以及外国银行的境内分支机构不适用第二条关于投保存款保险的要求，但中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料，中国投保机构的境外分支机构以及外国银行在中华人民共和国境内设立的分支机构，不当然适用第二条关于投保存款保险的要求，即它们不适用该条第一款的规定；但存在例外情形，即中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "C02",
+        "category": "conditional",
+        "caseType": "positive",
+        "question": "假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？",
+        "groundTruth": "本金与利息、各被保险账户合并计算共51万元；最高偿付限额内为50万元，超过限额的1万元依法从投保机构清算财产中受偿。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算，因此该存款人的资金总额为49万元本金加2万元利息，合计51万元；按照第五条规定，最高偿付限额为人民币50万元，所以在最高偿付限额以内的50万元实行全额偿付，超出最高偿付限额的部分即1万元，依法从投保机构清算财产中受偿。",
+          "refusal": false,
+          "faithfulness": 0.5,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 5,
+            "supported": 5,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第五条规定，同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算，因此该存款人本金49万元与利息2万元合计为51万元，其中在最高偿付限额人民币50万元以内的部分实行全额偿付，超出的1万元部分则依法从投保机构清算财产中受偿。",
+          "refusal": false,
+          "faithfulness": 0.5,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "C03",
+        "category": "conditional",
+        "caseType": "positive",
+        "question": "最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？",
+        "groundTruth": "中国人民银行会同国务院有关部门根据规定因素调整，报国务院批准后公布执行。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，最高偿付限额如需调整，由中国人民银行会同国务院有关部门根据经济发展、存款结构变化、金融风险状况等因素提出调整，报国务院批准后公布执行。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 0.75,
+          "trace": {
+            "status": null,
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料，最高偿付限额如需调整，由中国人民银行会同国务院有关部门根据经济发展、存款结构变化、金融风险状况等因素提出调整，报国务院批准后公布执行。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 0.75,
+          "trace": {
+            "status": "ok",
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "C04",
+        "category": "conditional",
+        "caseType": "positive",
+        "question": "条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？",
+        "groundTruth": "前者在管理机构规定的期限内办理；后者自工商行政管理部门颁发营业执照之日起6个月内办理。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据参考资料第八条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续；而本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料第八条，条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续；而条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "C05",
+        "category": "conditional",
+        "caseType": "positive",
+        "question": "人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？",
+        "groundTruth": "属于第十九条列明情形，存款人可要求在条例限额内偿付被保险存款；管理机构应在该情形发生之日起7个工作日内足额偿付。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一，且存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据参考资料，人民法院裁定受理对投保机构的破产申请属于第十九条规定的存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一，因此存款人可以要求基金偿付；同时，存款保险基金管理机构应当依照本条例规定，在前款规定情形发生之日起7个工作日内足额偿付存款。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "N01",
+        "category": "missing",
+        "caseType": "negative",
+        "question": "根据提供节选，某一家具体投保银行当前实际适用的风险差别费率是多少？",
+        "groundTruth": "文档未提及",
+        "sameAnswer": true,
+        "faithfulnessDelta": null,
+        "change": "kept_refusal",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "N02",
+        "category": "missing",
+        "caseType": "negative",
+        "question": "根据提供节选，存款人申请偿付时应拨打哪个官方受理电话号码？",
+        "groundTruth": "文档未提及",
+        "sameAnswer": true,
+        "faithfulnessDelta": null,
+        "change": "kept_refusal",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "N03",
+        "category": "missing",
+        "caseType": "negative",
+        "question": "根据提供节选，存款人申请偿付必须提交的完整材料清单是什么？",
+        "groundTruth": "文档未提及",
+        "sameAnswer": true,
+        "faithfulnessDelta": null,
+        "change": "kept_refusal",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "N04",
+        "category": "missing",
+        "caseType": "negative",
+        "question": "根据提供节选，某投保机构清算时，超过50万元部分最终能按多少百分比受偿？",
+        "groundTruth": "文档未提及",
+        "sameAnswer": true,
+        "faithfulnessDelta": null,
+        "change": "kept_refusal",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "N05",
+        "category": "missing",
+        "caseType": "negative",
+        "question": "根据提供节选，社会保险基金和住房公积金存款的具体偿付比例与执行步骤是什么？",
+        "groundTruth": "文档未提及",
+        "sameAnswer": true,
+        "faithfulnessDelta": null,
+        "change": "kept_refusal",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": null,
+            "statements": 1,
+            "supported": 1,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "F01",
+        "category": "false_premise",
+        "caseType": "positive",
+        "question": "既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。",
+        "groundTruth": "不对。存款保险实行限额偿付，最高限额为人民币50万元；超过限额部分依法从投保机构清算财产中受偿，节选不保证该部分全额受偿。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.8571,
+        "change": "corrected",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "不对。根据参考资料，存款保险实行限额偿付，最高偿付限额为人民币50万元；同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算，在最高偿付限额以内的实行全额偿付，超出最高偿付限额的部分并不是由存款保险基金保证全额偿付，而是依法从投保机构清算财产中受偿。",
+          "refusal": false,
+          "faithfulness": 0.8571,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "F02",
+        "category": "false_premise",
+        "caseType": "positive",
+        "question": "外币存款不属于存款保险保障范围，对吗？请按第四条说明。",
+        "groundTruth": "不对。被保险存款包括投保机构吸收的人民币和外币存款，但金融机构同业存款等列明除外存款不在其中。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.0,
+        "change": "same",
+        "before": {
+          "answer": "不对。根据第四条，被保险存款包括投保机构吸收的人民币存款和外币存款，因此外币存款属于存款保险保障范围。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 3,
+            "supported": 3,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "不对。根据第四条，被保险存款包括投保机构吸收的人民币存款和外币存款，因此外币存款属于存款保险保障范围；但金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "F03",
+        "category": "false_premise",
+        "caseType": "positive",
+        "question": "为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？",
+        "groundTruth": "不对。按节选，交纳保费的主体是投保机构；投保机构按规定每6个月交纳一次保费。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 1.0,
+        "change": "corrected",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 0.9167,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "不对。根据参考资料，交纳保费的是投保机构，而不是存款人：第十条规定“投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费”；第三条规定存款保险是“投保机构向存款保险基金管理机构交纳保费，形成存款保险基金”。因此，问题中“存款人必须每6个月向管理机构缴纳一次保费”的说法与参考资料不一致。",
+          "refusal": false,
+          "faithfulness": 1.0,
+          "contextPrecision": 0.9167,
+          "trace": {
+            "status": "ok",
+            "statements": 4,
+            "supported": 4,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "F04",
+        "category": "false_premise",
+        "caseType": "positive",
+        "question": "第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？",
+        "groundTruth": "不支持。原文是7个工作日，不是7个自然日，且应依照条例偿付。",
+        "sameAnswer": true,
+        "faithfulnessDelta": 0.0,
+        "change": "still_refused",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "empty_answer",
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      },
+      {
+        "id": "F05",
+        "category": "false_premise",
+        "caseType": "positive",
+        "question": "投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？",
+        "groundTruth": "不对。第四条明确将投保机构高级管理人员在本投保机构的存款列为除外。",
+        "sameAnswer": false,
+        "faithfulnessDelta": 0.8571,
+        "change": "corrected",
+        "before": {
+          "answer": "根据提供的文档，无法回答该问题。",
+          "refusal": true,
+          "faithfulness": 0.0,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": null,
+            "statements": 0,
+            "supported": 0,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        },
+        "after": {
+          "answer": "不对。根据参考资料第四条，被保险存款包括投保机构吸收的人民币存款和外币存款，但金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。因此，投保机构高级管理人员在本投保机构的存款不属于被保险存款，不纳入保险范围。",
+          "refusal": false,
+          "faithfulness": 0.8571,
+          "contextPrecision": 1.0,
+          "trace": {
+            "status": "ok",
+            "statements": 2,
+            "supported": 2,
+            "factErrors": 0,
+            "fabrications": 0
+          }
+        }
+      }
+    ]
+  },
+  "judgeRerun": {
+    "judgeModel": "Qwen/Qwen2.5-72B-Instruct",
+    "gate": {
+      "passed": false,
+      "replayed": false,
+      "posFaithfulness": 0.7992,
+      "posContextPrecision": 0.9556,
+      "refusalAccuracy": 1.0,
+      "answerCorrectness": 0.5774,
+      "certainty": {
+        "low": 0.675,
+        "high": 0.91,
+        "state": "证据不足"
+      }
+    },
+    "sameAnswers": 18,
+    "samePositive": 13,
+    "samePositiveSelf": 0.9377,
+    "samePositiveJudge": 0.8718
+  },
+  "heldout": {
+    "questions": 24,
+    "documents": [
+      "deposit",
+      "disclosure"
+    ],
+    "model": {
+      "name": "deepseek-chat",
+      "temperature": 0
+    },
+    "returnedModels": {
+      "deepseek-flash": 96
+    },
+    "usage": {
+      "requests": 96,
+      "errors": 0,
+      "inputTokens": 49619,
+      "outputTokens": 7485,
+      "costCny": 0.1591
+    },
+    "groups": [
+      {
+        "id": "false_premise",
+        "label": "错误前提",
+        "questions": 14,
+        "passBefore": 9,
+        "passAfter": 14,
+        "refusedBefore": 5,
+        "refusedAfter": 0,
+        "fullySupportedBefore": 9,
+        "fullySupportedAfter": 13,
+        "improved": [
+          "AF02",
+          "AF03",
+          "AF05",
+          "AF06",
+          "BF07"
+        ],
+        "worsened": [],
+        "signTestP": 0.0625
+      },
+      {
+        "id": "true_premise",
+        "label": "正确前提",
+        "questions": 5,
+        "passBefore": 4,
+        "passAfter": 5,
+        "refusedBefore": 1,
+        "refusedAfter": 0,
+        "fullySupportedBefore": 4,
+        "fullySupportedAfter": 5,
+        "improved": [
+          "BT02"
+        ],
+        "worsened": [],
+        "signTestP": 1.0
+      },
+      {
+        "id": "missing",
+        "label": "资料无答案",
+        "questions": 5,
+        "passBefore": 5,
+        "passAfter": 5,
+        "refusedBefore": null,
+        "refusedAfter": null,
+        "fullySupportedBefore": 0,
+        "fullySupportedAfter": 0,
+        "improved": [],
+        "worsened": [],
+        "signTestP": null
+      }
+    ],
+    "notFullySupported": [
+      {
+        "id": "AF06",
+        "statements": [
+          "存款保险基金不是由财政拨款形成的。"
+        ]
+      }
+    ]
+  }
+}

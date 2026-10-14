@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen' | 'upload' | 'sliders';
+export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen' | 'upload' | 'sliders' | 'wrench';
 const paths: Record<IconName, React.ReactNode> = {
   upload: <><path d="M12 16V3m-4 4 4-4 4 4M4 15v5h16v-5"/></>,
   shield: <><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/></>,
@@ -21,6 +21,7 @@ const paths: Record<IconName, React.ReactNode> = {
   pulse: <path d="M3 12h4l2-6 4 12 2-6h6"/>,
   sliders: <><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></>,
   pen: <><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></>,
+  wrench: <path d="M14.5 4.2a4.8 4.8 0 0 0-4.3 6.5L4.4 16.5a2.1 2.1 0 0 0 3 3l5.8-5.8a4.8 4.8 0 0 0 6.5-4.3l-2.9 2.9-2.6-.6-.6-2.6z"/>,
 };
 
 export function Icon({ name, size = 18, className = '', style }: { name: IconName; size?: number; className?: string; style?: CSSProperties }) {

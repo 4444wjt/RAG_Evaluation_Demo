@@ -139,15 +139,19 @@ def run_evaluation(
     try:
         root = (_PROJECT_ROOT if project_root is None else Path(project_root)).resolve()
         engine_request = request.model_dump()
+        if request.judge_model_name is None:
+            engine_request.pop("judge_model_name")
         engine_request["doc_path"] = _checked_path(
             "demo.txt" if request.doc_path is None else request.doc_path, root,
         )
         if request.benchmark is None and request.testset_path is not None:
             engine_request["testset_path"] = _checked_path(request.testset_path, root, testset=True)
-        if request.model_names is not None:
+        if request.model_names is not None or request.judge_model_name is not None:
             known_names = _configured_model_names(root)
-            if any(name not in known_names for name in request.model_names):
+            if any(name not in known_names for name in request.model_names or []):
                 raise EvaluationAPIError(422, "模型名称不支持，请使用已配置的模型名称。")
+            if request.judge_model_name is not None and request.judge_model_name not in known_names:
+                raise EvaluationAPIError(422, "裁判模型不支持，请先在本机登记模型。")
     except EvaluationAPIError:
         raise
     except Exception:

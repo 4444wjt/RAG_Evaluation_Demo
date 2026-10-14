@@ -86,7 +86,7 @@ function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
         {rows.map((row, index) => <tr key={`${typeof row.model === 'string' ? row.model : 'model'}-${index}`}>
           <th scope="row" className="comparison-model-cell">
             <span>{modelName(row.model)}</span>
-            {typeof row.model === 'string' && row.model !== modelName(row.model) && <small title={row.model}>{row.model}</small>}
+            {typeof row.model === 'string' && row.model !== modelName(row.model) && <small title={row.model}>请求名 {row.model}</small>}
           </th>
           {columns.map((key) => {
             const value = formatCell(key, row[key]);

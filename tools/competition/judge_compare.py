@@ -167,9 +167,9 @@ def install_observer(archive: Path, budget: Budget, current: dict):
 
 
 def build_judge(judge: str):
-    from backend.adapters.models.registry import build_llm
+    from backend.adapters.models.judging import build_judge as build_configured_judge
     spec = JUDGES[judge]
-    return build_llm({'name': spec['name'], 'base_url': os.environ.get(spec['base_url_env'], spec['base_url']), 'api_key_env': spec['api_key_env']})
+    return build_configured_judge({'name': spec['name'], 'base_url': os.environ.get(spec['base_url_env'], spec['base_url']), 'api_key_env': spec['api_key_env']})
 
 
 def judge_row(row: dict, llm) -> dict:
@@ -213,7 +213,7 @@ def run(archive: Path, groups: list[str], budget_cny: float, max_calls: int) -> 
             current.update(group='preflight', judge=judge)
             llm = build_judge(judge)
             reply = llm.invoke('只回复两个字母：OK')
-            preflight = {'judge': judge, 'requestedModel': JUDGES[judge]['name'], 'returnedModel': (reply.response_metadata or {}).get('model_name'), 'reply': str(reply.content)[:20]}
+            preflight = {'judge': judge, 'requestedModel': JUDGES[judge]['name'], 'returnedModel': (reply.response_metadata or {}).get('veriscope_response_model'), 'reply': str(reply.content)[:20]}
             with (archive / 'preflight.jsonl').open('a', encoding='utf-8') as stream:
                 stream.write(json.dumps(preflight, ensure_ascii=False) + '\n')
             print(f'预检 {judge}: 请求 {preflight["requestedModel"]}，返回 {preflight["returnedModel"]}')

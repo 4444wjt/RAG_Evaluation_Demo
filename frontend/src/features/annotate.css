@@ -4,6 +4,11 @@
 
 /* 说明区：左边是判断规则，右边是标注人身份 */
 .an-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); gap: 24px 40px; align-items: start; }
+/* The rules are framed as their own block, so they read as the rules of the task rather than loose notes. */
+.an-rules-block { display: grid; gap: 10px; padding: 16px 20px 18px; border: 1px solid var(--border-subtle); border-left: 3px solid var(--accent); border-radius: var(--radius-control); background: color-mix(in srgb, var(--accent) 5%, var(--bg-control)); }
+.an-rules-block h3 { display: flex; align-items: baseline; gap: 10px; margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.an-rules-block h3 span { font-size: 13px; font-weight: 400; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.an-rules-block > p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--text-secondary); }
 .an-rules { display: grid; gap: 8px; max-width: 46em; margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.75; color: var(--text-primary); }
 .an-rules li::marker { color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .an-identity { display: grid; gap: 14px; align-content: start; padding-left: 24px; border-left: 1px solid var(--border-subtle); }

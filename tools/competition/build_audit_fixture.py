@@ -50,6 +50,8 @@ SENSITIVITY = ROOT / 'docs' / 'competition' / 'judge-sensitivity' / 'analysis-20
 SELF_CHECK = ROOT / 'docs' / 'competition' / 'gate-self-check'
 EXTERNAL = ROOT / 'docs' / 'competition' / 'external-validation'
 CALIBRATION = ROOT / 'docs' / 'competition' / 'judge-calibration'
+# 非作者人工标注的归档：标注原件、分析结果与哈希清单
+ANNOTATION = CALIBRATION / '20261014-annotation-V'
 # ANAH 可抽样句子的标签分布（prepare 的候选池，见外部验证 README），用于把等量抽样的精确率折算到实际比例
 ANAH_POOL = {'none': 1406, 'contradictory': 531, 'unverifiable': 565}
 PROPERTIES = ROOT / 'tests' / 'test_gate_properties.py'
@@ -245,6 +247,31 @@ def external() -> dict:
             'source': {'summary': summary_source, 'items': items_source, 'authorization': auth_source}}
 
 
+def human_annotation(package: dict) -> dict:
+    """读取归档的人工标注分析，核对哈希，并用归档的标注原件重算，与归档逐字段一致才写入。"""
+    analysis, analysis_source = _archived(ANNOTATION, 'analysis.json')
+    files = sorted(ANNOTATION.glob('annotation-*.json'))
+    sources = [_archived(ANNOTATION, path.name)[1] for path in files]
+    if not files or json.loads(json.dumps(judge_calibration.analyze(files), ensure_ascii=False)) != analysis:
+        raise ValueError('人工标注分析不能由归档的标注文件重新算出。')
+    if analysis['packageId'] != package['packageId']:
+        raise ValueError('人工标注所用的材料与当前盲标注材料不一致。')
+    texts = {item['id']: item['statement'] for item in package['items']}
+    rows = analysis['rows']
+    pick = lambda row: {'id': row['id'], 'caseId': row['caseId'], 'statement': row['statement'],  # noqa: E731
+                        'refusal': row['refusal'], 'text': texts[row['id']]}
+    estimate = analysis['estimate']
+    return {'status': 'done', 'statements': len(package['items']), 'questions': len(package['questions']),
+            'packageId': package['packageId'], 'annotators': [a['annotator'] for a in analysis['annotators']],
+            'counts': analysis['counts'], 'agreement': analysis['agreement'], 'judgeValue': analysis['judge']['value'],
+            'calibration': analysis['calibration'],
+            'estimate': {key: estimate[key] for key in ('method', 'point', 'interval', 'state', 'pointPasses', 'reason')},
+            'unresolved': [pick(row) for row in rows if row['state'] == 'unresolved'],
+            'disagreements': [pick(row) for row in rows if row['disagreesWithJudge']],
+            'humanNotSupported': [pick(row) for row in rows if row['human'] == 0],
+            'source': {'analysis': analysis_source, 'annotations': sources}}
+
+
 def calibration() -> dict:
     report = judge_calibration.status()
     sim, sim_source = _archived(CALIBRATION, 'simulation.json')
@@ -268,8 +295,7 @@ def calibration() -> dict:
                            'calibrations': sim['settings']['calibrations'], 'thetas': sim['settings']['thetas'],
                            'estimators': sim['estimators'], 'coverage': coverage,
                            'naiveFailWhenPassing': [min(naive_fail), max(naive_fail)], 'source': sim_source},
-            'annotation': {'status': 'pending', 'statements': len(package['items']), 'questions': len(package['questions']),
-                           'packageId': package['packageId']}}
+            'annotation': human_annotation(package)}
 
 
 def build() -> dict:

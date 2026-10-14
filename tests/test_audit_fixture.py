@@ -97,11 +97,31 @@ def test_external_summary_must_be_recomputable_from_items(tmp_path, monkeypatch)
         audit.external()
 
 
-def test_calibration_is_pending_human_annotation(built):
+def test_calibration_carries_the_archived_human_annotation(built):
     c = built["calibration"]
-    assert c["annotation"]["status"] == "pending" and c["annotation"]["statements"] == 52
+    a = c["annotation"]
+    assert a["status"] == "done" and a["statements"] == 52 and a["annotators"] == ["V"]
+    # One unresolved statement keeps the bounds on both sides of the threshold, so no interval and no verdict.
+    assert a["estimate"]["point"] == [0.775, 0.825] and a["estimate"]["interval"] is None and a["estimate"]["state"] is None
+    assert [s["id"] for s in a["unresolved"]] == ["S12"] and a["agreement"] is None
+    assert a["calibration"]["confusion"] == {"humanSupportedJudgeSupported": 43, "humanSupportedJudgeNot": 2,
+                                             "humanNotJudgeSupported": 0, "humanNotJudgeNot": 6}
     assert c["flips"]["answeredOnly"]["flips"] == 5 and c["flips"]["overall"]["flips"] == 2
     assert c["simulation"]["coverage"]["invariant"]["leeClustered"][0] >= 0.94
+
+
+def test_human_annotation_rejects_an_analysis_the_annotations_do_not_reproduce(tmp_path, monkeypatch):
+    analysis = json.loads((audit.ANNOTATION / "analysis.json").read_text(encoding="utf-8"))
+    analysis["estimate"]["point"] = [0.8, 0.85]
+    (tmp_path / "analysis.json").write_text(json.dumps(analysis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (tmp_path / "annotation-V.json").write_bytes((audit.ANNOTATION / "annotation-V.json").read_bytes())
+    sums = "".join(f"{audit.sha256(tmp_path / name)}  {name}\n" for name in ("analysis.json", "annotation-V.json"))
+    (tmp_path / "SHA256SUMS.txt").write_text(sums, encoding="utf-8")
+    monkeypatch.setattr(audit, "ANNOTATION", tmp_path)
+    monkeypatch.setattr(audit, "ROOT", tmp_path)
+    package, _ = audit.judge_calibration.build_package()
+    with pytest.raises(ValueError, match="重新算出"):
+        audit.human_annotation(package)
 
 
 def test_calibration_rejects_a_tampered_simulation_archive(tmp_path, monkeypatch):

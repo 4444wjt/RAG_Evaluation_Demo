@@ -1,0 +1,16 @@
+.judge-configuration { min-width: 0; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-subtle); }
+.judge-configuration-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 10px; }
+.judge-configuration-heading label { font-size: 16px; font-weight: 600; }
+.judge-configuration-heading span { color: var(--text-secondary); font-size: 14px; }
+.judge-configuration select { max-width: 100%; width: 100%; min-width: 0; }
+.judge-configuration p, .judge-provenance p { max-width: 72ch; margin: 12px 0 0; font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
+.judge-configuration-note { color: var(--brand); }
+.judge-configuration-warning { color: var(--warning, #f2c879); }
+.judge-provenance { min-width: 0; padding-block: 20px; }
+.trace-detail > .judge-provenance { padding: 20px 30px; border-bottom: 1px solid var(--border-subtle); }
+.judge-provenance h3 { margin: 0 0 14px; font-size: 16px; font-weight: 600; }
+.judge-provenance-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin: 0 0 16px; }
+.judge-provenance-fields > div { min-width: 0; }
+.judge-provenance dt { margin-bottom: 4px; color: var(--text-secondary); font-size: 14px; }
+.judge-provenance dd { margin: 0; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .judge-provenance-fields { grid-template-columns: minmax(0, 1fr); } .trace-detail > .judge-provenance { padding-inline: 20px; } }

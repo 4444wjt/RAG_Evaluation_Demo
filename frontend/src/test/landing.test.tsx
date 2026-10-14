@@ -39,8 +39,8 @@ describe('Landing page', () => {
     const { container } = render(<LandingPage onEnter={vi.fn()}/>);
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
     expect(screen.getByRole('list', { name: '证据验证流程' }).children).toHaveLength(5);
-    const gate = screen.getByRole('region', { name: 'DeepSeek 演示快照质量门禁' });
-    const evidence = screen.getByRole('region', { name: 'DeepSeek 演示快照逐句判定' });
+    const gate = screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照质量门禁' });
+    const evidence = screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照逐句判定' });
     expect(gate).toHaveTextContent('PASS');
     expect(within(evidence).getByText('星云科技最新一轮B轮融资金额达5亿元人民币。')).toBeInTheDocument();
     expect(within(evidence).getByText('星云科技已累计获得三轮融资，最新一轮B轮融资金额达5亿元人民币。')).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe('Landing page', () => {
     expect(screen.getByText('真实界面 · 演示快照 20260930-1958 · 非本次实时评测')).toBeInTheDocument();
     expect(screen.getByText('真实界面 · 同一演示快照中的逐句证据')).toBeInTheDocument();
     expect(screen.getByText(/都不代表模型全面合格/)).toBeInTheDocument();
-    const gate = screen.getByRole('region', { name: 'DeepSeek 演示快照质量门禁' });
+    const gate = screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照质量门禁' });
     expect(gate).toHaveTextContent('演示门禁范围');
     expect(gate).toHaveTextContent('当前快照包含 6 个问题、3 个模型、18 条回答。');
     expect(gate).toHaveTextContent('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。');
@@ -67,15 +67,15 @@ describe('Landing page', () => {
     const rows = demoFixture.result.model_dfs['deepseek-chat'];
     const summary = demoFixture.result.summary.find(row => row.model === 'deepseek-chat')!;
     const thresholds = demoFixture.provenance.run.thresholds;
-    const gate = within(screen.getByRole('region', { name: 'DeepSeek 演示快照质量门禁' }));
+    const gate = within(screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照质量门禁' }));
     expect(gate.getByText('PASS', { exact: true })).toBeInTheDocument();
-    expect(gate.getByText('DeepSeek', { exact: true })).toBeInTheDocument();
+    expect(gate.getByText('DeepSeek-V4.1-Flash', { exact: true })).toBeInTheDocument();
     expect(gate.getByText(`${rows.filter(row => row.case_type === 'positive').length} 条正向用例`, { exact: true })).toBeInTheDocument();
     for (const [field, metric, threshold] of [
       ['pos_faithfulness', summary.pos_faithfulness, thresholds.faithfulness],
       ['pos_context_precision', summary.pos_context_precision, thresholds.context_precision],
     ] as const) {
-      const node = screen.getByRole('region', { name: 'DeepSeek 演示快照质量门禁' }).querySelector(`[data-gate-field="${field}"]`)!;
+      const node = screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照质量门禁' }).querySelector(`[data-gate-field="${field}"]`)!;
       expect(node).toHaveTextContent(`${(metric * 100).toFixed(1)}%`);
       expect(node).toHaveTextContent(`门槛 ≥ ${(threshold * 100).toFixed(1)}%`);
     }
@@ -83,7 +83,7 @@ describe('Landing page', () => {
     const original = JSON.parse(rows[0].hallucination_trace).statements[0] as {text:string;verdict:string;evidence:string};
     expect(original.verdict).toBe('supported');
     expect(rows[0].contexts).toContain(original.evidence);
-    const evidence = within(screen.getByRole('region', { name: 'DeepSeek 演示快照逐句判定' }));
+    const evidence = within(screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照逐句判定' }));
     expect(evidence.getByText(original.text, { exact: true })).toBeInTheDocument();
     expect(evidence.getByText(original.evidence, { exact: true })).toBeInTheDocument();
     expect(evidence.getByText('有依据', { exact: true })).toBeInTheDocument();
@@ -182,6 +182,29 @@ describe('Landing page', () => {
     expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText('质量门禁').closest('li')).toHaveAttribute('aria-current', 'step');
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
     expect(screen.getByText(/逐句证据看的是单条回答有没有依据/)).toBeInTheDocument();
+  });
+
+  it('holds the flow until the opening moment ends, then plays the same two passes', () => {
+    vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout', 'performance'] });
+    const { container, unmount } = render(<EvidenceFlow startDelay={1500}/>);
+    const flow = container.querySelector('.evidence-flow')!;
+    act(() => { vi.advanceTimersByTime(1400); });
+    expect(flow).toHaveAttribute('data-playing', 'false');
+    expect(container.querySelector('.evidence-pulse.is-travelling')).toBeNull();
+    expect(screen.getByText('提出问题').closest('li')).toHaveAttribute('aria-current', 'step');
+    act(() => { vi.advanceTimersByTime(100); });
+    expect(flow).toHaveAttribute('data-playing', 'true');
+    expect(container.querySelectorAll('.evidence-pulse.is-travelling')).toHaveLength(4);
+    act(() => { vi.advanceTimersByTime(4800); });
+    expect(flow).toHaveAttribute('data-complete', 'true');
+    unmount();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('uses the brand mark, not the gate shield, as the logo', () => {
+    render(<LandingPage onEnter={vi.fn()}/>);
+    const brand = screen.getByRole('link', { name: '鉴真全域 VeriScope AI 首页' });
+    expect(brand.querySelector('svg.brand-glyph .brand-glyph-stop')).not.toBeNull();
   });
 
   it('clears pending playback timers when the landing page unmounts', () => {

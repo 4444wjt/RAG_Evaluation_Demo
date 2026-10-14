@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "cases": {
+    "path": "scenarios/heldout_fp/cases.json",
+    "sha256": "c413e54e46cf54cd2e76d5ac15d5fee5ae67572a0ba6de706d19c0d23489acc8"
+  },
+  "fixCommit": "b90a14c",
+  "fixLine": "如果问题中的说法或前提与参考资料不一致，请依据参考资料指出并纠正，不要拒答。",
+  "model": {
+    "name": "deepseek-chat",
+    "temperature": 0
+  },
+  "returnedModels": {
+    "deepseek-flash": 96
+  },
+  "outcomeRules": {
+    "false_premise": "通过 = 没有拒答，且逐句核对没有与资料矛盾（fact_error）的陈述",
+    "true_premise": "通过 = 没有拒答，且逐句核对没有与资料矛盾（fact_error）的陈述",
+    "missing": "通过 = 拒答",
+    "secondary": "作答题另报「全部陈述有资料依据」（无 fact_error、无 fabrication）的题数",
+    "comparison": "同一题两组配对比较：只看结果不同的题，用精确符号检验（双侧）"
+  },
+  "evidenceRetrieved": {
+    "all": 19,
+    "n/a": 5
+  },
+  "evidenceNotFullyRetrieved": [],
+  "arms": {
+    "before": {
+      "label": "修复前提示词",
+      "groups": {
+        "false_premise/deposit": {
+          "questions": 6,
+          "outcomes": {
+            "pass": 2,
+            "refused": 4
+          },
+          "pass": 2,
+          "fullySupported": 2
+        },
+        "false_premise/disclosure": {
+          "questions": 8,
+          "outcomes": {
+            "pass": 7,
+            "refused": 1
+          },
+          "pass": 7,
+          "fullySupported": 7
+        },
+        "false_premise/all": {
+          "questions": 14,
+          "outcomes": {
+            "pass": 9,
+            "refused": 5
+          },
+          "pass": 9,
+          "fullySupported": 9
+        },
+        "true_premise/deposit": {
+          "questions": 2,
+          "outcomes": {
+            "pass": 2
+          },
+          "pass": 2,
+          "fullySupported": 2
+        },
+        "true_premise/disclosure": {
+          "questions": 3,
+          "outcomes": {
+            "pass": 2,
+            "refused": 1
+          },
+          "pass": 2,
+          "fullySupported": 2
+        },
+        "true_premise/all": {
+          "questions": 5,
+          "outcomes": {
+            "pass": 4,
+            "refused": 1
+          },
+          "pass": 4,
+          "fullySupported": 4
+        },
+        "missing/deposit": {
+          "questions": 2,
+          "outcomes": {
+            "pass": 2
+          },
+          "pass": 2,
+          "fullySupported": 0
+        },
+        "missing/disclosure": {
+          "questions": 3,
+          "outcomes": {
+            "pass": 3
+          },
+          "pass": 3,
+          "fullySupported": 0
+        },
+        "missing/all": {
+          "questions": 5,
+          "outcomes": {
+            "pass": 5
+          },
+          "pass": 5,
+          "fullySupported": 0
+        }
+      },
+      "errors": []
+    },
+    "after": {
+      "label": "修复后提示词",
+      "groups": {
+        "false_premise/deposit": {
+          "questions": 6,
+          "outcomes": {
+            "pass": 6
+          },
+          "pass": 6,
+          "fullySupported": 5
+        },
+        "false_premise/disclosure": {
+          "questions": 8,
+          "outcomes": {
+            "pass": 8
+          },
+          "pass": 8,
+          "fullySupported": 8
+        },
+        "false_premise/all": {
+          "questions": 14,
+          "outcomes": {
+            "pass": 14
+          },
+          "pass": 14,
+          "fullySupported": 13
+        },
+        "true_premise/deposit": {
+          "questions": 2,
+          "outcomes": {
+            "pass": 2
+          },
+          "pass": 2,
+          "fullySupported": 2
+        },
+        "true_premise/disclosure": {
+          "questions": 3,
+          "outcomes": {
+            "pass": 3
+          },
+          "pass": 3,
+          "fullySupported": 3
+        },
+        "true_premise/all": {
+          "questions": 5,
+          "outcomes": {
+            "pass": 5
+          },
+          "pass": 5,
+          "fullySupported": 5
+        },
+        "missing/deposit": {
+          "questions": 2,
+          "outcomes": {
+            "pass": 2
+          },
+          "pass": 2,
+          "fullySupported": 0
+        },
+        "missing/disclosure": {
+          "questions": 3,
+          "outcomes": {
+            "pass": 3
+          },
+          "pass": 3,
+          "fullySupported": 0
+        },
+        "missing/all": {
+          "questions": 5,
+          "outcomes": {
+            "pass": 5
+          },
+          "pass": 5,
+          "fullySupported": 0
+        }
+      },
+      "errors": []
+    }
+  },
+  "paired": {
+    "false_premise": {
+      "questions": 14,
+      "improved": [
+        "AF02",
+        "AF03",
+        "AF05",
+        "AF06",
+        "BF07"
+      ],
+      "worsened": [],
+      "signTestP": 0.0625
+    },
+    "true_premise": {
+      "questions": 5,
+      "improved": [
+        "BT02"
+      ],
+      "worsened": [],
+      "signTestP": 1.0
+    },
+    "missing": {
+      "questions": 5,
+      "improved": [],
+      "worsened": [],
+      "signTestP": null
+    }
+  },
+  "usage": {
+    "requests": 96,
+    "errors": 0,
+    "inputTokens": 49619,
+    "outputTokens": 7485,
+    "costCny": 0.1591
+  },
+  "scope": "一次运行、两份法规节选、24 题、一个模型；只差问答提示中的一句。不计算 Ragas 指标，不给门禁结论。"
+}

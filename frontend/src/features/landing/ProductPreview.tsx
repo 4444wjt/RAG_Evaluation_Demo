@@ -1,10 +1,11 @@
 import { Icon } from '../../components/Icon';
+import { DEEPSEEK_VERSION } from '../../config';
 
 // Presentation-only transcription of the two original UI captures from snapshot
 // 20260930-1958. No evaluation, gate calculation or live data loading occurs here.
 // Native text stays sharp at the display width instead of resampling a bitmap.
 export function QualityGatePreview() {
-  return <section className="quality-gate passed landing-product-preview landing-gate-preview" aria-label="DeepSeek 演示快照质量门禁">
+  return <section className="quality-gate passed landing-product-preview landing-gate-preview" aria-label={`${DEEPSEEK_VERSION} 演示快照质量门禁`}>
     <div className="gate-summary">
       <div className="gate-status-block">
         <h4 className="gate-label"><Icon name="shield" size={16}/>当前模型质量门禁</h4>
@@ -16,7 +17,7 @@ export function QualityGatePreview() {
       <div className="gate-evaluation">
         <div className="gate-context">
           <dl className="gate-model-context">
-            <div className="gate-subject"><dt>判定模型</dt><dd>DeepSeek</dd></div>
+            <div className="gate-subject"><dt>判定模型</dt><dd>{DEEPSEEK_VERSION}</dd></div>
             <div className="gate-range"><dt>演示门禁范围</dt><dd>3 条正向用例</dd></div>
           </dl>
           <dl className="gate-metrics">
@@ -34,7 +35,7 @@ export function QualityGatePreview() {
 }
 
 export function EvidenceTracePreview() {
-  return <section className="trace-statements-section landing-product-preview landing-trace-preview" aria-label="DeepSeek 演示快照逐句判定">
+  return <section className="trace-statements-section landing-product-preview landing-trace-preview" aria-label={`${DEEPSEEK_VERSION} 演示快照逐句判定`}>
     <div className="trace-section-heading"><h4>逐句判定</h4><span>来自原始溯源记录</span></div>
     <div className="trace-statements">
       <article className="trace-statement trace-statement--supported">

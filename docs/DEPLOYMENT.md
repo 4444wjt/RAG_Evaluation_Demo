@@ -35,6 +35,7 @@
 | `testset_path` | 自定义测试集路径（同上，另可用 `testset_example.json` / `.csv`）；为空且未选基准时自动出题 |
 | `benchmark` / `benchmark_limit` | 改用 TruthfulQA 基准（`"truthful_qa"`），题数 1–50 |
 | `model_names` | 参评模型名列表；不传或为 `null` 时评测全部内置模型 |
+| `judge_model_name` | 可选裁判模型名，须为内置或本机登记模型；为空时沿用被测模型。五项指标与 Trace 共用该裁判，回答仍由被测模型生成 |
 | `faith_threshold` / `ctx_prec_threshold` | 门禁阈值，为空时用后端默认值 0.8 |
 | `version_label` | 写入评测历史的版本标签 |
 
@@ -43,6 +44,8 @@
 **Python 调用**：在项目根目录下，`backend.core.pipeline.evaluate(request)` 接受与上表同名字段的字典，返回包含汇总表、门禁结论和逐题结果的字典（接口返回的就是它的 JSON 序列化）。Python 调用不经过接口的路径限制，调用方自己负责输入文件。
 
 **检验你自己的 RAG 应用**：[鲁棒性体检](competition/robustness/README.md) 的 `--generator-endpoint` 把 `{"question", "contexts"}` POST 给被测应用，读取返回的 `{"answer"}`，再用平台的逐句核对检查回答是否依据资料。被测应用须直接用传入的资料作答，不再自行检索。`tools/competition/prompt_case.py` 用同样方式比较两份提示词，见 [外部案例](competition/cases/langchain-chatchat/README.md)。
+
+**端到端接入（应用自行检索）**：使用 [外部 RAG 端到端接入](integrations/external-rag.md)，平台只发送题号与问题，应用返回回答及实际用于生成的资料；复用五项指标、Trace 与原门禁，并独立归档。2026-10-14 已用自写示例应用实测一次（[归档](competition/external-rag/20261014-example-app-qwen72b/README.md)），尚未接入第三方真实系统。它与上面的受控资料体检是两种不同入口。
 
 ### CI 门禁
 
@@ -109,9 +112,9 @@ VERISCOPE_QWEN_LOCAL_API_KEY=你的密钥
 
 注意：
 
-- **逐句核对和 Ragas 指标都由被测模型自己执行。** 换成小模型后，核对的准确度可能下降。本机用 2B 模型试跑时，它给出的证据是改写过的原文，平台的证据校验把 6 条陈述全部过滤，没有留下可用的逐句判定（见 [本机无外网试跑](competition/offline-run/20261014-ollama-qwen3.5-2b/README.md)）。需要独立裁判时，参考 [裁判对照](judge-comparison.md)。
+- **默认由被测模型核对，也可单独配置裁判。** 在“评测配置 → 模型 → 评测裁判”选择另一个已配置模型，或传 `judge_model_name`；CLI 可使用 `--judge-model`。换成小模型后，同模型核对的准确度可能下降。本机用 2B 模型试跑时，它给出的证据是改写过的原文，平台的证据校验把 6 条陈述全部过滤，没有留下可用的逐句判定（见 [本机无外网试跑](competition/offline-run/20261014-ollama-qwen3.5-2b/README.md)）。配置与记录方式见 [单独配置评测裁判](integrations/independent-judge.md)，旧实验见 [裁判对照](judge-comparison.md)。
 - **自动出题使用内置的 DeepSeek 槽位**（失败时换 Qwen）。只有自有模型时，请用自定义测试集；或者在 `.env` 里用 `DEEPSEEK_MODEL`、`DEEPSEEK_BASE_URL`、`OPENAI_API_KEY` 把 DeepSeek 槽位指向自有模型。
-- 登记只对工作台和 HTTP 接口生效。保留的 CLI / Gradio 入口（`main.py`）仍只使用内置模型。
+- 工作台、HTTP 接口与共享 pipeline 可按名称使用本机登记模型。CLI 默认被测模型和 Gradio 选择项仍为内置列表；CLI 可用 `--judge-model` 单独指定已登记裁判。
 - 登记只能在运行后端的本机修改（后端检查请求来源是 `127.0.0.1` / `::1`）；只读部署下 `GET /models` 和 `PUT /models/local` 都返回 423。只读返回 423 已在本机实测（2026-10-14）；来自其他地址的登记请求返回 403，已在真实网络栈上实测（2026-10-14，见下文「私有化 / 内网部署」的已实测项）。
 
 ## 私有化 / 内网部署

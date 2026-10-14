@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Icon } from '../components/Icon';
 import { REPO_URL } from '../config';
 import robustnessData from '../fixtures/robustness.json';
+import { modelName, returnedModelText } from '../utils/format';
 import './gate-audit.css';
 import './robustness.css';
 
@@ -110,7 +111,7 @@ function GeneratorSide() {
   const stillAnswered = ids('移除依据后仍作答', 'remove');
   return <section className="audit-panel" aria-labelledby="rb-generator-title">
     <div className="audit-panel-head"><div><h2 id="rb-generator-title">生成侧：被测应用会不会被资料带偏</h2>
-      <p>{`用平台的问答提示和 ${data.source.judgeModel} 重新作答，再逐句核对。接入其他应用时，这一侧换成该应用的接口。`}</p></div>
+      <p>{`用平台的问答提示和 ${modelName(data.source.judgeModel)} 重新作答，再逐句核对。接入其他应用时，这一侧换成该应用的接口。`}</p></div>
       <Chip tone={adoption.kept.count === 0 ? 'success' : 'danger'}>{adoption.kept.count === 0 ? '没有拿原值顶替资料' : `${adoption.kept.count} 题沿用原值`}</Chip></div>
     <ul className="rb-results">
       <Result title="原样" expect="作为对照" rate={g.original.refused} tone="warning" verdict={`拒答 ${g.original.refused.count} 题`}>
@@ -231,6 +232,6 @@ export function RobustnessView() {
     <Matrix/>
     <Notes/>
     <Usage/>
-    <p className="audit-boundary">{`一次运行、一个领域、同一模型既作答又核对；自动改动只覆盖数字和情态词，依据只认逐字重合，回答为概括改写时定位不到依据就不构造。服务端返回模型 ${Object.keys(data.source.returnedModels).join('、')}。完整说明与档案见 `}<a href={sourceLink('docs/competition/robustness/README.md')} target="_blank" rel="noopener noreferrer">鲁棒性体检</a>。</p>
+    <p className="audit-boundary">{`一次运行、一个领域、同一模型既作答又核对；自动改动只覆盖数字和情态词，依据只认逐字重合，回答为概括改写时定位不到依据就不构造。实际模型 ${returnedModelText(data.source.returnedModels)}。完整说明与档案见 `}<a href={sourceLink('docs/competition/robustness/README.md')} target="_blank" rel="noopener noreferrer">鲁棒性体检</a>。</p>
   </div>;
 }

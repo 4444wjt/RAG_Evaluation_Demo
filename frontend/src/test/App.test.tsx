@@ -28,7 +28,7 @@ async function openWorkspace() {
 }
 
 const summaryModels = [
-  { id: 'deepseek-chat', label: 'DeepSeek', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
+  { id: 'deepseek-chat', label: 'DeepSeek-V4.1-Flash', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
   { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', values: ['3', '0', '3', '100.0%'], gate: 'FAIL' },
   { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
 ];
@@ -74,6 +74,21 @@ describe('Workspace UI integration with mocked API', () => {
     expect(screen.getByRole('heading', { name: '逐句溯源' })).toBeInTheDocument();
   });
 
+  it('binds the frozen demo source but clears it after a mocked live run', async () => {
+    render(<App/>);
+    await userEvent.click(screen.getByRole('button', { name: '加载演示' }));
+    await userEvent.click(screen.getByRole('button', { name: '幻觉分析' }));
+    expect(screen.getByText(/虚构示例资料，不是权威来源/)).toBeInTheDocument();
+    expect(screen.getByText('资料来源：缺少版本')).toBeInTheDocument();
+    await openWorkspace();
+    await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
+    await screen.findByText('真实评测结果');
+    await userEvent.click(screen.getByRole('button', { name: '幻觉分析' }));
+    expect(screen.getByText('本次评测结果未携带资料哈希，无法与登记表对应')).toBeInTheDocument();
+    expect(screen.queryByText(/虚构示例资料，不是权威来源/)).not.toBeInTheDocument();
+    expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(1);
+  });
+
   it('runs once, preserves 0 thresholds and completes with a current PASS and the original gate=false record', async () => {
     const result = sample();
     result.gate_passed = false;
@@ -94,7 +109,7 @@ describe('Workspace UI integration with mocked API', () => {
     expect(screen.getByText('17')).toBeInTheDocument();
     expect(screen.getByText('0.0%')).toBeInTheDocument();
     expect(screen.getByText('真实评测结果')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('阈值来自本次显式提交参数。')).toBeInTheDocument();
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(1);
@@ -119,7 +134,7 @@ describe('Workspace UI integration with mocked API', () => {
   it('blocks an empty selection without calling evaluate', async () => {
     render(<App/>);
     await openWorkspace();
-    for (const label of ['选择 DeepSeek', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
+    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     expect(screen.getByText('请至少选择一个模型。')).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);
@@ -249,7 +264,7 @@ describe('Dashboard summary model selection', () => {
     expect(selector).toHaveValue(summaryModels[1].id);
     expectSummaryValues(summaryModels[1].values);
     await userEvent.selectOptions(selector, summaryModels[0].id);
-    expect(within(selector).getByRole('option', { name: 'DeepSeek', selected: true })).toBeInTheDocument();
+    expect(within(selector).getByRole('option', { name: 'DeepSeek-V4.1-Flash', selected: true })).toBeInTheDocument();
     expectSummaryValues(['暂无数据', '暂无数据', '暂无数据', '0.0%']);
     expect(screen.getByText('PASS')).toBeInTheDocument();
   });
@@ -433,14 +448,14 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={result} gateProvenance={demo.provenance} {...callbacks}/>);
     expect(screen.getByText(gate)).toBeInTheDocument();
     expect(screen.getByText(reason)).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', `${(faith * 100).toFixed(1)}%`, `${(context * 100).toFixed(1)}%`);
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', `${(faith * 100).toFixed(1)}%`, `${(context * 100).toFixed(1)}%`);
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
     expect(result).toEqual(original);
   });
 
   it.each([
     { id: summaryModels[1].id, label: 'Qwen2.5-7B', faith: 1, gate: 'PASS' },
-    { id: summaryModels[0].id, label: 'DeepSeek', faith: 0.2, gate: 'FAIL' },
+    { id: summaryModels[0].id, label: 'DeepSeek-V4.1-Flash', faith: 0.2, gate: 'FAIL' },
   ])('uses values rather than model identity for $label → $gate', ({ id, label, faith, gate }) => {
     const result = sample();
     const row = result.summary.find((entry) => entry.model === id)!;
@@ -464,7 +479,7 @@ describe('Current model quality gate transparency', () => {
     const original = structuredClone(result);
     render(<OverviewView result={result} gateProvenance={demo.provenance} {...callbacks}/>);
     expect(screen.getByText('WARNING')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '正向用例 · 数量未返回', '暂无数据', '100.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '正向用例 · 数量未返回', '暂无数据', '100.0%');
     expect(screen.getByText('正向指标或阈值缺失，无法完成检查')).toBeInTheDocument();
     expect(result).toEqual(original);
   });
@@ -478,7 +493,7 @@ describe('Current model quality gate transparency', () => {
     const originals = structuredClone({ result, provenance });
     render(<OverviewView result={result} gateProvenance={provenance} {...callbacks}/>);
     expect(screen.getByText('WARNING')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛未提供');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛未提供');
     expect(screen.getByText('已有阈值来自演示快照的原始运行记录；缺失项不作推断。')).toBeInTheDocument();
     expect({ result, provenance }).toEqual(originals);
   });
@@ -493,7 +508,7 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={result} gateRequest={submittedConfig} {...callbacks}/>);
     expect(screen.getByText('PASS')).toBeInTheDocument();
     expect(screen.getByText('两项正向指标均达到门槛')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
     expect({ result, submittedConfig }).toEqual(original);
   });
@@ -517,7 +532,7 @@ describe('Current model quality gate transparency', () => {
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     await screen.findByText('真实评测结果');
     expect(screen.getByText('PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%');
     await openWorkspace();
     fireEvent.change(screen.getByRole('spinbutton', { name: '忠实度门禁阈值' }), { target: { value: '0.9' } });
     fireEvent.change(screen.getByRole('spinbutton', { name: '上下文精度门禁阈值' }), { target: { value: '0.95' } });
@@ -526,12 +541,12 @@ describe('Current model quality gate transparency', () => {
     expect(screen.getByText('WARNING')).toBeInTheDocument();
     expect(screen.getByText('上次结果 · 本次尚未更新')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
     await act(async () => { finish(response({}, 500)); });
     await screen.findByText('本次评测未完成');
     expect(screen.getByText('WARNING')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(2);
     expect(JSON.parse(calls[0][1].body)).toMatchObject({ faith_threshold: 0.8, ctx_prec_threshold: 0.8 });
@@ -552,18 +567,18 @@ describe('Current model quality gate transparency', () => {
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
     expect(screen.getByText('上次结果 · 本次尚未更新')).toBeInTheDocument();
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%');
     const completed = sample();
     completed.gate_passed = false;
     await act(async () => { finish(response(completed)); });
     await screen.findByText('真实评测结果');
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(screen.getByText('PASS')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
     await openWorkspace();
     fireEvent.change(screen.getByRole('spinbutton', { name: '忠实度门禁阈值' }), { target: { value: '0.6' } });
     await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
-    expectGateContext('DeepSeek', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛 ≥ 0.0%', '门槛 ≥ 0.0%');
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(1);
   });
 });
@@ -617,13 +632,13 @@ describe('configuration check feedback', () => {
 
   it('reports invalid parameters before requesting health and clears outdated feedback on editing', async () => {
     await failedEvaluation();
-    for (const label of ['选择 DeepSeek', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
+    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
     const healthCalls = requests.mock.calls.filter(([url]) => url === '/api/health').length;
     await userEvent.click(screen.getByRole('button', { name: '检查配置' }));
     expect(screen.getByRole('status', { name: '配置检查结果' })).toHaveTextContent('配置未通过本地检查');
     expect(screen.getByText('请至少选择一个模型。')).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/health')).toHaveLength(healthCalls);
-    await userEvent.click(screen.getByRole('button', { name: '选择 DeepSeek' }));
+    await userEvent.click(screen.getByRole('button', { name: '选择 DeepSeek-V4.1-Flash' }));
     expect(screen.queryByRole('status', { name: '配置检查结果' })).not.toBeInTheDocument();
     expect(screen.queryByText('请至少选择一个模型。')).not.toBeInTheDocument();
   });
@@ -665,7 +680,7 @@ describe('Verification navigation regression', () => {
     vi.stubGlobal('crypto', webcrypto);
     render(<App/>);
     const nav = screen.getByRole('navigation', { name: '工作区导航' });
-    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '模型配置', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '鲁棒性体检', '人工标注']);
+    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '模型配置', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '修复验证', '鲁棒性体检', '人工标注']);
     await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
     expect(screen.getByText('尚未加载可核验结果')).toBeVisible();
     await userEvent.click(screen.getByRole('button', { name: '加载演示' }));

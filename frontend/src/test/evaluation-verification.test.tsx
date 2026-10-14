@@ -223,7 +223,7 @@ describe('Read-only verification page', () => {
     await open(reviewed(status));
     await userEvent.selectOptions(screen.getByLabelText('核验状态'), status);
     expect(document.querySelectorAll('[data-review-record]')).toHaveLength(1);
-    await userEvent.click(screen.getByRole('button', { name: '查看DeepSeek用例 1 的核验详情' }));
+    await userEvent.click(screen.getByRole('button', { name: '查看DeepSeek-V4.1-Flash用例 1 的核验详情' }));
     expect(screen.getByText('测试人工理由')).toBeVisible();
     expect(screen.getByText(/作者自审/)).toBeVisible();
     expect(screen.getByText('机器原判定：有依据')).toBeVisible();
@@ -247,7 +247,7 @@ describe('Read-only verification page', () => {
       expect(document.querySelectorAll('[data-review-record]')).toHaveLength(status === 'pending' ? 10 : 1);
     }
     await userEvent.selectOptions(screen.getByLabelText('核验状态'), 'uncertain');
-    await userEvent.click(screen.getByRole('button', { name: '查看DeepSeek用例 4 的核验详情' }));
+    await userEvent.click(screen.getByRole('button', { name: '查看DeepSeek-V4.1-Flash用例 4 的核验详情' }));
     expect(screen.getByText('测试独立复核者')).toBeVisible();
     expect(screen.getByText('身份')).toBeVisible();
     expect(screen.getByText('独立复核')).toBeVisible();

@@ -136,7 +136,11 @@ export function AnnotateView() {
       <div className="audit-panel-head"><div><h2 id="an-intro-title">逐条判断：这条陈述能否由资料推出</h2>
         <p>{`门禁的忠实度来自裁判对 ${pkg.items.length} 条陈述的逐条判定。请你不看裁判的结论，独立判断每条陈述，用来估计裁判判错的程度。约需 30 分钟，进度自动保存在本浏览器中。`}</p></div></div>
       <div className="an-intro">
-        <ol className="an-rules">{pkg.rules.map((rule) => <li key={rule}>{emphasize(rule)}</li>)}</ol>
+        <section className="an-rules-block" aria-labelledby="an-rules-title">
+          <h3 id="an-rules-title">标注规则<span>{`共 ${pkg.rules.length} 条`}</span></h3>
+          <p>每条陈述都按下面的规则判断，拿不准时回来对照。</p>
+          <ol className="an-rules">{pkg.rules.map((rule) => <li key={rule}>{emphasize(rule)}</li>)}</ol>
+        </section>
         <div className="an-identity">
           <label><span>标注人代号</span><input value={state.annotator} maxLength={40} placeholder="例如 A，不必填真名" onChange={(event) => setState({ ...state, annotator: event.target.value })}/></label>
           <label className="an-check"><input type="checkbox" checked={state.notAuthor} onChange={(event) => setState({ ...state, notAuthor: event.target.checked })}/><span>我没有参与本项目的开发，也没有编写题目和参考答案</span></label>

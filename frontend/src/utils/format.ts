@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { EvaluationResult, ResultRow } from '../api/types';
-import { MODEL_COLORS, MODELS } from '../config';
+import { MODEL_COLORS, MODELS, RETURNED_MODEL_LABELS } from '../config';
 
 export const numberValue = (value: unknown): number | null =>
   typeof value === 'number' && Number.isFinite(value) ? value : null;
@@ -22,7 +22,12 @@ export function seconds(value: unknown): string {
 
 export function modelName(value: unknown): string {
   if (typeof value !== 'string' || !value) return '—';
-  return MODELS.find((model) => model.id === value)?.label ?? value;
+  return MODELS.find((model) => model.id === value)?.label ?? RETURNED_MODEL_LABELS[value] ?? value;
+}
+
+/** 服务端返回的模型名：显示名在前，返回原名作为出处放在括号里。 */
+export function returnedModelText(returned: Record<string, unknown>): string {
+  return Object.keys(returned).map((name) => modelName(name) === name ? name : `${modelName(name)}（服务端返回名 ${name}）`).join('、');
 }
 
 /** Swatch colour for a model option; it follows the model's position in the result, as the charts do. */

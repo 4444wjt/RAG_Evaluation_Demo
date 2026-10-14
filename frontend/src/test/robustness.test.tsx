@@ -57,9 +57,15 @@ describe('Robustness check-up view', () => {
     expect(within(d09).getAllByText('支持')).toHaveLength(2);
   });
 
+  it('names the model by its version and keeps the request and returned names as provenance', () => {
+    render(<RobustnessView/>);
+    expect(screen.getByText(/用平台的问答提示和 DeepSeek-V4\.1-Flash 重新作答/)).toBeInTheDocument();
+    expect(screen.getByText(/实际模型 DeepSeek-V4\.1-Flash（服务端返回名 deepseek-flash）/)).toBeInTheDocument();
+  });
+
   it('links sources to the public repository and is reachable by deep link', () => {
     render(<RobustnessView/>);
-    for (const link of screen.getAllByRole('link')) expect(link.getAttribute('href')).toMatch(/^https:\/\/github\.com\/4444wjt\/RAG_Evaluation_Demo\/blob\/master\/[\w./-]+$/);
+    for (const link of screen.getAllByRole('link')) expect(link.getAttribute('href')).toMatch(/^https:\/\/gitee\.com\/kkbushishou\/rag-hallucination-evaluator\/blob\/master\/[\w./-]+$/);
     expect(parseLabHash('#/lab/robustness')).toEqual({ target: 'lab', view: 'robustness' });
     expect(parseLabHash('#/lab/demo/robustness')).toEqual({ target: 'demo', view: 'robustness' });
   });

@@ -22,6 +22,13 @@ describe('Judge annotation view', () => {
     expect(screen.getByText(/分析只使用从第一题起连续标完的题，且至少 10 题/)).toBeInTheDocument();
   });
 
+  it('presents the rules as a titled block, with the rule text unchanged from the package', () => {
+    render(<AnnotateView/>);
+    const block = screen.getByRole('region', { name: /^标注规则/ });
+    expect(within(block).getByRole('heading', { level: 3 })).toHaveTextContent(`标注规则共 ${data.rules.length} 条`);
+    expect(within(block).getAllByRole('listitem').map((li) => li.textContent)).toEqual(data.rules);
+  });
+
   it('labels with buttons and number keys, advances, and saves locally', () => {
     render(<AnnotateView/>);
     fireEvent.click(screen.getByRole('button', { name: /^1支持/ }));

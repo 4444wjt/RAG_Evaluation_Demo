@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon } from '../components/Icon';
 import { DEEPSEEK_VERSION, REPO_URL } from '../config';
-import { percent } from '../utils/format';
+import { percent, returnedModelText } from '../utils/format';
 import auditData from '../fixtures/gate-audit.json';
 import './gate-audit.css';
 
@@ -223,7 +223,7 @@ function External() {
   const { anah, rgb, counterfactual: cf, adjusted } = e;
   const b = anah.binary;
   const confusion = anah.confusion as Record<string, Record<string, number>>;
-  const returned = Object.keys(e.returnedModels).join('、');
+  const returned = returnedModelText(e.returnedModels);
   const conditions = [
     { key: 'noise', title: `噪声 · ${rgb.noise.items} 题`, detail: '3 篇相关 + 2 篇无关资料', tone: 'success' as Tone, verdict: '无误伤',
       result: `答对 ${rgb.noise.accuracy.count} / ${rgb.noise.items}；正确回答被判有幻觉 ${rgb.noise.flaggedWhenCorrect.count} / ${rgb.noise.flaggedWhenCorrect.total}` },
@@ -264,7 +264,7 @@ function External() {
         <p className="audit-note">逐句核对检查回答与证据是否一致，不检查证据本身对不对：资料写错时，照抄的回答会被判为有依据。被标出的几题，是同批资料里另有矛盾片段，或模型自行加了资料外的说法。这类问题要靠资料来源的可信度检查，不能指望逐句核对。</p>
       </div>
     </div>
-    <p className="audit-note">{`数据集：${e.sources.anah.name}（${e.sources.anah.license}）与 ${e.sources.rgb.name}（${e.sources.rgb.license}），固定版本并核对源文件哈希；仓库只存编号与判定，不转载原文。请求模型 ${e.model}，服务端返回 ${returned}。单次运行、单一裁判，是抽样检验，不代表总体准确率。`}</p>
+    <p className="audit-note">{`数据集：${e.sources.anah.name}（${e.sources.anah.license}）与 ${e.sources.rgb.name}（${e.sources.rgb.license}），固定版本并核对源文件哈希；仓库只存编号与判定，不转载原文。请求名 ${e.model}，实际模型 ${returned}。单次运行、单一裁判，是抽样检验，不代表总体准确率。`}</p>
     <a className="audit-source" href={sourceLink('docs/competition/external-validation/README.md')} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>外部基准验证档案</a>
   </section>;
 }
@@ -278,10 +278,14 @@ function Calibration() {
   const estimators = sim.estimators as Record<string, string>;
   const cov = sim.coverage as Record<'invariant' | 'shifted', Record<string, number[]>>;
   const [best, worst] = [c.tipping[0], c.tipping[c.tipping.length - 1]];
+  const h = c.annotation;
+  const [lower, upper] = h.estimate.point;
+  const confusion = h.calibration.confusion;
+  const statementName = (s: { caseId: string; statement: number }) => `${s.caseId} 第 ${s.statement} 条`;
   return <section className="audit-panel audit-calibration" aria-labelledby="audit-calibration-title">
     <div className="audit-panel-head"><div><h2 id="audit-calibration-title">裁判判错校准：把裁判误差也算进区间</h2>
-      <p>第四问的区间只计题目抽样，把每条逐句判定都当作正确。裁判会判错，所以区间要同时计入「题目抽样」和「裁判判错」。目前已实现裁判误差分析工具和模拟验证，真实人工校准待完成；完成之前，不报告校正后的门禁结论。</p></div>
-      <Chip tone="warning">人工校准待完成</Chip></div>
+      <p>{`第四问的区间只计题目抽样，把每条逐句判定都当作正确。裁判会判错，所以区间要同时计入「题目抽样」和「裁判判错」。已有 ${h.annotators.length} 位非作者标完全部 ${h.statements} 条：人工口径跨过门槛，取决于 ${h.unresolved.length} 条未决陈述，按事先写定的口径不下结论，已记录的 FAIL 不改。`}</p></div>
+      <Chip tone="warning">单人标注 · 未下结论</Chip></div>
     <div className="audit-external">
       <section className="audit-external-col" aria-labelledby="audit-calibration-sensitivity">
         <header className="audit-calibration-head">
@@ -316,13 +320,21 @@ function Calibration() {
     </div>
     <section className="audit-calibration-status" aria-labelledby="audit-calibration-human">
       <div className="audit-calibration-human">
-        <div className="audit-interval-head"><h3 id="audit-calibration-human">真实人工校准</h3><Chip tone="warning">待标注</Chip></div>
-        <p><b className="audit-hl audit-hl--warning">待完成：</b>{`请 1–2 位未参与本项目的人，独立标注门禁所用的 ${c.annotation.statements} 条陈述（${c.annotation.questions} 题，约 30 分钟）。标注页不显示裁判的判定；不用模型代替人工标注。`}</p>
-        <p className="audit-note">分析口径在标注前写定：分歧与「无法判断」不剔除，按全部算支持、全部算不支持给出两个边界，分母与门禁相同；只标了部分题时，只用从第一题起连续标完、至少 10 题的部分，达不到就不给区间。</p>
+        <div className="audit-interval-head"><h3 id="audit-calibration-human">真实人工校准</h3><Chip tone="success">{`已完成 · ${h.annotators.length} 人`}</Chip></div>
+        <p>{`2026-10-14 由 ${h.annotators.length} 位非作者（代号 ${h.annotators.join('、')}）独立盲标全部 ${h.statements} 条陈述（${h.questions} 题）。标注页不显示裁判的判定；没有用模型代替人工标注。`}</p>
+        <dl className="audit-facts">
+          <div><dt>人工口径</dt><dd>{`${percent(lower)}–${percent(upper)}`}<small>点估计上下界，不是置信区间</small></dd></div>
+          <div><dt>裁判口径</dt><dd>{percent(h.judgeValue)}<small>原门禁 FAIL</small></dd></div>
+          <div><dt>裁判灵敏度</dt><dd>{percent(h.calibration.q1)}<small>{`${confusion.humanSupportedJudgeSupported} / ${h.calibration.m1} 条`}</small></dd></div>
+          <div><dt>裁判特异度</dt><dd>{percent(h.calibration.q0)}<small>{`${confusion.humanNotJudgeNot} / ${h.calibration.m0} 条，样本少`}</small></dd></div>
+        </dl>
+        <p className="audit-note">结论取决于 {h.unresolved.map((u) => <b key={u.id} className="audit-hl audit-hl--warning">{statementName(u)}</b>)}（拒答题的「资料中没有答案」），标注人选了「无法判断」：算不支持为 <b className="audit-hl">{percent(lower)}</b>，仍低于门槛；算支持为 <b className="audit-hl">{percent(upper)}</b>。有未决陈述时不给 95% 区间，也不下结论。</p>
+        <p className="audit-note">{`裁判没有偏松：人工判为不支持的 ${h.calibration.m0} 条，裁判全部判为不支持；不一致的 ${h.disagreements.length} 条（${h.disagreements.map(statementName).join('、')}）都是裁判更严。单人标注，没有一致性指标；欢迎第二位非作者标注。`}</p>
       </div>
       <a className="btn btn-secondary" href="#/lab/annotate"><Icon name="pen" size={15}/>打开标注页</a>
     </section>
     <a className="audit-source" href={sourceLink('docs/competition/judge-calibration/README.md')} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>裁判判错校准说明</a>
+    <a className="audit-source" href={sourceLink('docs/competition/judge-calibration/20261014-annotation-V/README.md')} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>人工标注结果</a>
   </section>;
 }
 

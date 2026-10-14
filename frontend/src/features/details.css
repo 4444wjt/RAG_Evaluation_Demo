@@ -142,6 +142,30 @@
 .trace-statements-section,
 .trace-contexts-section { padding: 22px 26px; }
 .trace-answer-section { border-bottom: 1px solid var(--border-subtle); }
+/* 核验范围：每层一行，左侧色条只表示这一层的状态，不汇总成分数。 */
+.trace-scope-section { padding: 22px 26px; border-bottom: 1px solid var(--border-subtle); }
+.trace-scope { display: grid; margin: 0; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); overflow: hidden; }
+.trace-scope-row { --scope-color: var(--border-strong); display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 16px; padding: 11px 16px 11px 14px; border-left: 3px solid var(--scope-color); }
+.trace-scope-row + .trace-scope-row { border-top: 1px solid var(--border-subtle); }
+.trace-scope-row--positive { --scope-color: var(--success); }
+.trace-scope-row--warning { --scope-color: var(--warning); }
+.trace-scope-row--danger { --scope-color: var(--danger); }
+.trace-scope-row dt span { display: block; color: var(--text-primary); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.trace-scope-row dt small { display: block; color: var(--text-secondary); font-size: 11px; line-height: 1.6; }
+.trace-scope-row dd { margin: 0; min-width: 0; }
+.trace-scope-row dd strong { display: block; color: var(--text-primary); font-size: 14px; font-weight: 600; line-height: 1.55; font-variant-numeric: tabular-nums; }
+.trace-scope-row--warning dd strong { color: var(--warning); }
+.trace-scope-row--danger dd strong { color: var(--danger); }
+.trace-scope-row--neutral dd strong { color: var(--text-secondary); }
+.trace-scope-row dd span { display: block; margin-top: 2px; color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
+.trace-scope-gaps { display: grid; gap: 7px; margin-top: 14px; }
+.trace-scope-gaps h5 { margin: 0; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+.trace-scope-gaps ul { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.trace-scope-gaps li > span, .trace-scope-gaps li > button { display: inline-flex; align-items: center; min-height: 26px; padding: 3px 10px; border: 1px solid var(--warning-border); border-radius: var(--radius-badge); color: var(--warning); background: var(--warning-surface); font: inherit; font-size: 12px; line-height: 1.4; }
+.trace-scope-gaps li > button { cursor: pointer; transition: border-color var(--feedback-duration), background var(--feedback-duration); }
+.trace-scope-gaps li > button:hover { border-color: var(--warning); background: color-mix(in srgb, var(--warning) 16%, var(--bg-control)); }
+.trace-scope-gaps p { margin: 0; color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
+.trace-statement:focus-visible { outline: 2px solid var(--warning); outline-offset: 6px; border-radius: 4px; }
 .trace-reliability-card { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 20px; padding: 15px 16px; border: 1px solid color-mix(in srgb, var(--trace-status-color) 34%, var(--bg-control)); border-left: 3px solid var(--trace-status-color); border-radius: var(--radius-control); background: color-mix(in srgb, var(--trace-status-color) 8%, var(--bg-control)); }
 .trace-reliability-card--positive { --trace-status-color: var(--success); }
 .trace-reliability-card--info { --trace-status-color: var(--info); }

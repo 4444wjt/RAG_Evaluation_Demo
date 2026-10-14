@@ -9,7 +9,7 @@ Phase 3-B-5 迁移单模型完整编排 + 多模型循环为 run_models。
 Phase 3-B-7-B 迁移 evaluate 总编排：按旧 run_pipeline 顺序串起
 prepare_resources → prepare_testset → run_models → summary/CSV → chart → HTML → gate → history。
 复用 backend.services 的叶子函数与 backend.config 的常量，编排与评分定义沿用旧流程；
-Web 的中文陈述输入使用独立兼容层，旧 main.py 保持原行为。
+中文陈述输入使用兼容层；main.py.run_pipeline 与 Web 共用本模块，历史 _legacy_run_pipeline 独立保留。
 
 依赖方向：本模块只 import backend.config / backend.services.* / backend.adapters / 同级 types，
 以及外部 ragas/datasets 依赖；禁止反向 import main.py，避免循环依赖。
@@ -24,9 +24,13 @@ import pandas as pd
 from datasets import Dataset
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from ragas import evaluate as ragas_evaluate, RunConfig
-from ragas.metrics import context_precision, answer_relevancy, context_recall
+from ragas.metrics import (
+    context_precision, answer_relevancy, context_recall,
+    ContextPrecision, AnswerRelevancy, ContextRecall,
+)
 
 from backend.adapters.ragas_compat import ChineseAnswerCorrectness, ChineseFaithfulness
+from backend.adapters.models.judging import ModelCallRecorder, build_judge, judge_provenance, observe_judge
 
 from backend.config import (
     BASE_DIR, DOC_PATH, SUMMARY_OUTPUT, HTML_OUTPUT, CHART_PATH,
@@ -175,7 +179,7 @@ def prepare_testset(request, resources, model_factory=None, progress_cb=None):
     return testset
 
 
-def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled):
+def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled, *, judge_llm=None):
     """单模型原始评测（从旧 run_pipeline 步骤 5 的单模型体 L1243~1299 原样提取）。
 
     仅完成单个模型的原始评测执行：RAG 问答 → Ragas evaluate → 幻觉溯源，
@@ -186,8 +190,9 @@ def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled):
         testset: List[TestCase] — 统一测试集（按原顺序执行）
         retriever: Any — 检索器
         embeddings: Any — 嵌入模型（传给 Ragas）
-        llm: Any — 当前被评测模型（Ragas 与 trace 复用同一个 llm）
+        llm: Any — 当前被评测模型；只负责生成回答
         trace_enabled: bool — 是否执行幻觉溯源（等价旧 ENABLE_TRACE）
+        judge_llm: Any — 可选独立裁判；未指定时保持使用被测模型
 
     返回：
         RawModelEvaluation — df / trace_total / trace_fact_error /
@@ -204,11 +209,32 @@ def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled):
         if (idx + 1) % 2 == 0:
             print(f"  进度: {idx + 1}/{len(testset)}")
 
-    # Ragas 评测（5 项指标：忠实度/上下文精度/答案相关性/事实一致性/回答完整性）
+    return score_answer_rows(testset, eval_data, embeddings, llm if judge_llm is None else judge_llm,
+                             trace_enabled, fresh_metrics=judge_llm is not None)
+
+
+def score_answer_rows(testset, eval_data, embeddings, judge_llm, trace_enabled, *, fresh_metrics=True):
+    """Evaluate already-produced answers and actual contexts; never retrieve or generate here.
+
+    Both the built-in RAG and external applications use these identical five metrics,
+    Chinese adapters and Trace processing. Configured/external judges use fresh metrics;
+    the unspecified self-judge path preserves the original RAGAS_METRICS instances.
+    """
+    recorder = ModelCallRecorder()
+    judge_llm = observe_judge(judge_llm)
+    with recorder.capture(judge_llm):
+        raw = _score_answer_rows(testset, eval_data, embeddings, judge_llm, trace_enabled, fresh_metrics=fresh_metrics)
+    raw["judge_recorder"] = recorder
+    return raw
+
+
+def _score_answer_rows(testset, eval_data, embeddings, llm, trace_enabled, *, fresh_metrics):
+    # Same definitions, defaults and 0.75/0.25 Answer Correctness weights as before.
     dataset = Dataset.from_dict(eval_data)
     result = ragas_evaluate(
         dataset=dataset,
-        metrics=RAGAS_METRICS,
+        metrics=([ChineseFaithfulness(), ContextPrecision(), AnswerRelevancy(strictness=1),
+                  ChineseAnswerCorrectness(), ContextRecall()] if fresh_metrics else RAGAS_METRICS),
         llm=llm,
         embeddings=embeddings,
         run_config=RunConfig(max_workers=1, timeout=EVAL_TIMEOUT)
@@ -344,7 +370,7 @@ def select_model_configs(model_names=None):
     return [c for c in MODELS_CONFIG + local if c["name"] in model_names]
 
 
-def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled):
+def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled, judge_cfg=None):
     """多模型循环（从旧 run_pipeline 步骤 5 的模型循环体 L1234~1377 原样提取）。
 
     按 model_cfgs 顺序逐模型执行：创建 llm → run_single_model_raw → model_dfs 登记 →
@@ -363,6 +389,8 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled)
     """
     summary = []
     model_dfs = {}
+    # Resolve/build before generation. A bad judge never silently falls back to self-judging.
+    judge_llm = build_judge(judge_cfg, model_factory) if judge_cfg is not None else None
 
     for model_cfg in model_cfgs:
         print(f"\n{'=' * 50}")
@@ -374,14 +402,25 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled)
             llm = model_factory(model_cfg)
 
             # 单模型原始评测（复用 Phase 3-B-3，不复制其内部逻辑）
+            judge_args = {"judge_llm": judge_llm} if judge_cfg is not None else {}
             raw_result = run_single_model_raw(
                 resources["testset"],
                 resources["retriever"],
                 resources["embeddings"],
                 llm,
-                trace_enabled
+                trace_enabled,
+                **judge_args,
             )
             df = raw_result["df"]
+            provenance = judge_provenance(
+                judge_cfg if judge_cfg is not None else model_cfg,
+                raw_result.get("judge_recorder") or ModelCallRecorder(),
+                configured=judge_cfg is not None,
+            )
+            # Keep the eight-field public envelope; provenance travels with each new row/summary.
+            for key in ("judge_model", "judge_mode", "judge_response_scope"):
+                df[key] = provenance[key]
+            df["judge_response_models"] = [list(provenance["judge_response_models"]) for _ in range(len(df))]
 
             # 立即登记 model_dfs（必须先于 CSV 写入）
             model_dfs[model_cfg["name"]] = df
@@ -393,6 +432,7 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled)
 
             # 指标聚合（复用 Phase 3-B-4，不重新实现公式）；elapsed 在聚合后采样
             entry = aggregate_model_metrics(raw_result, model_cfg["name"], 0.0)
+            entry.update(provenance)
             entry["elapsed_seconds"] = round(time.time() - t_model, 2)
             summary.append(entry)
 
@@ -477,6 +517,13 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
 
     # 4. 模型配置（保持 MODELS_CONFIG 顺序，复用 select_model_configs）
     model_cfgs = select_model_configs(model_names)
+    judge_name = request.get("judge_model_name")
+    judge_cfg = None
+    if judge_name is not None:
+        judges = select_model_configs([judge_name])
+        if len(judges) != 1:
+            raise ValueError("裁判模型不支持，请先在本机登记模型。")
+        judge_cfg = judges[0]
 
     # 5. 开始计时
     t_start = time.time()
@@ -509,6 +556,7 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         model_factory,
         base_dir=BASE_DIR,
         trace_enabled=ENABLE_TRACE,
+        **({"judge_cfg": judge_cfg} if judge_cfg is not None else {}),
     )
     summary = loop_result["summary"]
     model_dfs = loop_result["model_dfs"]

@@ -3,6 +3,7 @@ import type { ChangeEvent } from 'react';
 import type { EvaluationResult } from '../api/types';
 import { Icon } from '../components/Icon';
 import { READ_ONLY } from '../config';
+import { JudgeProvenance } from './JudgeProvenance';
 import './details.css';
 
 /** Public builds show only the file name: the frozen snapshot records absolute paths from the author's machine. */
@@ -108,6 +109,7 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
   ];
 
   return <section className="report-view" aria-label="评测报告">
+    {result && <JudgeProvenance rows={result.summary}/>}
     <header className="report-toolbar">
       <p id="report-view-title" className="muted">导入本地 HTML 报告，查看图表与详细评测记录。</p>
       <button type="button" className="btn btn-primary" disabled={reading} onClick={() => fileInput.current?.click()}><Icon name="folder" size={16} />{reading ? '正在读取…' : '导入 HTML 报告'}</button>

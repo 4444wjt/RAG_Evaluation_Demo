@@ -3,6 +3,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { EvaluationResult, ResultRow } from '../api/types';
 import { TraceView } from '../features/TraceView';
 import { ReportView } from '../features/ReportView';
+import demoData from '../fixtures/demo.json';
+import sourceRegistry from '../fixtures/source-registry.json';
+import * as sourceStatusUtils from '../utils/sourceStatus';
+import type { SourceEntry } from '../utils/sourceStatus';
 
 const localHtmlPath = 'D:/local/report.html';
 const localChartPath = 'D:/local/chart.png';
@@ -42,6 +46,89 @@ afterEach(() => {
   else Reflect.deleteProperty(navigator, 'clipboard');
 });
 
+describe('TraceView 来源版本', () => {
+  const demoSource = sourceRegistry.documents.find((entry) => entry.path === 'demo.txt')!;
+  const demoDocument = { path: demoSource.path, sha256: demoSource.sha256 };
+  const sourceRow = () => within(screen.getByRole('region', { name: '核验范围与证据缺口' }))
+    .getByText('来源版本', { selector: 'dt span' }).closest('.trace-scope-row')!;
+  const completeSource = (): SourceEntry => ({
+    ...sourceRegistry.documents.find((entry) => entry.authority === 'official')!,
+    authority: 'official', issuer: '测试制定机关', promulgated: '2020-01-01', effective: '2020-02-01',
+    sourceUrl: 'https://example.test/source', obtained: '2020-02-02',
+    coverage: { kind: 'full', sections: [] },
+    scope: { subjects: '测试对象', region: '测试地域', conditions: '测试条件' },
+  });
+
+  it('冻结演示资料显示虚构标识和来源缺口，不修改快照', () => {
+    const result = structuredClone(demoData.result) as EvaluationResult;
+    const before = structuredClone(result);
+    render(<TraceView result={result} document={demoDocument}/>);
+    expect(sourceRow()).toHaveTextContent('登记信息');
+    expect(sourceRow()).toHaveTextContent('缺少版本');
+    expect(sourceRow()).toHaveTextContent('虚构示例资料，不是权威来源；');
+    expect(sourceRow()).toHaveTextContent('缺：制定机关、公布日期、施行日期、来源网址、资料取得日期');
+    expect(sourceRow()).toHaveClass('trace-scope-row--warning');
+    expect(screen.getByText('资料来源：缺少版本')).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: '核验范围与证据缺口' }).textContent).not.toContain('现行有效');
+    expect(result).toEqual(before);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('实时结果没有资料哈希时不按文件名继承登记', () => {
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={null}/>);
+    expect(sourceRow()).toHaveTextContent('缺少版本');
+    expect(sourceRow()).toHaveTextContent('本次评测结果未携带资料哈希，无法与登记表对应');
+    expect(sourceRow()).not.toHaveTextContent('虚构示例资料');
+  });
+
+  it('同路径但哈希不一致时拒绝绑定，也不宣称来源是虚构或官方', () => {
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={{ ...demoDocument, sha256: '0'.repeat(64) }}/>);
+    expect(sourceRow()).toHaveTextContent('资料路径或哈希与登记表不匹配');
+    expect(sourceRow()).toHaveTextContent('缺少版本');
+    expect(sourceRow()).not.toHaveTextContent('虚构示例资料');
+  });
+
+  it('信息齐备仅用中性色并说明有效性未核查', () => {
+    vi.spyOn(sourceStatusUtils, 'lookupSource').mockReturnValue(completeSource());
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={demoDocument}/>);
+    expect(sourceRow()).toHaveTextContent('信息齐备');
+    expect(sourceRow()).toHaveTextContent('已登记来源与版本；是否现行有效未核查');
+    expect(sourceRow()).toHaveClass('trace-scope-row--neutral');
+    expect(sourceRow()).not.toHaveClass('trace-scope-row--positive');
+    expect(screen.queryByText('资料来源：信息齐备')).not.toBeInTheDocument();
+    expect(sourceRow().textContent?.replace('是否现行有效未核查', '')).not.toMatch(/现行有效|最新版本|已生效/);
+  });
+
+  it('范围未登记时展示警示及待复核项', () => {
+    const entry = completeSource(); entry.scope.region = null;
+    vi.spyOn(sourceStatusUtils, 'lookupSource').mockReturnValue(entry);
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={demoDocument}/>);
+    expect(sourceRow()).toHaveTextContent('适用范围待确认');
+    expect(sourceRow()).toHaveTextContent('适用对象、地域或条件未登记');
+    expect(sourceRow()).toHaveClass('trace-scope-row--warning');
+    expect(screen.getByText('资料来源：适用范围待确认')).toBeInTheDocument();
+  });
+
+  it('节选没有条文范围时说明具体缺口', () => {
+    const entry = completeSource(); entry.coverage = { kind: 'excerpt', sections: [] };
+    vi.spyOn(sourceStatusUtils, 'lookupSource').mockReturnValue(entry);
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={demoDocument}/>);
+    expect(sourceRow()).toHaveTextContent('节选未列出范围');
+    expect(sourceRow()).toHaveTextContent('适用范围待确认');
+  });
+
+  it('从演示切换到实时结果后清除演示来源，不影响模型选择', () => {
+    const result = resultWith({ first: [rowWith('')], second: [rowWith('')] });
+    const { rerender } = render(<TraceView result={result} document={demoDocument}/>);
+    expect(sourceRow()).toHaveTextContent('虚构示例资料');
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'second' } });
+    expect(sourceRow()).toHaveTextContent('虚构示例资料');
+    rerender(<TraceView result={structuredClone(result)} document={null}/>);
+    expect(sourceRow()).not.toHaveTextContent('虚构示例资料');
+    expect(sourceRow()).toHaveTextContent('本次评测结果未携带资料哈希');
+  });
+});
+
 describe('TraceView 原始溯源', () => {
   it('没有结果时提供载入方向，不制造用例', () => {
     render(<TraceView result={null} />);
@@ -77,6 +164,14 @@ describe('TraceView 原始溯源', () => {
     expect(screen.getByText('Trace生成异常，请检查原始记录。')).toBeInTheDocument();
   });
 
+  it('详情里显示模型的版本名，请求名留在提示里', () => {
+    const trace = JSON.stringify({ statements: [], trace_status: 'model_empty', trace_attempts: 1 });
+    const { container } = render(<TraceView result={resultWith({ 'deepseek-chat': [rowWith(trace)] })} />);
+    const id = container.querySelector('.trace-model-id')!;
+    expect(id).toHaveTextContent('DeepSeek-V4.1-Flash');
+    expect(id).toHaveAttribute('title', '请求名 deepseek-chat');
+  });
+
   it('显示模型返回空结果的处理原因和调用次数', () => {
     const trace = JSON.stringify({ statements: [], trace_status: 'model_empty', trace_attempts: 1, trace_diagnostics: { answer_mode: 'normal' } });
     render(<TraceView result={resultWith({ model: [rowWith(trace)] })} />);
@@ -98,7 +193,7 @@ describe('TraceView 原始溯源', () => {
     expect(screen.getByText('可验证', { selector: 'strong' })).toBeInTheDocument();
     expect(screen.getByText('有依据')).toBeInTheDocument();
     expect(screen.getByText('引用已定位')).toBeInTheDocument();
-    expect(screen.getByText('机器逐句判定，不代表人工认证；引用已定位也不等于语义支持。')).toBeInTheDocument();
+    expect(screen.getByText('机器逐句判定，不代表人工认证；引用已定位不等于语义支持，有依据也不等于事实正确。')).toBeInTheDocument();
   });
 
   it('没有回答类型元数据时明确显示未记录，不从旧记录猜测', () => {
@@ -138,6 +233,39 @@ describe('TraceView 原始溯源', () => {
     verify(4, '需要检查', '待复核');
     verify(5, '评测链路异常', '链路异常');
     verify(6, '信息不足', '无法评估');
+  });
+
+  it('核验范围按三层列出计数和缺口，不合成分数', () => {
+    const partial = JSON.stringify({
+      statements: [
+        { text: '有原文支持的陈述', verdict: 'supported', evidence: '原始上下文' },
+        { text: '资料里找不到的陈述', verdict: 'fabrication', evidence: '' },
+      ],
+      trace_status: 'partial',
+      trace_diagnostics: { answer_mode: 'normal', input_statement_count: 3, rejected_statements: [{ index: 2, reason: 'evidence_not_in_context' }] },
+    });
+    render(<TraceView result={resultWith({ model: [rowWith(partial)] })} />);
+    const scope = screen.getByRole('region', { name: '核验范围与证据缺口' });
+    const layer = (name: string) => within(scope).getByText(name, { selector: 'dt span' }).closest('div')!;
+    expect(layer('引用定位')).toHaveTextContent('已定位 1 条 · 无引用 1 条');
+    expect(layer('引用定位')).toHaveTextContent('候选 3 条中丢弃 1 条');
+    expect(layer('语义支持')).toHaveTextContent('有依据 1 条 · 无依据编造 1 条');
+    expect(layer('事实正确')).toHaveTextContent('未检查');
+    expect(layer('抽取完整性')).toHaveTextContent('机器从回答中抽取了 2 条陈述');
+    expect(within(scope).getByRole('button', { name: '陈述 2：无依据编造' })).toBeInTheDocument();
+    expect(within(scope).getByText('被丢弃的候选，原因见处理记录')).toBeInTheDocument();
+    expect(scope.textContent).not.toMatch(/%|可信度\s*\d/);
+    fireEvent.click(within(scope).getByRole('button', { name: '陈述 2：无依据编造' }));
+    expect(document.activeElement).toHaveAttribute('id', 'trace-statement-2');
+  });
+
+  it('旧记录未保存候选校验结果时说未记录，不当作全部通过', () => {
+    const legacy = JSON.stringify({ statements: [{ text: '旧记录里的陈述', verdict: 'supported', evidence: '原始上下文' }], trace_diagnostics: { answer_mode: 'normal' } });
+    render(<TraceView result={resultWith({ model: [rowWith(legacy)] })} />);
+    const scope = screen.getByRole('region', { name: '核验范围与证据缺口' });
+    expect(within(scope).getByText(/丢弃情况未记录/)).toBeInTheDocument();
+    expect(within(scope).queryByText(/全部通过原文校验/)).not.toBeInTheDocument();
+    expect(within(scope).getByText(/这不代表回答无误/)).toBeInTheDocument();
   });
 
   it('区分候选陈述被过滤与模型返回空数组两种未生成原因', () => {

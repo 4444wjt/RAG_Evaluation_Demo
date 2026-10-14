@@ -94,6 +94,25 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         f"<tbody>{''.join(status_rows)}</tbody></table>"
         if status_rows else ""
     )
+    judge_rows = []
+    for item in summary_data:
+        if not isinstance(item.get("judge_model"), str):
+            continue
+        returned = item.get("judge_response_models")
+        returned_label = "、".join(str(name) for name in returned) if isinstance(returned, list) and returned else "未知（响应未记录）"
+        mode = "单独配置" if item.get("judge_mode") == "configured" else "沿用被测模型"
+        judge_rows.append(
+            f"<tr><td>{escape(str(item['model']))}</td><td>{mode}</td>"
+            f"<td>{escape(item['judge_model'])}</td><td>{escape(returned_label)}</td></tr>"
+        )
+    judge_table = (
+        '<h2>生成模型与裁判配置</h2><table><thead><tr><th>被测模型</th><th>裁判方式</th>'
+        '<th>裁判请求模型</th><th>实际响应模型</th></tr></thead>'
+        f"<tbody>{''.join(judge_rows)}</tbody></table>"
+        '<p class="trace-note">五项指标和 Trace 使用此处裁判；回答仍由被测模型生成。'
+        '单独配置不代表裁判已经通过独立认证，响应模型未知时不以请求名称代填。</p>'
+        if judge_rows else ""
+    )
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     html = f"""<!DOCTYPE html>
@@ -144,6 +163,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         ✔ 已内置空值(nan)过滤机制 &nbsp;|&nbsp; ✔ 异常重试 &nbsp;|&nbsp; ✔ 超时保护 &nbsp;|&nbsp; ✔ JSON格式容错
     </div>
 
+    {judge_table}
     <h2>多模型对比结果</h2>
     <div class="table-scroll"><table>
         <thead>

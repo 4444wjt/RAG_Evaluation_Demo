@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "veriscope.e2e.run.v1",
+  "contractVersion": "veriscope.e2e.v1",
+  "status": "completed",
+  "preparedAt": "2026-10-14T12:50:43.169454+00:00",
+  "applicationName": "本机示例 RAG 应用（自写，词法检索）",
+  "retrievalParty": "application",
+  "platformRetrieval": false,
+  "endpoint": "http://127.0.0.1:9000/rag",
+  "tokenEnv": null,
+  "applicationTimeoutSeconds": 180,
+  "applicationRetries": 0,
+  "itemCount": 25,
+  "judge": {
+    "name": "Qwen/Qwen2.5-72B-Instruct",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+  },
+  "inputSha256": "7ba3f8b9875d9d92d92dfb398e5110e78dde86626a36a7b4d3ca52691d984acc",
+  "sourceSha256": {
+    "tools/competition/evaluate_external.py": "58a4cd1888730e25a49c69a33a57e88576782138fb7cb88869acf71c018d6fa6",
+    "backend/adapters/rag_application.py": "92c9963bc519c32634a62311b2819fed66a045bed07be0719367ef43aa8039d0",
+    "backend/adapters/models/judging.py": "42c7aebc0d4fbda83c4eb60b277287d95d2c4fcb7e9a1bb6a9ac8f412b5b1136",
+    "backend/adapters/models/registry.py": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230",
+    "backend/adapters/models/openai_compatible.py": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791",
+    "backend/adapters/ragas_compat.py": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647",
+    "backend/core/pipeline.py": "9c3adcf75649c2547575259bdd274f591a07fe25a5af8a6d4d31aa7a4ce0c652",
+    "backend/core/gate.py": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+    "backend/core/utils.py": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/config.py": "fd1651e31a583ef3d8a7c327b222080929bef2e938c0ea4616a45ee233b6bd63"
+  },
+  "dependencies": {
+    "ragas": "0.1.21",
+    "langchain": "0.2.17",
+    "langchain-core": "0.2.43",
+    "langchain-openai": "0.1.25",
+    "datasets": "5.0.1",
+    "httpx": "0.28.1",
+    "sentence-transformers": "6.1.0"
+  },
+  "python": "3.11.9",
+  "gitHead": "1d43c10841105eda2c179f4934fe7f9c40dbc058",
+  "gitStatus": " M .gitattributes\n M CHANGELOG.md\n M README.en.md\n M README.md\n M ROADMAP.md\n M backend/api/schemas.py\n M backend/api/service.py\n M backend/config.py\n M backend/core/pipeline.py\n M backend/core/types.py\n M backend/reporting/html.py\n M docs/DEPLOYMENT.md\n M docs/competition/gate-credibility.md\n M docs/competition/judge-calibration/README.md\n M docs/competition/project-introduction.md\n M docs/competition/project-introduction.pdf\n M docs/competition/value-comparison.md\n M docs/evaluation-credibility.md\n M frontend/public/favicon.svg\n M frontend/src/App.tsx\n M frontend/src/api/types.ts\n M frontend/src/components/Icon.tsx\n M frontend/src/components/viz.css\n M frontend/src/config.ts\n M frontend/src/features/AnnotateView.tsx\n M frontend/src/features/ComparisonView.tsx\n M frontend/src/features/FormalRunReplay.tsx\n M frontend/src/features/GateAuditView.tsx\n M frontend/src/features/ReportView.tsx\n M frontend/src/features/RobustnessView.tsx\n M frontend/src/features/TraceView.tsx\n M frontend/src/features/WorkspaceView.tsx\n M frontend/src/features/annotate.css\n M frontend/src/features/details.css\n M frontend/src/features/evaluation-verification.css\n M frontend/src/features/landing/EvidenceFlow.tsx\n M frontend/src/features/landing/LandingPage.tsx\n M frontend/src/features/landing/ProductPreview.tsx\n M frontend/src/features/landing/landing.css\n M frontend/src/fixtures/gate-audit.json\n M frontend/src/labRoute.ts\n M frontend/src/state.ts\n M frontend/src/styles.css\n M frontend/src/test/App.test.tsx\n M frontend/src/test/annotate.test.tsx\n M frontend/src/test/charts.test.tsx\n M frontend/src/test/details.test.tsx\n M frontend/src/test/evaluation-verification.test.tsx\n M frontend/src/test/gate-audit.test.tsx\n M frontend/src/test/landing.test.tsx\n M frontend/src/test/robustness.test.tsx\n M frontend/src/utils/format.ts\n M main.py\n M tests/test_api.py\n M tests/test_audit_fixture.py\n M tools/competition/build_audit_fixture.py\n M tools/competition/judge_compare.py\n M tools/competition/run_evidence.py\n?? backend/adapters/models/judging.py\n?? backend/adapters/rag_application.py\n?? docs/competition/heldout-fix/\n?? docs/competition/judge-calibration/20261014-annotation-V/\n?? docs/competition/project-introduction.html\n?? docs/integrations/\n?? examples/\n?? frontend/_gl.tmp.mjs\n?? frontend/browser-tests/judge.spec.ts\n?? frontend/src/components/BrandMark.tsx\n?? frontend/src/features/FixVerificationView.tsx\n?? frontend/src/features/JudgeConfiguration.tsx\n?? frontend/src/features/JudgeProvenance.tsx\n?? frontend/src/features/fix-verification.css\n?? frontend/src/features/judge-configuration.css\n?? frontend/src/fixtures/fix-verification.json\n?? frontend/src/fixtures/source-registry.json\n?? frontend/src/test/fix-verification.test.tsx\n?? frontend/src/test/judge.test.tsx\n?? frontend/src/test/source-status.test.ts\n?? frontend/src/utils/sourceStatus.ts\n?? scenarios/heldout_fp/\n?? tests/test_external_rag.py\n?? tests/test_fix_fixture.py\n?? tests/test_heldout_fix.py\n?? tests/test_independent_judge.py\n?? tests/test_source_registry.py\n?? tools/competition/build_fix_fixture.py\n?? tools/competition/evaluate_external.py\n?? tools/competition/heldout_fix.py\n",
+  "sentenceAdapter": "zh-sentence-v1",
+  "embedding": "BAAI/bge-small-zh-v1.5",
+  "metrics": [
+    "faithfulness",
+    "context_precision",
+    "answer_relevancy",
+    "answer_correctness",
+    "context_recall"
+  ],
+  "traceEnabled": true,
+  "judgeTimeoutSeconds": 180,
+  "judgeMaxRetries": 2,
+  "ragasTimeoutSeconds": 300,
+  "thresholds": {
+    "faithfulness": 0.8,
+    "context_precision": 0.8
+  },
+  "cost": {
+    "status": "unknown",
+    "note": "需单独授权付费运行；无供应商费用自动封顶。题数不等于裁判调用数。"
+  },
+  "startedAt": "2026-10-14T13:25:53.228571+00:00",
+  "finishedAt": "2026-10-14T13:58:03.817529+00:00",
+  "elapsedSeconds": 1930.578
+}

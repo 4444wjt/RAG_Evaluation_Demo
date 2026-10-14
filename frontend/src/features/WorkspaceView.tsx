@@ -5,6 +5,7 @@ import { Icon } from '../components/Icon';
 import type { WorkspaceConfig } from '../state';
 import type { ModelEntry } from '../api/models';
 import { FileImportControl } from './FileImportControl';
+import { JudgeConfiguration } from './JudgeConfiguration';
 import './workspace-inputs.css';
 
 const SAMPLE_NOTES: Record<string, string> = {
@@ -57,7 +58,8 @@ export function WorkspaceView({ config, onChange, onRun, running, readOnly = fal
     setDocumentSource(source);
     update({ docPath: source === 'example' ? lastExample.current : config.docImport?.relative_path ?? '' });
   };
-  const inputReady = Boolean(config.docPath.trim()) && (config.testsetMode !== 'custom' || Boolean(config.testsetPath.trim()));
+  const inputReady = Boolean(config.docPath.trim()) && (config.testsetMode !== 'custom' || Boolean(config.testsetPath.trim()))
+    && (!config.judgeModelName || models.some((model) => model.id === config.judgeModelName));
   const toggleModel = (id: string) => update({ modelNames: config.modelNames.includes(id) ? config.modelNames.filter((model) => model !== id) : [...config.modelNames, id] });
   return <div className="experiment-workspace">
     <div className="workspace-heading"><div><h2>评测配置</h2><p>先选示例或导入资料，再配置模型并运行。</p></div>{!readOnly && <span className="badge neutral">本地评测</span>}</div>
@@ -122,6 +124,7 @@ export function WorkspaceView({ config, onChange, onRun, running, readOnly = fal
           </button>;
         })}</div>
         <small className="stage-footnote">名称须与本地后端配置一致；选择状态不代表模型服务已验证可用。自己的模型可在「模型配置」中登记。</small>
+        <JudgeConfiguration value={config.judgeModelName} models={models} testedModels={config.modelNames} onChange={(judgeModelName) => update({ judgeModelName })}/>
       </Stage>
       <Stage number="03" name="参数">
         <div className="stage-heading"><div><h3>评测参数</h3><p>质量门禁沿用原有正向用例判定。</p></div><label className="checkbox-label"><input type="checkbox" checked={config.useDefaultThresholds} onChange={(event) => update({ useDefaultThresholds: event.target.checked })}/>沿用后端默认阈值</label></div>

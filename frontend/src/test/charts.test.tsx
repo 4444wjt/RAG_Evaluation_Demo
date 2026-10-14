@@ -316,6 +316,7 @@ describe('comparison metrics table', () => {
     expect(within(table).getAllByRole('rowheader').map((header) => header.querySelector('span')?.textContent)).toEqual(fixture.result.summary_df.map((row) => modelName(row.model)));
     expect(screen.getByRole('region', { name: '完整模型指标表，可横向滚动' })).toHaveClass('comparison-table-scroll');
     expect(within(table).getAllByRole('rowheader').every((header) => header.classList.contains('comparison-model-cell'))).toBe(true);
+    expect(within(table).getByRole('rowheader', { name: /DeepSeek-V4\.1-Flash/ }).querySelector('small')?.textContent).toBe('请求名 deepseek-chat');
   });
 
   it('preserves later-row extension fields and displays missing values as unavailable', () => {

@@ -1,4 +1,4 @@
-export const REPO_URL = 'https://github.com/4444wjt/RAG_Evaluation_Demo';
+export const REPO_URL = 'https://gitee.com/kkbushishou/rag-hallucination-evaluator';
 
 /** Public demo builds set VITE_READ_ONLY=1: the workbench shows snapshots only and never starts a paid evaluation. */
 export const READ_ONLY = import.meta.env.VITE_READ_ONLY === '1';
@@ -11,14 +11,19 @@ export const STATIC_SITE = import.meta.env.VITE_STATIC_SITE === '1';
  *  Charts and the workspace model cards share these, so a model keeps one colour across the app. */
 export const MODEL_COLORS = ['#3987e5', '#d95926', '#199e70', '#9085e9', '#d55181', '#c98500'];
 
-/** 有服务端返回记录的 DeepSeek 运行（25 题正式运行、外部基准、鲁棒性体检）：请求 deepseek-chat（旧别名），服务端返回 deepseek-flash。
- *  DeepSeek 官方「模型 & 价格」页与 2026-09-10 更新日志：deepseek-flash 对应 DeepSeek-V4.1-Flash（https://api-docs.deepseek.com/zh-cn/quick_start/pricing）。
- *  演示快照没有记录服务端返回的模型名，所以通用标签仍写 DeepSeek，不推断它的版本。 */
+/** DeepSeek 在页面上一律显示为 DeepSeek-V4.1-Flash。
+ *  依据：DeepSeek 官方「模型 & 价格」页写明 deepseek-flash 的模型版本为 DeepSeek-V4.1-Flash（https://api-docs.deepseek.com/zh-cn/quick_start/pricing）；
+ *  2026-09-10 更新日志：V4.1 Flash 上线，旧 V4 Flash 下线，旧模型名路由到 V4.1 Flash。
+ *  本项目请求 deepseek-chat（旧别名）。有服务端返回记录的运行（25 题正式运行、外部基准、鲁棒性体检、修复验证）返回的都是 deepseek-flash。
+ *  演示快照（2026-09-30）与金融失败案例（2026-09-28）没有记录返回名，是按官方路由说明推断为 V4.1-Flash 的；页面上的运行都在 2026-09-10 之后。 */
 export const DEEPSEEK_VERSION = 'DeepSeek-V4.1-Flash';
+
+/** 服务端返回的模型名 → 显示名。 */
+export const RETURNED_MODEL_LABELS: Readonly<Record<string, string>> = { 'deepseek-flash': DEEPSEEK_VERSION };
 
 /** Public model IDs only. Update these if the local backend names are overridden. */
 export const MODELS = [
-  { id: 'deepseek-chat', label: 'DeepSeek', detail: 'deepseek-chat 为旧别名，服务端返回 deepseek-flash（V4.1-Flash）', initials: 'DS' },
+  { id: 'deepseek-chat', label: DEEPSEEK_VERSION, detail: '请求名 deepseek-chat（旧别名）', initials: 'DS' },
   { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', detail: '通义千问 7B 指令模型', initials: 'QW' },
   { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', detail: '智谱 GLM · 阿里云百炼', initials: 'GL' },
 ] as const;

@@ -1539,7 +1539,7 @@ def _legacy_run_pipeline(doc_path=None, testset_path=None, benchmark=None, bench
 
 def run_pipeline(doc_path=None, testset_path=None, benchmark=None, benchmark_limit=20,
                  model_names=None, faith_threshold=None, ctx_prec_threshold=None,
-                 version_label=None, progress_cb=None):
+                 version_label=None, progress_cb=None, judge_model_name=None):
     """兼容入口：委托 backend.core.pipeline.evaluate 执行完整评测。
 
     旧实现原样保留为 _legacy_run_pipeline（见上），本函数仅负责把旧 run_pipeline 的
@@ -1557,6 +1557,7 @@ def run_pipeline(doc_path=None, testset_path=None, benchmark=None, benchmark_lim
         faith_threshold=faith_threshold,
         ctx_prec_threshold=ctx_prec_threshold,
         version_label=version_label,
+        **({"judge_model_name": judge_model_name} if judge_model_name is not None else {}),
     )
     return evaluate(
         request,
@@ -2685,6 +2686,8 @@ if __name__ == "__main__":
                         help="基准数据集采样条数，默认 20")
     parser.add_argument("--doc", type=str, default=None,
                         help="评测文档路径，默认使用 demo.txt")
+    parser.add_argument("--judge-model", type=str, default=None,
+                        help="单独指定已配置的裁判模型；不传则沿用被测模型")
     parser.add_argument("--web", action="store_true",
                         help="启动 Gradio Web 界面")
     parser.add_argument("--port", type=int, default=7860,
@@ -2694,5 +2697,6 @@ if __name__ == "__main__":
     if args.web:
         launch_gradio(port=args.port)
     else:
-        result = run_pipeline(doc_path=args.doc, testset_path=args.testset, benchmark=args.benchmark, benchmark_limit=args.limit)
+        result = run_pipeline(doc_path=args.doc, testset_path=args.testset, benchmark=args.benchmark,
+                              benchmark_limit=args.limit, judge_model_name=args.judge_model)
         sys.exit(0 if result["gate_passed"] else 1)

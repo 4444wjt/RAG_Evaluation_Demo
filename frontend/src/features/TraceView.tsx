@@ -2,7 +2,11 @@ import { Fragment, useState } from 'react';
 import type { EvaluationResult, JsonValue, ResultRow } from '../api/types';
 import { MODEL_COLORS } from '../config';
 import { Icon } from '../components/Icon';
+import { JudgeProvenance } from './JudgeProvenance';
 import { modelName, swatch, textValue } from '../utils/format';
+import sourceRegistry from '../fixtures/source-registry.json';
+import { lookupSource, sourceStatus } from '../utils/sourceStatus';
+import type { SourceDocument, SourceRegistry } from '../utils/sourceStatus';
 import '../components/viz.css';
 import './details.css';
 
@@ -200,6 +204,109 @@ function verdictMix(rows: ResultRow[]) {
   return { counts, total: MIX_ORDER.reduce((sum, verdict) => sum + counts[verdict], 0), withoutStatements };
 }
 
+type ScopeTone = 'positive' | 'warning' | 'danger' | 'neutral';
+type ScopeRow = { layer: string; method: string; value: string; note: string; tone: ScopeTone };
+type ScopeGap = { label: string; statement?: number };
+
+/** How far the trace's own record lets us say each candidate passed the verbatim-evidence check. Old records kept no list of dropped candidates. */
+function candidateCheck(trace: TraceData): { note: string; tone: ScopeTone | null } {
+  const input = typeof trace.diagnostics?.input_statement_count === 'number' ? trace.diagnostics.input_statement_count : null;
+  const rejected = Array.isArray(trace.diagnostics?.rejected_statements) ? trace.diagnostics.rejected_statements.length : 0;
+  switch (trace.status) {
+    case 'ok': return { note: input === null ? '候选陈述全部通过原文校验' : `候选 ${input} 条全部通过原文校验`, tone: null };
+    case 'partial': return { note: input === null ? `丢弃 ${rejected} 条未通过原文校验的候选` : `候选 ${input} 条中丢弃 ${rejected} 条`, tone: 'warning' };
+    case 'filtered_all': return { note: input === null ? '候选全部未通过原文校验，已全部丢弃' : `候选 ${input} 条全部未通过原文校验，已全部丢弃`, tone: 'warning' };
+    case 'empty_answer': return { note: '拒答，没有需要核对的陈述', tone: null };
+    case 'model_empty': return { note: '模型没有返回陈述', tone: null };
+    case 'disabled': return { note: '本次评测未执行逐句核对', tone: null };
+    case 'call_error': case 'parse_error': case 'invalid_structure': return { note: '核对未完成，见下方处理记录', tone: 'danger' };
+    default: return { note: '旧记录未保存候选校验结果，丢弃情况未记录', tone: null };
+  }
+}
+
+/** The verification scope of one answer, layer by layer. Counts only; never a combined confidence score. */
+function verificationScope(trace: TraceData, statements: Statement[] | null, contexts: Context[], state: TraceState, document: SourceDocument | null): { rows: ScopeRow[]; gaps: ScopeGap[] } {
+  const list = statements ?? [];
+  const located = (statement: Statement) => contexts.some((context) => context.text.includes(statement.evidence));
+  const quoted = list.filter((statement) => statement.evidence.trim());
+  const locatedCount = quoted.filter(located).length;
+  const unmatched = quoted.length - locatedCount;
+  const unquoted = list.length - quoted.length;
+  const check = candidateCheck(trace);
+
+  const citation = list.length === 0 ? '没有可定位的陈述'
+    : [`已定位 ${locatedCount} 条`, unmatched > 0 && `未匹配 ${unmatched} 条`, unquoted > 0 && `无引用 ${unquoted} 条`].filter(Boolean).join(' · ');
+  const verdicts = MIX_ORDER.filter((verdict) => list.some((statement) => statement.verdict === verdict))
+    .map((verdict) => `${verdictLabels[verdict]} ${list.filter((statement) => statement.verdict === verdict).length} 条`).join(' · ');
+  const contradicted = list.some((statement) => statement.verdict === 'fact_error' || statement.verdict === 'fabrication');
+
+  const registeredSource = lookupSource(document, sourceRegistry as SourceRegistry);
+  const source = sourceStatus(registeredSource);
+  const sourceNote = !document
+    ? '本次评测结果未携带资料哈希，无法与登记表对应'
+    : !registeredSource
+      ? '缺：来源登记；资料路径或哈希与登记表不匹配'
+      : source.state === '信息齐备'
+        ? '已登记来源与版本；是否现行有效未核查'
+        : source.state === '缺少版本'
+          ? `缺：${source.missing.join('、')}`
+          : [source.missing.some((field) => field !== '节选范围') && '适用对象、地域或条件未登记',
+            source.missing.includes('节选范围') && '节选未列出范围'].filter(Boolean).join('；');
+
+  const rows: ScopeRow[] = [
+    { layer: '引用定位', method: '代码检查', value: citation,
+      note: unquoted > 0 ? `${check.note}；「无依据编造」可不附引用` : check.note,
+      tone: check.tone ?? (unmatched > 0 ? 'warning' : list.length > 0 ? 'positive' : 'neutral') },
+    { layer: '语义支持', method: '模型裁判', value: verdicts || '没有可判定的陈述',
+      note: list.length > 0 ? '模型判定，有误差；「事实错误」指与检索资料矛盾' : '没有陈述，就没有语义判定',
+      tone: contradicted ? 'danger' : list.length > 0 ? 'positive' : 'neutral' },
+    { layer: '事实正确', method: '不检查', value: '未检查', note: '平台不核对资料或回答与现实是否一致', tone: 'neutral' },
+    { layer: '来源版本', method: '登记信息', value: source.state,
+      note: `${source.fictional ? '虚构示例资料，不是权威来源；' : ''}${sourceNote}`,
+      tone: source.state === '信息齐备' ? 'neutral' : 'warning' },
+    { layer: '抽取完整性', method: '需人工核查', value: '未核查',
+      note: list.length > 0 ? `机器从回答中抽取了 ${list.length} 条陈述，回答里可能还有未抽取的内容` : '没有抽取到陈述，不能据此认为回答没有问题', tone: 'neutral' },
+  ];
+
+  const gaps: ScopeGap[] = [];
+  list.forEach((statement, index) => {
+    if (statement.verdict === 'fact_error' || statement.verdict === 'fabrication' || statement.verdict === 'unknown') gaps.push({ label: `陈述 ${index + 1}：${verdictLabels[statement.verdict]}`, statement: index });
+    else if (statement.evidence.trim() && !located(statement)) gaps.push({ label: `陈述 ${index + 1}：引用未匹配`, statement: index });
+  });
+  if (trace.status === 'partial') gaps.push({ label: '被丢弃的候选，原因见处理记录' });
+  if (state === 'filtered_all') gaps.push({ label: '全部候选被丢弃，需检查是否误删了正常陈述' });
+  if (state === 'unexpected_refusal') gaps.push({ label: '正向用例被拒答，需检查检索或生成' });
+  if (state === 'no_trace') gaps.push({ label: '回答没有逐句证据链' });
+  if (state === 'trace_error') gaps.push({ label: '核对链路异常，见处理记录' });
+  if (source.state !== '信息齐备') gaps.push({ label: `资料来源：${source.state}` });
+  return { rows, gaps };
+}
+
+function showStatement(index: number) {
+  const target = document.getElementById(`trace-statement-${index + 1}`);
+  const reduce = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target?.scrollIntoView?.({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+  target?.focus({ preventScroll: true });
+}
+
+function VerificationScope({ trace, statements, contexts, state, document }: { trace: TraceData; statements: Statement[] | null; contexts: Context[]; state: TraceState; document: SourceDocument | null }) {
+  const { rows, gaps } = verificationScope(trace, statements, contexts, state, document);
+  return <section className="trace-scope-section" aria-labelledby="trace-scope-title">
+    <div className="trace-section-heading"><div><h4 id="trace-scope-title">核验范围与证据缺口</h4><p className="trace-verdict-note">这条回答核对到了哪一层、还缺什么。只列计数，不合成可信度分数。</p></div></div>
+    <dl className="trace-scope">{rows.map((row) => <div key={row.layer} className={`trace-scope-row trace-scope-row--${row.tone}`}>
+      <dt><span>{row.layer}</span><small>{row.method}</small></dt>
+      <dd><strong>{row.value}</strong><span>{row.note}</span></dd>
+    </div>)}</dl>
+    <div className="trace-scope-gaps">
+      <h5>待复核</h5>
+      {gaps.length > 0 ? <ul>{gaps.map((gap) => <li key={gap.label}>{gap.statement === undefined ? <span>{gap.label}</span>
+        : <button type="button" onClick={() => showStatement(gap.statement!)}>{gap.label}</button>}</li>)}</ul>
+        : null}
+      <p>{gaps.length === 0 ? '没有标出具体项。' : ''}这不代表回答无误：事实正确与抽取完整性都未核查。</p>
+    </div>
+  </section>;
+}
+
 function VerdictMix({ result, models, current, onSelect }: { result: EvaluationResult; models: string[]; current: string; onSelect: (model: string) => void }) {
   const order = result.summary_df.map((row) => row.model);
   return <section className="trace-mix" aria-labelledby="trace-mix-title">
@@ -210,7 +317,7 @@ function VerdictMix({ result, models, current, onSelect }: { result: EvaluationR
       const colorIndex = order.indexOf(name);
       const summary = MIX_ORDER.filter((verdict) => mix.counts[verdict] > 0).map((verdict) => `${verdictLabels[verdict]} ${mix.counts[verdict]} 句`).join('，');
       return <button type="button" key={name} className="verdict-mix-row" aria-pressed={name === current} onClick={() => onSelect(name)} aria-label={`${modelName(name)}：${summary || '无逐句陈述'}${mix.withoutStatements ? `；另有 ${mix.withoutStatements} 条回答无逐句陈述` : ''}`}>
-        <span className="verdict-mix-name"><i style={{ background: MODEL_COLORS[(colorIndex >= 0 ? colorIndex : index) % MODEL_COLORS.length] }} />{modelName(name)}</span>
+        <span className="verdict-mix-name"><i style={{ background: MODEL_COLORS[(colorIndex >= 0 ? colorIndex : index) % MODEL_COLORS.length] }} /><span title={modelName(name)}>{modelName(name)}</span></span>
         <span className={`verdict-mix-bar${mix.total === 0 ? ' is-empty' : ''}`} aria-hidden="true">{MIX_ORDER.filter((verdict) => mix.counts[verdict] > 0).map((verdict) => <span key={verdict} className={`verdict-${verdict}`} style={{ flex: mix.counts[verdict] }} />)}</span>
         <span className="verdict-mix-count" aria-hidden="true"><strong>{`${mix.total} 句`}</strong>{mix.withoutStatements > 0 && ` · ${mix.withoutStatements} 条无陈述`}</span>
       </button>;
@@ -218,7 +325,7 @@ function VerdictMix({ result, models, current, onSelect }: { result: EvaluationR
   </section>;
 }
 
-export function TraceView({ result }: { result: EvaluationResult | null }) {
+export function TraceView({ result, document = null }: { result: EvaluationResult | null; document?: SourceDocument | null }) {
   const [selection, setSelection] = useState<Selection>({ result: null, model: '', index: 0 });
   const models = result ? Object.keys(result.model_dfs) : [];
   const model = selection.result === result && models.includes(selection.model) ? selection.model : (models[0] ?? '');
@@ -279,9 +386,10 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
           <header className="trace-detail-heading">
             <div className="trace-detail-meta"><span>问题 {String(selectedIndex + 1).padStart(2, '0')}</span><span className="badge trace-type-badge">{caseLabel(row.case_type)}</span></div>
             <h3>{textValue(row.question, '问题原文未记录')}</h3>
-            <p className="trace-model-id">{model}</p>
+            <p className="trace-model-id" title={model === modelName(model) ? undefined : `请求名 ${model}`}>{modelName(model)}</p>
           </header>
 
+          <JudgeProvenance rows={[row]}/>
           <section className="trace-answer-section" aria-labelledby="trace-answer-title">
             <div className={`trace-reliability-card trace-reliability-card--${reliabilityValue.tone}`} role="status" aria-label={`可靠性判断：${reliabilityValue.label}`}>
               <span className="trace-reliability-icon"><Icon name={reliabilityValue.icon} size={21} /></span>
@@ -317,14 +425,16 @@ export function TraceView({ result }: { result: EvaluationResult | null }) {
             {typeof row.ground_truth === 'string' && row.ground_truth.trim() && <div className="trace-reference"><span>参考答案</span><p>{row.ground_truth}</p></div>}
           </section>
 
+          <VerificationScope trace={trace} statements={statements} contexts={contexts} state={traceState} document={document}/>
+
           <section className="trace-statements-section" aria-labelledby="trace-statements-title">
-            <div className="trace-section-heading"><div><h4 id="trace-statements-title">逐句判定</h4><p className="trace-verdict-note">机器逐句判定，不代表人工认证；引用已定位也不等于语义支持。</p></div><span>来自原始溯源记录</span></div>
+            <div className="trace-section-heading"><div><h4 id="trace-statements-title">逐句判定</h4><p className="trace-verdict-note">机器逐句判定，不代表人工认证；引用已定位不等于语义支持，有依据也不等于事实正确。</p></div><span>来自原始溯源记录</span></div>
             {statements && statements.length > 0 ? <div className="trace-statements">
               {statements.map((statement, index) => {
                 const matchingContext = statement.evidence.trim()
                   ? contexts.findIndex((context) => context.text.includes(statement.evidence)) : -1;
                 const evidenceState = statement.evidence.trim() ? (matchingContext >= 0 ? '引用已定位' : '引用未匹配') : '无引用';
-                return <article className={`trace-statement trace-statement--${statement.verdict}`} key={index}>
+                return <article id={`trace-statement-${index + 1}`} tabIndex={-1} className={`trace-statement trace-statement--${statement.verdict}`} key={index}>
                   <div className="trace-statement-heading"><span>陈述 {index + 1}</span><div className="trace-statement-badges"><span className={`badge trace-verdict trace-verdict--${statement.verdict}`}>{verdictLabels[statement.verdict]}</span><span className={`trace-evidence-status trace-evidence-status--${evidenceState === '引用已定位' ? 'matched' : evidenceState === '引用未匹配' ? 'unmatched' : 'empty'}`}>{evidenceState}</span></div></div>
                   <p className="trace-statement-text">{statement.text}</p>
                   {statement.verdict === 'unknown' && statement.originalVerdict && <p className="trace-unknown-verdict">原始判定值：{statement.originalVerdict}</p>}

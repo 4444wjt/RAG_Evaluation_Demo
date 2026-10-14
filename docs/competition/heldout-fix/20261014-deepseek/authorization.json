@@ -1,0 +1,22 @@
+{
+  "packageSha256": "cbda8aa9b51a11eb07e25fd38e1e3480b9012b7d223f27c091d1e19bea6c785c",
+  "casesSha256": "c413e54e46cf54cd2e76d5ac15d5fee5ae67572a0ba6de706d19c0d23489acc8",
+  "authorizedBy": "Kk",
+  "authorizedAt": "2026-10-14T09:38:34+00:00",
+  "budgetCny": 2.0,
+  "maxRequests": 100,
+  "maxRetries": 0,
+  "price": {
+    "inputCnyPerMillion": 2,
+    "outputCnyPerMillion": 8,
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing（缓存未命中价，保守取值）"
+  },
+  "toolSha256": {
+    "tools/competition/heldout_fix.py": "a5f60d67fdd65dbf7dbb6b2bd08a74b1b758d61db5776633090e88850295f722",
+    "tools/competition/prompt_case.py": "808a61ef5093fc2e5b43930a82505a25ab052cc3a7f23a023308bec1699976ad",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/services/answering.py": "efcb4f169bea98b59a02e711a64e204d84bc37b357d5e0adc5605a2a5a84ee3b",
+    "backend/core/attribution.py": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+  },
+  "note": "作者 2026-10-14 在对话中授权：预算 ¥2、最多 100 次请求，不重试"
+}

@@ -1108,10 +1108,132 @@
       }
     },
     "annotation": {
-      "status": "pending",
+      "status": "done",
       "statements": 52,
       "questions": 20,
-      "packageId": "3dc45b1aa403defeaa1bc546b64278fbedc7c8e09f45887236dec7083f6b0210"
+      "packageId": "3dc45b1aa403defeaa1bc546b64278fbedc7c8e09f45887236dec7083f6b0210",
+      "annotators": [
+        "V"
+      ],
+      "counts": {
+        "resolved": 51,
+        "unresolved": 1,
+        "unlabeled": 0
+      },
+      "agreement": null,
+      "judgeValue": 0.7375,
+      "calibration": {
+        "m1": 45,
+        "q1": 0.9555555555555556,
+        "q1Wilson95": [
+          0.8517248923056439,
+          0.9877258732932802
+        ],
+        "m0": 6,
+        "q0": 1.0,
+        "q0Wilson95": [
+          0.6096657120978346,
+          1.0
+        ],
+        "confusion": {
+          "humanSupportedJudgeSupported": 43,
+          "humanSupportedJudgeNot": 2,
+          "humanNotJudgeSupported": 0,
+          "humanNotJudgeNot": 6
+        }
+      },
+      "estimate": {
+        "method": "human",
+        "point": [
+          0.775,
+          0.825
+        ],
+        "interval": null,
+        "state": null,
+        "pointPasses": null,
+        "reason": "存在未决标签：两个端点区间不能保证覆盖混合赋值的区间，故只报告点估计上下界，不给95%区间或区间结论。"
+      },
+      "unresolved": [
+        {
+          "id": "S12",
+          "caseId": "F03",
+          "statement": 1,
+          "refusal": true,
+          "text": "The provided document does not contain information to answer the question."
+        }
+      ],
+      "disagreements": [
+        {
+          "id": "S08",
+          "caseId": "D01",
+          "statement": 1,
+          "refusal": false,
+          "text": "建立存款保险制度的目的是为了建立和规范存款保险制度。"
+        },
+        {
+          "id": "S47",
+          "caseId": "D09",
+          "statement": 1,
+          "refusal": false,
+          "text": "投保机构应当交纳的保费按照本投保机构的被保险存款计算。"
+        }
+      ],
+      "humanNotSupported": [
+        {
+          "id": "S02",
+          "caseId": "C02",
+          "statement": 2,
+          "refusal": false,
+          "text": "该存款人的资金总额为49万元本金加2万元利息，合计51万元。"
+        },
+        {
+          "id": "S05",
+          "caseId": "C02",
+          "statement": 5,
+          "refusal": false,
+          "text": "超出最高偿付限额的部分为1万元。"
+        },
+        {
+          "id": "S06",
+          "caseId": "C02",
+          "statement": 6,
+          "refusal": false,
+          "text": "超出最高偿付限额的1万元依法从投保机构清算财产中受偿。"
+        },
+        {
+          "id": "S17",
+          "caseId": "F01",
+          "statement": 1,
+          "refusal": true,
+          "text": "The provided documents do not contain information to answer the question."
+        },
+        {
+          "id": "S20",
+          "caseId": "F05",
+          "statement": 1,
+          "refusal": true,
+          "text": "The provided document does not contain information to answer the question."
+        },
+        {
+          "id": "S46",
+          "caseId": "F04",
+          "statement": 1,
+          "refusal": true,
+          "text": "The provided documents do not contain information to answer the question."
+        }
+      ],
+      "source": {
+        "analysis": {
+          "path": "docs/competition/judge-calibration/20261014-annotation-V/analysis.json",
+          "sha256": "95e0a734e520a5be4de830c07cfcd9e9fd5d5c673e0e991802055039fbc95d89"
+        },
+        "annotations": [
+          {
+            "path": "docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json",
+            "sha256": "b326077b7fe55dfb7ed2ed0da28685ab70f94b7fcce42dd104b3b9717bcaa015"
+          }
+        ]
+      }
     }
   }
 }

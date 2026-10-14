@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import replayData from '../fixtures/formal-run-replay.json';
+import { Icon } from '../components/Icon';
 import { DEEPSEEK_VERSION } from '../config';
+import fixData from '../fixtures/fix-verification.json';
+import { labHash } from '../labRoute';
 import { percent } from '../utils/format';
 
 // Generated from the frozen 25-question run by tools/competition/build_replay_fixture.py; never edited by hand.
@@ -70,6 +73,7 @@ export function FormalRunReplay() {
         </div>
       </div>
       <p className="formal-replay-scope">此处逐句为 Ragas 忠实度内部的陈述判定，门禁的正向忠实度由它计分；界面其他位置的「逐句核对」是自研 Trace，与门禁并列、不参与计算。</p>
+      <p className="formal-replay-next">{`这次 FAIL 之后：问答提示词加了一句，同条件重跑，正向忠实度 ${fixData.formal.gate.after.posFaithfulness}，门禁 PASS（结论确定性仍为「${fixData.formal.gate.after.certainty.state}」）。`}<a href={labHash('fix', true)}>查看修复验证<Icon name="arrow" size={13}/></a></p>
     </div>
   </section>;
 }

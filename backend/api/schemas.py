@@ -15,6 +15,7 @@ class EvaluateRequest(BaseModel):
     benchmark: Literal["truthful_qa"] | None = None
     benchmark_limit: int = Field(default=20, gt=0, le=50)
     model_names: list[str] | None = Field(default=None, min_length=1)
+    judge_model_name: str | None = Field(default=None, pattern=r"^[A-Za-z0-9][A-Za-z0-9._/-]{0,127}$")
     faith_threshold: float | None = Field(default=None, ge=0, le=1)
     ctx_prec_threshold: float | None = Field(default=None, ge=0, le=1)
     version_label: str | None = None

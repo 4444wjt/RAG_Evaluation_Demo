@@ -164,7 +164,19 @@ def validate_cases(root: Path, *, require_author: bool = False) -> dict:
     return manifest
 
 
-def prepare(root: Path, batch: str, model: str) -> Path:
+def configured_model(project: Path, name: str) -> dict:
+    """Built-in model first, then the local registry copied into the isolated project; never guess a config."""
+    from backend import config
+    from backend.core import model_registry
+    builtin = [item['name'] for item in config.MODELS_CONFIG]
+    found = next((item for item in config.MODELS_CONFIG if item['name'] == name), None) or next(
+        (item for item in model_registry.load(project, builtin) if item['name'] == name), None)
+    if found is None:
+        raise ValueError(f'模型未配置：{name}')
+    return found
+
+
+def prepare(root: Path, batch: str, model: str, judge: str | None = None) -> Path:
     manifest = validate_cases(root)
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     archive = root / 'work' / 'competition' / 'runs' / f'{stamp}-{batch}-{uuid4().hex[:8]}'
@@ -185,6 +197,10 @@ def prepare(root: Path, batch: str, model: str) -> Path:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(root / relative, target)
         copied.append({'path': relative.as_posix(), 'sha256': sha256(target)})
+    if judge and (root / 'models.local.json').exists():
+        # Locally registered judges live here; it holds names, addresses and env-var names, never keys.
+        shutil.copy2(root / 'models.local.json', project / 'models.local.json')
+        copied.append({'path': 'models.local.json', 'sha256': sha256(project / 'models.local.json')})
     for name in ('requirements.txt', 'requirements_new.txt'):
         shutil.copy2(root / name, archive / name)
     (archive / 'runner').mkdir()
@@ -199,6 +215,8 @@ def prepare(root: Path, batch: str, model: str) -> Path:
         commit, dirty = None, None
         git_status = unknown('无法取得Git状态；源码哈希仍单独记录。')
     request = {'doc_path': manifest['document']['path'], 'testset_path': (CASE_DIR / ('pilot.json' if batch == 'pilot' else 'testset.json')).as_posix(), 'model_names': [model], 'faith_threshold': 0.8, 'ctx_prec_threshold': 0.8, 'version_label': archive.name}
+    if judge:
+        request['judge_model_name'] = judge
     write_json(archive / 'request.json', request)
     write_json(archive / 'manifest.json', {
         'schemaVersion': ARCHIVE_SCHEMA, 'kind': 'current-web-api-independent-run', 'status': 'prepared',
@@ -211,7 +229,7 @@ def prepare(root: Path, batch: str, model: str) -> Path:
         'caseIds': manifest['pilotIds'] if batch == 'pilot' else [r['id'] for r in manifest['cases']],
         'authorValidation': manifest['authorValidation'], 'request': request,
         'integrity': {'index': 'checksums.json', 'manifestChecksum': '见外部checksums.json，不在manifest中自引用。', 'excludes': sorted(EXCLUDED_DIRS)},
-        'limitations': ['生成、Ragas Judge与Trace使用当前同一模型；不是独立裁判。', '不是旧冻结Demo复跑、阈值校准或总体准确率证明。', '同机隔离源码目录使用既有Python依赖与Embedding缓存，不是全新操作系统验证。', '实际扣费仅能由作者账单确认，token观测不是账单。'],
+        'limitations': [f'生成使用{model}；Ragas Judge与Trace使用单独配置的裁判{judge}。' if judge else '生成、Ragas Judge与Trace使用当前同一模型；不是独立裁判。', '不是旧冻结Demo复跑、阈值校准或总体准确率证明。', '同机隔离源码目录使用既有Python依赖与Embedding缓存，不是全新操作系统验证。', '实际扣费仅能由作者账单确认，token观测不是账单。'],
     })
     write_checksums(archive)
     return archive
@@ -227,6 +245,8 @@ def runtime_metadata(archive: Path) -> dict:
     request = json.loads((archive / 'request.json').read_text(encoding='utf-8'))
     model = request['model_names'][0]
     selected = next(item for item in config.MODELS_CONFIG if item['name'] == model)
+    judge = request.get('judge_model_name')
+    judge_selected = configured_model(archive / 'project', judge) if judge else selected
     prompts, parameters = {}, {}
     for metric in RAGAS_METRICS:
         definitions = {name: value.dict() for name, value in vars(metric).items() if isinstance(value, Prompt)}
@@ -238,6 +258,8 @@ def runtime_metadata(archive: Path) -> dict:
         'maxTokens': unknown('未显式设置，提供方默认上限未知。'),
         'extraBody': {'enable_thinking': False} if selected.get('provider') == 'bailian' or model.lower().startswith('glm') else None,
         'modelWeightsRevision': unknown('远端服务未提供不可变权重版本。')}
+    judge_config = dict(model_config) if not judge else {**model_config, 'requestedModel': judge, 'endpoint': judge_selected['base_url'],
+        'extraBody': {'enable_thinking': False} if judge_selected.get('provider') == 'bailian' or judge.lower().startswith('glm') else None}
     source_info = source_versions(archive / 'project')
     source_info['promptVersions']['ragas'] = {name: {key: {k: v for k, v in item.items() if k != 'definition'} for key, item in definitions.items()} for name, definitions in prompts.items()}
     run_defaults = {name: RunConfig.__dataclass_fields__[name].default for name in ('max_retries', 'max_wait', 'log_tenacity', 'seed')}
@@ -246,7 +268,7 @@ def runtime_metadata(archive: Path) -> dict:
     return {'capturedAt': datetime.now(timezone.utc).isoformat(), 'sentenceAdapterVersion': SENTENCE_ADAPTER_VERSION,
         'versions': {**source_info, 'sentenceAdapterVersion': SENTENCE_ADAPTER_VERSION,
             'dependencies': dependency_versions()['relevant'], 'ragasPrompts': {name: {key: {k: v for k, v in item.items() if k != 'definition'} for key, item in definitions.items()} for name, definitions in prompts.items()}},
-        'configuration': {'generator': model_config, 'ragasJudge': dict(model_config), 'traceJudge': dict(model_config),
+        'configuration': {'generator': model_config, 'ragasJudge': judge_config, 'traceJudge': dict(judge_config),
             'traceEnabled': config.ENABLE_TRACE, 'chunkSize': config.CHUNK_SIZE, 'chunkOverlap': config.CHUNK_OVERLAP,
             'topK': config.TOP_K, 'reuseVectorDb': config.REUSE_VECTOR_DB, 'ragasMaxWorkers': 1,
             'evaluationTimeout': config.EVAL_TIMEOUT, 'ragasRunConfig': run_defaults, 'metricParameters': parameters,
@@ -451,16 +473,18 @@ def execute(root: Path, archive: Path, port: int, timeout: int, *, allow_draft: 
     from backend import config
     model = json.loads((archive / 'request.json').read_text(encoding='utf-8'))['model_names'][0]
     selected = next(item for item in config.MODELS_CONFIG if item['name'] == model)
-    if not os.environ.get(selected['api_key_env']):
-        raise ValueError('所选模型凭据未配置。')
-    endpoint = urlsplit(selected['base_url'])
-    if endpoint.scheme != 'https' or endpoint.username or endpoint.password or endpoint.query:
-        raise ValueError('仅接受不含嵌入凭据的HTTPS模型地址。')
+    judge = request_data.get('judge_model_name')
+    for chosen in (selected, configured_model(archive / 'project', judge) if judge else selected):
+        if not os.environ.get(chosen['api_key_env']):
+            raise ValueError('所选模型凭据未配置。')
+        endpoint = urlsplit(chosen['base_url'])
+        if endpoint.scheme != 'https' or endpoint.username or endpoint.password or endpoint.query:
+            raise ValueError('仅接受不含嵌入凭据的HTTPS模型地址。')
     metadata['purpose'] = 'draft-token-pilot' if allow_draft else 'author-confirmed-evaluation'
     metadata['authorConfirmed'] = material['authorValidation']['status'] == 'confirmed'
     if allow_draft:
         metadata['limitations'].append('用户授权使用5题待确认草稿测量消耗，不代表参考答案已由作者核验。')
-    metadata.update(status='running', startedAt=datetime.now(timezone.utc).isoformat(), configuration={'generatorModel': model, 'ragasJudgeModel': model, 'traceJudgeModel': model, 'endpoint': selected['base_url'], 'temperature': 0, 'traceEnabled': config.ENABLE_TRACE, 'chunkSize': config.CHUNK_SIZE, 'chunkOverlap': config.CHUNK_OVERLAP, 'topK': config.TOP_K, 'embedding': config.EMBEDDING_MODEL, 'llmTimeout': config.LLM_TIMEOUT, 'llmMaxRetries': config.LLM_MAX_RETRIES, 'evaluationTimeout': config.EVAL_TIMEOUT, 'promptVersion': 'source hashes plus observed expanded messages in llm-events.jsonl'})
+    metadata.update(status='running', startedAt=datetime.now(timezone.utc).isoformat(), configuration={'generatorModel': model, 'ragasJudgeModel': judge or model, 'traceJudgeModel': judge or model, 'endpoint': selected['base_url'], 'temperature': 0, 'traceEnabled': config.ENABLE_TRACE, 'chunkSize': config.CHUNK_SIZE, 'chunkOverlap': config.CHUNK_OVERLAP, 'topK': config.TOP_K, 'embedding': config.EMBEDDING_MODEL, 'llmTimeout': config.LLM_TIMEOUT, 'llmMaxRetries': config.LLM_MAX_RETRIES, 'evaluationTimeout': config.EVAL_TIMEOUT, 'promptVersion': 'source hashes plus observed expanded messages in llm-events.jsonl'})
     write_json(archive / 'packages.json', dependency_versions()['packages'])
     write_json(archive / 'manifest.json', metadata)
     environment = dict(os.environ, PYTHONUTF8='1', PYTHONUNBUFFERED='1')
@@ -528,6 +552,7 @@ def main():
     parser.add_argument('--batch', choices=('pilot', 'full'), default='pilot')
     parser.add_argument('--model', choices=MODELS, default='deepseek-chat')
     parser.add_argument('--execute', action='store_true')
+    parser.add_argument('--judge-model', help='单独配置的裁判（内置或本机登记模型名）；不指定时沿用被测模型。')
     parser.add_argument('--allow-draft-pilot', action='store_true', help='仅在用户授权时用5题草稿测量消耗，不标记为人工确认。')
     parser.add_argument('--port', type=int, default=8002)
     parser.add_argument('--timeout', type=int, default=7200)
@@ -540,7 +565,7 @@ def main():
         parser.error('草稿试跑仅限pilot。')
     if arguments.execute and not arguments.allow_draft_pilot:
         validate_cases(ROOT, require_author=True)  # Fail before making an archive or calling a model.
-    archive = prepare(ROOT, arguments.batch, arguments.model)
+    archive = prepare(ROOT, arguments.batch, arguments.model, arguments.judge_model)
     print(json.dumps({'archive': str(archive), 'status': 'prepared', 'paidModelCalls': 0}, ensure_ascii=False), flush=True)
     if arguments.execute:
         result = execute(ROOT, archive, arguments.port, arguments.timeout, allow_draft=arguments.allow_draft_pilot)

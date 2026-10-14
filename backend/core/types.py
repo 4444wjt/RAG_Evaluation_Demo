@@ -82,6 +82,7 @@ class EvaluationRequest(TypedDict, total=False):
     benchmark: Optional[str]
     benchmark_limit: int
     model_names: Optional[List[str]]
+    judge_model_name: Optional[str]
     faith_threshold: Optional[float]
     ctx_prec_threshold: Optional[float]
     version_label: Optional[str]

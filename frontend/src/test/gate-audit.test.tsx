@@ -77,6 +77,7 @@ describe('Gate audit view', () => {
     expect(within(panel).getByText('只给出错误答案 11 题，逐句核对标出 3 题；其余照抄资料的判为有依据')).toBeInTheDocument();
     expect(within(panel).getByText('查不出资料错误')).toBeInTheDocument();
     expect(within(panel).getByText(/约为 0\.7178/)).toBeInTheDocument();
+    expect(within(panel).getByText(/请求名 deepseek-chat，实际模型 DeepSeek-V4\.1-Flash（服务端返回名 deepseek-flash）/)).toBeInTheDocument();
   });
 
   it('links every source to the public repository and is reachable by deep link', () => {
@@ -85,7 +86,7 @@ describe('Gate audit view', () => {
     expect(links.length).toBeGreaterThan(0);
     const inApp = links.filter((link) => link.getAttribute('href')?.startsWith('#'));
     expect(inApp.map((link) => link.getAttribute('href'))).toEqual(['#/lab/annotate']);
-    for (const link of links.filter((link) => !inApp.includes(link))) expect(link.getAttribute('href')).toMatch(/^https:\/\/github\.com\/4444wjt\/RAG_Evaluation_Demo\/blob\/master\/[\w./-]+$/);
+    for (const link of links.filter((link) => !inApp.includes(link))) expect(link.getAttribute('href')).toMatch(/^https:\/\/gitee\.com\/kkbushishou\/rag-hallucination-evaluator\/blob\/master\/[\w./-]+$/);
     expect(parseLabHash('#/lab/audit')).toEqual({ target: 'lab', view: 'audit' });
     expect(parseLabHash('#/lab/demo/audit')).toEqual({ target: 'demo', view: 'audit' });
   });
@@ -95,14 +96,14 @@ describe('Gate audit view', () => {
     expect(audit.mutation.targetSha256).toMatch(/^[0-9a-f]{64}$/);
     expect(audit.mutation.killed + audit.mutation.survived + audit.mutation.timeouts).toBe(audit.mutation.total);
   });
-  it('separates the judge-error calibration into sensitivity, simulation and pending human calibration', () => {
+  it('separates the judge-error calibration into sensitivity, simulation and the archived human calibration', () => {
     render(<GateAuditView/>);
     const panel = screen.getByRole('region', { name: '裁判判错校准：把裁判误差也算进区间' });
-    expect(within(panel).getByText(/已实现裁判误差分析工具和模拟验证，真实人工校准待完成/)).toBeInTheDocument();
-    expect(within(panel).getByText('人工校准待完成')).toBeInTheDocument();
+    expect(within(panel).getByText(/已有 1 位非作者标完全部 52 条：人工口径跨过门槛，取决于 1 条未决陈述，按事先写定的口径不下结论，已记录的 FAIL 不改/)).toBeInTheDocument();
+    expect(within(panel).getByText('单人标注 · 未下结论')).toBeInTheDocument();
     const states = within(panel).getAllByRole('region');
     expect(states.map((state) => [state.querySelector('h3')?.textContent, state.querySelector('.audit-chip')?.textContent])).toEqual([
-      ['敏感性分析', '已完成'], ['模拟验证', '已完成'], ['真实人工校准', '待标注']]);
+      ['敏感性分析', '已完成'], ['模拟验证', '已完成'], ['真实人工校准', '已完成 · 1 人']]);
 
     const sensitivity = within(panel).getByRole('region', { name: '敏感性分析' });
     expect(within(sensitivity).getByText('5 条', { selector: 'dd' })).toBeInTheDocument();
@@ -115,9 +116,14 @@ describe('Gate audit view', () => {
     expect(within(simulation).getByText(/不代表门禁裁判的真实误差/)).toBeInTheDocument();
 
     const human = within(panel).getByRole('region', { name: '真实人工校准' });
-    expect(audit.calibration.annotation.status).toBe('pending');
-    expect(within(human).getByText(/不用模型代替人工标注/)).toBeInTheDocument();
-    expect(within(human).getByText(/至少 10 题/)).toBeInTheDocument();
+    expect(audit.calibration.annotation.status).toBe('done');
+    expect(within(human).getByText(/没有用模型代替人工标注/)).toBeInTheDocument();
+    // The bounds straddle the threshold because of one unresolved statement: no interval, no verdict.
+    expect(within(human).getByText('77.5%–82.5%', { selector: 'dd' })).toBeInTheDocument();
+    expect(within(human).getByText('F03 第 1 条')).toBeInTheDocument();
+    expect(within(human).getByText(/有未决陈述时不给 95% 区间，也不下结论/)).toBeInTheDocument();
+    expect(within(human).getByText(/D01 第 1 条、D09 第 1 条）都是裁判更严/)).toBeInTheDocument();
+    expect(within(panel).getByRole('link', { name: '人工标注结果' })).toHaveAttribute('href', expect.stringContaining('judge-calibration/20261014-annotation-V/README.md'));
     expect(within(human).getByRole('link', { name: '打开标注页' })).toHaveAttribute('href', '#/lab/annotate');
   });
 });

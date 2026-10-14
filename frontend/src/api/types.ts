@@ -8,6 +8,7 @@ export interface EvaluateRequest {
   benchmark: 'truthful_qa' | null;
   benchmark_limit: number;
   model_names: string[] | null;
+  judge_model_name?: string | null;
   faith_threshold: number | null;
   ctx_prec_threshold: number | null;
   version_label: string | null;
