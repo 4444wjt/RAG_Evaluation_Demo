@@ -15,7 +15,7 @@
 3. 不携带 node_modules、venv、模型权重、向量库、测试缓存和运行报告；新截图放到 docs/images/ 并注明来源。
 4. 提交前检查文件清单和脱敏结果，再向维护者发起 Pull Request。
 
-项目同时配置了 GitHub（remote github）和 Gitee（remote origin）。贡献者推送自己的 Fork；不要照搬维护者远端名称或对原仓库强制推送。
+项目以 [Gitee](https://gitee.com/kkbushishou/rag-hallucination-evaluator) 为主仓库（维护者 remote 为 `origin`），[GitHub](https://github.com/4444wjt/RAG_Evaluation_Demo) 为镜像（维护者 remote 为 `github`，运行 CI 与 Pages 备用站）。两处都接收 Issue 和 Pull Request；GitHub Actions 只在 GitHub 镜像运行。贡献者推送自己的 Fork；不要照搬维护者远端名称或对原仓库强制推送。
 
 ## 设计与实现约定
 

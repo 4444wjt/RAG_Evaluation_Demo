@@ -6,9 +6,11 @@
 
 鉴真全域 VeriScope AI 面向 RAG 问答应用：把模型回答拆成逐句，每一句对照检索原文核对是否有依据，再由质量门禁（Quality Gate）按阈值决定这批回答能否放行。题集、检索上下文、多模型回答、Ragas 指标、逐句判定、门禁记录和人工核验保存在同一条链路上，「回答是否可信」可以按「题集 → 逐句核对 → 门禁 → 报告 → 人工核验」逐条回查。
 
-**典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。** 已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束。门禁已打包为 GitHub Action（[action.yml](action.yml)），其他仓库加一步 `uses: 4444wjt/RAG_Evaluation_Demo@master` 即可接入，CI 页面会显示哪个指标没过、差多少（作业摘要与 JUnit 报告）。指定基线（`--baseline` / `baseline`）后还会逐题对比上一次运行，区分「确定退步」和「在题目抽样与裁判波动范围内的下降」，只有前者拦截；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
+**典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。** 已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束。门禁已打包为 GitHub Action（[action.yml](action.yml)，Action 托管在 GitHub 镜像），其他仓库加一步 `uses: 4444wjt/RAG_Evaluation_Demo@master` 即可接入，CI 页面会显示哪个指标没过、差多少（作业摘要与 JUnit 报告）。指定基线（`--baseline` / `baseline`）后还会逐题对比上一次运行，区分「确定退步」和「在题目抽样与裁判波动范围内的下降」，只有前者拦截；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
 
 项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
+
+代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
 [English](README.en.md) · [快速启动](#快速启动) · [落地与接入](docs/DEPLOYMENT.md) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
 
@@ -144,14 +146,23 @@ RAG-Reliability-Lab/
 
 ### 1. 获取项目
 
-使用 GitHub 或 Gitee 任一仓库。本地目录可以命名为 `RAG-Reliability-Lab`：
+优先从 Gitee 主仓库获取，本地目录可以命名为 `RAG-Reliability-Lab`：
+
+```powershell
+git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab
+```
+
+也可使用 GitHub 镜像，克隆命令任选其一：
 
 ```powershell
 git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
-cd RAG-Reliability-Lab
 ```
 
-Gitee 当前配置地址见文末；发布前需维护者确认目标仓库。
+完成克隆后进入项目目录：
+
+```powershell
+cd RAG-Reliability-Lab
+```
 
 ### 2. 仅看比赛演示：不需要模型密钥
 
@@ -269,15 +280,17 @@ Python 离线验证（项目根目录）：
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
-GitHub Actions 的 CI 在推送或向 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；另有 `gate-action` 任务自检根目录的门禁 Action（演示快照应放行、25 题正式运行应拦截）；门禁代码变动时，`mutation.yml` 在 Linux 上对其做变异测试（本地结果：42 个变异抓住 39 个，见 [门禁可信度](docs/competition/gate-credibility.md) 附录）；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
+Gitee 不运行 GitHub Actions；CI、CodeQL、Scorecard 的运行记录在 [GitHub 镜像的 Actions 页面](https://github.com/4444wjt/RAG_Evaluation_Demo/actions)查看。
+
+GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；另有 `gate-action` 任务自检根目录的门禁 Action（演示快照应放行、25 题正式运行应拦截）；门禁代码变动时，`mutation.yml` 在 Linux 上对其做变异测试（本地结果：42 个变异抓住 39 个，见 [门禁可信度](docs/competition/gate-credibility.md) 附录）；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
 
 ## 许可与仓库
 
 引用信息见 [CITATION.cff](CITATION.cff)（GitHub 仓库页的「Cite this repository」）。本项目自有代码按 [MIT License](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。根目录 MIT 许可不替代第三方依赖的许可证。
 
-当前本地 Git 配置的远端：
+代码仓库与维护者远端名称：
 
-- GitHub：[`4444wjt/RAG_Evaluation_Demo`](https://github.com/4444wjt/RAG_Evaluation_Demo)，remote 为 `github`。
-- Gitee：[`kkbushishou/rag-hallucination-evaluator`](https://gitee.com/kkbushishou/rag-hallucination-evaluator)，remote 为 `origin`。
+- Gitee 主仓库：[`kkbushishou/rag-hallucination-evaluator`](https://gitee.com/kkbushishou/rag-hallucination-evaluator)，remote 为 `origin`。
+- GitHub 镜像：[`4444wjt/RAG_Evaluation_Demo`](https://github.com/4444wjt/RAG_Evaluation_Demo)，remote 为 `github`，用于 CI、GitHub Pages 备用站与门禁 Action。
 
 发布步骤和检查结果见 [发布检查](docs/release-checklist.md)；实际发布版本以仓库提交与 CI 记录为准。历史归档的公开缺项及校验边界见 [复现说明](docs/competition/reproducibility.md#公开检出校验边界)。

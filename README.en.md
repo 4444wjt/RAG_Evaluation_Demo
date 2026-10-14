@@ -2,6 +2,8 @@
 
 **Every sentence of an AI answer, traceable to its source.**
 
+Repositories: [Gitee (primary)](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub (mirror, CI and Pages fallback)](https://github.com/4444wjt/RAG_Evaluation_Demo)
+
 [中文](README.md) · [Gate credibility (Chinese)](docs/competition/gate-credibility.md) · [Gate replay](docs/gate-replay.md) · [Deploy](deploy/README.md) · [Adoption & integration (Chinese)](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
 VeriScope AI is a sentence-level verification and quality-gate platform for RAG (retrieval-augmented generation) question answering. It splits each model answer into atomic statements, checks every statement against the retrieved context, and lets a quality gate decide, by threshold, whether a batch of answers may ship. Test set, retrieved context, answers from several models, Ragas metrics, per-sentence verdicts, gate records and human review are kept in one chain, so "can this answer be trusted?" can be traced step by step: test set → sentence check → gate → report → human review.
@@ -22,7 +24,7 @@ Your own models (any OpenAI-compatible endpoint: vLLM, Ollama, an internal gatew
 
 Before a RAG application goes live, wire VeriScope AI into CI as a regression gate: if the gate blocks, the build fails. Archived evaluation results can be replayed offline — no model calls, no API keys — and a blocked verdict exits non-zero.
 
-The gate is packaged as a GitHub composite action ([action.yml](action.yml)):
+The gate is packaged as a GitHub composite action ([action.yml](action.yml)), hosted in the GitHub mirror. Keep the `uses: 4444wjt/RAG_Evaluation_Demo@master` reference pointing there:
 
 ```yaml
 - uses: actions/checkout@v4
@@ -127,9 +129,22 @@ Python 3.11 and Node.js 24 are recommended.
 
 **Demo only (no API keys):**
 
+Clone from the primary Gitee repository:
+
 ```bash
-git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git
-cd RAG_Evaluation_Demo/frontend
+git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab
+```
+
+Alternatively, clone from the GitHub mirror; choose one of the two clone commands:
+
+```bash
+git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
+```
+
+Then start the front end:
+
+```bash
+cd RAG-Reliability-Lab/frontend
 npm ci
 npm run dev
 ```
@@ -156,7 +171,9 @@ python -m pytest -q tests
 cd frontend && npm test && npm run typecheck
 ```
 
-GitHub Actions runs the Python tests, the front-end unit tests with type checking, and a self-test of the gate action on pushes and pull requests to master; mutation testing of the gate runs when the gate code or its tests change.
+Gitee does not run GitHub Actions. View CI, CodeQL and Scorecard runs on the [GitHub mirror's Actions page](https://github.com/4444wjt/RAG_Evaluation_Demo/actions).
+
+On pushes and pull requests to master/main in the GitHub mirror, GitHub Actions runs the Python tests, the front-end unit tests with type checking, and a self-test of the gate action; mutation testing of the gate runs when the gate code or its tests change.
 
 ## Limitations
 
@@ -168,6 +185,9 @@ GitHub Actions runs the Python tests, the front-end unit tests with type checkin
 
 Plans, target dates and the issue response commitment (first reply within 3 working days) are in the [roadmap](ROADMAP.md) (Chinese).
 
-## License
+## License and repositories
 
 The project's own code is released under the [MIT License](LICENSE). Third-party code and dependencies keep their own licenses; see [third-party notices](frontend/THIRD_PARTY_NOTICES.md). Citation metadata is in [CITATION.cff](CITATION.cff).
+
+- Primary repository: [Gitee — kkbushishou/rag-hallucination-evaluator](https://gitee.com/kkbushishou/rag-hallucination-evaluator), maintainer remote `origin`.
+- Mirror: [GitHub — 4444wjt/RAG_Evaluation_Demo](https://github.com/4444wjt/RAG_Evaluation_Demo), maintainer remote `github`; hosts CI, the GitHub Pages fallback and the gate Action.
