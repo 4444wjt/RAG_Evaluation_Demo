@@ -190,3 +190,9 @@
 /docs/competition/cases/langchain-chatchat/summary.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # 运行时的工具副本（LF），哈希与 authorization.json 中记录的一致；运行后工具只改了分析口径。
 /docs/competition/cases/langchain-chatchat/runner/prompt_case.py text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/README.md text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/SHA256SUMS.txt text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/api-response.json text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/blocked-connections.jsonl text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/run.json text eol=lf
+/docs/competition/offline-run/20261014-ollama-qwen3.5-2b/testset.json text eol=lf

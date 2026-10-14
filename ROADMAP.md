@@ -60,7 +60,7 @@
 - **协作入口**：维护"适合新手"的 issue 标签；新增场景、新增裁判适配器、新增报告模板均写成独立的贡献指引（扩展 [CONTRIBUTING](CONTRIBUTING.md)）。
 - **版本与变更**：按语义化版本发布，变更记录写入 CHANGELOG，破坏性变更提前一个版本标注。
 - **持续集成**：保持 CI（Python 3.11、`compileall` + `pytest`、前端 `vitest`、门禁 Action 自检）全绿作为合并前提。
-- **基础设施**：在线演示目前部署在试用期云服务器上，经免费隧道对外提供访问。计划迁移到有明确续期方案的托管环境；在此之前，**演示站可能中断，仓库内的无密钥演示快照始终可本地运行**，评审以仓库为准。服务器中断时可打开 GitHub Pages 备用站（https://4444wjt.github.io/RAG_Evaluation_Demo/，纯静态、只读，见 [部署说明](deploy/README.md#备用静态站github-pages)）。
+- **基础设施**：在线演示目前部署在试用期云服务器上，经免费隧道对外提供访问。计划迁移到有明确续期方案的托管环境；在此之前，**演示站可能中断，仓库内的无密钥演示快照始终可本地运行**，评审以仓库为准。在线演示地址随作品提交材料提供；服务器中断时可打开 GitHub Pages 备用站（https://4444wjt.github.io/RAG_Evaluation_Demo/，纯静态、只读，见 [部署说明](deploy/README.md#备用静态站github-pages)）。
 
 ## 不在路线图内
 

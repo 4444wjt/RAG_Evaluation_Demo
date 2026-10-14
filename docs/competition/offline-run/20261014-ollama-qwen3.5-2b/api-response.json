@@ -1,0 +1,113 @@
+{
+  "summary": [
+    {
+      "model": "qwen3.5-2b",
+      "faithfulness": 0.75,
+      "context_precision": 0.7963,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.155,
+      "context_recall": 0.875,
+      "pos_faithfulness": 0.75,
+      "pos_context_precision": 0.8194,
+      "neg_faithfulness": null,
+      "neg_context_precision": 0.75,
+      "refusal_accuracy": 1.0,
+      "hallucination_rate": 0.25,
+      "score": 0.7847,
+      "hallucination_statement_count": 0,
+      "hallucination_ratio": null,
+      "trace_statement_count": 0,
+      "trace_fact_error_count": 0,
+      "trace_fabrication_count": 0,
+      "pos_trace_hallucination_ratio": null,
+      "elapsed_seconds": 1310.17
+    }
+  ],
+  "summary_df": [
+    {
+      "model": "qwen3.5-2b",
+      "faithfulness": 0.75,
+      "context_precision": 0.7963,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.155,
+      "context_recall": 0.875,
+      "pos_faithfulness": 0.75,
+      "pos_context_precision": 0.8194,
+      "neg_faithfulness": null,
+      "neg_context_precision": 0.75,
+      "refusal_accuracy": 1.0,
+      "hallucination_rate": 0.25,
+      "score": 0.7847,
+      "hallucination_statement_count": 0,
+      "hallucination_ratio": null,
+      "trace_statement_count": 0,
+      "trace_fact_error_count": 0,
+      "trace_fabrication_count": 0,
+      "pos_trace_hallucination_ratio": null,
+      "elapsed_seconds": 1310.17
+    }
+  ],
+  "gate_passed": false,
+  "gate_message": "⛔ 质量门禁拦截，终止发布",
+  "chart_path": "result_chart.png",
+  "html_path": "ragas_report.html",
+  "model_dfs": {
+    "qwen3.5-2b": [
+      {
+        "question": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？",
+        "answer": "根据提供的《存款保险条例》节选，建立存款保险制度的目的是为了依法保护存款人的合法权益、及时防范和化解金融风险、维护金融稳定。",
+        "contexts": [
+          "存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。",
+          "第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。",
+          "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。",
+          "来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。"
+        ],
+        "ground_truth": "保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+        "faithfulness": 1.0,
+        "context_precision": 0.8333333332916666,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.2048766068685717,
+        "context_recall": 0.75,
+        "hallucination_trace": "{\"statements\": [], \"trace_status\": \"filtered_all\", \"trace_attempts\": 1, \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"prompt_sha256\": \"0cd1ae6c12e61f481fdaacaae41e488a24d75a59b10545f960ff952c30ec769e\", \"raw_output\": \"{\\n\\\"statements\\\": [\\n  {\\n    \\\"text\\\": \\\"建立存款保险制度的目的是为了依法保护存款人的合法权益、及时防范和化解金融风险、维护金融稳定。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"第一条 为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\\\"\\n  }\\n]\\n}\", \"returned_model\": \"qwen3.5-2b\", \"finish_reason\": \"stop\", \"input_statement_count\": 1, \"rejected_statements\": [{\"index\": 0, \"reason\": \"evidence_not_in_context\"}], \"answer_kind\": \"substantive_or_unknown\", \"answer_mode\": \"normal\"}}",
+        "case_type": "positive"
+      },
+      {
+        "question": "根据节选，存款保险的最高偿付限额是多少？",
+        "answer": "根据提供的文档，存款保险实行限额偿付，最高偿付限额为人民币 50 万元，但中国人民银行会同国务院有关部门可根据经济发展、存款结构变化、金融风险状况等因素调整该限额并报国务院批准后公布执行。",
+        "contexts": [
+          "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。",
+          "（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。",
+          "存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。",
+          "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。"
+        ],
+        "ground_truth": "人民币50万元。",
+        "faithfulness": 0.5,
+        "context_precision": 0.8055555555287036,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.14344037404705204,
+        "context_recall": 1.0,
+        "hallucination_trace": "{\"statements\": [], \"trace_status\": \"filtered_all\", \"trace_attempts\": 1, \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"prompt_sha256\": \"bd8f09e7ea87ee62ae0e606e2e1f950bc4698c7ad39f3573b1f16321dd580aec\", \"raw_output\": \"{\\n\\\"statements\\\": [\\n  {\\n    \\\"text\\\": \\\"存款保险的最高偿付限额为人民币50万元。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"第五条 存款保险实行限额偿付，最高偿付限额为人民币 50 万元。\\\"\\n  },\\n  {\\n    \\\"text\\\": \\\"中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"第五条 存款保险实行限额偿付，最高偿付限额为人民币 50 万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\\\"\\n  }\\n]\\n}\", \"returned_model\": \"qwen3.5-2b\", \"finish_reason\": \"stop\", \"input_statement_count\": 2, \"rejected_statements\": [{\"index\": 0, \"reason\": \"evidence_not_in_context\"}, {\"index\": 1, \"reason\": \"evidence_not_in_context\"}], \"answer_kind\": \"substantive_or_unknown\", \"answer_mode\": \"normal\"}}",
+        "case_type": "positive"
+      },
+      {
+        "question": "根据提供节选，某一家具体投保银行当前实际适用的风险差别费率是多少？",
+        "answer": "根据提供的文档，无法回答该问题，因为文中仅规定了存款保险费率的构成（基准费率与风险差别费率）、制定和调整的机制、具体的计算办法以及交纳频率等原则性规定，但并未披露任何具体投保银行当前实际适用的风险差别费率数值。",
+        "contexts": [
+          "第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。",
+          "第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。",
+          "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。",
+          "第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。"
+        ],
+        "ground_truth": "文档未提及",
+        "faithfulness": null,
+        "context_precision": 0.7499999999625,
+        "answer_relevancy": null,
+        "answer_correctness": 0.11663093372714105,
+        "context_recall": null,
+        "hallucination_trace": "{\"statements\": [], \"trace_status\": \"filtered_all\", \"trace_attempts\": 1, \"trace_diagnostics\": {\"version\": \"trace-json-v2\", \"prompt_sha256\": \"8c4e79e04085012bc20fae46759065bf430f4620ecdd34a0c8eec4f4c1fbc87e\", \"raw_output\": \"{\\n\\\"statements\\\": [\\n  {\\n    \\\"text\\\": \\\"存款保险费率由基准费率和风险差别费率构成。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"\\\\\\\"第九条 存款保险费率由基准费率和风险差别费率构成。\\\\\\\"\\\"\\n  },\\n  {\\n    \\\"text\\\": \\\"各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"\\\\\\\"第九条 各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\\\\\\\"\\\"\\n  },\\n  {\\n    \\\"text\\\": \\\"文中未披露任何具体投保银行当前实际适用的风险差别费率数值。\\\",\\n    \\\"verdict\\\": \\\"supported\\\",\\n    \\\"evidence\\\": \\\"\\\\\\\"第九条 各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\\\\\\\"\\\"\\n  }\\n]\\n}\", \"returned_model\": \"qwen3.5-2b\", \"finish_reason\": \"stop\", \"input_statement_count\": 3, \"rejected_statements\": [{\"index\": 0, \"reason\": \"evidence_not_in_context\"}, {\"index\": 1, \"reason\": \"evidence_not_in_context\"}, {\"index\": 2, \"reason\": \"evidence_not_in_context\"}], \"answer_kind\": \"substantive_or_unknown\", \"answer_mode\": \"refusal_explanation\"}}",
+        "case_type": "negative"
+      }
+    ]
+  },
+  "total_elapsed_seconds": 1335.64
+}

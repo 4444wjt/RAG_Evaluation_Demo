@@ -1,0 +1,32 @@
+{
+  "started": "2026-10-14T05:53:54Z",
+  "finished": "2026-10-14T06:16:14Z",
+  "httpStatus": 200,
+  "requestSeconds": 1339.398458,
+  "request": {
+    "doc_path": "scenarios/deposit_insurance.txt",
+    "testset_path": "work/uploads/<导入后的文件>.json",
+    "model_names": [
+      "qwen3.5-2b"
+    ],
+    "version_label": "offline-ollama-qwen3.5-2b"
+  },
+  "registration": {
+    "name": "qwen3.5-2b",
+    "display_name": "本机 Ollama Qwen3.5-2B",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "api_key_env": "VERISCOPE_OLLAMA_API_KEY"
+  },
+  "model": {
+    "ollama": "0.35.1",
+    "source": "qwen3.5:2b",
+    "alias": "qwen3.5-2b",
+    "digest12": "324d162be6ca",
+    "parameters": "2.3B",
+    "quantization": "Q8_0",
+    "processor": "100% CPU"
+  },
+  "gateway": "tools/competition/offline_run.py gateway：转发到 127.0.0.1:11434，补 reasoning_effort=none",
+  "guard": "tools/competition/offline_run.py serve：后端进程只放行回环地址",
+  "blockedConnections": 0
+}
