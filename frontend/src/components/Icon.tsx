@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen' | 'upload';
+export type IconName = 'shield' | 'overview' | 'layers' | 'chart' | 'trace' | 'file' | 'play' | 'refresh' | 'arrow' | 'check' | 'alert' | 'copy' | 'chevron' | 'folder' | 'link' | 'pulse' | 'pen' | 'upload' | 'sliders';
 const paths: Record<IconName, React.ReactNode> = {
   upload: <><path d="M12 16V3m-4 4 4-4 4 4M4 15v5h16v-5"/></>,
   shield: <><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/></>,
@@ -19,6 +19,7 @@ const paths: Record<IconName, React.ReactNode> = {
   folder: <path d="M3 6h7l2 3h9v11H3z"/>,
   link: <><path d="m10 14 4-4m-6 6-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m4 0 2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/></>,
   pulse: <path d="M3 12h4l2-6 4 12 2-6h6"/>,
+  sliders: <><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></>,
   pen: <><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></>,
 };
 

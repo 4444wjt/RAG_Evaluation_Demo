@@ -2,11 +2,21 @@
 
 **Every sentence of an AI answer, traceable to its source.**
 
-[中文](README.md) · [Gate credibility (Chinese)](docs/competition/gate-credibility.md) · [Gate replay](docs/gate-replay.md) · [Deploy](deploy/README.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+[中文](README.md) · [Gate credibility (Chinese)](docs/competition/gate-credibility.md) · [Gate replay](docs/gate-replay.md) · [Deploy](deploy/README.md) · [Adoption & integration (Chinese)](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
 VeriScope AI is a sentence-level verification and quality-gate platform for RAG (retrieval-augmented generation) question answering. It splits each model answer into atomic statements, checks every statement against the retrieved context, and lets a quality gate decide, by threshold, whether a batch of answers may ship. Test set, retrieved context, answers from several models, Ragas metrics, per-sentence verdicts, gate records and human review are kept in one chain, so "can this answer be trusted?" can be traced step by step: test set → sentence check → gate → report → human review.
 
 Most project documents are written in Chinese; this page summarises them in English.
+
+## Where it fits
+
+| Form | In one sentence | How to adopt |
+|---|---|---|
+| Stand-alone QA platform | Evaluate a RAG application before release: sentence-level checks, model comparison, gate verdict and reports | Local workbench, or [Docker Compose](deploy/README.md) on an internal network |
+| Embedded in an existing system | Call the sentence check and gate from your own platform, or point the platform at your RAG application's endpoint | HTTP API, Python function, `--generator-endpoint` ([integration guide](docs/DEPLOYMENT.md), Chinese) |
+| CI gate | Re-check after every prompt, model or retrieval change; a blocked gate fails the build | GitHub Action, below |
+
+Your own models (any OpenAI-compatible endpoint: vLLM, Ollama, an internal gateway) can be registered on the workbench's model-configuration page; keys stay in the local `.env`. The integration guide also lists what has and has not been verified for private or air-gapped deployment.
 
 ## Typical use: a regression gate in CI
 
@@ -39,7 +49,7 @@ python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39
 | Test set | Document loading, Chroma retrieval, model answers and Ragas evaluation; generated, custom or TruthfulQA test sets |
 | Sentence-level evidence | Original answer, atomic statements, verdicts (supported / factual error / unsupported) with the matching evidence and retrieved text |
 | Quality gate | Uses the first valid model's positive-sample faithfulness and context precision; default thresholds 0.8 each; real FAILs are kept |
-| Multi-model comparison | DeepSeek, Qwen2.5-7B, GLM-5.2-Fast on the same test set |
+| Multi-model comparison | Built-in DeepSeek, Qwen2.5-7B, GLM-5.2-Fast, plus any OpenAI-compatible model registered locally, on the same test set |
 | Reports | CSV, HTML, Excel, PDF and charts |
 | Human review | Human conclusions stored next to machine verdicts, never overwriting them, bound to a frozen snapshot by SHA-256 ([archive format](docs/review-archive-format.md)) |
 

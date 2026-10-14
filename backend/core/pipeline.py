@@ -333,10 +333,15 @@ def aggregate_model_metrics(raw_result, model_name, elapsed_seconds):
 def select_model_configs(model_names=None):
     """等价 main.py L1168 的模型筛选：按 MODELS_CONFIG 顺序过滤。
 
-    model_names=None → 全部；逆序输入 → 仍按 MODELS_CONFIG 顺序；重复 → 不重复；
+    model_names=None → 全部内置模型；逆序输入 → 仍按 MODELS_CONFIG 顺序；重复 → 不重复；
     未知名 → 忽略；空列表 → 结果为空。不做 sort / set / 去重 / fallback。
+    本机登记的自定义模型（models.local.json）只在按名称点选时加入，排在内置模型之后。
     """
-    return [c for c in MODELS_CONFIG if model_names is None or c["name"] in model_names]
+    if model_names is None:
+        return list(MODELS_CONFIG)
+    from backend.core import model_registry
+    local = model_registry.load(BASE_DIR, [c["name"] for c in MODELS_CONFIG])
+    return [c for c in MODELS_CONFIG + local if c["name"] in model_names]
 
 
 def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled):

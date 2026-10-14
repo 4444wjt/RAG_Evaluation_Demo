@@ -74,11 +74,47 @@ def _checked_path(raw_path: str, root: Path, *, testset: bool = False) -> str:
     return str(resolved)
 
 
-def _configured_model_names() -> set[str]:
+def _configured_model_names(root: Path | None = None) -> set[str]:
     # Configuration may load dotenv, so never import it on startup or health.
     from backend.config import MODELS_CONFIG
+    from backend.core import model_registry
 
-    return {model["name"] for model in MODELS_CONFIG}
+    builtin = [model["name"] for model in MODELS_CONFIG]
+    try:
+        local = model_registry.load(_PROJECT_ROOT if root is None else root, builtin)
+    except model_registry.ModelConfigError as error:
+        raise EvaluationAPIError(422, str(error)) from None
+    return set(builtin) | {model["name"] for model in local}
+
+
+def list_models(project_root: Path | None = None) -> dict[str, Any]:
+    """内置模型与本机登记的模型；只给出密钥是否已设置，不返回密钥值。"""
+    from backend.config import MODELS_CONFIG
+    from backend.core import model_registry
+
+    root = _PROJECT_ROOT if project_root is None else Path(project_root)
+    builtin = [model_registry.describe(model, "builtin") for model in MODELS_CONFIG]
+    try:
+        local = model_registry.load(root, [model["name"] for model in MODELS_CONFIG])
+    except model_registry.ModelConfigError as error:
+        raise EvaluationAPIError(422, str(error)) from None
+    return {"models": builtin + [model_registry.describe(model, "local") for model in local],
+            "localFile": model_registry.FILE_NAME}
+
+
+def save_local_models(models: Any, project_root: Path | None = None) -> dict[str, Any]:
+    """校验并写入本机登记；密钥字段与未知字段会被拒绝。"""
+    from backend.config import MODELS_CONFIG
+    from backend.core import model_registry
+
+    root = _PROJECT_ROOT if project_root is None else Path(project_root)
+    try:
+        model_registry.save(root, models, [model["name"] for model in MODELS_CONFIG])
+    except model_registry.ModelConfigError as error:
+        raise EvaluationAPIError(422, str(error)) from None
+    except OSError:
+        raise EvaluationAPIError(500, "模型登记未能保存，请检查本地服务后重试。") from None
+    return list_models(root)
 
 
 def _default_evaluator(request: dict[str, Any], **kwargs: Any) -> Mapping[str, Any]:
@@ -109,7 +145,7 @@ def run_evaluation(
         if request.benchmark is None and request.testset_path is not None:
             engine_request["testset_path"] = _checked_path(request.testset_path, root, testset=True)
         if request.model_names is not None:
-            known_names = _configured_model_names()
+            known_names = _configured_model_names(root)
             if any(name not in known_names for name in request.model_names):
                 raise EvaluationAPIError(422, "模型名称不支持，请使用已配置的模型名称。")
     except EvaluationAPIError:

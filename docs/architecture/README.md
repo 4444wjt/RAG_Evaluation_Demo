@@ -29,7 +29,7 @@ flowchart LR
 
 ## 运行与数据语义
 
-- 浏览器通过 Vite 的 `/api` 代理访问后端 `/health`、`/inputs`、`/evaluate`；默认后端地址为 `127.0.0.1:8000`。
+- 浏览器通过 Vite 的 `/api` 代理访问后端 `/health`、`/inputs`、`/evaluate`、`/models`；默认后端地址为 `127.0.0.1:8000`。
 - 当前 CLI / Gradio 通过 `main.py.run_pipeline` 调用 `backend.core.pipeline.evaluate`，Web API 也调用该编排；模型工厂、参数映射和 API 校验仍有入口差异。`_legacy_run_pipeline` 不是当前 CLI / Gradio 的正常执行路径。
 - `backend/adapters/ragas_compat.py` 的 `zh-sentence-v1` 仅修正 Ragas 0.1.21 的中文及中英混排陈述输入；英文路径、指标公式、权重、Trace 与门禁保持。当前共享编排的三个入口都会使用该兼容层，不修改 Ragas 全局原指标单例或 site-packages。
 - 评测为同步请求，单进程内有互斥保护；使用 `--workers 1`。本版没有任务队列、取消或真实阶段进度接口。
@@ -38,6 +38,7 @@ flowchart LR
 - 前端当前模型结论卡展示所选模型的既有指标和可用阈值；缺失时为 WARNING，不改写后端原始门禁。PASS 不等于所有指标优秀，也不等于每条回答都正确。
 - 逐句判定保留原始陈述、判断和证据；溯源需要模型调用，空记录不等于没有幻觉。
 - 文档及测试集可选项目内示例或导入电脑文件。`/inputs` 限制单文件 10 MiB，以原始字节保存到 `work/uploads/<UUID>.<扩展名>`，随后沿用 `/evaluate` 的路径参数；只读模式禁止导入。路径仍需通过项目根目录与扩展名校验。报告页仅导入本地 HTML 预览，不上传报告、不自动下载后端产物。
+- 模型列表 = `backend/config.py` 的内置模型 + 项目根目录 `models.local.json` 中登记的 OpenAI 兼容模型（`backend/core/model_registry.py`，git 忽略）。登记只记录密钥所在的环境变量名（须形如 `VERISCOPE_<名称>_API_KEY`），`GET /models` 只返回密钥是否已设置；`PUT /models/local` 只接受本机请求，只读模式返回 423。`model_names` 为空时只评测内置模型。见 [落地与接入](../DEPLOYMENT.md)。
 - 生产构建不会自动建立服务代理；快速启动针对本地展示。公网部署需独立设计鉴权、代理和资源隔离。
 
 根目录 `.env` 只供 Python 后端使用。前端不读取模型密钥，不应将它们放入 `VITE_*` 变量。

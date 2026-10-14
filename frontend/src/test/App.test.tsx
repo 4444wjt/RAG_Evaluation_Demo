@@ -505,6 +505,8 @@ describe('Current model quality gate transparency', () => {
     const originalResult = structuredClone(firstResult);
     requests.mockImplementation((url: string) => {
       if (url === '/api/health') return Promise.resolve(response({ status: 'ok' }));
+      // Opening the workspace also reads the registered models; only evaluations are counted.
+      if (url === '/api/models') return Promise.resolve(response({ models: [] }));
       evaluations += 1;
       return evaluations === 1 ? Promise.resolve(response(firstResult)) : new Promise<Response>((resolve) => { finish = resolve; });
     });
@@ -663,7 +665,7 @@ describe('Verification navigation regression', () => {
     vi.stubGlobal('crypto', webcrypto);
     render(<App/>);
     const nav = screen.getByRole('navigation', { name: '工作区导航' });
-    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '鲁棒性体检', '人工标注']);
+    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '模型配置', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '鲁棒性体检', '人工标注']);
     await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
     expect(screen.getByText('尚未加载可核验结果')).toBeVisible();
     await userEvent.click(screen.getByRole('button', { name: '加载演示' }));

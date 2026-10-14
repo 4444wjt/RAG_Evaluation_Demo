@@ -3,6 +3,7 @@
 - [技术架构](architecture/README.md)：前端、API、评测流水线、模型适配和存储边界。
 - [比赛演示](demo/README.md)：无密钥演示、推荐展示顺序、结果解释边界。
 - [人工核验存档格式](review-archive-format.md)：人工意见与机器判定并列保存的 JSON Schema（v1）及其校验范围。
+- [落地与接入](DEPLOYMENT.md)：三种落地形态、接入自有模型的步骤、私有化 / 内网部署的已核实与未实测事项。
 - [门禁回放](gate-replay.md)：对已归档的运行离线重新执行门禁裁决，可接入 CI。
 - [独立裁判对照](judge-comparison.md)：只换裁判、不重新生成回答，量化同源裁判偏差。
 - [中文 RAG 评测踩坑记录](zh-rag-evaluation-notes.md)：Ragas 中文陈述切分、指标波动与空 Trace 的实测观察。

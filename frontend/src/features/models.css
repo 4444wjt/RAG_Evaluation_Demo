@@ -1,0 +1,28 @@
+/* 模型配置：复用门禁审计的面板与表格，只补步骤条、表单和行内操作。 */
+.mc-steps { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
+.mc-steps ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 0; list-style: none; counter-reset: mc-step; }
+.mc-steps li { display: grid; gap: 2px; counter-increment: mc-step; }
+.mc-steps li strong::before { content: counter(mc-step) '  '; color: var(--brand); font-variant-numeric: tabular-nums; }
+.mc-steps li span { font-size: 12px; color: var(--text-secondary); }
+
+.mc-table { width: 100%; min-width: 760px; border-collapse: collapse; text-align: left; font-size: 13px; }
+.mc-table tbody th { font-weight: 600; white-space: nowrap; }
+.mc-table code { font-family: var(--font-mono); font-size: 12px; }
+.mc-table td:nth-child(5) { white-space: nowrap; }
+.mc-actions { white-space: nowrap; text-align: right; }
+.mc-actions .btn { min-height: var(--control-height-compact); padding: 4px 10px; }
+
+.mc-form { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-control); }
+.mc-form fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.mc-form legend { grid-column: 1 / -1; padding: 0; margin-bottom: 4px; font-size: var(--font-size-subheading); font-weight: 600; }
+.mc-field { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.mc-field label { font-size: 13px; font-weight: 500; }
+.mc-form input { font-family: var(--font-mono); font-size: 13px; }
+.mc-form small { font-size: 12px; font-weight: 400; color: var(--text-secondary); }
+.mc-form-actions { grid-column: 1 / -1; display: flex; gap: 10px; }
+.mc-error { grid-column: 1 / -1; margin: 0; color: var(--danger); font-size: 13px; }
+.mc-notice { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; color: var(--success); font-size: 13px; }
+
+@media (max-width: 899px) {
+  .mc-steps, .mc-steps ol, .mc-form fieldset { grid-template-columns: minmax(0, 1fr); }
+}

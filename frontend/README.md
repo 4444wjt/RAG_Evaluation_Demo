@@ -19,7 +19,7 @@ npm run dev
 
 打开 http://127.0.0.1:5173/ 。后端未启动时，可以点击“加载演示”离线查看完整结果，不触发模型调用。
 
-`/api/health`、`/api/inputs` 和 `/api/evaluate` 经 Vite 代理移除 `/api` 前缀，分别调用后端 `/health`、`/inputs` 与 `/evaluate`。生产构建的同源代理和只读拦截见 [deploy/](../deploy/README.md)。
+`/api/health`、`/api/inputs`、`/api/evaluate` 和 `/api/models` 经 Vite 代理移除 `/api` 前缀，分别调用后端 `/health`、`/inputs`、`/evaluate` 与 `/models`。「模型配置」页（`#/lab/models`）登记自有模型，只显示密钥是否已设置；只读站和纯静态站不请求该接口。生产构建的同源代理和只读拦截见 [deploy/](../deploy/README.md)。
 
 ## 页面与数据语义
 

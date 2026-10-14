@@ -45,7 +45,7 @@ docker compose up -d --build
 `VERISCOPE_READ_ONLY=1`（默认）时：
 
 - **nginx 层**：`POST /api/evaluate` 和 `POST /api/inputs` 直接返回 HTTP 423；`/api/` 下其他路径只允许 GET 与 HEAD；`/api/docs`、`/api/redoc`、`/api/openapi.json` 返回 404。
-- **后端层**：`/evaluate` 与 `/inputs` 同样检查 `VERISCOPE_READ_ONLY` 并拒绝写入；资料导入在读取文件正文前返回 423（[backend/api/app.py](../backend/api/app.py)）。
+- **后端层**：`/evaluate`、`/inputs` 与模型配置接口（`/models`、`/models/local`）同样检查 `VERISCOPE_READ_ONLY` 并返回 423；资料导入在读取文件正文前返回 423（[backend/api/app.py](../backend/api/app.py)）。
 - **前端**：以 `VITE_READ_ONLY=1` 构建，工作台只展示快照，不显示评测入口。
 
 ## 改为可评测部署

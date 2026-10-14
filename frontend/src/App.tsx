@@ -13,8 +13,11 @@ import { EvaluationVerificationView } from './features/EvaluationVerificationVie
 import { GateAuditView } from './features/GateAuditView';
 import { RobustnessView } from './features/RobustnessView';
 import { AnnotateView } from './features/AnnotateView';
+import { ModelsView } from './features/ModelsView';
+import { fetchModels } from './api/models';
+import type { ModelEntry } from './api/models';
 import demoData from './fixtures/demo.json';
-import { MODEL_COLORS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
+import { MODEL_COLORS, MODELS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
 import { labHash, parseLabHash } from './labRoute';
 import type { LabView } from './labRoute';
 import { initialConfig, initialRunState, runReducer, toRequest, validateConfig } from './state';
@@ -28,6 +31,7 @@ type DashboardView = LabView;
 const navigation: { id: DashboardView; label: string; icon: IconName; title: string; description: string }[] = [
   { id: 'overview', label: '评测总览', icon: 'overview', title: '评测总览', description: '从质量门禁到逐句证据，检查模型回答的可靠性。' },
   { id: 'workspace', label: '评测工作区', icon: 'layers', title: '评测工作区', description: '选择数据和模型，运行一次可解释的可靠性评测。' },
+  { id: 'models', label: '模型配置', icon: 'sliders', title: '模型配置', description: '登记自己的 OpenAI 兼容模型；密钥留在本机 .env，页面只显示是否已设置。' },
   { id: 'comparison', label: '多模型对比', icon: 'chart', title: '多模型对比', description: '同一测试集上的指标与耗时，保留原有模型顺序。' },
   { id: 'trace', label: '幻觉分析', icon: 'trace', title: '幻觉分析', description: '阅读模型回答，逐句检查事实判断与检索证据。' },
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
@@ -39,7 +43,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
 
 /** Sidebar groups: the evaluation itself, then the checks on it. Each group keeps its own tone. */
 const NAV_GROUPS: { id: string; label: string; tone: 'eval' | 'audit'; views: DashboardView[] }[] = [
-  { id: 'nav-group-eval', label: '评测', tone: 'eval', views: ['overview', 'workspace', 'comparison', 'trace', 'report'] },
+  { id: 'nav-group-eval', label: '评测', tone: 'eval', views: ['overview', 'workspace', 'models', 'comparison', 'trace', 'report'] },
   { id: 'nav-group-audit', label: '验证与审计', tone: 'audit', views: ['verification', 'audit', 'robustness', 'annotate'] },
 ];
 
@@ -63,6 +67,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const [formError, setFormError] = useState<string | null>(null);
   const [health, setHealth] = useState<'checking' | 'connected' | 'disconnected'>('checking');
   const [configurationCheck, setConfigurationCheck] = useState<ConfigurationCheck | null>(null);
+  const [localModels, setLocalModels] = useState<ModelEntry[]>([]);
   // A fresh token per loaded result lets the overview replay the gate settle on every load, but not when switching views.
   const [resultLoad, setResultLoad] = useState<object>(() => ({}));
   const inflight = useRef(false);
@@ -118,6 +123,23 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     if (mounted.current && request === healthRequest.current) setHealth(connected ? 'connected' : 'disconnected');
     return connected;
   }, []);
+
+  /** Locally registered models join the workspace list; a renamed or removed one also leaves the selection. */
+  const applyModels = useCallback((models: ModelEntry[]) => {
+    const local = models.filter((model) => model.source === 'local');
+    setLocalModels(local);
+    const known = new Set<string>([...MODELS.map((model) => model.id), ...local.map((model) => model.name)]);
+    setConfig((current) => current.modelNames.every((name) => known.has(name)) ? current : { ...current, modelNames: current.modelNames.filter((name) => known.has(name)) });
+  }, []);
+
+  // Read on opening the workspace, not on start, so the first screen stays a health check only.
+  useEffect(() => {
+    if (view !== 'workspace' || READ_ONLY || STATIC_SITE) return;
+    const controller = new AbortController();
+    // Without a backend the workspace simply keeps the built-in models.
+    fetchModels(controller.signal).then(applyModels).catch(() => undefined);
+    return () => controller.abort();
+  }, [view, applyModels]);
 
   useEffect(() => {
     mounted.current = true;
@@ -200,9 +222,10 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
-        {view !== 'overview' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && resultMeta}
+        {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
-        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck}/>}
+        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels}/>}
+        {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
         {view === 'trace' && <TraceView result={run.result}/>}
         {view === 'report' && <ReportView result={run.result}/>}
@@ -210,7 +233,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         {view === 'audit' && <GateAuditView/>}
         {view === 'robustness' && <RobustnessView/>}
         {view === 'annotate' && <AnnotateView/>}
-        {run.source === 'demo' && view !== 'workspace' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
+        {run.source === 'demo' && view !== 'workspace' && view !== 'models' && view !== 'audit' && view !== 'robustness' && view !== 'annotate' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
         <footer className="page-footer"><span>鉴真全域 VeriScope AI</span><span>逐句核对 / 证据溯源 / 质量门禁</span></footer>
       </main>
     </div>

@@ -10,11 +10,21 @@
 
 项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
-[English](README.en.md) · [快速启动](#快速启动) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
+[English](README.en.md) · [快速启动](#快速启动) · [落地与接入](docs/DEPLOYMENT.md) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
 
 [作品介绍](docs/competition/project-introduction.md) · [门禁可信度四问](docs/competition/gate-credibility.md) · [外部基准验证](docs/competition/external-validation/README.md) · [鲁棒性体检](docs/competition/robustness/README.md) · [裁判判错校准](docs/competition/judge-calibration/README.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
 
 ![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
+
+## 落地场景
+
+| 形态 | 一句话说明 | 怎么接 |
+|---|---|---|
+| 独立质检平台 | 上线前对 RAG 应用做一次完整评测：逐句核对、多模型对比、门禁结论和报告 | 本机工作台，或 [Docker Compose 部署](deploy/README.md) 到内网 |
+| 嵌入现有系统 | 在已有平台里调用逐句核对和门禁，或把自己 RAG 应用的接口交给平台检验 | HTTP 接口、Python 函数、`--generator-endpoint`，见 [落地与接入](docs/DEPLOYMENT.md#嵌入现有系统) |
+| CI 门禁 | 每次改提示词、换模型、调检索后自动回归，门禁不通过则构建失败 | GitHub Action，见 [门禁回放](docs/gate-replay.md) |
+
+自有模型（vLLM、Ollama、内部网关等 OpenAI 兼容接口）在工作台「模型配置」页登记即可参评，密钥只写在本机 `.env`；私有化与内网部署的已核实项和未实测项见 [落地与接入](docs/DEPLOYMENT.md#私有化--内网部署)。
 
 ## 背景问题
 
@@ -35,7 +45,7 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 | 测试用例集 | RAG 可靠性验证 | 文档处理、Chroma 检索、模型问答及 Ragas 评测；支持自动出题、自定义测试集和 TruthfulQA 入口 |
 | 断言结果 | 逐句证据追踪 | 展示原始回答、原子陈述、有依据／事实错误／无依据编造等原判定，以及对应证据与检索原文 |
 | 质量门禁 | Quality Gate | 后端按首个有效评测模型的正向忠实度与正向上下文精度判定；默认阈值各为 0.8 |
-| 多模型对比 | 多模型评测 | DeepSeek、Qwen2.5-7B、GLM-5.2-Fast；统一测试集，呈现已有指标与耗时 |
+| 多模型对比 | 多模型评测 | 内置 DeepSeek、Qwen2.5-7B、GLM-5.2-Fast，可在「模型配置」页登记自有的 OpenAI 兼容模型；统一测试集，呈现已有指标与耗时 |
 | 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
 | 人工复核 | 评测验证 | 人工结论与机器原判定分开展示，核验材料绑定冻结快照版本与 SHA-256 |
 | 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
@@ -176,6 +186,7 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 | `QWEN_MODEL` / `QWEN_BASE_URL` | 已有 Qwen 配置覆盖项 |
 | `RAG_ENABLE_TRACE` | 既有溯源开关，默认 1；设为 0 关闭额外溯源调用 |
 | `EMBEDDING_MODEL` | 可选，指定已准备好的本地 Embedding 路径／缓存模型 |
+| `VERISCOPE_<名称>_API_KEY` | 可选，自有模型的密钥；模型在工作台「模型配置」页登记，见 [接入自有模型](docs/DEPLOYMENT.md#接入自有模型) |
 
 预先准备 `BAAI/bge-small-zh-v1.5`，放在 `models/bge-small-zh-v1.5/` 或可用的 Hugging Face 本地缓存。引擎以离线方式加载，不会在评测时自动下载模型。
 

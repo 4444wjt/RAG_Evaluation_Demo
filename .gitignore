@@ -109,6 +109,9 @@ celerybeat.pid
 
 # Environments
 .env
+# 本机登记的自定义模型（只含密钥变量名，仍不入库）
+/models.local.json
+.models.*.tmp
 .venv
 env/
 venv/

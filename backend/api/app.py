@@ -10,8 +10,13 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from backend.api.schemas import EvaluateRequest, EvaluateResponse
-from backend.api.service import EvaluationAPIError, run_evaluation
+from backend.api.service import (
+    EvaluationAPIError, list_models, run_evaluation, save_local_models,
+)
 from backend.api.input_files import import_input_file
+
+
+_LOCAL_HOSTS = {"127.0.0.1", "::1"}
 
 
 def create_app(
@@ -49,6 +54,28 @@ def create_app(
         return await import_input_file(
             request, kind=kind, filename=filename, project_root=project_root,
         )
+
+    @application.get("/models", tags=["models"])
+    def models_request() -> dict[str, Any]:
+        """Built-in and locally registered models; reports whether each key is set, never its value."""
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点未开放模型配置。")
+        return list_models(project_root)
+
+    @application.put("/models/local", tags=["models"])
+    async def save_models_request(request: Request) -> dict[str, Any]:
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点未开放模型配置。")
+        # Registration decides where an existing key may be sent, so only this machine may change it.
+        if request.client is None or request.client.host not in _LOCAL_HOSTS:
+            raise EvaluationAPIError(403, "模型登记只能在运行服务的本机上修改。")
+        try:
+            body = await request.json()
+        except ValueError:
+            raise EvaluationAPIError(422, "请求参数不合法，请检查 API 合同。") from None
+        if not isinstance(body, dict) or set(body) != {"models"}:
+            raise EvaluationAPIError(422, "请求体必须是 {\"models\": [...]}。")
+        return save_local_models(body["models"], project_root)
 
     @application.post("/evaluate", response_model=EvaluateResponse, tags=["evaluation"])
     def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
