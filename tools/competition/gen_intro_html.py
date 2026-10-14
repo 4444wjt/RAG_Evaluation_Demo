@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 """把 docs/competition/project-introduction.md 原样转为带排版的 HTML，供 Chrome 打印 PDF。"""
+import posixpath
+import re
+
 import markdown
 from pathlib import Path
 
 SRC = Path("docs/competition/project-introduction.md")
 OUT = Path("docs/competition/project-introduction.html")
+# PDF 里的站内链接指向 Gitee 主仓库，避免打印成本机 file: 地址；图片仍用本地文件渲染。
+REPO = "https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/"
 
 md_text = SRC.read_text(encoding="utf-8")
 
@@ -12,6 +17,21 @@ body = markdown.markdown(
     md_text,
     extensions=["tables", "sane_lists", "nl2br"],
 )
+
+# 标题后紧跟一张整图的小节（技术架构）单独排在一页横版 A4 上，图可以放大且不与标题分页。
+body = re.sub(r"(<h2>[^<]*</h2>\s*<p><img [^>]*></p>)", r'<section class="wide-page">\1</section>', body)
+
+
+def repo_link(match):
+    href = match.group(1)
+    if re.match(r"^(https?:|mailto:|#)", href):
+        return match.group(0)
+    path, _, anchor = href.partition("#")
+    resolved = posixpath.normpath(posixpath.join(SRC.parent.as_posix(), path))
+    return 'href="' + REPO + resolved + ("#" + anchor if anchor else "") + '"'
+
+
+body = re.sub(r'href="([^"]+)"', repo_link, body)
 
 html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -24,7 +44,7 @@ html = f"""<!DOCTYPE html>
   body {{
     font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
     color: #1f2430; background: #fff;
-    font-size: 14px; line-height: 1.75; margin: 0;
+    font-size: 15px; line-height: 1.7; margin: 0;
   }}
   @media screen {{
     body {{ padding: 56px 68px; max-width: 960px; margin: 0 auto; }}
@@ -63,7 +83,14 @@ html = f"""<!DOCTYPE html>
   table {{ border-collapse: collapse; width: 100%; margin: 14px 0; }}
   th, td {{ border: 1px solid #ddd; padding: 8px 12px; text-align: left; }}
   th {{ background: #faf6ec; font-weight: 700; }}
+  td:first-child, th:first-child {{ white-space: nowrap; }}
+  h1, h2, h3 {{ break-after: avoid; }}
   hr {{ border: none; border-top: 1px solid #eee; margin: 20px 0; }}
+  img {{ display: block; max-width: 100%; height: auto; margin: 12px auto; }}
+  table, tr, img, blockquote {{ break-inside: avoid; }}
+  @page wide {{ size: A4 landscape; margin: 14mm 16mm; }}
+  .wide-page {{ page: wide; }}
+  .wide-page img {{ width: auto; max-width: 100%; max-height: 158mm; }}
 </style>
 </head>
 <body>

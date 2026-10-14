@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": 2,
+  "kind": "current-web-api-independent-run",
+  "status": "completed",
+  "preparedAt": "2026-10-14T07:39:00.340217+00:00",
+  "codeCommit": "b90a14cf3e59e6715df70116307f3f144a243008",
+  "workingTreeDirty": true,
+  "runtime": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "runnerSha256": "73290ca86f32f32fe9cd0ed0a9157e7e9244d0a3b533670825ac54db01d249cf",
+  "runnerPath": "runner/run_evidence.py",
+  "sourceFiles": [
+    {
+      "path": "backend/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/adapters/models/__init__.py",
+      "sha256": "fee726f1a13daa437ea92013ecfd2aef7468dfb53d1e192e3db5b6ae34befcf8"
+    },
+    {
+      "path": "backend/adapters/models/base.py",
+      "sha256": "6b540c586c73acbb38c5385b7d9513ac36b63867244d2781f5ada3bba2794a7e"
+    },
+    {
+      "path": "backend/adapters/models/openai_compatible.py",
+      "sha256": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791"
+    },
+    {
+      "path": "backend/adapters/models/registry.py",
+      "sha256": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230"
+    },
+    {
+      "path": "backend/adapters/ragas_compat.py",
+      "sha256": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647"
+    },
+    {
+      "path": "backend/api/__init__.py",
+      "sha256": "1e6bc5b72b6278487e68d6f72b57d968b18269cfac50ca8883bda9bcb599c9b4"
+    },
+    {
+      "path": "backend/api/app.py",
+      "sha256": "ce752db71bfdcbd107d97ddf0e4a3789bd7e1211fb59f44d24b1c7a6ef2f981c"
+    },
+    {
+      "path": "backend/api/input_files.py",
+      "sha256": "af43e002f29a7c04d1771175b77f81ac65f42a0bbd376ae5e98eb305a5445590"
+    },
+    {
+      "path": "backend/api/schemas.py",
+      "sha256": "704160e8e35aa14747a5ce047269a9ed3ee59ec15ddd231f3ac99e6f25f739c4"
+    },
+    {
+      "path": "backend/api/serialization.py",
+      "sha256": "68d5f806b581f96c4bf75d9af5be372b11dae69160063974bd4f21f4671b670a"
+    },
+    {
+      "path": "backend/api/service.py",
+      "sha256": "b9a00f2605d41383e7499d6d5a65820449ecc352a6cc1fb3ad3d7ea657b3cf93"
+    },
+    {
+      "path": "backend/config.py",
+      "sha256": "8924782aefa70cf80bec88edf0b9cb6f952d848d96375cae55e05431a4dedec8"
+    },
+    {
+      "path": "backend/core/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/core/attribution.py",
+      "sha256": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+    },
+    {
+      "path": "backend/core/gate.py",
+      "sha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae"
+    },
+    {
+      "path": "backend/core/judge_error.py",
+      "sha256": "ef7d7dc518b8078b2f17879f8b351cd7a93ae6a9c28899799f5cefb821e503be"
+    },
+    {
+      "path": "backend/core/model_registry.py",
+      "sha256": "c8e349c97e86c05ad2e1c3daf3f7cd29a3931bffc386f2738d6bfd5ab6d5b31a"
+    },
+    {
+      "path": "backend/core/pipeline.py",
+      "sha256": "9e3d21f6aa2e3b10ca49e8ca581789b2406a132ac807f47b990b64f9d9967b8d"
+    },
+    {
+      "path": "backend/core/regression.py",
+      "sha256": "17e2c10b6b41ac293f47d1491aad6493fab51c17df3e66f8f0cb779cbeac7564"
+    },
+    {
+      "path": "backend/core/robustness.py",
+      "sha256": "85dcd0e154744da7a0dda3ea7d41fcb21cb7ab75f2615fae4d193f8936cd16f8"
+    },
+    {
+      "path": "backend/core/types.py",
+      "sha256": "e75b944ebe326fcbdfe7f369fdea7559bbbd45192770ed6bacd16c961c8fb3cf"
+    },
+    {
+      "path": "backend/core/utils.py",
+      "sha256": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef"
+    },
+    {
+      "path": "backend/reporting/__init__.py",
+      "sha256": "ed5d8b6a403dabe6fabe9755ad69e53a558cf179b772ca466b52bf8518f0d780"
+    },
+    {
+      "path": "backend/reporting/charts.py",
+      "sha256": "4bf2d439df1d94a35685ca9d092e9e0623692b7722ee7be6b11fe1446cd65b01"
+    },
+    {
+      "path": "backend/reporting/evaluation_chart.py",
+      "sha256": "9aa25be1829f19c326dd088ba2a0a4f62e18169a785f46a292c74b1bc1874305"
+    },
+    {
+      "path": "backend/reporting/excel.py",
+      "sha256": "aa287e877b19fa6c080e12fee97d683301abffb130a54e0c2d332a69dc336fba"
+    },
+    {
+      "path": "backend/reporting/html.py",
+      "sha256": "eda7892d881168a38e853c41ca6c8930d630012489406a0ff350a86e7f211073"
+    },
+    {
+      "path": "backend/reporting/pdf.py",
+      "sha256": "073ed57400405970777a76685b7dab8262ff468cb90fbd93d0e3cd11d19342fc"
+    },
+    {
+      "path": "backend/services/__init__.py",
+      "sha256": "9c16bc54ecc4f1ba02a12e65a620d2dfa3bd176045ab5be302e5696f75e9bf79"
+    },
+    {
+      "path": "backend/services/answering.py",
+      "sha256": "efcb4f169bea98b59a02e711a64e204d84bc37b357d5e0adc5605a2a5a84ee3b"
+    },
+    {
+      "path": "backend/services/documents.py",
+      "sha256": "8cc9dc977650e48160b39fc11633d695f72f26b75e6ccb30be66ece7ae27211d"
+    },
+    {
+      "path": "backend/services/negatives.py",
+      "sha256": "189e5b9c7b20b478cc49f68c4fa55486386e08be55dd2e3f06ad110f27aa5102"
+    },
+    {
+      "path": "backend/services/retriever.py",
+      "sha256": "879e6bc6307e308e984a5c918cf37af903ae1e7f6a31bf7c1707fc797508e9b8"
+    },
+    {
+      "path": "backend/services/testsets.py",
+      "sha256": "32446f6698c9f6e4bf3140f40595824a2b9a738779a371bf7e706b85bc140541"
+    },
+    {
+      "path": "backend/services/trace.py",
+      "sha256": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa"
+    },
+    {
+      "path": "backend/storage/__init__.py",
+      "sha256": "a91a32f12ea8ee6250e2cd77cb40b351d044c5ec35c4c10a5367619cca60b63f"
+    },
+    {
+      "path": "backend/storage/base.py",
+      "sha256": "00cededa92a1fcf72612140ec46dbc60aa82e721b25432fd6d0269e7397bce5f"
+    },
+    {
+      "path": "backend/storage/json_history.py",
+      "sha256": "d448cf1642c17d8de0c16ae4b657589f0322086ac694210764702c6f0edcdf50"
+    },
+    {
+      "path": "backend/storage/local_artifacts.py",
+      "sha256": "74200ee7ba9d924f31346d4ae01b9f37607435676e80fb3b577c739a9ab05623"
+    },
+    {
+      "path": "main.py",
+      "sha256": "56c9a088ed0f7682cce73e1f2f17a6ce036ce3e7f795b429c5ac7b4e223a3ff7"
+    },
+    {
+      "path": "scenarios/deposit_insurance.txt",
+      "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+    },
+    {
+      "path": "scenarios/competition_25/testset.json",
+      "sha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f"
+    },
+    {
+      "path": "scenarios/competition_25/pilot.json",
+      "sha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9"
+    },
+    {
+      "path": "scenarios/competition_25/case-manifest.json",
+      "sha256": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba"
+    }
+  ],
+  "gitStatus": [
+    "?? frontend/_gl.tmp.mjs"
+  ],
+  "entrypoints": {
+    "mainSha256": "56c9a088ed0f7682cce73e1f2f17a6ce036ce3e7f795b429c5ac7b4e223a3ff7",
+    "runPipelineDelegatesToBackendEvaluate": true,
+    "impact": "当前CLI、Gradio与Web API共享后端流水线，均受句子适配影响；保留legacy函数不等于当前CLI使用legacy。"
+  },
+  "versions": {
+    "sentenceAdapterVersion": "zh-sentence-v1",
+    "traceVersion": {
+      "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+      "hashKind": "literal-template-utf8",
+      "path": "backend/services/trace.py"
+    },
+    "promptVersions": {
+      "generator": {
+        "sha256": "cb5739cfb1c4a0e4525a995cbee0a1a011ad51eec8ac4e4276ee39e45c248bbc",
+        "hashKind": "f-string-ast-including-placeholder-expressions",
+        "path": "backend/services/answering.py"
+      },
+      "trace": {
+        "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+        "hashKind": "literal-template-utf8",
+        "path": "backend/services/trace.py"
+      },
+      "ragas": {
+        "faithfulness": {
+          "nli_statements_message": {
+            "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+            "hashKind": "canonical-json-utf8"
+          },
+          "statement_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_precision": {
+          "context_precision_prompt": {
+            "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_relevancy": {
+          "question_generation": {
+            "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_correctness": {
+          "correctness_prompt": {
+            "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+            "hashKind": "canonical-json-utf8"
+          },
+          "long_form_answer_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_recall": {
+          "context_recall_prompt": {
+            "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+            "hashKind": "canonical-json-utf8"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "ragas": "0.1.21",
+      "pysbd": "0.3.4",
+      "langchain-core": "0.2.43",
+      "langchain-openai": "0.1.25",
+      "langchain-community": "0.2.19",
+      "openai": "1.109.1",
+      "sentence-transformers": "6.1.0",
+      "transformers": "5.17.0",
+      "torch": "2.14.0",
+      "huggingface-hub": "1.32.0",
+      "chromadb": "1.5.9",
+      "datasets": "5.0.1"
+    },
+    "ragasPrompts": {
+      "faithfulness": {
+        "nli_statements_message": {
+          "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+          "hashKind": "canonical-json-utf8"
+        },
+        "statement_prompt": {
+          "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "context_precision": {
+        "context_precision_prompt": {
+          "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "answer_relevancy": {
+        "question_generation": {
+          "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "answer_correctness": {
+        "correctness_prompt": {
+          "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+          "hashKind": "canonical-json-utf8"
+        },
+        "long_form_answer_prompt": {
+          "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+          "hashKind": "canonical-json-utf8"
+        }
+      },
+      "context_recall": {
+        "context_recall_prompt": {
+          "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+          "hashKind": "canonical-json-utf8"
+        }
+      }
+    }
+  },
+  "sourceTreeSha256": "5dd2dd5c8dd129c5deabf0501b3f84dcce595c132a03ef39ef0e471230f24d11",
+  "caseIds": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09",
+    "D10",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "N01",
+    "N02",
+    "N03",
+    "N04",
+    "N05",
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05"
+  ],
+  "authorValidation": {
+    "status": "confirmed",
+    "reviewer": "Kk",
+    "reviewedAt": "2026-10-05",
+    "note": "作者Kk于2026-10-05逐题核对D01-D10、C01-C05、N01-N05、F01-F05的问题、参考答案、原文依据及预期行为；本批无调整。AI仅辅助整理材料，不代替作者确认。"
+  },
+  "request": {
+    "doc_path": "scenarios/deposit_insurance.txt",
+    "testset_path": "scenarios/competition_25/testset.json",
+    "model_names": [
+      "deepseek-chat"
+    ],
+    "faith_threshold": 0.8,
+    "ctx_prec_threshold": 0.8,
+    "version_label": "20261014T073859Z-full-1c6f091f"
+  },
+  "integrity": {
+    "index": "checksums.json",
+    "manifestChecksum": "见外部checksums.json，不在manifest中自引用。",
+    "excludes": [
+      ".git",
+      "__pycache__",
+      "chroma_db"
+    ]
+  },
+  "limitations": [
+    "生成、Ragas Judge与Trace使用当前同一模型；不是独立裁判。",
+    "不是旧冻结Demo复跑、阈值校准或总体准确率证明。",
+    "同机隔离源码目录使用既有Python依赖与Embedding缓存，不是全新操作系统验证。",
+    "实际扣费仅能由作者账单确认，token观测不是账单。"
+  ],
+  "purpose": "author-confirmed-evaluation",
+  "authorConfirmed": true,
+  "startedAt": "2026-10-14T07:39:00.443779+00:00",
+  "configuration": {
+    "generator": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+        "models": {
+          "deepseek-flash": 325
+        }
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "ragasJudge": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+        "models": {
+          "deepseek-flash": 325
+        }
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "traceJudge": {
+      "requestedModel": "deepseek-chat",
+      "actualReturnedModel": {
+        "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+        "models": {
+          "deepseek-flash": 325
+        }
+      },
+      "endpoint": "https://api.deepseek.com",
+      "temperature": 0,
+      "timeout": 180,
+      "maxRetries": 2,
+      "maxTokens": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未显式设置，提供方默认上限未知。"
+      },
+      "extraBody": null,
+      "modelWeightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "远端服务未提供不可变权重版本。"
+      }
+    },
+    "traceEnabled": true,
+    "chunkSize": 200,
+    "chunkOverlap": 30,
+    "topK": 4,
+    "reuseVectorDb": false,
+    "ragasMaxWorkers": 1,
+    "evaluationTimeout": 300,
+    "ragasRunConfig": {
+      "max_retries": 10,
+      "max_wait": 60,
+      "log_tenacity": false,
+      "seed": 42,
+      "max_workers": 1,
+      "timeout": 300,
+      "exception_types": [
+        "builtins.Exception"
+      ]
+    },
+    "metricParameters": {
+      "faithfulness": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      },
+      "context_precision": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      },
+      "answer_relevancy": {
+        "strictness": 1
+      },
+      "answer_correctness": {
+        "weights": [
+          0.75,
+          0.25
+        ],
+        "max_retries": 1
+      },
+      "context_recall": {
+        "_reproducibility": 1,
+        "max_retries": 1
+      }
+    },
+    "gateThresholds": {
+      "faithfulness": 0.8,
+      "contextPrecision": 0.8
+    },
+    "embedding": {
+      "configuredIdentifier": "BAAI/bge-small-zh-v1.5",
+      "localFilesOnly": true,
+      "implementation": "langchain_community.embeddings.HuggingFaceEmbeddings",
+      "resolvedSource": {
+        "status": "unknown",
+        "value": null,
+        "reason": "现有流水线未暴露实际加载路径，本工具不推测缓存命中。"
+      },
+      "weightsRevision": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未取得实际加载权重的不可变版本。"
+      },
+      "weightsSha256": {
+        "status": "unknown",
+        "value": null,
+        "reason": "未对实际加载的Embedding权重进行观测。"
+      }
+    }
+  },
+  "httpStatus": 200,
+  "answerCount": 25,
+  "gatePassed": true,
+  "gateMessage": "✅ 质量门禁通过，允许发布",
+  "finishedAt": "2026-10-14T07:47:08.933214+00:00",
+  "wallSeconds": 488.27,
+  "tokenObservation": {
+    "startedCalls": 325,
+    "completedCalls": 325,
+    "errorEvents": 0,
+    "callsWithTokenUsage": 325,
+    "promptTokens": 546463,
+    "completionTokens": 31365,
+    "totalTokens": 577828,
+    "cacheHitTokens": 411130,
+    "callsWithCacheUsage": 325,
+    "cacheCoverage": "reported",
+    "actualReturnedModels": {
+      "deepseek-flash": 325
+    },
+    "callsWithoutReturnedModel": 0,
+    "observationStatus": "observed",
+    "unreadableEventLines": 0,
+    "actualCharge": null,
+    "actualChargeStatus": "unknown",
+    "note": "观察到的LangChain调用及提供方返回token，不保证覆盖HTTP层重试；缺失用量不按零消耗解释，实际费用未取得账单。"
+  },
+  "runtimeObservation": {
+    "capturedAt": "2026-10-14T07:39:03.643077+00:00",
+    "sentenceAdapterVersion": "zh-sentence-v1",
+    "versions": {
+      "sentenceAdapterVersion": "zh-sentence-v1",
+      "traceVersion": {
+        "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+        "hashKind": "literal-template-utf8",
+        "path": "backend/services/trace.py"
+      },
+      "promptVersions": {
+        "generator": {
+          "sha256": "cb5739cfb1c4a0e4525a995cbee0a1a011ad51eec8ac4e4276ee39e45c248bbc",
+          "hashKind": "f-string-ast-including-placeholder-expressions",
+          "path": "backend/services/answering.py"
+        },
+        "trace": {
+          "sha256": "b1563c22ae25457c8202b0f1ecf71b1af33647f86b41c1fa0f8bfdb282c1825d",
+          "hashKind": "literal-template-utf8",
+          "path": "backend/services/trace.py"
+        },
+        "ragas": {
+          "faithfulness": {
+            "nli_statements_message": {
+              "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+              "hashKind": "canonical-json-utf8"
+            },
+            "statement_prompt": {
+              "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+              "hashKind": "canonical-json-utf8"
+            }
+          },
+          "context_precision": {
+            "context_precision_prompt": {
+              "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+              "hashKind": "canonical-json-utf8"
+            }
+          },
+          "answer_relevancy": {
+            "question_generation": {
+              "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+              "hashKind": "canonical-json-utf8"
+            }
+          },
+          "answer_correctness": {
+            "correctness_prompt": {
+              "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+              "hashKind": "canonical-json-utf8"
+            },
+            "long_form_answer_prompt": {
+              "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+              "hashKind": "canonical-json-utf8"
+            }
+          },
+          "context_recall": {
+            "context_recall_prompt": {
+              "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+              "hashKind": "canonical-json-utf8"
+            }
+          }
+        }
+      },
+      "dependencies": {
+        "ragas": "0.1.21",
+        "pysbd": "0.3.4",
+        "langchain-core": "0.2.43",
+        "langchain-openai": "0.1.25",
+        "langchain-community": "0.2.19",
+        "openai": "1.109.1",
+        "sentence-transformers": "6.1.0",
+        "transformers": "5.17.0",
+        "torch": "2.14.0",
+        "huggingface-hub": "1.32.0",
+        "chromadb": "1.5.9",
+        "datasets": "5.0.1"
+      },
+      "ragasPrompts": {
+        "faithfulness": {
+          "nli_statements_message": {
+            "sha256": "5ca55ab1a900f4540d8cb9a0b1550c3a5985cb7027a7f1334aedc4cdcfbdae77",
+            "hashKind": "canonical-json-utf8"
+          },
+          "statement_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_precision": {
+          "context_precision_prompt": {
+            "sha256": "b78bcb354edc2dd6aad2eb706d6e1a208b572b1dcf46e9921eb79cd4428d4d24",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_relevancy": {
+          "question_generation": {
+            "sha256": "57bb67f1e31ad0bacd5d788f85c4743f31bafd1a6de92079e31aecb4d1bbbe23",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "answer_correctness": {
+          "correctness_prompt": {
+            "sha256": "727505aee07a9bd4fae417ee933e72bb3015f02e2baa71dbb4f07308179221ec",
+            "hashKind": "canonical-json-utf8"
+          },
+          "long_form_answer_prompt": {
+            "sha256": "03d369aa26d128dcb10ca0fb7881ee3041c8917ba0cead2dc147ad0f7c0f7832",
+            "hashKind": "canonical-json-utf8"
+          }
+        },
+        "context_recall": {
+          "context_recall_prompt": {
+            "sha256": "4b626a6d86b0fec45a9cfed7d3f79ab1504e343aec21ca6e683eebbc2ff26374",
+            "hashKind": "canonical-json-utf8"
+          }
+        }
+      }
+    },
+    "configuration": {
+      "generator": {
+        "requestedModel": "deepseek-chat",
+        "actualReturnedModel": {
+          "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+          "models": {
+            "deepseek-flash": 325
+          }
+        },
+        "endpoint": "https://api.deepseek.com",
+        "temperature": 0,
+        "timeout": 180,
+        "maxRetries": 2,
+        "maxTokens": {
+          "status": "unknown",
+          "value": null,
+          "reason": "未显式设置，提供方默认上限未知。"
+        },
+        "extraBody": null,
+        "modelWeightsRevision": {
+          "status": "unknown",
+          "value": null,
+          "reason": "远端服务未提供不可变权重版本。"
+        }
+      },
+      "ragasJudge": {
+        "requestedModel": "deepseek-chat",
+        "actualReturnedModel": {
+          "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+          "models": {
+            "deepseek-flash": 325
+          }
+        },
+        "endpoint": "https://api.deepseek.com",
+        "temperature": 0,
+        "timeout": 180,
+        "maxRetries": 2,
+        "maxTokens": {
+          "status": "unknown",
+          "value": null,
+          "reason": "未显式设置，提供方默认上限未知。"
+        },
+        "extraBody": null,
+        "modelWeightsRevision": {
+          "status": "unknown",
+          "value": null,
+          "reason": "远端服务未提供不可变权重版本。"
+        }
+      },
+      "traceJudge": {
+        "requestedModel": "deepseek-chat",
+        "actualReturnedModel": {
+          "scope": "全运行日志的返回模型汇总，逐次对应关系见llm-events.jsonl；不推断不可变模型版本。",
+          "models": {
+            "deepseek-flash": 325
+          }
+        },
+        "endpoint": "https://api.deepseek.com",
+        "temperature": 0,
+        "timeout": 180,
+        "maxRetries": 2,
+        "maxTokens": {
+          "status": "unknown",
+          "value": null,
+          "reason": "未显式设置，提供方默认上限未知。"
+        },
+        "extraBody": null,
+        "modelWeightsRevision": {
+          "status": "unknown",
+          "value": null,
+          "reason": "远端服务未提供不可变权重版本。"
+        }
+      },
+      "traceEnabled": true,
+      "chunkSize": 200,
+      "chunkOverlap": 30,
+      "topK": 4,
+      "reuseVectorDb": false,
+      "ragasMaxWorkers": 1,
+      "evaluationTimeout": 300,
+      "ragasRunConfig": {
+        "max_retries": 10,
+        "max_wait": 60,
+        "log_tenacity": false,
+        "seed": 42,
+        "max_workers": 1,
+        "timeout": 300,
+        "exception_types": [
+          "builtins.Exception"
+        ]
+      },
+      "metricParameters": {
+        "faithfulness": {
+          "_reproducibility": 1,
+          "max_retries": 1
+        },
+        "context_precision": {
+          "_reproducibility": 1,
+          "max_retries": 1
+        },
+        "answer_relevancy": {
+          "strictness": 1
+        },
+        "answer_correctness": {
+          "weights": [
+            0.75,
+            0.25
+          ],
+          "max_retries": 1
+        },
+        "context_recall": {
+          "_reproducibility": 1,
+          "max_retries": 1
+        }
+      },
+      "gateThresholds": {
+        "faithfulness": 0.8,
+        "contextPrecision": 0.8
+      },
+      "embedding": {
+        "configuredIdentifier": "BAAI/bge-small-zh-v1.5",
+        "localFilesOnly": true,
+        "implementation": "langchain_community.embeddings.HuggingFaceEmbeddings",
+        "resolvedSource": {
+          "status": "unknown",
+          "value": null,
+          "reason": "现有流水线未暴露实际加载路径，本工具不推测缓存命中。"
+        },
+        "weightsRevision": {
+          "status": "unknown",
+          "value": null,
+          "reason": "未取得实际加载权重的不可变版本。"
+        },
+        "weightsSha256": {
+          "status": "unknown",
+          "value": null,
+          "reason": "未对实际加载的Embedding权重进行观测。"
+        }
+      }
+    }
+  },
+  "apiResponseParseStatus": "parsed",
+  "resultCoverage": {
+    "models": {
+      "deepseek-chat": {
+        "answerCount": 25,
+        "metrics": {
+          "faithfulness": {
+            "valid": 25,
+            "missing": 0
+          },
+          "context_precision": {
+            "valid": 25,
+            "missing": 0
+          },
+          "answer_relevancy": {
+            "valid": 25,
+            "missing": 0
+          },
+          "answer_correctness": {
+            "valid": 25,
+            "missing": 0
+          },
+          "context_recall": {
+            "valid": 25,
+            "missing": 0
+          }
+        },
+        "trace": {
+          "nonempty": 19,
+          "empty": 6,
+          "missing": 0,
+          "invalid": 0
+        }
+      }
+    },
+    "note": "运行完成、指标覆盖与Trace覆盖分别记录。空Trace可能来自拒答、抽取、调用或解析，不能据空列表确认原因；不重算分数或门禁。"
+  },
+  "artifacts": [
+    {
+      "path": "answers.json",
+      "bytes": 59159,
+      "sha256": "8d77389df581d22dd05de93e415f73b8d72677d3a8822b5ae453a2e32f838cc4"
+    },
+    {
+      "path": "api-response.json",
+      "bytes": 108342,
+      "sha256": "a13bc7e58baebbdda41e6cedbb623202475a99d00d69992842de01aca83f28aa"
+    },
+    {
+      "path": "llm-events.jsonl",
+      "bytes": 2213765,
+      "sha256": "45fa80175470dbf64d0fc2cc60f119553a5dd0d1dcdc4eda265325db7ec92443"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 5789,
+      "sha256": "18cf0f872cef1fc83a258e992552f494c2543ffd2a27930d2414ad2e00c7cf70"
+    },
+    {
+      "path": "packages.json",
+      "bytes": 5429,
+      "sha256": "17d2accfff5ba5522b9e6ed76bd513542a80fcccb0e85fb4a00093fdff8c9fd8"
+    },
+    {
+      "path": "project/backend/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "project/backend/adapters/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "project/backend/adapters/models/__init__.py",
+      "bytes": 214,
+      "sha256": "fee726f1a13daa437ea92013ecfd2aef7468dfb53d1e192e3db5b6ae34befcf8"
+    },
+    {
+      "path": "project/backend/adapters/models/base.py",
+      "bytes": 409,
+      "sha256": "6b540c586c73acbb38c5385b7d9513ac36b63867244d2781f5ada3bba2794a7e"
+    },
+    {
+      "path": "project/backend/adapters/models/openai_compatible.py",
+      "bytes": 2034,
+      "sha256": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791"
+    },
+    {
+      "path": "project/backend/adapters/models/registry.py",
+      "bytes": 528,
+      "sha256": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230"
+    },
+    {
+      "path": "project/backend/adapters/ragas_compat.py",
+      "bytes": 3068,
+      "sha256": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647"
+    },
+    {
+      "path": "project/backend/api/__init__.py",
+      "bytes": 80,
+      "sha256": "1e6bc5b72b6278487e68d6f72b57d968b18269cfac50ca8883bda9bcb599c9b4"
+    },
+    {
+      "path": "project/backend/api/app.py",
+      "bytes": 4133,
+      "sha256": "ce752db71bfdcbd107d97ddf0e4a3789bd7e1211fb59f44d24b1c7a6ef2f981c"
+    },
+    {
+      "path": "project/backend/api/input_files.py",
+      "bytes": 4699,
+      "sha256": "af43e002f29a7c04d1771175b77f81ac65f42a0bbd376ae5e98eb305a5445590"
+    },
+    {
+      "path": "project/backend/api/schemas.py",
+      "bytes": 1221,
+      "sha256": "704160e8e35aa14747a5ce047269a9ed3ee59ec15ddd231f3ac99e6f25f739c4"
+    },
+    {
+      "path": "project/backend/api/serialization.py",
+      "bytes": 1822,
+      "sha256": "68d5f806b581f96c4bf75d9af5be372b11dae69160063974bd4f21f4671b670a"
+    },
+    {
+      "path": "project/backend/api/service.py",
+      "bytes": 7451,
+      "sha256": "b9a00f2605d41383e7499d6d5a65820449ecc352a6cc1fb3ad3d7ea657b3cf93"
+    },
+    {
+      "path": "project/backend/config.py",
+      "bytes": 2680,
+      "sha256": "8924782aefa70cf80bec88edf0b9cb6f952d848d96375cae55e05431a4dedec8"
+    },
+    {
+      "path": "project/backend/core/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "project/backend/core/attribution.py",
+      "bytes": 4796,
+      "sha256": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+    },
+    {
+      "path": "project/backend/core/gate.py",
+      "bytes": 3599,
+      "sha256": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae"
+    },
+    {
+      "path": "project/backend/core/judge_error.py",
+      "bytes": 11259,
+      "sha256": "ef7d7dc518b8078b2f17879f8b351cd7a93ae6a9c28899799f5cefb821e503be"
+    },
+    {
+      "path": "project/backend/core/model_registry.py",
+      "bytes": 5643,
+      "sha256": "c8e349c97e86c05ad2e1c3daf3f7cd29a3931bffc386f2738d6bfd5ab6d5b31a"
+    },
+    {
+      "path": "project/backend/core/pipeline.py",
+      "bytes": 26558,
+      "sha256": "9e3d21f6aa2e3b10ca49e8ca581789b2406a132ac807f47b990b64f9d9967b8d"
+    },
+    {
+      "path": "project/backend/core/regression.py",
+      "bytes": 7206,
+      "sha256": "17e2c10b6b41ac293f47d1491aad6493fab51c17df3e66f8f0cb779cbeac7564"
+    },
+    {
+      "path": "project/backend/core/robustness.py",
+      "bytes": 19597,
+      "sha256": "85dcd0e154744da7a0dda3ea7d41fcb21cb7ab75f2615fae4d193f8936cd16f8"
+    },
+    {
+      "path": "project/backend/core/types.py",
+      "bytes": 5310,
+      "sha256": "e75b944ebe326fcbdfe7f369fdea7559bbbd45192770ed6bacd16c961c8fb3cf"
+    },
+    {
+      "path": "project/backend/core/utils.py",
+      "bytes": 3908,
+      "sha256": "243cfd0979102a5a5765cfecb4224da895355365f753c857efe0580188517fef"
+    },
+    {
+      "path": "project/backend/reporting/__init__.py",
+      "bytes": 2752,
+      "sha256": "ed5d8b6a403dabe6fabe9755ad69e53a558cf179b772ca466b52bf8518f0d780"
+    },
+    {
+      "path": "project/backend/reporting/charts.py",
+      "bytes": 12619,
+      "sha256": "4bf2d439df1d94a35685ca9d092e9e0623692b7722ee7be6b11fe1446cd65b01"
+    },
+    {
+      "path": "project/backend/reporting/evaluation_chart.py",
+      "bytes": 5252,
+      "sha256": "9aa25be1829f19c326dd088ba2a0a4f62e18169a785f46a292c74b1bc1874305"
+    },
+    {
+      "path": "project/backend/reporting/excel.py",
+      "bytes": 555,
+      "sha256": "aa287e877b19fa6c080e12fee97d683301abffb130a54e0c2d332a69dc336fba"
+    },
+    {
+      "path": "project/backend/reporting/html.py",
+      "bytes": 8956,
+      "sha256": "eda7892d881168a38e853c41ca6c8930d630012489406a0ff350a86e7f211073"
+    },
+    {
+      "path": "project/backend/reporting/pdf.py",
+      "bytes": 1402,
+      "sha256": "073ed57400405970777a76685b7dab8262ff468cb90fbd93d0e3cd11d19342fc"
+    },
+    {
+      "path": "project/backend/services/__init__.py",
+      "bytes": 779,
+      "sha256": "9c16bc54ecc4f1ba02a12e65a620d2dfa3bd176045ab5be302e5696f75e9bf79"
+    },
+    {
+      "path": "project/backend/services/answering.py",
+      "bytes": 791,
+      "sha256": "efcb4f169bea98b59a02e711a64e204d84bc37b357d5e0adc5605a2a5a84ee3b"
+    },
+    {
+      "path": "project/backend/services/documents.py",
+      "bytes": 1194,
+      "sha256": "8cc9dc977650e48160b39fc11633d695f72f26b75e6ccb30be66ece7ae27211d"
+    },
+    {
+      "path": "project/backend/services/negatives.py",
+      "bytes": 15262,
+      "sha256": "189e5b9c7b20b478cc49f68c4fa55486386e08be55dd2e3f06ad110f27aa5102"
+    },
+    {
+      "path": "project/backend/services/retriever.py",
+      "bytes": 715,
+      "sha256": "879e6bc6307e308e984a5c918cf37af903ae1e7f6a31bf7c1707fc797508e9b8"
+    },
+    {
+      "path": "project/backend/services/testsets.py",
+      "bytes": 6328,
+      "sha256": "32446f6698c9f6e4bf3140f40595824a2b9a738779a371bf7e706b85bc140541"
+    },
+    {
+      "path": "project/backend/services/trace.py",
+      "bytes": 10802,
+      "sha256": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa"
+    },
+    {
+      "path": "project/backend/storage/__init__.py",
+      "bytes": 355,
+      "sha256": "a91a32f12ea8ee6250e2cd77cb40b351d044c5ec35c4c10a5367619cca60b63f"
+    },
+    {
+      "path": "project/backend/storage/base.py",
+      "bytes": 566,
+      "sha256": "00cededa92a1fcf72612140ec46dbc60aa82e721b25432fd6d0269e7397bce5f"
+    },
+    {
+      "path": "project/backend/storage/json_history.py",
+      "bytes": 3166,
+      "sha256": "d448cf1642c17d8de0c16ae4b657589f0322086ac694210764702c6f0edcdf50"
+    },
+    {
+      "path": "project/backend/storage/local_artifacts.py",
+      "bytes": 1021,
+      "sha256": "74200ee7ba9d924f31346d4ae01b9f37607435676e80fb3b577c739a9ab05623"
+    },
+    {
+      "path": "project/eval_history.json",
+      "bytes": 1123,
+      "sha256": "a9f5a33e6750a6c9df7f3d73f24f777ff6e47b4bc22e836d382e35fcb97f5b31"
+    },
+    {
+      "path": "project/main.py",
+      "bytes": 151244,
+      "sha256": "56c9a088ed0f7682cce73e1f2f17a6ce036ce3e7f795b429c5ac7b4e223a3ff7"
+    },
+    {
+      "path": "project/multi_model_summary.csv",
+      "bytes": 486,
+      "sha256": "e61e5ad16fd03de1748d92c9e80fdd43e43013aa6c572c9de7aca473d4d14d8d"
+    },
+    {
+      "path": "project/ragas_report.html",
+      "bytes": 93489,
+      "sha256": "ecef7dfe2340189b6eec4b64dca6eb5700425ed2aa21add987c21609eb81405e"
+    },
+    {
+      "path": "project/ragas_report_deepseek-chat.csv",
+      "bytes": 102165,
+      "sha256": "428f09b966646548d78ba2ee61cec27a7b7d577e6b977239bf9a0178426689dc"
+    },
+    {
+      "path": "project/result_chart.png",
+      "bytes": 66196,
+      "sha256": "3c2a4a2ea151e9fb7873f06fa2411622c463e890bce00ba59cf45740966271bc"
+    },
+    {
+      "path": "project/scenarios/competition_25/case-manifest.json",
+      "bytes": 41359,
+      "sha256": "975b1e84adf20e3b01a20bf4e6abf290d972e23eb7038266dfb35c11eaa8d6ba"
+    },
+    {
+      "path": "project/scenarios/competition_25/pilot.json",
+      "bytes": 1444,
+      "sha256": "7ffe6cc7c87c33c24cad7e36db4e3bfb6d7e022e24a851cbc898a5267835fee9"
+    },
+    {
+      "path": "project/scenarios/competition_25/testset.json",
+      "bytes": 6812,
+      "sha256": "c2f95f0dc20ba86161469e47eb6b96467526f465a5d36580b3bdfb52f8f5318f"
+    },
+    {
+      "path": "project/scenarios/deposit_insurance.txt",
+      "bytes": 4340,
+      "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+    },
+    {
+      "path": "prompt-definitions.json",
+      "bytes": 32367,
+      "sha256": "32bba886332cd3588324e2957157087fc92e19522c375164ce7b3e19a9dc4431"
+    },
+    {
+      "path": "request.json",
+      "bytes": 273,
+      "sha256": "1de0d3ef7dd97614e7ffad270a31b27e779afa5b9617343d056fa31b237f9164"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 740,
+      "sha256": "69b81adb9bc4dd56826eef33192b997007157a37d2cbcede972c9190ea8406e4"
+    },
+    {
+      "path": "requirements_new.txt",
+      "bytes": 3593,
+      "sha256": "9948ab27dbb1b77597a5ed952755065fe018346495774a40b8f6c7dd6c55331d"
+    },
+    {
+      "path": "result-coverage.json",
+      "bytes": 869,
+      "sha256": "6fc09150099e3790e1f6fad92e4fac376f63abca82150630fceb145d332ab8bd"
+    },
+    {
+      "path": "runner/run_evidence.py",
+      "bytes": 34991,
+      "sha256": "73290ca86f32f32fe9cd0ed0a9157e7e9244d0a3b533670825ac54db01d249cf"
+    },
+    {
+      "path": "runtime.json",
+      "bytes": 8257,
+      "sha256": "b2d97e057f5d1f649debe735583bfb39ae14185b082cadae8a8fc1398aed4fc9"
+    },
+    {
+      "path": "server.log",
+      "bytes": 14049,
+      "sha256": "4b1cd3e3449e61ce56a01e9797f85f269be19d8f298825ca5018fab0a767b3b7"
+    },
+    {
+      "path": "traces.json",
+      "bytes": 48399,
+      "sha256": "9a55122c85e4cd2e8c982131fcab0b6c63871679a304c288320c9ff091067434"
+    },
+    {
+      "path": "usage.json",
+      "bytes": 671,
+      "sha256": "7a801a11779b3d6e3c42ec29feedf0e1d5d0f6d93d36dbc1a321a42eed72df2d"
+    }
+  ]
+}

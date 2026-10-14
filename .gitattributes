@@ -196,3 +196,16 @@
 /docs/competition/offline-run/20261014-ollama-qwen3.5-2b/blocked-connections.jsonl text eol=lf
 /docs/competition/offline-run/20261014-ollama-qwen3.5-2b/run.json text eol=lf
 /docs/competition/offline-run/20261014-ollama-qwen3.5-2b/testset.json text eol=lf
+# 修复验证重跑的公开副本：运行工具写出的 JSON 与回放输出为 CRLF，说明与哈希清单为 LF，api-response 无换行；按记录时的字节逐文件固定。
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md text eol=lf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/answers.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/gate-replay-vs-baseline.txt text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/manifest.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/metrics.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/prompt-definitions.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/request.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/result-coverage.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/traces.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/usage.json text eol=crlf
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/api-response.json -text
+/docs/competition/evidence/20261014T073859Z-full-1c6f091f/SHA256SUMS.txt text eol=lf

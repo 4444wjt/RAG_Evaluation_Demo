@@ -121,6 +121,14 @@ In a simulation with this run's question structure, the question-sampling-only i
 
 **What the platform adds:** for the same FAIL, the plain Ragas average is 0.59, because it counts 5 correct refusals on negative questions as 0. The platform reports 0.7375 on positive questions and explains it: all 40 statements in the answered questions are grounded; 76% of the gap comes from 4 refusals on false-premise questions, so the fix is the prompt, not retrieval; and the interval spans the threshold, so the block is conservative. See [details in Chinese](docs/competition/value-comparison.md).
 
+**Fix verified:** following that attribution, on 2026-10-14 one sentence was added to the answer prompt: when the question's claim or premise contradicts the context, point it out and correct it from the context instead of refusing (commit `b90a14c`). The 25 questions were then rerun with the same question set, contexts and model (authorized, 325 calls). The gate, thresholds and judge were not changed.
+- Positive faithfulness went from 0.7375 to **0.8607**, and the gate went from **FAIL to PASS**.
+- Of the 4 refused false-premise questions, 3 are now corrected; F04 is still refused.
+- All 5 unanswerable questions are still correctly refused.
+- A per-question regression check against the original FAIL found no regression.
+
+Limits: the fix was verified on the same questions that revealed the problem, in a single run, and the result is only about 0.06 above the threshold. It does not show the effect on new questions. See [details in Chinese](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md).
+
 **External case:** on 2026-10-14 the platform checked the default knowledge-base prompt of [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) (authorized, 100 requests, about ¥0.15). Same model and same retrieved contexts; only the prompt changed. On the 5 false-premise questions, its prompt refused 2 and this project's own prompt refused 3. For two of them (F03, F04) the contexts contain the text needed to correct the premise, yet both prompts answered "cannot answer". Both prompts correctly refused all 5 unanswerable questions, and every answered statement was grounded. Only the default prompt was tested, not the project's real deployments. See [details in Chinese](docs/competition/cases/langchain-chatchat/README.md).
 
 ## Quick start
