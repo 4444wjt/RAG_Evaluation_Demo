@@ -7,6 +7,7 @@ import type { IconName } from './components/Icon';
 import { OverviewView } from './features/OverviewView';
 import { WorkspaceView } from './features/WorkspaceView';
 import type { ConfigurationCheck } from './features/WorkspaceView';
+import type { ExampleEvidence } from './features/SampleDocumentGuide';
 import { ComparisonView } from './features/ComparisonView';
 import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
@@ -70,6 +71,7 @@ function SidebarRun({ result, source }: { result: EvaluationResult; source: stri
 export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequest; onHome?: () => void }) {
   const [view, setView] = useState<DashboardView>('overview');
   const [config, setConfig] = useState(initialConfig);
+  const [readingTarget, setReadingTarget] = useState<{ view: DashboardView; id: string } | null>(null);
   const [run, dispatch] = useReducer(runReducer, initialRunState);
   const [formError, setFormError] = useState<string | null>(null);
   const [health, setHealth] = useState<'checking' | 'connected' | 'disconnected'>('checking');
@@ -89,6 +91,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
 
   /** User navigation gets its own history entry, so views can be shared and Back returns to the previous one. */
   const navigate = (next: DashboardView) => {
+    setReadingTarget(null);
     setView(next);
     if (!onHome || !parseLabHash(window.location.hash)) return;
     const hash = labHash(next, isDemo);
@@ -186,6 +189,31 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     setView('overview');
   }, []);
 
+  const inspectExample = (example: ExampleEvidence) => {
+    if (inflight.current || configurationInflight.current) return;
+    const next = example === 'trace' ? 'trace' : 'fix';
+    const target = example === 'heldout' ? 'fx-heldout-title' : example === 'gate' ? 'fx-gate-title' : 'trace-answer-title';
+    if (example !== 'trace') {
+      navigate(next);
+    } else {
+      // This explicit action opens the product snapshot; choosing a document never loads results.
+      loadDemo();
+      setView(next);
+      if (onHome && parseLabHash(window.location.hash)) {
+        window.history.replaceState({ ...window.history.state, labView: view }, '');
+        window.history.pushState({ labEntryHandled: true, labView: next }, '', labHash(next, true));
+      }
+    }
+    setReadingTarget({ view: next, id: target });
+  };
+
+  useEffect(() => {
+    if (!readingTarget || readingTarget.view !== view) return;
+    const target = document.getElementById(readingTarget.id);
+    target?.scrollIntoView?.({ block: 'start' });
+    target?.focus({ preventScroll: true });
+  }, [readingTarget, view]);
+
   const consumedEntry = useRef<number | null>(null);
   useEffect(() => {
     if (!entryRequest || consumedEntry.current === entryRequest.id) return;
@@ -226,12 +254,12 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
       <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>Gitee 源码 · MIT</a></div>
     </aside>
     <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div>{STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
-      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
+      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div><div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div></div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
         {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'annotate' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
-        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels}/>}
+        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels} onInspectExample={inspectExample}/>}
         {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
         {view === 'trace' && <TraceView result={run.result} document={run.source === 'demo' ? demoDocument : null}/>}

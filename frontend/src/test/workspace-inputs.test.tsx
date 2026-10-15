@@ -53,7 +53,7 @@ describe('Workspace examples and real computer-file import', () => {
 
   it('requires a computer file before running and restores the chosen example when switching back', async () => {
     const page = workspace();
-    await userEvent.click(screen.getByRole('radio', { name: /信息披露/ }));
+    await userEvent.click(screen.getByRole('radio', { name: /政府信息公开/ }));
     await userEvent.click(screen.getByRole('button', { name: '电脑文件' }));
     expect(page.config().docPath).toBe('');
     expect(screen.getByRole('button', { name: '开始评测' })).toBeDisabled();
@@ -61,7 +61,7 @@ describe('Workspace examples and real computer-file import', () => {
     expect(page.run).not.toHaveBeenCalled();
     await userEvent.click(screen.getByRole('button', { name: '示例资料' }));
     expect(page.config().docPath).toBe('scenarios/information_disclosure.txt');
-    expect(screen.getByRole('radio', { name: /信息披露/ })).toBeChecked();
+    expect(screen.getByRole('radio', { name: /政府信息公开/ })).toBeChecked();
     expect(requests).not.toHaveBeenCalled();
   });
 

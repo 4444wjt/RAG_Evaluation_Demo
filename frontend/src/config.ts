@@ -31,7 +31,7 @@ export const MODELS = [
 export const DATASETS = [
   { path: 'demo.txt', label: '默认示例文档' },
   { path: 'scenarios/deposit_insurance.txt', label: '存款保险' },
-  { path: 'scenarios/information_disclosure.txt', label: '信息披露' },
+  { path: 'scenarios/information_disclosure.txt', label: '政府信息公开' },
 ] as const;
 
 export const METRICS = [

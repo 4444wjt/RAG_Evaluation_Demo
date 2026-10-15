@@ -1,61 +1,123 @@
-.workspace-start-hint { display: flex; align-items: flex-start; gap: 9px; margin: -6px 0 23px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+/* Data input: one reading column — source, three options, the selected material, then the testset.
+   Depth comes from stepping surfaces (section → control → selected) and 1px borders, not shadows. */
+.workspace-start-hint { display: flex; align-items: flex-start; gap: 9px; margin: -6px 0 20px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
 .workspace-start-hint > svg { flex-shrink: 0; margin-top: 4px; color: var(--brand); }
-.workspace-stage:first-of-type .stage-heading p { font-size: 14px; }
-.workspace-input-panel .field-label { font-size: 16px; font-weight: 600; }
-.workspace-source-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 15px; }
-.workspace-source-switch button { display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; min-height: 43px; padding: 10px 12px; background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: var(--radius-control); color: var(--text-secondary); font-size: 14px; font-weight: 600; transition: color 160ms, background-color 160ms, border-color 160ms; }
-.workspace-source-switch button::before { content: ''; position: absolute; left: 7px; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: var(--brand); opacity: 0; }
-.workspace-source-switch button:not(:disabled):hover { color: var(--text-primary); background: var(--bg-hover); border-color: var(--border-strong); }
+.workspace-stage:first-of-type .stage-heading p { font-size: 13px; }
+
+.workspace-data-heading { align-items: flex-end; margin-bottom: 14px; }
+.workspace-source-switch { display: inline-grid; grid-template-columns: repeat(2, auto); gap: 2px; padding: 3px; background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: var(--radius-control); }
+.workspace-source-switch button { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 32px; padding: 5px 14px; background: transparent; border: 1px solid transparent; border-radius: 6px; color: var(--text-secondary); font-size: 14px; font-weight: 600; transition: color 160ms, background-color 160ms, border-color 160ms; }
+.workspace-source-switch button:not(:disabled):hover { color: var(--text-primary); background: var(--bg-hover); }
 .workspace-source-switch button[aria-pressed='true'] { color: var(--brand); background: var(--bg-selected); border-color: var(--border-selected); }
-.workspace-source-switch button[aria-pressed='true']::before { opacity: 1; }
-.workspace-example-tree { min-width: 0; padding: 13px 12px 11px; background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: var(--radius-control); }
-.workspace-tree-root { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; color: var(--text-secondary); font-size: 14px; }
-.workspace-tree-root > svg { color: var(--brand); }
-.workspace-tree-root > span { margin-left: auto; font-size: 13px; }
-.workspace-tree-files { margin-left: 8px; padding-left: 14px; border-left: 1px solid var(--border-strong); }
-.workspace-example-choice { position: relative; display: flex; align-items: center; gap: 10px; min-height: 59px; padding: 9px 12px; border-radius: 6px; cursor: pointer; transition: background-color 160ms, color 160ms; }
-.workspace-example-choice + .workspace-example-choice { margin-top: 4px; }
-.workspace-example-choice::before { content: ''; position: absolute; top: 29px; left: -14px; width: 13px; height: 1px; background: var(--border-strong); }
+.workspace-source-switch button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.dataset-grid.workspace-data { display: flex; flex-direction: column; gap: 20px; }
+.workspace-material { container-type: inline-size; display: flex; flex-direction: column; gap: 12px; }
+
+/* Three examples as one compact row of options. */
+.workspace-example-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.workspace-example-choice { position: relative; display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: var(--radius-control); cursor: pointer; transition: background-color 160ms, border-color 160ms, color 160ms; }
 .workspace-example-choice input { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; opacity: 0; }
 .workspace-example-choice > svg { flex-shrink: 0; color: var(--text-secondary); }
 .workspace-example-choice > span { flex: 1; min-width: 0; }
 .workspace-example-choice strong { display: block; font-size: 14px; font-weight: 600; line-height: 1.5; }
-.workspace-example-choice small { display: block; margin-top: 2px; color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
-.workspace-example-choice:hover { background: var(--bg-hover); }
+.workspace-example-choice small { display: block; color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
+.workspace-example-choice:hover { background: var(--bg-hover); border-color: var(--border-strong); }
 .workspace-example-choice:has(input:focus-visible) { outline: 2px solid var(--brand); outline-offset: 2px; }
-.workspace-example-choice.is-selected { background: var(--bg-selected); }
+.workspace-example-choice.is-selected { background: var(--bg-selected); border-color: var(--border-selected); }
 .workspace-example-choice.is-selected strong, .workspace-example-choice.is-selected > svg { color: var(--brand); }
 .workspace-example-choice:has(input:disabled) { cursor: not-allowed; opacity: .55; }
-.workspace-input-hint { margin-top: 10px; color: var(--text-secondary); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
-.workspace-input-advanced { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-subtle); }
+
+/* Selected material: purpose, question beside its source passage, then the one next action. */
+.workspace-sample-guide { min-width: 0; padding: 16px 20px 18px; background: var(--bg-control); border: 1px solid var(--border-subtle); border-radius: 12px; color: var(--text-primary); overflow-wrap: anywhere; }
+.workspace-sample-head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: 14px; row-gap: 4px; }
+.workspace-sample-selection { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; margin: 0; color: var(--brand); font-size: 13px; font-weight: 500; line-height: 1.5; }
+.workspace-sample-kind { margin-left: 4px; padding: 0 7px; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text-secondary); font-size: 12px; font-weight: 500; line-height: 1.6; }
+.workspace-sample-head > h4 { font-size: 16px; font-weight: 650; line-height: 1.5; }
+.workspace-sample-purpose { margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+.workspace-sample-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 12px 20px; margin-top: 14px; }
+.workspace-sample-question { display: flex; flex-direction: column; gap: 12px; margin: 0; }
+.workspace-sample-question dt, .workspace-sample-quote figcaption { margin-bottom: 4px; color: var(--text-secondary); font-size: 13px; font-weight: 500; line-height: 1.5; }
+.workspace-sample-question dd { margin: 0; font-size: 15px; line-height: 1.7; }
+.workspace-sample-question dd.workspace-sample-check { color: var(--text-secondary); font-size: 14px; }
+.workspace-sample-quote { min-width: 0; margin: 0; }
+.workspace-sample-quote blockquote { margin: 0; padding: 10px 14px; background: var(--bg-section); border: 1px solid var(--border-subtle); border-left: 2px solid var(--border-selected); border-radius: 6px; font-size: 15px; line-height: 1.75; }
+.workspace-sample-source { margin-top: 6px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+.workspace-sample-document { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-subtle); }
+.workspace-sample-document > summary { display: flex; align-items: center; gap: 7px; width: fit-content; padding: 2px 0; cursor: pointer; color: var(--text-secondary); font-size: 14px; line-height: 1.6; list-style: none; }
+.workspace-sample-document > summary::-webkit-details-marker { display: none; }
+.workspace-sample-document > summary > svg { flex-shrink: 0; transition: transform 160ms; }
+.workspace-sample-document[open] > summary > svg { transform: rotate(90deg); }
+.workspace-sample-document > summary:hover { color: var(--text-primary); }
+.workspace-sample-document > summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 3px; }
+.workspace-sample-text { max-width: 80ch; max-height: 320px; margin-top: 8px; overflow-y: auto; padding-right: 6px; white-space: pre-wrap; font-size: 14px; line-height: 1.85; scrollbar-color: var(--border-strong) transparent; }
+.workspace-sample-next { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-top: 14px; }
+.workspace-sample-next .btn { min-height: 40px; max-width: 100%; font-size: 14px; white-space: normal; text-align: left; }
+.workspace-sample-next > p { flex: 1 1 260px; color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+@container (max-width: 760px) {
+  .workspace-sample-body { grid-template-columns: minmax(0, 1fr); }
+  .workspace-sample-head { grid-template-columns: minmax(0, 1fr); }
+}
+@container (max-width: 560px) { .workspace-example-options { grid-template-columns: minmax(0, 1fr); } }
+
+/* Advanced project path: a quiet line under the material. */
+.workspace-input-advanced { margin-top: 0; }
 .workspace-input-advanced summary { display: flex; align-items: center; gap: 7px; width: fit-content; cursor: pointer; color: var(--text-secondary); font-size: 13px; list-style: none; }
 .workspace-input-advanced summary::-webkit-details-marker { display: none; }
 .workspace-input-advanced summary > svg { transform: rotate(0deg); transition: transform 160ms; }
 .workspace-input-advanced[open] summary > svg { transform: rotate(90deg); }
-.workspace-input-advanced > p { margin: 10px 0; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
-.workspace-input-advanced > label { display: block; margin: 12px 0 7px; color: var(--text-secondary); font-size: 13px; }
-.workspace-file-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; width: 100%; min-width: 0; min-height: 174px; padding: 22px 18px; background: var(--bg-control); border: 1px dashed var(--border-strong); border-radius: var(--radius-control); transition: border-color 160ms, background-color 160ms; }
+.workspace-input-advanced summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 3px; }
+.workspace-input-advanced > p { margin: 8px 0; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+.workspace-input-advanced > label { display: block; margin: 10px 0 6px; color: var(--text-secondary); font-size: 13px; }
+.workspace-input-advanced > input { max-width: 520px; }
+
+/* Computer files. */
+.workspace-input-hint { margin-top: 8px; color: var(--text-secondary); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.workspace-file-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 100%; min-width: 0; padding: 22px 18px; background: var(--bg-control); border: 1px dashed var(--border-strong); border-radius: var(--radius-control); transition: border-color 160ms, background-color 160ms; }
 .workspace-file-drop > svg { color: var(--brand); }
-.workspace-file-drop > strong { color: var(--text-primary); font-size: 16px; font-weight: 600; }
+.workspace-file-drop > strong { color: var(--text-primary); font-size: 15px; font-weight: 600; }
 .workspace-file-drop > span { max-width: 100%; color: var(--text-secondary); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
 .workspace-file-drop:not(:disabled):hover, .workspace-file-drop.is-dragging { background: var(--bg-selected); border-color: var(--brand); }
-.workspace-file-drop.has-file { min-height: 129px; }
-.workspace-import-status { display: flex; align-items: flex-start; gap: 9px; margin-top: 13px; color: var(--success); font-size: 14px; line-height: 1.6; }
+.workspace-import-status { display: flex; align-items: flex-start; gap: 9px; margin-top: 10px; color: var(--success); font-size: 14px; line-height: 1.6; }
 .workspace-import-status > svg { flex-shrink: 0; margin-top: 3px; }
 .workspace-import-status > span { min-width: 0; }
 .workspace-import-status strong { font-weight: 600; }
 .workspace-import-status span span { display: block; margin-top: 3px; color: var(--text-secondary); font-size: 13px; overflow-wrap: anywhere; }
-.workspace-import-error { margin-top: 12px; color: var(--danger); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
-.workspace-testset-guidance { min-height: 214px; padding: 21px 0 15px; }
-.workspace-testset-guidance > svg { margin-bottom: 14px; color: var(--brand); }
-.workspace-testset-guidance > h4 { font-size: 16px; font-weight: 600; }
-.workspace-testset-guidance > p { max-width: 40ch; margin-top: 9px; color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
-.workspace-testset-guidance > small { display: block; margin-top: 15px; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
-.workspace-input-note { display: flex; align-items: flex-start; gap: 8px; margin-top: 17px; padding-top: 13px; border-top: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
-.workspace-input-note > svg { flex-shrink: 0; margin-top: 3px; color: var(--brand); }
-.workspace-testset-example { display: flex; align-items: center; gap: 10px; width: 100%; margin: 0 0 13px; padding: 11px 13px; text-align: left; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); font-size: 14px; }
+.workspace-import-error { margin-top: 10px; color: var(--danger); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+
+/* Testset source: its own compact row. The hairline is an inset shadow so .workspace-field stays borderless. */
+.workspace-testset { padding-top: 16px; box-shadow: inset 0 1px 0 var(--border-subtle); }
+.workspace-testset-row { display: grid; grid-template-columns: auto minmax(200px, 260px) minmax(0, 1fr); align-items: center; gap: 8px 16px; }
+.workspace-testset-row .field-label { margin: 0; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.workspace-field .workspace-testset-row select { margin: 0; }
+.workspace-testset-guidance { color: var(--text-secondary); font-size: 14px; line-height: 1.65; }
+.workspace-testset-guidance strong { margin-right: 4px; color: var(--text-primary); font-weight: 600; }
+.workspace-benchmark-limit { display: flex; align-items: center; gap: 10px; }
+.workspace-benchmark-limit .inline-label { margin: 0; white-space: nowrap; }
+.workspace-benchmark-limit input { width: 110px; }
+.workspace-testset-custom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 12px 16px; margin-top: 12px; }
+.workspace-testset-custom > .workspace-input-advanced { grid-column: 1 / -1; }
+.workspace-testset-example { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px 13px; text-align: left; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-control); font-size: 14px; }
 .workspace-testset-example > span { flex: 1; min-width: 0; }
 .workspace-testset-example small { display: block; color: var(--text-secondary); font-size: 13px; }
 .workspace-testset-example[aria-pressed='true'] { border-color: var(--border-selected); background: var(--bg-selected); }
 .workspace-testset-example > svg { color: var(--brand); flex-shrink: 0; }
-@media (prefers-reduced-motion: reduce) { .workspace-source-switch button, .workspace-example-choice, .workspace-file-drop, .workspace-input-advanced summary > svg { transition: none; } }
+.workspace-input-note { display: flex; align-items: flex-start; gap: 8px; margin-top: 12px; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+.workspace-input-note > svg { flex-shrink: 0; margin-top: 3px; color: var(--brand); }
+
+.workspace-focus-target { scroll-margin-top: 30px; }
+.workspace-focus-target:focus { outline: 2px solid var(--brand); outline-offset: 5px; border-radius: 3px; }
+
+@media (max-width: 900px) {
+  .workspace-testset-row { grid-template-columns: auto minmax(0, 1fr); }
+  .workspace-testset-row > :nth-child(n + 3) { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .workspace-data-heading { align-items: flex-start; }
+  .workspace-source-switch { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workspace-sample-guide { padding: 14px; }
+  .workspace-sample-next .btn { width: 100%; justify-content: center; }
+  .workspace-testset-row { grid-template-columns: minmax(0, 1fr); }
+  .workspace-testset-custom { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .workspace-source-switch button, .workspace-example-choice, .workspace-file-drop, .workspace-input-advanced summary > svg, .workspace-sample-document > summary > svg { transition: none; } }

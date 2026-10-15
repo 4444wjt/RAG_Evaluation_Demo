@@ -102,7 +102,7 @@ function GateRun({ label, date, gate }: { label: string; date: string; gate: Gat
 function GatePanel() {
   const { before, after } = formal.gate;
   return <section className="audit-panel" aria-labelledby="fx-gate-title">
-    <div className="audit-panel-head"><div><h2 id="fx-gate-title">门禁两次的结论</h2>
+    <div className="audit-panel-head"><div><h2 id="fx-gate-title" tabIndex={-1} className="workspace-focus-target">门禁两次的结论</h2>
       <p>点是正向忠实度，色带是按题有放回重抽 2 万次得到的 95% 区间，虚线是门槛。两次结论都由正式的门禁代码离线回放，与归档记录一致。</p></div></div>
     <ul className="fx-runs">
       <GateRun label="修复前" date={`${BEFORE_DATE} 基线`} gate={before}/>
@@ -184,11 +184,12 @@ function Questions() {
 
 function Heldout() {
   const held = data.heldout;
+  const documentNames: Record<string, string> = { deposit: '存款保险', disclosure: '政府信息公开' };
   const falsePremise = held.groups.find((g) => g.id === 'false_premise')!;
   const exception = held.notFullySupported[0];
   return <section className="audit-panel" aria-labelledby="fx-heldout-title">
-    <div className="audit-panel-head"><div><h2 id="fx-heldout-title">换一批新题再验证</h2>
-      <p>{`正式运行的 25 题正是发现问题的那批题，在它们上面通过不能排除过拟合。留出题是另写的 ${held.questions} 道新题，覆盖两份法规节选；同一模型、同一批资料，修复前后两组提示词只差这一句，严格对照。`}</p></div>
+    <div className="audit-panel-head"><div><h2 id="fx-heldout-title" tabIndex={-1} className="workspace-focus-target">换一批新题再验证</h2>
+      <p>{`正式运行的 25 题正是发现问题的那批题，在它们上面通过不能排除过拟合。留出题是另写的 ${held.questions} 道新题，覆盖${held.documents.map((name) => documentNames[name] ?? name).join('、')}两份法规节选；同一模型、同一批资料，修复前后两组提示词只差这一句，严格对照。`}</p></div>
       <Chip tone="success">{`${falsePremise.passBefore} / ${falsePremise.questions} → ${falsePremise.passAfter} / ${falsePremise.questions}`}</Chip></div>
     <div className="audit-table-scroll"><table className="fx-heldout">
       <thead><tr><th scope="col">题型</th><th scope="col">题数</th><th scope="col">通过的标准</th><th scope="col">修复前通过</th><th scope="col">修复后通过</th><th scope="col">变好的题</th><th scope="col">变差</th></tr></thead>

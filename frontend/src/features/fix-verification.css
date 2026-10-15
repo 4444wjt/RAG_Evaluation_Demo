@@ -89,3 +89,22 @@
   .fx-run { grid-template-columns: 120px minmax(0, 1fr); }
   .fx-run-value { grid-column: 2; }
 }
+
+/* Keep the guided destination readable when the full comparison row cannot fit. */
+@media (max-width: 760px) {
+  .fx-view .audit-panel-head > div { min-width: 0; }
+  .fx-filter { max-width: 100%; flex-wrap: wrap; }
+  .fx-filter button { flex: 1; white-space: normal; }
+  .fx-list-head { display: none; }
+  .fx-list summary { grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr); gap: 9px 8px; padding: 12px 10px; }
+  .fx-list summary > .fx-id { grid-column: 1; grid-row: 1; }
+  .fx-list summary > .fx-cat { grid-column: 2 / -1; grid-row: 1; justify-self: end; white-space: normal; }
+  .fx-list summary > .fx-question { grid-column: 1 / -1; grid-row: 2; white-space: normal; overflow: visible; line-height: 1.7; }
+  .fx-list summary > .fx-side { grid-row: 3; min-width: 0; flex-wrap: wrap; }
+  .fx-list summary > .fx-side:nth-child(4) { grid-column: 1; }
+  .fx-list summary > .fx-side:nth-child(6) { grid-column: 3; }
+  .fx-list summary > .fx-arrow { grid-column: 2; grid-row: 3; }
+  .fx-list summary > .audit-chip { grid-column: 1 / -1; grid-row: 4; max-width: 100%; white-space: normal; }
+  .fx-detail { min-width: 0; padding: 6px 10px 16px; }
+  .fx-answers { grid-template-columns: minmax(0, 1fr); }
+}

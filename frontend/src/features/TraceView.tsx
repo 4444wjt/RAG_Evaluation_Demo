@@ -417,7 +417,7 @@ export function TraceView({ result, document = null }: { result: EvaluationResul
               </div>
             </div>
             <div className="trace-answer-heading">
-              <h4 id="trace-answer-title">模型回答</h4>
+              <h4 id="trace-answer-title" tabIndex={-1} className="workspace-focus-target">模型回答</h4>
             </div>
             <p className="trace-answer">{textValue(row.answer, '回答原文未记录')}</p>
             {answerMode === 'unknown' && <p className="trace-answer-note">历史记录没有可靠的回答类型元数据，不能据此判断是正常回答、拒答说明还是前提纠正。</p>}
