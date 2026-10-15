@@ -5,9 +5,9 @@
   </picture>
 </a>
 
-[静态封面](docs/images/readme-banner.png) · [深色静态版](docs/images/readme-banner-dark.png)
-
 <a href="CHANGELOG.md"><img src="docs/images/badge-version.png" alt="version v1.2.0" height="20"></a> <a href="#快速启动"><img src="docs/images/badge-platform.png" alt="platform Python 3.11+" height="20"></a> <a href="LICENSE"><img src="docs/images/badge-license.png" alt="license MIT" height="20"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI" alt="CI"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL" alt="CodeQL"></a>
+
+[简体中文](README.md) · [English](README.en.md)
 
 # 鉴真全域 VeriScope AI
 
@@ -27,7 +27,7 @@
 
 代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
-[English](README.en.md) · [快速启动](#快速启动) · [落地与接入](docs/DEPLOYMENT.md) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
+[快速启动](#快速启动) · [落地与接入](docs/DEPLOYMENT.md) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
 
 [作品介绍](docs/competition/project-introduction.md) · [门禁可信度四问](docs/competition/gate-credibility.md) · [外部基准验证](docs/competition/external-validation/README.md) · [鲁棒性体检](docs/competition/robustness/README.md) · [裁判判错校准](docs/competition/judge-calibration/README.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
 
