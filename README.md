@@ -7,6 +7,8 @@
 
 [静态封面](docs/images/readme-banner.png) · [深色静态版](docs/images/readme-banner-dark.png)
 
+[![version](docs/images/badge-version.png)](CHANGELOG.md) [![platform](docs/images/badge-platform.png)](#快速启动) [![license](docs/images/badge-license.png)](LICENSE) [![CI](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml) [![CodeQL](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml)
+
 # 鉴真全域 VeriScope AI
 
 **▶ 在线演示（免登录，不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/)（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）

@@ -7,6 +7,8 @@
 
 [Static cover](docs/images/readme-banner.png) · [Dark cover](docs/images/readme-banner-dark.png)
 
+[![version](docs/images/badge-version.png)](CHANGELOG.md) [![platform](docs/images/badge-platform.png)](#quick-start) [![license](docs/images/badge-license.png)](LICENSE) [![CI](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml) [![CodeQL](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml)
+
 # VeriScope AI (鉴真全域)
 
 **Every sentence of an AI answer, traceable to its source.**
