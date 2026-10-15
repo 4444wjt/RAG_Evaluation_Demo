@@ -7,7 +7,7 @@
 
 [Static cover](docs/images/readme-banner.png) · [Dark cover](docs/images/readme-banner-dark.png)
 
-[![version](docs/images/badge-version.png)](CHANGELOG.md) [![platform](docs/images/badge-platform.png)](#quick-start) [![license](docs/images/badge-license.png)](LICENSE) [![CI](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml) [![CodeQL](https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL)](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml)
+<a href="CHANGELOG.md"><img src="docs/images/badge-version.png" alt="version v1.2.0" height="20"></a> <a href="#quick-start"><img src="docs/images/badge-platform.png" alt="platform Python 3.11+" height="20"></a> <a href="LICENSE"><img src="docs/images/badge-license.png" alt="license MIT" height="20"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI" alt="CI"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL" alt="CodeQL"></a>
 
 # VeriScope AI (鉴真全域)
 
