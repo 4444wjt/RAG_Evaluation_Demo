@@ -1,7 +1,7 @@
 <a href="https://kk444444444444.cloud/">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme-banner-dark.svg">
-    <img src="docs/images/readme-banner.svg" alt="VeriScope AI — sentence verification, evidence tracing and quality gates" width="1400" height="560">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme-banner-dark.gif">
+    <img src="docs/images/readme-banner.gif" alt="VeriScope AI — sentence verification, evidence tracing and quality gates" width="1400" height="560">
   </picture>
 </a>
 
