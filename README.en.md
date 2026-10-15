@@ -1,3 +1,12 @@
+<a href="https://kk444444444444.cloud/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme-banner-dark.gif">
+    <img src="docs/images/readme-banner.gif" alt="VeriScope AI — sentence verification, evidence tracing and quality gates" width="1400" height="560">
+  </picture>
+</a>
+
+[Static cover](docs/images/readme-banner.png) · [Dark cover](docs/images/readme-banner-dark.png)
+
 # VeriScope AI (鉴真全域)
 
 **Every sentence of an AI answer, traceable to its source.**

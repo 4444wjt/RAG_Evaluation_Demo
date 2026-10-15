@@ -1,3 +1,12 @@
+<a href="https://kk444444444444.cloud/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme-banner-dark.gif">
+    <img src="docs/images/readme-banner.gif" alt="鉴真全域 VeriScope AI｜逐句核对 · 证据溯源 · 质量门禁" width="1400" height="560">
+  </picture>
+</a>
+
+[静态封面](docs/images/readme-banner.png) · [深色静态版](docs/images/readme-banner-dark.png)
+
 # 鉴真全域 VeriScope AI
 
 **▶ 在线演示（免登录，不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/)（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
