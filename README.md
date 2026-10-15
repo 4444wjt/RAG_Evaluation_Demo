@@ -1,5 +1,7 @@
 # 鉴真全域 VeriScope AI
 
+**▶ 在线演示（免登录，不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/)（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
+
 **AI 的每个回答，都能逐句查到出处。**
 
 **逐句核对与质量门禁平台。**
@@ -184,7 +186,7 @@ RAG-Reliability-Lab/
 
 建议 Python 3.11、Node.js 24。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
 
-只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`，详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：https://4444wjt.github.io/RAG_Evaluation_Demo/（纯静态，由 `pages.yml` 自动构建）。
+只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`，详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
 
 ### 1. 获取项目
 
