@@ -217,7 +217,7 @@ function Limits() {
   return <section className="audit-panel" aria-labelledby="fx-limits-title">
     <div className="audit-panel-head"><div><h2 id="fx-limits-title">这份对照不能说明什么</h2></div></div>
     <ul className="fx-limits">
-      <li><strong>PASS 依赖裁判。</strong>{`本页两次都由 DeepSeek 自己打分。同一修复版本换 ${rerun.judgeModel} 作裁判重跑，正向忠实度 ${rerun.gate.posFaithfulness}，门禁 FAIL；${rerun.samePositive} 道回答逐字相同的正向题，平均分 ${rerun.samePositiveSelf} → ${rerun.samePositiveJudge}。`}<Source path={`${data.source.judge.path}/README.md`}>独立裁判复核</Source></li>
+      <li><strong>PASS 依赖裁判。</strong>{`本页两次都由 ${modelName(data.model)} 自己打分。同一修复版本换 ${rerun.judgeModel} 作裁判重跑，正向忠实度 ${rerun.gate.posFaithfulness}，门禁 FAIL；${rerun.samePositive} 道回答逐字相同的正向题，平均分 ${rerun.samePositiveSelf} → ${rerun.samePositiveJudge}。`}<Source path={`${data.source.judge.path}/README.md`}>独立裁判复核</Source></li>
       <li><strong>25 题是发现问题的同一批题。</strong>留出题是新题，但只有 24 道，符号检验没有达到 0.05。</li>
       <li><strong>一个领域、一个模型、各跑一次。</strong>修复后的 PASS 区间仍跨过门槛，再跑一次可能不同。</li>
       <li><strong>只验证了这一句的效果。</strong>没有比较其他写法，也没有找出它为什么有效。</li>

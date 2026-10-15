@@ -113,7 +113,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 - 正确前提题 4/5 → 5/5：修复后没有把正确说法「纠正」成错的；
 - 资料无答案的 5 道题仍全部正确拒答。
 
-局限：题量小，错误前提题的配对符号检验 p = 0.0625，未达到 0.05；两轮验证都只用了一个模型（`deepseek-chat`），各跑一次；25 题重跑离阈值只有约 0.06。详见 [修复验证证据](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)、[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)。
+局限：题量小，错误前提题的配对符号检验 p = 0.0625，未达到 0.05；两轮验证都只用了一个模型（DeepSeek-V4.1-Flash，历史请求 ID 为 `deepseek-chat`），各跑一次；25 题重跑离阈值只有约 0.06。详见 [修复验证证据](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)、[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)。
 
 **换独立裁判后：** 上面的 PASS 由 DeepSeek 自己打分。同一修复版本、同一 25 题，生成仍用 DeepSeek，裁判改用 Qwen2.5-72B 重跑（经授权），正向忠实度 **0.7992**，门禁回到 **FAIL**。
 - 问题、检索资料、参考答案和回答均相同的 13 道正向题，平均分从 0.9377 降到 0.8718，说明固定输入下裁判输出存在差异；单次复评仍不能分离裁判选择与判定随机性的影响；

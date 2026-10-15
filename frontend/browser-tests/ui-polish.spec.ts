@@ -111,7 +111,7 @@ for (const width of [1920, 1280, 1024, 390, 320]) {
     await page.getByRole('button', { name: '新建评测', exact: true }).click();
     await expect(page.locator('.model-avatar')).toHaveCount(0);
     const grid = await page.locator('.model-grid').boundingBox();
-    for (const name of ['DeepSeek', 'Qwen2.5-7B', 'GLM-5.2-Fast']) {
+    for (const name of ['DeepSeek-V4.1-Flash', 'Qwen2.5-7B', 'GLM-5.2-Fast']) {
       const card = page.getByRole('button', { name: `选择 ${name}`, exact: true });
       const label = card.locator('.model-identity strong');
       await expect(label).toHaveText(name);
@@ -131,7 +131,7 @@ test('model hover, selected and keyboard focus have distinct feedback', async ({
   await page.setViewportSize({ width: 1280, height: 1080 });
   await page.goto('/#/lab');
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
-  const model = page.getByRole('button', { name: '选择 DeepSeek', exact: true });
+  const model = page.getByRole('button', { name: '选择 DeepSeek-V4.1-Flash', exact: true });
   await page.mouse.move(0, 0);
   await expect(model).toHaveAttribute('aria-pressed', 'true');
   await expect(model).toHaveCSS('background-color', await themeBackground(page, '--bg-selected'));

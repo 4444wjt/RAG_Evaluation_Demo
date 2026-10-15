@@ -5,6 +5,8 @@ TRACE_DISPLAY_COLUMNS 与 build_display_df 是 generate_html_report / export_rep
 """
 import pandas as pd
 
+from backend.core.utils import _short_model_name
+
 # 溯源展示列（与 main.TRACE_DISPLAY_COLUMNS 一致）
 TRACE_DISPLAY_COLUMNS = {
     "trace_statement_count": "溯源语句总数",
@@ -33,6 +35,8 @@ def build_display_df(summary_df):
     }
     cols = [c for c in mapping if c in summary_df.columns]
     df = summary_df[cols].rename(columns=mapping).copy()
+    if "模型名称" in df.columns:
+        df["模型名称"] = df["模型名称"].apply(_short_model_name)
     pct_cols = ["幻觉率", "忠实度", "上下文精度", "答案相关性", "事实一致性", "回答完整性", "拒答准确率", "综合得分", "语句幻觉占比", "正向语句幻觉占比"]
     for col in pct_cols:
         if col in df.columns:

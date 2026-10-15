@@ -11,6 +11,7 @@ from backend.config import (
     VERSION, EMBEDDING_MODEL, TEST_QA_NUM, TOP_K, CHUNK_SIZE, CHUNK_OVERLAP,
     CHART_PATH, HTML_OUTPUT, FAITH_THRESHOLD, CTX_PREC_THRESHOLD,
 )
+from backend.core.utils import _short_model_name
 from . import build_display_df, TRACE_DISPLAY_COLUMNS
 
 
@@ -31,7 +32,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
     for item in summary_data:
         rows_html += (
             f"<tr>"
-            f"<td>{item['model']}</td>"
+            f"<td title=\"原始模型 ID：{escape(str(item['model']), quote=True)}\">{escape(str(_short_model_name(item['model'])))}</td>"
             f"<td>{pct(item.get('hallucination_rate'))}</td>"
             f"<td>{pct(item.get('faithfulness'))}</td>"
             f"<td>{pct(item.get('context_precision'))}</td>"
@@ -88,7 +89,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
             counts[status if isinstance(status, str) else "legacy_nonempty" if trace["statements"] else "legacy_empty"] += 1
         for status, count in counts.items():
             label = status_labels.get(status, "未知处理状态")
-            status_rows.append(f"<tr><td>{escape(str(model))}</td><td>{label}</td><td>{count}</td></tr>")
+            status_rows.append(f"<tr><td>{escape(str(_short_model_name(model)))}</td><td>{label}</td><td>{count}</td></tr>")
     trace_status_table = (
         '<h3>Trace 处理状态</h3><table><thead><tr><th>模型</th><th>处理结果</th><th>回答数</th></tr></thead>'
         f"<tbody>{''.join(status_rows)}</tbody></table>"
@@ -102,7 +103,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         returned_label = "、".join(str(name) for name in returned) if isinstance(returned, list) and returned else "未知（响应未记录）"
         mode = "单独配置" if item.get("judge_mode") == "configured" else "沿用被测模型"
         judge_rows.append(
-            f"<tr><td>{escape(str(item['model']))}</td><td>{mode}</td>"
+            f"<tr><td>{escape(str(_short_model_name(item['model'])))}</td><td>{mode}</td>"
             f"<td>{escape(item['judge_model'])}</td><td>{escape(returned_label)}</td></tr>"
         )
     judge_table = (
@@ -165,6 +166,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
 
     {judge_table}
     <h2>多模型对比结果</h2>
+    <p class="meta">模型显示名使用当前内置名称；原始模型 ID 可在模型名提示中查看。历史实际版本以原始响应为准，未记录时仍为未知。</p>
     <div class="table-scroll"><table>
         <thead>
             <tr>

@@ -7,6 +7,9 @@ import base64
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
+from html import escape
+
+from backend.core.utils import _short_model_name
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SUMMARY_CSV = os.path.join(BASE_DIR, "multi_model_summary.csv")
@@ -60,7 +63,7 @@ for item in summary:
             item[k] = clean(item[k])
 
 # ---------- 2. 重新绘图 ----------
-models = [item["model"] for item in summary]
+models = [_short_model_name(item["model"]) for item in summary]
 faith_vals = [item.get("faithfulness") for item in summary]
 ctx_vals = [item.get("context_precision") for item in summary]
 
@@ -128,7 +131,7 @@ for item in summary:
     ctx = item.get("context_precision")
     rows_html += (
         f"<tr>"
-        f"<td>{item['model']}</td>"
+        f"<td title=\"原始模型 ID：{escape(str(item['model']), quote=True)}\">{escape(str(_short_model_name(item['model'])))}</td>"
         f"<td>{fmt(faith)}</td>"
         f"<td>{fmt(ctx)}</td>"
         f"<td>{fmt(item.get('pos_faithfulness'))}</td>"
@@ -184,6 +187,7 @@ html = f"""<!DOCTYPE html>
     </div>
 
     <h2>多模型对比结果</h2>
+    <p class="meta">模型显示名使用当前内置名称；原始模型 ID 可在模型名提示中查看。历史实际版本以原始响应为准，未记录时仍为未知。</p>
     <table>
         <thead>
             <tr>

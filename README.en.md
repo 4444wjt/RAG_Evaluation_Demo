@@ -146,7 +146,7 @@ In a simulation with this run's question structure, the question-sampling-only i
 - True-premise questions: 4/5 → 5/5. The fix did not "correct" statements that were already right.
 - All 5 unanswerable questions are still correctly refused.
 
-Limits: the sample is small; the paired sign test on false-premise questions gives p = 0.0625, which is not below 0.05. Both checks used one model (`deepseek-chat`) and a single run each, and the 25-question rerun is only about 0.06 above the threshold. See details in Chinese: [fix rerun](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md), [held-out check](docs/competition/heldout-fix/20261014-deepseek/README.md).
+Limits: the sample is small; the paired sign test on false-premise questions gives p = 0.0625, which is not below 0.05. Both checks used one model (DeepSeek-V4.1-Flash, with the historical request ID `deepseek-chat`) and a single run each, and the 25-question rerun is only about 0.06 above the threshold. See details in Chinese: [fix rerun](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md), [held-out check](docs/competition/heldout-fix/20261014-deepseek/README.md).
 
 **With an independent judge:** the PASS above was scored by DeepSeek itself. The same fixed version was rerun on the same 25 questions with DeepSeek still generating and Qwen2.5-72B as judge (authorized). Positive faithfulness was **0.7992**, and the gate went back to **FAIL**.
 - On the 13 positive questions with identical questions, retrieved contexts, reference answers and generated answers, the mean score fell from 0.9377 to 0.8718. Judge outputs differ for fixed inputs, but a single reassessment cannot separate judge selection from judgment randomness.

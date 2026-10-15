@@ -725,6 +725,8 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
                          faith_threshold=FAITH_THRESHOLD, ctx_prec_threshold=CTX_PREC_THRESHOLD,
                          total_elapsed=None):
     """生成带配置说明的HTML报告"""
+    from html import escape
+
     with open(chart_path, "rb") as f:
         chart_base64 = base64.b64encode(f.read()).decode("utf-8")
 
@@ -738,7 +740,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
     for item in summary_data:
         rows_html += (
             f"<tr>"
-            f"<td>{item['model']}</td>"
+            f"<td title=\"原始模型 ID：{escape(str(item['model']), quote=True)}\">{escape(str(_short_model_name(item['model'])))}</td>"
             f"<td>{pct(item.get('hallucination_rate'))}</td>"
             f"<td>{pct(item.get('faithfulness'))}</td>"
             f"<td>{pct(item.get('context_precision'))}</td>"
@@ -806,6 +808,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
     </div>
 
     <h2>多模型对比结果</h2>
+    <p class="meta">模型显示名使用当前内置名称；原始模型 ID 可在模型名提示中查看。历史实际版本以原始响应为准，未记录时仍为未知。</p>
     <div class="table-scroll"><table>
         <thead>
             <tr>
@@ -948,7 +951,8 @@ def _write_no_data_trend(path, text):
 
 # 模型显示名缩短：图例/趋势图/柱状图用，避免长路径名截断
 MODEL_DISPLAY_MAP = {
-    "deepseek-chat": "DeepSeek",
+    "deepseek-chat": "DeepSeek-V4.1-Flash",
+    "deepseek-flash": "DeepSeek-V4.1-Flash",
     "Pro/Qwen/Qwen2.5-7B-Instruct": "Qwen2.5-7B",
     "glm-5.2-fast-preview": "GLM-5.2-Fast",
 }
@@ -1583,6 +1587,8 @@ def build_display_df(summary_df):
     }
     cols = [c for c in mapping if c in summary_df.columns]
     df = summary_df[cols].rename(columns=mapping).copy()
+    if "模型名称" in df.columns:
+        df["模型名称"] = df["模型名称"].apply(_short_model_name)
     pct_cols = ["幻觉率", "忠实度", "上下文精度", "答案相关性", "事实一致性", "回答完整性", "拒答准确率", "综合得分", "语句幻觉占比", "正向语句幻觉占比"]
     for col in pct_cols:
         if col in df.columns:
@@ -1663,7 +1669,7 @@ def gate_card_html(result, faith_threshold, ctx_prec_threshold):
             f"<div class='gate-item'>幻觉率<b>{pct(first.get('hallucination_rate'))}</b></div>"
             f"<div class='gate-item'>综合得分<b>{pct(first.get('score'))}</b></div>"
         )
-        model_line = f"主评测模型：{first.get('model', '-')}"
+        model_line = f"主评测模型：{_short_model_name(first.get('model', '-'))}"
     else:
         metrics = "<div class='gate-item'>无有效评测结果</div>"
         model_line = ""
@@ -1957,12 +1963,14 @@ def launch_gradio(port=7860):
 
     model_choices = [c["name"] for c in MODELS_CONFIG]
     MODEL_SHORT = {
-        "deepseek-chat": "DeepSeek",
+        "deepseek-chat": "DeepSeek-V4.1-Flash",
+        "deepseek-flash": "DeepSeek-V4.1-Flash",
         "Pro/Qwen/Qwen2.5-7B-Instruct": "Qwen2.5-7B",
         "glm-5.2-fast-preview": "GLM-5.2-Fast",
     }
     MODEL_DESC = {
-        "deepseek-chat": "DeepSeek 通用对话模型",
+        "deepseek-chat": "通用对话模型",
+        "deepseek-flash": "通用对话模型",
         "Pro/Qwen/Qwen2.5-7B-Instruct": "通义千问 7B 指令模型",
         "glm-5.2-fast-preview": "智谱 GLM-5.2-Fast（阿里云百炼）",
     }
@@ -2384,7 +2392,7 @@ html, body { overflow-x: clip; }
         note = "演示数据已加载，未执行真实评测。" if status == "demo" else "结果已更新；门禁结论与模型风险请查看上方 KPI 及详细证据。"
         return (pipeline_html(status=status, message=note),
                 gr.update(value="再次评测", interactive=True), gr.update(value="加载演示数据", interactive=True),
-                gr.update(choices=names, value=selected), trace_html(result, selected))
+                gr.update(choices=[(_short_model_name(name), name) for name in names], value=selected), trace_html(result, selected))
 
     def toggle_model(name, selected):
         if name in selected:
@@ -2554,7 +2562,7 @@ html, body { overflow-x: clip; }
         gr.HTML(
             f"<header class='lab-header'><div><div class='lab-brand'>鉴真全域 <span>VeriScope AI</span></div>"
             "<div class='lab-position'>大模型幻觉检测、证据追踪与质量门禁平台</div>"
-            "<div class='lab-name'>大模型幻觉检测与可信评测平台（兼容 DeepSeek、Qwen 与 GLM）</div>"
+            "<div class='lab-name'>大模型幻觉检测与可信评测平台（兼容 DeepSeek-V4.1-Flash、Qwen 与 GLM）</div>"
             f"</div><div class='lab-version'>评测工作台 / {VERSION}</div></header>"
         )
         last_result = gr.State(None)

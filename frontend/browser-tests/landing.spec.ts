@@ -11,8 +11,8 @@ for (const viewport of [{width:1920,height:1080},{width:1280,height:800}]) {
     await expect(page.getByRole('heading', {level:1})).toContainText('都能逐句查到出处。');
     await expect(page.getByRole('list', {name:'证据验证流程'}).locator('li')).toHaveCount(5);
     await expect(page.locator('.landing-proof img')).toHaveCount(0);
-    await expect(page.getByRole('region', {name:'DeepSeek 演示快照质量门禁'})).toBeAttached();
-    await expect(page.getByRole('region', {name:'DeepSeek 演示快照逐句判定'})).toBeAttached();
+    await expect(page.getByRole('region', {name:'DeepSeek-V4.1-Flash 演示快照质量门禁'})).toBeAttached();
+    await expect(page.getByRole('region', {name:'DeepSeek-V4.1-Flash 演示快照逐句判定'})).toBeAttached();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     expect(api).toEqual([]);
     const resources = await page.evaluate(() => performance.getEntriesByType('resource').map(entry => entry.name));
@@ -56,8 +56,8 @@ for (const viewport of [{width:1920,height:1080},{width:1280,height:800}]) {
     expect(presentation.offsets[1]).toBeGreaterThan(presentation.offsets[0]);
     expect(presentation.offsets[2]).toBeGreaterThan(presentation.offsets[1]);
     expect(presentation.source).toContain('非本次实时评测');
-    const gatePreview = page.getByRole('region', {name:'DeepSeek 演示快照质量门禁'});
-    const evidencePreview = page.getByRole('region', {name:'DeepSeek 演示快照逐句判定'});
+    const gatePreview = page.getByRole('region', {name:'DeepSeek-V4.1-Flash 演示快照质量门禁'});
+    const evidencePreview = page.getByRole('region', {name:'DeepSeek-V4.1-Flash 演示快照逐句判定'});
     await expect(gatePreview.getByText('PASS', {exact:true})).toBeAttached();
     await expect(gatePreview.getByText('3 条正向用例', {exact:true})).toBeAttached();
     await expect(gatePreview.locator('.gate-metrics dd > span')).toHaveText(['100.0%', '100.0%']);

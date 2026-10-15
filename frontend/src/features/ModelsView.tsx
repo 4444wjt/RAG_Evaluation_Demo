@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { fetchModels, MAX_LOCAL_MODELS, MODEL_CONFIG_UNAVAILABLE, saveLocalModels, suggestKeyEnv, toInput, validateLocalModel } from '../api/models';
 import type { LocalModelInput, ModelEntry } from '../api/models';
 import { Icon } from '../components/Icon';
+import { modelName } from '../utils/format';
 import { READ_ONLY, REPO_URL, STATIC_SITE } from '../config';
 import './gate-audit.css';
 import './models.css';
@@ -26,7 +27,7 @@ function ModelTable({ models, label, actions }: { models: ModelEntry[]; label: s
   return <div className="audit-table-scroll"><table className="mc-table" aria-label={label}>
     <thead><tr><th scope="col">显示名</th><th scope="col">模型名</th><th scope="col">接口地址</th><th scope="col">密钥变量</th><th scope="col">密钥</th>{actions && <th scope="col"><span className="sr-only">操作</span></th>}</tr></thead>
     <tbody>{models.map((model) => <tr key={model.name}>
-      <th scope="row">{model.displayName}</th><td><code>{model.name}</code></td><td><code>{model.baseUrl}</code></td><td><code>{model.apiKeyEnv}</code></td><td><KeyStatus model={model}/></td>
+      <th scope="row">{model.source === 'builtin' && (model.name === 'deepseek-chat' || model.name === 'deepseek-flash') ? modelName(model.name) : model.displayName}</th><td><code>{model.name}</code></td><td><code>{model.baseUrl}</code></td><td><code>{model.apiKeyEnv}</code></td><td><KeyStatus model={model}/></td>
       {actions && <td className="mc-actions">{actions(model)}</td>}
     </tr>)}</tbody>
   </table></div>;

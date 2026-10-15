@@ -79,7 +79,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 390, height: 844
     await expect(selector).toHaveValue('deepseek-chat');
     const before = apiRequests;
     const models = [
-      { id: 'deepseek-chat', label: 'DeepSeek', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
+      { id: 'deepseek-chat', label: 'DeepSeek-V4.1-Flash', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
       { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', values: ['3', '0', '3', '100.0%'], gate: 'FAIL' },
       { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', values: ['0', '0', '0', '100.0%'], gate: 'PASS' },
     ];
@@ -141,7 +141,7 @@ test('current model gate follows positive metrics while preserving the original 
   const requestsBeforeSelection = apiRequests;
   const selector = page.getByRole('combobox', { name: '当前摘要模型', exact: true });
   for (const model of [
-    { id: 'deepseek-chat', label: 'DeepSeek', gate: 'PASS', faith: '100.0%' },
+    { id: 'deepseek-chat', label: 'DeepSeek-V4.1-Flash', gate: 'PASS', faith: '100.0%' },
     { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', gate: 'FAIL', faith: '33.3%' },
     { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', gate: 'PASS', faith: '100.0%' },
   ]) {
@@ -213,7 +213,7 @@ test('mock evaluation preserves zero thresholds and original gate=false while co
   release();
   await expect(page.getByText('PASS', { exact: true })).toBeVisible();
   await expect(page.locator('.original-gate')).toHaveText('原始评测门禁：FAIL');
-  await expect(page.locator('.gate-subject dd')).toHaveText('DeepSeek');
+  await expect(page.locator('.gate-subject dd')).toHaveText('DeepSeek-V4.1-Flash');
   for (const metric of ['pos_faithfulness', 'pos_context_precision']) {
     await expect(page.locator(`[data-gate-field="${metric}"] dd > small`).first()).toHaveText('门槛 ≥ 0.0%');
   }
@@ -230,7 +230,7 @@ test('model cards, manual sliders and reset remain usable from keyboard', async 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#/lab');
   await page.getByRole('button', { name: '新建评测', exact: true }).click();
-  const model = page.getByRole('button', { name: '选择 DeepSeek', exact: true });
+  const model = page.getByRole('button', { name: '选择 DeepSeek-V4.1-Flash', exact: true });
   await model.focus();
   await page.keyboard.press('Space');
   await expect(model).toHaveAttribute('aria-pressed', 'false');

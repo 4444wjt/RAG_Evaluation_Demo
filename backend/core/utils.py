@@ -55,9 +55,10 @@ def _is_refusal(answer):
     return any(kw in str(answer) for kw in REFUSAL_KEYWORDS)
 
 
-# 模型显示名缩短：图例/趋势图/柱状图用，避免长路径名截断
+# 模型展示名：图例与新报告统一名称，原始模型 ID 保持不变
 MODEL_DISPLAY_MAP = {
-    "deepseek-chat": "DeepSeek",
+    "deepseek-chat": "DeepSeek-V4.1-Flash",
+    "deepseek-flash": "DeepSeek-V4.1-Flash",
     "Pro/Qwen/Qwen2.5-7B-Instruct": "Qwen2.5-7B",
     "glm-5.2-fast-preview": "GLM-5.2-Fast",
 }
