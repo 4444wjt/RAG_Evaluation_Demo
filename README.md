@@ -1,7 +1,7 @@
 <a href="https://kk444444444444.cloud/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme-banner-dark.gif">
-    <img src="docs/images/readme-banner.gif" alt="鉴真全域 VeriScope AI｜逐句核对 · 证据溯源 · 质量门禁" width="1400" height="560">
+    <img src="docs/images/readme-banner.gif" alt="鉴真全域 VeriScope AI｜逐句核对 · 证据溯源 · 质量门禁" width="1400">
   </picture>
 </a>
 
