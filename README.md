@@ -13,6 +13,8 @@
 
 **▶ 在线演示（免登录，不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/)（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
 
+代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
+
 **AI 的每个回答，都能逐句查到出处。**
 
 **逐句核对与质量门禁平台。**
@@ -25,11 +27,7 @@
 
 **裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。
 
-代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
-
-[快速启动](#快速启动) · [落地与接入](docs/DEPLOYMENT.md) · [比赛演示](docs/demo/README.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [技术架构](docs/architecture/README.md) · [贡献指南](CONTRIBUTING.md)
-
-[作品介绍](docs/competition/project-introduction.md) · [门禁可信度四问](docs/competition/gate-credibility.md) · [外部基准验证](docs/competition/external-validation/README.md) · [鲁棒性体检](docs/competition/robustness/README.md) · [裁判判错校准](docs/competition/judge-calibration/README.md) · [复现与运行证据](docs/competition/reproducibility.md) · [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) · [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md) · [验收记录](docs/competition/validation.md) · [25题作者确认材料](scenarios/competition_25/README.md) · [三分钟演示](docs/competition/demo-script.md)
+[快速启动](#快速启动) · [作品介绍](docs/competition/project-introduction.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
 ![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
 
@@ -293,9 +291,9 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 
 ### 逐句判定与原始证据
 
-![3× 无损逐句证据预览](docs/images/evidence-trace-3x.png)
+![逐句判定与原始证据](docs/images/evidence-trace-3x.png)
 
-原生预览的 3× PNG 为 3198×846；保留原文与“有依据”判定，没有放大旧图片。出处见 [截图说明](docs/screenshots/README.md)，推荐展示步骤见 [演示指南](docs/demo/README.md)。
+这是逐句核对的最小证据单元：回答里的一句陈述、它依据的检索原文，以及两者是否匹配的判定。它看的是单条回答的每一句有没有依据；门禁看的是整批回答的指标有没有达标，两者分开呈现，可以对照回查。截图出处见 [截图说明](docs/screenshots/README.md)，展示步骤见 [演示指南](docs/demo/README.md)。
 
 ## Roadmap
 
@@ -349,3 +347,34 @@ GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 P
 - GitHub 镜像：[`4444wjt/RAG_Evaluation_Demo`](https://github.com/4444wjt/RAG_Evaluation_Demo)，remote 为 `github`，用于 CI、GitHub Pages 备用站与门禁 Action。
 
 发布步骤和检查结果见 [发布检查](docs/release-checklist.md)；实际发布版本以仓库提交与 CI 记录为准。历史归档的公开缺项及校验边界见 [复现说明](docs/competition/reproducibility.md#公开检出校验边界)。
+
+## 全部文档
+
+**上手与接入**
+
+- [快速启动](#快速启动)
+- [落地与接入](docs/DEPLOYMENT.md)
+- [技术架构](docs/architecture/README.md)
+- [贡献指南](CONTRIBUTING.md)
+
+**判断结果可不可信**
+
+- [评测可信度与限制](docs/evaluation-credibility.md)
+- [门禁可信度四问](docs/competition/gate-credibility.md)
+- [外部基准验证](docs/competition/external-validation/README.md)
+- [鲁棒性体检](docs/competition/robustness/README.md)
+- [裁判判错校准](docs/competition/judge-calibration/README.md)
+
+**核对运行证据**
+
+- [复现与运行证据](docs/competition/reproducibility.md)
+- [25题正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)
+- [5题历史预跑](docs/competition/evidence/20261005T101847Z-pilot-c72cb679/README.md)
+- [验收记录](docs/competition/validation.md)
+- [25题作者确认材料](scenarios/competition_25/README.md)
+
+**比赛材料**
+
+- [作品介绍](docs/competition/project-introduction.md)
+- [比赛演示](docs/demo/README.md)
+- [三分钟演示](docs/competition/demo-script.md)
