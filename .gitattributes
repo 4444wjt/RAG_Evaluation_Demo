@@ -266,3 +266,8 @@
 /backend/adapters/models/judging.py text eol=lf
 /backend/adapters/rag_application.py text eol=lf
 /tools/competition/evaluate_external.py text eol=lf
+
+# Constructed PDF fixtures: preserve the original binary bytes on every platform.
+/tests/fixtures/parse_check/constructed_blank.pdf binary
+/tests/fixtures/parse_check/constructed_cjk_builtin_font_mojibake.pdf binary
+/tests/fixtures/parse_check/constructed_english_control.pdf binary
