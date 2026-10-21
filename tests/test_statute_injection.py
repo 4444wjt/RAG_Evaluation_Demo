@@ -113,3 +113,22 @@ def test_changed_material_is_rejected(prepared):
     package["items"][0]["statement"] += "。"
     with pytest.raises(ValueError, match="固定配方"):
         si.validate_package(package)
+
+
+def test_pilot_subset_is_fixed_and_runs_offline(tmp_path):
+    directory = tmp_path / "pilot"
+    pilot = si.prepare(directory, pilot=True)
+    package = pilot["package"]
+    assert [i["id"] for i in package["items"]] == [r[0] for r in si.RECIPES if r[0] in si.PILOT_IDS]
+    assert len(package["items"]) == 10 and {i["type"] for i in package["items"]} == set(si.TYPES)
+    assert package["pilot"] == si.pilot_info() and si.max_requests(package) == 20
+    si.verify_checksums(directory)
+    tampered = deepcopy(package)
+    tampered["pilot"]["ids"] = tampered["pilot"]["ids"][:-1]
+    with pytest.raises(ValueError, match="试跑子集"):
+        si.validate_package(tampered)
+    calls = []
+    _, package_path, auth_path = approved_files(tmp_path, (directory, pilot))
+    manifest = si.run(package_path, auth_path, tmp_path / "run", transport=lambda judge, payload: calls.append(judge) or response())
+    assert manifest["attempts"] == len(calls) == 20 and manifest["stopReason"] == "completed"
+    assert si.analyze(tmp_path / "run", tmp_path / "analysis")["records"] == {"total": 20, "ok": 20}

@@ -97,6 +97,10 @@ RECIPES = (
     ('PO-S21', 'S21', 'polarity', '不属于', '属于'),
     ('PO-S32', 'S32', 'polarity', '不适用', '适用'),
 )
+# 试跑子集：按配方顺序每类取第一条，再加第二条原陈述作对照。只验证流程、格式与费用，结果不并入正式统计。
+PILOT_RULE = '按配方顺序每类取第一条，再加第二条原陈述作对照；试跑结果不并入正式统计，正式运行仍跑全部配方'
+PILOT_IDS = tuple([next(r[0] for r in RECIPES if r[2] == kind) for kind in TYPES]
+                  + [[r[0] for r in RECIPES if r[2] == 'control'][1]])
 
 
 def write_json(path: Path, value) -> None:
@@ -189,8 +193,12 @@ def validate_package(package: dict, confirmed: bool = False, root: Path = ROOT):
     require(package.get('seed') == SEED and package['judges'] == judge_config(), '模型、参数或随机种子已改变，需重新准备和授权')
     require(set(package['sourceFiles']) == set(SOURCE_FILES), '来源清单不完整或含非实验来源')
     verify_sources(package['sourceFiles'], root)
-    require(package['items'] == build_items(root), '注入材料与固定配方不一致')
-    require(len(schedule(package)) == max_requests(package) == len(RECIPES) * 2, '调用规模与配方不符')
+    expected = build_items(root)
+    if 'pilot' in package:
+        require(package['pilot'] == pilot_info(), '试跑子集与固定规则不一致')
+        expected = [item for item in expected if item['id'] in PILOT_IDS]
+    require(package['items'] == expected, '注入材料与固定配方不一致')
+    require(len(schedule(package)) == max_requests(package) == len(expected) * 2, '调用规模与配方不符')
     review = package['review']
     require(review['status'] in ('pending', 'confirmed'), '人工确认状态无效')
     if review['status'] == 'pending':
@@ -233,6 +241,7 @@ def confirmation_sheet(package: dict, authorization: dict, rules: dict) -> str:
         '本单由工具整理。材料确认、授权人、日期、单价与预算均待补；没有调用模型。', '',
         '## 范围', '',
         f"{len(package['items'])} 条陈述 × {len(package['judges'])} 个裁判，最多 {max_requests(package)} 次请求，失败也计数，不重试。",
+        *([f"**试跑**：从 {package['pilot']['of']} 条配方中{package['pilot']['rule']}。"] if 'pilot' in package else []),
         '底稿为门禁 52 条陈述中 V、A、B 三人都判为「支持」的陈述；每条注入只做一处逐字替换。',
         '裁判只看问题、陈述与检索片段，提示词与 10-12 裁判证据敏感性实验相同；不发送类型、预期或规则结果。', '',
         '## 各类条数与法条结构核对（离线，已完成）', '',
@@ -252,12 +261,19 @@ def confirmation_sheet(package: dict, authorization: dict, rules: dict) -> str:
     ])
 
 
-def prepare(output: Path, root: Path = ROOT) -> dict:
+def pilot_info() -> dict:
+    return {'ids': list(PILOT_IDS), 'of': len(RECIPES), 'rule': PILOT_RULE}
+
+
+def prepare(output: Path, root: Path = ROOT, pilot: bool = False) -> dict:
     require(not output.exists(), '输出目录已存在；不覆盖任何准备材料')
+    items = build_items(root)
     package = {'schemaVersion': 1, 'experimentVersion': VERSION, 'seed': SEED, 'promptSha256': digest(SYSTEM_PROMPT),
                'judges': judge_config(), 'sourceFiles': {name: sha256(root / name) for name in SOURCE_FILES},
-               'types': TYPES, 'items': build_items(root), 'review': pending(),
+               'types': TYPES, 'items': [i for i in items if i['id'] in PILOT_IDS] if pilot else items, 'review': pending(),
                'scope': '定向注入测试：陈述共享同一份法规节选与 11 条底稿，非统计独立样本，不估计总体检出率。'}
+    if pilot:
+        package['pilot'] = pilot_info()
     validate_package(package, root=root)
     rules = rule_results(package, root)
     output.mkdir(parents=True)
@@ -439,6 +455,7 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     prep = sub.add_parser('prepare', help='离线生成待确认材料与规则结果；不调用模型')
     prep.add_argument('--output', type=Path, required=True)
+    prep.add_argument('--pilot', action='store_true', help=f'只准备试跑子集（{len(PILOT_IDS)} 条）')
     execute = sub.add_parser('run', help='付费阶段：需人工材料确认与单独授权')
     execute.add_argument('--package', type=Path, required=True)
     execute.add_argument('--authorization', type=Path, required=True)
@@ -448,7 +465,7 @@ def main():
     analysis.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'prepare':
-        result = prepare(args.output)
+        result = prepare(args.output, pilot=args.pilot)
         flagged = Counter(i['type'] for i in result['package']['items'] if result['rules']['items'][i['id']]['flagged'])
         total = Counter(i['type'] for i in result['package']['items'])
         print(f"已准备 {len(result['package']['items'])} 条陈述、{max_requests(result['package'])} 个计划请求；实际调用 0 次。")
