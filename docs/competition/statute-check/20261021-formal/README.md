@@ -97,7 +97,7 @@ C-S36 是原样对照：「根据第四条，被保险存款包括投保机构�
 |---|---|
 | `run/` | 运行目录原样副本：确认后的材料 `package.json`、授权 `authorization.json`、提示词、调度、逐次事件与原始响应 `events.jsonl`、逐条结果 `records.json`、运行环境 `runtime.json`、输入文件与工具源码快照 `sources/`，附该目录自己的 `SHA256SUMS.txt` |
 | `analysis/` | 工具离线分析输出原样副本：`analysis.json`、`rules.json`，附 `SHA256SUMS.txt` |
-| `results.py` / `results.json` | 按上面的口径对 `analysis/analysis.json` 分组计数，只用标准库 |
+| `results.py` / `results.json` | 按运行前确认的口径（见上文确认原文）对 `analysis/analysis.json` 分组计数，只用标准库。这是归档时写的统计脚本，不属于运行工具链；运行用的工具见 `run/sources/` |
 | `precheck.md` | 运行前的 AI 只读预检 |
 | `SHA256SUMS.txt` | 本目录除自身外全部文件的 SHA-256 |
 
