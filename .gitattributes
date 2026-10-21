@@ -154,6 +154,9 @@
 /docs/competition/judge-sensitivity/run-20261012/** -text
 /docs/competition/judge-sensitivity/analysis-20261012/** -text
 
+# 冻结回答多裁判重复评分试跑：复制文件保留源字节（含 CRLF），哈希按原样记录，不做换行转换。
+/docs/competition/judge-rerun/20261021-pilot/** -text
+
 # 部署文件在 Linux 容器和服务器上执行，固定为 LF，避免从 Windows 检出后 shell 脚本和 Dockerfile 续行失效。
 /deploy/** text eol=lf
 

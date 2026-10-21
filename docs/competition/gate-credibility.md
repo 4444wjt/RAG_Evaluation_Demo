@@ -41,7 +41,7 @@ python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39
 
 边界：只做了一次运行，只换了一个裁判；独立裁判不等于正确裁判，分歧样本仍需人工核查。详见 [独立裁判对照](../judge-comparison.md)。
 
-做法参照：[FACTS Grounding](https://deepmind.google/blog/facts-grounding-a-new-benchmark-for-evaluating-the-factuality-of-large-language-models/) 用多个不同家族的裁判共同判定依据性，以减少单一裁判偏向自家模型的问题；[Reliability without Validity](https://arxiv.org/abs/2606.19544) 指出裁判重复判定一致，不代表判得对。本问的噪声基线只说明原裁判自身稳定，跨家族的差异才反映裁判选择对结论的影响。
+做法参照：[FACTS Grounding](https://deepmind.google/blog/facts-grounding-a-new-benchmark-for-evaluating-the-factuality-of-large-language-models/) 用多个不同家族的裁判共同判定依据性，以减少单一裁判偏向自家模型的问题；[Reliability without Validity](https://arxiv.org/abs/2606.19544) 指出裁判重复判定一致，不代表判得对。本问的噪声基线只让原裁判重判了一次，只能说明这一次它前后差异小，不足以说明多次重判都稳定；独立裁判自身的重判波动这里没有测。另一批样本上的[重复评分试跑](judge-rerun/20261021-pilot/README.md)中，Qwen2.5-72B 对同一批冻结回答重判两次，10 题有 4 题分数变化，子集均值跨过 0.8 阈值（样本与配置都不同，不能直接套用）。因此跨家族差异大于这一次重判差异，是本次对照的观测，不能全部归因于裁判选择。
 
 ## ③ 证据变了，裁判会跟着变吗？
 

@@ -38,7 +38,7 @@
 - **禁止**添加 `* text=auto eol=...` 之类的通配规则。本仓库的哈希基准是**混合的**（部分文件按 CRLF 记录、部分按 LF 记录），任何全局规则都会一次性破坏其中一半。
 - 新增参与完整性校验的文件时，必须在 `.gitattributes` 中补一条显式规则。
 
-> 依据：仓库根目录 `.gitattributes`。当前不含任何**全局**通配规则（如 `* text=auto`）；仅有 4 条**目录级** `**` 规则（`judge-sensitivity/run-20261012/**`、`judge-sensitivity/analysis-20261012/**`、`deploy/**`、`robustness/20261013-formal-run/**`），各自只约束本目录。Windows 检出与 Linux 检出必须得到相同字节。
+> 依据：仓库根目录 `.gitattributes`。当前不含任何**全局**通配规则（如 `* text=auto`）；仅有 5 条**目录级** `**` 规则（`judge-sensitivity/run-20261012/**`、`judge-sensitivity/analysis-20261012/**`、`judge-rerun/20261021-pilot/**`、`deploy/**`、`robustness/20261013-formal-run/**`），各自只约束本目录。Windows 检出与 Linux 检出必须得到相同字节。
 
 ## 4. 缺失值不填零，预览不冒充实时
 

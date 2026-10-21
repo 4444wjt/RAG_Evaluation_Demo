@@ -1,0 +1,50 @@
+{
+  "budget_cny": "5.00",
+  "currency": "CNY",
+  "frozen_at": "2026-10-21T09:43:12.502313+00:00",
+  "max_output_tokens": 2048,
+  "models": [
+    {
+      "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+      "extra": {},
+      "id": "qwen72b",
+      "input_cap": 32768,
+      "input_cny_m": "4.13",
+      "key_env": "VERISCOPE_SILICONFLOW_API_KEY",
+      "model": "Qwen/Qwen2.5-72B-Instruct",
+      "output_cny_m": "4.13"
+    },
+    {
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "extra": {
+        "thinking": {
+          "type": "disabled"
+        }
+      },
+      "id": "deepseek",
+      "input_cap": 1048576,
+      "input_cny_m": "2",
+      "key_env": "OPENAI_API_KEY",
+      "model": "deepseek-flash",
+      "output_cny_m": "8"
+    },
+    {
+      "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+      "extra": {},
+      "id": "glm32b",
+      "input_cap": 32768,
+      "input_cny_m": "1.89",
+      "key_env": "VERISCOPE_SILICONFLOW_API_KEY",
+      "model": "THUDM/GLM-4-32B-0414",
+      "output_cny_m": "1.89"
+    }
+  ],
+  "note": "SiliconFlow public model catalog: Qwen72 32768, GLM32 32768. DeepSeek 1M rounded upward to 1048576; peak non-cache input/output prices frozen. No actual bills available.",
+  "sources": [
+    "https://www.siliconflow.cn/pricing",
+    "https://github.com/zai-org/GLM-4",
+    "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "https://api-docs.deepseek.com/zh-cn/guides/thinking_mode"
+  ],
+  "unit": "per million tokens"
+}

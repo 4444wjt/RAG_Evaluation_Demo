@@ -1,0 +1,23 @@
+[
+  {
+    "checked_at": "2026-10-21T09:41:16.708934+00:00",
+    "endpoint": "https://api.siliconflow.cn/v1/models",
+    "http_status": 200,
+    "inference_calls": 0,
+    "method": "GET",
+    "requested_models_present": {
+      "Qwen/Qwen2.5-72B-Instruct": true,
+      "THUDM/GLM-4-32B-0414": true
+    }
+  },
+  {
+    "checked_at": "2026-10-21T09:41:16.919433+00:00",
+    "endpoint": "https://api.deepseek.com/models",
+    "http_status": 200,
+    "inference_calls": 0,
+    "method": "GET",
+    "requested_models_present": {
+      "deepseek-flash": true
+    }
+  }
+]
