@@ -1,0 +1,121 @@
+{
+ "source_fingerprint": {
+  "sha256": "fa8f8923bde06cfb3c682e004ebd12fd14ce53cff72a9365e1fff740e92f1a4f",
+  "size_bytes": 543576,
+  "extension": ".pdf"
+ },
+ "loader": {
+  "name": "pypdf",
+  "version": "6.19.0"
+ },
+ "checker_version": "1.0.0",
+ "chunk_parameters": {
+  "chunk_size": 200,
+  "chunk_overlap": 30
+ },
+ "verdict": "PASS",
+ "pages": [
+  {
+   "page_number": 1,
+   "char_count": 614,
+   "han_count": 350,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "PASS",
+   "reasons": []
+  },
+  {
+   "page_number": 2,
+   "char_count": 1080,
+   "han_count": 725,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "PASS",
+   "reasons": []
+  },
+  {
+   "page_number": 3,
+   "char_count": 902,
+   "han_count": 556,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "PASS",
+   "reasons": []
+  },
+  {
+   "page_number": 4,
+   "char_count": 826,
+   "han_count": 410,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "PASS",
+   "reasons": []
+  },
+  {
+   "page_number": 5,
+   "char_count": 710,
+   "han_count": 422,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "PASS",
+   "reasons": []
+  },
+  {
+   "page_number": 6,
+   "char_count": 7,
+   "han_count": 5,
+   "replacement_count": 0,
+   "c0_control_count": 0,
+   "c1_control_count": 0,
+   "del_control_count": 0,
+   "control_count": 0,
+   "cid_count": 0,
+   "control_ratio": 0.0,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": true,
+   "verdict": "PASS",
+   "reasons": []
+  }
+ ]
+}

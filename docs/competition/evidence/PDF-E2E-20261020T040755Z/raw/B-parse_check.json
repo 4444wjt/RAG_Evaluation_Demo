@@ -1,0 +1,38 @@
+{
+ "source_fingerprint": {
+  "sha256": "b312476886dfe7976b4761a44896f1a44e8a780477bc6f6d0ad06ccd1d1b92be",
+  "size_bytes": 3756,
+  "extension": ".pdf"
+ },
+ "loader": {
+  "name": "pypdf",
+  "version": "6.19.0"
+ },
+ "checker_version": "1.0.0",
+ "chunk_parameters": {
+  "chunk_size": 200,
+  "chunk_overlap": 30
+ },
+ "verdict": "FAIL",
+ "pages": [
+  {
+   "page_number": 1,
+   "char_count": 631,
+   "han_count": 37,
+   "replacement_count": 0,
+   "c0_control_count": 109,
+   "c1_control_count": 68,
+   "del_control_count": 3,
+   "control_count": 180,
+   "cid_count": 0,
+   "control_ratio": 0.28526148969889065,
+   "replacement_ratio": 0.0,
+   "cid_marker_ratio": 0.0,
+   "has_image": false,
+   "verdict": "FAIL",
+   "reasons": [
+    "GARBLED_TEXT_LAYER"
+   ]
+  }
+ ]
+}

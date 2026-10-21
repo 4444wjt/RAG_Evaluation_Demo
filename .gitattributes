@@ -271,3 +271,39 @@
 /tests/fixtures/parse_check/constructed_blank.pdf binary
 /tests/fixtures/parse_check/constructed_cjk_builtin_font_mojibake.pdf binary
 /tests/fixtures/parse_check/constructed_english_control.pdf binary
+
+# PDF stage-2 preflight: preserve each new evidence file explicitly.
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/README.md text eol=lf
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/SHA256SUMS.txt text eol=lf
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/driver.py -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/final-validation.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/git-status-after.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/git-status-after-preflight.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/git-status-before.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/isolation-check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/parse-check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/path-comparison.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/path-references.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/protected-files-after.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/protected-files-before.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/result.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/root-paths-after.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/root-paths-before.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/token-estimate.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/run.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/secret-scan.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/result.json -text
+# PDF stage-1 archive: preserve each archived file explicitly.
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/README.md -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/summary.md -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/run-A.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/run-B.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-extracted.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-parse_check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-stderr.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-extracted.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-parse_check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-stderr.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/logging.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/pdf_e2e_stage1.py -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/SHA256SUMS.txt text eol=lf

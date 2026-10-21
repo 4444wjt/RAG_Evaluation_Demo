@@ -1,0 +1,6 @@
+ M .gitattributes
+ M frontend/src/features/landing/LandingPage.tsx
+ M frontend/src/features/landing/landing.css
+?? docs/competition/evidence/PDF-E2E-20261020T040755Z/
+?? frontend/src/features/landing/_backup_LandingPage.tsx.bak-20261018
+?? frontend/src/features/landing/_backup_landing.css.bak-20261018

@@ -1,0 +1,15 @@
+{
+  "root_paths_unchanged": true,
+  "per_path": {
+    "CHROMA_DIR": true,
+    "SUMMARY_OUTPUT": true,
+    "HTML_OUTPUT": true,
+    "CHART_PATH": true,
+    "HISTORY_PATH": true,
+    "TREND_CHART_PATH": true
+  },
+  "additional_csv_unchanged": true,
+  "protected_files_count": 239,
+  "protected_files_unchanged": true,
+  "source_sha256_unchanged": true
+}

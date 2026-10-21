@@ -1,0 +1,72 @@
+{
+  "CHROMA_DIR": {
+    "path": "chroma_db",
+    "kind": "directory",
+    "mtime_ns": 1791957263568451600,
+    "directories": [
+      "a8df5527-3cd0-43ca-a025-0ec16ea973d3"
+    ],
+    "files": {
+      "a8df5527-3cd0-43ca-a025-0ec16ea973d3/data_level0.bin": {
+        "size_bytes": 218800,
+        "mtime_ns": 1791957263576614600,
+        "sha256": "4a894ef9e33a503271a3ed26fe28b6dabc8e0628d37a5519f283acd6fe5754b9"
+      },
+      "a8df5527-3cd0-43ca-a025-0ec16ea973d3/header.bin": {
+        "size_bytes": 100,
+        "mtime_ns": 1791957263575957000,
+        "sha256": "5c8a407226e15554f8aa5e2dc70831bc8e464bd1433ac370e1dc9bef7e839d5a"
+      },
+      "a8df5527-3cd0-43ca-a025-0ec16ea973d3/length.bin": {
+        "size_bytes": 400,
+        "mtime_ns": 1791957263576614600,
+        "sha256": "40825de46fc4a9c467623a4cc3ddc0b4d5b1209f5605a3a63afea6158b37d935"
+      },
+      "a8df5527-3cd0-43ca-a025-0ec16ea973d3/link_lists.bin": {
+        "size_bytes": 0,
+        "mtime_ns": 1791957263573868500,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "chroma.sqlite3": {
+        "size_bytes": 282624,
+        "mtime_ns": 1791957263563251300,
+        "sha256": "005968a905bdf888dbb3d68914329ec676d51535706584fab00574d3d0aa2e40"
+      }
+    }
+  },
+  "SUMMARY_OUTPUT": {
+    "path": "multi_model_summary.csv",
+    "kind": "file",
+    "size_bytes": 469,
+    "mtime_ns": 1791958573777538700,
+    "sha256": "001a10fe8a64b2b0c59a8c623a71ef237dcc6f6c33def24d10a079f99d93c0c9"
+  },
+  "HTML_OUTPUT": {
+    "path": "ragas_report.html",
+    "kind": "file",
+    "size_bytes": 89860,
+    "mtime_ns": 1791958574139422000,
+    "sha256": "f65741f51cd6d0aeb83102966b71cb215731364d0526dcc29ddba32467dee484"
+  },
+  "CHART_PATH": {
+    "path": "result_chart.png",
+    "kind": "file",
+    "size_bytes": 63543,
+    "mtime_ns": 1791958574048502200,
+    "sha256": "a8467362e013721fdc3ed6a38b7c1e56a68dc119f4eae5f0ba8078941d08a64c"
+  },
+  "HISTORY_PATH": {
+    "path": "eval_history.json",
+    "kind": "file",
+    "size_bytes": 171511,
+    "mtime_ns": 1791958574158081400,
+    "sha256": "4803236942839b083c2f386413446fdd2af5e0c14f8a465aae039dced37c32f1"
+  },
+  "TREND_CHART_PATH": {
+    "path": "trend_chart.png",
+    "kind": "file",
+    "size_bytes": 69816,
+    "mtime_ns": 1790699510034202400,
+    "sha256": "730783dd0bb56fb40d11b5446f6a336a86f33b150d074a165ce8715036d1ea16"
+  }
+}
