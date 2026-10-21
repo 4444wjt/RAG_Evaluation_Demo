@@ -307,3 +307,7 @@
 /docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/logging.log -text
 /docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/pdf_e2e_stage1.py -text
 /docs/competition/evidence/PDF-E2E-20261020T040755Z/SHA256SUMS.txt text eol=lf
+
+# AnythingLLM shim: 预注册与归档锁定其 SHA-256，需逐文件固定行尾。
+/examples/anythingllm_shim/shim.py text eol=lf
+/tests/test_anythingllm_shim.py text eol=lf
