@@ -13,7 +13,7 @@
 - 拒答准确率仍为 0：AnythingLLM 的负样本回答没有被固定短语识别为拒答，与 10-14 的发现相同，识别规则未改。
 
 ### 独立裁判与外部 RAG 端到端的首次真实运行（2026-10-14）
-- 经授权，修复后的版本换 Qwen2.5-72B 作裁判重跑 25 题：正向忠实度 0.7992，门禁 FAIL。DeepSeek 自评时是 0.8607、PASS，修复后的 PASS 依赖裁判。归档于 `docs/competition/evidence/20261014T125415Z-full-a5002d4f/`。
+- 经授权，修复后的版本重新生成回答，并换 Qwen2.5-72B 作裁判重跑 25 题：正向忠实度 0.7992，门禁 FAIL。DeepSeek 自评时是 0.8607、PASS，两次部分回答不同，不能把 PASS／FAIL 变化全部归因于裁判。归档于 `docs/competition/evidence/20261014T125415Z-full-a5002d4f/`。
 - 经授权，用自写的示例应用 `examples/external_rag_app/app.py`（标准库，词法检索，DeepSeek 生成）跑通 `veriscope.e2e.v1` 端到端链路：25 题全部评测完成，门禁 FAIL。归档于 `docs/competition/external-rag/20261014-example-app-qwen72b/`。
 - `run_evidence.py` 新增 `--judge-model`，可在正式运行中单独指定裁判。
 - 两次运行都发现，同一裁判给出的忠实度与逐句核对互相矛盾：多道题逐句全部有依据，忠实度却很低。原因未核实，门禁口径未改。

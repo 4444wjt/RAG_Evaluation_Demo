@@ -37,4 +37,4 @@ venv/Scripts/python.exe main.py --doc demo.txt --testset testset_example.csv --j
 
 裁判会收到问题、回答、检索资料及指标所需参考答案。使用远程裁判时，私有材料会发送到其供应商，请先确认数据授权与部署位置；浏览器不接收任何模型密钥。
 
-2026-10-14 经授权真实运行一次：生成 `deepseek-chat`，裁判 `Qwen/Qwen2.5-72B-Instruct`，25 题正式题集。修复后的版本在 DeepSeek 自评时门禁 PASS（0.8607），换此裁判后正向忠实度 0.7992，门禁 FAIL。见 [独立裁判复核](../competition/evidence/20261014T125415Z-full-a5002d4f/README.md)。这只说明门禁结论对裁判敏感，不说明哪个裁判更准；不宣称评测准确率提高。
+2026-10-14 经授权真实运行一次：生成 `deepseek-chat`，裁判 `Qwen/Qwen2.5-72B-Instruct`，25 题正式题集。修复后的版本在 DeepSeek 自评时门禁 PASS（0.8607），重新生成回答并换此裁判后正向忠实度 0.7992，门禁 FAIL。见 [独立裁判复核](../competition/evidence/20261014T125415Z-full-a5002d4f/README.md)。两次部分回答不同，不能把门禁结论变化全部归因于裁判；同回答子集也只能说明本次判定输出存在差异，不说明哪个裁判更准；不宣称评测准确率提高。
