@@ -45,7 +45,7 @@
 
 **检验你自己的 RAG 应用**：[鲁棒性体检](competition/robustness/README.md) 的 `--generator-endpoint` 把 `{"question", "contexts"}` POST 给被测应用，读取返回的 `{"answer"}`，再用平台的逐句核对检查回答是否依据资料。被测应用须直接用传入的资料作答，不再自行检索。`tools/competition/prompt_case.py` 用同样方式比较两份提示词，见 [外部案例](competition/cases/langchain-chatchat/README.md)。
 
-**端到端接入（应用自行检索）**：使用 [外部 RAG 端到端接入](integrations/external-rag.md)，平台只发送题号与问题，应用返回回答及实际用于生成的资料；复用五项指标、Trace 与原门禁，并独立归档。2026-10-14 已用自写示例应用实测一次（[归档](competition/external-rag/20261014-example-app-qwen72b/README.md)）；2026-10-21 已在第三方真实系统 AnythingLLM v1.18.0（源码构建实例）上实测一次，正向忠实度 0.765，门禁 FAIL，接入方式见 [AnythingLLM 实测](competition/external-rag/20261021-anythingllm-qwen72b/README.md)。它与上面的受控资料体检是两种不同入口。
+**端到端接入（应用自行检索）**：使用 [外部 RAG 端到端接入](integrations/external-rag.md)，平台只发送题号与问题，应用返回回答及实际用于生成的资料；复用五项指标、Trace 与原门禁，并独立归档。2026-10-14 已用自写示例应用实测一次，正向忠实度 0.6686，门禁 FAIL（[归档](competition/external-rag/20261014-example-app-qwen72b/README.md)）；2026-10-21 已在第三方真实系统 AnythingLLM v1.18.0（源码构建实例）上实测一次，正向忠实度 0.765，门禁 FAIL，接入方式见 [AnythingLLM 实测](competition/external-rag/20261021-anythingllm-qwen72b/README.md)。它与上面的受控资料体检是两种不同入口。
 
 ### CI 门禁
 

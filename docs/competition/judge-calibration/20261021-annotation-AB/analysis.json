@@ -1,0 +1,1169 @@
+{
+  "schemaVersion": 1,
+  "packageId": "3dc45b1aa403defeaa1bc546b64278fbedc7c8e09f45887236dec7083f6b0210",
+  "source": {
+    "runId": "20261005T144504Z-full-39511424",
+    "model": "deepseek-chat",
+    "evidence": "docs/competition/evidence/20261005T144504Z-full-39511424",
+    "sha256": {
+      "api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131",
+      "request.json": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147"
+    }
+  },
+  "threshold": 0.8,
+  "annotators": [
+    {
+      "annotator": "A",
+      "notAuthor": true,
+      "labeled": 52,
+      "fromQuestion": 3
+    },
+    {
+      "annotator": "B",
+      "notAuthor": true,
+      "labeled": 52,
+      "fromQuestion": 0
+    }
+  ],
+  "statements": 52,
+  "counts": {
+    "resolved": 46,
+    "unresolved": 6,
+    "unlabeled": 0
+  },
+  "agreement": {
+    "statements": 52,
+    "agreement": 0.8846153846153846,
+    "kappa": 0.6393063583815027,
+    "binaryStatements": 49,
+    "binaryAgreement": 0.9387755102040817,
+    "binaryKappa": 0.7640449438202249
+  },
+  "calibration": {
+    "m1": 40,
+    "q1": 0.95,
+    "q1Wilson95": [
+      0.8349612263085903,
+      0.9861793326138516
+    ],
+    "m0": 6,
+    "q0": 1.0,
+    "q0Wilson95": [
+      0.6096657120978346,
+      1.0
+    ],
+    "confusion": {
+      "humanSupportedJudgeSupported": 38,
+      "humanSupportedJudgeNot": 2,
+      "humanNotJudgeSupported": 0,
+      "humanNotJudgeNot": 6
+    }
+  },
+  "judge": {
+    "value": 0.7375,
+    "passed": false
+  },
+  "estimate": {
+    "method": "human",
+    "labeledQuestions": 20,
+    "outsidePrefix": 0,
+    "reason": "存在未决标签：两个端点区间不能保证覆盖混合赋值的区间，故只报告点估计上下界，不给95%区间或区间结论。",
+    "unresolved": 6,
+    "lower": {
+      "point": 0.6875,
+      "interval": null,
+      "state": null,
+      "pointPasses": false,
+      "nEff": 26.25628140703518
+    },
+    "upper": {
+      "point": 0.825,
+      "interval": null,
+      "state": null,
+      "pointPasses": true,
+      "nEff": 20.800947867298575
+    },
+    "point": [
+      0.6875,
+      0.825
+    ],
+    "interval": null,
+    "state": null,
+    "pointPasses": null
+  },
+  "questions": [
+    {
+      "id": "Q01",
+      "caseId": "C02",
+      "statements": 6,
+      "judge": 0.5,
+      "complete": true,
+      "humanLower": 0.5,
+      "humanUpper": 0.5
+    },
+    {
+      "id": "Q02",
+      "caseId": "D06",
+      "statements": 1,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q03",
+      "caseId": "D01",
+      "statements": 4,
+      "judge": 0.75,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q04",
+      "caseId": "F03",
+      "statements": 1,
+      "judge": 0.0,
+      "complete": true,
+      "humanLower": 0.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q05",
+      "caseId": "D02",
+      "statements": 4,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 0.5,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q06",
+      "caseId": "F01",
+      "statements": 1,
+      "judge": 0.0,
+      "complete": true,
+      "humanLower": 0.0,
+      "humanUpper": 0.0
+    },
+    {
+      "id": "Q07",
+      "caseId": "D07",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 0.5,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q08",
+      "caseId": "F05",
+      "statements": 1,
+      "judge": 0.0,
+      "complete": true,
+      "humanLower": 0.0,
+      "humanUpper": 0.0
+    },
+    {
+      "id": "Q09",
+      "caseId": "D05",
+      "statements": 3,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q10",
+      "caseId": "C03",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q11",
+      "caseId": "C05",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 0.5,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q12",
+      "caseId": "D03",
+      "statements": 4,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q13",
+      "caseId": "C01",
+      "statements": 3,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q14",
+      "caseId": "F02",
+      "statements": 4,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 0.75,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q15",
+      "caseId": "D04",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q16",
+      "caseId": "D10",
+      "statements": 5,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q17",
+      "caseId": "F04",
+      "statements": 1,
+      "judge": 0.0,
+      "complete": true,
+      "humanLower": 0.0,
+      "humanUpper": 0.0
+    },
+    {
+      "id": "Q18",
+      "caseId": "D09",
+      "statements": 2,
+      "judge": 0.5,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q19",
+      "caseId": "C04",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    },
+    {
+      "id": "Q20",
+      "caseId": "D08",
+      "statements": 2,
+      "judge": 1.0,
+      "complete": true,
+      "humanLower": 1.0,
+      "humanUpper": 1.0
+    }
+  ],
+  "rows": [
+    {
+      "id": "S01",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S02",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 2,
+      "refusal": false,
+      "judge": 0,
+      "labels": {
+        "A": "无依据",
+        "B": "无依据"
+      },
+      "fromQuestion": [
+        "A"
+      ],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S03",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S04",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S05",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 5,
+      "refusal": false,
+      "judge": 0,
+      "labels": {
+        "A": "无依据",
+        "B": "无依据"
+      },
+      "fromQuestion": [
+        "A"
+      ],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S06",
+      "question": "Q01",
+      "caseId": "C02",
+      "statement": 6,
+      "refusal": false,
+      "judge": 0,
+      "labels": {
+        "A": "无依据",
+        "B": "无依据"
+      },
+      "fromQuestion": [
+        "A"
+      ],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S07",
+      "question": "Q02",
+      "caseId": "D06",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S08",
+      "question": "Q03",
+      "caseId": "D01",
+      "statement": 1,
+      "refusal": false,
+      "judge": 0,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": true
+    },
+    {
+      "id": "S09",
+      "question": "Q03",
+      "caseId": "D01",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S10",
+      "question": "Q03",
+      "caseId": "D01",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S11",
+      "question": "Q03",
+      "caseId": "D01",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S12",
+      "question": "Q04",
+      "caseId": "F03",
+      "statement": 1,
+      "refusal": true,
+      "judge": 0,
+      "labels": {
+        "A": "支持",
+        "B": "无依据"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S13",
+      "question": "Q05",
+      "caseId": "D02",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S14",
+      "question": "Q05",
+      "caseId": "D02",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "无依据",
+        "B": "无法判断"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S15",
+      "question": "Q05",
+      "caseId": "D02",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S16",
+      "question": "Q05",
+      "caseId": "D02",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "无依据",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S17",
+      "question": "Q06",
+      "caseId": "F01",
+      "statement": 1,
+      "refusal": true,
+      "judge": 0,
+      "labels": {
+        "A": "矛盾",
+        "B": "矛盾"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S18",
+      "question": "Q07",
+      "caseId": "D07",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "无依据",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S19",
+      "question": "Q07",
+      "caseId": "D07",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S20",
+      "question": "Q08",
+      "caseId": "F05",
+      "statement": 1,
+      "refusal": true,
+      "judge": 0,
+      "labels": {
+        "A": "矛盾",
+        "B": "矛盾"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S21",
+      "question": "Q09",
+      "caseId": "D05",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S22",
+      "question": "Q09",
+      "caseId": "D05",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S23",
+      "question": "Q09",
+      "caseId": "D05",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S24",
+      "question": "Q10",
+      "caseId": "C03",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S25",
+      "question": "Q10",
+      "caseId": "C03",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S26",
+      "question": "Q11",
+      "caseId": "C05",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "无法判断"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S27",
+      "question": "Q11",
+      "caseId": "C05",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S28",
+      "question": "Q12",
+      "caseId": "D03",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S29",
+      "question": "Q12",
+      "caseId": "D03",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S30",
+      "question": "Q12",
+      "caseId": "D03",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S31",
+      "question": "Q12",
+      "caseId": "D03",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S32",
+      "question": "Q13",
+      "caseId": "C01",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S33",
+      "question": "Q13",
+      "caseId": "C01",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S34",
+      "question": "Q13",
+      "caseId": "C01",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S35",
+      "question": "Q14",
+      "caseId": "F02",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "无法判断"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "unresolved",
+      "human": null,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S36",
+      "question": "Q14",
+      "caseId": "F02",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S37",
+      "question": "Q14",
+      "caseId": "F02",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S38",
+      "question": "Q14",
+      "caseId": "F02",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S39",
+      "question": "Q15",
+      "caseId": "D04",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S40",
+      "question": "Q15",
+      "caseId": "D04",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S41",
+      "question": "Q16",
+      "caseId": "D10",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S42",
+      "question": "Q16",
+      "caseId": "D10",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S43",
+      "question": "Q16",
+      "caseId": "D10",
+      "statement": 3,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S44",
+      "question": "Q16",
+      "caseId": "D10",
+      "statement": 4,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S45",
+      "question": "Q16",
+      "caseId": "D10",
+      "statement": 5,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S46",
+      "question": "Q17",
+      "caseId": "F04",
+      "statement": 1,
+      "refusal": true,
+      "judge": 0,
+      "labels": {
+        "A": "矛盾",
+        "B": "矛盾"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 0,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S47",
+      "question": "Q18",
+      "caseId": "D09",
+      "statement": 1,
+      "refusal": false,
+      "judge": 0,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": true
+    },
+    {
+      "id": "S48",
+      "question": "Q18",
+      "caseId": "D09",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S49",
+      "question": "Q19",
+      "caseId": "C04",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S50",
+      "question": "Q19",
+      "caseId": "C04",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S51",
+      "question": "Q20",
+      "caseId": "D08",
+      "statement": 1,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    },
+    {
+      "id": "S52",
+      "question": "Q20",
+      "caseId": "D08",
+      "statement": 2,
+      "refusal": false,
+      "judge": 1,
+      "labels": {
+        "A": "支持",
+        "B": "支持"
+      },
+      "fromQuestion": [],
+      "notes": {},
+      "state": "resolved",
+      "human": 1,
+      "disagreesWithJudge": false
+    }
+  ]
+}

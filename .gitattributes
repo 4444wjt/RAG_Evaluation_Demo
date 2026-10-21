@@ -259,6 +259,14 @@
 /docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
 /docs/competition/judge-calibration/20261014-annotation-V/calibration.json text eol=lf
 
+# 第二轮非作者人工标注（A、B）：同上，均为 LF；标注文件只把 annotator 改为代号。
+/docs/competition/judge-calibration/20261021-annotation-AB/README.md text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/SHA256SUMS.txt text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/analysis.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/calibration.json text eol=lf
+
 # 资料来源登记表：按 LF 归一化哈希关联资料，固定新登记文件为 LF。
 /frontend/src/fixtures/source-registry.json text eol=lf
 
