@@ -36,7 +36,7 @@
 - **独立人工标注与考虑裁判误差的区间**（参照 [ICML 2026：How to Correctly Report LLM-as-a-Judge Evaluations](https://proceedings.mlr.press/v306/lee26bl.html)）：
   - 2026-10-13 已实现裁判误差分析工具和模拟验证，见 [裁判判错校准](docs/competition/judge-calibration/README.md)：校准校正推广到按题聚集，并实现 PPI；标注页与分析口径已就绪。
   - 2026-10-14 已完成 1 位非作者的人工标注，人工口径 77.5%–82.5%，取决于 1 条未决陈述，未下结论，见 [人工标注结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
-  - **下一步：第二位非作者标注**，补上一致性指标，并看那条未决陈述能否定下来。
+  - **下一步：第二位非作者标注**，补上一致性指标；S12 因标注人选「无法判断」，按 `judge_calibration.py` 的 `_consensus` 已确定为未决，补第二人不会改变它。
 - **在逐句判定提示词中加入人工标注的幻觉例子**：参照 [FaithJudge](https://arxiv.org/html/2505.04847v2) 的做法；提示词变化后另建运行证据，不与已冻结的运行直接混比。
 - **专门判断模型交叉核查**：在大模型裁判之外，引入专门做「支持 / 反驳 / 无关」判断的模型作为另一类裁判（思路同 [Azure 依据检测](https://learn.microsoft.com/en-gb/azure/ai-services/content-safety/concepts/groundedness)），两类裁判的分歧进入人工复核。
 - **外部基准验证**：2026-10-13 已在 ANAH（中文逐句人工幻觉标注）与 RGB（中文新闻检索增强问答）上各做一次抽样检验，见 [外部基准验证](docs/competition/external-validation/README.md)。下一步：扩大样本，换第二个裁判重跑同一样本包，并补英文部分。中英双语 RAG 幻觉基准 [Bi'an](https://hub.baai.ac.cn/paper/0c46eff6-4e01-43b7-955a-2cc886a20118) 的官方数据与使用条件尚未确认，暂未运行。
