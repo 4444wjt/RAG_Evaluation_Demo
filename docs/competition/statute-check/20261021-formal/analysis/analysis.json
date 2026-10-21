@@ -1,0 +1,801 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-injection-v1",
+  "byType": {
+    "control": {
+      "items": 11,
+      "expected": "supported",
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "valid": 11,
+          "notSupported": 1,
+          "contradicted": 1
+        },
+        "qwen72b": {
+          "valid": 11,
+          "notSupported": 1,
+          "contradicted": 1
+        }
+      }
+    },
+    "control_paragraph": {
+      "items": 2,
+      "expected": "supported",
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "valid": 2,
+          "notSupported": 0,
+          "contradicted": 0
+        },
+        "qwen72b": {
+          "valid": 2,
+          "notSupported": 0,
+          "contradicted": 0
+        }
+      }
+    },
+    "article_swap": {
+      "items": 7,
+      "expected": "not_supported",
+      "rulesFlagged": 6,
+      "judges": {
+        "deepseek": {
+          "valid": 7,
+          "notSupported": 7,
+          "contradicted": 4
+        },
+        "qwen72b": {
+          "valid": 7,
+          "notSupported": 2,
+          "contradicted": 2
+        }
+      }
+    },
+    "article_absent": {
+      "items": 7,
+      "expected": "not_supported",
+      "rulesFlagged": 7,
+      "judges": {
+        "deepseek": {
+          "valid": 7,
+          "notSupported": 7,
+          "contradicted": 5
+        },
+        "qwen72b": {
+          "valid": 7,
+          "notSupported": 2,
+          "contradicted": 2
+        }
+      }
+    },
+    "paragraph_shift": {
+      "items": 2,
+      "expected": "not_supported",
+      "rulesFlagged": 1,
+      "judges": {
+        "deepseek": {
+          "valid": 2,
+          "notSupported": 0,
+          "contradicted": 0
+        },
+        "qwen72b": {
+          "valid": 2,
+          "notSupported": 0,
+          "contradicted": 0
+        }
+      }
+    },
+    "quantity_value": {
+      "items": 4,
+      "expected": "not_supported",
+      "rulesFlagged": 4,
+      "judges": {
+        "deepseek": {
+          "valid": 4,
+          "notSupported": 4,
+          "contradicted": 4
+        },
+        "qwen72b": {
+          "valid": 4,
+          "notSupported": 4,
+          "contradicted": 4
+        }
+      }
+    },
+    "quantity_unit": {
+      "items": 2,
+      "expected": "not_supported",
+      "rulesFlagged": 2,
+      "judges": {
+        "deepseek": {
+          "valid": 2,
+          "notSupported": 2,
+          "contradicted": 2
+        },
+        "qwen72b": {
+          "valid": 2,
+          "notSupported": 1,
+          "contradicted": 1
+        }
+      }
+    },
+    "modal": {
+      "items": 5,
+      "expected": "not_supported",
+      "rulesFlagged": 4,
+      "judges": {
+        "deepseek": {
+          "valid": 5,
+          "notSupported": 5,
+          "contradicted": 5
+        },
+        "qwen72b": {
+          "valid": 5,
+          "notSupported": 0,
+          "contradicted": 0
+        }
+      }
+    },
+    "polarity": {
+      "items": 2,
+      "expected": "not_supported",
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "valid": 2,
+          "notSupported": 2,
+          "contradicted": 2
+        },
+        "qwen72b": {
+          "valid": 2,
+          "notSupported": 2,
+          "contradicted": 2
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "C-S03",
+      "type": "control",
+      "statement": "按照第五条规定，最高偿付限额为人民币50万元。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S07",
+      "type": "control",
+      "statement": "存款保险的最高赔付限额为人民币50万元。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S13",
+      "type": "control",
+      "statement": "根据提供的文档，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构应当依照本条例的规定投保存款保险。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S21",
+      "type": "control",
+      "statement": "根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S27",
+      "type": "control",
+      "statement": "存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S28",
+      "type": "control",
+      "statement": "根据参考资料第三条规定，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S32",
+      "type": "control",
+      "statement": "中国投保机构的境外分支机构不适用第二条关于投保存款保险的要求。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S36",
+      "type": "control",
+      "statement": "根据第四条，被保险存款包括投保机构吸收的人民币存款。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "C-S41",
+      "type": "control",
+      "statement": "根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S49",
+      "type": "control",
+      "statement": "根据参考资料第八条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "C-S50",
+      "type": "control",
+      "statement": "本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "CP-S27",
+      "type": "control_paragraph",
+      "statement": "根据第十九条第二款，存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "CP-S50",
+      "type": "control_paragraph",
+      "statement": "根据第八条第二款，本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AS-S03",
+      "type": "article_swap",
+      "statement": "按照第四条规定，最高偿付限额为人民币50万元。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AS-S21",
+      "type": "article_swap",
+      "statement": "根据参考资料第三条，不属于被保险存款范围的存款包括：金融机构同业存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AS-S28",
+      "type": "article_swap",
+      "statement": "根据参考资料第一条规定，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "insufficient",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AS-S32",
+      "type": "article_swap",
+      "statement": "中国投保机构的境外分支机构不适用第四条关于投保存款保险的要求。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "insufficient",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "AS-S36",
+      "type": "article_swap",
+      "statement": "根据第五条，被保险存款包括投保机构吸收的人民币存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "AS-S41",
+      "type": "article_swap",
+      "statement": "根据参考资料第九条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AS-S49",
+      "type": "article_swap",
+      "statement": "根据参考资料第二条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "insufficient",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AA-S03",
+      "type": "article_absent",
+      "statement": "按照第六条规定，最高偿付限额为人民币50万元。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AA-S21",
+      "type": "article_absent",
+      "statement": "根据参考资料第七条，不属于被保险存款范围的存款包括：金融机构同业存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AA-S28",
+      "type": "article_absent",
+      "statement": "根据参考资料第十一条规定，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "insufficient",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AA-S32",
+      "type": "article_absent",
+      "statement": "中国投保机构的境外分支机构不适用第十二条关于投保存款保险的要求。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "insufficient",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "AA-S36",
+      "type": "article_absent",
+      "statement": "根据第十三条，被保险存款包括投保机构吸收的人民币存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "AA-S41",
+      "type": "article_absent",
+      "statement": "根据参考资料第十一条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "AA-S49",
+      "type": "article_absent",
+      "statement": "根据参考资料第十八条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "ARTICLE_NOT_IN_SOURCE"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "PS-S27",
+      "type": "paragraph_shift",
+      "statement": "根据第十九条第一款，存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "PS-S50",
+      "type": "paragraph_shift",
+      "statement": "根据第八条第一款，本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "supported",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "QV-S03",
+      "type": "quantity_value",
+      "statement": "按照第五条规定，最高偿付限额为人民币20万元。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "QUANTITY_UNSUPPORTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "QV-S07",
+      "type": "quantity_value",
+      "statement": "存款保险的最高赔付限额为人民币100万元。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "QUANTITY_UNSUPPORTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "QV-S27",
+      "type": "quantity_value",
+      "statement": "存款保险基金管理机构应当在前款规定情形发生之日起10个工作日内足额偿付存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "QUANTITY_UNSUPPORTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "QV-S50",
+      "type": "quantity_value",
+      "statement": "本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起3个月内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "QUANTITY_UNSUPPORTED"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "QU-S27",
+      "type": "quantity_unit",
+      "statement": "存款保险基金管理机构应当在前款规定情形发生之日起7日内足额偿付存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "UNIT_MISMATCH"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "QU-S50",
+      "type": "quantity_unit",
+      "statement": "本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6年内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "UNIT_MISMATCH"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "MD-S13",
+      "type": "modal",
+      "statement": "根据提供的文档，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构可以依照本条例的规定投保存款保险。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MODAL_SWAP"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "MD-S27",
+      "type": "modal",
+      "statement": "存款保险基金管理机构可以在前款规定情形发生之日起7个工作日内足额偿付存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "MD-S41",
+      "type": "modal",
+      "statement": "根据参考资料第十条规定，投保机构可以按照存款保险基金管理机构的要求定期报送被保险存款余额。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MODAL_SWAP"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "MD-S49",
+      "type": "modal",
+      "statement": "根据参考资料第八条规定，本条例施行前已开业的吸收存款的银行业金融机构，可以在存款保险基金管理机构规定的期限内办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MODAL_SWAP"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "MD-S50",
+      "type": "modal",
+      "statement": "本条例施行后开业的吸收存款的银行业金融机构，可以自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": true,
+        "codes": [
+          "MODAL_SWAP"
+        ]
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "supported"
+      }
+    },
+    {
+      "id": "PO-S21",
+      "type": "polarity",
+      "statement": "根据参考资料第四条，属于被保险存款范围的存款包括：金融机构同业存款。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    },
+    {
+      "id": "PO-S32",
+      "type": "polarity",
+      "statement": "中国投保机构的境外分支机构适用第二条关于投保存款保险的要求。",
+      "expected": "not_supported",
+      "rules": {
+        "flagged": false,
+        "codes": []
+      },
+      "judges": {
+        "deepseek": "contradicted",
+        "qwen72b": "contradicted"
+      }
+    }
+  ],
+  "records": {
+    "total": 84,
+    "ok": 84
+  }
+}

@@ -157,6 +157,36 @@
 # 冻结回答多裁判重复评分试跑：复制文件保留源字节（含 CRLF），哈希按原样记录，不做换行转换。
 /docs/competition/judge-rerun/20261021-pilot/** -text
 
+# 法条注入正式运行归档：逐文件规则（不用通配）。含 CRLF 的原样副本用 -text 保留源字节；纯 LF 文件用 text eol=lf。
+/docs/competition/statute-check/20261021-formal/README.md text eol=lf
+/docs/competition/statute-check/20261021-formal/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261021-formal/precheck.md text eol=lf
+/docs/competition/statute-check/20261021-formal/results.json text eol=lf
+/docs/competition/statute-check/20261021-formal/results.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/events.jsonl -text
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/judge_compare.py -text
+/docs/competition/statute-check/20261021-formal/run/sources/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/statute_injection.py text eol=lf
+
 # 部署文件在 Linux 容器和服务器上执行，固定为 LF，避免从 Windows 检出后 shell 脚本和 Dockerfile 续行失效。
 /deploy/** text eol=lf
 

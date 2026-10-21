@@ -1,0 +1,422 @@
+[
+  {
+    "requestId": "AS-S41--deepseek",
+    "itemId": "AS-S41",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S41--deepseek",
+    "itemId": "AA-S41",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S28--deepseek",
+    "itemId": "AA-S28",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QU-S27--qwen72b",
+    "itemId": "QU-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S49--qwen72b",
+    "itemId": "MD-S49",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S13--qwen72b",
+    "itemId": "MD-S13",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S13--deepseek",
+    "itemId": "MD-S13",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S36--deepseek",
+    "itemId": "C-S36",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S36--deepseek",
+    "itemId": "AS-S36",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "CP-S50--qwen72b",
+    "itemId": "CP-S50",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S32--deepseek",
+    "itemId": "AA-S32",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S13--deepseek",
+    "itemId": "C-S13",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "PS-S50--deepseek",
+    "itemId": "PS-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "PO-S21--deepseek",
+    "itemId": "PO-S21",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "CP-S50--deepseek",
+    "itemId": "CP-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S50--qwen72b",
+    "itemId": "C-S50",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S27--deepseek",
+    "itemId": "C-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S49--qwen72b",
+    "itemId": "AS-S49",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "PO-S32--deepseek",
+    "itemId": "PO-S32",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S32--deepseek",
+    "itemId": "AS-S32",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QU-S27--deepseek",
+    "itemId": "QU-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S03--deepseek",
+    "itemId": "AS-S03",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S49--deepseek",
+    "itemId": "AS-S49",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S27--qwen72b",
+    "itemId": "QV-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AS-S03--qwen72b",
+    "itemId": "AS-S03",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S41--qwen72b",
+    "itemId": "MD-S41",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S50--deepseek",
+    "itemId": "C-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S32--deepseek",
+    "itemId": "C-S32",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S28--deepseek",
+    "itemId": "AS-S28",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S28--qwen72b",
+    "itemId": "AS-S28",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S49--deepseek",
+    "itemId": "C-S49",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S50--qwen72b",
+    "itemId": "QV-S50",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S13--qwen72b",
+    "itemId": "C-S13",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S49--deepseek",
+    "itemId": "MD-S49",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S27--deepseek",
+    "itemId": "QV-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S21--deepseek",
+    "itemId": "AA-S21",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S07--deepseek",
+    "itemId": "QV-S07",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "PO-S32--qwen72b",
+    "itemId": "PO-S32",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AS-S32--qwen72b",
+    "itemId": "AS-S32",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S41--qwen72b",
+    "itemId": "C-S41",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "CP-S27--qwen72b",
+    "itemId": "CP-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AS-S36--qwen72b",
+    "itemId": "AS-S36",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AS-S41--qwen72b",
+    "itemId": "AS-S41",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S27--deepseek",
+    "itemId": "MD-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "CP-S27--deepseek",
+    "itemId": "CP-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S28--deepseek",
+    "itemId": "C-S28",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S03--deepseek",
+    "itemId": "QV-S03",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S32--qwen72b",
+    "itemId": "AA-S32",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "PS-S50--qwen72b",
+    "itemId": "PS-S50",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S28--qwen72b",
+    "itemId": "AA-S28",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S49--qwen72b",
+    "itemId": "AA-S49",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S07--qwen72b",
+    "itemId": "C-S07",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S03--qwen72b",
+    "itemId": "AA-S03",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "QU-S50--deepseek",
+    "itemId": "QU-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "PS-S27--qwen72b",
+    "itemId": "PS-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S27--qwen72b",
+    "itemId": "C-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "QV-S50--deepseek",
+    "itemId": "QV-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "MD-S27--qwen72b",
+    "itemId": "MD-S27",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S41--deepseek",
+    "itemId": "C-S41",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S21--qwen72b",
+    "itemId": "AA-S21",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "PS-S27--deepseek",
+    "itemId": "PS-S27",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "MD-S50--qwen72b",
+    "itemId": "MD-S50",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S49--qwen72b",
+    "itemId": "C-S49",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S32--qwen72b",
+    "itemId": "C-S32",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S28--qwen72b",
+    "itemId": "C-S28",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S49--deepseek",
+    "itemId": "AA-S49",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S03--qwen72b",
+    "itemId": "QV-S03",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S36--qwen72b",
+    "itemId": "C-S36",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S21--qwen72b",
+    "itemId": "C-S21",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "C-S21--deepseek",
+    "itemId": "C-S21",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S07--deepseek",
+    "itemId": "C-S07",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AS-S21--deepseek",
+    "itemId": "AS-S21",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S03--deepseek",
+    "itemId": "C-S03",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "PO-S21--qwen72b",
+    "itemId": "PO-S21",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S50--deepseek",
+    "itemId": "MD-S50",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "QV-S07--qwen72b",
+    "itemId": "QV-S07",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AS-S21--qwen72b",
+    "itemId": "AS-S21",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S03--deepseek",
+    "itemId": "AA-S03",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S41--qwen72b",
+    "itemId": "AA-S41",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "AA-S36--deepseek",
+    "itemId": "AA-S36",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "C-S03--qwen72b",
+    "itemId": "C-S03",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "MD-S41--deepseek",
+    "itemId": "MD-S41",
+    "judge": "deepseek"
+  },
+  {
+    "requestId": "AA-S36--qwen72b",
+    "itemId": "AA-S36",
+    "judge": "qwen72b"
+  },
+  {
+    "requestId": "QU-S50--qwen72b",
+    "itemId": "QU-S50",
+    "judge": "qwen72b"
+  }
+]

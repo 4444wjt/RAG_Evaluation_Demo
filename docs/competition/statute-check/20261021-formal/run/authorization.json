@@ -1,0 +1,51 @@
+{
+  "status": "authorized",
+  "authorizedBy": "Ll（2026-10-21 会话内授权：正式 42 条运行、预算 ¥10、输出放 work/）",
+  "authorizedAt": "2026-10-21",
+  "packageSha256": "0a1344770accebde671e582877bbf06c799ff76e7131fc3ee0393ecc6ccf0a0f",
+  "configurationSha256": "dbb3a62076b47fdd7ac6c9a6788553230211a252bc9ed5cdf7607d46742b151c",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "toolFiles": {
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_compare.py": "8db1a8740ebb1b92b2853331663e2c1ea836ef80eeca5300b4edffa342cde127",
+    "tools/competition/run_evidence.py": "67d3d8194392f15b9ce884b5bb69f6df154396936f45fb99ea28276ce6999a43",
+    "tools/competition/judge_calibration.py": "65d689e70371240293fc8d439214efb9bab2cabaa9f920b87f909919ce4a0b31"
+  },
+  "maxRequests": 84,
+  "maxRetries": 0,
+  "budgetCny": 10.0,
+  "outputDirectory": "work/statute-injection/formal-20261021/run",
+  "acceptNoHardBillingCap": true,
+  "allowPaidCalls": true,
+  "estimates": {
+    "deepseek": {
+      "requests": 42,
+      "inputPlanningTokens": 135155,
+      "outputMaxTokens": 32256,
+      "method": "UTF-8字节数加每请求256的消息开销代理；非实测token，不保证供应商计费上界。"
+    },
+    "qwen72b": {
+      "requests": 42,
+      "inputPlanningTokens": 135155,
+      "outputMaxTokens": 32256,
+      "method": "UTF-8字节数加每请求256的消息开销代理；非实测token，不保证供应商计费上界。"
+    }
+  },
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/ 当日核实：请求名 deepseek-chat，试跑实际返回 deepseek-flash；取高峰时段、缓存未命中价（输入 2 元、输出 8 元 / 百万 tokens），保守取值",
+      "checkedAt": "2026-10-21"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "source": "https://www.siliconflow.cn/pricing 当日核实：Qwen/Qwen2.5-72B-Instruct 输入 ¥4.13、输出 ¥4.13 / 百万 tokens",
+      "checkedAt": "2026-10-21"
+    }
+  },
+  "note": "正式运行授权：42 条 × 2 个裁判，最多 84 次请求，不重试。单价 2026-10-21 当日核实。执行者注：确认口径第 2 项括号「不含条号类内容」按「不含 2 条加款号的对照（control_paragraph）」理解；11 条原样对照中有的陈述本身引用了条号。"
+}

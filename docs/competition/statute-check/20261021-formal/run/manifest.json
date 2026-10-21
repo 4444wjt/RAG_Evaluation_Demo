@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-injection-v1",
+  "finishedAt": "2026-10-21T11:28:54.831416+00:00",
+  "stopReason": "completed",
+  "attempts": 84,
+  "completedRecords": 84,
+  "plannedRequests": 84,
+  "estimatedCostCny": 0.20180887999999989,
+  "actualBillCny": null,
+  "costNote": "按返回用量与授权单价的估算，不是实际扣费；没有供应商费用自动封顶。"
+}
