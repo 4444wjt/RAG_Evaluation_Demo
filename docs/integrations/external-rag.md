@@ -90,7 +90,8 @@ venv/Scripts/python.exe tools/competition/evaluate_external.py analyze --dir wor
 - 调用失败不计入指标均值，不填零；报告同时列总数、有效数量、缺失指标与未尝试题。
 - 复用原有聚合与 Quality Gate。没有有效指标时显示“门禁未计算”；部分题失败时已有有效结果的门禁与运行完整性分开说明。
 - 检索方标注为“被测应用”，不与平台自己检索的运行混合成排名。原始冻结 Demo、历史运行、阈值和人审结果均不回填。
-- 2026-10-14 经授权用本仓库自写的示例应用（[`examples/external_rag_app/app.py`](../../examples/external_rag_app/app.py)）完整实测一次：25 题全部评测完成，门禁 FAIL。见 [示例应用实测](../competition/external-rag/20261014-example-app-qwen72b/README.md)。尚未接入第三方真实系统。
+- 2026-10-14 经授权用本仓库自写的示例应用（[`examples/external_rag_app/app.py`](../../examples/external_rag_app/app.py)）完整实测一次：25 题全部评测完成，门禁 FAIL。见 [示例应用实测](../competition/external-rag/20261014-example-app-qwen72b/README.md)。
+- 2026-10-21 经授权接入第三方真实系统 AnythingLLM v1.18.0（从官方 tag 源码构建的本机实例，不是桌面安装包），经 [`examples/anythingllm_shim/shim.py`](../../examples/anythingllm_shim/shim.py) 转换协议，裁判与 10-14 相同：25 题全部评测完成，正向忠实度 0.765，门禁 FAIL；25 题的上下文对应关系均在所列前提下得到证明（不是供应商侧抓包）。见 [AnythingLLM 实测](../competition/external-rag/20261021-anythingllm-qwen72b/README.md)。
 - 实测发现：应用对 5 道无答案题都自报 `refused`，但平台按固定短语识别拒答，没有认出应用的拒答句，拒答准确率记为 0。按上文约定两者分别保留、不改判；识别规则的改动需单独提出。
 
 配套测试：[端到端协议与归档测试](../../tests/test_external_rag.py)、[独立裁判测试](../../tests/test_independent_judge.py)。

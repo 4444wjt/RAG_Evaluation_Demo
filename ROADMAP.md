@@ -30,7 +30,7 @@
 ## 第一阶段 · 让判定更可信
 
 - **独立裁判**：2026-10-11 已做一次只换裁判的对照实验，见 [独立裁判对照](docs/judge-comparison.md)。2026-10-14 已实现工作区／API／CLI 的裁判选择，五项指标与 Trace 使用指定裁判，报告分别记录请求名与响应名；2026-10-14 已真实运行一次：同一修复版本换 Qwen2.5-72B 裁判后，正向忠实度 0.7992，门禁 FAIL；还发现同一裁判的忠实度与逐句核对互相矛盾，见 [独立裁判复核](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)。见 [配置与边界](docs/integrations/independent-judge.md)。
-- **外部 RAG 端到端接入**：已实现 `veriscope.e2e.v1` 客户端与独立归档工具，只发送题号和问题，由应用返回自己的回答及实际生成 contexts；2026-10-14 已用本仓库自写的示例应用完整实测一次（25 题，链路跑通，门禁 FAIL），见 [示例应用实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)；尚未接入第三方真实系统。实测发现按固定短语识别拒答认不出应用自己的拒答句，改动需单独提出。与平台提供 contexts 的受控资料体检分开，见 [端到端契约与运行](docs/integrations/external-rag.md)。
+- **外部 RAG 端到端接入**：已实现 `veriscope.e2e.v1` 客户端与独立归档工具，只发送题号和问题，由应用返回自己的回答及实际生成 contexts；2026-10-14 已用本仓库自写的示例应用完整实测一次（25 题，链路跑通，门禁 FAIL），见 [示例应用实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)；2026-10-21 已在第三方真实系统 AnythingLLM v1.18.0（源码构建实例，非桌面安装包）上完整实测一次（25 题，正向忠实度 0.765，门禁 FAIL），见 [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)。实测发现按固定短语识别拒答认不出应用自己的拒答句，改动需单独提出。与平台提供 contexts 的受控资料体检分开，见 [端到端契约与运行](docs/integrations/external-rag.md)。
 - **裁判一致性对照**：同一批回答用两个以上裁判判定，把不一致的句子单独列出，沿用现有"机器判定与人工意见并列保留"的展示方式。
 - **扩大人工核验**：新增记录沿用公开的 [人工核验存档格式](docs/review-archive-format.md)；核验包保持"不覆盖机器结果、不生成准确率"的原则；新增样本继续绑定冻结快照版本与 SHA-256。
 - **独立人工标注与考虑裁判误差的区间**（参照 [ICML 2026：How to Correctly Report LLM-as-a-Judge Evaluations](https://proceedings.mlr.press/v306/lee26bl.html)）：

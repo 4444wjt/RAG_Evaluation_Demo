@@ -6,6 +6,12 @@
 
 ## [未发布]
 
+### 第三方真实系统端到端实测：AnythingLLM（2026-10-21）
+- 经授权，在 AnythingLLM v1.18.0（官方 tag 源码构建的本机实例，非桌面安装包）上跑完 25 题，裁判 Qwen2.5-72B，与 10-14 自写示例应用逐字段相同：25 题全部评测完成，正向忠实度 0.765，门禁 FAIL。归档于 `docs/competition/external-rag/20261021-anythingllm-qwen72b/`。
+- 新增 `examples/anythingllm_shim/shim.py`，把 `veriscope.e2e.v1` 请求转换为 AnythingLLM 开发者 API 调用；DeepSeek 适配器拼在回答前的 `<think>` 推理块按运行前锁定的规则剥离，原文与哈希保留。
+- 运行前后用只读快照、受审源码逐字节比对和逐题字节上界检查，25 题的上下文对应关系均在所列前提下得到证明；这不是供应商侧抓包。
+- 拒答准确率仍为 0：AnythingLLM 的负样本回答没有被固定短语识别为拒答，与 10-14 的发现相同，识别规则未改。
+
 ### 独立裁判与外部 RAG 端到端的首次真实运行（2026-10-14）
 - 经授权，修复后的版本换 Qwen2.5-72B 作裁判重跑 25 题：正向忠实度 0.7992，门禁 FAIL。DeepSeek 自评时是 0.8607、PASS，修复后的 PASS 依赖裁判。归档于 `docs/competition/evidence/20261014T125415Z-full-a5002d4f/`。
 - 经授权，用自写的示例应用 `examples/external_rag_app/app.py`（标准库，词法检索，DeepSeek 生成）跑通 `veriscope.e2e.v1` 端到端链路：25 题全部评测完成，门禁 FAIL。归档于 `docs/competition/external-rag/20261014-example-app-qwen72b/`。
