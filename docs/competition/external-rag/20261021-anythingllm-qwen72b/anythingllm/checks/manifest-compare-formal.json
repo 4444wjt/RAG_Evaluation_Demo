@@ -1,0 +1,62 @@
+{
+  "checkedAtUtc": "2026-10-21T03:54:19.977017+00:00",
+  "baseline": "docs/competition/external-rag/20261014-example-app-qwen72b/manifest.json",
+  "prepared": "work/anythingllm-e2e-20261020/run-001/manifest.json",
+  "sameFields": {
+    "schemaVersion": true,
+    "contractVersion": true,
+    "retrievalParty": true,
+    "platformRetrieval": true,
+    "tokenEnv": true,
+    "applicationTimeoutSeconds": true,
+    "applicationRetries": true,
+    "itemCount": true,
+    "judge": true,
+    "inputSha256": true,
+    "dependencies": true,
+    "python": true,
+    "sentenceAdapter": true,
+    "embedding": true,
+    "metrics": true,
+    "traceEnabled": true,
+    "judgeTimeoutSeconds": true,
+    "judgeMaxRetries": true,
+    "ragasTimeoutSeconds": true,
+    "thresholds": true,
+    "cost": true
+  },
+  "expectedFields": {
+    "status": {
+      "expected": "prepared",
+      "actual": "prepared",
+      "ok": true
+    },
+    "endpoint": {
+      "expected": "http://127.0.0.1:9001/rag",
+      "actual": "http://127.0.0.1:9001/rag",
+      "ok": true
+    },
+    "applicationName": {
+      "expected": "AnythingLLM v1.18.0（源码构建实例）",
+      "actual": "AnythingLLM v1.18.0（源码构建实例）",
+      "ok": true
+    }
+  },
+  "testsetSha256": "7ba3f8b9875d9d92d92dfb398e5110e78dde86626a36a7b4d3ca52691d984acc",
+  "sourceChangedVsBaseline": [
+    "backend/core/pipeline.py",
+    "backend/core/utils.py"
+  ],
+  "knownSourceChanges": [
+    "backend/core/pipeline.py",
+    "backend/core/utils.py"
+  ],
+  "unexpectedSourceChanges": [],
+  "differencesNotChecked": [
+    "preparedAt",
+    "gitHead",
+    "gitStatus"
+  ],
+  "problems": [],
+  "ok": true
+}

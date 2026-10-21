@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "anythingllm-reference.v1",
+  "tag": "v1.18.0",
+  "commit": "3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba",
+  "files": {
+    "endpoints/api/workspace/index.js": {
+      "sha256": "0bcbe93e1970ccec0b1b8c44c51d8228b0fa07dc8b5fe1dc359e03d7ab19f289",
+      "bytes": 32948,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/endpoints/api/workspace/index.js"
+    },
+    "utils/AiProviders/deepseek/index.js": {
+      "sha256": "bc5b19854776d8be3f7c4d9cc042b2991e3e82d00594546ff9afc6026bdab430",
+      "bytes": 6145,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/utils/AiProviders/deepseek/index.js"
+    },
+    "utils/AiProviders/modelMap/index.js": {
+      "sha256": "05edcaae4bdac15f93bb4e57eb0c1c50af5631a61a669f83a56a8439282f55ac",
+      "bytes": 7612,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/utils/AiProviders/modelMap/index.js"
+    },
+    "utils/chats/apiChatHandler.js": {
+      "sha256": "e1903c8cfe91e11866caee3570cbf03ff6c9d751e4ce2145105fb15f2fe5030e",
+      "bytes": 29189,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/utils/chats/apiChatHandler.js"
+    },
+    "utils/helpers/chat/index.js": {
+      "sha256": "933ffdf0a8de0866284b43596d87c84515402781920c1198c95f114ebfc61f06",
+      "bytes": 19491,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/utils/helpers/chat/index.js"
+    },
+    "utils/helpers/tiktoken.js": {
+      "sha256": "587f6092d206470cbda2a892fd81d940fd8d5d6e6ba3a6cae891be0adb93850a",
+      "bytes": 3166,
+      "localCopy": "round2/research-release/3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba/server/utils/helpers/tiktoken.js"
+    },
+    "models/systemPromptVariables.js": {
+      "sha256": "d554f919eadcae180a5a9eec974d994467f5f362bdcb4539fefd1e698f201248",
+      "bytes": 12768,
+      "localCopy": "round2/research-bound/v1.18.0/server/models/systemPromptVariables.js"
+    },
+    "models/systemSettings.js": {
+      "sha256": "ea305a523630b0a6a4e4552228d90de6430e448e79ed3e43108bdf55ec506720",
+      "bytes": 45575,
+      "localCopy": "round2/research-bound/v1.18.0/server/models/systemSettings.js"
+    },
+    "utils/chats/index.js": {
+      "sha256": "2422a6bcf2d62fb02c506fdfc02e13c3c5d1f1dfe9d609373053bbbe39d322a8",
+      "bytes": 6100,
+      "localCopy": "round2/research-bound/v1.18.0/server/utils/chats/index.js"
+    },
+    "utils/memories/index.js": {
+      "sha256": "1d3fdfd4c55bd4a6402896c51accb0b69c5e62bd8f0ce5b34795acc402c58894",
+      "bytes": 4837,
+      "localCopy": "round2/research-bound/v1.18.0/server/utils/memories/index.js"
+    },
+    "utils/TextSplitter/index.js": {
+      "sha256": "04793dbda61c30a2b40be022c0a806265af66a3a47f2c7f32451f5d11b38ab83",
+      "bytes": 7964,
+      "localCopy": "round2/research-bound/v1.18.0/server/utils/TextSplitter/index.js"
+    },
+    "utils/vectorDbProviders/lance/index.js": {
+      "sha256": "5fb3092729447ba8501d1fc8d6f7072caebd390d1692e3dbe74dfbe365271470",
+      "bytes": 16587,
+      "localCopy": "round2/research-bound/v1.18.0/server/utils/vectorDbProviders/lance/index.js"
+    },
+    "endpoints/api/system/index.js": {
+      "sha256": "672cf5dcfccaed5de786a4387d7a263d1a62696429ce950b6c6a9a5fe35f5fc4",
+      "bytes": 8139,
+      "localCopy": "round3/upstream/api_system_index.js"
+    },
+    "utils/helpers/index.js": {
+      "sha256": "c0c30460ea58cc9165807e024a5f9b574017c2d42786b2352d1dafe4d7d53329",
+      "bytes": 31821,
+      "localCopy": "round3/upstream/helpers_index.js"
+    }
+  },
+  "note": "各文件为从 GitHub raw 以该 commit 取得的字节副本，取得记录见 round2/research-release 与 round3/upstream。"
+}

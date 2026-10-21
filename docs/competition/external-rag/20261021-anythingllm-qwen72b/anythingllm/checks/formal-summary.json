@@ -1,0 +1,829 @@
+{
+  "summarizedAtUtc": "2026-10-21T05:05:31.366516+00:00",
+  "runDir": "work/anythingllm-e2e-20261020/run-001",
+  "manifest": {
+    "status": "completed",
+    "preparedAt": "2026-10-21T03:54:19.855821+00:00",
+    "startedAt": "2026-10-21T04:02:18.962925+00:00",
+    "finishedAt": "2026-10-21T04:53:55.040474+00:00",
+    "elapsedSeconds": 3096.078,
+    "errorType": null,
+    "applicationName": "AnythingLLM v1.18.0（源码构建实例）",
+    "endpoint": "http://127.0.0.1:9001/rag",
+    "judge": {
+      "name": "Qwen/Qwen2.5-72B-Instruct",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+    }
+  },
+  "resultPresent": true,
+  "result": {
+    "status": "completed",
+    "total": 25,
+    "evaluated": 25,
+    "failed": [],
+    "notAttempted": [],
+    "validCounts": {
+      "faithfulness": 25,
+      "context_precision": 25,
+      "answer_relevancy": 25,
+      "answer_correctness": 25,
+      "context_recall": 25
+    },
+    "missingMetrics": {
+      "faithfulness": 0,
+      "context_precision": 0,
+      "answer_relevancy": 0,
+      "answer_correctness": 0,
+      "context_recall": 0
+    },
+    "metricSampleScope": "evaluated_answers",
+    "gate": {
+      "passed": false,
+      "status": "FAIL",
+      "message": "⛔ 质量门禁拦截，终止发布",
+      "sampleScope": {
+        "positiveTotal": 20,
+        "positiveEvaluated": 20,
+        "validPositiveFaithfulness": 20,
+        "validPositiveContextPrecision": 20
+      }
+    },
+    "summary": {
+      "model": "AnythingLLM v1.18.0（源码构建实例）",
+      "faithfulness": 0.8023,
+      "context_precision": 0.8,
+      "answer_relevancy": 0.6725,
+      "answer_correctness": 0.5715,
+      "context_recall": 0.8,
+      "pos_faithfulness": 0.765,
+      "pos_context_precision": 1.0,
+      "neg_faithfulness": 0.9513,
+      "neg_context_precision": 0.0,
+      "refusal_accuracy": 0.0,
+      "hallucination_rate": 0.235,
+      "score": 0.8825,
+      "hallucination_statement_count": 1,
+      "hallucination_ratio": 0.0303,
+      "trace_statement_count": 33,
+      "trace_fact_error_count": 0,
+      "trace_fabrication_count": 1,
+      "pos_trace_hallucination_ratio": 0.0,
+      "elapsed_seconds": 3096.078,
+      "judge_model": "Qwen/Qwen2.5-72B-Instruct",
+      "judge_mode": "configured",
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    "emptyTraceCount": 10,
+    "applicationCalls": 25,
+    "judgeCalls": 492,
+    "usage": {
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null
+    },
+    "cost": {
+      "status": "unknown",
+      "note": "未提供供应商单价与账单，不将 token 用量写成实际扣费。"
+    }
+  },
+  "recordCount": 25,
+  "missingMetricIds": {
+    "faithfulness": [],
+    "context_precision": [],
+    "answer_relevancy": [],
+    "answer_correctness": [],
+    "context_recall": []
+  },
+  "positiveIdsMissingGateMetric": [],
+  "emptyTraceIds": [
+    "D08",
+    "D09",
+    "D10",
+    "C02",
+    "C03",
+    "N01",
+    "N02",
+    "N04",
+    "N05",
+    "F02"
+  ],
+  "traceStatusCounts": {
+    "ok": 11,
+    "partial": 4,
+    "call_error": 10
+  },
+  "applicationStatusCounts": {
+    "answered": 25
+  },
+  "reasoningBlockStatusCounts": {
+    "stripped": 25
+  },
+  "records": [
+    {
+      "id": "D01",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 10
+    },
+    {
+      "id": "D02",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 10
+    },
+    {
+      "id": "D03",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 10
+    },
+    {
+      "id": "D04",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 10
+    },
+    {
+      "id": "D05",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 14
+    },
+    {
+      "id": "D06",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 26
+    },
+    {
+      "id": "D07",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 32
+    },
+    {
+      "id": "D08",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 24
+    },
+    {
+      "id": "D09",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 21
+    },
+    {
+      "id": "D10",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 28
+    },
+    {
+      "id": "C01",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 18
+    },
+    {
+      "id": "C02",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 16
+    },
+    {
+      "id": "C03",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 28
+    },
+    {
+      "id": "C04",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 32
+    },
+    {
+      "id": "C05",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 20
+    },
+    {
+      "id": "N01",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 15
+    },
+    {
+      "id": "N02",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 22
+    },
+    {
+      "id": "N03",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 21
+    },
+    {
+      "id": "N04",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 14
+    },
+    {
+      "id": "N05",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 21
+    },
+    {
+      "id": "F01",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 20
+    },
+    {
+      "id": "F02",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 15
+    },
+    {
+      "id": "F03",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 25
+    },
+    {
+      "id": "F04",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 20
+    },
+    {
+      "id": "F05",
+      "applicationOutcome": "completed",
+      "applicationErrorCode": null,
+      "responseStatus": "answered",
+      "reasoningBlockStatus": "stripped",
+      "evaluated": true,
+      "evaluationError": null,
+      "judgeCallCount": 20
+    }
+  ],
+  "rows": [
+    {
+      "id": "D01",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.9344691995389323,
+      "answer_correctness": 0.8467090602711831,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D02",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.6767408523063606,
+      "answer_correctness": 0.5013480718513049,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 3,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D03",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.7209270462101695,
+      "answer_correctness": 0.5191856766970293,
+      "context_recall": 1.0,
+      "trace_status": "partial",
+      "trace_statements": 2,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D04",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.5,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.7579431461894431,
+      "answer_correctness": 0.7943015764129734,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D05",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.6,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.955686278288948,
+      "answer_correctness": 0.552069708651956,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 4,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D06",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.8,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.9336746397404282,
+      "answer_correctness": 0.35015245632397207,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 2,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D07",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.8178938635113951,
+      "answer_correctness": 0.7231658016640264,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D08",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.9607124050771096,
+      "answer_correctness": 0.9620288562551254,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D09",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.7667979113464666,
+      "answer_correctness": 0.586983231894545,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "D10",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.8986078670357129,
+      "answer_correctness": 0.9428165153404546,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "C01",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.8333333333333334,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.6632656993112773,
+      "answer_correctness": 0.6371079806857332,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 4,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "C02",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.6666666666666666,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.8301826565678901,
+      "answer_correctness": 0.9686576156792917,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "C03",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.6780579849789676,
+      "answer_correctness": 0.9322877545938896,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "C04",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.8657463324521909,
+      "answer_correctness": 0.6732962648679655,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 2,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "C05",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.25,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.7437353736875341,
+      "answer_correctness": 0.7976605224690181,
+      "context_recall": 1.0,
+      "trace_status": "partial",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "N01",
+      "case_type": "negative",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.08690668199461149,
+      "context_recall": 0.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "N02",
+      "case_type": "negative",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.9230769230769231,
+      "context_precision": 0.0,
+      "answer_relevancy": 0.600999161527078,
+      "answer_correctness": 0.38907092327373866,
+      "context_recall": 0.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "N03",
+      "case_type": "negative",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.12123001145394277,
+      "context_recall": 0.0,
+      "trace_status": "partial",
+      "trace_statements": 2,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "N04",
+      "case_type": "negative",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 1.0,
+      "context_precision": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.08524666032023925,
+      "context_recall": 0.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "N05",
+      "case_type": "negative",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.8333333333333334,
+      "context_precision": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_correctness": 0.09963066754061832,
+      "context_recall": 0.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "F01",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.75,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.6748112112251745,
+      "answer_correctness": 0.5777838335302242,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 4,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "F02",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.6,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.9300669618085089,
+      "answer_correctness": 0.5580205221884609,
+      "context_recall": 1.0,
+      "trace_status": "call_error",
+      "trace_statements": 0,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "F03",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.5,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.8913660638007009,
+      "answer_correctness": 0.38134475654078315,
+      "context_recall": 1.0,
+      "trace_status": "partial",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "F04",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.0,
+      "context_precision": 0.9999999999,
+      "answer_relevancy": 0.6068561538768835,
+      "answer_correctness": 0.5467686780879959,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 1,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    },
+    {
+      "id": "F05",
+      "case_type": "positive",
+      "application_status": "answered",
+      "contexts": 2,
+      "faithfulness": 0.8,
+      "context_precision": 0.99999999995,
+      "answer_relevancy": 0.9031586459518517,
+      "answer_correctness": 0.6534193011335503,
+      "context_recall": 1.0,
+      "trace_status": "ok",
+      "trace_statements": 4,
+      "refusal_detector": false,
+      "refusal_status_agrees": true,
+      "judge_response_models": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
+    }
+  ],
+  "note": "只读汇总；缺失值为 null，不补零；未重算分数或门禁。空 Trace 的原因无法据空列表确认。"
+}

@@ -311,3 +311,45 @@
 # AnythingLLM shim: 预注册与归档锁定其 SHA-256，需逐文件固定行尾。
 /examples/anythingllm_shim/shim.py text eol=lf
 /tests/test_anythingllm_shim.py text eol=lf
+# AnythingLLM 正式 25 题归档（2026-10-21）：逐文件固定字节，不用通配。
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md text eol=lf
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/SHA256SUMS.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/SHA256SUMS.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/context-bound-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/formal-summary.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/judge-config-check-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/judge-models-check-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/manifest-compare-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/shim/shim.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke01-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke02-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke03-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke03-strip-check.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/after-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/before-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-head-before-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-status-after-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-status-before-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/source-after-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/source-before-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/check_context_bound.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/check_context_bound_v2.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/compare_installed_source.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/reference-v1.18.0.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/manifest.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/records.jsonl -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/report.html -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/report.md -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/judging.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/openai_compatible.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/registry.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/rag_application.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/ragas_compat.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/config.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/gate.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/pipeline.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/utils.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/services/trace.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/tools/competition/evaluate_external.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/testset.json -text

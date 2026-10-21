@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "anythingllm-runtime-snapshot.v1",
+  "takenAtUtc": "2026-10-21T04:54:51.438416+00:00",
+  "shimSha256": "53057b9dc1081310337a0d73929ba253bd9519aa5fe954ab8efeab5b46e2b20c",
+  "workspaceSettings": {
+    "topN": 4,
+    "similarityThreshold": 0.25,
+    "vectorSearchMode": "default"
+  },
+  "workspaceSettingsStatus": "available",
+  "workspaceDetails": {
+    "chatProvider": "deepseek",
+    "chatModel": "deepseek-flash",
+    "chatMode": "query",
+    "openAiTemp": null,
+    "openAiHistory": 20,
+    "openAiPrompt": "Given the following conversation, relevant context, and a follow up question, reply with an answer to the current question the user is asking. The current date and time is {datetime}. Return only your response to the question given the above information following the users instructions as needed.",
+    "queryRefusalResponse": null,
+    "openAiPromptUtf8Bytes": 297,
+    "openAiPromptSha256": "214d8fc8e485812f9d0e7e7d0a05564e60328118b6ac87eafdd0af4c11d62ce2",
+    "documentCount": 1,
+    "pinnedDocumentCount": 0,
+    "documentNames": [
+      "deposit_insurance.txt-e1257f7e-7579-4932-a36c-e4916260d832.json"
+    ]
+  },
+  "workspaceDetailsFieldStatus": {
+    "chatProvider": "recorded",
+    "chatModel": "recorded",
+    "chatMode": "recorded",
+    "openAiTemp": "null",
+    "openAiHistory": "recorded",
+    "openAiPrompt": "recorded",
+    "queryRefusalResponse": "null",
+    "documents": "recorded"
+  },
+  "system": {
+    "MemoryEnabled": false,
+    "MemoryAutoExtraction": true,
+    "MultiUserMode": false,
+    "LLMProvider": "deepseek",
+    "LLMModel": "deepseek-flash",
+    "ModelRouterId": null,
+    "DeepSeekModelPref": "deepseek-flash",
+    "EmbeddingEngine": "generic-openai",
+    "EmbeddingModelPref": "BAAI/bge-m3",
+    "EmbeddingOutputDimensions": null,
+    "EmbeddingModelMaxChunkLength": null,
+    "GenericOpenAiEmbeddingPassagePrefix": "",
+    "GenericOpenAiEmbeddingQueryPrefix": "",
+    "GenericOpenAiEmbeddingMaxConcurrentChunks": 500,
+    "VectorDB": "lancedb"
+  },
+  "systemFieldStatus": {
+    "MemoryEnabled": "recorded",
+    "MemoryAutoExtraction": "recorded",
+    "MultiUserMode": "recorded",
+    "LLMProvider": "recorded",
+    "LLMModel": "recorded",
+    "ModelRouterId": "null",
+    "DeepSeekModelPref": "recorded",
+    "EmbeddingEngine": "recorded",
+    "EmbeddingModelPref": "recorded",
+    "EmbeddingOutputDimensions": "null",
+    "EmbeddingModelMaxChunkLength": "missing",
+    "GenericOpenAiEmbeddingPassagePrefix": "recorded",
+    "GenericOpenAiEmbeddingQueryPrefix": "recorded",
+    "GenericOpenAiEmbeddingMaxConcurrentChunks": "recorded",
+    "VectorDB": "recorded"
+  },
+  "storageDirReported": true,
+  "effective": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "modelBasis": "workspace.chatModel"
+  },
+  "contextWindowCache": {
+    "cacheFile": {
+      "exists": true,
+      "sizeBytes": 14522,
+      "sha256": "4c9c706c39a236efe1e4570779aea5abac42ef177c7dac5d2721053af5863546",
+      "mtimeNs": 1792501720556130700
+    },
+    "cachedAtFile": {
+      "exists": true,
+      "sizeBytes": 13,
+      "sha256": "8edcd6b7c42dab0c27bf3a0966155ae7a36a27db7395eddf057ff968f8df84da",
+      "mtimeNs": 1792501720556130700
+    },
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "lookupValue": 1000000,
+    "effectiveWindow": 1000000,
+    "status": "cached_value"
+  },
+  "note": "只读快照：未发送聊天请求。不含 API key、系统设置中的其他字段或存储目录路径。"
+}

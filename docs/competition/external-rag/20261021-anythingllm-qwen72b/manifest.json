@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "veriscope.e2e.run.v1",
+  "contractVersion": "veriscope.e2e.v1",
+  "status": "completed",
+  "preparedAt": "2026-10-21T03:54:19.855821+00:00",
+  "applicationName": "AnythingLLM v1.18.0（源码构建实例）",
+  "retrievalParty": "application",
+  "platformRetrieval": false,
+  "endpoint": "http://127.0.0.1:9001/rag",
+  "tokenEnv": null,
+  "applicationTimeoutSeconds": 180,
+  "applicationRetries": 0,
+  "itemCount": 25,
+  "judge": {
+    "name": "Qwen/Qwen2.5-72B-Instruct",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+  },
+  "inputSha256": "7ba3f8b9875d9d92d92dfb398e5110e78dde86626a36a7b4d3ca52691d984acc",
+  "sourceSha256": {
+    "tools/competition/evaluate_external.py": "58a4cd1888730e25a49c69a33a57e88576782138fb7cb88869acf71c018d6fa6",
+    "backend/adapters/rag_application.py": "92c9963bc519c32634a62311b2819fed66a045bed07be0719367ef43aa8039d0",
+    "backend/adapters/models/judging.py": "42c7aebc0d4fbda83c4eb60b277287d95d2c4fcb7e9a1bb6a9ac8f412b5b1136",
+    "backend/adapters/models/registry.py": "edab0f229d6cb42f9f71492e77728e4645f142b55f5fdcfa4966d094db6ae230",
+    "backend/adapters/models/openai_compatible.py": "b3b09b9e978fd094da16da6f775eae50aea9d34d5477421081bc0844e6005791",
+    "backend/adapters/ragas_compat.py": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647",
+    "backend/core/pipeline.py": "ac990a7d1c02befb7c6008090614b0bb6ae5ea5f80716cfebb0931b5cf0f56e5",
+    "backend/core/gate.py": "89d98d3ae8eeb076da163427a68477e59de3a8783c69d0e5bcd614cc29e9d6ae",
+    "backend/core/utils.py": "5167d3f9976fcef38b3915d17e534c580be8d2523346fe27f9c40a7fc3b9ce94",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/config.py": "fd1651e31a583ef3d8a7c327b222080929bef2e938c0ea4616a45ee233b6bd63"
+  },
+  "dependencies": {
+    "ragas": "0.1.21",
+    "langchain": "0.2.17",
+    "langchain-core": "0.2.43",
+    "langchain-openai": "0.1.25",
+    "datasets": "5.0.1",
+    "httpx": "0.28.1",
+    "sentence-transformers": "6.1.0"
+  },
+  "python": "3.11.9",
+  "gitHead": "65d837baba78238cd91aceedc858f5b669a1b779",
+  "gitStatus": " M frontend/src/features/landing/LandingPage.tsx\n M frontend/src/features/landing/landing.css\n?? models.local.json.bak-20261020-235211\n",
+  "sentenceAdapter": "zh-sentence-v1",
+  "embedding": "BAAI/bge-small-zh-v1.5",
+  "metrics": [
+    "faithfulness",
+    "context_precision",
+    "answer_relevancy",
+    "answer_correctness",
+    "context_recall"
+  ],
+  "traceEnabled": true,
+  "judgeTimeoutSeconds": 180,
+  "judgeMaxRetries": 2,
+  "ragasTimeoutSeconds": 300,
+  "thresholds": {
+    "faithfulness": 0.8,
+    "context_precision": 0.8
+  },
+  "cost": {
+    "status": "unknown",
+    "note": "需单独授权付费运行；无供应商费用自动封顶。题数不等于裁判调用数。"
+  },
+  "startedAt": "2026-10-21T04:02:18.962925+00:00",
+  "finishedAt": "2026-10-21T04:53:55.040474+00:00",
+  "elapsedSeconds": 3096.078
+}

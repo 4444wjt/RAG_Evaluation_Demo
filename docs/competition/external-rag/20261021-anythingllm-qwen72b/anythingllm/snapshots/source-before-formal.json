@@ -1,0 +1,3105 @@
+{
+  "schemaVersion": "anythingllm-installed-source.v1",
+  "referenceTag": "v1.18.0",
+  "referenceCommit": "3e4f9411b67f2dd7fa9fc6f2b95dfacbda0633ba",
+  "allAuditedFilesMatched": true,
+  "singleServerRoot": true,
+  "serverRoot": "",
+  "files": {
+    "endpoints/api/workspace/index.js": {
+      "status": "match",
+      "expectedSha256": "0bcbe93e1970ccec0b1b8c44c51d8228b0fa07dc8b5fe1dc359e03d7ab19f289",
+      "found": [
+        {
+          "path": "endpoints/api/workspace/index.js",
+          "sha256": "0bcbe93e1970ccec0b1b8c44c51d8228b0fa07dc8b5fe1dc359e03d7ab19f289",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/AiProviders/deepseek/index.js": {
+      "status": "match",
+      "expectedSha256": "bc5b19854776d8be3f7c4d9cc042b2991e3e82d00594546ff9afc6026bdab430",
+      "found": [
+        {
+          "path": "utils/AiProviders/deepseek/index.js",
+          "sha256": "bc5b19854776d8be3f7c4d9cc042b2991e3e82d00594546ff9afc6026bdab430",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/AiProviders/modelMap/index.js": {
+      "status": "match",
+      "expectedSha256": "05edcaae4bdac15f93bb4e57eb0c1c50af5631a61a669f83a56a8439282f55ac",
+      "found": [
+        {
+          "path": "utils/AiProviders/modelMap/index.js",
+          "sha256": "05edcaae4bdac15f93bb4e57eb0c1c50af5631a61a669f83a56a8439282f55ac",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/chats/apiChatHandler.js": {
+      "status": "match",
+      "expectedSha256": "e1903c8cfe91e11866caee3570cbf03ff6c9d751e4ce2145105fb15f2fe5030e",
+      "found": [
+        {
+          "path": "utils/chats/apiChatHandler.js",
+          "sha256": "e1903c8cfe91e11866caee3570cbf03ff6c9d751e4ce2145105fb15f2fe5030e",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/helpers/chat/index.js": {
+      "status": "match",
+      "expectedSha256": "933ffdf0a8de0866284b43596d87c84515402781920c1198c95f114ebfc61f06",
+      "found": [
+        {
+          "path": "utils/helpers/chat/index.js",
+          "sha256": "933ffdf0a8de0866284b43596d87c84515402781920c1198c95f114ebfc61f06",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/helpers/tiktoken.js": {
+      "status": "match",
+      "expectedSha256": "587f6092d206470cbda2a892fd81d940fd8d5d6e6ba3a6cae891be0adb93850a",
+      "found": [
+        {
+          "path": "utils/helpers/tiktoken.js",
+          "sha256": "587f6092d206470cbda2a892fd81d940fd8d5d6e6ba3a6cae891be0adb93850a",
+          "matchesReference": true
+        }
+      ]
+    },
+    "models/systemPromptVariables.js": {
+      "status": "match",
+      "expectedSha256": "d554f919eadcae180a5a9eec974d994467f5f362bdcb4539fefd1e698f201248",
+      "found": [
+        {
+          "path": "models/systemPromptVariables.js",
+          "sha256": "d554f919eadcae180a5a9eec974d994467f5f362bdcb4539fefd1e698f201248",
+          "matchesReference": true
+        }
+      ]
+    },
+    "models/systemSettings.js": {
+      "status": "match",
+      "expectedSha256": "ea305a523630b0a6a4e4552228d90de6430e448e79ed3e43108bdf55ec506720",
+      "found": [
+        {
+          "path": "models/systemSettings.js",
+          "sha256": "ea305a523630b0a6a4e4552228d90de6430e448e79ed3e43108bdf55ec506720",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/chats/index.js": {
+      "status": "match",
+      "expectedSha256": "2422a6bcf2d62fb02c506fdfc02e13c3c5d1f1dfe9d609373053bbbe39d322a8",
+      "found": [
+        {
+          "path": "utils/chats/index.js",
+          "sha256": "2422a6bcf2d62fb02c506fdfc02e13c3c5d1f1dfe9d609373053bbbe39d322a8",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/memories/index.js": {
+      "status": "match",
+      "expectedSha256": "1d3fdfd4c55bd4a6402896c51accb0b69c5e62bd8f0ce5b34795acc402c58894",
+      "found": [
+        {
+          "path": "utils/memories/index.js",
+          "sha256": "1d3fdfd4c55bd4a6402896c51accb0b69c5e62bd8f0ce5b34795acc402c58894",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/TextSplitter/index.js": {
+      "status": "match",
+      "expectedSha256": "04793dbda61c30a2b40be022c0a806265af66a3a47f2c7f32451f5d11b38ab83",
+      "found": [
+        {
+          "path": "utils/TextSplitter/index.js",
+          "sha256": "04793dbda61c30a2b40be022c0a806265af66a3a47f2c7f32451f5d11b38ab83",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/vectorDbProviders/lance/index.js": {
+      "status": "match",
+      "expectedSha256": "5fb3092729447ba8501d1fc8d6f7072caebd390d1692e3dbe74dfbe365271470",
+      "found": [
+        {
+          "path": "utils/vectorDbProviders/lance/index.js",
+          "sha256": "5fb3092729447ba8501d1fc8d6f7072caebd390d1692e3dbe74dfbe365271470",
+          "matchesReference": true
+        }
+      ]
+    },
+    "endpoints/api/system/index.js": {
+      "status": "match",
+      "expectedSha256": "672cf5dcfccaed5de786a4387d7a263d1a62696429ce950b6c6a9a5fe35f5fc4",
+      "found": [
+        {
+          "path": "endpoints/api/system/index.js",
+          "sha256": "672cf5dcfccaed5de786a4387d7a263d1a62696429ce950b6c6a9a5fe35f5fc4",
+          "matchesReference": true
+        }
+      ]
+    },
+    "utils/helpers/index.js": {
+      "status": "match",
+      "expectedSha256": "c0c30460ea58cc9165807e024a5f9b574017c2d42786b2352d1dafe4d7d53329",
+      "found": [
+        {
+          "path": "utils/helpers/index.js",
+          "sha256": "c0c30460ea58cc9165807e024a5f9b574017c2d42786b2352d1dafe4d7d53329",
+          "matchesReference": true
+        }
+      ]
+    }
+  },
+  "asarArchives": [],
+  "localeScan": {
+    "scanned": true,
+    "scope": ".",
+    "scriptFiles": 29751,
+    "staticFilesSkipped": 0,
+    "hits": [],
+    "informationalHits": [
+      {
+        "path": "node_modules/dayjs/esm/locale/af.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/am.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-dz.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-iq.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-kw.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-ly.js",
+        "line": 26,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-ma.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-sa.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar-tn.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ar.js",
+        "line": 76,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/az.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/be.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bg.js",
+        "line": 54,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bi.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bm.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bn-bd.js",
+        "line": 80,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bn.js",
+        "line": 71,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bo.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/br.js",
+        "line": 92,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/bs.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ca.js",
+        "line": 43,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/cs.js",
+        "line": 119,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/cv.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/cy.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/da.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/de-at.js",
+        "line": 62,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/de-ch.js",
+        "line": 62,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/de.js",
+        "line": 63,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/dv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/el.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-au.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-ca.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-gb.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-ie.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-il.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-in.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-nz.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-sg.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/en-tt.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/eo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/es-do.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/es-mx.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/es-pr.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/es-us.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/es.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/et.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/eu.js",
+        "line": 42,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fa.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fi.js",
+        "line": 87,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fr-ca.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fr-ch.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fr.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/fy.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ga.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/gd.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/gl.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/gom-latn.js",
+        "line": 24,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/gu.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/he.js",
+        "line": 77,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/hi.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/hr.js",
+        "line": 52,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ht.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/hu.js",
+        "line": 60,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/hy-am.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/id.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/is.js",
+        "line": 67,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/it-ch.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/it.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ja.js",
+        "line": 44,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/jv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ka.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/kk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/km.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/kn.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ko.js",
+        "line": 44,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ku.js",
+        "line": 76,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ky.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/lb.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/lo.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/lt.js",
+        "line": 69,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/lv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/me.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/mi.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/mk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ml.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/mn.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/mr.js",
+        "line": 22,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ms-my.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ms.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/mt.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/my.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/nb.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ne.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/nl-be.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/nl.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/nn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/oc-lnc.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/pa-in.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/pl.js",
+        "line": 86,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/pt-br.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/pt.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/rn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ro.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ru.js",
+        "line": 98,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/rw.js",
+        "line": 34,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sd.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/se.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/si.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sk.js",
+        "line": 120,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sl.js",
+        "line": 140,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sq.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sr-cyrl.js",
+        "line": 73,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sr.js",
+        "line": 73,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ss.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sv-fi.js",
+        "line": 45,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sv.js",
+        "line": 43,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/sw.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ta.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/te.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tet.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tg.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/th.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tl-ph.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tlh.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tr.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tzl.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tzm-latn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/tzm.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ug-cn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/uk.js",
+        "line": 76,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/ur.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/uz-latn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/uz.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/vi.js",
+        "line": 42,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/x-pseudo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/yo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/zh-cn.js",
+        "line": 66,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/zh-hk.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/zh-tw.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/locale/zh.js",
+        "line": 66,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/plugin/customParseFormat/index.js",
+        "line": 290,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/esm/plugin/duration/index.js",
+        "line": 248,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/af.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/am.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-dz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-iq.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-kw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-ly.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-ma.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-sa.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar-tn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ar.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/az.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/be.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bm.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bn-bd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/br.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/bs.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/cs.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/cv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/cy.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/da.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/de-at.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/de-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/de.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/dv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/el.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-au.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-gb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-ie.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-il.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-in.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-nz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-sg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/en-tt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/eo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/es-do.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/es-mx.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/es-pr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/es-us.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/es.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/et.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/eu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fa.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fr-ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fr-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/fy.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ga.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/gd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/gl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/gom-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/gu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/he.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/hi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/hr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ht.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/hu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/hy-am.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/id.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/is.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/it-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/it.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ja.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/jv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ka.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/kk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/km.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/kn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ko.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ku.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ky.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/lb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/lo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/lt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/lv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/me.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/mi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/mk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ml.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/mn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/mr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ms-my.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ms.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/mt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/my.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/nb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ne.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/nl-be.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/nl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/nn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/oc-lnc.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/pa-in.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/pl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/pt-br.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/pt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/rn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ro.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ru.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/rw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/se.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/si.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sq.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sr-cyrl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ss.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sv-fi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/sw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ta.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/te.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tet.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/th.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tl-ph.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tlh.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tzl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tzm-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/tzm.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ug-cn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/uk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/ur.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/uz-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/uz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/vi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/x-pseudo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/yo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/zh-cn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/zh-hk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/zh-tw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/locale/zh.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/plugin/customParseFormat.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/dayjs/plugin/duration.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/dist/exceljs.bare.js",
+        "line": 30070,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/dist/exceljs.bare.min.js",
+        "line": 10,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/dist/exceljs.js",
+        "line": 34044,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/dist/exceljs.min.js",
+        "line": 10,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/af.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/am.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-dz.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-iq.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-kw.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-ly.js",
+        "line": 26,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-ma.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-sa.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar-tn.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ar.js",
+        "line": 80,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/az.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/be.js",
+        "line": 101,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bg.js",
+        "line": 54,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bi.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bm.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bn-bd.js",
+        "line": 80,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bn.js",
+        "line": 71,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bo.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/br.js",
+        "line": 92,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/bs.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ca.js",
+        "line": 43,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/cs.js",
+        "line": 119,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/cv.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/cy.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/da.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/de-at.js",
+        "line": 62,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/de-ch.js",
+        "line": 62,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/de.js",
+        "line": 63,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/dv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/el.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-au.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-ca.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-gb.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-ie.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-il.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-in.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-nz.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-sg.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/en-tt.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/eo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/es-do.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/es-mx.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/es-pr.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/es-us.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/es.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/et.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/eu.js",
+        "line": 42,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fa.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fi.js",
+        "line": 87,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fr-ca.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fr-ch.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fr.js",
+        "line": 40,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/fy.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ga.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/gd.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/gl.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/gom-latn.js",
+        "line": 24,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/gu.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/he.js",
+        "line": 77,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/hi.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/hr.js",
+        "line": 52,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ht.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/hu.js",
+        "line": 60,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/hy-am.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/id.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/is.js",
+        "line": 67,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/it-ch.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/it.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ja.js",
+        "line": 44,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/jv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ka.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/kk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/km.js",
+        "line": 41,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/kn.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ko.js",
+        "line": 44,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ku.js",
+        "line": 76,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ky.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/lb.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/lo.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/lt.js",
+        "line": 69,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/lv.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/me.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/mi.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/mk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ml.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/mn.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/mr.js",
+        "line": 22,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ms-my.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ms.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/mt.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/my.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/nb.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ne.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/nl-be.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/nl.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/nn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/oc-lnc.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/pa-in.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/pl.js",
+        "line": 86,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/pt-br.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/pt.js",
+        "line": 39,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/rn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ro.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ru.js",
+        "line": 98,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/rw.js",
+        "line": 34,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sd.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/se.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/si.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sk.js",
+        "line": 120,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sl.js",
+        "line": 140,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sq.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sr-cyrl.js",
+        "line": 73,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sr.js",
+        "line": 73,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ss.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sv-fi.js",
+        "line": 45,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sv.js",
+        "line": 43,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/sw.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ta.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/te.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tet.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tg.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/th.js",
+        "line": 37,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tk.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tl-ph.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tlh.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tr.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tzl.js",
+        "line": 23,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tzm-latn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/tzm.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ug-cn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/uk.js",
+        "line": 76,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/ur.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/uz-latn.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/uz.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/vi.js",
+        "line": 42,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/x-pseudo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/yo.js",
+        "line": 38,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/zh-cn.js",
+        "line": 66,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/zh-hk.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/zh-tw.js",
+        "line": 64,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/locale/zh.js",
+        "line": 66,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/plugin/customParseFormat/index.js",
+        "line": 303,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/esm/plugin/duration/index.js",
+        "line": 248,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/af.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/am.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-dz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-iq.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-kw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-ly.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-ma.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-sa.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar-tn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ar.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/az.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/be.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bm.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bn-bd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/br.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/bs.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/cs.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/cv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/cy.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/da.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/de-at.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/de-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/de.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/dv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/el.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-au.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-gb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-ie.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-il.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-in.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-nz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-sg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/en-tt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/eo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/es-do.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/es-mx.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/es-pr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/es-us.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/es.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/et.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/eu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fa.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fr-ca.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fr-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/fy.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ga.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/gd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/gl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/gom-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/gu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/he.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/hi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/hr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ht.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/hu.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/hy-am.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/id.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/is.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/it-ch.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/it.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ja.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/jv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ka.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/kk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/km.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/kn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ko.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ku.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ky.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/lb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/lo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/lt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/lv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/me.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/mi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/mk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ml.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/mn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/mr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ms-my.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ms.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/mt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/my.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/nb.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ne.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/nl-be.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/nl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/nn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/oc-lnc.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/pa-in.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/pl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/pt-br.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/pt.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/rn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ro.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ru.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/rw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sd.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/se.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/si.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sq.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sr-cyrl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ss.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sv-fi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sv.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/sw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ta.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/te.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tet.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tg.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/th.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tl-ph.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tlh.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tr.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tzl.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tzm-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/tzm.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ug-cn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/uk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/ur.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/uz-latn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/uz.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/vi.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/x-pseudo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/yo.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/zh-cn.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/zh-hk.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/zh-tw.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/locale/zh.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/plugin/customParseFormat.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/exceljs/node_modules/dayjs/plugin/duration.js",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/y18n/build/index.cjs",
+        "line": 94,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/y18n/build/lib/index.js",
+        "line": 88,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/yargs/build/index.cjs",
+        "line": 1,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/yargs/build/lib/yargs-factory.js",
+        "line": 904,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/yargs/build/lib/yargs-factory.js",
+        "line": 910,
+        "reason": "file_does_not_import_moment"
+      },
+      {
+        "path": "node_modules/yargs/build/lib/yargs-factory.js",
+        "line": 1080,
+        "reason": "file_does_not_import_moment"
+      }
+    ]
+  },
+  "note": "只比对字节与扫描文本；找不到、多份或不一致都不当作已确认。路径相对安装目录。"
+}
