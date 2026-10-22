@@ -1,0 +1,7 @@
+--- prompt.original.txt
++++ prompt.pinpoint.txt
+@@ -4,3 +4,4 @@
+ 引用必须逐字取自所引用的上下文，contextIndex 为从 0 开始的片段序号。引用能定位不等于语义支持。
+ 只返回一个 JSON 对象，格式：{"verdict":"supported|insufficient|contradicted","reason":"中文理由","citations":[{"contextIndex":0,"quote":"原文引用"}]}。
+ 没有可用引用时 citations 返回空数组，不编造引用。不重新抽取、改写或新增待核查陈述。
++请逐一核对陈述所引的条、款、项是否与检索上下文中的依据一致，不能仅因内容主题相近就接受具体定位。

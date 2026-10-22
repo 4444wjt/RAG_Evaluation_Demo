@@ -1,0 +1,59 @@
+{
+  "method": "输入=历史实际输入token×新消息UTF-8字节数/历史消息字节数，向上取整；输出=历史每请求实际均值×请求数，向上取整。",
+  "limitation": "不是账单、tokenizer 实测或费用上限；逐款提示可能增加输出；单价按任务指定的2026-10-21价格，未重新联网核价。",
+  "judges": {
+    "deepseek": {
+      "historicalRequests": 42,
+      "historicalInputTokens": 23766,
+      "historicalOutputTokens": 4016,
+      "historicalMessageBytes": 124403,
+      "actualModels": [
+        "deepseek-flash"
+      ],
+      "byPrompt": {
+        "original": {
+          "requests": 66,
+          "messageBytes": 193151,
+          "inputTokensEstimate": 36900,
+          "outputTokensEstimate": 6311,
+          "costCnyEstimate": 0.124288
+        },
+        "pinpoint": {
+          "requests": 66,
+          "messageBytes": 202721,
+          "inputTokensEstimate": 38728,
+          "outputTokensEstimate": 6311,
+          "costCnyEstimate": 0.127944
+        }
+      },
+      "costCnyEstimate": 0.252232
+    },
+    "qwen72b": {
+      "historicalRequests": 42,
+      "historicalInputTokens": 25872,
+      "historicalOutputTokens": 3704,
+      "historicalMessageBytes": 124403,
+      "actualModels": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ],
+      "byPrompt": {
+        "original": {
+          "requests": 66,
+          "messageBytes": 193151,
+          "inputTokensEstimate": 40170,
+          "outputTokensEstimate": 5821,
+          "costCnyEstimate": 0.189943
+        },
+        "pinpoint": {
+          "requests": 66,
+          "messageBytes": 202721,
+          "inputTokensEstimate": 42160,
+          "outputTokensEstimate": 5821,
+          "costCnyEstimate": 0.198162
+        }
+      },
+      "costCnyEstimate": 0.388105
+    }
+  },
+  "totalCostCnyEstimate": 0.640337
+}
