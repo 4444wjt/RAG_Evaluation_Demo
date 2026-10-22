@@ -115,6 +115,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 - 四次归档运行的 100 个回答中只检出 10-14 的 F04。该回答引用了节选中没有的第十八条，并称第十九条未规定时限；同次运行的逐句核对把后一句判为有依据。
 - 42 条注入陈述上，规则检出 29 条错误中的 24 条，13 条对照无误报（离线口径、无裁判对比）。
 - 与两个通用裁判对比（按运行前确认的口径分组）：条号类 16 条，规则检出 14 条，与 DeepSeek 持平，Qwen2.5-72B 只检出 4 条；内容类 8 条，规则在覆盖的两类上检出 6/6，「否定改肯定」2 条由裁判兜底，合用时 8/8。规则零误报，两个裁判各误报 1 条。两套口径的规则结果相同，只是分组不同。详见 [法条结构核对](docs/competition/statute-check/README.md)。
+- [款项定位双提示运行](docs/competition/statute-check/20261021-pinpoint-run/README.md)：31 条款级错误，规则检出 30 条、DeepSeek 1→22 条、Qwen2.5-72B 1→1 条；DeepSeek 支持对照误报 2→7 条。3 条同款另一项规则全漏、DeepSeek 两种提示都检出。
 
 **用了本平台好在哪：** 同一次 FAIL，只看 Ragas 总分是 0.59（把 5 道正确拒答的负向题算作 0 分）。本平台给出正向题 0.7375，并说明：作答题 40 条陈述都有原文依据；拦截的 76% 来自 4 道错误前提题的拒答，该修提示词而不是检索；区间跨门槛，属于保守拦截。详见 [同一次 FAIL 的三种看法](docs/competition/value-comparison.md)。
 
@@ -222,6 +223,8 @@ git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reli
 git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
 ```
 
+Windows 上请克隆到较短的路径，例如 `C:\src`。归档证据的目录嵌套较深，克隆目录本身超过约 118 个字符时，检出会报 `Filename too long`；这时在克隆命令里加 `-c core.longpaths=true`，只对这个仓库生效。
+
 完成克隆后进入项目目录：
 
 ```powershell
@@ -236,7 +239,7 @@ npm ci
 npm run dev
 ```
 
-打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。
+打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。在作者的 Windows 机器上用全新目录、空 npm 缓存实测，从克隆到看到演示约 4 分钟，见 [冷启动计时实测](docs/competition/reproducibility.md#冷启动计时实测)。
 
 只看演示，到这里就够了。想验证不需要密钥的测试，直接跳到下文「开源贡献」里的前端验证和 Python 离线验证，不必安装第 3 步的完整依赖。
 
