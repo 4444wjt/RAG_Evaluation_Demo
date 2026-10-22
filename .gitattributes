@@ -450,3 +450,16 @@
 /docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_injection.py text eol=lf
 /docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_pinpoint.py text eol=lf
 /docs/competition/statute-check/20261021-pinpoint-run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/README.md text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/analysis/reasons.json text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/README.md text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/analysis/posthoc.json text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/formal-check/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/formal-check/posthoc.json text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/SHA256SUMS.txt text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/summary.json text eol=lf
