@@ -394,3 +394,26 @@
 /docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/services/trace.py -text
 /docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/tools/competition/evaluate_external.py -text
 /docs/competition/external-rag/20261021-anythingllm-qwen72b/testset.json -text
+
+# 法条注入正式运行（statute-check/20261021-formal）的 authorization.json 与 SHA256SUMS.txt 记录了以下在库工具的原始字节哈希，
+# analyze 还会用在库的 statute_check.py 重算规则；按记录逐个固定换行符（judge_compare.py 当时按 CRLF 记录）。
+/tools/competition/statute_injection.py text eol=lf
+/backend/core/statute_check.py text eol=lf
+/tools/competition/judge_sensitivity.py text eol=lf
+/tools/competition/judge_compare.py text eol=crlf
+/tools/competition/run_evidence.py text eol=lf
+/tools/competition/judge_calibration.py text eol=lf
+# 款项定位准备工具：源码与测试的哈希绑定在其授权草稿中，固定为 LF。
+/tools/competition/statute_pinpoint.py text eol=lf
+/tests/test_statute_pinpoint.py text eol=lf
+
+# 款项定位已确认材料与规则离线结果：逐文件固定 LF。
+/docs/competition/statute-check/20261021-pinpoint-prep/README.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/RUN_CONFIRMATION.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/cost-estimate.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompt.pinpoint.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompts.diff text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/rules.json text eol=lf
