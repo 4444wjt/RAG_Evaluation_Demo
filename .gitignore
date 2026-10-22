@@ -220,3 +220,6 @@ Thumbs.db
 
 # 介绍文档 PDF 的 HTML 中间产物（由 tools/competition/gen_intro_html.py 生成）
 docs/competition/project-introduction.html
+
+# Basic Memory 的本地记忆目录（跨会话共享，不进仓库）
+/.memory/
