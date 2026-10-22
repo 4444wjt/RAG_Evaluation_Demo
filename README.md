@@ -25,7 +25,7 @@
 
 项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
-**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。
+**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。2026-10-22 又用银行公开的存款保险问答 11 题测了 AnythingLLM 源码构建实例：门禁 PASS，但 6 道负向题全部给出了节选外的内容，说明只看正向题的门禁拦不住不拒答的应用，见 [银行问答实测](docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md)。
 
 [快速启动](#快速启动) · [作品介绍](docs/competition/project-introduction.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
@@ -116,6 +116,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 - 42 条注入陈述上，规则检出 29 条错误中的 24 条，13 条对照无误报（离线口径、无裁判对比）。
 - 与两个通用裁判对比（按运行前确认的口径分组）：条号类 16 条，规则检出 14 条，与 DeepSeek 持平，Qwen2.5-72B 只检出 4 条；内容类 8 条，规则在覆盖的两类上检出 6/6，「否定改肯定」2 条由裁判兜底，合用时 8/8。规则零误报，两个裁判各误报 1 条。两套口径的规则结果相同，只是分组不同。详见 [法条结构核对](docs/competition/statute-check/README.md)。
 - [款项定位双提示运行](docs/competition/statute-check/20261021-pinpoint-run/README.md)：31 条款级错误，规则检出 30 条、DeepSeek 1→22 条、Qwen2.5-72B 1→1 条；DeepSeek 支持对照误报 2→7 条。3 条同款另一项规则全漏、DeepSeek 两种提示都检出。
+- 原提示下两个裁判漏检 60 次，其中 8 次理由里已写出正确款号，仍判「支持」，见 [漏检理由分类](docs/competition/statute-check/20261022-pinpoint-reasons/README.md)。[事后补查](docs/competition/statute-check/20261022-posthoc-locate/README.md)补写了项级比较，那 3 条仍未查出；规则为已检出的 31 条错误指出内容实际所在位置，28 条正确、0 条错误。两项都是看过结果后在同一批材料上做的检验。
 
 **用了本平台好在哪：** 同一次 FAIL，只看 Ragas 总分是 0.59（把 5 道正确拒答的负向题算作 0 分）。本平台给出正向题 0.7375，并说明：作答题 40 条陈述都有原文依据；拦截的 76% 来自 4 道错误前提题的拒答，该修提示词而不是检索；区间跨门槛，属于保守拦截。详见 [同一次 FAIL 的三种看法](docs/competition/value-comparison.md)。
 

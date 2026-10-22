@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "publicScope": "仅问题、来源链接、本项目依据与统计；银行原答案、抓取全文、应用回答原文与 Trace 陈述原文留在本地。",
+  "run": {
+    "applicationName": "AnythingLLM v1.18.0（源码构建实例）· 银行公开问答11题",
+    "status": "completed",
+    "startedAt": "2026-10-22T03:44:07.166272+00:00",
+    "finishedAt": "2026-10-22T04:07:39.946223+00:00",
+    "elapsedSeconds": 1412.782,
+    "itemCount": 11,
+    "applicationRetries": 0,
+    "judgeMaxRetries": 2,
+    "thresholds": {
+      "faithfulness": 0.8,
+      "context_precision": 0.8
+    },
+    "gitHead": "3257f783f8df8552e1466be72a3e684dcf6d0f4a"
+  },
+  "judgeModel": "Qwen/Qwen2.5-72B-Instruct",
+  "gate": {
+    "passed": true,
+    "status": "PASS",
+    "sampleScope": {
+      "positiveTotal": 5,
+      "positiveEvaluated": 5,
+      "validPositiveFaithfulness": 5,
+      "validPositiveContextPrecision": 5
+    }
+  },
+  "metrics": {
+    "faithfulness": 0.5934,
+    "context_precision": 0.4545,
+    "answer_relevancy": 0.6177,
+    "answer_correctness": 0.372,
+    "context_recall": 0.4091,
+    "pos_faithfulness": 0.895,
+    "pos_context_precision": 1.0,
+    "neg_faithfulness": 0.3421,
+    "neg_context_precision": 0.0,
+    "refusal_accuracy": 0.5,
+    "trace_statement_count": 47,
+    "trace_fabrication_count": 22,
+    "trace_fact_error_count": 0
+  },
+  "negativeRefusal": {
+    "total": 6,
+    "applicationSelfReportedRefused": 0,
+    "platformDetectorRefused": 3,
+    "authorReviewGivesOutOfExcerptContent": 6,
+    "authorReviewWithBoundaryStatement": 4
+  },
+  "authorReviewCriterion": {
+    "decidedBy": "Ll",
+    "decidedAt": "2026-10-22",
+    "criterion": "负向题逐题二元判定：回答是否给出所给节选之外的内容。有边界声明不改变判定；不使用「部分拒答」。",
+    "appliedBy": "Claude 按作者口径逐题判定，依据为回答文本与节选 scenarios/deposit_insurance.txt 的比对；作者 Ll 于 2026-10-22 逐题确认（原文：「已确认」）。"
+  },
+  "judgeCalls": {
+    "total": 158,
+    "completed": 107,
+    "errors": {
+      "RateLimitError": 51
+    }
+  },
+  "items": [
+    {
+      "id": "B01",
+      "caseType": "positive",
+      "question": "什么是存款保险？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "存款保险是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，管理机构依照条例向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。其目的包括依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定。",
+        "coverage": "完全能答",
+        "basisArticles": [
+          "第一条",
+          "第三条"
+        ],
+        "expectedBehavior": "只依据九条节选作答，不补入银行答案中的外部事实。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": null,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.7022574474291854,
+        "answer_correctness": 0.24379797398417538,
+        "context_recall": 1.0
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 3,
+        "byVerdict": {
+          "supported": 3
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 10,
+        "errors": {}
+      }
+    },
+    {
+      "id": "B02",
+      "caseType": "positive",
+      "question": "存款保险的保障范围是什么？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构应当投保。投保机构境外分支机构及外国银行境内分支机构原则上不适用，另有安排的除外。被保险存款包括人民币和外币存款，金融机构同业存款、投保机构高级管理人员在本机构的存款及管理机构规定不予保险的其他存款除外。",
+        "coverage": "完全能答",
+        "basisArticles": [
+          "第二条",
+          "第四条"
+        ],
+        "expectedBehavior": "只依据九条节选作答，不补入银行答案中的外部事实。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": null,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.7929725442474427,
+        "answer_correctness": 0.6816380185159501,
+        "context_recall": 1.0
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 8,
+        "byVerdict": {
+          "supported": 8
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 10,
+        "errors": {}
+      }
+    },
+    {
+      "id": "B03",
+      "caseType": "positive",
+      "question": "存款保险偿付限额是多少？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "最高偿付限额为人民币50万元。同一存款人在同一家投保机构所有被保险存款账户的本金和利息合并计算，限额以内全额偿付；超出限额的部分依法从投保机构清算财产中受偿。",
+        "coverage": "完全能答",
+        "basisArticles": [
+          "第五条"
+        ],
+        "expectedBehavior": "只依据九条节选作答，不补入银行答案中的外部事实。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": null,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.8193916720982374,
+        "answer_correctness": 0.9915244220148591,
+        "context_recall": 1.0
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 3,
+        "byVerdict": {
+          "supported": 3
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 10,
+        "errors": {}
+      }
+    },
+    {
+      "id": "B04",
+      "caseType": "positive",
+      "question": "存款人需要交纳保费吗？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "不需要由存款人交纳。依第三条和第十条，保费由投保机构向存款保险基金管理机构交纳，按被保险存款和适用费率计算，每6个月交纳一次。",
+        "coverage": "完全能答",
+        "basisArticles": [
+          "第三条",
+          "第十条"
+        ],
+        "expectedBehavior": "只依据九条节选作答，不补入银行答案中的外部事实。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": null,
+      "metrics": {
+        "faithfulness": 0.6,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.7857697854566877,
+        "answer_correctness": 0.8652946744812331,
+        "context_recall": 0.5
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 3,
+        "byVerdict": {
+          "supported": 3
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 10,
+        "errors": {}
+      }
+    },
+    {
+      "id": "B05",
+      "caseType": "positive",
+      "question": "什么情况下进行偿付？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "管理机构担任投保机构的接管组织、实施被撤销投保机构的清算、人民法院裁定受理投保机构破产申请，或经国务院批准的其他情形发生时，存款人有权要求在条例规定的限额内偿付。管理机构应依条例在该情形发生之日起7个工作日内足额偿付存款。",
+        "coverage": "完全能答",
+        "basisArticles": [
+          "第十九条",
+          "第五条"
+        ],
+        "expectedBehavior": "只依据九条节选作答，不补入银行答案中的外部事实。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": null,
+      "metrics": {
+        "faithfulness": 0.875,
+        "context_precision": 0.99999999995,
+        "answer_relevancy": 0.5965357875790361,
+        "answer_correctness": 0.467679438092382,
+        "context_recall": 1.0
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 3,
+        "byVerdict": {
+          "supported": 3
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 10,
+        "errors": {}
+      }
+    },
+    {
+      "id": "B06",
+      "caseType": "negative",
+      "question": "什么时候开始实施？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        },
+        {
+          "bank": "邮储银行",
+          "url": "https://www.psbc.com/cn/gyyc/ckbx/"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": false,
+        "basis": "直接给出施行日期，节选中没有该日期。"
+      },
+      "metrics": {
+        "faithfulness": 0.0,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.6176868181639663,
+        "answer_correctness": 0.08615531912927843,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "call_error",
+        "statements": 0,
+        "byVerdict": {},
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": "RateLimitError"
+      },
+      "judgeCalls": {
+        "total": 16,
+        "completed": 9,
+        "errors": {
+          "RateLimitError": 7
+        }
+      }
+    },
+    {
+      "id": "B07",
+      "caseType": "negative",
+      "question": "存款保险标识有什么作用？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": true,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": true,
+        "basis": "先声明节选未提及标识，再按通行做法列出标识的多项作用与使用要求，节选中均无。"
+      },
+      "metrics": {
+        "faithfulness": 0.3333333333333333,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.9463776853363872,
+        "answer_correctness": 0.11076750595396112,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "partial",
+        "statements": 14,
+        "byVerdict": {
+          "fabrication": 10,
+          "supported": 4
+        },
+        "rejectedStatements": 1,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 30,
+        "completed": 10,
+        "errors": {
+          "RateLimitError": 20
+        }
+      }
+    },
+    {
+      "id": "B08",
+      "caseType": "negative",
+      "question": "存款保险制度目前实施进展怎么样？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": true,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": true,
+        "basis": "先声明材料不含进展信息，再在「制度框架」中写入节选没有的施行日期，并描述制度运行情况与数据出处，节选中均无。"
+      },
+      "metrics": {
+        "faithfulness": 0.6111111111111112,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.119567732902644,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "call_error",
+        "statements": 0,
+        "byVerdict": {},
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": "RateLimitError"
+      },
+      "judgeCalls": {
+        "total": 10,
+        "completed": 9,
+        "errors": {
+          "RateLimitError": 1
+        }
+      }
+    },
+    {
+      "id": "B09",
+      "caseType": "negative",
+      "question": "哪些机构可以使用存款保险标识？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": true,
+        "basis": "由第二条投保机构范围推出标识使用主体；节选没有任何关于标识的规定，投保与使用标识之间的联系不在节选中。回答末尾注明节选未规定标识。属由节选条文外推，判定时最接近边界。"
+      },
+      "metrics": {
+        "faithfulness": 0.5454545454545454,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.8801745217687184,
+        "answer_correctness": 0.10583413329559645,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "call_error",
+        "statements": 0,
+        "byVerdict": {},
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": "RateLimitError"
+      },
+      "judgeCalls": {
+        "total": 19,
+        "completed": 9,
+        "errors": {
+          "RateLimitError": 10
+        }
+      }
+    },
+    {
+      "id": "B10",
+      "caseType": "negative",
+      "question": "对存款保险标识的使用如何进行监督管理？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": true,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": true,
+        "basis": "先声明节选未规定，再补充监管主体、使用要求和一份具体规章名称，节选中均无。"
+      },
+      "metrics": {
+        "faithfulness": 0.5625,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.0,
+        "answer_correctness": 0.33324084360285416,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "partial",
+        "statements": 5,
+        "byVerdict": {
+          "fabrication": 5
+        },
+        "rejectedStatements": 3,
+        "answerMode": "refusal_explanation",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 18,
+        "completed": 10,
+        "errors": {
+          "RateLimitError": 8
+        }
+      }
+    },
+    {
+      "id": "B11",
+      "caseType": "negative",
+      "question": "存款保险标识图样寓意？",
+      "sources": [
+        {
+          "bank": "浦发银行",
+          "url": "https://www.spdb.com.cn/home/sygg/202011/P020201130686980728356.pdf"
+        }
+      ],
+      "basis": {
+        "ground_truth": "文档未提及",
+        "coverage": "不能答",
+        "basisArticles": [],
+        "expectedBehavior": "说明所给资料未提及，拒答或明确无法据此回答，不凭常识补答案。"
+      },
+      "applicationStatus": "answered",
+      "platformRefusalDetector": false,
+      "authorReview": {
+        "givesOutOfExcerptContent": true,
+        "hasBoundaryStatement": false,
+        "basis": "直接描述标识图样与寓意，节选中没有标识。"
+      },
+      "metrics": {
+        "faithfulness": 0.0,
+        "context_precision": 0.0,
+        "answer_relevancy": 0.6533035317059972,
+        "answer_correctness": 0.0869023947673273,
+        "context_recall": 0.0
+      },
+      "trace": {
+        "status": "ok",
+        "statements": 8,
+        "byVerdict": {
+          "fabrication": 7,
+          "supported": 1
+        },
+        "rejectedStatements": 0,
+        "answerMode": "normal",
+        "errorType": null
+      },
+      "judgeCalls": {
+        "total": 15,
+        "completed": 10,
+        "errors": {
+          "RateLimitError": 5
+        }
+      }
+    }
+  ],
+  "inputs": {
+    "SHA256SUMS.txt": "c1dc5c9771dda0f75513506a274203097856cea737a72ad969c0fcb9c13dfa1f",
+    "manifest.json": "c7e74a7860a8f9c9bdf0c3f85ce9c5c075d09222128fb0bd3d54d0861a50b547",
+    "records.jsonl": "5095ba5d9764fc2cc9979941e213f89ec9830a4fec7df096b06a59b2551cb63f",
+    "result.json": "f504cf0645d991c5ebbda0764d36fad33864e372afa4f72dc814c9a8c059b921",
+    "testset.json": "8b31a53d39bb26164407fd2f2b3fe31c6a136c1666411f445ee3b68346ed20ef",
+    "review-decisions.json": "dc11f11373d00159a1ff1eb9953e5435e2d7c2ec53e5b0c50905765606d0e83a",
+    "authorization.json": "eb80f614da64c13e3703e2275cdb44b6471562c59c3e6f16f7c4e446972c8f10"
+  }
+}
