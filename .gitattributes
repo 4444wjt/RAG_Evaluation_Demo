@@ -417,3 +417,36 @@
 /docs/competition/statute-check/20261021-pinpoint-prep/prompt.pinpoint.txt text eol=lf
 /docs/competition/statute-check/20261021-pinpoint-prep/prompts.diff text eol=lf
 /docs/competition/statute-check/20261021-pinpoint-prep/rules.json text eol=lf
+
+# 款项定位双提示运行：逐文件固定源字节；CRLF 副本不转换，纯 LF 文件固定 LF。
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/README.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/events.jsonl -text
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/prompt.pinpoint.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tests/test_statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_compare.py -text
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/SHA256SUMS.txt text eol=lf

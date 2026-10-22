@@ -1,0 +1,105 @@
+{
+  "status": "authorized",
+  "authorizedBy": "Ll",
+  "authorizedAt": "2026-10-21",
+  "packageSha256": "a70506f4502780194fce6c3f611cc494e1bb371f9c5b2d36749fbc32e9fc958f",
+  "configurationSha256": "dbb3a62076b47fdd7ac6c9a6788553230211a252bc9ed5cdf7607d46742b151c",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "toolFiles": {
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_compare.py": "8db1a8740ebb1b92b2853331663e2c1ea836ef80eeca5300b4edffa342cde127",
+    "tools/competition/run_evidence.py": "67d3d8194392f15b9ce884b5bb69f6df154396936f45fb99ea28276ce6999a43",
+    "tools/competition/judge_calibration.py": "65d689e70371240293fc8d439214efb9bab2cabaa9f920b87f909919ce4a0b31"
+  },
+  "maxRequests": 264,
+  "maxRetries": 0,
+  "budgetCny": 2,
+  "outputDirectory": "work/statute-injection/pinpoint-20261021/run",
+  "acceptNoHardBillingCap": true,
+  "allowPaidCalls": true,
+  "estimates": {
+    "method": "输入=历史实际输入token×新消息UTF-8字节数/历史消息字节数，向上取整；输出=历史每请求实际均值×请求数，向上取整。",
+    "limitation": "不是账单、tokenizer 实测或费用上限；逐款提示可能增加输出；单价按任务指定的2026-10-21价格，未重新联网核价。",
+    "judges": {
+      "deepseek": {
+        "historicalRequests": 42,
+        "historicalInputTokens": 23766,
+        "historicalOutputTokens": 4016,
+        "historicalMessageBytes": 124403,
+        "actualModels": [
+          "deepseek-flash"
+        ],
+        "byPrompt": {
+          "original": {
+            "requests": 66,
+            "messageBytes": 193151,
+            "inputTokensEstimate": 36900,
+            "outputTokensEstimate": 6311,
+            "costCnyEstimate": 0.124288
+          },
+          "pinpoint": {
+            "requests": 66,
+            "messageBytes": 202721,
+            "inputTokensEstimate": 38728,
+            "outputTokensEstimate": 6311,
+            "costCnyEstimate": 0.127944
+          }
+        },
+        "costCnyEstimate": 0.252232
+      },
+      "qwen72b": {
+        "historicalRequests": 42,
+        "historicalInputTokens": 25872,
+        "historicalOutputTokens": 3704,
+        "historicalMessageBytes": 124403,
+        "actualModels": [
+          "Qwen/Qwen2.5-72B-Instruct"
+        ],
+        "byPrompt": {
+          "original": {
+            "requests": 66,
+            "messageBytes": 193151,
+            "inputTokensEstimate": 40170,
+            "outputTokensEstimate": 5821,
+            "costCnyEstimate": 0.189943
+          },
+          "pinpoint": {
+            "requests": 66,
+            "messageBytes": 202721,
+            "inputTokensEstimate": 42160,
+            "outputTokensEstimate": 5821,
+            "costCnyEstimate": 0.198162
+          }
+        },
+        "costCnyEstimate": 0.388105
+      }
+    },
+    "totalCostCnyEstimate": 0.640337
+  },
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "source": "任务指定的2026-10-21单价，与正式归档当日单价一致；未来运行须重新核实。",
+      "checkedAt": "2026-10-21"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "source": "任务指定的2026-10-21单价，与正式归档当日单价一致；未来运行须重新核实。",
+      "checkedAt": "2026-10-21"
+    }
+  },
+  "note": "作者授权原文：款项定位运行授权：授权人 Ll，日期 2026-10-21。预算上限 ¥2，按每次请求前预留计费，到上限即停，不重试。材料为 work/statute-injection/pinpoint-20261021/confirmed/，须校验 packageSha256 与授权绑定一致、67 处 review 全为 confirmed。不覆盖已有归档，输出到新的运行目录。 执行口径：每次请求发送前按「消息 UTF-8 字节数 + 256」作输入 token、maxTokens 作输出 token，以授权单价预留本次费用；已累计费用加本次预留超过 budgetCny 即停止、不发送。返回 usage 有效时按实际 usage 与授权单价累计；usage 缺失（含调用失败）时按本次预留额累计并停止；实际模型缺失、或实际计费超过本次预留时同样停止。不重试。按授权单价估算，不是供应商实际扣费；供应商侧没有费用自动封顶。",
+  "promptSetSha256": "403d48b0d42617a9a140af06b89df0ff9f868d7b9f8c28da0e93ce42b223c911",
+  "promptHashes": {
+    "original": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+    "pinpoint": "4f5636f11044fdd4acbff80b8aa62cb37e9cbe9c56bb78a42f2f07b081127669"
+  },
+  "preparationToolFiles": {
+    "tools/competition/statute_pinpoint.py": "f275d133f56b2f967a862a4882f0f491ef51a201dc226b9f7416cfe07f350ebc",
+    "tests/test_statute_pinpoint.py": "4803d53ccf22bc8537497a8b9833f20b49e1b9eaba37353438dbf61b8f217c30"
+  }
+}

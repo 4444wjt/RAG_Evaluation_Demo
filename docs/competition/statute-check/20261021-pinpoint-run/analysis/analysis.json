@@ -1,0 +1,1399 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-pinpoint-prep-v1",
+  "analysisPlan": [
+    "拟定口径，必须作者逐条确认后锁定；运行后不改。变更材料或口径须另起版本并重新授权。",
+    "主指标：款项定位错误检出条数及支持对照误报条数；四类错误分别报告，并汇总款级与项级；省略款号单列为支持对照。",
+    "规则仅 error 级算检出；裁判 contradicted 或 insufficient 算检出；supported 算未检出；调用或解析失败单列，不能当成未检出或从计划总数中静默删除。",
+    "逐裁判配对比较 original 与 pinpoint：新增检出、丢失检出、新增误报、减少误报，并列出对应 ID；报告规则与两种提示下裁判任一检出的并集条数。",
+    "两种提示使用完全相同的陈述、问题、原检索片段、模型参数与顺序配对；裁判只收到 question、statement、contexts，不发送预期、类型、规则或人审标签。",
+    "规则另读完整法规节选，裁判只读原检索片段；信息条件不同，不称严格等信息比较。缺标题或缺前款的证据另列，不把定位缺失强判为矛盾。",
+    "原始及正确定位对照允许只说条文的一部分；省去款号不等于引用第一款，内容有依据则拟标 supported。",
+    "配方按结构穷举适用底稿的同条其他款、同款其他项；不存在款/项取最大号加一；不按离线检出结果选样。S32 只作原样对照，S41 省款与原样重复故不新增。",
+    "S26 的历史标注 V/A=支持、B=无法判断，不能宣称三人一致支持。主表保留其待确认预期；同时固定报告剔除 S26 全部变体的敏感性条数。",
+    "只报条数，不报百分比、置信区间或显著性；共享底稿、单一法规、项级仅一份底稿，均非独立样本，不推广总体效果。",
+    "单次配对、不重试；未来执行需单独实现并审核双提示运行器及绑定两提示哈希的授权验证，本工具不执行模型请求。"
+  ],
+  "byType": {
+    "control": {
+      "items": 14,
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 14,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "pinpoint": {
+            "valid": 14,
+            "notSupported": 2,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 2
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 14,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "pinpoint": {
+            "valid": 14,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          }
+        }
+      },
+      "union": {
+        "flagged": 2,
+        "detectedErrors": 0,
+        "falsePositives": 2,
+        "ids": [
+          "control-S36",
+          "control-S41"
+        ]
+      }
+    },
+    "control_pinpoint": {
+      "items": 13,
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "pinpoint": {
+            "valid": 13,
+            "notSupported": 4,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 4
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "pinpoint": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          }
+        }
+      },
+      "union": {
+        "flagged": 4,
+        "detectedErrors": 0,
+        "falsePositives": 4,
+        "ids": [
+          "control_pinpoint-S27",
+          "control_pinpoint-S36",
+          "control_pinpoint-S41",
+          "control_pinpoint-S19"
+        ]
+      }
+    },
+    "paragraph_existing": {
+      "items": 18,
+      "rulesFlagged": 17,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 18,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 18,
+            "notSupported": 11,
+            "unavailable": 0,
+            "detectedErrors": 11,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 18,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 18,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 17,
+        "detectedErrors": 17,
+        "falsePositives": 0,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_existing-S13-P2",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_existing-S49-P2",
+          "paragraph_existing-S50-P1",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4"
+        ]
+      }
+    },
+    "paragraph_absent": {
+      "items": 13,
+      "rulesFlagged": 13,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 13,
+            "notSupported": 11,
+            "unavailable": 0,
+            "detectedErrors": 11,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 13,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 13,
+        "detectedErrors": 13,
+        "falsePositives": 0,
+        "ids": [
+          "paragraph_absent-S03",
+          "paragraph_absent-S07",
+          "paragraph_absent-S13",
+          "paragraph_absent-S21",
+          "paragraph_absent-S27",
+          "paragraph_absent-S28",
+          "paragraph_absent-S36",
+          "paragraph_absent-S41",
+          "paragraph_absent-S49",
+          "paragraph_absent-S50",
+          "paragraph_absent-S01",
+          "paragraph_absent-S19",
+          "paragraph_absent-S26"
+        ]
+      }
+    },
+    "item_existing": {
+      "items": 3,
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 3,
+            "notSupported": 3,
+            "unavailable": 0,
+            "detectedErrors": 3,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 3,
+            "notSupported": 3,
+            "unavailable": 0,
+            "detectedErrors": 3,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 3,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 3,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 3,
+        "detectedErrors": 3,
+        "falsePositives": 0,
+        "ids": [
+          "item_existing-S26-I1",
+          "item_existing-S26-I2",
+          "item_existing-S26-I4"
+        ]
+      }
+    },
+    "item_absent": {
+      "items": 1,
+      "rulesFlagged": 1,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 1,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 1,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 1,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 1,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 1,
+        "detectedErrors": 1,
+        "falsePositives": 0,
+        "ids": [
+          "item_absent-S26"
+        ]
+      }
+    },
+    "paragraph_omitted": {
+      "items": 4,
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 4,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 4,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 1
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 4,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 4,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 1,
+        "detectedErrors": 0,
+        "falsePositives": 1,
+        "ids": [
+          "paragraph_omitted-S19"
+        ]
+      }
+    },
+    "paragraph_errors": {
+      "items": 31,
+      "rulesFlagged": 30,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 31,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 31,
+            "notSupported": 22,
+            "unavailable": 0,
+            "detectedErrors": 22,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 31,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 31,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 30,
+        "detectedErrors": 30,
+        "falsePositives": 0,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_absent-S03",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_absent-S07",
+          "paragraph_existing-S13-P2",
+          "paragraph_absent-S13",
+          "paragraph_absent-S21",
+          "paragraph_absent-S27",
+          "paragraph_absent-S28",
+          "paragraph_absent-S36",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_absent-S41",
+          "paragraph_existing-S49-P2",
+          "paragraph_absent-S49",
+          "paragraph_existing-S50-P1",
+          "paragraph_absent-S50",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_absent-S01",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4",
+          "paragraph_absent-S19",
+          "paragraph_absent-S26"
+        ]
+      }
+    },
+    "item_errors": {
+      "items": 4,
+      "rulesFlagged": 1,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 4,
+            "notSupported": 4,
+            "unavailable": 0,
+            "detectedErrors": 4,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 4,
+            "notSupported": 4,
+            "unavailable": 0,
+            "detectedErrors": 4,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 4,
+            "notSupported": 0,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 4,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 4,
+        "detectedErrors": 4,
+        "falsePositives": 0,
+        "ids": [
+          "item_existing-S26-I1",
+          "item_existing-S26-I2",
+          "item_existing-S26-I4",
+          "item_absent-S26"
+        ]
+      }
+    },
+    "all_errors": {
+      "items": 35,
+      "rulesFlagged": 31,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 35,
+            "notSupported": 5,
+            "unavailable": 0,
+            "detectedErrors": 5,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 35,
+            "notSupported": 26,
+            "unavailable": 0,
+            "detectedErrors": 26,
+            "falsePositives": 0
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 35,
+            "notSupported": 1,
+            "unavailable": 0,
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "pinpoint": {
+            "valid": 35,
+            "notSupported": 2,
+            "unavailable": 0,
+            "detectedErrors": 2,
+            "falsePositives": 0
+          }
+        }
+      },
+      "union": {
+        "flagged": 34,
+        "detectedErrors": 34,
+        "falsePositives": 0,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_absent-S03",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_absent-S07",
+          "paragraph_existing-S13-P2",
+          "paragraph_absent-S13",
+          "paragraph_absent-S21",
+          "paragraph_absent-S27",
+          "paragraph_absent-S28",
+          "paragraph_absent-S36",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_absent-S41",
+          "paragraph_existing-S49-P2",
+          "paragraph_absent-S49",
+          "paragraph_existing-S50-P1",
+          "paragraph_absent-S50",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_absent-S01",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4",
+          "paragraph_absent-S19",
+          "paragraph_absent-S26",
+          "item_existing-S26-I1",
+          "item_existing-S26-I2",
+          "item_existing-S26-I4",
+          "item_absent-S26"
+        ]
+      }
+    },
+    "support_controls": {
+      "items": 31,
+      "rulesFlagged": 0,
+      "judges": {
+        "deepseek": {
+          "original": {
+            "valid": 31,
+            "notSupported": 2,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 2
+          },
+          "pinpoint": {
+            "valid": 31,
+            "notSupported": 7,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 7
+          }
+        },
+        "qwen72b": {
+          "original": {
+            "valid": 31,
+            "notSupported": 2,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 2
+          },
+          "pinpoint": {
+            "valid": 31,
+            "notSupported": 2,
+            "unavailable": 0,
+            "detectedErrors": 0,
+            "falsePositives": 2
+          }
+        }
+      },
+      "union": {
+        "flagged": 7,
+        "detectedErrors": 0,
+        "falsePositives": 7,
+        "ids": [
+          "control-S36",
+          "control-S41",
+          "control_pinpoint-S27",
+          "control_pinpoint-S36",
+          "control_pinpoint-S41",
+          "control_pinpoint-S19",
+          "paragraph_omitted-S19"
+        ]
+      }
+    }
+  },
+  "paired": {
+    "deepseek": {
+      "newDetections": {
+        "count": 21,
+        "ids": [
+          "paragraph_existing-S03-P3",
+          "paragraph_absent-S03",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_absent-S07",
+          "paragraph_absent-S13",
+          "paragraph_absent-S21",
+          "paragraph_absent-S27",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_absent-S41",
+          "paragraph_absent-S50",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_absent-S01",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4",
+          "paragraph_absent-S19",
+          "paragraph_absent-S26"
+        ]
+      },
+      "lostDetections": {
+        "count": 0,
+        "ids": []
+      },
+      "newFalsePositives": {
+        "count": 5,
+        "ids": [
+          "control-S41",
+          "control_pinpoint-S27",
+          "control_pinpoint-S41",
+          "control_pinpoint-S19",
+          "paragraph_omitted-S19"
+        ]
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    },
+    "qwen72b": {
+      "newDetections": {
+        "count": 2,
+        "ids": [
+          "paragraph_absent-S19",
+          "item_existing-S26-I1"
+        ]
+      },
+      "lostDetections": {
+        "count": 1,
+        "ids": [
+          "paragraph_absent-S36"
+        ]
+      },
+      "newFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    }
+  },
+  "failures": [],
+  "notAttempted": [],
+  "records": {
+    "total": 264,
+    "ok": 264,
+    "failed": 0,
+    "notAttempted": 0
+  },
+  "withoutS26": {
+    "byType": {
+      "control": {
+        "items": 13,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 13,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "pinpoint": {
+              "valid": 13,
+              "notSupported": 2,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 2
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 13,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "pinpoint": {
+              "valid": 13,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            }
+          }
+        },
+        "union": {
+          "flagged": 2,
+          "detectedErrors": 0,
+          "falsePositives": 2,
+          "ids": [
+            "control-S36",
+            "control-S41"
+          ]
+        }
+      },
+      "control_pinpoint": {
+        "items": 12,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "pinpoint": {
+              "valid": 12,
+              "notSupported": 4,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 4
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "pinpoint": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            }
+          }
+        },
+        "union": {
+          "flagged": 4,
+          "detectedErrors": 0,
+          "falsePositives": 4,
+          "ids": [
+            "control_pinpoint-S27",
+            "control_pinpoint-S36",
+            "control_pinpoint-S41",
+            "control_pinpoint-S19"
+          ]
+        }
+      },
+      "paragraph_existing": {
+        "items": 18,
+        "rulesFlagged": 17,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 18,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 18,
+              "notSupported": 11,
+              "unavailable": 0,
+              "detectedErrors": 11,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 18,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 18,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 17,
+          "detectedErrors": 17,
+          "falsePositives": 0,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_existing-S13-P2",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_existing-S49-P2",
+            "paragraph_existing-S50-P1",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4"
+          ]
+        }
+      },
+      "paragraph_absent": {
+        "items": 12,
+        "rulesFlagged": 12,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 12,
+              "notSupported": 10,
+              "unavailable": 0,
+              "detectedErrors": 10,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 12,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 12,
+          "detectedErrors": 12,
+          "falsePositives": 0,
+          "ids": [
+            "paragraph_absent-S03",
+            "paragraph_absent-S07",
+            "paragraph_absent-S13",
+            "paragraph_absent-S21",
+            "paragraph_absent-S27",
+            "paragraph_absent-S28",
+            "paragraph_absent-S36",
+            "paragraph_absent-S41",
+            "paragraph_absent-S49",
+            "paragraph_absent-S50",
+            "paragraph_absent-S01",
+            "paragraph_absent-S19"
+          ]
+        }
+      },
+      "item_existing": {
+        "items": 0,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 0,
+          "detectedErrors": 0,
+          "falsePositives": 0,
+          "ids": []
+        }
+      },
+      "item_absent": {
+        "items": 0,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 0,
+          "detectedErrors": 0,
+          "falsePositives": 0,
+          "ids": []
+        }
+      },
+      "paragraph_omitted": {
+        "items": 4,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 4,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 4,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 1
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 4,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 4,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 1,
+          "detectedErrors": 0,
+          "falsePositives": 1,
+          "ids": [
+            "paragraph_omitted-S19"
+          ]
+        }
+      },
+      "paragraph_errors": {
+        "items": 30,
+        "rulesFlagged": 29,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 30,
+              "notSupported": 21,
+              "unavailable": 0,
+              "detectedErrors": 21,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 29,
+          "detectedErrors": 29,
+          "falsePositives": 0,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_absent-S03",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_absent-S07",
+            "paragraph_existing-S13-P2",
+            "paragraph_absent-S13",
+            "paragraph_absent-S21",
+            "paragraph_absent-S27",
+            "paragraph_absent-S28",
+            "paragraph_absent-S36",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_absent-S41",
+            "paragraph_existing-S49-P2",
+            "paragraph_absent-S49",
+            "paragraph_existing-S50-P1",
+            "paragraph_absent-S50",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_absent-S01",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4",
+            "paragraph_absent-S19"
+          ]
+        }
+      },
+      "item_errors": {
+        "items": 0,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 0,
+              "notSupported": 0,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 0,
+          "detectedErrors": 0,
+          "falsePositives": 0,
+          "ids": []
+        }
+      },
+      "all_errors": {
+        "items": 30,
+        "rulesFlagged": 29,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 30,
+              "notSupported": 21,
+              "unavailable": 0,
+              "detectedErrors": 21,
+              "falsePositives": 0
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "pinpoint": {
+              "valid": 30,
+              "notSupported": 1,
+              "unavailable": 0,
+              "detectedErrors": 1,
+              "falsePositives": 0
+            }
+          }
+        },
+        "union": {
+          "flagged": 29,
+          "detectedErrors": 29,
+          "falsePositives": 0,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_absent-S03",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_absent-S07",
+            "paragraph_existing-S13-P2",
+            "paragraph_absent-S13",
+            "paragraph_absent-S21",
+            "paragraph_absent-S27",
+            "paragraph_absent-S28",
+            "paragraph_absent-S36",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_absent-S41",
+            "paragraph_existing-S49-P2",
+            "paragraph_absent-S49",
+            "paragraph_existing-S50-P1",
+            "paragraph_absent-S50",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_absent-S01",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4",
+            "paragraph_absent-S19"
+          ]
+        }
+      },
+      "support_controls": {
+        "items": 29,
+        "rulesFlagged": 0,
+        "judges": {
+          "deepseek": {
+            "original": {
+              "valid": 29,
+              "notSupported": 2,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 2
+            },
+            "pinpoint": {
+              "valid": 29,
+              "notSupported": 7,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 7
+            }
+          },
+          "qwen72b": {
+            "original": {
+              "valid": 29,
+              "notSupported": 2,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 2
+            },
+            "pinpoint": {
+              "valid": 29,
+              "notSupported": 2,
+              "unavailable": 0,
+              "detectedErrors": 0,
+              "falsePositives": 2
+            }
+          }
+        },
+        "union": {
+          "flagged": 7,
+          "detectedErrors": 0,
+          "falsePositives": 7,
+          "ids": [
+            "control-S36",
+            "control-S41",
+            "control_pinpoint-S27",
+            "control_pinpoint-S36",
+            "control_pinpoint-S41",
+            "control_pinpoint-S19",
+            "paragraph_omitted-S19"
+          ]
+        }
+      }
+    },
+    "paired": {
+      "deepseek": {
+        "newDetections": {
+          "count": 20,
+          "ids": [
+            "paragraph_existing-S03-P3",
+            "paragraph_absent-S03",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_absent-S07",
+            "paragraph_absent-S13",
+            "paragraph_absent-S21",
+            "paragraph_absent-S27",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_absent-S41",
+            "paragraph_absent-S50",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_absent-S01",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4",
+            "paragraph_absent-S19"
+          ]
+        },
+        "lostDetections": {
+          "count": 0,
+          "ids": []
+        },
+        "newFalsePositives": {
+          "count": 5,
+          "ids": [
+            "control-S41",
+            "control_pinpoint-S27",
+            "control_pinpoint-S41",
+            "control_pinpoint-S19",
+            "paragraph_omitted-S19"
+          ]
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      },
+      "qwen72b": {
+        "newDetections": {
+          "count": 1,
+          "ids": [
+            "paragraph_absent-S19"
+          ]
+        },
+        "lostDetections": {
+          "count": 1,
+          "ids": [
+            "paragraph_absent-S36"
+          ]
+        },
+        "newFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      }
+    },
+    "failures": [],
+    "notAttempted": [],
+    "records": {
+      "total": 236,
+      "ok": 236,
+      "failed": 0,
+      "notAttempted": 0
+    }
+  }
+}
