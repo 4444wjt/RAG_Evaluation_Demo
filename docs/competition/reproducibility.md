@@ -10,7 +10,7 @@
 
 ## 无密钥展示重现
 
-推荐 Node.js 24。在独立源码目录运行：
+推荐 Node.js 24（24.15.0 及以上）。在独立源码目录运行：
 
 ```powershell
 cd frontend

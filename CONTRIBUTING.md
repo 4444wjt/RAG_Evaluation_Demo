@@ -46,7 +46,7 @@ Python 离线测试（项目根目录）：
 
 ```powershell
 .\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
-.\venv\Scripts\python.exe -m compileall -q main.py backend tests
+.\venv\Scripts\python.exe -m compileall -q main.py backend scripts tests
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 

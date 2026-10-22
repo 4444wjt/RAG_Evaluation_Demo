@@ -76,6 +76,49 @@
 <blockquote>
 <p>题集 → 逐句核对 → 门禁 → 报告 → 人工核验</p>
 </blockquote>
+<h3>行业要求对照</h3>
+<p>《国家金融监督管理总局关于银行业保险业人工智能安全开发应用的指导意见》（金发〔2026〕8号，2026-06-18 发布；<a href="https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1261784">官方页面</a>、<a href="https://www.secrss.com/articles/91470">全文</a>）为上述需求提供行业依据。下表按条款转述，仅对应其中的能力，不代表监管认定或金融机构使用记录。</p>
+<table>
+<thead>
+<tr>
+<th>监管要求（条款）</th>
+<th>本项目对应的能力</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（四）建设测试工具链、测评指标和测试用例集，提高自动化测评能力</td>
+<td>复用 Ragas 指标与固定题集，支持离线门禁回放接入 CI；对应测评工具链中的部分能力</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/action.yml">门禁 Action</a>、<a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/evidence/20261005T144504Z-full-39511424/README.md">正式运行与题集</a></td>
+</tr>
+<tr>
+<td>（十四）防范模型生成结果不可靠的风险</td>
+<td>逐句核对回答与检索原文，配合质量门禁发现无依据或矛盾；只查与资料的一致性，不验证资料本身的事实正确性</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/gate-credibility.md">门禁可信度</a>、<a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/external-validation/README.md">外部基准验证</a></td>
+</tr>
+<tr>
+<td>（十八）对外部模型建立内部评估框架，评价优缺点和适配性</td>
+<td>可接入外部 RAG 系统评测；第三方系统仅实测过 AnythingLLM 一个源码构建实例、一次运行，不代表完整的外部模型选型与适配性评估</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md">AnythingLLM 实测</a></td>
+</tr>
+<tr>
+<td>（二十）加强对抗样本检测和压力测试</td>
+<td>已做法条错误注入与资料扰动下的鲁棒性检验；这些实验不代表完整的对抗样本检测体系或并发、负载压力测试</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/statute-check/20261021-formal/README.md">法条错误注入</a>、<a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/robustness/README.md">鲁棒性体检</a></td>
+</tr>
+<tr>
+<td>（二十一）加强开发、变更和训练过程记录，日志保存不低于业务存续期</td>
+<td>评测输入、回答、判定与运行清单附哈希归档；只对应评测留痕，不覆盖开发、变更和训练全流程，也未验证业务存续期保存</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/evidence/20261005T144504Z-full-39511424/README.md">正式运行归档</a></td>
+</tr>
+<tr>
+<td>（二十二）关键决策设置人工复核节点，保留原始数据、推理路径和阈值触发记录</td>
+<td>有三人人工标注校准、原始输入、检索证据与门禁记录；校准不是嵌入机构业务流程的复核节点，检索证据与判定也不等于完整推理路径</td>
+<td><a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/judge-calibration/README.md">人工校准</a>、<a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/docs/competition/evidence/20261005T144504Z-full-39511424/README.md">运行归档</a>、<a href="https://gitee.com/kkbushishou/rag-hallucination-evaluator/blob/master/backend/core/gate.py">阈值裁决</a></td>
+</tr>
+</tbody>
+</table>
 <h2>二、创新点</h2>
 <p>本项目<strong>不自研指标</strong>，指标计算复用 Ragas，工作集中在指标之上：</p>
 <table>

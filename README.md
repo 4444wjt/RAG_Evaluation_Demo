@@ -41,6 +41,8 @@
 
 自有模型（vLLM、Ollama、内部网关等 OpenAI 兼容接口）在工作台「模型配置」页登记即可参评，密钥只写在本机 `.env`；私有化与内网部署的已核实项和未实测项见 [落地与接入](docs/DEPLOYMENT.md#私有化--内网部署)。
 
+行业需求与项目能力的对应关系见作品介绍的[行业要求对照](docs/competition/project-introduction.md#行业要求对照)，其中列明了各项能力的证据与边界。
+
 ### 适用行业
 
 平台在上线前和每次改动后拦下不合格的版本，不是线上逐条过滤；它只检查回答与资料是否一致，所以适合资料本身权威、答错代价高、需要留痕、要求私有化的行业。
@@ -202,9 +204,9 @@ RAG-Reliability-Lab/
 
 ## 快速启动
 
-建议 Python 3.11、Node.js 24。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
+建议 Python 3.11、Node.js 24（24.15.0 及以上，可用 `node --version` 查看）。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
 
-只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`，详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
+只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`（POSIX shell 脚本，Windows 请在 WSL 中执行），详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
 
 ### 1. 获取项目
 
@@ -236,6 +238,8 @@ npm run dev
 
 打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。
 
+只看演示，到这里就够了。想验证不需要密钥的测试，直接跳到下文「开源贡献」里的前端验证和 Python 离线验证，不必安装第 3 步的完整依赖。
+
 ### 3. 配置真实评测环境
 
 另开终端，在项目根目录执行：
@@ -247,6 +251,8 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 ```
 
 如果 `.env` 已存在，请保留已有文件并按模板补充配置，不覆盖现有密钥。
+
+以上是 Windows PowerShell 写法。Linux / macOS 用 `python3 -m venv venv` 创建环境，下文的 `.\venv\Scripts\python.exe` 都换成 `./venv/bin/python`，复制配置用 `test -f .env || cp .env.example .env`。
 
 在本地 `.env` 填入凭据：
 
@@ -335,10 +341,12 @@ npm run build
 npm run test:browser -- browser-tests/landing.spec.ts
 ```
 
-Python 离线验证（项目根目录）：
+Python 离线验证（项目根目录；只装测试依赖，不需要先装 `requirements.txt`，也不需要密钥）：
 
 ```powershell
+python -m venv venv
 .\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
+.\venv\Scripts\python.exe -m compileall -q main.py backend scripts tests
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
