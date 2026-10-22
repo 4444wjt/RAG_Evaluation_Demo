@@ -22,6 +22,13 @@ git rev-list --count master..next
 git status -sb
 ```
 
+**两条分支历史已分叉**：`master` 上有 3 个提交不在 `next` 的历史里（10-15/16 的 README 横幅、README 首屏与截图、首页标题遮罩）。`next` 里各有一个内容完全相同的对应提交，内容没丢，但合并到 `master` **不能快进**，要产生一个合并提交。合并前用下面两条命令现查：前者输出 `-` 表示该提交在 `next` 里有同内容提交；后者只在内存里试合并，不动分支和工作区，合并结果的树应与 `next^{tree}` 相同。
+
+```bash
+git cherry -v next master
+git merge-tree --write-tree master next
+```
+
 ## 规模
 
 - Python 测试：**52 个 `test_*.py` 文件 / 1140 个用例**（`venv\Scripts\python.exe -m pytest tests -q`）
@@ -51,7 +58,11 @@ git status -sb
 
 ## 进行中
 
-- **10-22 三份归档与文档更新**：已在工作区，**未提交**（`statute-check/20261022-pinpoint-reasons`、`statute-check/20261022-posthoc-locate`、`external-rag/20261022-bank-qa-anythingllm`，以及 statute-check README、作品介绍、README、`.gitattributes`）
+- **未提交的新工具**：`tools/competition/statute_equalinfo.py`（信息对等对比）、`tools/competition/statute_holdout.py`（第二部法规留出集）及两份测试。加上它们后，`pytest` 收集 1265 个用例；已提交的仍为 1140 个。
+  - 信息对等对比：试跑已完成；全量运行要等作者确认授权细节。
+  - 留出集：已暂停；规则还没在新材料上运行过，要等作者先完成盲确认。
+- **两个来源不明的前端改动**（`frontend/src/features/FileImportControl.tsx`、`workspace-inputs.css`）：去留由作者决定，不要随其他改动一起提交。
+- 10-22 的三份归档（`statute-check/20261022-pinpoint-reasons`、`statute-check/20261022-posthoc-locate`、`external-rag/20261022-bank-qa-anythingllm`）**已提交**到 `next`。
 - **银行问答负向题口径**（作者 10-22 确认）：以「是否给出资料外内容」二元判定，不用「部分拒答」；6/6 为「是」。平台短语识别的拒答准确率 0.5 偏高（实际 0/6），改识别口径须单独提出
 
 ## 待办（按时间）
