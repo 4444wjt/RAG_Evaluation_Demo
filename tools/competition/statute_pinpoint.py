@@ -342,10 +342,12 @@ def confirm(package_path: Path, reviewer: str, reviewed_at: str, note_file: Path
 
 
 PREPARATION_TOOLS = ('tools/competition/statute_pinpoint.py', 'tests/test_statute_pinpoint.py')
-COST_NOTE = ('返回 usage 有效时按输入/输出 token 与授权单价累计；usage 缺失或无效（含调用失败）时，'
-             '保守地将授权 estimates 对应裁判/提示的整条件 inputTokensEstimate 作为单请求输入规划上界，'
-             '输出取该条件 outputTokensEstimate 与 maxTokens 的较大值。不是供应商扣费上界；'
-             '达到预算后不再发送下一请求，最后一次响应可能使累计超过预算。')
+COST_NOTE = ('每次请求发送前按「消息 UTF-8 字节数 + 256」作输入 token、maxTokens 作输出 token，以授权单价预留本次费用；'
+             '已累计费用加本次预留超过 budgetCny 即停止、不发送。返回 usage 有效时按实际 usage 与授权单价累计；'
+             'usage 缺失（含调用失败）时按本次预留额累计并停止；实际模型缺失、或实际计费超过本次预留时同样停止。'
+             '不重试。按授权单价估算，不是供应商实际扣费；供应商侧没有费用自动封顶。')
+STOP_REASONS = ('completed', 'request_limit', 'estimated_budget_guard', 'usage_unknown', 'actual_model_unknown',
+                'reservation_exceeded', 'interrupted')
 
 
 def empty_output(output):
@@ -442,18 +444,34 @@ def payload_for(package, item, job):
             'max_tokens': cfg['maxTokens'], 'stream': False}
 
 
-def charge(record, auth, package):
-    usage = record['usage']
-    basis = 'response_usage'
-    if usage is None:
-        row = auth['estimates']['judges'][record['judge']]['byPrompt'][record['prompt']]
-        usage = {'prompt_tokens': row['inputTokensEstimate'],
-                 'completion_tokens': max(row['outputTokensEstimate'], package['judges'][record['judge']]['maxTokens'])}
-        basis = 'authorized_estimates_upper_bound'
-    price = auth['prices'][record['judge']]
-    cost = (Decimal(usage['prompt_tokens']) * Decimal(str(price['inputCnyPerMillion']))
-            + Decimal(usage['completion_tokens']) * Decimal(str(price['outputCnyPerMillion']))) / Decimal(1_000_000)
-    return {'basis': basis, 'tokens': usage, 'costCny': str(cost)}
+def token_cost(tokens, price):
+    return (Decimal(tokens['prompt_tokens']) * Decimal(str(price['inputCnyPerMillion']))
+            + Decimal(tokens['completion_tokens']) * Decimal(str(price['outputCnyPerMillion']))) / Decimal(1_000_000)
+
+
+def reservation(package, auth, job, payload):
+    # 与正式运行器同一口径：输入按消息 UTF-8 字节数另加 256（对话模板），输出按 maxTokens。
+    tokens = {'prompt_tokens': sum(len(m['content'].encode()) for m in payload['messages']) + 256,
+              'completion_tokens': package['judges'][job['judge']]['maxTokens']}
+    return {'tokens': tokens, 'costCny': str(token_cost(tokens, auth['prices'][job['judge']]))}
+
+
+def charge(record, reserved, auth):
+    if record['usage'] is None:
+        return {'basis': 'pre_request_reservation', 'tokens': reserved['tokens'], 'costCny': reserved['costCny']}
+    return {'basis': 'response_usage', 'tokens': record['usage'],
+            'costCny': str(token_cost(record['usage'], auth['prices'][record['judge']]))}
+
+
+def halt(record, reserved):
+    """单次结果触发的停止原因；照常继续时返回 None。"""
+    if record['usage'] is None:
+        return 'usage_unknown'
+    if record['actualModel'] is None:
+        return 'actual_model_unknown'
+    if Decimal(record['charge']['costCny']) > Decimal(reserved['costCny']):
+        return 'reservation_exceeded'
+    return None
 
 
 def run(package_path, authorization_path, output, *, root=ROOT, transport=None):
@@ -478,8 +496,10 @@ def run(package_path, authorization_path, output, *, root=ROOT, transport=None):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root / name, target)
     si.write_json(output / 'runtime.json', {'startedAt': si.utc(), 'python': sys.version,
+                                           'dependencies': si.dependency_versions(), 'git': si.git_state(root),
                                            'parameters': package['judges'], 'costNote': COST_NOTE})
     items = {item['id']: item for item in package['items']}
+    budget = Decimal(str(auth['budgetCny']))
     records, calls, cost, stop = [], 0, Decimal(0), 'completed'
     events = output / 'events.jsonl'
     try:
@@ -487,27 +507,39 @@ def run(package_path, authorization_path, output, *, root=ROOT, transport=None):
             if calls >= auth['maxRequests']:
                 stop = 'request_limit'
                 break
-            if cost >= Decimal(str(auth['budgetCny'])):
-                stop = 'budget_limit'
-                break
             item = items[job['itemId']]
             payload = payload_for(package, item, job)
-            si.append_event(events, {'event': 'start', **job, 'at': si.utc(), 'request': payload})
+            reserved = reservation(package, auth, job, payload)
+            if cost + Decimal(reserved['costCny']) > budget:
+                stop = 'estimated_budget_guard'
+                break
+            # 先持久化本次尝试与预留，再发送；异常也占调用次数。不存在内部重试。
+            si.append_event(events, {'event': 'start', **job, 'at': si.utc(), 'request': payload, 'reservation': reserved})
             calls += 1
             record = {**job, 'status': 'call_error', 'result': None, 'actualModel': None, 'usage': None, 'error': None}
             response = None
             try:
                 response = send(job['judge'], payload)
                 record.update(si.response_fields(response, item['contexts']))
-                if record['status'] != 'ok':
+                if isinstance(response, dict) and '_transport' in response:
+                    problem = response['_transport']
+                    record['error'] = {'type': problem['error'], 'httpStatus': problem['httpStatus'],
+                                       'note': '原始异常响应体保留在 response._transport.body；已去除已知密钥回显；不重试。'}
+                elif record['status'] != 'ok':
                     record['error'] = {'type': record['status'], 'note': '调用/解析失败，保留原响应，不重试。'}
             except Exception as error:
-                record['error'] = {'type': type(error).__name__, 'note': '异常消息可能包含凭据，不归档；不重试。'}
-            record['charge'] = charge(record, auth, package)
+                record['error'] = {'type': type(error).__name__,
+                                   'httpStatus': getattr(getattr(error, 'response', None), 'status_code', None),
+                                   'note': '异常消息可能包含凭据，不归档；不重试。'}
+            record['charge'] = charge(record, reserved, auth)
             cost += Decimal(record['charge']['costCny'])
             si.append_event(events, {'event': 'end' if record['status'] == 'ok' else 'failure', **record,
                                      'at': si.utc(), 'response': response})
             records.append(record)
+            reason = halt(record, reserved)
+            if reason:
+                stop = reason
+                break
     except BaseException:
         stop = 'interrupted'
         raise
@@ -526,8 +558,9 @@ def run(package_path, authorization_path, output, *, root=ROOT, transport=None):
 def read_records(directory, package, auth):
     jobs = schedule(package)
     items = {item['id']: item for item in package['items']}
+    budget = Decimal(str(auth['budgetCny']))
     starts, terminal, records, stopped = [], [], [], None
-    current = None
+    current = reserved = halted = None
     cost = Decimal(0)
     for line in (directory / 'events.jsonl').read_text(encoding='utf-8').splitlines():
         event = json.loads(line)
@@ -539,11 +572,15 @@ def read_records(directory, package, auth):
             continue
         si.require(kind in ('start', 'end', 'failure'), '未知请求事件')
         if kind == 'start':
-            si.require(current is None and len(starts) < min(len(jobs), auth['maxRequests'])
-                       and cost < Decimal(str(auth['budgetCny'])), '请求越过硬上限或前次请求未结束')
+            si.require(current is None and halted is None and len(starts) < min(len(jobs), auth['maxRequests']),
+                       '请求越过硬上限、越过停止条件或前次请求未结束')
             job = jobs[len(starts)]
             si.require(all(event.get(k) == v for k, v in job.items()), '请求配对/固定顺序不一致')
-            si.require(event.get('request') == payload_for(package, items[job['itemId']], job), '请求泄露标签或材料不符')
+            payload = payload_for(package, items[job['itemId']], job)
+            si.require(event.get('request') == payload, '请求泄露标签或材料不符')
+            reserved = reservation(package, auth, job, payload)
+            si.require(event.get('reservation') == reserved and cost + Decimal(reserved['costCny']) <= budget,
+                       '请求前预留与授权口径不符或越过预算')
             starts.append(job)
             current = job
             continue
@@ -552,8 +589,9 @@ def read_records(directory, package, auth):
         fields = si.response_fields(event.get('response'), items[current['itemId']]['contexts'])
         si.require(all(record.get(k) == v for k, v in fields.items()), '判定/用量与原始响应不符')
         si.require((kind == 'end') == (record['status'] == 'ok'), '失败事件类型不符')
-        si.require(record.get('charge') == charge(record, auth, package), '请求计费与授权口径不符')
+        si.require(record.get('charge') == charge(record, reserved, auth), '请求计费与授权口径不符')
         cost += Decimal(record['charge']['costCny'])
+        halted = halt(record, reserved)
         records.append(record)
         terminal.append(record)
         current = None
@@ -564,12 +602,17 @@ def read_records(directory, package, auth):
                         'usage': None, 'error': {'type': 'interrupted'}})
     manifest = si.load(directory / 'manifest.json')
     reason = stopped.get('reason')
-    si.require(reason in ('request_limit', 'budget_limit', 'completed', 'interrupted'), '未知停止原因')
+    si.require(reason in STOP_REASONS, '未知停止原因')
     if reason != 'interrupted':
-        expected = ('completed' if len(starts) == len(jobs) else
-                    'request_limit' if len(starts) >= auth['maxRequests'] else
-                    'budget_limit' if cost >= Decimal(str(auth['budgetCny'])) else 'completed')
-        si.require(reason == expected and (reason != 'completed' or len(starts) == len(jobs)), '停止原因与实际请求不符')
+        # 与 run 的判断顺序一致：单次结果停止 > 调度完成 > 请求上限 > 下一请求的预留越过预算。
+        expected = halted or ('completed' if len(starts) == len(jobs) else
+                              'request_limit' if len(starts) >= auth['maxRequests'] else None)
+        if expected is None:
+            job = jobs[len(starts)]
+            upcoming = reservation(package, auth, job, payload_for(package, items[job['itemId']], job))
+            if cost + Decimal(upcoming['costCny']) > budget:
+                expected = 'estimated_budget_guard'
+        si.require(reason == expected, '停止原因与实际请求不符')
     si.require(manifest.get('stopReason') == reason and manifest.get('attempts') == len(starts)
                and manifest.get('completedRecords') == len(terminal) and manifest.get('plannedRequests') == len(jobs)
                and manifest.get('estimatedCostCny') == str(cost), 'manifest 与事件不符')

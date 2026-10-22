@@ -3,6 +3,7 @@ import json
 import socket
 from collections import Counter
 from copy import deepcopy
+from decimal import Decimal
 
 import pytest
 
@@ -293,6 +294,20 @@ def events_in(directory):
     return [json.loads(line) for line in (directory / 'events.jsonl').read_text(encoding='utf-8').splitlines()]
 
 
+def reserved_costs(package_path, auth_path):
+    package, auth = si.load(package_path), si.load(auth_path)
+    items = {i['id']: i for i in package['items']}
+    return [Decimal(sp.reservation(package, auth, job, sp.payload_for(package, items[job['itemId']], job))['costCny'])
+            for job in sp.schedule(package)]
+
+
+def set_budget(auth_path, budget):
+    auth = si.load(auth_path)
+    auth['budgetCny'] = float(budget)
+    si.write_json(auth_path, auth)
+    return Decimal(str(auth['budgetCny']))
+
+
 @pytest.mark.parametrize('change,match', [
     ('package_pending', '包级 review'), ('item_pending', '逐条 review'),
     ('package_note', '包级 review'), ('item_reviewer', '逐条 review'),
@@ -419,41 +434,79 @@ def test_request_cap_is_enforced_even_if_scheduler_has_extra_job(authorized, mon
     si.verify_checksums(output)
 
 
-def test_budget_stops_at_exact_accumulated_cost_and_cannot_resume(authorized):
+@pytest.mark.parametrize('first_paid', [False, True])
+def test_budget_reserves_before_each_request_and_cannot_resume(authorized, first_paid):
     package_path, auth_path, output = authorized
-    auth = si.load(auth_path)
-    auth['budgetCny'] = 0.00004  # 每请求 (10*1 + 5*2)/1e6，恰好两次。
-    si.write_json(auth_path, auth)
+    reserved = reserved_costs(package_path, auth_path)
+    actual = Decimal('0.00002')  # 每请求 (10*1 + 5*2)/1e6
+    # 边界含等号：预算恰好等于「已花 + 本次预留」时仍发送。
+    budget = set_budget(auth_path, actual + reserved[1] if first_paid else reserved[0])
+    expected, spent = 0, Decimal(0)
+    while spent + reserved[expected] <= budget:
+        spent, expected = spent + actual, expected + 1
+    if first_paid:
+        assert expected >= 2  # 第二次请求恰在边界上，仍须发送
+    else:
+        assert expected == 1
     calls = []
     manifest = sp.run(package_path, auth_path, output,
                       transport=lambda *args: calls.append(args) or fake_response())
-    assert manifest['stopReason'] == 'budget_limit' and manifest['attempts'] == len(calls) == 2
-    assert float(manifest['estimatedCostCny']) == auth['budgetCny']
-    assert events_in(output)[-1]['reason'] == 'budget_limit'
+    assert manifest['stopReason'] == 'estimated_budget_guard' and manifest['attempts'] == len(calls) == expected
+    assert Decimal(manifest['estimatedCostCny']) == spent <= budget
+    events = events_in(output)
+    assert events[-1]['reason'] == 'estimated_budget_guard'
+    starts = [e for e in events if e['event'] == 'start']
+    assert [Decimal(e['reservation']['costCny']) for e in starts] == reserved[:expected]
+    assert starts[0]['reservation']['tokens']['completion_tokens'] == 768
+    runtime = si.load(output / 'runtime.json')
+    assert set(runtime['git']) >= {'head', 'status'} and 'packages' in runtime['dependencies']
     before = {p.relative_to(output): p.read_bytes() for p in output.rglob('*') if p.is_file()}
     with pytest.raises(ValueError, match='空目录'):
         sp.run(package_path, auth_path, output)
     assert before == {p.relative_to(output): p.read_bytes() for p in output.rglob('*') if p.is_file()}
     summary = sp.analyze(output, output.parent / 'partial-analysis')
-    assert summary['records'] == {'total': 2, 'ok': 2, 'failed': 0, 'notAttempted': 262}
+    assert summary['records'] == {'total': expected, 'ok': expected, 'failed': 0, 'notAttempted': 264 - expected}
     assert summary['paired']['qwen72b']['unavailable']['count'] == 66
 
 
-def test_missing_usage_uses_authorized_upper_bound_and_stops(authorized):
+def test_budget_below_first_reservation_sends_nothing(authorized):
     package_path, auth_path, output = authorized
-    auth = si.load(auth_path)
-    auth['budgetCny'] = 0.000001
-    si.write_json(auth_path, auth)
-    manifest = sp.run(package_path, auth_path, output, transport=lambda *args: fake_response(usage=False))
-    assert manifest['attempts'] == 1 and manifest['stopReason'] == 'budget_limit'
+    set_budget(auth_path, reserved_costs(package_path, auth_path)[0] - Decimal('0.000001'))
+    calls = []
+    manifest = sp.run(package_path, auth_path, output, transport=lambda *args: calls.append(args) or fake_response())
+    assert manifest['stopReason'] == 'estimated_budget_guard' and manifest['attempts'] == len(calls) == 0
+    assert [e['event'] for e in events_in(output)] == ['stop']
+    assert sp.analyze(output, output.parent / 'empty-analysis')['records']['notAttempted'] == 264
+
+
+def test_missing_usage_charges_reservation_and_stops(authorized):
+    package_path, auth_path, output = authorized
+    calls = []
+    manifest = sp.run(package_path, auth_path, output,
+                      transport=lambda *args: calls.append(args) or fake_response(usage=False))
+    assert manifest['attempts'] == len(calls) == 1 and manifest['stopReason'] == 'usage_unknown'
     record, = si.load(output / 'records.json')
-    row = auth['estimates']['judges']['deepseek']['byPrompt']['original']
-    assert record['charge']['basis'] == 'authorized_estimates_upper_bound'
-    assert record['charge']['tokens'] == {'prompt_tokens': row['inputTokensEstimate'],
-                                        'completion_tokens': max(row['outputTokensEstimate'], 768)}
-    assert float(record['charge']['costCny']) > auth['budgetCny']
-    assert '不是供应商扣费上界' in manifest['costNote']
+    start = events_in(output)[0]
+    assert record['charge'] == {'basis': 'pre_request_reservation', **start['reservation']}
+    assert manifest['estimatedCostCny'] == start['reservation']['costCny']
+    assert '供应商侧没有费用自动封顶' in manifest['costNote']
     assert sp.analyze(output, output.parent / 'usage-analysis')['records']['ok'] == 1
+
+
+@pytest.mark.parametrize('change,reason', [('model', 'actual_model_unknown'), ('usage', 'reservation_exceeded')])
+def test_unknown_model_or_usage_beyond_reservation_stops(authorized, change, reason):
+    package_path, auth_path, output = authorized
+    response = fake_response()
+    if change == 'model':
+        del response['model']
+    else:
+        response['usage'] = {'prompt_tokens': 10 ** 6, 'completion_tokens': 5, 'total_tokens': 10 ** 6 + 5}
+    manifest = sp.run(package_path, auth_path, output, transport=lambda *args: deepcopy(response))
+    assert manifest['attempts'] == 1 and manifest['stopReason'] == reason
+    record, = si.load(output / 'records.json')
+    assert record['charge']['basis'] == 'response_usage'
+    assert events_in(output)[-1]['reason'] == reason
+    assert sp.analyze(output, output.parent / 'halt-analysis')['records']['total'] == 1
 
 
 def test_failures_are_archived_separately_and_not_retried(authorized):
@@ -462,26 +515,34 @@ def test_failures_are_archived_separately_and_not_retried(authorized):
     def transport(judge, payload):
         calls.append((judge, payload))
         if len(calls) == 1:
-            raise RuntimeError('do-not-log-this-secret')
-        if len(calls) == 2:
             response = fake_response()
             response['choices'][0]['message']['content'] = 'invalid json'
             return response
-        return fake_response()
+        raise RuntimeError('do-not-log-this-secret')
     manifest = sp.run(package_path, auth_path, output, transport=transport)
-    assert manifest['attempts'] == len(calls) == 264
+    # 解析失败有用量，照常继续；调用异常没有用量，按预留记账后停止，不重试。
+    assert manifest['attempts'] == len(calls) == 2 and manifest['stopReason'] == 'usage_unknown'
     records = si.load(output / 'records.json')
-    assert [r['status'] for r in records[:3]] == ['call_error', 'parse_error', 'ok']
-    assert records[0]['charge']['basis'] == 'authorized_estimates_upper_bound'
-    assert records[1]['charge']['basis'] == 'response_usage'
-    assert len({r['requestId'] for r in records}) == 264
-    assert [e['event'] for e in events_in(output)[:6]] == ['start', 'failure', 'start', 'failure', 'start', 'end']
+    assert [r['status'] for r in records] == ['parse_error', 'call_error']
+    assert [r['charge']['basis'] for r in records] == ['response_usage', 'pre_request_reservation']
+    assert records[1]['error']['type'] == 'RuntimeError' and records[1]['error']['httpStatus'] is None
+    assert [e['event'] for e in events_in(output)] == ['start', 'failure', 'start', 'failure', 'stop']
     assert 'do-not-log-this-secret' not in (output / 'events.jsonl').read_text(encoding='utf-8')
     summary = sp.analyze(output, output.parent / 'failure-analysis')
-    assert summary['records'] == {'total': 264, 'ok': 262, 'failed': 2, 'notAttempted': 0}
-    assert [r['status'] for r in summary['failures']] == ['call_error', 'parse_error']
-    assert summary['paired']['deepseek']['unavailable']['ids'] == ['control-S03']
-    assert summary['byType']['control']['judges']['deepseek']['original']['unavailable'] == 1
+    assert summary['records'] == {'total': 2, 'ok': 0, 'failed': 2, 'notAttempted': 262}
+    assert [r['status'] for r in summary['failures']] == ['parse_error', 'call_error']
+
+
+def test_http_error_keeps_redacted_body_and_stops(authorized):
+    package_path, auth_path, output = authorized
+    failure = {'_transport': {'httpStatus': 429, 'error': 'http_error', 'body': 'rate limited'}}
+    manifest = sp.run(package_path, auth_path, output, transport=lambda *args: deepcopy(failure))
+    assert manifest['attempts'] == 1 and manifest['stopReason'] == 'usage_unknown'
+    record, = si.load(output / 'records.json')
+    assert record['status'] == 'call_error'
+    assert record['error']['type'] == 'http_error' and record['error']['httpStatus'] == 429
+    assert events_in(output)[1]['response'] == failure
+    assert sp.analyze(output, output.parent / 'http-analysis')['records']['failed'] == 1
 
 
 def test_interrupted_attempt_is_not_silently_removed(authorized):
@@ -562,10 +623,8 @@ def test_rules_warning_is_not_a_detection():
 @pytest.mark.parametrize('tamper', ['records', 'schedule', 'event_result', 'request', 'manifest', 'stop', 'source'])
 def test_analysis_rejects_inconsistent_archive_before_writing(authorized, tamper):
     package_path, auth_path, output = authorized
-    auth = si.load(auth_path)
-    auth['budgetCny'] = 0.000001
-    si.write_json(auth_path, auth)
-    sp.run(package_path, auth_path, output, transport=lambda *args: fake_response())
+    set_budget(auth_path, reserved_costs(package_path, auth_path)[0])  # 恰好一次请求
+    assert sp.run(package_path, auth_path, output, transport=lambda *args: fake_response())['attempts'] == 1
     if tamper in ('records', 'schedule'):
         si.write_json(output / f'{tamper}.json', [])
     elif tamper == 'manifest':
