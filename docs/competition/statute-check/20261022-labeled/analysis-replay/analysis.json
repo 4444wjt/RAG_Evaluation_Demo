@@ -1,0 +1,1159 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-labeled-v1",
+  "referenceHashes": {
+    "docs/competition/statute-check/20261022-equalinfo/run/package.json": "65a6d6135ae9eef978c944dd51a31d9c65e03797cfdf1f0d82ea5d892bf0e3cd",
+    "docs/competition/statute-check/20261022-equalinfo/run/records.json": "05201aba5893c4d0f5f1da6ab8982b722f66e2bb78f79f1d07a55b641379d0f7"
+  },
+  "conditions": {
+    "L": {
+      "deepseek": {
+        "byType": {
+          "control": {
+            "items": 14,
+            "notSupported": 2,
+            "ids": [
+              "control-S32",
+              "control-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 2
+          },
+          "control_pinpoint": {
+            "items": 13,
+            "notSupported": 2,
+            "ids": [
+              "control_pinpoint-S36",
+              "control_pinpoint-S41"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 2
+          },
+          "paragraph_existing": {
+            "items": 18,
+            "notSupported": 15,
+            "ids": [
+              "paragraph_existing-S03-P2",
+              "paragraph_existing-S03-P3",
+              "paragraph_existing-S03-P4",
+              "paragraph_existing-S07-P2",
+              "paragraph_existing-S07-P3",
+              "paragraph_existing-S07-P4",
+              "paragraph_existing-S13-P2",
+              "paragraph_existing-S27-P1",
+              "paragraph_existing-S41-P1",
+              "paragraph_existing-S41-P3",
+              "paragraph_existing-S49-P2",
+              "paragraph_existing-S01-P1",
+              "paragraph_existing-S01-P3",
+              "paragraph_existing-S01-P4",
+              "paragraph_existing-S19-P4"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 15,
+            "falsePositives": 0
+          },
+          "paragraph_absent": {
+            "items": 13,
+            "notSupported": 8,
+            "ids": [
+              "paragraph_absent-S03",
+              "paragraph_absent-S13",
+              "paragraph_absent-S21",
+              "paragraph_absent-S27",
+              "paragraph_absent-S36",
+              "paragraph_absent-S41",
+              "paragraph_absent-S50",
+              "paragraph_absent-S01"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 8,
+            "falsePositives": 0
+          },
+          "paragraph_omitted": {
+            "items": 4,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "item_existing": {
+            "items": 3,
+            "notSupported": 2,
+            "ids": [
+              "item_existing-S26-I1",
+              "item_existing-S26-I4"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 2,
+            "falsePositives": 0
+          },
+          "item_absent": {
+            "items": 1,
+            "notSupported": 1,
+            "ids": [
+              "item_absent-S26"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "paragraph_errors": {
+            "items": 31,
+            "notSupported": 23,
+            "ids": [
+              "paragraph_existing-S03-P2",
+              "paragraph_existing-S03-P3",
+              "paragraph_existing-S03-P4",
+              "paragraph_absent-S03",
+              "paragraph_existing-S07-P2",
+              "paragraph_existing-S07-P3",
+              "paragraph_existing-S07-P4",
+              "paragraph_existing-S13-P2",
+              "paragraph_absent-S13",
+              "paragraph_absent-S21",
+              "paragraph_existing-S27-P1",
+              "paragraph_absent-S27",
+              "paragraph_absent-S36",
+              "paragraph_existing-S41-P1",
+              "paragraph_existing-S41-P3",
+              "paragraph_absent-S41",
+              "paragraph_existing-S49-P2",
+              "paragraph_absent-S50",
+              "paragraph_existing-S01-P1",
+              "paragraph_existing-S01-P3",
+              "paragraph_existing-S01-P4",
+              "paragraph_absent-S01",
+              "paragraph_existing-S19-P4"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 23,
+            "falsePositives": 0
+          },
+          "support_controls": {
+            "items": 31,
+            "notSupported": 4,
+            "ids": [
+              "control-S32",
+              "control-S36",
+              "control_pinpoint-S36",
+              "control_pinpoint-S41"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 4
+          },
+          "item_errors": {
+            "items": 4,
+            "notSupported": 3,
+            "ids": [
+              "item_existing-S26-I1",
+              "item_existing-S26-I4",
+              "item_absent-S26"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 3,
+            "falsePositives": 0
+          }
+        },
+        "unavailableIds": [],
+        "note": null,
+        "claim1": {
+          "paragraphDetections": 23,
+          "absentDetections": 8,
+          "supportFalsePositives": 4,
+          "result": "部分成立"
+        }
+      },
+      "qwen72b": {
+        "byType": {
+          "control": {
+            "items": 14,
+            "notSupported": 1,
+            "ids": [
+              "control-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "control_pinpoint": {
+            "items": 13,
+            "notSupported": 1,
+            "ids": [
+              "control_pinpoint-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "paragraph_existing": {
+            "items": 18,
+            "notSupported": 1,
+            "ids": [
+              "paragraph_existing-S41-P1"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "paragraph_absent": {
+            "items": 13,
+            "notSupported": 1,
+            "ids": [
+              "paragraph_absent-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 1,
+            "falsePositives": 0
+          },
+          "paragraph_omitted": {
+            "items": 4,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "item_existing": {
+            "items": 3,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "item_absent": {
+            "items": 1,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "paragraph_errors": {
+            "items": 31,
+            "notSupported": 2,
+            "ids": [
+              "paragraph_absent-S36",
+              "paragraph_existing-S41-P1"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 2,
+            "falsePositives": 0
+          },
+          "support_controls": {
+            "items": 31,
+            "notSupported": 2,
+            "ids": [
+              "control-S36",
+              "control_pinpoint-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 2
+          },
+          "item_errors": {
+            "items": 4,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          }
+        },
+        "unavailableIds": [],
+        "note": null,
+        "claim3L": {
+          "paragraphDetections": 2,
+          "result": "与主张一致"
+        }
+      }
+    },
+    "S": {
+      "qwen72b": {
+        "byType": {
+          "control": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "control_pinpoint": {
+            "items": 13,
+            "notSupported": 1,
+            "ids": [
+              "control_pinpoint-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "paragraph_existing": {
+            "items": 18,
+            "notSupported": 18,
+            "ids": [
+              "paragraph_existing-S03-P2",
+              "paragraph_existing-S03-P3",
+              "paragraph_existing-S03-P4",
+              "paragraph_existing-S07-P2",
+              "paragraph_existing-S07-P3",
+              "paragraph_existing-S07-P4",
+              "paragraph_existing-S13-P2",
+              "paragraph_existing-S27-P1",
+              "paragraph_existing-S41-P1",
+              "paragraph_existing-S41-P3",
+              "paragraph_existing-S49-P2",
+              "paragraph_existing-S50-P1",
+              "paragraph_existing-S01-P1",
+              "paragraph_existing-S01-P3",
+              "paragraph_existing-S01-P4",
+              "paragraph_existing-S19-P1",
+              "paragraph_existing-S19-P2",
+              "paragraph_existing-S19-P4"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 18,
+            "falsePositives": 0
+          },
+          "paragraph_absent": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "paragraph_omitted": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "item_existing": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "item_absent": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          },
+          "paragraph_errors": {
+            "items": 18,
+            "notSupported": 18,
+            "ids": [
+              "paragraph_existing-S03-P2",
+              "paragraph_existing-S03-P3",
+              "paragraph_existing-S03-P4",
+              "paragraph_existing-S07-P2",
+              "paragraph_existing-S07-P3",
+              "paragraph_existing-S07-P4",
+              "paragraph_existing-S13-P2",
+              "paragraph_existing-S27-P1",
+              "paragraph_existing-S41-P1",
+              "paragraph_existing-S41-P3",
+              "paragraph_existing-S49-P2",
+              "paragraph_existing-S50-P1",
+              "paragraph_existing-S01-P1",
+              "paragraph_existing-S01-P3",
+              "paragraph_existing-S01-P4",
+              "paragraph_existing-S19-P1",
+              "paragraph_existing-S19-P2",
+              "paragraph_existing-S19-P4"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 18,
+            "falsePositives": 0
+          },
+          "support_controls": {
+            "items": 13,
+            "notSupported": 1,
+            "ids": [
+              "control_pinpoint-S36"
+            ],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 1
+          },
+          "item_errors": {
+            "items": 0,
+            "notSupported": 0,
+            "ids": [],
+            "unavailable": 0,
+            "unavailableIds": [],
+            "detectedErrors": 0,
+            "falsePositives": 0
+          }
+        },
+        "unavailableIds": [],
+        "note": null,
+        "claim3S": {
+          "paragraphExistingDetections": 18,
+          "controlPinpointFalsePositives": 1,
+          "result": "成立"
+        }
+      }
+    }
+  },
+  "paired": {
+    "L--J2--deepseek": {
+      "newDetections": {
+        "count": 20,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_absent-S03",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_existing-S13-P2",
+          "paragraph_absent-S13",
+          "paragraph_absent-S21",
+          "paragraph_existing-S27-P1",
+          "paragraph_absent-S27",
+          "paragraph_existing-S41-P1",
+          "paragraph_absent-S41",
+          "paragraph_existing-S49-P2",
+          "paragraph_absent-S50",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_existing-S19-P4"
+        ]
+      },
+      "lostDetections": {
+        "count": 1,
+        "ids": [
+          "item_existing-S26-I2"
+        ]
+      },
+      "newFalsePositives": {
+        "count": 2,
+        "ids": [
+          "control-S32",
+          "control_pinpoint-S41"
+        ]
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    },
+    "L--J2--qwen72b": {
+      "newDetections": {
+        "count": 1,
+        "ids": [
+          "paragraph_existing-S41-P1"
+        ]
+      },
+      "lostDetections": {
+        "count": 0,
+        "ids": []
+      },
+      "newFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    },
+    "S--J1--qwen72b": {
+      "newDetections": {
+        "count": 18,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_existing-S13-P2",
+          "paragraph_existing-S27-P1",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_existing-S49-P2",
+          "paragraph_existing-S50-P1",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4"
+        ]
+      },
+      "lostDetections": {
+        "count": 0,
+        "ids": []
+      },
+      "newFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    },
+    "S--J2--qwen72b": {
+      "newDetections": {
+        "count": 18,
+        "ids": [
+          "paragraph_existing-S03-P2",
+          "paragraph_existing-S03-P3",
+          "paragraph_existing-S03-P4",
+          "paragraph_existing-S07-P2",
+          "paragraph_existing-S07-P3",
+          "paragraph_existing-S07-P4",
+          "paragraph_existing-S13-P2",
+          "paragraph_existing-S27-P1",
+          "paragraph_existing-S41-P1",
+          "paragraph_existing-S41-P3",
+          "paragraph_existing-S49-P2",
+          "paragraph_existing-S50-P1",
+          "paragraph_existing-S01-P1",
+          "paragraph_existing-S01-P3",
+          "paragraph_existing-S01-P4",
+          "paragraph_existing-S19-P1",
+          "paragraph_existing-S19-P2",
+          "paragraph_existing-S19-P4"
+        ]
+      },
+      "lostDetections": {
+        "count": 0,
+        "ids": []
+      },
+      "newFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "reducedFalsePositives": {
+        "count": 0,
+        "ids": []
+      },
+      "unavailable": {
+        "count": 0,
+        "ids": []
+      }
+    }
+  },
+  "preregistration": "- 检出：裁判 verdict 为 `contradicted` 或 `insufficient`。`supported` 为未检出。失败或解析失败为不可用，单列，不算未检出。只报条数。\n- 款级错误 = `paragraph_existing` + `paragraph_absent`，共 31；支持对照 = `control` + `control_pinpoint` + `paragraph_omitted`，共 31。\n- 主张 1（DeepSeek，条件 L）：\n  - 成立：款级检出 ≥ 15/31，且 `paragraph_absent` 检出 ≥ 10/13，且支持对照误报 ≤ 4/31；\n  - 推翻：款级检出 ≤ 5/31，或支持对照误报 > 7/31；\n  - 其余：部分成立。\n- 主张 3，补标签臂（Qwen，条件 L）：\n  - 与主张一致：款级检出 ≤ 5/31；\n  - 推翻：≥ 10/31；\n  - 其余（6–9）：部分。\n- 主张 3，切片臂（Qwen，条件 S）：\n  - 成立：`paragraph_existing` 检出 ≥ 15/18，且 `control_pinpoint` 误报 ≤ 3/13；\n  - 推翻：`paragraph_existing` 检出 ≤ 9/18；\n  - 其余：部分成立。\n- 有不可用时：判定照上面的条数算，同时在输出里列出不可用 ID，并标注「含不可用，结论可能变化」。\n- 另外报告（描述，不作判定）：\n  - L 条件下与 equalinfo J2 同裁判逐条配对：新检出、丢失检出、新误报、减少误报，列出 ID；\n  - S 条件下 Qwen 与 equalinfo J1、J2 同条配对；\n  - 项级 4 条与其他类型的条数；\n  - 剔除 S26 全部变体的敏感性复算。",
+  "failures": [],
+  "notAttempted": [],
+  "records": {
+    "total": 163,
+    "ok": 163,
+    "failed": 0,
+    "notAttempted": 0
+  },
+  "typeCounts": {
+    "control": 14,
+    "control_pinpoint": 13,
+    "paragraph_existing": 18,
+    "paragraph_absent": 13,
+    "paragraph_omitted": 4,
+    "item_existing": 3,
+    "item_absent": 1
+  },
+  "withoutS26": {
+    "conditions": {
+      "L": {
+        "deepseek": {
+          "byType": {
+            "control": {
+              "items": 13,
+              "notSupported": 2,
+              "ids": [
+                "control-S32",
+                "control-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 2
+            },
+            "control_pinpoint": {
+              "items": 12,
+              "notSupported": 2,
+              "ids": [
+                "control_pinpoint-S36",
+                "control_pinpoint-S41"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 2
+            },
+            "paragraph_existing": {
+              "items": 18,
+              "notSupported": 15,
+              "ids": [
+                "paragraph_existing-S03-P2",
+                "paragraph_existing-S03-P3",
+                "paragraph_existing-S03-P4",
+                "paragraph_existing-S07-P2",
+                "paragraph_existing-S07-P3",
+                "paragraph_existing-S07-P4",
+                "paragraph_existing-S13-P2",
+                "paragraph_existing-S27-P1",
+                "paragraph_existing-S41-P1",
+                "paragraph_existing-S41-P3",
+                "paragraph_existing-S49-P2",
+                "paragraph_existing-S01-P1",
+                "paragraph_existing-S01-P3",
+                "paragraph_existing-S01-P4",
+                "paragraph_existing-S19-P4"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 15,
+              "falsePositives": 0
+            },
+            "paragraph_absent": {
+              "items": 12,
+              "notSupported": 8,
+              "ids": [
+                "paragraph_absent-S03",
+                "paragraph_absent-S13",
+                "paragraph_absent-S21",
+                "paragraph_absent-S27",
+                "paragraph_absent-S36",
+                "paragraph_absent-S41",
+                "paragraph_absent-S50",
+                "paragraph_absent-S01"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 8,
+              "falsePositives": 0
+            },
+            "paragraph_omitted": {
+              "items": 4,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "paragraph_errors": {
+              "items": 30,
+              "notSupported": 23,
+              "ids": [
+                "paragraph_existing-S03-P2",
+                "paragraph_existing-S03-P3",
+                "paragraph_existing-S03-P4",
+                "paragraph_absent-S03",
+                "paragraph_existing-S07-P2",
+                "paragraph_existing-S07-P3",
+                "paragraph_existing-S07-P4",
+                "paragraph_existing-S13-P2",
+                "paragraph_absent-S13",
+                "paragraph_absent-S21",
+                "paragraph_existing-S27-P1",
+                "paragraph_absent-S27",
+                "paragraph_absent-S36",
+                "paragraph_existing-S41-P1",
+                "paragraph_existing-S41-P3",
+                "paragraph_absent-S41",
+                "paragraph_existing-S49-P2",
+                "paragraph_absent-S50",
+                "paragraph_existing-S01-P1",
+                "paragraph_existing-S01-P3",
+                "paragraph_existing-S01-P4",
+                "paragraph_absent-S01",
+                "paragraph_existing-S19-P4"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 23,
+              "falsePositives": 0
+            },
+            "support_controls": {
+              "items": 29,
+              "notSupported": 4,
+              "ids": [
+                "control-S32",
+                "control-S36",
+                "control_pinpoint-S36",
+                "control_pinpoint-S41"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 4
+            },
+            "item_errors": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "unavailableIds": [],
+          "note": null,
+          "claim1": {
+            "paragraphDetections": 23,
+            "absentDetections": 8,
+            "supportFalsePositives": 4,
+            "result": "部分成立"
+          }
+        },
+        "qwen72b": {
+          "byType": {
+            "control": {
+              "items": 13,
+              "notSupported": 1,
+              "ids": [
+                "control-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "control_pinpoint": {
+              "items": 12,
+              "notSupported": 1,
+              "ids": [
+                "control_pinpoint-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "paragraph_existing": {
+              "items": 18,
+              "notSupported": 1,
+              "ids": [
+                "paragraph_existing-S41-P1"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "paragraph_absent": {
+              "items": 12,
+              "notSupported": 1,
+              "ids": [
+                "paragraph_absent-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 1,
+              "falsePositives": 0
+            },
+            "paragraph_omitted": {
+              "items": 4,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "paragraph_errors": {
+              "items": 30,
+              "notSupported": 2,
+              "ids": [
+                "paragraph_absent-S36",
+                "paragraph_existing-S41-P1"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 2,
+              "falsePositives": 0
+            },
+            "support_controls": {
+              "items": 29,
+              "notSupported": 2,
+              "ids": [
+                "control-S36",
+                "control_pinpoint-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 2
+            },
+            "item_errors": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "unavailableIds": [],
+          "note": null,
+          "claim3L": {
+            "paragraphDetections": 2,
+            "result": "与主张一致"
+          }
+        }
+      },
+      "S": {
+        "qwen72b": {
+          "byType": {
+            "control": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "control_pinpoint": {
+              "items": 12,
+              "notSupported": 1,
+              "ids": [
+                "control_pinpoint-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "paragraph_existing": {
+              "items": 18,
+              "notSupported": 18,
+              "ids": [
+                "paragraph_existing-S03-P2",
+                "paragraph_existing-S03-P3",
+                "paragraph_existing-S03-P4",
+                "paragraph_existing-S07-P2",
+                "paragraph_existing-S07-P3",
+                "paragraph_existing-S07-P4",
+                "paragraph_existing-S13-P2",
+                "paragraph_existing-S27-P1",
+                "paragraph_existing-S41-P1",
+                "paragraph_existing-S41-P3",
+                "paragraph_existing-S49-P2",
+                "paragraph_existing-S50-P1",
+                "paragraph_existing-S01-P1",
+                "paragraph_existing-S01-P3",
+                "paragraph_existing-S01-P4",
+                "paragraph_existing-S19-P1",
+                "paragraph_existing-S19-P2",
+                "paragraph_existing-S19-P4"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 18,
+              "falsePositives": 0
+            },
+            "paragraph_absent": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "paragraph_omitted": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            },
+            "paragraph_errors": {
+              "items": 18,
+              "notSupported": 18,
+              "ids": [
+                "paragraph_existing-S03-P2",
+                "paragraph_existing-S03-P3",
+                "paragraph_existing-S03-P4",
+                "paragraph_existing-S07-P2",
+                "paragraph_existing-S07-P3",
+                "paragraph_existing-S07-P4",
+                "paragraph_existing-S13-P2",
+                "paragraph_existing-S27-P1",
+                "paragraph_existing-S41-P1",
+                "paragraph_existing-S41-P3",
+                "paragraph_existing-S49-P2",
+                "paragraph_existing-S50-P1",
+                "paragraph_existing-S01-P1",
+                "paragraph_existing-S01-P3",
+                "paragraph_existing-S01-P4",
+                "paragraph_existing-S19-P1",
+                "paragraph_existing-S19-P2",
+                "paragraph_existing-S19-P4"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 18,
+              "falsePositives": 0
+            },
+            "support_controls": {
+              "items": 12,
+              "notSupported": 1,
+              "ids": [
+                "control_pinpoint-S36"
+              ],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 1
+            },
+            "item_errors": {
+              "items": 0,
+              "notSupported": 0,
+              "ids": [],
+              "unavailable": 0,
+              "unavailableIds": [],
+              "detectedErrors": 0,
+              "falsePositives": 0
+            }
+          },
+          "unavailableIds": [],
+          "note": null,
+          "claim3S": {
+            "paragraphExistingDetections": 18,
+            "controlPinpointFalsePositives": 1,
+            "result": "成立"
+          }
+        }
+      }
+    },
+    "paired": {
+      "L--J2--deepseek": {
+        "newDetections": {
+          "count": 20,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_absent-S03",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_existing-S13-P2",
+            "paragraph_absent-S13",
+            "paragraph_absent-S21",
+            "paragraph_existing-S27-P1",
+            "paragraph_absent-S27",
+            "paragraph_existing-S41-P1",
+            "paragraph_absent-S41",
+            "paragraph_existing-S49-P2",
+            "paragraph_absent-S50",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_existing-S19-P4"
+          ]
+        },
+        "lostDetections": {
+          "count": 0,
+          "ids": []
+        },
+        "newFalsePositives": {
+          "count": 2,
+          "ids": [
+            "control-S32",
+            "control_pinpoint-S41"
+          ]
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      },
+      "L--J2--qwen72b": {
+        "newDetections": {
+          "count": 1,
+          "ids": [
+            "paragraph_existing-S41-P1"
+          ]
+        },
+        "lostDetections": {
+          "count": 0,
+          "ids": []
+        },
+        "newFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      },
+      "S--J1--qwen72b": {
+        "newDetections": {
+          "count": 18,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_existing-S13-P2",
+            "paragraph_existing-S27-P1",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_existing-S49-P2",
+            "paragraph_existing-S50-P1",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4"
+          ]
+        },
+        "lostDetections": {
+          "count": 0,
+          "ids": []
+        },
+        "newFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      },
+      "S--J2--qwen72b": {
+        "newDetections": {
+          "count": 18,
+          "ids": [
+            "paragraph_existing-S03-P2",
+            "paragraph_existing-S03-P3",
+            "paragraph_existing-S03-P4",
+            "paragraph_existing-S07-P2",
+            "paragraph_existing-S07-P3",
+            "paragraph_existing-S07-P4",
+            "paragraph_existing-S13-P2",
+            "paragraph_existing-S27-P1",
+            "paragraph_existing-S41-P1",
+            "paragraph_existing-S41-P3",
+            "paragraph_existing-S49-P2",
+            "paragraph_existing-S50-P1",
+            "paragraph_existing-S01-P1",
+            "paragraph_existing-S01-P3",
+            "paragraph_existing-S01-P4",
+            "paragraph_existing-S19-P1",
+            "paragraph_existing-S19-P2",
+            "paragraph_existing-S19-P4"
+          ]
+        },
+        "lostDetections": {
+          "count": 0,
+          "ids": []
+        },
+        "newFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "reducedFalsePositives": {
+          "count": 0,
+          "ids": []
+        },
+        "unavailable": {
+          "count": 0,
+          "ids": []
+        }
+      }
+    },
+    "preregistration": "- 检出：裁判 verdict 为 `contradicted` 或 `insufficient`。`supported` 为未检出。失败或解析失败为不可用，单列，不算未检出。只报条数。\n- 款级错误 = `paragraph_existing` + `paragraph_absent`，共 31；支持对照 = `control` + `control_pinpoint` + `paragraph_omitted`，共 31。\n- 主张 1（DeepSeek，条件 L）：\n  - 成立：款级检出 ≥ 15/31，且 `paragraph_absent` 检出 ≥ 10/13，且支持对照误报 ≤ 4/31；\n  - 推翻：款级检出 ≤ 5/31，或支持对照误报 > 7/31；\n  - 其余：部分成立。\n- 主张 3，补标签臂（Qwen，条件 L）：\n  - 与主张一致：款级检出 ≤ 5/31；\n  - 推翻：≥ 10/31；\n  - 其余（6–9）：部分。\n- 主张 3，切片臂（Qwen，条件 S）：\n  - 成立：`paragraph_existing` 检出 ≥ 15/18，且 `control_pinpoint` 误报 ≤ 3/13；\n  - 推翻：`paragraph_existing` 检出 ≤ 9/18；\n  - 其余：部分成立。\n- 有不可用时：判定照上面的条数算，同时在输出里列出不可用 ID，并标注「含不可用，结论可能变化」。\n- 另外报告（描述，不作判定）：\n  - L 条件下与 equalinfo J2 同裁判逐条配对：新检出、丢失检出、新误报、减少误报，列出 ID；\n  - S 条件下 Qwen 与 equalinfo J1、J2 同条配对；\n  - 项级 4 条与其他类型的条数；\n  - 剔除 S26 全部变体的敏感性复算。",
+    "failures": [],
+    "notAttempted": [],
+    "records": {
+      "total": 148,
+      "ok": 148,
+      "failed": 0,
+      "notAttempted": 0
+    },
+    "typeCounts": {
+      "control": 13,
+      "control_pinpoint": 12,
+      "paragraph_existing": 18,
+      "paragraph_absent": 12,
+      "paragraph_omitted": 4
+    }
+  }
+}

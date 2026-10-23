@@ -1,0 +1,40 @@
+{
+  "status": "draft",
+  "allowPaidCalls": false,
+  "authorizedBy": null,
+  "authorizedAt": null,
+  "note": null,
+  "packageSha256": "f2bf2df4c3d7e6bc3c9eddfd5210b3f0494f4ec459efab8c37089bfe9e96541d",
+  "configurationSha256": "61c2744051d1cb45005e548641eaa77f051b15de09c25dd5bde7ab3ac412b5ac",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "labeledSha256": "5c5d079607f459583d6ad888bde449c1606563982edd939b87abcc78e7cc5cd5",
+  "slicesSha256": "1aa3d53c29888795338c2c55c0697d6d336eeb6ee6d092f6030cf842627f07be",
+  "toolFiles": {
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_compare.py": "8db1a8740ebb1b92b2853331663e2c1ea836ef80eeca5300b4edffa342cde127",
+    "tools/competition/run_evidence.py": "67d3d8194392f15b9ce884b5bb69f6df154396936f45fb99ea28276ce6999a43",
+    "tools/competition/judge_calibration.py": "65d689e70371240293fc8d439214efb9bab2cabaa9f920b87f909919ce4a0b31",
+    "tools/competition/statute_labeled.py": "8d7f7c354662fdbcd4c9f4bce94567f55c89625d028c747736863b4e86063ea0",
+    "tests/test_statute_labeled.py": "62b5a42b99f23ccc78a748464b4444ff049a3b60ab353b0bbfb58f483ce5486d"
+  },
+  "maxRequests": 163,
+  "maxRetries": 0,
+  "budgetCny": null,
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "checkedAt": "2026-10-22",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/ 2026-10-22核实：deepseek-flash 高峰 输入(缓存未命中)¥2/输出¥8，空闲时段半价；按高峰价计（保守），缓存命中按未命中计。"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "checkedAt": "2026-10-22",
+      "source": "https://siliconflow.cn/pricing 2026-10-22核实：Qwen/Qwen2.5-72B-Instruct 输入¥4.13/输出¥4.13。"
+    }
+  },
+  "outputDirectory": null
+}

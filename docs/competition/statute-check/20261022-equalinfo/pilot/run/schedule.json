@@ -1,0 +1,386 @@
+[
+  {
+    "unitId": "control-S03--J1--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "control-S03--J1--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "control-S03--J2--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "control-S03--J2--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "control-S03--R1--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "control-S03--R1--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "control-S03--R2--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "control-S03--R2--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "control_pinpoint-S03--J1--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "control_pinpoint-S03--J1--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "control_pinpoint-S03--J2--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "control_pinpoint-S03--J2--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "control_pinpoint-S03--R1--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "control_pinpoint-S03--R1--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "control_pinpoint-S03--R2--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "control_pinpoint-S03--R2--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J1--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J1--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J2--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J2--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R1--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R1--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R2--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R2--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J1--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J1--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J2--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J2--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R1--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R1--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R2--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R2--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_absent-S03--J1--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_absent-S03--J1--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_absent-S03--J2--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_absent-S03--J2--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_absent-S03--R1--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_absent-S03--R1--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_absent-S03--R2--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_absent-S03--R2--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J1--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J1--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J2--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J2--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R1--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R1--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R2--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R2--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "item_existing-S26-I1--J1--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "item_existing-S26-I1--J1--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "item_existing-S26-I1--J2--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "item_existing-S26-I1--J2--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "item_existing-S26-I1--R1--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "item_existing-S26-I1--R1--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "item_existing-S26-I1--R2--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "item_existing-S26-I1--R2--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "R2"
+  },
+  {
+    "unitId": "item_absent-S26--J1--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "J1"
+  },
+  {
+    "unitId": "item_absent-S26--J1--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "J1"
+  },
+  {
+    "unitId": "item_absent-S26--J2--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "J2"
+  },
+  {
+    "unitId": "item_absent-S26--J2--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "J2"
+  },
+  {
+    "unitId": "item_absent-S26--R1--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "R1"
+  },
+  {
+    "unitId": "item_absent-S26--R1--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "R1"
+  },
+  {
+    "unitId": "item_absent-S26--R2--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "R2"
+  },
+  {
+    "unitId": "item_absent-S26--R2--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "R2"
+  }
+]

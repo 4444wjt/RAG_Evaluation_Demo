@@ -1,0 +1,50 @@
+{
+  "byCondition": {
+    "L": {
+      "requests": 132,
+      "reservationUpperCny": "3.04871290",
+      "expectedCostCny": "0.5593720358261367792110003196",
+      "judges": {
+        "deepseek": {
+          "requests": 66,
+          "reservationUpperCny": "1.199588",
+          "expectedCostCny": "0.1989367203365336127800734311"
+        },
+        "qwen72b": {
+          "requests": 66,
+          "reservationUpperCny": "1.84912490",
+          "expectedCostCny": "0.3604353154896031664309268885"
+        }
+      }
+    },
+    "S": {
+      "requests": 31,
+      "reservationUpperCny": "0.30038316",
+      "expectedCostCny": "0.04076935417469335161731221161",
+      "judges": {
+        "qwen72b": {
+          "requests": 31,
+          "reservationUpperCny": "0.30038316",
+          "expectedCostCny": "0.04076935417469335161731221161"
+        }
+      }
+    }
+  },
+  "byJudge": {
+    "deepseek": {
+      "requests": 66,
+      "reservationUpperCny": "1.199588",
+      "expectedCostCny": "0.1989367203365336127800734311"
+    },
+    "qwen72b": {
+      "requests": 97,
+      "reservationUpperCny": "2.14950806",
+      "expectedCostCny": "0.4012046696642965180482391001"
+    }
+  },
+  "requests": 163,
+  "reservationUpperCny": "3.34909606",
+  "expectedCostCny": "0.6001413900008301308283125312",
+  "method": "L用同条同裁判J2 charge.costCny×新/旧消息UTF-8字节数；S用同条Qwen J1同式；预留输入字节+256、输出maxTokens。",
+  "referenceEventsSha256": "094f560cf3ffd4e0eb2d9df08985fb2e537f26cb1a83ecbff0c6da503fc01bdf"
+}

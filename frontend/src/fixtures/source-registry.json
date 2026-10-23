@@ -89,6 +89,18 @@
         {
           "path": "docs/competition/statute-check/20261021-pinpoint-run/run/inputs/scenarios/deposit_insurance.txt",
           "rawSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+        },
+        {
+          "path": "docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/scenarios/deposit_insurance.txt",
+          "rawSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+        },
+        {
+          "path": "docs/competition/statute-check/20261022-equalinfo/run/inputs/scenarios/deposit_insurance.txt",
+          "rawSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+        },
+        {
+          "path": "docs/competition/statute-check/20261022-labeled/run/inputs/scenarios/deposit_insurance.txt",
+          "rawSha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
         }
       ]
     },

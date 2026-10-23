@@ -1,0 +1,1400 @@
+{
+  "schemaVersion": 1,
+  "material": "20261021-pinpoint-run",
+  "definition": "逐条判定（只看陈述里的第一个条号引用）：\n1. 没有条号引用：不标记。\n2. 所引条/款/项不在节选中：标记（存在性）。\n3. 否则在所引层级的同级单元之间比较 `statute_check._coverage`\n   （陈述去掉条号引用后的字符二元组，被该单元原文覆盖的比例）：\n   只引到条时比较节选中的各条，引到款时比较同条各款，引到项时比较同款各项。\n   有别的单元覆盖率严格高于所引单元，即标记。\n   不设最小覆盖率、不设差值、不用交叉引用豁免。\n余量 = 所引单元覆盖率 − 其余同级单元的最高覆盖率；负数表示内容更像别处。",
+  "inputs": {
+    "package": {
+      "path": "docs/competition/statute-check/20261021-pinpoint-run/run/package.json",
+      "sha256": "a70506f4502780194fce6c3f611cc494e1bb371f9c5b2d36749fbc32e9fc958f"
+    },
+    "source": {
+      "path": "docs/competition/statute-check/20261021-pinpoint-run/run/inputs/scenarios/deposit_insurance.txt",
+      "sha256": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb"
+    },
+    "rules": {
+      "path": "docs/competition/statute-check/20261021-pinpoint-run/analysis/rules.json",
+      "sha256": "66b98a784af8fe317198fbe4753836fdadf6d6958b0d36b2c3e07bda8ccf9688"
+    }
+  },
+  "code": {
+    "script": "54a6fa2bd5e079743dcfa5b41eb1c91ebc2f966db379f571ca7ba6dafa3217a1",
+    "statuteCheck": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5"
+  },
+  "provisionUnits": 22,
+  "groups": [
+    {
+      "group": "款级错误",
+      "n": 31,
+      "rule": 30,
+      "baseline": 31,
+      "onlyRule": [],
+      "onlyBaseline": [
+        "paragraph_existing-S27-P1"
+      ]
+    },
+    {
+      "group": "项级错误",
+      "n": 4,
+      "rule": 1,
+      "baseline": 4,
+      "onlyRule": [],
+      "onlyBaseline": [
+        "item_existing-S26-I1",
+        "item_existing-S26-I2",
+        "item_existing-S26-I4"
+      ]
+    },
+    {
+      "group": "支持对照",
+      "n": 31,
+      "rule": 0,
+      "baseline": 0,
+      "onlyRule": [],
+      "onlyBaseline": []
+    }
+  ],
+  "byType": [
+    {
+      "type": "paragraph_existing",
+      "label": "同条存在的另一款",
+      "group": "款级错误",
+      "n": 18,
+      "rule": 17,
+      "baseline": 18,
+      "onlyRule": [],
+      "onlyBaseline": [
+        "paragraph_existing-S27-P1"
+      ],
+      "marginMin": -0.9231,
+      "marginMax": -0.25,
+      "noCitation": 0
+    },
+    {
+      "type": "paragraph_absent",
+      "label": "不存在的款",
+      "group": "款级错误",
+      "n": 13,
+      "rule": 13,
+      "baseline": 13,
+      "onlyRule": [],
+      "onlyBaseline": [],
+      "marginMin": null,
+      "marginMax": null,
+      "noCitation": 0
+    },
+    {
+      "type": "item_existing",
+      "label": "同款存在的另一项",
+      "group": "项级错误",
+      "n": 3,
+      "rule": 0,
+      "baseline": 3,
+      "onlyRule": [],
+      "onlyBaseline": [
+        "item_existing-S26-I1",
+        "item_existing-S26-I2",
+        "item_existing-S26-I4"
+      ],
+      "marginMin": -0.3333,
+      "marginMax": -0.1111,
+      "noCitation": 0
+    },
+    {
+      "type": "item_absent",
+      "label": "不存在的项",
+      "group": "项级错误",
+      "n": 1,
+      "rule": 1,
+      "baseline": 1,
+      "onlyRule": [],
+      "onlyBaseline": [],
+      "marginMin": null,
+      "marginMax": null,
+      "noCitation": 0
+    },
+    {
+      "type": "control",
+      "label": "原陈述对照",
+      "group": "支持对照",
+      "n": 14,
+      "rule": 0,
+      "baseline": 0,
+      "onlyRule": [],
+      "onlyBaseline": [],
+      "marginMin": 0.1905,
+      "marginMax": 0.7692,
+      "noCitation": 7
+    },
+    {
+      "type": "control_pinpoint",
+      "label": "正确款项定位对照",
+      "group": "支持对照",
+      "n": 13,
+      "rule": 0,
+      "baseline": 0,
+      "onlyRule": [],
+      "onlyBaseline": [],
+      "marginMin": 0.1111,
+      "marginMax": 1.0,
+      "noCitation": 0
+    },
+    {
+      "type": "paragraph_omitted",
+      "label": "省略款号对照",
+      "group": "支持对照",
+      "n": 4,
+      "rule": 0,
+      "baseline": 0,
+      "onlyRule": [],
+      "onlyBaseline": [],
+      "marginMin": 0.5294,
+      "marginMax": 0.7115,
+      "noCitation": 0
+    }
+  ],
+  "items": [
+    {
+      "id": "control-S03",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第五条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.0,
+        "第二条": 0.0769,
+        "第三条": 0.0769,
+        "第四条": 0.1538,
+        "第五条": 1.0,
+        "第八条": 0.0,
+        "第九条": 0.0,
+        "第十条": 0.0769,
+        "第十九条": 0.2308
+      },
+      "best": "第五条",
+      "margin": 0.7692,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S07",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S13",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S21",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第四条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.1579,
+        "第二条": 0.2632,
+        "第三条": 0.2632,
+        "第四条": 0.6316,
+        "第五条": 0.3684,
+        "第八条": 0.2632,
+        "第九条": 0.2105,
+        "第十条": 0.2632,
+        "第十九条": 0.2632
+      },
+      "best": "第四条",
+      "margin": 0.2632,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S27",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S28",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.2381,
+        "第二条": 0.381,
+        "第三条": 0.8571,
+        "第四条": 0.5238,
+        "第五条": 0.5238,
+        "第八条": 0.4762,
+        "第九条": 0.5238,
+        "第十条": 0.6667,
+        "第十九条": 0.5238
+      },
+      "best": "第三条",
+      "margin": 0.1905,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S32",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.1364,
+        "第二条": 0.5909,
+        "第三条": 0.2727,
+        "第四条": 0.3182,
+        "第五条": 0.3182,
+        "第八条": 0.2273,
+        "第九条": 0.3182,
+        "第十条": 0.3636,
+        "第十九条": 0.3182
+      },
+      "best": "第二条",
+      "margin": 0.2273,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S36",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第四条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.125,
+        "第二条": 0.4375,
+        "第三条": 0.4375,
+        "第四条": 1.0,
+        "第五条": 0.5625,
+        "第八条": 0.3125,
+        "第九条": 0.3125,
+        "第十条": 0.4375,
+        "第十九条": 0.5
+      },
+      "best": "第四条",
+      "margin": 0.4375,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S41",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第十条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.12,
+        "第二条": 0.32,
+        "第三条": 0.52,
+        "第四条": 0.52,
+        "第五条": 0.52,
+        "第八条": 0.48,
+        "第九条": 0.44,
+        "第十条": 1.0,
+        "第十九条": 0.64
+      },
+      "best": "第十条",
+      "margin": 0.36,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S49",
+      "type": "control",
+      "expected": "supported",
+      "cited": "第八条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.1111,
+        "第二条": 0.4167,
+        "第三条": 0.2778,
+        "第四条": 0.3611,
+        "第五条": 0.3333,
+        "第八条": 1.0,
+        "第九条": 0.3056,
+        "第十条": 0.3333,
+        "第十九条": 0.3333
+      },
+      "best": "第八条",
+      "margin": 0.5833,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S50",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S01",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S19",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control-S26",
+      "type": "control",
+      "expected": "supported",
+      "cited": null,
+      "level": null,
+      "exists": null,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control_pinpoint-S03",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第五条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 1.0,
+        "第五条第二款": 0.3846,
+        "第五条第三款": 0.0769,
+        "第五条第四款": 0.1538
+      },
+      "best": "第五条第一款",
+      "margin": 0.6154,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S03-P2",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 1.0,
+        "第五条第二款": 0.3846,
+        "第五条第三款": 0.0769,
+        "第五条第四款": 0.1538
+      },
+      "best": "第五条第一款",
+      "margin": -0.6154,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S03-P3",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 1.0,
+        "第五条第二款": 0.3846,
+        "第五条第三款": 0.0769,
+        "第五条第四款": 0.1538
+      },
+      "best": "第五条第一款",
+      "margin": -0.9231,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S03-P4",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第四款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 1.0,
+        "第五条第二款": 0.3846,
+        "第五条第三款": 0.0769,
+        "第五条第四款": 0.1538
+      },
+      "best": "第五条第一款",
+      "margin": -0.8462,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S03",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第五条第五款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S07",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第五条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.8235,
+        "第五条第二款": 0.2941,
+        "第五条第三款": 0.1765,
+        "第五条第四款": 0.1765
+      },
+      "best": "第五条第一款",
+      "margin": 0.5294,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S07-P2",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.8235,
+        "第五条第二款": 0.2941,
+        "第五条第三款": 0.1765,
+        "第五条第四款": 0.1765
+      },
+      "best": "第五条第一款",
+      "margin": -0.5294,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S07-P3",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.8235,
+        "第五条第二款": 0.2941,
+        "第五条第三款": 0.1765,
+        "第五条第四款": 0.1765
+      },
+      "best": "第五条第一款",
+      "margin": -0.6471,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S07-P4",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第四款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.8235,
+        "第五条第二款": 0.2941,
+        "第五条第三款": 0.1765,
+        "第五条第四款": 0.1765
+      },
+      "best": "第五条第一款",
+      "margin": -0.6471,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S07",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第五条第五款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S13",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二条第一款": 1.0,
+        "第二条第二款": 0.3864
+      },
+      "best": "第二条第一款",
+      "margin": 0.6136,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S13-P2",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第二条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二条第一款": 1.0,
+        "第二条第二款": 0.3864
+      },
+      "best": "第二条第一款",
+      "margin": -0.6136,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S13",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第二条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S21",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第四条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四条第一款": 0.6316
+      },
+      "best": "第四条第一款",
+      "margin": 0.6316,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_absent-S21",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第四条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S27",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第十九条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款": 0.375,
+        "第十九条第二款": 0.9688
+      },
+      "best": "第十九条第二款",
+      "margin": 0.5938,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S27-P1",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第十九条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款": 0.375,
+        "第十九条第二款": 0.9688
+      },
+      "best": "第十九条第二款",
+      "margin": -0.5938,
+      "baselineFlagged": true,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_absent-S27",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第十九条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "paragraph_omitted-S27",
+      "type": "paragraph_omitted",
+      "expected": "supported",
+      "cited": "第十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.0938,
+        "第二条": 0.2188,
+        "第三条": 0.3125,
+        "第四条": 0.2812,
+        "第五条": 0.375,
+        "第八条": 0.4375,
+        "第九条": 0.2812,
+        "第十条": 0.4062,
+        "第十九条": 0.9688
+      },
+      "best": "第十九条",
+      "margin": 0.5312,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control_pinpoint-S28",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三条第一款": 0.8571
+      },
+      "best": "第三条第一款",
+      "margin": 0.8571,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_absent-S28",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第三条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S36",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第四条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四条第一款": 1.0
+      },
+      "best": "第四条第一款",
+      "margin": 1.0,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_absent-S36",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第四条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S41",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第十条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第十条第一款": 0.6,
+        "第十条第二款": 1.0,
+        "第十条第三款": 0.56
+      },
+      "best": "第十条第二款",
+      "margin": 0.4,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S41-P1",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第十条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第十条第一款": 0.6,
+        "第十条第二款": 1.0,
+        "第十条第三款": 0.56
+      },
+      "best": "第十条第二款",
+      "margin": -0.4,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S41-P3",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第十条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第十条第一款": 0.6,
+        "第十条第二款": 1.0,
+        "第十条第三款": 0.56
+      },
+      "best": "第十条第二款",
+      "margin": -0.44,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S41",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第十条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S49",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第八条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第八条第一款": 1.0,
+        "第八条第二款": 0.75
+      },
+      "best": "第八条第一款",
+      "margin": 0.25,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S49-P2",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第八条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第八条第一款": 1.0,
+        "第八条第二款": 0.75
+      },
+      "best": "第八条第一款",
+      "margin": -0.25,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S49",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第八条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "control_pinpoint-S50",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第八条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第八条第一款": 0.5192,
+        "第八条第二款": 1.0
+      },
+      "best": "第八条第二款",
+      "margin": 0.4808,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S50-P1",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第八条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第八条第一款": 0.5192,
+        "第八条第二款": 1.0
+      },
+      "best": "第八条第二款",
+      "margin": -0.4808,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S50",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第八条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "paragraph_omitted-S50",
+      "type": "paragraph_omitted",
+      "expected": "supported",
+      "cited": "第八条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.0769,
+        "第二条": 0.2885,
+        "第三条": 0.1923,
+        "第四条": 0.25,
+        "第五条": 0.25,
+        "第八条": 1.0,
+        "第九条": 0.2115,
+        "第十条": 0.2692,
+        "第十九条": 0.2692
+      },
+      "best": "第八条",
+      "margin": 0.7115,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control_pinpoint-S01",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第五条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.0667,
+        "第五条第二款": 0.9333,
+        "第五条第三款": 0.2667,
+        "第五条第四款": 0.0667
+      },
+      "best": "第五条第二款",
+      "margin": 0.6667,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S01-P1",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.0667,
+        "第五条第二款": 0.9333,
+        "第五条第三款": 0.2667,
+        "第五条第四款": 0.0667
+      },
+      "best": "第五条第二款",
+      "margin": -0.8667,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S01-P3",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.0667,
+        "第五条第二款": 0.9333,
+        "第五条第三款": 0.2667,
+        "第五条第四款": 0.0667
+      },
+      "best": "第五条第二款",
+      "margin": -0.6667,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S01-P4",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第四款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.0667,
+        "第五条第二款": 0.9333,
+        "第五条第三款": 0.2667,
+        "第五条第四款": 0.0667
+      },
+      "best": "第五条第二款",
+      "margin": -0.8667,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S01",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第五条第五款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "paragraph_omitted-S01",
+      "type": "paragraph_omitted",
+      "expected": "supported",
+      "cited": "第五条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.1,
+        "第二条": 0.1667,
+        "第三条": 0.2667,
+        "第四条": 0.2333,
+        "第五条": 0.9333,
+        "第八条": 0.1333,
+        "第九条": 0.1667,
+        "第十条": 0.2667,
+        "第十九条": 0.3
+      },
+      "best": "第五条",
+      "margin": 0.6333,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control_pinpoint-S19",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第五条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.1176,
+        "第五条第二款": 0.2059,
+        "第五条第三款": 0.9706,
+        "第五条第四款": 0.1471
+      },
+      "best": "第五条第三款",
+      "margin": 0.7647,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_existing-S19-P1",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.1176,
+        "第五条第二款": 0.2059,
+        "第五条第三款": 0.9706,
+        "第五条第四款": 0.1471
+      },
+      "best": "第五条第三款",
+      "margin": -0.8529,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S19-P2",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.1176,
+        "第五条第二款": 0.2059,
+        "第五条第三款": 0.9706,
+        "第五条第四款": 0.1471
+      },
+      "best": "第五条第三款",
+      "margin": -0.7647,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_existing-S19-P4",
+      "type": "paragraph_existing",
+      "expected": "not_supported",
+      "cited": "第五条第四款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第五条第一款": 0.1176,
+        "第五条第二款": 0.2059,
+        "第五条第三款": 0.9706,
+        "第五条第四款": 0.1471
+      },
+      "best": "第五条第三款",
+      "margin": -0.8235,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    {
+      "id": "paragraph_absent-S19",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第五条第五款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "paragraph_omitted-S19",
+      "type": "paragraph_omitted",
+      "expected": "supported",
+      "cited": "第五条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第一条": 0.1176,
+        "第二条": 0.2059,
+        "第三条": 0.3824,
+        "第四条": 0.3235,
+        "第五条": 0.9706,
+        "第八条": 0.2941,
+        "第九条": 0.3235,
+        "第十条": 0.3529,
+        "第十九条": 0.4412
+      },
+      "best": "第五条",
+      "margin": 0.5294,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "control_pinpoint-S26",
+      "type": "control_pinpoint",
+      "expected": "supported",
+      "cited": "第十九条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款第一项": 0.2444,
+        "第十九条第一款第二项": 0.2444,
+        "第十九条第一款第三项": 0.3556,
+        "第十九条第一款第四项": 0.0222
+      },
+      "best": "第十九条第一款第三项",
+      "margin": 0.1111,
+      "baselineFlagged": false,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "paragraph_absent-S26",
+      "type": "paragraph_absent",
+      "expected": "not_supported",
+      "cited": "第十九条第三款第三项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    {
+      "id": "item_existing-S26-I1",
+      "type": "item_existing",
+      "expected": "not_supported",
+      "cited": "第十九条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款第一项": 0.2444,
+        "第十九条第一款第二项": 0.2444,
+        "第十九条第一款第三项": 0.3556,
+        "第十九条第一款第四项": 0.0222
+      },
+      "best": "第十九条第一款第三项",
+      "margin": -0.1111,
+      "baselineFlagged": true,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "item_existing-S26-I2",
+      "type": "item_existing",
+      "expected": "not_supported",
+      "cited": "第十九条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款第一项": 0.2444,
+        "第十九条第一款第二项": 0.2444,
+        "第十九条第一款第三项": 0.3556,
+        "第十九条第一款第四项": 0.0222
+      },
+      "best": "第十九条第一款第三项",
+      "margin": -0.1111,
+      "baselineFlagged": true,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "item_existing-S26-I4",
+      "type": "item_existing",
+      "expected": "not_supported",
+      "cited": "第十九条第一款第四项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第十九条第一款第一项": 0.2444,
+        "第十九条第一款第二项": 0.2444,
+        "第十九条第一款第三项": 0.3556,
+        "第十九条第一款第四项": 0.0222
+      },
+      "best": "第十九条第一款第三项",
+      "margin": -0.3333,
+      "baselineFlagged": true,
+      "ruleFlagged": false,
+      "ruleErrorCodes": []
+    },
+    {
+      "id": "item_absent-S26",
+      "type": "item_absent",
+      "expected": "not_supported",
+      "cited": "第十九条第一款第五项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "baselineFlagged": true,
+      "ruleFlagged": true,
+      "ruleErrorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    }
+  ],
+  "sameMaterial": {
+    "run": "docs/competition/statute-check/20261022-equalinfo/run",
+    "itemsIdentical": true,
+    "sourceIdentical": true
+  }
+}

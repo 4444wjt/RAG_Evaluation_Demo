@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "phase": "pilot",
+  "conclusion": null,
+  "method": "按裁判×条件分别以全量66单元/试算8单元×试算实测外推；R另按实测请求数/已执行行×66估请求数。token仅合计有usage的调用，不填零补缺失；费用含插补，不是账单。",
+  "limitation": "未完成或存在缺失时外推可能偏低；无数据的条件外推为null，缺usage不补token；试算只报条数与费用，不作效果结论，结果不并入全量。",
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "checkedAt": "2026-10-22",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/ 2026-10-22核实：deepseek-flash 高峰 输入(缓存未命中)¥2/输出¥8，空闲时段半价；按高峰价计（保守），缓存命中按未命中计。"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "checkedAt": "2026-10-22",
+      "source": "https://siliconflow.cn/pricing 2026-10-22核实：Qwen/Qwen2.5-72B-Instruct 输入¥4.13/输出¥4.13。"
+    }
+  },
+  "byJudgeAndKind": {
+    "deepseek": {
+      "judge": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 13263,
+        "outputTokens": 1372,
+        "meanInputTokensPerUsageRequest": "828.9375",
+        "meanOutputTokensPerUsageRequest": "85.75",
+        "usageCostCny": "0.037502",
+        "chargedCostCny": "0.037502"
+      },
+      "ragas_statements": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 16866,
+        "outputTokens": 934,
+        "meanInputTokensPerUsageRequest": "1054.125",
+        "meanOutputTokensPerUsageRequest": "58.375",
+        "usageCostCny": "0.041204",
+        "chargedCostCny": "0.041204"
+      },
+      "ragas_nli": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 71807,
+        "outputTokens": 1869,
+        "meanInputTokensPerUsageRequest": "4487.9375",
+        "meanOutputTokensPerUsageRequest": "116.8125",
+        "usageCostCny": "0.158566",
+        "chargedCostCny": "0.158566"
+      },
+      "ragas_fix": {
+        "requests": 0,
+        "usageRequests": 0,
+        "missingUsageRequests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "meanInputTokensPerUsageRequest": null,
+        "meanOutputTokensPerUsageRequest": null,
+        "usageCostCny": "0",
+        "chargedCostCny": "0"
+      }
+    },
+    "qwen72b": {
+      "judge": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 14485,
+        "outputTokens": 1307,
+        "meanInputTokensPerUsageRequest": "905.3125",
+        "meanOutputTokensPerUsageRequest": "81.6875",
+        "usageCostCny": "0.06522096",
+        "chargedCostCny": "0.06522096"
+      },
+      "ragas_statements": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 19416,
+        "outputTokens": 1086,
+        "meanInputTokensPerUsageRequest": "1213.5",
+        "meanOutputTokensPerUsageRequest": "67.875",
+        "usageCostCny": "0.08467326",
+        "chargedCostCny": "0.08467326"
+      },
+      "ragas_nli": {
+        "requests": 16,
+        "usageRequests": 16,
+        "missingUsageRequests": 0,
+        "inputTokens": 88927,
+        "outputTokens": 2308,
+        "meanInputTokensPerUsageRequest": "5557.9375",
+        "meanOutputTokensPerUsageRequest": "144.25",
+        "usageCostCny": "0.37680055",
+        "chargedCostCny": "0.37680055"
+      },
+      "ragas_fix": {
+        "requests": 0,
+        "usageRequests": 0,
+        "missingUsageRequests": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "meanInputTokensPerUsageRequest": null,
+        "meanOutputTokensPerUsageRequest": null,
+        "usageCostCny": "0",
+        "chargedCostCny": "0"
+      }
+    }
+  },
+  "extrapolation": {
+    "deepseek": {
+      "J1": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 8,
+        "pilotCostCny": "0.014722",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "66.00",
+        "fullInputTokensEstimate": "38387.25",
+        "fullOutputTokensEstimate": "5585.25",
+        "fullCostCnyEstimate": "0.12145650"
+      },
+      "J2": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 8,
+        "pilotCostCny": "0.022780",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "66.00",
+        "fullInputTokensEstimate": "71032.50",
+        "fullOutputTokensEstimate": "5733.75",
+        "fullCostCnyEstimate": "0.18793500"
+      },
+      "R1": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 16,
+        "pilotCostCny": "0.075520",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "132.00",
+        "fullInputTokensEstimate": "265452.00",
+        "fullOutputTokensEstimate": "11517.00",
+        "fullCostCnyEstimate": "0.62304000",
+        "measuredRequestsPerRow": "2",
+        "fullRequestsFromMeasuredCallsPerRow": "132"
+      },
+      "R2": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 16,
+        "pilotCostCny": "0.124250",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "132.00",
+        "fullInputTokensEstimate": "466100.25",
+        "fullOutputTokensEstimate": "11607.75",
+        "fullCostCnyEstimate": "1.02506250",
+        "measuredRequestsPerRow": "2",
+        "fullRequestsFromMeasuredCallsPerRow": "132"
+      }
+    },
+    "qwen72b": {
+      "J1": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 8,
+        "pilotCostCny": "0.02340471",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "66.00",
+        "fullInputTokensEstimate": "41926.50",
+        "fullOutputTokensEstimate": "4826.25",
+        "fullCostCnyEstimate": "0.1930888575"
+      },
+      "J2": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 8,
+        "pilotCostCny": "0.04181625",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "66.00",
+        "fullInputTokensEstimate": "77574.75",
+        "fullOutputTokensEstimate": "5956.50",
+        "fullCostCnyEstimate": "0.3449840625"
+      },
+      "R1": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 16,
+        "pilotCostCny": "0.16581537",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "132.00",
+        "fullInputTokensEstimate": "317105.25",
+        "fullOutputTokensEstimate": "14124.00",
+        "fullCostCnyEstimate": "1.3679768025",
+        "measuredRequestsPerRow": "2",
+        "fullRequestsFromMeasuredCallsPerRow": "132"
+      },
+      "R2": {
+        "fullUnits": 66,
+        "pilotUnits": 8,
+        "executedPilotUnits": 8,
+        "pilotRequests": 16,
+        "pilotCostCny": "0.29565844",
+        "scale": "8.25",
+        "completePilotUnits": true,
+        "fullRequestsEstimate": "132.00",
+        "fullInputTokensEstimate": "576724.50",
+        "fullOutputTokensEstimate": "13876.50",
+        "fullCostCnyEstimate": "2.4391821300",
+        "measuredRequestsPerRow": "2",
+        "fullRequestsFromMeasuredCallsPerRow": "132"
+      }
+    }
+  },
+  "thinkingEvidence": {
+    "deepseek": {
+      "all": {
+        "requests": 48,
+        "thinkingRequested": [
+          "{\"type\": \"disabled\"}"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 48,
+          "mean": "86.97916666666666666666666667",
+          "max": 242
+        }
+      },
+      "judge": {
+        "requests": 16,
+        "thinkingRequested": [
+          "{\"type\": \"disabled\"}"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "85.75",
+          "max": 151
+        }
+      },
+      "ragas_statements": {
+        "requests": 16,
+        "thinkingRequested": [
+          "{\"type\": \"disabled\"}"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "58.375",
+          "max": 107
+        }
+      },
+      "ragas_nli": {
+        "requests": 16,
+        "thinkingRequested": [
+          "{\"type\": \"disabled\"}"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "116.8125",
+          "max": 242
+        }
+      },
+      "ragas_fix": {
+        "requests": 0,
+        "thinkingRequested": [],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 0,
+          "mean": null,
+          "max": null
+        }
+      }
+    },
+    "qwen72b": {
+      "all": {
+        "requests": 48,
+        "thinkingRequested": [
+          "null"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 48,
+          "mean": "97.9375",
+          "max": 230
+        }
+      },
+      "judge": {
+        "requests": 16,
+        "thinkingRequested": [
+          "null"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "81.6875",
+          "max": 181
+        }
+      },
+      "ragas_statements": {
+        "requests": 16,
+        "thinkingRequested": [
+          "null"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "67.875",
+          "max": 107
+        }
+      },
+      "ragas_nli": {
+        "requests": 16,
+        "thinkingRequested": [
+          "null"
+        ],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 16,
+          "mean": "144.25",
+          "max": 230
+        }
+      },
+      "ragas_fix": {
+        "requests": 0,
+        "thinkingRequested": [],
+        "reasoningContentReturned": {
+          "count": 0,
+          "ids": []
+        },
+        "reasoningTokensReported": 0,
+        "reasoningTokensSum": 0,
+        "reasoningTokensMax": null,
+        "outputTokens": {
+          "usageRequests": 0,
+          "mean": null,
+          "max": null
+        }
+      }
+    }
+  },
+  "fullCostCnyEstimate": "6.3027258525",
+  "observedExtrapolatedCostSubtotalCny": "6.3027258525",
+  "pilotCostCny": "0.76396677",
+  "unavailable": [],
+  "failedCalls": [],
+  "notExecuted": []
+}

@@ -1,0 +1,480 @@
+{
+  "status": "authorized",
+  "authorizedBy": "Ll",
+  "authorizedAt": "2026-10-22",
+  "packageSha256": "65a6d6135ae9eef978c944dd51a31d9c65e03797cfdf1f0d82ea5d892bf0e3cd",
+  "configurationSha256": "8bcd8a561d66f66d2eb5dfde3e7548c252407def6eabc447ed3d418b76c2a54c",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "toolFiles": {
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_compare.py": "8db1a8740ebb1b92b2853331663e2c1ea836ef80eeca5300b4edffa342cde127",
+    "tools/competition/run_evidence.py": "67d3d8194392f15b9ce884b5bb69f6df154396936f45fb99ea28276ce6999a43",
+    "tools/competition/judge_calibration.py": "65d689e70371240293fc8d439214efb9bab2cabaa9f920b87f909919ce4a0b31",
+    "tools/competition/statute_pinpoint.py": "f275d133f56b2f967a862a4882f0f491ef51a201dc226b9f7416cfe07f350ebc",
+    "tools/competition/statute_equalinfo.py": "afe18c0b185ae3f29e2ce9a5d6071c2de99e5dbaf5b7060759f5cacff7dfede6",
+    "backend/adapters/ragas_compat.py": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647"
+  },
+  "maxRequests": 160,
+  "maxRetries": 0,
+  "budgetCny": 8,
+  "outputDirectory": "work/statute-injection/equalinfo-20261022/run-pilot",
+  "acceptNoHardBillingCap": true,
+  "allowPaidCalls": true,
+  "estimates": {
+    "phases": {
+      "pilot": {
+        "phase": "pilot",
+        "items": 8,
+        "maxRequests": 160,
+        "method": "J沿用pinpoint：历史实际输入token×新消息字节/历史消息字节，输出用历史每请求均值；向上取整。",
+        "deepseekHistoryNote": "历史usage来自deepseek-chat请求名的运行，实际返回deepseek-flash；本次直接请求deepseek-flash。",
+        "ragasMethod": "抽取提示精确构造；NLI下界为原陈述一条、规划值为原陈述重复3条；输出沿用历史抽取/NLI均值；规划无格式修复。",
+        "hardUpperMethod": "J逐个固定消息预留；R每个单元最多4请求，每请求按65536字节+256及2048输出预留；超字节上限拒发、不截断。",
+        "historicalRagas": {
+          "path": "docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl",
+          "steps": {
+            "statements": {
+              "requests": 75,
+              "messageBytes": 249916,
+              "promptTokens": 77911,
+              "completionTokens": 4850
+            },
+            "nli": {
+              "requests": 25,
+              "messageBytes": 178933,
+              "promptTokens": 77468,
+              "completionTokens": 3647
+            }
+          }
+        },
+        "judges": {
+          "deepseek": {
+            "byCondition": {
+              "J1": {
+                "requests": 8,
+                "messageBytes": 23943,
+                "inputTokensEstimate": 4575,
+                "outputTokensEstimate": 765,
+                "costCnyEstimate": 0.01527,
+                "sameDayActualUsageReference": {
+                  "path": "docs/competition/statute-check/20261021-pinpoint-run/run/records.json",
+                  "requests": 8,
+                  "promptTokens": 4653,
+                  "completionTokens": 641
+                }
+              },
+              "J2": {
+                "requests": 8,
+                "messageBytes": 44045,
+                "inputTokensEstimate": 8415,
+                "outputTokensEstimate": 765,
+                "costCnyEstimate": 0.02295
+              },
+              "R1": {
+                "requestsPlanning": 16,
+                "requestsUpper": 32,
+                "messageBytes": {
+                  "statements": 26775,
+                  "nliLower": 56552,
+                  "nliPlanning": 60898
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 26775,
+                    "inputTokensEstimate": 8348,
+                    "outputTokensEstimate": 518,
+                    "costCnyEstimate": 0.02084
+                  },
+                  "nli": {
+                    "messageBytes": 60898,
+                    "inputTokensEstimate": 26366,
+                    "outputTokensEstimate": 1168,
+                    "costCnyEstimate": 0.062076
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 16,
+                "costCnyEstimate": 0.082916,
+                "allRowsTwoRepairsCostCnyUpper": 4.734976,
+                "qwenTokenRatioAssumption": false
+              },
+              "R2": {
+                "requestsPlanning": 16,
+                "requestsUpper": 32,
+                "messageBytes": {
+                  "statements": 26775,
+                  "nliLower": 96709,
+                  "nliPlanning": 101055
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 26775,
+                    "inputTokensEstimate": 8348,
+                    "outputTokensEstimate": 518,
+                    "costCnyEstimate": 0.02084
+                  },
+                  "nli": {
+                    "messageBytes": 101055,
+                    "inputTokensEstimate": 43752,
+                    "outputTokensEstimate": 1168,
+                    "costCnyEstimate": 0.096848
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 16,
+                "costCnyEstimate": 0.117688,
+                "allRowsTwoRepairsCostCnyUpper": 4.734976,
+                "qwenTokenRatioAssumption": false
+              }
+            },
+            "costCnyEstimate": 0.238824,
+            "reservationHardUpperCny": "9.712424"
+          },
+          "qwen72b": {
+            "byCondition": {
+              "J1": {
+                "requests": 8,
+                "messageBytes": 23943,
+                "inputTokensEstimate": 4980,
+                "outputTokensEstimate": 706,
+                "costCnyEstimate": 0.02348318,
+                "sameDayActualUsageReference": {
+                  "path": "docs/competition/statute-check/20261021-pinpoint-run/run/records.json",
+                  "requests": 8,
+                  "promptTokens": 5082,
+                  "completionTokens": 595
+                }
+              },
+              "J2": {
+                "requests": 8,
+                "messageBytes": 44045,
+                "inputTokensEstimate": 9161,
+                "outputTokensEstimate": 706,
+                "costCnyEstimate": 0.04075071
+              },
+              "R1": {
+                "requestsPlanning": 16,
+                "requestsUpper": 32,
+                "messageBytes": {
+                  "statements": 26775,
+                  "nliLower": 56552,
+                  "nliPlanning": 60898
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 26775,
+                    "inputTokensEstimate": 8348,
+                    "outputTokensEstimate": 518,
+                    "costCnyEstimate": 0.03661658
+                  },
+                  "nli": {
+                    "messageBytes": 60898,
+                    "inputTokensEstimate": 26366,
+                    "outputTokensEstimate": 1168,
+                    "costCnyEstimate": 0.11371542
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 16,
+                "costCnyEstimate": 0.150332,
+                "allRowsTwoRepairsCostCnyUpper": 8.9657344,
+                "qwenTokenRatioAssumption": true
+              },
+              "R2": {
+                "requestsPlanning": 16,
+                "requestsUpper": 32,
+                "messageBytes": {
+                  "statements": 26775,
+                  "nliLower": 96709,
+                  "nliPlanning": 101055
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 26775,
+                    "inputTokensEstimate": 8348,
+                    "outputTokensEstimate": 518,
+                    "costCnyEstimate": 0.03661658
+                  },
+                  "nli": {
+                    "messageBytes": 101055,
+                    "inputTokensEstimate": 43752,
+                    "outputTokensEstimate": 1168,
+                    "costCnyEstimate": 0.1855196
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 16,
+                "costCnyEstimate": 0.22213618000000002,
+                "allRowsTwoRepairsCostCnyUpper": 8.9657344,
+                "qwenTokenRatioAssumption": true
+              }
+            },
+            "costCnyEstimate": 0.436702,
+            "reservationHardUpperCny": "18.27992516"
+          }
+        },
+        "totalCostCnyEstimate": 0.675526,
+        "reservationHardUpperCny": "27.99234916",
+        "pricesAsOf": "2026-10-21",
+        "prices": {
+          "deepseek": [
+            2,
+            8
+          ],
+          "qwen72b": [
+            4.13,
+            4.13
+          ]
+        },
+        "limitation": "估算不是账单；Qwen无历史Ragas用量，沿用DeepSeek同比例是假设；运行当天须重新核价。"
+      },
+      "full": {
+        "phase": "full",
+        "items": 66,
+        "maxRequests": 1320,
+        "method": "J沿用pinpoint：历史实际输入token×新消息字节/历史消息字节，输出用历史每请求均值；向上取整。",
+        "deepseekHistoryNote": "历史usage来自deepseek-chat请求名的运行，实际返回deepseek-flash；本次直接请求deepseek-flash。",
+        "ragasMethod": "抽取提示精确构造；NLI下界为原陈述一条、规划值为原陈述重复3条；输出沿用历史抽取/NLI均值；规划无格式修复。",
+        "hardUpperMethod": "J逐个固定消息预留；R每个单元最多4请求，每请求按65536字节+256及2048输出预留；超字节上限拒发、不截断。",
+        "historicalRagas": {
+          "path": "docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl",
+          "steps": {
+            "statements": {
+              "requests": 75,
+              "messageBytes": 249916,
+              "promptTokens": 77911,
+              "completionTokens": 4850
+            },
+            "nli": {
+              "requests": 25,
+              "messageBytes": 178933,
+              "promptTokens": 77468,
+              "completionTokens": 3647
+            }
+          }
+        },
+        "judges": {
+          "deepseek": {
+            "byCondition": {
+              "J1": {
+                "requests": 66,
+                "messageBytes": 193151,
+                "inputTokensEstimate": 36900,
+                "outputTokensEstimate": 6311,
+                "costCnyEstimate": 0.124288,
+                "sameDayActualUsageReference": {
+                  "path": "docs/competition/statute-check/20261021-pinpoint-run/run/records.json",
+                  "requests": 66,
+                  "promptTokens": 37177,
+                  "completionTokens": 5826
+                }
+              },
+              "J2": {
+                "requests": 66,
+                "messageBytes": 362128,
+                "inputTokensEstimate": 69182,
+                "outputTokensEstimate": 6311,
+                "costCnyEstimate": 0.188852
+              },
+              "R1": {
+                "requestsPlanning": 132,
+                "requestsUpper": 264,
+                "messageBytes": {
+                  "statements": 222311,
+                  "nliLower": 464797,
+                  "nliPlanning": 509449
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 222311,
+                    "inputTokensEstimate": 69306,
+                    "outputTokensEstimate": 4268,
+                    "costCnyEstimate": 0.172756
+                  },
+                  "nli": {
+                    "messageBytes": 509449,
+                    "inputTokensEstimate": 220563,
+                    "outputTokensEstimate": 9629,
+                    "costCnyEstimate": 0.518158
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 132,
+                "costCnyEstimate": 0.690914,
+                "allRowsTwoRepairsCostCnyUpper": 39.063552,
+                "qwenTokenRatioAssumption": false
+              },
+              "R2": {
+                "requestsPlanning": 132,
+                "requestsUpper": 264,
+                "messageBytes": {
+                  "statements": 222311,
+                  "nliLower": 802248,
+                  "nliPlanning": 846900
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 222311,
+                    "inputTokensEstimate": 69306,
+                    "outputTokensEstimate": 4268,
+                    "costCnyEstimate": 0.172756
+                  },
+                  "nli": {
+                    "messageBytes": 846900,
+                    "inputTokensEstimate": 366661,
+                    "outputTokensEstimate": 9629,
+                    "costCnyEstimate": 0.810354
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 132,
+                "costCnyEstimate": 0.98311,
+                "allRowsTwoRepairsCostCnyUpper": 39.063552,
+                "qwenTokenRatioAssumption": false
+              }
+            },
+            "costCnyEstimate": 1.987164,
+            "reservationHardUpperCny": "80.116254"
+          },
+          "qwen72b": {
+            "byCondition": {
+              "J1": {
+                "requests": 66,
+                "messageBytes": 193151,
+                "inputTokensEstimate": 40170,
+                "outputTokensEstimate": 5821,
+                "costCnyEstimate": 0.18994283,
+                "sameDayActualUsageReference": {
+                  "path": "docs/competition/statute-check/20261021-pinpoint-run/run/records.json",
+                  "requests": 66,
+                  "promptTokens": 40533,
+                  "completionTokens": 5618
+                }
+              },
+              "J2": {
+                "requests": 66,
+                "messageBytes": 362128,
+                "inputTokensEstimate": 75312,
+                "outputTokensEstimate": 5821,
+                "costCnyEstimate": 0.33507929
+              },
+              "R1": {
+                "requestsPlanning": 132,
+                "requestsUpper": 264,
+                "messageBytes": {
+                  "statements": 222311,
+                  "nliLower": 464797,
+                  "nliPlanning": 509449
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 222311,
+                    "inputTokensEstimate": 69306,
+                    "outputTokensEstimate": 4268,
+                    "costCnyEstimate": 0.30386062
+                  },
+                  "nli": {
+                    "messageBytes": 509449,
+                    "inputTokensEstimate": 220563,
+                    "outputTokensEstimate": 9629,
+                    "costCnyEstimate": 0.95069296
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 132,
+                "costCnyEstimate": 1.25455358,
+                "allRowsTwoRepairsCostCnyUpper": 73.9673088,
+                "qwenTokenRatioAssumption": true
+              },
+              "R2": {
+                "requestsPlanning": 132,
+                "requestsUpper": 264,
+                "messageBytes": {
+                  "statements": 222311,
+                  "nliLower": 802248,
+                  "nliPlanning": 846900
+                },
+                "steps": {
+                  "statements": {
+                    "messageBytes": 222311,
+                    "inputTokensEstimate": 69306,
+                    "outputTokensEstimate": 4268,
+                    "costCnyEstimate": 0.30386062
+                  },
+                  "nli": {
+                    "messageBytes": 846900,
+                    "inputTokensEstimate": 366661,
+                    "outputTokensEstimate": 9629,
+                    "costCnyEstimate": 1.5540777
+                  }
+                },
+                "formatRepairsPlanning": 0,
+                "formatRepairsUpper": 132,
+                "costCnyEstimate": 1.85793832,
+                "allRowsTwoRepairsCostCnyUpper": 73.9673088,
+                "qwenTokenRatioAssumption": true
+              }
+            },
+            "costCnyEstimate": 3.637514,
+            "reservationHardUpperCny": "150.78616371"
+          }
+        },
+        "totalCostCnyEstimate": 5.624678,
+        "reservationHardUpperCny": "230.90241771",
+        "pricesAsOf": "2026-10-21",
+        "prices": {
+          "deepseek": [
+            2,
+            8
+          ],
+          "qwen72b": [
+            4.13,
+            4.13
+          ]
+        },
+        "limitation": "估算不是账单；Qwen无历史Ragas用量，沿用DeepSeek同比例是假设；运行当天须重新核价。"
+      }
+    }
+  },
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": 2,
+      "outputCnyPerMillion": 8,
+      "checkedAt": "2026-10-22",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/ 2026-10-22核实：deepseek-flash 高峰 输入(缓存未命中)¥2/输出¥8，空闲时段半价；按高峰价计（保守），缓存命中按未命中计。"
+    },
+    "qwen72b": {
+      "inputCnyPerMillion": 4.13,
+      "outputCnyPerMillion": 4.13,
+      "checkedAt": "2026-10-22",
+      "source": "https://siliconflow.cn/pricing 2026-10-22核实：Qwen/Qwen2.5-72B-Instruct 输入¥4.13/输出¥4.13。"
+    }
+  },
+  "note": "方向一运行授权：授权人 Ll，日期 2026-10-22。\n一、材料\n复用已确认的款项定位材料（66 条：款级错误 31、项级错误 4、支持对照 31），\n以 confirmed/ 目录为准。须校验 packageSha256 与 authorization 记录一致，\n且 67 处 review 全为 confirmed。有一项不符即停止，不运行。\n二、实验条件（四组对照，同一批材料）\n\n1. 裁判 + 原检索片段（历史口径，用于对齐）\n2. 裁判 + 完整节选（信息对等：与规则看到的完全相同，9 条 / 1552 字）\n3. Ragas + 原检索片段\n4. Ragas + 完整节选\n\n裁判：DeepSeek（请求名 deepseek-flash）、Qwen/Qwen2.5-72B-Instruct。\nRagas 版本锁定 ragas==0.1.21（门禁当前使用的版本），不得升级或替换。\n三、预算与停止\n\n* 预算上限 ¥8。每次请求前预留费用，累计加预留超上限即停止。\n* 先跑 8 条试算，报实际单价与预估总量；经我确认后再跑全量。\n* 无用量返回的调用按有用量调用的均值插补计入。\n* 到上限即停，不重试。\n\n四、不改什么\n\n* 不改门禁阈值、不改 gate.py、不改历史 FAIL 结论。\n* 不改 Ragas 版本、不新增依赖（DeepEval / RAGChecker 均不加）。\n* 不覆盖已有归档，输出到新目录。\n\n五、口径（运行前锁定，运行后不改）\n\n* 只报条数，不报百分比。\n* 四组各自独立报告，不合成总分。\n* 结果不利也照实公开，包括\"全文条件下检出率大幅上升\"这种情况。\n* 若某组因限流或解析失败产生缺失，如实记为缺失，不计为未检出。\n\n六、交付\n\n1. 试算结果（8 条：单价、预估总量）\n2. 全量结果（四组条数 + 失败/缺失清单）\n3. 一句结论：信息对等是否改变了检出率；Ragas 是否对款级错误敏感",
+  "promptSetSha256": "46697316f2d45ed206b5b072f54f172a86ffb5e4cdbbb00bfea5f28518c5e0ed",
+  "promptHashes": {
+    "original": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8"
+  },
+  "costPolicySha256": "6e14d20dc26734e061dad67b4536ff8e5f2dcc7223f2556803b4426232144b22",
+  "ragasPromptHashes": {
+    "statement_prompt": "6b79494e68a642c35d380d38dcd290a15665c46409e0d84a026a78d72012d39a",
+    "nli_statements_message": "f0c40bc7131d126ef80c5497e480babd171045713920e136f5180e6cb0893d82",
+    "FIX_OUTPUT_FORMAT": "d0c5b744c49640b6e2d335d1f5c2429ae3c4e3579e9b95ab15b44589c19966cc"
+  },
+  "preparationToolFiles": {
+    "tools/competition/statute_equalinfo.py": "afe18c0b185ae3f29e2ce9a5d6071c2de99e5dbaf5b7060759f5cacff7dfede6",
+    "tests/test_statute_equalinfo.py": "e026ab68046b776274dc17cd0ac0f676c3d34abfb34bf9bc0aa7e9a456f31fc1"
+  },
+  "phase": "pilot",
+  "haltOn": [],
+  "supplementaryDecisions": [
+    {
+      "decidedBy": "Ll",
+      "decidedAt": "2026-10-22",
+      "text": "方向一选 A（deepseek-flash + 关思考），因为这次实验的唯一变量必须是\"信息对等\"，换模式就变成两个变量没法归因——顺便让它在 runtime 里记录\"思考已关闭\"这个事实；"
+    }
+  ],
+  "authorizationChannel": "授权原文与补充决定均由作者在主会话给出，经主会话逐字转达本会话（2026-10-22）。「裁判」按历史口径理解为原提示 si.SYSTEM_PROMPT，待作者在试算报告中确认。budgetCny=8 为总预算上限，试算按全额设守卫；全量预算 = 8 − 试算估算花费。acceptNoHardBillingCap 指供应商侧没有自动封顶，运行器预算守卫是唯一上限。"
+}

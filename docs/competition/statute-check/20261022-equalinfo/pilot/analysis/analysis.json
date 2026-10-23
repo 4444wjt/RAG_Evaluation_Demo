@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-equalinfo-v2",
+  "phase": "pilot",
+  "conclusion": null,
+  "counts": {
+    "executed": 64,
+    "valid": 64,
+    "unavailable": 0,
+    "notExecuted": 0
+  },
+  "estimatedCostCny": "0.76396677",
+  "report": "pilot-report.json"
+}
