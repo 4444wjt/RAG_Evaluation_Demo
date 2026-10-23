@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-blindspot-v1",
+  "stopReason": "completed",
+  "attempts": 40,
+  "completedRecords": 40,
+  "plannedRequests": 40,
+  "estimatedCostCny": "0.129398",
+  "actualBillCny": null,
+  "costNote": "费用为授权单价估算，不是账单。无 usage（含失败）按本次预留计；不重试。"
+}

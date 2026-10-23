@@ -1,0 +1,1822 @@
+[
+  {
+    "requestId": "paragraph_existing-A29P1toP2--U--deepseek",
+    "itemId": "paragraph_existing-A29P1toP2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0个片段中的第二十九条第一款与待核查陈述逐字一致，明确规定了申请应向政府信息公开工作机构提出、采用包括信件和数据电文在内的书面形式，以及书面形式确有困难时可口头提出并由受理机构代为填写申请。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1132,
+      "completion_tokens": 134,
+      "total_tokens": 1266,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1132
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1132,
+        "completion_tokens": 134,
+        "total_tokens": 1266,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1132
+      },
+      "costCny": "0.003336"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A29P2toP1--U--deepseek",
+    "itemId": "paragraph_existing-A29P2toP1",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第二十九条第二款明确列出政府信息公开申请应当包括的三项内容，与陈述一致；陈述称“第二十九条第一款”略有出入，但所列内容本身在上下文中得到支持。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "政府信息公开申请应当包括下列内容：\n（一）申请人的姓名或者名称、身份证明、联系方式；\n（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；\n（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1133,
+      "completion_tokens": 129,
+      "total_tokens": 1262,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1133
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1133,
+        "completion_tokens": 129,
+        "total_tokens": 1262,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1133
+      },
+      "costCny": "0.003298"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P1toP2--U--deepseek",
+    "itemId": "paragraph_existing-A33P1toP2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第一款明确载明：行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。待核查陈述与该款内容一致，且该款确为第三十三条第二款之前的第一款；陈述表述的规则内容得到上下文支持。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1091,
+      "completion_tokens": 95,
+      "total_tokens": 1186,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1091
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1091,
+        "completion_tokens": 95,
+        "total_tokens": 1186,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1091
+      },
+      "costCny": "0.002942"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P2toP3--U--deepseek",
+    "itemId": "paragraph_existing-A33P2toP3",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第二款原文与陈述内容一致：不能当场答复的，自收到申请之日起20个工作日内答复；需延长的，经政府信息公开工作机构负责人同意并告知申请人，延长最长不超过20个工作日。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1119,
+      "completion_tokens": 113,
+      "total_tokens": 1232,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1119
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1119,
+        "completion_tokens": 113,
+        "total_tokens": 1232,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1119
+      },
+      "costCny": "0.003142"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P3toP1--U--deepseek",
+    "itemId": "paragraph_existing-A33P3toP1",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第三款明确载明“行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内”，与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1090,
+      "completion_tokens": 65,
+      "total_tokens": 1155,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1090
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1090,
+        "completion_tokens": 65,
+        "total_tokens": 1155,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1090
+      },
+      "costCny": "0.0027"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A42P1toP2--U--deepseek",
+    "itemId": "paragraph_existing-A42P1toP2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第四十二条第一款虽规定依申请提供政府信息不收取费用，但紧接着设有例外：申请数量、频次明显超过合理范围时可收取信息处理费。因此“不收取费用”的绝对表述与上下文不符；且该内容位于第四十二条第一款，而非第二款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四十二条　行政机关依申请提供政府信息，不收取费用。但是，申请人申请公开政府信息的数量、频次明显超过合理范围的，行政机关可以收取信息处理费。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1086,
+      "completion_tokens": 121,
+      "total_tokens": 1207,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1086
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1086,
+        "completion_tokens": 121,
+        "total_tokens": 1207,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1086
+      },
+      "costCny": "0.00314"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A42P2toP1--U--deepseek",
+    "itemId": "paragraph_existing-A42P2toP1",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第四十二条第二款明确规定，行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1097,
+      "completion_tokens": 79,
+      "total_tokens": 1176,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1097
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1097,
+        "completion_tokens": 79,
+        "total_tokens": 1176,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1097
+      },
+      "costCny": "0.002826"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A29toP3--U--deepseek",
+    "itemId": "paragraph_absent-A29toP3",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0个片段中的第二十九条第一款原文与待核查陈述完全一致，明确规定了申请获取政府信息应向政府信息公开工作机构提出、采用包括信件和数据电文在内的书面形式，以及书面形式确有困难时可口头提出并由受理机构代为填写申请。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1132,
+      "completion_tokens": 137,
+      "total_tokens": 1269,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1132
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1132,
+        "completion_tokens": 137,
+        "total_tokens": 1269,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1132
+      },
+      "costCny": "0.00336"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A30toP2--U--deepseek",
+    "itemId": "paragraph_absent-A30toP2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十条原文明确规定了政府信息公开申请内容不明确时，行政机关应给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十条　政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1115,
+      "completion_tokens": 118,
+      "total_tokens": 1233,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1115
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1115,
+        "completion_tokens": 118,
+        "total_tokens": 1233,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1115
+      },
+      "costCny": "0.003174"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A31toP2--U--deepseek",
+    "itemId": "paragraph_absent-A31toP2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十一条列出的三项规定与陈述内容逐项一致，仅陈述开头多出“第二款规定”的表述，但条文实质内容完全对应。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十一条　行政机关收到政府信息公开申请的时间，按照下列规定确定：\n（一）申请人当面提交政府信息公开申请的，以提交之日为收到申请之日；\n（二）申请人以邮寄方式提交政府信息公开申请的，以行政机关签收之日为收到申请之日；以平常信函等无需签收的邮寄方式提交政府信息公开申请的，政府信息公开工作机构应当于收到申请的当日与申请人确认，确认之日为收到申请之日；\n（三）申请人通过互联网渠道或者政府信息公开工作机构的传真提交政府信息公开申请的，以双方确认之日为收到申请之日。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1187,
+      "completion_tokens": 179,
+      "total_tokens": 1366,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1187
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1187,
+        "completion_tokens": 179,
+        "total_tokens": 1366,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1187
+      },
+      "costCny": "0.003806"
+    }
+  },
+  {
+    "requestId": "article_swap-A29toA30--U--deepseek",
+    "itemId": "article_swap-A29toA30",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述将申请方式的规定归于第三十条，但上下文显示该内容实际规定在第二十九条；第三十条规定的是申请内容不明确时的补正程序，与陈述内容不符。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十条　政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1131,
+      "completion_tokens": 175,
+      "total_tokens": 1306,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1131
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1131,
+        "completion_tokens": 175,
+        "total_tokens": 1306,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1131
+      },
+      "costCny": "0.003662"
+    }
+  },
+  {
+    "requestId": "article_swap-A30toA31--U--deepseek",
+    "itemId": "article_swap-A30toA31",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述将“申请内容不明确应给予指导释明、7个工作日内一次性告知补正”的内容归于第三十一条，但上下文显示该内容规定在第三十条；第三十一条实际规定的是行政机关收到申请时间的确定方式。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十条　政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十一条　行政机关收到政府信息公开申请的时间，按照下列规定确定："
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1114,
+      "completion_tokens": 138,
+      "total_tokens": 1252,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1114
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1114,
+        "completion_tokens": 138,
+        "total_tokens": 1252,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1114
+      },
+      "costCny": "0.003332"
+    }
+  },
+  {
+    "requestId": "article_swap-A31toA32--U--deepseek",
+    "itemId": "article_swap-A31toA32",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述将“收到政府信息公开申请时间的确定规则”归于第三十二条，但上下文显示该规则规定在第三十一条；第三十二条实际规定的是征求第三方意见。陈述内容与第三十一条一致，但条号引用错误，故与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十一条　行政机关收到政府信息公开申请的时间，按照下列规定确定："
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十二条　依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1186,
+      "completion_tokens": 124,
+      "total_tokens": 1310,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1186
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1186,
+        "completion_tokens": 124,
+        "total_tokens": 1310,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1186
+      },
+      "costCny": "0.003364"
+    }
+  },
+  {
+    "requestId": "article_swap-A32toA33--U--deepseek",
+    "itemId": "article_swap-A32toA33",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称“按照第三十三条规定”书面征求第三方意见，但上下文第三十三条实际规定的是答复期限（当场答复、20个工作日、延长等），并未规定征求第三方意见；该内容出现在第三十二条。因此陈述与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十二条　依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1094,
+      "completion_tokens": 127,
+      "total_tokens": 1221,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1094
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1094,
+        "completion_tokens": 127,
+        "total_tokens": 1221,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1094
+      },
+      "costCny": "0.003204"
+    }
+  },
+  {
+    "requestId": "article_swap-A33toA34--U--deepseek",
+    "itemId": "article_swap-A33toA34",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称“按照第三十四条规定”能够当场答复的应当当场予以答复，但上下文第三十四条实际规定的是两个以上行政机关共同制作信息的征求意见程序；而“能够当场答复的，应当当场予以答复”出现在第三十三条。因此陈述与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十四条　申请公开的政府信息由两个以上行政机关共同制作的，牵头制作的行政机关收到政府信息公开申请后可以征求相关行政机关的意见，被征求意见机关应当自收到征求意见书之日起15个工作日内提出意见，逾期未提出意见的视为同意公开。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1090,
+      "completion_tokens": 161,
+      "total_tokens": 1251,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1090
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1090,
+        "completion_tokens": 161,
+        "total_tokens": 1251,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1090
+      },
+      "costCny": "0.003468"
+    }
+  },
+  {
+    "requestId": "article_absent-A29toA35--U--deepseek",
+    "itemId": "article_absent-A29toA35",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该规定出自“第三十五条”，但上下文显示相同内容位于第二十九条；上下文未提供第三十五条内容，且明确将申请提出方式规定在第二十九条，故与陈述的条号矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1131,
+      "completion_tokens": 128,
+      "total_tokens": 1259,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1131
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1131,
+        "completion_tokens": 128,
+        "total_tokens": 1259,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1131
+      },
+      "costCny": "0.003286"
+    }
+  },
+  {
+    "requestId": "article_absent-A30toA36--U--deepseek",
+    "itemId": "article_absent-A30toA36",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称该补正规定出自“第三十六条”，但上下文显示该内容规定在第三十条；第三十六条在节选中未出现。陈述的条文序号与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十条　政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1114,
+      "completion_tokens": 106,
+      "total_tokens": 1220,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1114
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1114,
+        "completion_tokens": 106,
+        "total_tokens": 1220,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1114
+      },
+      "costCny": "0.003076"
+    }
+  },
+  {
+    "requestId": "article_absent-A31toA39--U--deepseek",
+    "itemId": "article_absent-A31toA39",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该规定出自“第三十九条”，但上下文显示相同内容规定在“第三十一条”；条文序号与上下文明确矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十一条　行政机关收到政府信息公开申请的时间，按照下列规定确定："
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1186,
+      "completion_tokens": 66,
+      "total_tokens": 1252,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1186
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1186,
+        "completion_tokens": 66,
+        "total_tokens": 1252,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1186
+      },
+      "costCny": "0.0029"
+    }
+  },
+  {
+    "requestId": "article_absent-A32toA40--U--deepseek",
+    "itemId": "article_absent-A32toA40",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该规定出自“第四十条”，但上下文显示相同内容规定在第三十二条；上下文未包含第四十条，且明确将“依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见”列为第三十二条。因此陈述的条号与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十二条　依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1094,
+      "completion_tokens": 109,
+      "total_tokens": 1203,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1094
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1094,
+        "completion_tokens": 109,
+        "total_tokens": 1203,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1094
+      },
+      "costCny": "0.00306"
+    }
+  },
+  {
+    "requestId": "article_absent-A33toA41--U--deepseek",
+    "itemId": "article_absent-A33toA41",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称该规定出自第四十一条，但上下文显示“行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复”规定在第三十三条，而非第四十一条；上下文未提供第四十一条内容，且明确标注该句为第三十三条。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1090,
+      "completion_tokens": 98,
+      "total_tokens": 1188,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1090
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1090,
+        "completion_tokens": 98,
+        "total_tokens": 1188,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1090
+      },
+      "costCny": "0.002964"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A29P1--U--deepseek",
+    "itemId": "control_pinpoint-A29P1",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0个片段中的第二十九条第一款原文与待核查陈述完全一致，明确规定了申请获取政府信息应向政府信息公开工作机构提出、采用包括信件和数据电文在内的书面形式，以及书面形式确有困难时可口头提出并由受理机构代为填写申请。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1132,
+      "completion_tokens": 137,
+      "total_tokens": 1269,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1132
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1132,
+        "completion_tokens": 137,
+        "total_tokens": 1269,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1132
+      },
+      "costCny": "0.00336"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A29P2--U--deepseek",
+    "itemId": "control_pinpoint-A29P2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第二十九条明确列出政府信息公开申请应当包括的三项内容，与陈述完全一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "政府信息公开申请应当包括下列内容：\n（一）申请人的姓名或者名称、身份证明、联系方式；\n（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；\n（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1133,
+      "completion_tokens": 108,
+      "total_tokens": 1241,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1133
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1133,
+        "completion_tokens": 108,
+        "total_tokens": 1241,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1133
+      },
+      "costCny": "0.00313"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P1--U--deepseek",
+    "itemId": "control_pinpoint-A33P1",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第一款明确载明：行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1091,
+      "completion_tokens": 71,
+      "total_tokens": 1162,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1091
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1091,
+        "completion_tokens": 71,
+        "total_tokens": 1162,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1091
+      },
+      "costCny": "0.00275"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P2--U--deepseek",
+    "itemId": "control_pinpoint-A33P2",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第二款原文与陈述内容一致：不能当场答复的，自收到申请之日起20个工作日内答复；需延长的，经政府信息公开工作机构负责人同意并告知申请人，延长最长不超过20个工作日。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1119,
+      "completion_tokens": 113,
+      "total_tokens": 1232,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1119
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1119,
+        "completion_tokens": 113,
+        "total_tokens": 1232,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1119
+      },
+      "costCny": "0.003142"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P3--U--deepseek",
+    "itemId": "control_pinpoint-A33P3",
+    "arm": "U",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第三款原文明确载明“行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1090,
+      "completion_tokens": 68,
+      "total_tokens": 1158,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1090
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1090,
+        "completion_tokens": 68,
+        "total_tokens": 1158,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1090
+      },
+      "costCny": "0.002724"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A29P1toP2--L--deepseek",
+    "itemId": "paragraph_existing-A29P1toP2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称该内容为“第二十九条第二款”，但上下文显示该内容实际规定在第二十九条第一款；第二十九条第二款的内容是政府信息公开申请应当包括的事项。因此陈述与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第一款　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第二款　政府信息公开申请应当包括下列内容："
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1161,
+      "completion_tokens": 150,
+      "total_tokens": 1311,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1033
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1161,
+        "completion_tokens": 150,
+        "total_tokens": 1311,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1033
+      },
+      "costCny": "0.003522"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A29P2toP1--L--deepseek",
+    "itemId": "paragraph_existing-A29P2toP1",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述将三项申请内容归为“第二十九条第一款”，但上下文显示这三项内容位于“第二十九条第二款”，而第二十九条第一款规定的是申请提出的方式和书面形式要求，故与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第一款　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第二款　政府信息公开申请应当包括下列内容："
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（一）申请人的姓名或者名称、身份证明、联系方式；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1162,
+      "completion_tokens": 228,
+      "total_tokens": 1390,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1034
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1162,
+        "completion_tokens": 228,
+        "total_tokens": 1390,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1034
+      },
+      "costCny": "0.004148"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P1toP2--L--deepseek",
+    "itemId": "paragraph_existing-A33P1toP2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述将“能够当场答复的，应当当场予以答复”归为第三十三条第二款，但上下文显示该内容规定在第三十三条第一款；第三十三条第二款规定的是不能当场答复时的20个工作日答复期限及延长规则。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第一款　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第二款　行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1120,
+      "completion_tokens": 152,
+      "total_tokens": 1272,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1120
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1120,
+        "completion_tokens": 152,
+        "total_tokens": 1272,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1120
+      },
+      "costCny": "0.003456"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P2toP3--L--deepseek",
+    "itemId": "paragraph_existing-A33P2toP3",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述将“不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的……最长不得超过20个工作日”归为第三十三条第三款，但上下文显示该内容位于第三十三条第二款；第三十三条第三款实际规定的是征求第三方和其他机关意见所需时间不计算在前款期限内。因此陈述的条款归属与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第二款　行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第三款　行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1148,
+      "completion_tokens": 181,
+      "total_tokens": 1329,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1020
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1148,
+        "completion_tokens": 181,
+        "total_tokens": 1329,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1020
+      },
+      "costCny": "0.003744"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A33P3toP1--L--deepseek",
+    "itemId": "paragraph_existing-A33P3toP1",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称该内容规定在第三十三条第一款，但上下文显示第三十三条第一款规定的是能够当场答复的应当当场答复；征求意见所需时间不计入期限的内容实际规定在第三十三条第三款，且该款指向的是“前款”即第二款。因此陈述的条款序号与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第一款　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第三款　行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1119,
+      "completion_tokens": 137,
+      "total_tokens": 1256,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1119
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1119,
+        "completion_tokens": 137,
+        "total_tokens": 1256,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1119
+      },
+      "costCny": "0.003334"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A42P1toP2--L--deepseek",
+    "itemId": "paragraph_existing-A42P1toP2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称“按照第四十二条第二款规定，行政机关依申请提供政府信息，不收取费用”，但上下文显示该内容规定在第四十二条第一款；第四十二条第二款规定的是信息处理费具体办法的制定主体，二者不符。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四十二条第一款　行政机关依申请提供政府信息，不收取费用。但是，申请人申请公开政府信息的数量、频次明显超过合理范围的，行政机关可以收取信息处理费。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第四十二条第二款　行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1115,
+      "completion_tokens": 147,
+      "total_tokens": 1262,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1115
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1115,
+        "completion_tokens": 147,
+        "total_tokens": 1262,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1115
+      },
+      "costCny": "0.003406"
+    }
+  },
+  {
+    "requestId": "paragraph_existing-A42P2toP1--L--deepseek",
+    "itemId": "paragraph_existing-A42P2toP1",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "待核查陈述称该内容规定在第四十二条第一款，但上下文显示第四十二条第一款规定的是依申请提供政府信息不收取费用及可收取信息处理费的情形；所述“具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定”实际规定在第四十二条第二款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第四十二条第一款　行政机关依申请提供政府信息，不收取费用。但是，申请人申请公开政府信息的数量、频次明显超过合理范围的，行政机关可以收取信息处理费。"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "第四十二条第二款　行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1126,
+      "completion_tokens": 160,
+      "total_tokens": 1286,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1126
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1126,
+        "completion_tokens": 160,
+        "total_tokens": 1286,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1126
+      },
+      "costCny": "0.003532"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A29toP3--L--deepseek",
+    "itemId": "paragraph_absent-A29toP3",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该内容为“第二十九条第三款”，但上下文显示该内容实际规定在“第二十九条第一款”，条款序号与上下文不符，故上下文与陈述矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第一款　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1161,
+      "completion_tokens": 121,
+      "total_tokens": 1282,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1033
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1161,
+        "completion_tokens": 121,
+        "total_tokens": 1282,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1033
+      },
+      "costCny": "0.00329"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A30toP2--L--deepseek",
+    "itemId": "paragraph_absent-A30toP2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该规定出自“第三十条第二款”，但上下文显示该内容位于“第三十条第一款”；第三十条第二款在节选中不存在。条款序号与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十条第一款　政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1144,
+      "completion_tokens": 105,
+      "total_tokens": 1249,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1016
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1144,
+        "completion_tokens": 105,
+        "total_tokens": 1249,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1016
+      },
+      "costCny": "0.003128"
+    }
+  },
+  {
+    "requestId": "paragraph_absent-A31toP2--L--deepseek",
+    "itemId": "paragraph_absent-A31toP2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "陈述称该内容规定在“第三十一条第二款”，但上下文显示该内容位于“第三十一条第一款”；且陈述将“行政机关收到政府信息公开申请的时间，按照下列规定确定”表述为“按照第三十一条第二款规定”，与原文条款序号不符。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十一条第一款　行政机关收到政府信息公开申请的时间，按照下列规定确定："
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1216,
+      "completion_tokens": 94,
+      "total_tokens": 1310,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1088
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1216,
+        "completion_tokens": 94,
+        "total_tokens": 1310,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1088
+      },
+      "costCny": "0.003184"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A29P1--L--deepseek",
+    "itemId": "control_pinpoint-A29P1",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0个片段中的第二十九条第一款原文与待核查陈述完全一致，明确规定了申请获取政府信息应向政府信息公开工作机构提出、采用包括信件和数据电文在内的书面形式，以及书面形式确有困难时可口头提出并由受理机构代为填写申请。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第一款　公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1161,
+      "completion_tokens": 138,
+      "total_tokens": 1299,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1033
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1161,
+        "completion_tokens": 138,
+        "total_tokens": 1299,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1033
+      },
+      "costCny": "0.003426"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A29P2--L--deepseek",
+    "itemId": "control_pinpoint-A29P2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第二十九条第二款逐字列明了政府信息公开申请应当包括的三项内容，与待核查陈述完全一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第二十九条第二款　政府信息公开申请应当包括下列内容：\n（一）申请人的姓名或者名称、身份证明、联系方式；\n（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；\n（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1162,
+      "completion_tokens": 119,
+      "total_tokens": 1281,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1034
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1162,
+        "completion_tokens": 119,
+        "total_tokens": 1281,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1034
+      },
+      "costCny": "0.003276"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P1--L--deepseek",
+    "itemId": "control_pinpoint-A33P1",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第一款原文与待核查陈述完全一致，明确规定了能够当场答复的应当当场予以答复。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第一款　行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1120,
+      "completion_tokens": 65,
+      "total_tokens": 1185,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1120
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1120,
+        "completion_tokens": 65,
+        "total_tokens": 1185,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1120
+      },
+      "costCny": "0.00276"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P2--L--deepseek",
+    "itemId": "control_pinpoint-A33P2",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第二款原文与待核查陈述完全一致，明确规定了不能当场答复时自收到申请之日起20个工作日内答复、延长需经政府信息公开工作机构负责人同意并告知申请人、延长最长不超过20个工作日。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第二款　行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1148,
+      "completion_tokens": 119,
+      "total_tokens": 1267,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 1020
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1148,
+        "completion_tokens": 119,
+        "total_tokens": 1267,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1020
+      },
+      "costCny": "0.003248"
+    }
+  },
+  {
+    "requestId": "control_pinpoint-A33P3--L--deepseek",
+    "itemId": "control_pinpoint-A33P3",
+    "arm": "L",
+    "judge": "deepseek",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第三十三条第三款原文与待核查陈述一致，明确行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第三十三条第三款　行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "actualModel": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 1119,
+      "completion_tokens": 70,
+      "total_tokens": 1189,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1119
+    },
+    "error": null,
+    "charge": {
+      "basis": "response_usage",
+      "tokens": {
+        "prompt_tokens": 1119,
+        "completion_tokens": 70,
+        "total_tokens": 1189,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1119
+      },
+      "costCny": "0.002798"
+    }
+  }
+]

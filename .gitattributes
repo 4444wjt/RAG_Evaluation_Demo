@@ -589,3 +589,34 @@
 /tests/test_statute_equalinfo.py text eol=lf
 /tools/competition/statute_labeled.py text eol=lf
 /tests/test_statute_labeled.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis-replay/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis-replay/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/prep/authorization.template.json -text
+/docs/competition/statute-check/20261022-blindspot/prep/make_exam.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/README.md text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/events.jsonl -text
+/docs/competition/statute-check/20261022-blindspot/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/contexts/labeled.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/contexts/plain.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/estimates.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/package.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/requests.jsonl text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/rules.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tests/test_statute_blindspot.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_compare.py -text
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/statute_blindspot.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run.stdout.txt -text
+/docs/competition/statute-check/20261022-blindspot/SHA256SUMS.txt text eol=lf
+/tools/competition/statute_blindspot.py text eol=lf
+/tests/test_statute_blindspot.py text eol=lf
