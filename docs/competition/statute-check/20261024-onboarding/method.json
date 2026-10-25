@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "packageType": "公开派生重计包；sources只供追溯，不是原运行器完整运行包。",
+  "material": {
+    "title": "不动产登记暂行条例",
+    "version": "2024年修订",
+    "articles": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "docxSha256": "d3f317be995062222e98c5d3d8fcbb58123c72ac35d3047512f464656405e899"
+  },
+  "registrationSha256": "9d4dbb6665ff67f54187c3804989ea0b472092357de9e4ac22bca2eb9564ca5b",
+  "lockedAt": "2026-10-24T00:34:01-04:00",
+  "totals": {
+    "errors": 24,
+    "controls": 25
+  },
+  "thresholds": {
+    "simpleSufficientMinDetected": 22,
+    "simpleSufficientMaxFalsePositives": 2,
+    "labelGainMinDifference": 5,
+    "labelGainMaxP": "1/20",
+    "labelGainFalsePositiveTolerance": 2
+  },
+  "judge": {
+    "model": "deepseek-flash",
+    "temperature": 0,
+    "maxTokens": 768,
+    "timeoutSeconds": 90,
+    "maxRetries": 0,
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "prompts": {
+    "C0": {
+      "sha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8"
+    },
+    "C1": {
+      "sha256": "089229f87c9403cd4440a048c41da125058281125eddce3ab646d033dbcfaef4",
+      "criterion": "陈述写明的条、款、项属于陈述内容：陈述内容须出自其所引的那一条（款、项）才判 supported；内容虽见于上下文，但出自其他条款，或所引条款在上下文中不存在的，判 contradicted。"
+    }
+  },
+  "arms": {
+    "U-C0": {
+      "context": "U",
+      "prompt": "C0"
+    },
+    "L-C0": {
+      "context": "L",
+      "prompt": "C0"
+    },
+    "U-C1": {
+      "context": "U",
+      "prompt": "C1"
+    },
+    "L-C1": {
+      "context": "L",
+      "prompt": "C1"
+    }
+  },
+  "originalArchiveManifestSha256": "066aeca9182bed1ad4e10daec965a7d2844b4f5337c848aeaddaad5cbdd04890",
+  "originalRecordsSha256": "c9c12c68baa767e313d18749f90273b2daed1ba9033eee3a9ac14ee1c29387be",
+  "originalAnalysisSha256": "b4fe78aa87f59606e097b2893dc3d5a07ccfdace373839063406de46b9d8d982",
+  "originalPackageSha256": "f81de1497a09cad3dd20c2bae6a64ef0ceca6f40cb142a958c8390b1e6af3bc5",
+  "originalRulesSha256": "d888de2d21c1d5b481dfcf58ca1ecad1f903561f5c4dcf4f8f1d382cdf087697",
+  "costRecordSha256": "cf4990dbd99765288a2187d258a91c87044383485adc8e140a6204b5f93a7b46",
+  "billSha256": "62844f95eed703aead8f7bad8607369edaf07fb6ecedcad3a8fc3afdad38ce3c",
+  "sourceCodeHashes": {
+    "sources/statute_onboarding.py": "8bb5b13b63230e3a59a7cd2fb8877a88e0c5ae7ed227703956f1c0faea87f068",
+    "sources/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "sources/lexical_baseline.py": "cd6233558a95a91aab3b20c29ed2632dcfa42018d7e0c7110dbd390e22465351",
+    "sources/make_package.py": "6e5c09bae9b80ebcf089d7305e08f19549988bb816c376f2791876cb901352f9"
+  },
+  "independentHumanAnnotation": false,
+  "deviationsVerbatim": "**偏离登记**（都在出结果之前发生，照记）\n1. 前四步「不用 AI」：\n   - 第 1 次取得材料、整理节选有另一个 AI 会话参与。这次材料作废，重做了一遍。\n   - 第 2 次的结构还原用 agent 脚本去了 U+2060。\n2. 抽签后先下载了第 6 顺位 C01 的 docx，再回到第 1 顺位 C10，记录写「仅下载未研读」。\n3. 第 1 次材料不是现行版本，第 2 次取了现行版。\n4. `meta.json` 的 `materialPreviouslySeen: false` 只对第 1 次成立；第 2 次时作者已经见过这部法规。",
+  "scope": "一部法规、自动构造、单裁判单次、作者本人操作；不参与 Quality Gate；只报条数。",
+  "limitations": [
+    "一部法规、一个裁判、跑一次、作者本人操作，结论不外推",
+    "陈述自动构造，问句中性，不是真实用户问题",
+    "24 条错误来自若干款，同一款有多个变体，不是独立样本"
+  ],
+  "recountInputs": "items含题包原字段及逐题离线参照，records含运行字段及事件消息字节数，cost保留计时和账单限定；只重计已归档输出。",
+  "decisionRules": "沿用登记顺序与门槛；不可用单列；精确McNemar为配对错误题b,c的单侧二项尾概率。",
+  "readmePolicy": "README由主会话之后另写，不在SHA256SUMS中。"
+}

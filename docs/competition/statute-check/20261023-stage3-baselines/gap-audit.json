@@ -1,0 +1,671 @@
+[
+  {
+    "itemId": "T2-item_existing-U29-2-2-I1",
+    "unit": "U29-2-2",
+    "type": "item_existing",
+    "statement": "依据《政府信息公开条例》第二十九条第二款第一项，申请中应当载明所申请公开的政府信息的名称、文号，或者其他便于行政机关查询的特征性描述。",
+    "registeredSource": "第二十九条第二款第二项",
+    "cited": "第二十九条第二款第一项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0769,
+        "第二十九条第二款第二项": 0.641,
+        "第二十九条第二款第三项": 0.1795
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.5641,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "依据《政府信息公开条例》第二十九条第二款第一项，申请中应当载明所申请公开的政府信息的名称、文号，或者其他便于行政机关查询的特征性描述",
+        "cited": "第二十九条第二款第一项",
+        "paragraphCoverage": {
+          "1": 0.3333333333333333,
+          "2": 0.6923076923076923
+        },
+        "bestParagraph": 2,
+        "bestCoverage": 0.6923076923076923,
+        "citedCoverage": 0.6923076923076923,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U29-2-2-I3",
+    "unit": "U29-2-2",
+    "type": "item_existing",
+    "statement": "依据《政府信息公开条例》第二十九条第二款第三项，申请中应当载明所申请公开的政府信息的名称、文号，或者其他便于行政机关查询的特征性描述。",
+    "registeredSource": "第二十九条第二款第二项",
+    "cited": "第二十九条第二款第三项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0769,
+        "第二十九条第二款第二项": 0.641,
+        "第二十九条第二款第三项": 0.1795
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.4615,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "依据《政府信息公开条例》第二十九条第二款第三项，申请中应当载明所申请公开的政府信息的名称、文号，或者其他便于行政机关查询的特征性描述",
+        "cited": "第二十九条第二款第三项",
+        "paragraphCoverage": {
+          "1": 0.3333333333333333,
+          "2": 0.6923076923076923
+        },
+        "bestParagraph": 2,
+        "bestCoverage": 0.6923076923076923,
+        "citedCoverage": 0.6923076923076923,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U29-2-3-I1",
+    "unit": "U29-2-3",
+    "type": "item_existing",
+    "statement": "《政府信息公开条例》第二十九条第二款第一项要求，申请中应当写明对所申请政府信息的形式要求，其中包括通过什么方式、什么途径获取信息。",
+    "registeredSource": "第二十九条第二款第三项",
+    "cited": "第二十九条第二款第一项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0513,
+        "第二十九条第二款第二项": 0.1282,
+        "第二十九条第二款第三项": 0.359
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.3077,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "《政府信息公开条例》第二十九条第二款第一项要求，申请中应当写明对所申请政府信息的形式要求，其中包括通过什么方式、什么途径获取信息",
+        "cited": "第二十九条第二款第一项",
+        "paragraphCoverage": {
+          "1": 0.28205128205128205,
+          "2": 0.41025641025641024
+        },
+        "bestParagraph": 2,
+        "bestCoverage": 0.41025641025641024,
+        "citedCoverage": 0.41025641025641024,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": false,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U29-2-3-I2",
+    "unit": "U29-2-3",
+    "type": "item_existing",
+    "statement": "《政府信息公开条例》第二十九条第二款第二项要求，申请中应当写明对所申请政府信息的形式要求，其中包括通过什么方式、什么途径获取信息。",
+    "registeredSource": "第二十九条第二款第三项",
+    "cited": "第二十九条第二款第二项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0513,
+        "第二十九条第二款第二项": 0.1282,
+        "第二十九条第二款第三项": 0.359
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.2308,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "《政府信息公开条例》第二十九条第二款第二项要求，申请中应当写明对所申请政府信息的形式要求，其中包括通过什么方式、什么途径获取信息",
+        "cited": "第二十九条第二款第二项",
+        "paragraphCoverage": {
+          "1": 0.28205128205128205,
+          "2": 0.41025641025641024
+        },
+        "bestParagraph": 2,
+        "bestCoverage": 0.41025641025641024,
+        "citedCoverage": 0.41025641025641024,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": false,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U31-1-1-I3",
+    "unit": "U31-1-1",
+    "type": "item_existing",
+    "statement": "按照《政府信息公开条例》第三十一条第一款第三项，申请人当面递交政府信息公开申请的，提交当天即为行政机关收到申请之日。",
+    "registeredSource": "第三十一条第一款第一项",
+    "cited": "第三十一条第一款第三项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.5161,
+        "第三十一条第一款第二项": 0.5484,
+        "第三十一条第一款第三项": 0.4516
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.0968,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": false,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "按照《政府信息公开条例》第三十一条第一款第三项，申请人当面递交政府信息公开申请的，提交当天即为行政机关收到申请之日",
+        "cited": "第三十一条第一款第三项",
+        "paragraphCoverage": {
+          "1": 0.6451612903225806
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.6451612903225806,
+        "citedCoverage": 0.6451612903225806,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U31-1-2-I1",
+    "unit": "U31-1-2",
+    "type": "item_existing",
+    "statement": "根据《政府信息公开条例》第三十一条第一款第一项，申请人通过邮寄提交申请的，以行政机关签收的日期作为收到申请之日；如果采用平常信函等无需签收的邮寄方式，政府信息公开工作机构应当在收到申请的当天与申请人确认，确认之日即为收到申请之日。",
+    "registeredSource": "第三十一条第一款第二项",
+    "cited": "第三十一条第一款第一项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.209,
+        "第三十一条第一款第二项": 0.6418,
+        "第三十一条第一款第三项": 0.3284
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.4328,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "根据《政府信息公开条例》第三十一条第一款第一项，申请人通过邮寄提交申请的，以行政机关签收的日期作为收到申请之日",
+        "cited": "第三十一条第一款第一项",
+        "paragraphCoverage": {
+          "1": 0.696969696969697
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.696969696969697,
+        "citedCoverage": 0.696969696969697,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U31-1-2-I3",
+    "unit": "U31-1-2",
+    "type": "item_existing",
+    "statement": "根据《政府信息公开条例》第三十一条第一款第三项，申请人通过邮寄提交申请的，以行政机关签收的日期作为收到申请之日；如果采用平常信函等无需签收的邮寄方式，政府信息公开工作机构应当在收到申请的当天与申请人确认，确认之日即为收到申请之日。",
+    "registeredSource": "第三十一条第一款第二项",
+    "cited": "第三十一条第一款第三项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.209,
+        "第三十一条第一款第二项": 0.6418,
+        "第三十一条第一款第三项": 0.3284
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.3134,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "根据《政府信息公开条例》第三十一条第一款第三项，申请人通过邮寄提交申请的，以行政机关签收的日期作为收到申请之日",
+        "cited": "第三十一条第一款第三项",
+        "paragraphCoverage": {
+          "1": 0.696969696969697
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.696969696969697,
+        "citedCoverage": 0.696969696969697,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U31-1-3-I1",
+    "unit": "U31-1-3",
+    "type": "item_existing",
+    "statement": "依照《政府信息公开条例》第三十一条第一款第一项，申请人通过互联网渠道或者政府信息公开工作机构的传真提交申请的，以双方确认的日期作为收到申请之日。",
+    "registeredSource": "第三十一条第一款第三项",
+    "cited": "第三十一条第一款第一项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.3111,
+        "第三十一条第一款第二项": 0.4222,
+        "第三十一条第一款第三项": 0.7778
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.4667,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "依照《政府信息公开条例》第三十一条第一款第一项，申请人通过互联网渠道或者政府信息公开工作机构的传真提交申请的，以双方确认的日期作为收到申请之日",
+        "cited": "第三十一条第一款第一项",
+        "paragraphCoverage": {
+          "1": 0.7777777777777778
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.7777777777777778,
+        "citedCoverage": 0.7777777777777778,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-item_existing-U31-1-3-I2",
+    "unit": "U31-1-3",
+    "type": "item_existing",
+    "statement": "依照《政府信息公开条例》第三十一条第一款第二项，申请人通过互联网渠道或者政府信息公开工作机构的传真提交申请的，以双方确认的日期作为收到申请之日。",
+    "registeredSource": "第三十一条第一款第三项",
+    "cited": "第三十一条第一款第二项",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.3111,
+        "第三十一条第一款第二项": 0.4222,
+        "第三十一条第一款第三项": 0.7778
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.3556,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "item_comparison_missing",
+    "RsentenceAudit": [
+      {
+        "text": "依照《政府信息公开条例》第三十一条第一款第二项，申请人通过互联网渠道或者政府信息公开工作机构的传真提交申请的，以双方确认的日期作为收到申请之日",
+        "cited": "第三十一条第一款第二项",
+        "paragraphCoverage": {
+          "1": 0.7777777777777778
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.7777777777777778,
+        "citedCoverage": 0.7777777777777778,
+        "gap": 0.0,
+        "differentParagraph": false,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-paragraph_existing-U33-1-P2",
+    "unit": "U33-1",
+    "type": "paragraph_existing",
+    "statement": "根据《政府信息公开条例》第三十三条第二款，行政机关收到政府信息公开申请后，能够当场答复的，应当当场答复。",
+    "registeredSource": "第三十三条第一款",
+    "cited": "第三十三条第二款",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8077,
+        "第三十三条第二款": 0.5769,
+        "第三十三条第三款": 0.1154
+      },
+      "best": "第三十三条第一款",
+      "margin": -0.2308,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "paragraph_guards",
+    "RsentenceAudit": [
+      {
+        "text": "根据《政府信息公开条例》第三十三条第二款，行政机关收到政府信息公开申请后，能够当场答复的，应当当场答复",
+        "cited": "第三十三条第二款",
+        "paragraphCoverage": {
+          "1": 0.8076923076923077,
+          "2": 0.5769230769230769,
+          "3": 0.11538461538461539
+        },
+        "bestParagraph": 1,
+        "bestCoverage": 0.8076923076923077,
+        "citedCoverage": 0.5769230769230769,
+        "gap": 0.23076923076923084,
+        "differentParagraph": true,
+        "minimumPass": true,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": []
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-paragraph_existing-U33-3-P1",
+    "unit": "U33-3",
+    "type": "paragraph_existing",
+    "statement": "《政府信息公开条例》第三十三条第一款明确，行政机关征求第三方和其他机关意见所需的时间，不计入不能当场答复时适用的答复期限。",
+    "registeredSource": "第三十三条第三款",
+    "cited": "第三十三条第一款",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2558,
+        "第三十三条第二款": 0.3488,
+        "第三十三条第三款": 0.4884
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.2326,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "paragraph_guards",
+    "RsentenceAudit": [
+      {
+        "text": "《政府信息公开条例》第三十三条第一款明确，行政机关征求第三方和其他机关意见所需的时间，不计入不能当场答复时适用的答复期限",
+        "cited": "第三十三条第一款",
+        "paragraphCoverage": {
+          "1": 0.2558139534883721,
+          "2": 0.3488372093023256,
+          "3": 0.4883720930232558
+        },
+        "bestParagraph": 3,
+        "bestCoverage": 0.4883720930232558,
+        "citedCoverage": 0.2558139534883721,
+        "gap": 0.2325581395348837,
+        "differentParagraph": true,
+        "minimumPass": false,
+        "gapPass": false,
+        "crossReferenceExemption": false,
+        "mentions": [
+          [
+            33,
+            2
+          ]
+        ]
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  },
+  {
+    "itemId": "T2-paragraph_existing-U33-3-P2",
+    "unit": "U33-3",
+    "type": "paragraph_existing",
+    "statement": "《政府信息公开条例》第三十三条第二款明确，行政机关征求第三方和其他机关意见所需的时间，不计入不能当场答复时适用的答复期限。",
+    "registeredSource": "第三十三条第三款",
+    "cited": "第三十三条第二款",
+    "Rraw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "Xraw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2558,
+        "第三十三条第二款": 0.3488,
+        "第三十三条第三款": 0.4884
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.1395,
+      "flagged": true
+    },
+    "XbestMatchesRegisteredSource": true,
+    "category": "paragraph_guards",
+    "RsentenceAudit": [
+      {
+        "text": "《政府信息公开条例》第三十三条第二款明确，行政机关征求第三方和其他机关意见所需的时间，不计入不能当场答复时适用的答复期限",
+        "cited": "第三十三条第二款",
+        "paragraphCoverage": {
+          "1": 0.2558139534883721,
+          "2": 0.3488372093023256,
+          "3": 0.4883720930232558
+        },
+        "bestParagraph": 3,
+        "bestCoverage": 0.4883720930232558,
+        "citedCoverage": 0.3488372093023256,
+        "gap": 0.1395348837209302,
+        "differentParagraph": true,
+        "minimumPass": false,
+        "gapPass": false,
+        "crossReferenceExemption": true,
+        "mentions": [
+          [
+            33,
+            2
+          ]
+        ]
+      }
+    ],
+    "note": "事后只读路径核对；不执行check_answer、扩展或X，不估计新版本效果。"
+  }
+]

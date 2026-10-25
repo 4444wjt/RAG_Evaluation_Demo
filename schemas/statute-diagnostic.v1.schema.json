@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "法条规则诊断请求 v1（不是质量门禁）",
+  "description": "只支持提供者确认的 article-lines-v1：第N条标题带正文、每行一款、（一）起始行为上一款的项、空行结束条。格式检查不证明语义结构正确。",
+  "$ref": "#/$defs/request",
+  "$defs": {
+    "unicodeText": {"type": "string", "pattern": "^[^\\uD800-\\uDFFF]*$"},
+    "text": {"allOf": [{"$ref": "#/$defs/unicodeText"}, {"pattern": "\\S"}]},
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "sourceFormat", "source", "answer", "contexts"],
+      "properties": {
+        "schemaVersion": {"type": "integer", "const": 1},
+        "sourceFormat": {"const": "article-lines-v1"},
+        "source": {"$ref": "#/$defs/text"},
+        "answer": {"$ref": "#/$defs/text"},
+        "contexts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/text"}},
+        "question": {"$ref": "#/$defs/unicodeText", "default": ""},
+        "engine": {"enum": ["base", "extended"], "default": "base"},
+        "structureReference": {"$ref": "#/$defs/structureReference"}
+      }
+    },
+    "structureReference": {
+      "type": "object", "additionalProperties": false,
+      "description": "可选独立结构参照。不得将当前被测解析器输出当成独立参照；匹配不证明法律结构正确。",
+      "required": ["schemaVersion", "units"],
+      "properties": {
+        "schemaVersion": {"type": "integer", "const": 1},
+        "units": {"type": "array", "minItems": 1, "items": {
+          "type": "object", "additionalProperties": false,
+          "required": ["article", "paragraph", "item", "body"],
+          "properties": {
+            "article": {"type": "integer", "minimum": 1, "maximum": 999},
+            "paragraph": {"type": "integer", "minimum": 1, "maximum": 999},
+            "item": {"type": ["integer", "null"], "minimum": 1, "maximum": 999},
+            "body": {"$ref": "#/$defs/text"}
+          }
+        }}
+      }
+    },
+    "report": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "status", "flagged", "engine", "diagnostics", "sourceAudit", "result", "provenance", "limitations"],
+      "properties": {
+        "schemaVersion": {"const": 1},
+        "status": {"enum": ["invalid_input", "review", "findings", "no_error_found"]},
+        "flagged": {"type": ["boolean", "null"]},
+        "engine": {"enum": ["base", "extended", null]},
+        "diagnostics": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["code", "message"], "properties": {"code": {"type": "string"}, "message": {"type": "string"}, "line": {"type": "integer", "minimum": 1}}}},
+        "sourceAudit": {"type": ["object", "null"], "additionalProperties": false, "required": ["nonblankLines", "parsedLines", "unparsedLines", "articleCount"], "properties": {"nonblankLines": {"type": "integer", "minimum": 0}, "parsedLines": {"type": "integer", "minimum": 0}, "unparsedLines": {"type": "array", "items": {"type": "integer", "minimum": 1}}, "articleCount": {"type": "integer", "minimum": 0}}},
+        "result": {"type": ["object", "null"], "description": "现有 core 输出原样保留；extended 的 original 不改写。"},
+        "structureCheck": {
+          "type": ["object", "null"], "additionalProperties": false,
+          "required": ["status", "referenceSha256", "expectedUnits", "observedUnits", "scope"],
+          "properties": {
+            "status": {"enum": ["not_provided", "matched", "mismatch"]},
+            "referenceSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+            "expectedUnits": {"type": ["integer", "null"], "minimum": 1},
+            "observedUnits": {"type": "integer", "minimum": 0},
+            "scope": {"const": "all_paragraph_item_locations"}
+          }
+        },
+        "provenance": {"type": ["object", "null"], "additionalProperties": false, "required": ["inputSha256", "codeSha256", "pythonVersion"], "properties": {"inputSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "codeSha256": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}, "pythonVersion": {"type": "string"}}},
+        "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"enum": ["invalid_input", "review"]}}}, "then": {"properties": {"flagged": {"type": "null"}, "result": {"type": "null"}, "diagnostics": {"minItems": 1}}}},
+        {"if": {"properties": {"status": {"const": "findings"}}}, "then": {"properties": {"flagged": {"const": true}, "result": {"type": "object"}}}},
+        {"if": {"properties": {"status": {"const": "no_error_found"}}}, "then": {"properties": {"flagged": {"const": false}, "result": {"type": "object"}}}}
+      ]
+    }
+  }
+}

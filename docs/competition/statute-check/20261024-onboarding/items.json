@@ -1,0 +1,1275 @@
+[
+  {
+    "id": "paragraph_existing-A8P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第八条第二款",
+    "contentFrom": "第八条第一款",
+    "citedArticle": 8,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第二款规定，不动产以不动产单元为基本单位进行登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第八条第二款",
+        "exists": true,
+        "best": "第八条第一款",
+        "margin": -0.8
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A8P2toP3",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第八条第三款",
+    "contentFrom": "第八条第二款",
+    "citedArticle": 8,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第三款规定，不动产登记机构应当按照国务院自然资源主管部门的规定设立统一的不动产登记簿。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第八条第三款",
+        "exists": true,
+        "best": "第八条第二款",
+        "margin": -0.68
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A8P3toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第八条第一款",
+    "contentFrom": "第八条第三款",
+    "citedArticle": 8,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第一款规定，不动产登记簿应当记载以下事项：（一）不动产的坐落、界址、空间界限、面积、用途等自然状况；（二）不动产权利的主体、类型、内容、来源、期限、权利变化等权属状况；（三）涉及不动产权利限制、提示的事项；（四）其他相关事项。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第八条第一款",
+        "exists": true,
+        "best": "第八条第三款",
+        "margin": -0.8971
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A8toP4",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第八条第四款",
+    "contentFrom": "第八条第一款",
+    "citedArticle": 8,
+    "citedParagraph": 4,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第四款规定，不动产以不动产单元为基本单位进行登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第八条第四款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A8P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第八条第一款",
+    "contentFrom": "第八条第一款",
+    "citedArticle": 8,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第一款规定，不动产以不动产单元为基本单位进行登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第八条第一款",
+        "exists": true,
+        "best": "第八条第一款",
+        "margin": 0.8
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A8P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第八条第二款",
+    "contentFrom": "第八条第二款",
+    "citedArticle": 8,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第二款规定，不动产登记机构应当按照国务院自然资源主管部门的规定设立统一的不动产登记簿。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第八条第二款",
+        "exists": true,
+        "best": "第八条第二款",
+        "margin": 0.68
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A8P3",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第八条第三款",
+    "contentFrom": "第八条第三款",
+    "citedArticle": 8,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条第三款规定，不动产登记簿应当记载以下事项：（一）不动产的坐落、界址、空间界限、面积、用途等自然状况；（二）不动产权利的主体、类型、内容、来源、期限、权利变化等权属状况；（三）涉及不动产权利限制、提示的事项；（四）其他相关事项。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第八条第三款",
+        "exists": true,
+        "best": "第八条第三款",
+        "margin": 0.8235
+      }
+    }
+  },
+  {
+    "id": "control_article-A8",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第八条",
+    "contentFrom": "第八条第三款",
+    "citedArticle": 8,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第八条规定，不动产登记簿应当记载以下事项：（一）不动产的坐落、界址、空间界限、面积、用途等自然状况；（二）不动产权利的主体、类型、内容、来源、期限、权利变化等权属状况；（三）涉及不动产权利限制、提示的事项；（四）其他相关事项。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第八条",
+        "exists": true,
+        "best": "第八条",
+        "margin": 0.7647
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A9P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第九条第二款",
+    "contentFrom": "第九条第一款",
+    "citedArticle": 9,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条第二款规定，不动产登记簿应当采用电子介质，暂不具备条件的，可以采用纸质介质。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第九条第二款",
+        "exists": true,
+        "best": "第九条第一款",
+        "margin": -0.52
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A9P2toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第九条第一款",
+    "contentFrom": "第九条第二款",
+    "citedArticle": 9,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条第一款规定，不动产登记簿采用电子介质的，应当定期进行异地备份，并具有唯一、确定的纸质转化形式。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第九条第一款",
+        "exists": true,
+        "best": "第九条第二款",
+        "margin": -0.5882
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A9toP3",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第九条第三款",
+    "contentFrom": "第九条第一款",
+    "citedArticle": 9,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条第三款规定，不动产登记簿应当采用电子介质，暂不具备条件的，可以采用纸质介质。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第九条第三款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A9P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第九条第一款",
+    "contentFrom": "第九条第一款",
+    "citedArticle": 9,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条第一款规定，不动产登记簿应当采用电子介质，暂不具备条件的，可以采用纸质介质。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第九条第一款",
+        "exists": true,
+        "best": "第九条第一款",
+        "margin": 0.52
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A9P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第九条第二款",
+    "contentFrom": "第九条第二款",
+    "citedArticle": 9,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条第二款规定，不动产登记簿采用电子介质的，应当定期进行异地备份，并具有唯一、确定的纸质转化形式。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第九条第二款",
+        "exists": true,
+        "best": "第九条第二款",
+        "margin": 0.5882
+      }
+    }
+  },
+  {
+    "id": "control_article-A9",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第九条",
+    "contentFrom": "第九条第二款",
+    "citedArticle": 9,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第九条规定，不动产登记簿采用电子介质的，应当定期进行异地备份，并具有唯一、确定的纸质转化形式。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第九条",
+        "exists": true,
+        "best": "第九条",
+        "margin": 0.6471
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A10toP2",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十条第二款",
+    "contentFrom": "第十条第一款",
+    "citedArticle": 10,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 1,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十条第二款规定，不动产登记机构应当依法将各类登记事项准确、完整、清晰地记载于不动产登记簿。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十条第二款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A10P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十条第一款",
+    "contentFrom": "第十条第一款",
+    "citedArticle": 10,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 1,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十条第一款规定，不动产登记机构应当依法将各类登记事项准确、完整、清晰地记载于不动产登记簿。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十条第一款",
+        "exists": true,
+        "best": "第十条第一款",
+        "margin": 1.0
+      }
+    }
+  },
+  {
+    "id": "control_article-A10",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十条",
+    "contentFrom": "第十条第一款",
+    "citedArticle": 10,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 1,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十条规定，不动产登记机构应当依法将各类登记事项准确、完整、清晰地记载于不动产登记簿。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十条",
+        "exists": true,
+        "best": "第十条",
+        "margin": 0.5357
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A11P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十一条第二款",
+    "contentFrom": "第十一条第一款",
+    "citedArticle": 11,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条第二款规定，不动产登记工作人员应当具备与不动产登记工作相适应的专业知识和业务能力。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十一条第二款",
+        "exists": true,
+        "best": "第十一条第一款",
+        "margin": -0.6154
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A11P2toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十一条第一款",
+    "contentFrom": "第十一条第二款",
+    "citedArticle": 11,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条第一款规定，不动产登记机构应当加强对不动产登记工作人员的管理和专业技术培训。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十一条第一款",
+        "exists": true,
+        "best": "第十一条第二款",
+        "margin": -0.6
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A11toP3",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十一条第三款",
+    "contentFrom": "第十一条第一款",
+    "citedArticle": 11,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条第三款规定，不动产登记工作人员应当具备与不动产登记工作相适应的专业知识和业务能力。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十一条第三款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A11P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十一条第一款",
+    "contentFrom": "第十一条第一款",
+    "citedArticle": 11,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条第一款规定，不动产登记工作人员应当具备与不动产登记工作相适应的专业知识和业务能力。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十一条第一款",
+        "exists": true,
+        "best": "第十一条第一款",
+        "margin": 0.6154
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A11P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十一条第二款",
+    "contentFrom": "第十一条第二款",
+    "citedArticle": 11,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条第二款规定，不动产登记机构应当加强对不动产登记工作人员的管理和专业技术培训。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十一条第二款",
+        "exists": true,
+        "best": "第十一条第二款",
+        "margin": 0.6
+      }
+    }
+  },
+  {
+    "id": "control_article-A11",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十一条",
+    "contentFrom": "第十一条第二款",
+    "citedArticle": 11,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十一条规定，不动产登记机构应当加强对不动产登记工作人员的管理和专业技术培训。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十一条",
+        "exists": true,
+        "best": "第十一条",
+        "margin": 0.68
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A12P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十二条第二款",
+    "contentFrom": "第十二条第一款",
+    "citedArticle": 12,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第二款规定，不动产登记机构应当指定专人负责不动产登记簿的保管，并建立健全相应的安全责任制度。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十二条第二款",
+        "exists": true,
+        "best": "第十二条第一款",
+        "margin": -0.7742
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A12P2toP3",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十二条第三款",
+    "contentFrom": "第十二条第二款",
+    "citedArticle": 12,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第三款规定，采用纸质介质不动产登记簿的，应当配备必要的防盗、防火、防渍、防有害生物等安全保护设施。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十二条第三款",
+        "exists": true,
+        "best": "第十二条第二款",
+        "margin": -0.6
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A12P3toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十二条第一款",
+    "contentFrom": "第十二条第三款",
+    "citedArticle": 12,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第一款规定，采用电子介质不动产登记簿的，应当配备专门的存储设施，并采取信息网络安全防护措施。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十二条第一款",
+        "exists": true,
+        "best": "第十二条第三款",
+        "margin": -0.7941
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A12toP4",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十二条第四款",
+    "contentFrom": "第十二条第一款",
+    "citedArticle": 12,
+    "citedParagraph": 4,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第四款规定，不动产登记机构应当指定专人负责不动产登记簿的保管，并建立健全相应的安全责任制度。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十二条第四款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A12P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十二条第一款",
+    "contentFrom": "第十二条第一款",
+    "citedArticle": 12,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第一款规定，不动产登记机构应当指定专人负责不动产登记簿的保管，并建立健全相应的安全责任制度。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十二条第一款",
+        "exists": true,
+        "best": "第十二条第一款",
+        "margin": 0.7742
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A12P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十二条第二款",
+    "contentFrom": "第十二条第二款",
+    "citedArticle": 12,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第二款规定，采用纸质介质不动产登记簿的，应当配备必要的防盗、防火、防渍、防有害生物等安全保护设施。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十二条第二款",
+        "exists": true,
+        "best": "第十二条第二款",
+        "margin": 0.6
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A12P3",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十二条第三款",
+    "contentFrom": "第十二条第三款",
+    "citedArticle": 12,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条第三款规定，采用电子介质不动产登记簿的，应当配备专门的存储设施，并采取信息网络安全防护措施。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十二条第三款",
+        "exists": true,
+        "best": "第十二条第三款",
+        "margin": 0.5882
+      }
+    }
+  },
+  {
+    "id": "control_article-A12",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十二条",
+    "contentFrom": "第十二条第三款",
+    "citedArticle": 12,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 3,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十二条规定，采用电子介质不动产登记簿的，应当配备专门的存储设施，并采取信息网络安全防护措施。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十二条",
+        "exists": true,
+        "best": "第十二条",
+        "margin": 0.6176
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A13P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十三条第二款",
+    "contentFrom": "第十三条第一款",
+    "citedArticle": 13,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条第二款规定，不动产登记簿由不动产登记机构永久保存。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十三条第二款",
+        "exists": true,
+        "best": "第十三条第一款",
+        "margin": -0.4615
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A13P2toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十三条第一款",
+    "contentFrom": "第十三条第二款",
+    "citedArticle": 13,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条第一款规定，行政区域变更或者不动产登记机构职能调整的，应当及时将不动产登记簿移交相应的不动产登记机构。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十三条第一款",
+        "exists": true,
+        "best": "第十三条第二款",
+        "margin": -0.7333
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A13toP3",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十三条第三款",
+    "contentFrom": "第十三条第一款",
+    "citedArticle": 13,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条第三款规定，不动产登记簿由不动产登记机构永久保存。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十三条第三款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A13P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十三条第一款",
+    "contentFrom": "第十三条第一款",
+    "citedArticle": 13,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条第一款规定，不动产登记簿由不动产登记机构永久保存。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十三条第一款",
+        "exists": true,
+        "best": "第十三条第一款",
+        "margin": 0.4615
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A13P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十三条第二款",
+    "contentFrom": "第十三条第二款",
+    "citedArticle": 13,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条第二款规定，行政区域变更或者不动产登记机构职能调整的，应当及时将不动产登记簿移交相应的不动产登记机构。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十三条第二款",
+        "exists": true,
+        "best": "第十三条第二款",
+        "margin": 0.7333
+      }
+    }
+  },
+  {
+    "id": "control_article-A13",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十三条",
+    "contentFrom": "第十三条第二款",
+    "citedArticle": 13,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十三条规定，行政区域变更或者不动产登记机构职能调整的，应当及时将不动产登记簿移交相应的不动产登记机构。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十三条",
+        "exists": true,
+        "best": "第十三条",
+        "margin": 0.7
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A14P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十四条第二款",
+    "contentFrom": "第十四条第一款",
+    "citedArticle": 14,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条第二款规定，因买卖、设定抵押权等申请不动产登记的，应当由当事人双方共同申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十四条第二款",
+        "exists": true,
+        "best": "第十四条第一款",
+        "margin": -0.7308
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A14P2toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十四条第一款",
+    "contentFrom": "第十四条第二款",
+    "citedArticle": 14,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条第一款规定，属于下列情形之一的，可以由当事人单方申请：（一）尚未登记的不动产首次申请登记的；（二）继承、接受遗赠取得不动产权利的；（三）人民法院、仲裁委员会生效的法律文书或者人民政府生效的决定等设立、变更、转让、消灭不动产权利的；（四）权利人姓名、名称或者自然状况发生变化，申请变更登记的；（五）不动产灭失或者权利人放弃不动产权利，申请注销登记的；（六）申请更正登记或者异议登记的；（七）法律、行政法规规定可以由当事人单方申请的其他情形。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十四条第一款",
+        "exists": true,
+        "best": "第十四条第二款",
+        "margin": -0.8889
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A14toP3",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十四条第三款",
+    "contentFrom": "第十四条第一款",
+    "citedArticle": 14,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条第三款规定，因买卖、设定抵押权等申请不动产登记的，应当由当事人双方共同申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十四条第三款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A14P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十四条第一款",
+    "contentFrom": "第十四条第一款",
+    "citedArticle": 14,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条第一款规定，因买卖、设定抵押权等申请不动产登记的，应当由当事人双方共同申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十四条第一款",
+        "exists": true,
+        "best": "第十四条第一款",
+        "margin": 0.7308
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A14P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十四条第二款",
+    "contentFrom": "第十四条第二款",
+    "citedArticle": 14,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条第二款规定，属于下列情形之一的，可以由当事人单方申请：（一）尚未登记的不动产首次申请登记的；（二）继承、接受遗赠取得不动产权利的；（三）人民法院、仲裁委员会生效的法律文书或者人民政府生效的决定等设立、变更、转让、消灭不动产权利的；（四）权利人姓名、名称或者自然状况发生变化，申请变更登记的；（五）不动产灭失或者权利人放弃不动产权利，申请注销登记的；（六）申请更正登记或者异议登记的；（七）法律、行政法规规定可以由当事人单方申请的其他情形。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十四条第二款",
+        "exists": true,
+        "best": "第十四条第二款",
+        "margin": 0.8889
+      }
+    }
+  },
+  {
+    "id": "control_article-A14",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十四条",
+    "contentFrom": "第十四条第二款",
+    "citedArticle": 14,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十四条规定，属于下列情形之一的，可以由当事人单方申请：（一）尚未登记的不动产首次申请登记的；（二）继承、接受遗赠取得不动产权利的；（三）人民法院、仲裁委员会生效的法律文书或者人民政府生效的决定等设立、变更、转让、消灭不动产权利的；（四）权利人姓名、名称或者自然状况发生变化，申请变更登记的；（五）不动产灭失或者权利人放弃不动产权利，申请注销登记的；（六）申请更正登记或者异议登记的；（七）法律、行政法规规定可以由当事人单方申请的其他情形。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十四条",
+        "exists": true,
+        "best": "第十四条",
+        "margin": 0.8492
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A15P1toP2",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十五条第二款",
+    "contentFrom": "第十五条第一款",
+    "citedArticle": 15,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条第二款规定，当事人或者其代理人应当向不动产登记机构申请不动产登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十五条第二款",
+        "exists": true,
+        "best": "第十五条第一款",
+        "margin": -0.6667
+      }
+    }
+  },
+  {
+    "id": "paragraph_existing-A15P2toP1",
+    "type": "paragraph_existing",
+    "expected": "not_supported",
+    "cited": "第十五条第一款",
+    "contentFrom": "第十五条第二款",
+    "citedArticle": 15,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条第一款规定，不动产登记机构将申请登记事项记载于不动产登记簿前，申请人可以撤回登记申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "MISATTRIBUTED"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十五条第一款",
+        "exists": true,
+        "best": "第十五条第二款",
+        "margin": -0.7308
+      }
+    }
+  },
+  {
+    "id": "paragraph_absent-A15toP3",
+    "type": "paragraph_absent",
+    "expected": "not_supported",
+    "cited": "第十五条第三款",
+    "contentFrom": "第十五条第一款",
+    "citedArticle": 15,
+    "citedParagraph": 3,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条第三款规定，当事人或者其代理人应当向不动产登记机构申请不动产登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": true,
+        "errorCodes": [
+          "PROVISION_NOT_IN_SOURCE"
+        ]
+      },
+      "lexical": {
+        "flagged": true,
+        "cited": "第十五条第三款",
+        "exists": false,
+        "best": null,
+        "margin": null
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A15P1",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十五条第一款",
+    "contentFrom": "第十五条第一款",
+    "citedArticle": 15,
+    "citedParagraph": 1,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条第一款规定，当事人或者其代理人应当向不动产登记机构申请不动产登记。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十五条第一款",
+        "exists": true,
+        "best": "第十五条第一款",
+        "margin": 0.6667
+      }
+    }
+  },
+  {
+    "id": "control_pinpoint-A15P2",
+    "type": "control_pinpoint",
+    "expected": "supported",
+    "cited": "第十五条第二款",
+    "contentFrom": "第十五条第二款",
+    "citedArticle": 15,
+    "citedParagraph": 2,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条第二款规定，不动产登记机构将申请登记事项记载于不动产登记簿前，申请人可以撤回登记申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十五条第二款",
+        "exists": true,
+        "best": "第十五条第二款",
+        "margin": 0.7308
+      }
+    }
+  },
+  {
+    "id": "control_article-A15",
+    "type": "control_article",
+    "expected": "supported",
+    "cited": "第十五条",
+    "contentFrom": "第十五条第二款",
+    "citedArticle": 15,
+    "citedParagraph": null,
+    "citedArticleParagraphs": 2,
+    "question": "《不动产登记暂行条例》节选对此有什么规定？",
+    "statement": "按照第十五条规定，不动产登记机构将申请登记事项记载于不动产登记簿前，申请人可以撤回登记申请。",
+    "offlineBaselines": {
+      "rule": {
+        "flagged": false,
+        "errorCodes": []
+      },
+      "lexical": {
+        "flagged": false,
+        "cited": "第十五条",
+        "exists": true,
+        "best": "第十五条",
+        "margin": 0.5385
+      }
+    }
+  }
+]

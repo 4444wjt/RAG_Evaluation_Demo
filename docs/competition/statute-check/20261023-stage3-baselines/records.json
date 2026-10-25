@@ -1,0 +1,7420 @@
+[
+  {
+    "requestId": "T1-control-U29-1--R",
+    "itemId": "T1-control-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-1--X",
+    "itemId": "T1-control-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.9615,
+        "第三十条": 0.1795,
+        "第三十一条": 0.2308,
+        "第三十二条": 0.1795,
+        "第三十三条": 0.2179,
+        "第三十四条": 0.1795,
+        "第三十七条": 0.1667,
+        "第三十八条": 0.1795,
+        "第四十二条": 0.1667
+      },
+      "best": "第二十九条",
+      "margin": 0.7308,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-1--R",
+    "itemId": "T1-control_pinpoint-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-1--X",
+    "itemId": "T1-control_pinpoint-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二十九条第一款": 0.9615,
+        "第二十九条第二款": 0.2179
+      },
+      "best": "第二十九条第一款",
+      "margin": 0.7436,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U29-1-P2--R",
+    "itemId": "T1-paragraph_existing-U29-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第二十九条第二款，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式",
+          "detail": "所引为第二十九条第二款，内容最接近第二十九条第一款（覆盖 0.94，所引 0.28）",
+          "cited": "第二十九条第二款",
+          "located": "第二十九条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U29-1-P2--X",
+    "itemId": "T1-paragraph_existing-U29-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二十九条第一款": 0.9615,
+        "第二十九条第二款": 0.2179
+      },
+      "best": "第二十九条第一款",
+      "margin": -0.7436,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-1--R",
+    "itemId": "T1-paragraph_absent-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款",
+          "detail": "原文没有第二十九条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-1--X",
+    "itemId": "T1-paragraph_absent-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-1--X",
+    "itemId": "T1-control-U29-2-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.8667,
+        "第三十条": 0.3,
+        "第三十一条": 0.3667,
+        "第三十二条": 0.2333,
+        "第三十三条": 0.3,
+        "第三十四条": 0.2667,
+        "第三十七条": 0.2667,
+        "第三十八条": 0.2333,
+        "第四十二条": 0.2333
+      },
+      "best": "第二十九条",
+      "margin": 0.5,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-1--R",
+    "itemId": "T1-control-U29-2-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-1--R",
+    "itemId": "T1-control_pinpoint-U29-2-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-1--X",
+    "itemId": "T1-control_pinpoint-U29-2-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.5333,
+        "第二十九条第二款第二项": 0.2333,
+        "第二十九条第二款第三项": 0.2333
+      },
+      "best": "第二十九条第二款第一项",
+      "margin": 0.3,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-1--R",
+    "itemId": "T1-paragraph_absent-U29-2-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款第一项",
+          "detail": "原文没有第二十九条第三款第一项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-1--X",
+    "itemId": "T1-paragraph_absent-U29-2-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款第一项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-1-I2--R",
+    "itemId": "T1-item_existing-U29-2-1-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-1-I2--X",
+    "itemId": "T1-item_existing-U29-2-1-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.5333,
+        "第二十九条第二款第二项": 0.2333,
+        "第二十九条第二款第三项": 0.2333
+      },
+      "best": "第二十九条第二款第一项",
+      "margin": -0.3,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-1-I3--R",
+    "itemId": "T1-item_existing-U29-2-1-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-1-I3--X",
+    "itemId": "T1-item_existing-U29-2-1-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.5333,
+        "第二十九条第二款第二项": 0.2333,
+        "第二十九条第二款第三项": 0.2333
+      },
+      "best": "第二十九条第二款第一项",
+      "margin": -0.3,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-1--X",
+    "itemId": "T1-item_absent-U29-2-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-1--R",
+    "itemId": "T1-item_absent-U29-2-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第二款第四项",
+          "detail": "原文没有第二十九条第二款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-2--R",
+    "itemId": "T1-control-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-2--X",
+    "itemId": "T1-control-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.8947,
+        "第三十条": 0.2895,
+        "第三十一条": 0.3158,
+        "第三十二条": 0.3158,
+        "第三十三条": 0.3158,
+        "第三十四条": 0.3421,
+        "第三十七条": 0.3158,
+        "第三十八条": 0.2368,
+        "第四十二条": 0.2895
+      },
+      "best": "第二十九条",
+      "margin": 0.5526,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-2--R",
+    "itemId": "T1-control_pinpoint-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-2--X",
+    "itemId": "T1-control_pinpoint-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0789,
+        "第二十九条第二款第二项": 0.7368,
+        "第二十九条第二款第三项": 0.2105
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": 0.5263,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-2--R",
+    "itemId": "T1-paragraph_absent-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款第二项",
+          "detail": "原文没有第二十九条第三款第二项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-2--X",
+    "itemId": "T1-paragraph_absent-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款第二项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-2-I1--R",
+    "itemId": "T1-item_existing-U29-2-2-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-2-I1--X",
+    "itemId": "T1-item_existing-U29-2-2-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0789,
+        "第二十九条第二款第二项": 0.7368,
+        "第二十九条第二款第三项": 0.2105
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.6579,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-2-I3--X",
+    "itemId": "T1-item_existing-U29-2-2-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0789,
+        "第二十九条第二款第二项": 0.7368,
+        "第二十九条第二款第三项": 0.2105
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.5263,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-2-I3--R",
+    "itemId": "T1-item_existing-U29-2-2-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-2--R",
+    "itemId": "T1-item_absent-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第二款第四项",
+          "detail": "原文没有第二十九条第二款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-2--X",
+    "itemId": "T1-item_absent-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-3--R",
+    "itemId": "T1-control-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U29-2-3--X",
+    "itemId": "T1-control-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.8621,
+        "第三十条": 0.2759,
+        "第三十一条": 0.3103,
+        "第三十二条": 0.3103,
+        "第三十三条": 0.2759,
+        "第三十四条": 0.3448,
+        "第三十七条": 0.2759,
+        "第三十八条": 0.2069,
+        "第四十二条": 0.3103
+      },
+      "best": "第二十九条",
+      "margin": 0.5172,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-3--R",
+    "itemId": "T1-control_pinpoint-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U29-2-3--X",
+    "itemId": "T1-control_pinpoint-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.069,
+        "第二十九条第二款第二项": 0.2414,
+        "第二十九条第二款第三项": 0.6897
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": 0.4483,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-3--R",
+    "itemId": "T1-paragraph_absent-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款第三项",
+          "detail": "原文没有第二十九条第三款第三项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U29-2-3--X",
+    "itemId": "T1-paragraph_absent-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款第三项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-3-I1--X",
+    "itemId": "T1-item_existing-U29-2-3-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.069,
+        "第二十九条第二款第二项": 0.2414,
+        "第二十九条第二款第三项": 0.6897
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.6207,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-3-I1--R",
+    "itemId": "T1-item_existing-U29-2-3-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-3-I2--R",
+    "itemId": "T1-item_existing-U29-2-3-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U29-2-3-I2--X",
+    "itemId": "T1-item_existing-U29-2-3-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.069,
+        "第二十九条第二款第二项": 0.2414,
+        "第二十九条第二款第三项": 0.6897
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.4483,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-3--R",
+    "itemId": "T1-item_absent-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第二款第四项",
+          "detail": "原文没有第二十九条第二款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U29-2-3--X",
+    "itemId": "T1-item_absent-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U30-1--R",
+    "itemId": "T1-control-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U30-1--X",
+    "itemId": "T1-control-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.1531,
+        "第三十条": 0.9694,
+        "第三十一条": 0.1837,
+        "第三十二条": 0.2551,
+        "第三十三条": 0.3163,
+        "第三十四条": 0.2347,
+        "第三十七条": 0.1531,
+        "第三十八条": 0.1122,
+        "第四十二条": 0.1429
+      },
+      "best": "第三十条",
+      "margin": 0.6531,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U30-1--R",
+    "itemId": "T1-control_pinpoint-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U30-1--X",
+    "itemId": "T1-control_pinpoint-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十条第一款": 0.9694
+      },
+      "best": "第三十条第一款",
+      "margin": 0.9694,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U30-1--X",
+    "itemId": "T1-paragraph_absent-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U30-1--R",
+    "itemId": "T1-paragraph_absent-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十条第二款",
+          "detail": "原文没有第三十条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-1--R",
+    "itemId": "T1-control-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-1--X",
+    "itemId": "T1-control-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.32,
+        "第三十条": 0.48,
+        "第三十一条": 0.88,
+        "第三十二条": 0.32,
+        "第三十三条": 0.48,
+        "第三十四条": 0.36,
+        "第三十七条": 0.24,
+        "第三十八条": 0.2,
+        "第四十二条": 0.28
+      },
+      "best": "第三十一条",
+      "margin": 0.4,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-1--R",
+    "itemId": "T1-control_pinpoint-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-1--X",
+    "itemId": "T1-control_pinpoint-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.88,
+        "第三十一条第一款第二项": 0.68,
+        "第三十一条第一款第三项": 0.68
+      },
+      "best": "第三十一条第一款第一项",
+      "margin": 0.2,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-1--R",
+    "itemId": "T1-paragraph_absent-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第一项",
+          "detail": "原文没有第三十一条第二款第一项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-1--X",
+    "itemId": "T1-paragraph_absent-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第一项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-1-I2--R",
+    "itemId": "T1-item_existing-U31-1-1-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-1-I2--X",
+    "itemId": "T1-item_existing-U31-1-1-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.88,
+        "第三十一条第一款第二项": 0.68,
+        "第三十一条第一款第三项": 0.68
+      },
+      "best": "第三十一条第一款第一项",
+      "margin": -0.2,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-1-I3--X",
+    "itemId": "T1-item_existing-U31-1-1-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.88,
+        "第三十一条第一款第二项": 0.68,
+        "第三十一条第一款第三项": 0.68
+      },
+      "best": "第三十一条第一款第一项",
+      "margin": -0.2,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-1-I3--R",
+    "itemId": "T1-item_existing-U31-1-1-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-1--R",
+    "itemId": "T1-item_absent-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-1--X",
+    "itemId": "T1-item_absent-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-2--R",
+    "itemId": "T1-control-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-2--X",
+    "itemId": "T1-control-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.3,
+        "第三十条": 0.2833,
+        "第三十一条": 0.95,
+        "第三十二条": 0.2167,
+        "第三十三条": 0.3333,
+        "第三十四条": 0.2333,
+        "第三十七条": 0.1667,
+        "第三十八条": 0.15,
+        "第四十二条": 0.2
+      },
+      "best": "第三十一条",
+      "margin": 0.6167,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-2--R",
+    "itemId": "T1-control_pinpoint-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-2--X",
+    "itemId": "T1-control_pinpoint-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.2833,
+        "第三十一条第一款第二项": 0.95,
+        "第三十一条第一款第三项": 0.3833
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": 0.5667,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-2--R",
+    "itemId": "T1-paragraph_absent-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第二项",
+          "detail": "原文没有第三十一条第二款第二项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-2--X",
+    "itemId": "T1-paragraph_absent-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第二项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-2-I1--X",
+    "itemId": "T1-item_existing-U31-1-2-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.2833,
+        "第三十一条第一款第二项": 0.95,
+        "第三十一条第一款第三项": 0.3833
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.6667,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-2-I1--R",
+    "itemId": "T1-item_existing-U31-1-2-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-2-I3--R",
+    "itemId": "T1-item_existing-U31-1-2-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-2-I3--X",
+    "itemId": "T1-item_existing-U31-1-2-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.2833,
+        "第三十一条第一款第二项": 0.95,
+        "第三十一条第一款第三项": 0.3833
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.5667,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-2--R",
+    "itemId": "T1-item_absent-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-2--X",
+    "itemId": "T1-item_absent-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-3--R",
+    "itemId": "T1-control-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U31-1-3--X",
+    "itemId": "T1-control-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.3095,
+        "第三十条": 0.3095,
+        "第三十一条": 0.9286,
+        "第三十二条": 0.2143,
+        "第三十三条": 0.381,
+        "第三十四条": 0.2381,
+        "第三十七条": 0.1667,
+        "第三十八条": 0.1429,
+        "第四十二条": 0.2143
+      },
+      "best": "第三十一条",
+      "margin": 0.5476,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-3--R",
+    "itemId": "T1-control_pinpoint-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U31-1-3--X",
+    "itemId": "T1-control_pinpoint-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.4048,
+        "第三十一条第一款第二项": 0.5476,
+        "第三十一条第一款第三项": 0.9286
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": 0.381,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-3--X",
+    "itemId": "T1-paragraph_absent-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第三项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U31-1-3--R",
+    "itemId": "T1-paragraph_absent-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第三项",
+          "detail": "原文没有第三十一条第二款第三项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-3-I1--R",
+    "itemId": "T1-item_existing-U31-1-3-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-3-I1--X",
+    "itemId": "T1-item_existing-U31-1-3-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.4048,
+        "第三十一条第一款第二项": 0.5476,
+        "第三十一条第一款第三项": 0.9286
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.5238,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-3-I2--R",
+    "itemId": "T1-item_existing-U31-1-3-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_existing-U31-1-3-I2--X",
+    "itemId": "T1-item_existing-U31-1-3-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.4048,
+        "第三十一条第一款第二项": 0.5476,
+        "第三十一条第一款第三项": 0.9286
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.381,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-3--R",
+    "itemId": "T1-item_absent-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-item_absent-U31-1-3--X",
+    "itemId": "T1-item_absent-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U32-1--R",
+    "itemId": "T1-control-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U32-1--X",
+    "itemId": "T1-control-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.1429,
+        "第三十条": 0.2101,
+        "第三十一条": 0.1092,
+        "第三十二条": 0.9748,
+        "第三十三条": 0.2353,
+        "第三十四条": 0.3361,
+        "第三十七条": 0.1597,
+        "第三十八条": 0.1008,
+        "第四十二条": 0.1345
+      },
+      "best": "第三十二条",
+      "margin": 0.6387,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U32-1--X",
+    "itemId": "T1-control_pinpoint-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十二条第一款": 0.9748
+      },
+      "best": "第三十二条第一款",
+      "margin": 0.9748,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U32-1--R",
+    "itemId": "T1-control_pinpoint-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U32-1--R",
+    "itemId": "T1-paragraph_absent-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十二条第二款",
+          "detail": "原文没有第三十二条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U32-1--X",
+    "itemId": "T1-paragraph_absent-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十二条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-1--R",
+    "itemId": "T1-control-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-1--X",
+    "itemId": "T1-control-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.3929,
+        "第三十条": 0.5,
+        "第三十一条": 0.5,
+        "第三十二条": 0.4286,
+        "第三十三条": 0.8929,
+        "第三十四条": 0.5,
+        "第三十七条": 0.3571,
+        "第三十八条": 0.3214,
+        "第四十二条": 0.3571
+      },
+      "best": "第三十三条",
+      "margin": 0.3929,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-1--R",
+    "itemId": "T1-control_pinpoint-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-1--X",
+    "itemId": "T1-control_pinpoint-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8929,
+        "第三十三条第二款": 0.6071,
+        "第三十三条第三款": 0.1071
+      },
+      "best": "第三十三条第一款",
+      "margin": 0.2857,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-1-P2--R",
+    "itemId": "T1-paragraph_existing-U33-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第二款，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复",
+          "detail": "所引为第三十三条第二款，内容最接近第三十三条第一款（覆盖 0.89，所引 0.61）",
+          "cited": "第三十三条第二款",
+          "located": "第三十三条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-1-P2--X",
+    "itemId": "T1-paragraph_existing-U33-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8929,
+        "第三十三条第二款": 0.6071,
+        "第三十三条第三款": 0.1071
+      },
+      "best": "第三十三条第一款",
+      "margin": -0.2857,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-1-P3--X",
+    "itemId": "T1-paragraph_existing-U33-1-P3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8929,
+        "第三十三条第二款": 0.6071,
+        "第三十三条第三款": 0.1071
+      },
+      "best": "第三十三条第一款",
+      "margin": -0.7857,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-1-P3--R",
+    "itemId": "T1-paragraph_existing-U33-1-P3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第三款，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复",
+          "detail": "所引为第三十三条第三款，内容最接近第三十三条第一款（覆盖 0.89，所引 0.11）",
+          "cited": "第三十三条第三款",
+          "located": "第三十三条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-1--R",
+    "itemId": "T1-paragraph_absent-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-1--X",
+    "itemId": "T1-paragraph_absent-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-2--R",
+    "itemId": "T1-control-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-2--X",
+    "itemId": "T1-control-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2174,
+        "第三十条": 0.4058,
+        "第三十一条": 0.2754,
+        "第三十二条": 0.3333,
+        "第三十三条": 0.9565,
+        "第三十四条": 0.2899,
+        "第三十七条": 0.1449,
+        "第三十八条": 0.1449,
+        "第四十二条": 0.1884
+      },
+      "best": "第三十三条",
+      "margin": 0.5507,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-2--R",
+    "itemId": "T1-control_pinpoint-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-2--X",
+    "itemId": "T1-control_pinpoint-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2464,
+        "第三十三条第二款": 0.9565,
+        "第三十三条第三款": 0.058
+      },
+      "best": "第三十三条第二款",
+      "margin": 0.7101,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-2-P1--R",
+    "itemId": "T1-paragraph_existing-U33-2-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第一款，行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复",
+          "detail": "所引为第三十三条第一款，内容最接近第三十三条第二款（覆盖 0.92，所引 0.46）",
+          "cited": "第三十三条第一款",
+          "located": "第三十三条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-2-P1--X",
+    "itemId": "T1-paragraph_existing-U33-2-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2464,
+        "第三十三条第二款": 0.9565,
+        "第三十三条第三款": 0.058
+      },
+      "best": "第三十三条第二款",
+      "margin": -0.7101,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-2-P3--X",
+    "itemId": "T1-paragraph_existing-U33-2-P3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2464,
+        "第三十三条第二款": 0.9565,
+        "第三十三条第三款": 0.058
+      },
+      "best": "第三十三条第二款",
+      "margin": -0.8986,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-2-P3--R",
+    "itemId": "T1-paragraph_existing-U33-2-P3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第三款，行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复",
+          "detail": "所引为第三十三条第三款，内容最接近第三十三条第二款（覆盖 0.92，所引 0.08）",
+          "cited": "第三十三条第三款",
+          "located": "第三十三条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-2--R",
+    "itemId": "T1-paragraph_absent-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-2--X",
+    "itemId": "T1-paragraph_absent-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-3--R",
+    "itemId": "T1-control-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U33-3--X",
+    "itemId": "T1-control-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2571,
+        "第三十条": 0.2857,
+        "第三十一条": 0.2571,
+        "第三十二条": 0.3714,
+        "第三十三条": 0.9143,
+        "第三十四条": 0.3143,
+        "第三十七条": 0.2,
+        "第三十八条": 0.2,
+        "第四十二条": 0.2286
+      },
+      "best": "第三十三条",
+      "margin": 0.5429,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-3--R",
+    "itemId": "T1-control_pinpoint-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U33-3--X",
+    "itemId": "T1-control_pinpoint-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2286,
+        "第三十三条第二款": 0.2571,
+        "第三十三条第三款": 0.7714
+      },
+      "best": "第三十三条第三款",
+      "margin": 0.5143,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-3-P1--R",
+    "itemId": "T1-paragraph_existing-U33-3-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第一款，行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内",
+          "detail": "所引为第三十三条第一款，内容最接近第三十三条第三款（覆盖 0.77，所引 0.23）",
+          "cited": "第三十三条第一款",
+          "located": "第三十三条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-3-P1--X",
+    "itemId": "T1-paragraph_existing-U33-3-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2286,
+        "第三十三条第二款": 0.2571,
+        "第三十三条第三款": 0.7714
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.5429,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-3-P2--X",
+    "itemId": "T1-paragraph_existing-U33-3-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2286,
+        "第三十三条第二款": 0.2571,
+        "第三十三条第三款": 0.7714
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.5143,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U33-3-P2--R",
+    "itemId": "T1-paragraph_existing-U33-3-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-3--R",
+    "itemId": "T1-paragraph_absent-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U33-3--X",
+    "itemId": "T1-paragraph_absent-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U34-1--R",
+    "itemId": "T1-control-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U34-1--X",
+    "itemId": "T1-control-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十四条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2162,
+        "第三十条": 0.3108,
+        "第三十一条": 0.2162,
+        "第三十二条": 0.5405,
+        "第三十三条": 0.3514,
+        "第三十四条": 0.9595,
+        "第三十七条": 0.1757,
+        "第三十八条": 0.1351,
+        "第四十二条": 0.1892
+      },
+      "best": "第三十四条",
+      "margin": 0.4189,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U34-1--R",
+    "itemId": "T1-control_pinpoint-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U34-1--X",
+    "itemId": "T1-control_pinpoint-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十四条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十四条第一款": 0.9595
+      },
+      "best": "第三十四条第一款",
+      "margin": 0.9595,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U34-1--R",
+    "itemId": "T1-paragraph_absent-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十四条第二款",
+          "detail": "原文没有第三十四条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U34-1--X",
+    "itemId": "T1-paragraph_absent-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十四条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U37-1--X",
+    "itemId": "T1-control-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十七条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2881,
+        "第三十条": 0.2712,
+        "第三十一条": 0.2034,
+        "第三十二条": 0.339,
+        "第三十三条": 0.2034,
+        "第三十四条": 0.2373,
+        "第三十七条": 0.9322,
+        "第三十八条": 0.3559,
+        "第四十二条": 0.2712
+      },
+      "best": "第三十七条",
+      "margin": 0.5763,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U37-1--R",
+    "itemId": "T1-control-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U37-1--R",
+    "itemId": "T1-control_pinpoint-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U37-1--X",
+    "itemId": "T1-control_pinpoint-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十七条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十七条第一款": 0.9322
+      },
+      "best": "第三十七条第一款",
+      "margin": 0.9322,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U37-1--R",
+    "itemId": "T1-paragraph_absent-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十七条第二款",
+          "detail": "原文没有第三十七条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U37-1--X",
+    "itemId": "T1-paragraph_absent-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十七条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U38-1--R",
+    "itemId": "T1-control-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U38-1--X",
+    "itemId": "T1-control-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十八条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2712,
+        "第三十条": 0.2203,
+        "第三十一条": 0.2034,
+        "第三十二条": 0.2203,
+        "第三十三条": 0.2203,
+        "第三十四条": 0.2034,
+        "第三十七条": 0.3729,
+        "第三十八条": 0.8983,
+        "第四十二条": 0.2373
+      },
+      "best": "第三十八条",
+      "margin": 0.5254,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U38-1--R",
+    "itemId": "T1-control_pinpoint-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U38-1--X",
+    "itemId": "T1-control_pinpoint-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十八条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十八条第一款": 0.8983
+      },
+      "best": "第三十八条第一款",
+      "margin": 0.8983,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U38-1--X",
+    "itemId": "T1-paragraph_absent-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十八条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U38-1--R",
+    "itemId": "T1-paragraph_absent-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十八条第二款",
+          "detail": "原文没有第三十八条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U42-1--R",
+    "itemId": "T1-control-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U42-1--X",
+    "itemId": "T1-control-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2857,
+        "第三十条": 0.2449,
+        "第三十一条": 0.2041,
+        "第三十二条": 0.3061,
+        "第三十三条": 0.2245,
+        "第三十四条": 0.2449,
+        "第三十七条": 0.3061,
+        "第三十八条": 0.2449,
+        "第四十二条": 0.9388
+      },
+      "best": "第四十二条",
+      "margin": 0.6327,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U42-1--R",
+    "itemId": "T1-control_pinpoint-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U42-1--X",
+    "itemId": "T1-control_pinpoint-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.9184,
+        "第四十二条第二款": 0.2653
+      },
+      "best": "第四十二条第一款",
+      "margin": 0.6531,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U42-1-P2--R",
+    "itemId": "T1-paragraph_existing-U42-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第四十二条第二款，行政机关依申请提供政府信息，不收取费用",
+          "detail": "所引为第四十二条第二款，内容最接近第四十二条第一款（覆盖 0.82，所引 0.41）",
+          "cited": "第四十二条第二款",
+          "located": "第四十二条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U42-1-P2--X",
+    "itemId": "T1-paragraph_existing-U42-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.9184,
+        "第四十二条第二款": 0.2653
+      },
+      "best": "第四十二条第一款",
+      "margin": -0.6531,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U42-1--R",
+    "itemId": "T1-paragraph_absent-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第四十二条第三款",
+          "detail": "原文没有第四十二条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U42-1--X",
+    "itemId": "T1-paragraph_absent-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U42-2--X",
+    "itemId": "T1-control-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2444,
+        "第三十条": 0.2444,
+        "第三十一条": 0.2444,
+        "第三十二条": 0.2,
+        "第三十三条": 0.2444,
+        "第三十四条": 0.2222,
+        "第三十七条": 0.1778,
+        "第三十八条": 0.1556,
+        "第四十二条": 0.9333
+      },
+      "best": "第四十二条",
+      "margin": 0.6889,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control-U42-2--R",
+    "itemId": "T1-control-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U42-2--R",
+    "itemId": "T1-control_pinpoint-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-control_pinpoint-U42-2--X",
+    "itemId": "T1-control_pinpoint-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.2667,
+        "第四十二条第二款": 0.9333
+      },
+      "best": "第四十二条第二款",
+      "margin": 0.6667,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U42-2-P1--R",
+    "itemId": "T1-paragraph_existing-U42-2-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第四十二条第一款，行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定",
+          "detail": "所引为第四十二条第一款，内容最接近第四十二条第二款（覆盖 0.93，所引 0.27）",
+          "cited": "第四十二条第一款",
+          "located": "第四十二条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_existing-U42-2-P1--X",
+    "itemId": "T1-paragraph_existing-U42-2-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.2667,
+        "第四十二条第二款": 0.9333
+      },
+      "best": "第四十二条第二款",
+      "margin": -0.6667,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U42-2--R",
+    "itemId": "T1-paragraph_absent-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第四十二条第三款",
+          "detail": "原文没有第四十二条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T1-paragraph_absent-U42-2--X",
+    "itemId": "T1-paragraph_absent-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-1--R",
+    "itemId": "T2-control-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-1--X",
+    "itemId": "T2-control-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.6625,
+        "第三十条": 0.1625,
+        "第三十一条": 0.225,
+        "第三十二条": 0.1625,
+        "第三十三条": 0.2125,
+        "第三十四条": 0.1625,
+        "第三十七条": 0.1375,
+        "第三十八条": 0.1625,
+        "第四十二条": 0.1625
+      },
+      "best": "第二十九条",
+      "margin": 0.4375,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-1--X",
+    "itemId": "T2-control_pinpoint-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二十九条第一款": 0.6625,
+        "第二十九条第二款": 0.1875
+      },
+      "best": "第二十九条第一款",
+      "margin": 0.475,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-1--R",
+    "itemId": "T2-control_pinpoint-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U29-1-P2--R",
+    "itemId": "T2-paragraph_existing-U29-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "按照《政府信息公开条例》第二十九条第二款的规定，公民、法人或者其他组织想申请获取政府信息，需要向行政机关的政府信息公开工作机构提出，并且采用书面形式，信件、数据电文都可以",
+          "detail": "所引为第二十九条第二款，内容最接近第二十九条第一款（覆盖 0.76，所引 0.24）",
+          "cited": "第二十九条第二款",
+          "located": "第二十九条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U29-1-P2--X",
+    "itemId": "T2-paragraph_existing-U29-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第二十九条第一款": 0.6625,
+        "第二十九条第二款": 0.1875
+      },
+      "best": "第二十九条第一款",
+      "margin": -0.475,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-1--R",
+    "itemId": "T2-paragraph_absent-U29-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款",
+          "detail": "原文没有第二十九条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-1--X",
+    "itemId": "T2-paragraph_absent-U29-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-2-2--R",
+    "itemId": "T2-control-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-2-2--X",
+    "itemId": "T2-control-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.7179,
+        "第三十条": 0.2564,
+        "第三十一条": 0.2821,
+        "第三十二条": 0.3077,
+        "第三十三条": 0.2821,
+        "第三十四条": 0.3077,
+        "第三十七条": 0.3077,
+        "第三十八条": 0.2308,
+        "第四十二条": 0.2821
+      },
+      "best": "第二十九条",
+      "margin": 0.4103,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-2-2--R",
+    "itemId": "T2-control_pinpoint-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-2-2--X",
+    "itemId": "T2-control_pinpoint-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0769,
+        "第二十九条第二款第二项": 0.641,
+        "第二十九条第二款第三项": 0.1795
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": 0.4615,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-2-2--X",
+    "itemId": "T2-paragraph_absent-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款第二项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-2-2--R",
+    "itemId": "T2-paragraph_absent-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款第二项",
+          "detail": "原文没有第二十九条第三款第二项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-2-I1--R",
+    "itemId": "T2-item_existing-U29-2-2-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-2-I1--X",
+    "itemId": "T2-item_existing-U29-2-2-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0769,
+        "第二十九条第二款第二项": 0.641,
+        "第二十九条第二款第三项": 0.1795
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.5641,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-2-I3--R",
+    "itemId": "T2-item_existing-U29-2-2-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-2-I3--X",
+    "itemId": "T2-item_existing-U29-2-2-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0769,
+        "第二十九条第二款第二项": 0.641,
+        "第二十九条第二款第三项": 0.1795
+      },
+      "best": "第二十九条第二款第二项",
+      "margin": -0.4615,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U29-2-2--R",
+    "itemId": "T2-item_absent-U29-2-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第二款第四项",
+          "detail": "原文没有第二十九条第二款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U29-2-2--X",
+    "itemId": "T2-item_absent-U29-2-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-2-3--R",
+    "itemId": "T2-control-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U29-2-3--X",
+    "itemId": "T2-control-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.4359,
+        "第三十条": 0.1795,
+        "第三十一条": 0.2564,
+        "第三十二条": 0.1795,
+        "第三十三条": 0.1795,
+        "第三十四条": 0.1795,
+        "第三十七条": 0.1538,
+        "第三十八条": 0.1538,
+        "第四十二条": 0.1795
+      },
+      "best": "第二十九条",
+      "margin": 0.1795,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-2-3--X",
+    "itemId": "T2-control_pinpoint-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0513,
+        "第二十九条第二款第二项": 0.1282,
+        "第二十九条第二款第三项": 0.359
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": 0.2308,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U29-2-3--R",
+    "itemId": "T2-control_pinpoint-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-2-3--R",
+    "itemId": "T2-paragraph_absent-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第三款第三项",
+          "detail": "原文没有第二十九条第三款第三项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U29-2-3--X",
+    "itemId": "T2-paragraph_absent-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第三款第三项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-3-I1--R",
+    "itemId": "T2-item_existing-U29-2-3-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-3-I1--X",
+    "itemId": "T2-item_existing-U29-2-3-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0513,
+        "第二十九条第二款第二项": 0.1282,
+        "第二十九条第二款第三项": 0.359
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.3077,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-3-I2--R",
+    "itemId": "T2-item_existing-U29-2-3-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U29-2-3-I2--X",
+    "itemId": "T2-item_existing-U29-2-3-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第二十九条第二款第一项": 0.0513,
+        "第二十九条第二款第二项": 0.1282,
+        "第二十九条第二款第三项": 0.359
+      },
+      "best": "第二十九条第二款第三项",
+      "margin": -0.2308,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U29-2-3--R",
+    "itemId": "T2-item_absent-U29-2-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第二十九条第二款第四项",
+          "detail": "原文没有第二十九条第二款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第二十九条第一款",
+          "第二十九条第二款",
+          "第二十九条第二款第一项",
+          "第二十九条第二款第二项",
+          "第二十九条第二款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U29-2-3--X",
+    "itemId": "T2-item_absent-U29-2-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第二十九条第二款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U30-1--X",
+    "itemId": "T2-control-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.1458,
+        "第三十条": 0.8438,
+        "第三十一条": 0.1771,
+        "第三十二条": 0.2396,
+        "第三十三条": 0.2812,
+        "第三十四条": 0.2188,
+        "第三十七条": 0.1562,
+        "第三十八条": 0.125,
+        "第四十二条": 0.1458
+      },
+      "best": "第三十条",
+      "margin": 0.5625,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U30-1--R",
+    "itemId": "T2-control-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U30-1--R",
+    "itemId": "T2-control_pinpoint-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U30-1--X",
+    "itemId": "T2-control_pinpoint-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十条第一款": 0.8438
+      },
+      "best": "第三十条第一款",
+      "margin": 0.8438,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U30-1--R",
+    "itemId": "T2-paragraph_absent-U30-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十条第二款",
+          "detail": "原文没有第三十条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U30-1--X",
+    "itemId": "T2-paragraph_absent-U30-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-1--R",
+    "itemId": "T2-control-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-1--X",
+    "itemId": "T2-control-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.3548,
+        "第三十条": 0.5161,
+        "第三十一条": 0.6452,
+        "第三十二条": 0.3548,
+        "第三十三条": 0.5161,
+        "第三十四条": 0.4194,
+        "第三十七条": 0.2903,
+        "第三十八条": 0.2581,
+        "第四十二条": 0.3871
+      },
+      "best": "第三十一条",
+      "margin": 0.129,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-1--R",
+    "itemId": "T2-control_pinpoint-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-1--X",
+    "itemId": "T2-control_pinpoint-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.5161,
+        "第三十一条第一款第二项": 0.5484,
+        "第三十一条第一款第三项": 0.4516
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.0323,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-1--X",
+    "itemId": "T2-paragraph_absent-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第一项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-1--R",
+    "itemId": "T2-paragraph_absent-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第一项",
+          "detail": "原文没有第三十一条第二款第一项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-1-I2--R",
+    "itemId": "T2-item_existing-U31-1-1-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-1-I2--X",
+    "itemId": "T2-item_existing-U31-1-1-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.5161,
+        "第三十一条第一款第二项": 0.5484,
+        "第三十一条第一款第三项": 0.4516
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": 0.0323,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-1-I3--R",
+    "itemId": "T2-item_existing-U31-1-1-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-1-I3--X",
+    "itemId": "T2-item_existing-U31-1-1-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.5161,
+        "第三十一条第一款第二项": 0.5484,
+        "第三十一条第一款第三项": 0.4516
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.0968,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-1--R",
+    "itemId": "T2-item_absent-U31-1-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-1--X",
+    "itemId": "T2-item_absent-U31-1-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-2--R",
+    "itemId": "T2-control-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-2--X",
+    "itemId": "T2-control-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2537,
+        "第三十条": 0.2388,
+        "第三十一条": 0.6716,
+        "第三十二条": 0.194,
+        "第三十三条": 0.2836,
+        "第三十四条": 0.194,
+        "第三十七条": 0.1493,
+        "第三十八条": 0.1343,
+        "第四十二条": 0.1791
+      },
+      "best": "第三十一条",
+      "margin": 0.3881,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-2--X",
+    "itemId": "T2-control_pinpoint-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.209,
+        "第三十一条第一款第二项": 0.6418,
+        "第三十一条第一款第三项": 0.3284
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": 0.3134,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-2--R",
+    "itemId": "T2-control_pinpoint-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-2--R",
+    "itemId": "T2-paragraph_absent-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第二项",
+          "detail": "原文没有第三十一条第二款第二项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-2--X",
+    "itemId": "T2-paragraph_absent-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第二项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-2-I1--R",
+    "itemId": "T2-item_existing-U31-1-2-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-2-I1--X",
+    "itemId": "T2-item_existing-U31-1-2-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.209,
+        "第三十一条第一款第二项": 0.6418,
+        "第三十一条第一款第三项": 0.3284
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.4328,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-2-I3--R",
+    "itemId": "T2-item_existing-U31-1-2-I3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-2-I3--X",
+    "itemId": "T2-item_existing-U31-1-2-I3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.209,
+        "第三十一条第一款第二项": 0.6418,
+        "第三十一条第一款第三项": 0.3284
+      },
+      "best": "第三十一条第一款第二项",
+      "margin": -0.3134,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-2--R",
+    "itemId": "T2-item_absent-U31-1-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-2--X",
+    "itemId": "T2-item_absent-U31-1-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-3--X",
+    "itemId": "T2-control-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2667,
+        "第三十条": 0.2667,
+        "第三十一条": 0.7778,
+        "第三十二条": 0.2222,
+        "第三十三条": 0.3333,
+        "第三十四条": 0.2,
+        "第三十七条": 0.1556,
+        "第三十八条": 0.1556,
+        "第四十二条": 0.2
+      },
+      "best": "第三十一条",
+      "margin": 0.4444,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U31-1-3--R",
+    "itemId": "T2-control-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-3--R",
+    "itemId": "T2-control_pinpoint-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U31-1-3--X",
+    "itemId": "T2-control_pinpoint-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第三项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.3111,
+        "第三十一条第一款第二项": 0.4222,
+        "第三十一条第一款第三项": 0.7778
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": 0.3556,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-3--R",
+    "itemId": "T2-paragraph_absent-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第二款第三项",
+          "detail": "原文没有第三十一条第二款第三项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U31-1-3--X",
+    "itemId": "T2-paragraph_absent-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第二款第三项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-3-I1--R",
+    "itemId": "T2-item_existing-U31-1-3-I1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-3-I1--X",
+    "itemId": "T2-item_existing-U31-1-3-I1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第一项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.3111,
+        "第三十一条第一款第二项": 0.4222,
+        "第三十一条第一款第三项": 0.7778
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.4667,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-3-I2--R",
+    "itemId": "T2-item_existing-U31-1-3-I2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_existing-U31-1-3-I2--X",
+    "itemId": "T2-item_existing-U31-1-3-I2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第二项",
+      "level": "item",
+      "exists": true,
+      "coverage": {
+        "第三十一条第一款第一项": 0.3111,
+        "第三十一条第一款第二项": 0.4222,
+        "第三十一条第一款第三项": 0.7778
+      },
+      "best": "第三十一条第一款第三项",
+      "margin": -0.3556,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-3--X",
+    "itemId": "T2-item_absent-U31-1-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十一条第一款第四项",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-item_absent-U31-1-3--R",
+    "itemId": "T2-item_absent-U31-1-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十一条第一款第四项",
+          "detail": "原文没有第三十一条第一款第四项"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十一条第一款",
+          "第三十一条第一款第一项",
+          "第三十一条第一款第二项",
+          "第三十一条第一款第三项"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U32-1--R",
+    "itemId": "T2-control-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U32-1--X",
+    "itemId": "T2-control-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.1405,
+        "第三十条": 0.1983,
+        "第三十一条": 0.1074,
+        "第三十二条": 0.9008,
+        "第三十三条": 0.2066,
+        "第三十四条": 0.314,
+        "第三十七条": 0.157,
+        "第三十八条": 0.0992,
+        "第四十二条": 0.1322
+      },
+      "best": "第三十二条",
+      "margin": 0.5868,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U32-1--R",
+    "itemId": "T2-control_pinpoint-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U32-1--X",
+    "itemId": "T2-control_pinpoint-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十二条第一款": 0.9008
+      },
+      "best": "第三十二条第一款",
+      "margin": 0.9008,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U32-1--R",
+    "itemId": "T2-paragraph_absent-U32-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十二条第二款",
+          "detail": "原文没有第三十二条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十二条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U32-1--X",
+    "itemId": "T2-paragraph_absent-U32-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十二条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-1--R",
+    "itemId": "T2-control-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-1--X",
+    "itemId": "T2-control-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.4231,
+        "第三十条": 0.5385,
+        "第三十一条": 0.5385,
+        "第三十二条": 0.4231,
+        "第三十三条": 0.8077,
+        "第三十四条": 0.5769,
+        "第三十七条": 0.3846,
+        "第三十八条": 0.3462,
+        "第四十二条": 0.3846
+      },
+      "best": "第三十三条",
+      "margin": 0.2308,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-1--X",
+    "itemId": "T2-control_pinpoint-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8077,
+        "第三十三条第二款": 0.5769,
+        "第三十三条第三款": 0.1154
+      },
+      "best": "第三十三条第一款",
+      "margin": 0.2308,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-1--R",
+    "itemId": "T2-control_pinpoint-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-1-P2--R",
+    "itemId": "T2-paragraph_existing-U33-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-1-P2--X",
+    "itemId": "T2-paragraph_existing-U33-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8077,
+        "第三十三条第二款": 0.5769,
+        "第三十三条第三款": 0.1154
+      },
+      "best": "第三十三条第一款",
+      "margin": -0.2308,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-1-P3--R",
+    "itemId": "T2-paragraph_existing-U33-1-P3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第三十三条第三款，行政机关收到政府信息公开申请后，能够当场答复的，应当当场答复",
+          "detail": "所引为第三十三条第三款，内容最接近第三十三条第一款（覆盖 0.81，所引 0.12）",
+          "cited": "第三十三条第三款",
+          "located": "第三十三条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-1-P3--X",
+    "itemId": "T2-paragraph_existing-U33-1-P3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.8077,
+        "第三十三条第二款": 0.5769,
+        "第三十三条第三款": 0.1154
+      },
+      "best": "第三十三条第一款",
+      "margin": -0.6923,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-1--R",
+    "itemId": "T2-paragraph_absent-U33-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-1--X",
+    "itemId": "T2-paragraph_absent-U33-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-2--R",
+    "itemId": "T2-control-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-2--X",
+    "itemId": "T2-control-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2239,
+        "第三十条": 0.3881,
+        "第三十一条": 0.2836,
+        "第三十二条": 0.2836,
+        "第三十三条": 0.8358,
+        "第三十四条": 0.2687,
+        "第三十七条": 0.1493,
+        "第三十八条": 0.1493,
+        "第四十二条": 0.194
+      },
+      "best": "第三十三条",
+      "margin": 0.4478,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-2--X",
+    "itemId": "T2-control_pinpoint-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2239,
+        "第三十三条第二款": 0.8358,
+        "第三十三条第三款": 0.0597
+      },
+      "best": "第三十三条第二款",
+      "margin": 0.6119,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-2--R",
+    "itemId": "T2-control_pinpoint-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-2-P1--R",
+    "itemId": "T2-paragraph_existing-U33-2-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "依据《政府信息公开条例》第三十三条第一款，行政机关无法当场答复的，应当在收到申请之日起20个工作日内答复",
+          "detail": "所引为第三十三条第一款，内容最接近第三十三条第二款（覆盖 0.74，所引 0.43）",
+          "cited": "第三十三条第一款",
+          "located": "第三十三条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-2-P1--X",
+    "itemId": "T2-paragraph_existing-U33-2-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2239,
+        "第三十三条第二款": 0.8358,
+        "第三十三条第三款": 0.0597
+      },
+      "best": "第三十三条第二款",
+      "margin": -0.6119,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-2-P3--R",
+    "itemId": "T2-paragraph_existing-U33-2-P3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "依据《政府信息公开条例》第三十三条第三款，行政机关无法当场答复的，应当在收到申请之日起20个工作日内答复",
+          "detail": "所引为第三十三条第三款，内容最接近第三十三条第二款（覆盖 0.74，所引 0.09）",
+          "cited": "第三十三条第三款",
+          "located": "第三十三条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-2-P3--X",
+    "itemId": "T2-paragraph_existing-U33-2-P3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2239,
+        "第三十三条第二款": 0.8358,
+        "第三十三条第三款": 0.0597
+      },
+      "best": "第三十三条第二款",
+      "margin": -0.7761,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-2--R",
+    "itemId": "T2-paragraph_absent-U33-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-2--X",
+    "itemId": "T2-paragraph_absent-U33-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-3--R",
+    "itemId": "T2-control-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U33-3--X",
+    "itemId": "T2-control-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2093,
+        "第三十条": 0.3023,
+        "第三十一条": 0.2093,
+        "第三十二条": 0.3023,
+        "第三十三条": 0.7442,
+        "第三十四条": 0.2558,
+        "第三十七条": 0.1628,
+        "第三十八条": 0.1628,
+        "第四十二条": 0.186
+      },
+      "best": "第三十三条",
+      "margin": 0.4419,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-3--X",
+    "itemId": "T2-control_pinpoint-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十三条第三款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2558,
+        "第三十三条第二款": 0.3488,
+        "第三十三条第三款": 0.4884
+      },
+      "best": "第三十三条第三款",
+      "margin": 0.1395,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U33-3--R",
+    "itemId": "T2-control_pinpoint-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-3-P1--R",
+    "itemId": "T2-paragraph_existing-U33-3-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-3-P1--X",
+    "itemId": "T2-paragraph_existing-U33-3-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2558,
+        "第三十三条第二款": 0.3488,
+        "第三十三条第三款": 0.4884
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.2326,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-3-P2--R",
+    "itemId": "T2-paragraph_existing-U33-3-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U33-3-P2--X",
+    "itemId": "T2-paragraph_existing-U33-3-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十三条第一款": 0.2558,
+        "第三十三条第二款": 0.3488,
+        "第三十三条第三款": 0.4884
+      },
+      "best": "第三十三条第三款",
+      "margin": -0.1395,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-3--R",
+    "itemId": "T2-paragraph_absent-U33-3",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十三条第四款",
+          "detail": "原文没有第三十三条第四款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十三条第一款",
+          "第三十三条第二款",
+          "第三十三条第三款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U33-3--X",
+    "itemId": "T2-paragraph_absent-U33-3",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十三条第四款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U34-1--R",
+    "itemId": "T2-control-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U34-1--X",
+    "itemId": "T2-control-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十四条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2055,
+        "第三十条": 0.3014,
+        "第三十一条": 0.2055,
+        "第三十二条": 0.5205,
+        "第三十三条": 0.3151,
+        "第三十四条": 0.9041,
+        "第三十七条": 0.1781,
+        "第三十八条": 0.137,
+        "第四十二条": 0.1918
+      },
+      "best": "第三十四条",
+      "margin": 0.3836,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U34-1--X",
+    "itemId": "T2-control_pinpoint-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十四条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十四条第一款": 0.9041
+      },
+      "best": "第三十四条第一款",
+      "margin": 0.9041,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U34-1--R",
+    "itemId": "T2-control_pinpoint-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U34-1--R",
+    "itemId": "T2-paragraph_absent-U34-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十四条第二款",
+          "detail": "原文没有第三十四条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十四条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U34-1--X",
+    "itemId": "T2-paragraph_absent-U34-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十四条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U37-1--R",
+    "itemId": "T2-control-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U37-1--X",
+    "itemId": "T2-control-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十七条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2931,
+        "第三十条": 0.2759,
+        "第三十一条": 0.2069,
+        "第三十二条": 0.3448,
+        "第三十三条": 0.2069,
+        "第三十四条": 0.2414,
+        "第三十七条": 0.8448,
+        "第三十八条": 0.3276,
+        "第四十二条": 0.2586
+      },
+      "best": "第三十七条",
+      "margin": 0.5,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U37-1--R",
+    "itemId": "T2-control_pinpoint-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U37-1--X",
+    "itemId": "T2-control_pinpoint-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十七条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十七条第一款": 0.8448
+      },
+      "best": "第三十七条第一款",
+      "margin": 0.8448,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U37-1--R",
+    "itemId": "T2-paragraph_absent-U37-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十七条第二款",
+          "detail": "原文没有第三十七条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十七条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U37-1--X",
+    "itemId": "T2-paragraph_absent-U37-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十七条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U38-1--X",
+    "itemId": "T2-control-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十八条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.25,
+        "第三十条": 0.2167,
+        "第三十一条": 0.2,
+        "第三十二条": 0.2167,
+        "第三十三条": 0.2167,
+        "第三十四条": 0.2,
+        "第三十七条": 0.3667,
+        "第三十八条": 0.7333,
+        "第四十二条": 0.2333
+      },
+      "best": "第三十八条",
+      "margin": 0.3667,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U38-1--R",
+    "itemId": "T2-control-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U38-1--R",
+    "itemId": "T2-control_pinpoint-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U38-1--X",
+    "itemId": "T2-control_pinpoint-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第三十八条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第三十八条第一款": 0.7333
+      },
+      "best": "第三十八条第一款",
+      "margin": 0.7333,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U38-1--R",
+    "itemId": "T2-paragraph_absent-U38-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第三十八条第二款",
+          "detail": "原文没有第三十八条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第三十八条第一款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U38-1--X",
+    "itemId": "T2-paragraph_absent-U38-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第三十八条第二款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U42-1--R",
+    "itemId": "T2-control-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U42-1--X",
+    "itemId": "T2-control-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2857,
+        "第三十条": 0.2449,
+        "第三十一条": 0.2041,
+        "第三十二条": 0.3061,
+        "第三十三条": 0.2245,
+        "第三十四条": 0.2449,
+        "第三十七条": 0.2857,
+        "第三十八条": 0.2449,
+        "第四十二条": 0.8776
+      },
+      "best": "第四十二条",
+      "margin": 0.5714,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U42-1--R",
+    "itemId": "T2-control_pinpoint-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U42-1--X",
+    "itemId": "T2-control_pinpoint-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.8571,
+        "第四十二条第二款": 0.2653
+      },
+      "best": "第四十二条第一款",
+      "margin": 0.5918,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U42-1-P2--X",
+    "itemId": "T2-paragraph_existing-U42-1-P2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.8571,
+        "第四十二条第二款": 0.2653
+      },
+      "best": "第四十二条第一款",
+      "margin": -0.5918,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U42-1-P2--R",
+    "itemId": "T2-paragraph_existing-U42-1-P2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "按照《政府信息公开条例》第四十二条第二款，行政机关依申请提供政府信息不收取费用",
+          "detail": "所引为第四十二条第二款，内容最接近第四十二条第一款（覆盖 0.82，所引 0.41）",
+          "cited": "第四十二条第二款",
+          "located": "第四十二条第一款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U42-1--R",
+    "itemId": "T2-paragraph_absent-U42-1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第四十二条第三款",
+          "detail": "原文没有第四十二条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U42-1--X",
+    "itemId": "T2-paragraph_absent-U42-1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U42-2--R",
+    "itemId": "T2-control-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control-U42-2--X",
+    "itemId": "T2-control-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条",
+      "level": "article",
+      "exists": true,
+      "coverage": {
+        "第二十九条": 0.2444,
+        "第三十条": 0.2444,
+        "第三十一条": 0.2444,
+        "第三十二条": 0.2,
+        "第三十三条": 0.2444,
+        "第三十四条": 0.2222,
+        "第三十七条": 0.1778,
+        "第三十八条": 0.1556,
+        "第四十二条": 0.9333
+      },
+      "best": "第四十二条",
+      "margin": 0.6889,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U42-2--R",
+    "itemId": "T2-control_pinpoint-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "flagged": false,
+      "findings": [],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-control_pinpoint-U42-2--X",
+    "itemId": "T2-control_pinpoint-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "supported"
+    },
+    "raw": {
+      "cited": "第四十二条第二款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.2667,
+        "第四十二条第二款": 0.9333
+      },
+      "best": "第四十二条第二款",
+      "margin": 0.6667,
+      "flagged": false
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U42-2-P1--R",
+    "itemId": "T2-paragraph_existing-U42-2-P1",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "MISATTRIBUTED",
+          "severity": "error",
+          "title": "内容出自另一条款，与所引条款不符",
+          "text": "根据《政府信息公开条例》第四十二条第一款，行政机关收取信息处理费的具体办法，由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定",
+          "detail": "所引为第四十二条第一款，内容最接近第四十二条第二款（覆盖 0.93，所引 0.27）",
+          "cited": "第四十二条第一款",
+          "located": "第四十二条第二款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_existing-U42-2-P1--X",
+    "itemId": "T2-paragraph_existing-U42-2-P1",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第一款",
+      "level": "paragraph",
+      "exists": true,
+      "coverage": {
+        "第四十二条第一款": 0.2667,
+        "第四十二条第二款": 0.9333
+      },
+      "best": "第四十二条第二款",
+      "margin": -0.6667,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U42-2--X",
+    "itemId": "T2-paragraph_absent-U42-2",
+    "arm": "X",
+    "decidedBy": "lexical",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "cited": "第四十二条第三款",
+      "level": null,
+      "exists": false,
+      "coverage": {},
+      "best": null,
+      "margin": null,
+      "flagged": true
+    },
+    "error": null
+  },
+  {
+    "requestId": "T2-paragraph_absent-U42-2--R",
+    "itemId": "T2-paragraph_absent-U42-2",
+    "arm": "R",
+    "decidedBy": "rule",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted"
+    },
+    "raw": {
+      "flagged": true,
+      "findings": [
+        {
+          "code": "PROVISION_NOT_IN_SOURCE",
+          "severity": "error",
+          "title": "所引款、项超出该条的结构",
+          "text": "第四十二条第三款",
+          "detail": "原文没有第四十二条第三款"
+        }
+      ],
+      "contextProvisions": [
+        [
+          "第四十二条第一款",
+          "第四十二条第二款"
+        ]
+      ]
+    },
+    "error": null
+  }
+]

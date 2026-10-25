@@ -620,3 +620,67 @@
 /docs/competition/statute-check/20261022-blindspot/SHA256SUMS.txt text eol=lf
 /tools/competition/statute_blindspot.py text eol=lf
 /tests/test_statute_blindspot.py text eol=lf
+/docs/competition/scoring-rubric-v1.md text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/excluded-items.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/gap-audit.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/items.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/method.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/README.md text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/recompute.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/records.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/source.txt text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/lexical_baseline.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/statute_locate.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/summary.json text eol=lf
+/frontend/src/fixtures/blindspot-check.json text eol=lf
+/scripts/statute_diagnostic.py text eol=lf
+/backend/__init__.py text eol=lf
+/backend/core/__init__.py text eol=lf
+/backend/core/statute_locate.py text eol=lf
+/schemas/statute-diagnostic.v1.schema.json text eol=lf
+/examples/statute_check/constructed-request.json text eol=lf
+/tests/test_statute_diagnostic.py text eol=lf
+backend/core/statute_scope.py -text
+backend/core/statute_scope_rc.py -text
+scripts/statute_scope_diagnostic.py -text
+schemas/statute-scope-diagnostic.v1.schema.json -text
+tests/test_statute_scope_diagnostic.py -text
+examples/statute_scope/request.json -text
+examples/statute_scope/README.md -text
+backend/core/statute_scope_guarded.py -text
+scripts/statute_scope_guarded_diagnostic.py -text
+schemas/statute-scope-guarded-diagnostic.v1.schema.json -text
+tests/test_statute_scope_guarded.py -text
+examples/statute_scope/guarded-request.json -text
+examples/statute_scope/guarded-README.md -text
+backend/core/statute_item_context.py -text
+tests/test_statute_item_context.py -text
+examples/statute_scope/item-context-request.json -text
+scripts/statute_scope_source_diagnostic.py -text
+schemas/statute-scope-source-diagnostic.v1.schema.json -text
+tests/test_statute_scope_source.py -text
+examples/statute_scope/source-envelope-request.json -text
+examples/statute_scope/source-README.md -text
+
+examples/dify_adapter/import_response.py -text
+examples/dify_adapter/README.md -text
+examples/dify_adapter/request.json -text
+examples/dify_adapter/response.json -text
+tests/test_dify_import.py -text
+docs/integrations/external-rag.md -text
+/docs/competition/statute-check/20261024-onboarding/README.md text eol=lf
+/docs/competition/statute-check/20261024-onboarding/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/contexts/labeled.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/contexts/plain.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/cost.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/items.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/method.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/recompute.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/records.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/lexical_baseline.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/make_package.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/statute_onboarding.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/summary.json text eol=lf
