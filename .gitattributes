@@ -684,3 +684,7 @@ docs/integrations/external-rag.md -text
 /docs/competition/statute-check/20261024-onboarding/sources/statute_check.py text eol=lf
 /docs/competition/statute-check/20261024-onboarding/sources/statute_onboarding.py text eol=lf
 /docs/competition/statute-check/20261024-onboarding/summary.json text eol=lf
+/tools/competition/statute_onboarding.py text eol=lf
+/tests/test_statute_onboarding.py text eol=lf
+/tools/competition/statute_unseen_diagnostic.py text eol=lf
+/tests/test_statute_unseen_diagnostic.py text eol=lf

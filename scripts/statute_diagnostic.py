@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import unicodedata
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -132,6 +133,34 @@ def _unsupported_prefix(text: str) -> bool:
                 or NONCONTRACT_ITEM.match(text))
 
 
+def invisible_format_issues(payload: dict, *, allow_initial_source_bom: bool = False) -> list[dict]:
+    """Inspect validated text verbatim, grouping by field and Cf code point."""
+    texts = [(field, payload[field]) for field in ("source", "answer", "statement", "question")
+             if field in payload]
+    texts.extend((f"contexts[{i}]", text) for i, text in enumerate(payload.get("contexts", [])))
+    texts.extend((f"structureReference.units[{i}].body", unit["body"])
+                 for i, unit in enumerate(payload.get("structureReference", {}).get("units", [])))
+    issues = []
+    for field, text in texts:
+        occurrences = {}
+        # splitlines preserves CRLF as one physical line and leaves columns in
+        # Unicode characters, without normalizing or removing input characters.
+        for line, raw in enumerate(text.splitlines(keepends=True), 1):
+            for column, char in enumerate(raw, 1):
+                # Only the raw-source envelope entry opts into this encoding marker.
+                if allow_initial_source_bom and field == "source" and line == column == 1 and char == "\ufeff":
+                    continue
+                if unicodedata.category(char) == "Cf":
+                    entry = occurrences.setdefault(char, [line, column, 0])
+                    entry[2] += 1
+        for char, (line, column, count) in occurrences.items():
+            issues.append(_issue("INVISIBLE_FORMAT_CHARACTER",
+                                 f"{field}：首次出现于第{line}行第{column}列；"
+                                 f"U+{ord(char):04X} {unicodedata.name(char, '无名称')}；"
+                                 f"出现{count}次。不自动删除；请清理后重试。"))
+    return issues
+
+
 def _audit_source(source: str) -> tuple[dict, list[dict]]:
     """Check coverage of the existing parser's declared layout, not a new parser."""
     article, paragraph = None, 0
@@ -210,6 +239,10 @@ def analyze_request(payload) -> dict:
     report = _base()
     report["diagnostics"] = _validate_request(payload)
     if report["diagnostics"]:
+        return report
+    issues = invisible_format_issues(payload)
+    if issues:
+        report.update(status="review", diagnostics=issues)
         return report
     report["engine"] = payload.get("engine", "base")
     try:

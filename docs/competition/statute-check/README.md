@@ -47,6 +47,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 请求文件的相对路径按当前工作目录解析；工具也可从仓库外调用。公开[契约](../../../schemas/statute-diagnostic.v1.schema.json)中的 `$defs.request`、`$defs.report` 分别定义输入与输出。`engine` 默认为 `base`，显式设为 `extended` 时并列保留原始结果、项级发现和回指。
 
 - **输入边界：**须声明 `sourceFormat: "article-lines-v1"`。条标题与第一款正文同一行；每个物理行是一款，项以「（一）」等开头另起一行，空行结束条。条号范围为1–999。前言、来源附注、段内换行和其他排版需先由资料提供者整理并确认，工具不自动解析或补标签；机械检查不能证明法律语义上的分款正确。
+- **不可见字符：**`source`、`answer`、`question`、`contexts` 或结构参照正文中出现 Unicode 格式字符（Cf 类，如 U+200B、U+2060、U+FEFF、U+00AD）时，返回 `review`（退出2），诊断码 `INVISIBLE_FORMAT_CHARACTER`，写明字段、首次出现的行列、码位与次数，不自动删除。这类字符常随 Word 粘贴带入，会让条款号匹配失败：修复前，回答把「第三款」写成中间夹 U+2060 时，原本的错引被报成 `no_error_found`。请求文件开头的 UTF-8 BOM 照常去掉，不在此列。
 - **必要资料：**`source` 是原文，`contexts` 是本题实际检索片段，`answer` 是待查回答。`question` 缺省时为空，不从回答中补题设。请求最多1 MiB；现有规则没有独立运行时限保证。
 - **输出状态：**`findings`（退出1）为检出规则错误；`no_error_found`（退出0）仅为未检出；`invalid_input` 或 `review`（退出2）表示未完成有效核查，`flagged=null`。后两者不生成规则结果。原规则输出不改写，部分或未定回指不算完整定位。
 - **记录边界：**输出含原始输入摘要、代码摘要和Python版本，不是安全签名或法律正确性证明。样例是构造材料，故意引用不存在的第三款；退出1是预期结果。新入口的边界测试和构造材料验收不构成新法规泛化准确率。

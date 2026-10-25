@@ -476,3 +476,76 @@ def test_matched_structure_reference_preserves_real_rule_findings(engine):
     assert report["result"] == runner(payload["answer"], payload["contexts"], SOURCE, "")
     assert sd.exit_code(report) == 1
     validate_report(report)
+
+
+@pytest.mark.parametrize("field,char", [
+    ("answer", "\u2060"), ("source", "\ufeff"), ("source", "\u200b"),
+    ("question", "\u00ad"), ("contexts[1]", "\u2060"),
+    ("structureReference.units[0].body", "\u2060"),
+])
+def test_invisible_formats_block_before_parsing(field, char, monkeypatch):
+    payload = request()
+    text = "首行。\r\n第" + char + "三款" + char
+    if field == "contexts[1]":
+        payload["contexts"] = [SOURCE, text]
+    elif field.startswith("structureReference"):
+        payload["structureReference"] = {"schemaVersion": 1, "units": [
+            {"article": 27, "paragraph": 1, "item": None, "body": text}]}
+    else:
+        payload[field] = text
+    before = deepcopy(payload)
+    monkeypatch.setattr(sd, "_audit_source", lambda *a: pytest.fail("Cf reached parser"))
+    report = sd.analyze_request(payload)
+    assert (report["status"], sd.exit_code(report), report["flagged"], report["result"]) == ("review", 2, None, None)
+    assert report["sourceAudit"] is None and report["structureCheck"] is None
+    assert report["diagnostics"] == [{"code": "INVISIBLE_FORMAT_CHARACTER", "message":
+        f"{field}：首次出现于第2行第2列；U+{ord(char):04X} "
+        + {"\u2060": "WORD JOINER", "\ufeff": "ZERO WIDTH NO-BREAK SPACE",
+           "\u200b": "ZERO WIDTH SPACE", "\u00ad": "SOFT HYPHEN"}[char]
+        + "；出现2次。不自动删除；请清理后重试。"}]
+    assert payload == before
+    validate_report(report)
+
+
+def test_cf_grouping_and_validation_precedence():
+    report = sd.analyze_request(request(answer="第\u2060三款\u2060\u200b", question="\u2060"))
+    assert len(report["diagnostics"]) == 3
+    assert [d["message"].split("：")[0] for d in report["diagnostics"]] == ["answer", "answer", "question"]
+    assert "出现2次" in report["diagnostics"][0]["message"]
+    invalid = sd.analyze_request(request(answer="第\u2060三款", contexts=[]))
+    assert invalid["status"] == "invalid_input"
+    assert "INVISIBLE_FORMAT_CHARACTER" not in [d["code"] for d in invalid["diagnostics"]]
+    validate_report(report)
+    validate_report(invalid)
+
+
+def test_invisible_reference_cli_and_file_bom(tmp_path):
+    payload = json.loads((ROOT / "examples/statute_check/constructed-request.json").read_text(encoding="utf-8"))
+    original = sd.analyze_request(payload)
+    assert original["status"] == "findings" and sd.exit_code(original) == 1
+    path = tmp_path / "request.json"
+    path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8-sig")
+    assert sd.diagnose_file(path)["result"] == original["result"]
+    payload["answer"] = payload["answer"].replace("第三款", "第\u2060三款")
+    path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8-sig")
+    cli = call_cli(path, tmp_path)
+    report = json.loads(cli.stdout)
+    assert cli.returncode == 2 and report["status"] == "review"
+    index = payload["answer"].index("\u2060")
+    assert f"第1行第{index + 1}列" in report["diagnostics"][0]["message"]
+    assert "U+2060 WORD JOINER" in report["diagnostics"][0]["message"]
+    assert report["result"] is None and report["flagged"] is None
+    validate_report(report)
+
+
+@pytest.mark.parametrize('char', [chr(n) for n in [0xad, *range(0x200b, 0x2010),
+    *range(0x202a, 0x202f), *range(0x2060, 0x2065), 0xfeff]])
+def test_cf_categories_in_source_heading(char):
+    payload = request()
+    payload['source'] = char + payload['source']
+    report = sd.analyze_request(payload)
+    assert (report['status'], sd.exit_code(report), report['flagged'], report['result']) == ('review', 2, None, None)
+    assert report['diagnostics'][0]['code'] == 'INVISIBLE_FORMAT_CHARACTER'
+    assert f'U+{ord(char):04X}' in report['diagnostics'][0]['message']
+    assert '第1行第1列' in report['diagnostics'][0]['message']
+    validate_report(report)
