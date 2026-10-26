@@ -76,15 +76,20 @@ describe('TraceView 来源版本', () => {
 
   it('实时结果没有资料哈希时不按文件名继承登记', () => {
     render(<TraceView result={resultWith({ model: [rowWith('')] })} document={null}/>);
-    expect(sourceRow()).toHaveTextContent('缺少版本');
+    expect(sourceRow()).toHaveTextContent('无法核对来源');
+    expect(sourceRow()).toHaveClass('trace-scope-row--neutral');
+    expect(screen.queryByText('资料来源：缺少版本')).not.toBeInTheDocument();
+    expect(screen.getByText('资料身份未提供，无法核对来源')).toBeInTheDocument();
     expect(sourceRow()).toHaveTextContent('本次评测结果未携带资料哈希，无法与登记表对应');
     expect(sourceRow()).not.toHaveTextContent('虚构示例资料');
   });
 
   it('同路径但哈希不一致时拒绝绑定，也不宣称来源是虚构或官方', () => {
     render(<TraceView result={resultWith({ model: [rowWith('')] })} document={{ ...demoDocument, sha256: '0'.repeat(64) }}/>);
-    expect(sourceRow()).toHaveTextContent('资料路径或哈希与登记表不匹配');
-    expect(sourceRow()).toHaveTextContent('缺少版本');
+    expect(sourceRow()).toHaveTextContent('资料路径已有登记，但本次哈希与登记记录不一致；未关联登记信息');
+    expect(sourceRow()).toHaveTextContent('与登记版本不一致');
+    expect(sourceRow()).toHaveClass('trace-scope-row--warning');
+    expect(screen.getByText('资料来源：与登记版本不一致')).toBeInTheDocument();
     expect(sourceRow()).not.toHaveTextContent('虚构示例资料');
   });
 
@@ -462,5 +467,37 @@ describe('ReportView 本地隔离预览', () => {
     chooseReport(file);
     expect(await screen.findByTitle('本地报告预览：repeat.html')).toBeInTheDocument();
     expect(within(screen.getByRole('region', { name: '评测报告' })).getByText('repeat.html')).toBeInTheDocument();
+  });
+});
+
+
+describe('TraceView 未命中来源与示例兼容', () => {
+  it('未登记自有资料使用中性说明，不新增来源缺陷，其他证据缺口保留', () => {
+    const trace = JSON.stringify({ statements: [], trace_status: 'model_empty', trace_diagnostics: { answer_mode: 'normal' } });
+    const result = resultWith({ model: [rowWith(trace)] });
+    render(<TraceView result={result} document={{ path: 'own/material.txt', sha256: 'a'.repeat(64) }}/>);
+    const scope = screen.getByRole('region', { name: '核验范围与证据缺口' });
+    const source = within(scope).getByText('来源版本', { selector: 'dt span' }).closest('.trace-scope-row')!;
+    expect(source).toHaveTextContent('未登记');
+    expect(source).toHaveTextContent('此资料未收录于本地来源登记表，不据此判断来源有问题');
+    expect(source).toHaveClass('trace-scope-row--neutral');
+    expect(scope.querySelector('.trace-scope-gaps')).not.toHaveTextContent('资料来源');
+    expect(scope.querySelector('.trace-scope-gaps')).toHaveTextContent('回答没有逐句证据链');
+    expect(source).not.toHaveTextContent('虚构示例资料');
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['demo.txt', '来源版本登记信息缺少版本虚构示例资料，不是权威来源；缺：制定机关、公布日期、施行日期、来源网址、资料取得日期', '缺少版本'],
+    ['scenarios/deposit_insurance.txt', '来源版本登记信息缺少版本缺：制定机关、公布日期', '缺少版本'],
+    ['scenarios/information_disclosure.txt', '来源版本登记信息适用范围待确认适用对象、地域或条件未登记', '适用范围待确认'],
+  ])('已匹配示例来源文案逐字保持：%s', (path, expected, status) => {
+    const entry = sourceRegistry.documents.find((item) => item.path === path)!;
+    render(<TraceView result={resultWith({ model: [rowWith('')] })} document={{ path: entry.path, sha256: entry.sha256 }}/>);
+    const scope = screen.getByRole('region', { name: '核验范围与证据缺口' });
+    const source = within(scope).getByText('来源版本', { selector: 'dt span' }).closest('.trace-scope-row')!;
+    expect(source.textContent).toBe(expected);
+    expect(source).toHaveClass('trace-scope-row--warning');
+    expect(within(scope).getByText(`资料来源：${status}`)).toBeInTheDocument();
   });
 });

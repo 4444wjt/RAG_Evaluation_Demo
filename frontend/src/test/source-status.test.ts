@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lookupSource, sourceStatus } from '../utils/sourceStatus';
+import { lookupSource, sourceLookupMissReason, sourceStatus } from '../utils/sourceStatus';
 import type { SourceEntry } from '../utils/sourceStatus';
 
 function completeEntry(): SourceEntry {
@@ -177,5 +177,32 @@ describe('lookupSource', () => {
     const before = JSON.stringify(registry);
     expect(lookupSource({ path: `./${entry.path}`, sha256: entry.sha256 }, registry)).toBeNull();
     expect(JSON.stringify(registry)).toBe(before);
+  });
+});
+
+
+describe('sourceLookupMissReason', () => {
+  it.each([
+    null,
+    { path: '', sha256: 'a'.repeat(64) },
+    { path: 'scenarios/example.txt', sha256: '  ' },
+  ])('缺少资料身份时只报告无法核对：%j', (document) => {
+    expect(sourceLookupMissReason(document, { documents: [completeEntry()] })).toBe('missing_identity');
+  });
+
+  it('同路径不同哈希单独报告版本不一致，不改变严格匹配', () => {
+    const registry = { documents: [completeEntry()] };
+    const document = { path: 'scenarios/example.txt', sha256: 'b'.repeat(64) };
+    expect(lookupSource(document, registry)).toBeNull();
+    expect(sourceLookupMissReason(document, registry)).toBe('hash_mismatch');
+  });
+
+  it.each(['own/document.txt', './scenarios/example.txt'])('不同路径未登记，不按相同哈希或文件名关联：%s', (path) => {
+    const registry = { documents: [completeEntry()] };
+    const document = { path, sha256: registry.documents[0].sha256 };
+    const before = structuredClone(registry);
+    expect(lookupSource(document, registry)).toBeNull();
+    expect(sourceLookupMissReason(document, registry)).toBe('unregistered');
+    expect(registry).toEqual(before);
   });
 });
