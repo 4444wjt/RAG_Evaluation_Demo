@@ -2,7 +2,7 @@
 
 > 本文件只记「现在做到哪」，不记规则——规则见 [AGENTS.md](../AGENTS.md)。
 > 每次有实质进展时同步更新，并改掉下方日期。
-> **最后更新：2026-10-22**
+> **最后更新：2026-10-26**
 
 ---
 
@@ -12,6 +12,8 @@
 |---|---|
 | `next` | 开发分支，日常工作都在这里 |
 | `master` | **冻结中**，评委可见的就是它；进 master 须单独授权 |
+
+**2026-10-26 发布核验**：GitHub `master` 已包含下文所列 CI 修复及未见法规包。下方历史分叉说明不作为当前 refs 的依据；按现查命令核对。后续批次仍需作者明确授权。
 
 `next` **尚未合并**到 `master`。HEAD、领先提交数与推送状态不写死在这里，开工时现查：
 
@@ -31,6 +33,7 @@ git merge-tree --write-tree master next
 
 ## 规模
 
+- GitHub 已发布代码 `5cdfea1` 的真实 CI：1750 收集，1649 通过、101 本地材料跳过、0 失败/错误；frontend 324 项通过。与下方历史工作区规模分开。
 - Python 测试：**52 个 `test_*.py` 文件 / 1140 个用例**（`venv\Scripts\python.exe -m pytest tests -q`）
 - 前端测试：**280 个**
 - 门禁阈值：`pos_faithfulness ≥ 0.8` **且** `pos_context_precision ≥ 0.8`
@@ -85,3 +88,16 @@ git merge-tree --write-tree master next
 | `deepseek-chat` | 旧别名，config 默认值；**冒烟时失败过** |
 | `deepseek-flash` | **实际请求名**，AnythingLLM 工作区里配的就是它 |
 | `DeepSeek-V4.1-Flash` | 官方版本号，**只写进材料，不能填进 API** |
+
+
+### CI 修复、未见法规包与治理发布（2026-10-26）
+
+| 项目 | 已核实记录与边界 |
+|---|---|
+| CI 修复 | `396304036dddd18916c0f52bd7c500fec5fb7514`，9 个精确 CI/测试路径；来源登记修正已在前置 `07bf7bdfb8993d9eee71ccdbf7d46495061647fa`。GitHub CI [40278113103](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/40278113103) 的 test、gate-action、frontend 全部成功，精确 headSha 已核对。 |
+| 未见法规包 | `5cdfea149a086bfc995981607a95b1f4b7c26d65` 在上述 CI 成功后发布；仅13份包文件及13条显式LF规则。CI [40278985598](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/40278985598) 三 job 全部成功，真实 pytest 为1649通过/101跳过。公开包与本地13/13逐字节一致，SHA清单11/11、标准库派生重计2906/2906通过。 |
+| 跳过与门禁 | 101项本地材料依赖未被本次CI验证：onboarding97、labeled1、pinpoint1、blindspot既有2；执行数、跳过数、原因在CI日志公开。现存组部分缺失或绑定损坏继续失败；正式25题的业务门禁真实FAIL（0.7375<0.8）保留。 |
+| 研究边界 | 一部新法规、作者构造与操作；原始schema检查、登记抽签、官方DOCX与作者计时未由公开包审计独立重验。公开派生复计不升级为独立确认性验证，不重复计分或宣称算法优势。 |
+| 治理 | 新增GOVERNANCE.md：确认维护者增补、决策留痕、逐批授权与精确提交CI、无自动移交/归档、生效与修订五项流程。助手在作者本轮明确授权下起草，不声称作者逐字审阅或既往已履约；该独立文档提交的CI须另按精确SHA核对，不预写成功。 |
+
+本批没有纳入 .lnk、scoring-rubric-v1.md、旧冻结证据或其它并行功能；未升级依赖。CI/文档维护不自动增加研究分，本轮不重复计算既有评分条目。
