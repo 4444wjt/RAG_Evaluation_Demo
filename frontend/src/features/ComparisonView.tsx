@@ -72,7 +72,7 @@ function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
 
   return <div className="comparison-table-scroll" tabIndex={0} role="region" aria-label="完整模型指标表，可横向滚动">
     <table className="comparison-table">
-      <caption className="comparison-sr-only">各模型的全部原始指标。百分比和秒仅作格式化展示，破折号表示未提供数值。</caption>
+      <caption className="comparison-sr-only">各模型的全部原始指标。百分比和秒仅作格式化展示；— 表示本次结果无此值，不等于 0。</caption>
       <thead>
         <tr>
           <th scope="col" className="comparison-model-cell">模型</th>
@@ -91,7 +91,7 @@ function OriginalMetricsTable({ rows }: { rows: ResultRow[] }) {
           {columns.map((key) => {
             const value = formatCell(key, row[key]);
             const isBest = best.get(key) !== null && numberValue(row[key]) === best.get(key);
-            return <td key={key} className={value === '—' ? 'comparison-missing' : isBest ? 'comparison-best' : ''}><span title={isBest ? `${value}（本列最佳）` : value}>{value}</span></td>;
+            return <td key={key} className={value === '—' ? 'comparison-missing' : isBest ? 'comparison-best' : ''}><span title={value === '—' ? '本次结果没有该项可显示值；可能未计算、无适用样本或返回空值，具体原因未区分。' : isBest ? `${value}（本列最佳）` : value}>{value}</span></td>;
           })}
         </tr>)}
       </tbody>
@@ -148,7 +148,7 @@ export function ComparisonView({ result }: { result: EvaluationResult | null }) 
       </div>
 
       <section className="comparison-panel comparison-table-panel" aria-labelledby="comparison-metrics-title">
-        <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-metrics-title">完整指标</h2><p>保留全部原始指标与追踪字段，横向滚动查看更多。</p></div><span className="comparison-source-note"><span className="comparison-best-key">绿色</span>为本列最佳 · — 表示缺失</span></div>
+        <div className="comparison-panel-heading section-heading"><div><h2 id="comparison-metrics-title">完整指标</h2><p>保留全部原始指标与追踪字段，横向滚动查看更多。</p></div><span className="comparison-source-note"><span className="comparison-best-key">绿色</span>为本列最佳 · — 表示本次结果无此值，不等于 0</span></div>
         <OriginalMetricsTable rows={rows} />
       </section>
     </>}
