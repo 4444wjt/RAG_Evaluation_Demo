@@ -6,6 +6,10 @@
 
 ## [未发布]
 
+### 许可变更（2026-10-25）
+- 本项目自有代码的许可由 MIT 改为 Apache License 2.0：`LICENSE` 换为 Apache-2.0 官方全文，保留 `Copyright (c) 2026 KK`；README、README.en、CITATION、贡献指南、发布检查清单、作品介绍（md/html）与工作台、首页的许可文案同步更新，许可徽章改为静态 shields 徽章并删除旧图片。
+- 冻结的 `docs/competition/project-introduction.pdf`、`scenarios/competition_25/case-manifest.json` 及其归档副本仍写 MIT，按冻结规则不改；第三方代码与依赖的许可不变。
+
 ### 冻结回答多裁判重复评分试跑（2026-10-21）
 - 归档 `docs/competition/judge-rerun/20261021-pilot/`：AnythingLLM 正式归档中 10 条正向回答不重新生成，三个裁判各重判两次，共 120 次请求，按冻结最高价估算 ¥1.62，无账单。Qwen2.5-72B、GLM-4-32B 两次之间分别有 4 题、3 题分数变化，10 题子集均值从 0.8 以下变为 0.8 以上；DeepSeek 1 题变化。这只是子集上的探索性观察，原正式 FAIL 与归档分数不变。
 - 258 个文件按源字节原样收录，附 `SHA256SUMS.txt` 与只读离线复算脚本 `verify_archive.js`；`.gitattributes` 为该目录增加一条 `-text` 目录级规则，`AGENTS.md` 第 3 节同步为 5 条。

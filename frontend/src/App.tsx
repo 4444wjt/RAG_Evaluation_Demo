@@ -277,7 +277,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         {group.views.map((id) => navigation.find((item) => item.id === id)!).map((item, index) => <button key={item.id} className={`nav-item ${view === item.id ? 'active' : ''}`} style={{ '--nav-order': index } as CSSProperties} title={item.description} onClick={() => navigate(item.id)} aria-current={view === item.id ? 'page' : undefined}><span className="nav-icon" aria-hidden="true"><Icon name={item.icon} size={17}/></span><span>{item.label}</span></button>)}
       </div>)}</nav>
       {run.result ? <SidebarRun result={run.result} source={isDemo ? `演示快照 ${demoVersion}` : '来源 · 本次接口返回'}/> : <p className="sidebar-run-empty">尚未载入评测结果</p>}
-      <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>Gitee 源码 · MIT</a></div>
+      <div className="sidebar-foot"><span className="sidebar-rule"/><a className="sidebar-repo" href={REPO_URL} target="_blank" rel="noopener noreferrer"><Icon name="link" size={14}/>Gitee 源码 · Apache-2.0</a></div>
     </aside>
     <div className="main-shell"><header className="topbar"><div className="breadcrumb">{onHome ? <button className="btn btn-ghost" onClick={onHome}>返回首页</button> : <span>VeriScope AI</span>}<Icon name="chevron" size={13}/><strong>{current.label}</strong></div>
         <div className="nav-tabs" role="tablist" aria-label="导航分组" data-tone={NAV_GROUPS[groupIndex].tone} style={{ '--nav-tab-index': groupIndex } as CSSProperties} onKeyDown={moveGroupFocus}>

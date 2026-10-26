@@ -131,7 +131,7 @@ RAG 问答应用上线前，「回答是否可信」通常只看一个平均分�
 
 ## 六、开源治理与路线图
 
-- **许可**：自有代码 MIT；第三方依赖适用各自许可。
+- **许可**：自有代码 Apache-2.0；第三方依赖适用各自许可。
 - **治理**：README、CONTRIBUTING、CHANGELOG、安全策略、行为准则齐备；CI、CodeQL、Scorecard 在 GitHub 镜像运行。
 - **维护**：1 人（Ll）；Issue / PR 承诺 3 个工作日内首次回复。
 - **未来 3 个月**（详见 [ROADMAP](../../ROADMAP.md)）：

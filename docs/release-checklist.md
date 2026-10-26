@@ -4,7 +4,7 @@
 
 ## 发布内容
 
-- 根目录 `LICENSE` 保留项目原创代码的 MIT 条款与 `Copyright (c) 2026 KK`。
+- 根目录 `LICENSE` 保留项目原创代码的 Apache-2.0 条款与 `Copyright (c) 2026 KK`。
 - 前端不再包含 React Bits Waves、GlareHover 源码或 Commons Clause 许可文件。
 - 首页 `BeamConnector` 仍是 Magic UI Animated Beam 的 MIT 改编，保留署名和完整许可证。React、ECharts 与其 D3 子组件许可证也随生产构建副本提供。
 - 前端运行依赖及其许可证单独列于 `frontend/THIRD_PARTY_NOTICES.md`；npm 直接／传递依赖各自保留上游许可。
@@ -22,7 +22,7 @@
 
 ## 维护者检查
 
-- 确认 MIT 是项目原创代码的目标许可，并保留所有第三方声明。
+- 确认 Apache-2.0 是项目原创代码的目标许可，并保留所有第三方声明。
 - 检查目标分支、远端和待提交文件清单。
 - 若发布构建产物，确认随分发包保留实际打包依赖要求的版权及许可声明。
 
