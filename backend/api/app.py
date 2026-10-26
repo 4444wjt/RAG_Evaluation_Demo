@@ -77,6 +77,13 @@ def create_app(
             raise EvaluationAPIError(422, "请求体必须是 {\"models\": [...]}。")
         return save_local_models(body["models"], project_root)
 
+    @application.post("/contexts/parent/prepare", tags=["contexts"])
+    async def parent_context_request(request: Request) -> dict[str, Any]:
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点不接收文件，请在本地准备父条资料。")
+        from backend.api.parent_context import prepare_parent_context_request
+        return await prepare_parent_context_request(request)
+
     @application.post("/evaluate", response_model=EvaluateResponse, tags=["evaluation"])
     def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
         # Read per request so a public demo deployment can switch it via environment alone.

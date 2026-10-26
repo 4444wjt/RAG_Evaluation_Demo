@@ -688,3 +688,33 @@ docs/integrations/external-rag.md -text
 /tests/test_statute_onboarding.py text eol=lf
 /tools/competition/statute_unseen_diagnostic.py text eol=lf
 /tests/test_statute_unseen_diagnostic.py text eol=lf
+
+# Parent-context local preparation: preserve exact source bytes.
+/backend/api/app.py -text
+/backend/api/parent_context.py -text
+/backend/core/parent_context.py -text
+/backend/core/parent_context_mapping.py -text
+/scripts/parent_context.py -text
+/tests/test_parent_context.py -text
+/tests/test_parent_context_api.py -text
+/tests/test_api.py -text
+/schemas/parent-context.v1.schema.json -text
+/docs/integrations/parent-context.md -text
+/examples/parent_context/README.md -text
+/examples/parent_context/binding.json -text
+/examples/parent_context/retrieval-invalid.json -text
+/examples/parent_context/retrieval.json -text
+/examples/parent_context/segments.json -text
+/examples/parent_context/source.txt -text
+
+# Parent-context UI candidate: exact per-file bytes.
+/frontend/src/features/ParentContextView.tsx -text
+/frontend/src/features/parent-context.css -text
+/frontend/src/api/parentContext.ts -text
+/frontend/src/test/parent-context.test.tsx -text
+/frontend/src/App.tsx -text
+/frontend/src/labRoute.ts -text
+/frontend/src/styles.css -text
+/frontend/src/test/App.test.tsx -text
+/frontend/browser-tests/competition-release.spec.ts -text
+/frontend/browser-tests/evaluation-verification.spec.ts -text
