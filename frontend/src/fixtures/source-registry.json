@@ -144,7 +144,16 @@
         "scope.subjects": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2025/art_dd2bea320df84cfc91245630c8fb2ee7.html 第二条、第二十七条、第五十四条。",
         "scope.conditions": "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/bgt/art/2025/art_dd2bea320df84cfc91245630c8fb2ee7.html 第二条关于政府信息的定义及第五十五条的公共企事业单位规定。"
       },
-      "archives": []
+      "archives": [
+        {
+          "path": "docs/competition/statute-check/20261022-blindspot/run/package/contexts/plain.txt",
+          "rawSha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6"
+        },
+        {
+          "path": "docs/competition/statute-check/20261023-stage3-baselines/source.txt",
+          "rawSha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6"
+        }
+      ]
     }
   ]
 }
