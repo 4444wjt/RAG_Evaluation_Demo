@@ -410,8 +410,8 @@ main { padding: 32px 36px 18px; max-width: 1600px; margin: 0 auto; }
 .model-card.selected { background: var(--bg-selected); border-color: var(--border-strong); }
 .model-card.selected:not(:disabled):hover { border-color: var(--text-secondary); background: var(--bg-selected-hover); }
 .model-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.model-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
-.model-identity { display: flex; align-items: center; flex: 1; min-width: 0; }
+.model-card-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
+.model-identity { display: flex; align-items: center; flex: 1 1 max-content; min-width: 0; }
 .model-identity strong { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--font-size-body); font-weight: 600; }
 .model-check { width: 16px; height: 16px; border: 1px solid var(--border-strong); border-radius: 50%; display: grid; place-items: center; }
 .model-check.checked { background: var(--accent); border-color: var(--accent); color: var(--text-on-accent); }
@@ -609,4 +609,33 @@ span.model-select > select { width: 100%; }
   .btn-primary::after, [data-spotlight]::before { display: none; }
   .btn:not(:disabled):hover, .nav-item:hover .nav-icon { transform: none; }
   ::picker(select) { transition: none; }
+}
+
+/* ===== 顶部分组导航：评测 / 验证与审计 / 资料准备 =====
+   顶部标签决定左侧显示哪一组：选中块沿标签滑动，左侧按钮依次从左滑入。窄屏不显示标签，所有分组都留在侧栏。 */
+.topbar { gap: 16px; }
+.breadcrumb { min-width: 0; }
+.breadcrumb > .btn { flex: none; }
+.breadcrumb strong { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.health-status { flex: none; white-space: nowrap; }
+.nav-tabs { position: relative; isolation: isolate; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); flex: none; margin-inline: auto; padding: 3px; border-radius: 10px; background: color-mix(in srgb, var(--bg-page) 60%, var(--bg-workspace)); box-shadow: inset 0 1px 2px rgb(2 5 12 / .5), inset 0 0 0 1px var(--border-subtle); }
+.nav-tabs[data-tone='eval'], .nav-tabs[data-tone='prep'] { --tab-tone: var(--brand); }
+.nav-tabs[data-tone='audit'] { --tab-tone: var(--info); }
+.nav-tabs-indicator { position: absolute; z-index: -1; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / 3); border-radius: 7px; background-color: color-mix(in srgb, var(--tab-tone) 14%, var(--bg-elevated)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tab-tone) 42%, transparent), inset 0 1px 0 rgb(255 255 255 / .07), 0 6px 16px -10px color-mix(in srgb, var(--tab-tone) 80%, transparent); transform: translateX(calc(var(--nav-tab-index, 0) * 100%)); transition: transform 460ms cubic-bezier(.16, 1, .3, 1), background-color 300ms ease-out, box-shadow 300ms ease-out; }
+.nav-tab { position: relative; height: 30px; padding: 0 14px; border: 0; border-radius: 7px; background: transparent; font-size: var(--font-size-label); font-weight: 500; color: var(--text-secondary); white-space: nowrap; transition: color var(--feedback-duration); }
+.nav-tab--eval, .nav-tab--prep { --tab-mark: var(--brand); }
+.nav-tab--audit { --tab-mark: var(--info); }
+.nav-tab:hover, .nav-tab[aria-selected='true'] { color: var(--text-primary); }
+.nav-tab[aria-selected='true'] { font-weight: 600; }
+.nav-tab:focus-visible { outline-color: var(--tab-tone); outline-offset: 2px; }
+/* 正在浏览别的分组时，小圆点标出当前页面所在的分组。 */
+.nav-tab-mark { position: absolute; top: 5px; right: 6px; width: 5px; height: 5px; border-radius: 50%; background: var(--tab-mark); }
+.nav-group--prep { --nav-tone: var(--brand); }
+@keyframes nav-reveal { from { opacity: 0; transform: translateX(-12px); } }
+@media (min-width: 900px) {
+  .nav-group:not(.is-open) { display: none; }
+  .nav-group.is-open > * { animation: nav-reveal 420ms cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--nav-order, -1) * 40ms + 40ms); }
+}
+@media (max-width: 899px) {
+  .nav-tabs { display: none; }
 }

@@ -269,6 +269,7 @@ test('HTML report is read locally, isolated, and cannot execute or fetch externa
 
 test('check configuration gives visible feedback on the same page, calls health only and can retry', async ({ page }) => {
   let evaluations = 0;
+  let modelReads = 0;
   let healthChecks = 0;
   let connected = true;
   let release!: () => void;
@@ -278,6 +279,9 @@ test('check configuration gives visible feedback on the same page, calls health 
       healthChecks += 1;
       if (pending) await pending;
       await route.fulfill({ status: connected ? 200 : 503, contentType: 'application/json', body: JSON.stringify(connected ? { status: 'ok' } : {}) });
+    } else if (route.request().method() === 'GET' && new URL(route.request().url()).pathname === '/api/models') {
+      modelReads += 1;
+      await route.fulfill({ json: { models: [] } });
     } else {
       evaluations += 1;
       await route.fulfill({ status: 500, contentType: 'application/json', body: '{}' });
@@ -289,6 +293,7 @@ test('check configuration gives visible feedback on the same page, calls health 
   await page.getByRole('button', { name: '开始评测', exact: true }).click();
   await expect(page.getByText('本次评测未完成', { exact: true })).toBeVisible();
   const before = healthChecks;
+  const modelReadsBeforeCheck = modelReads;
   connected = false;
   pending = new Promise<void>((resolve) => { release = resolve; });
   await page.getByRole('button', { name: '检查配置', exact: true }).click();
@@ -307,6 +312,7 @@ test('check configuration gives visible feedback on the same page, calls health 
   await expect(feedback).toContainText('本地参数检查通过，服务可连接。');
   await expect(feedback).toContainText('不会验证文件是否存在、模型或凭据是否可用');
   expect(evaluations).toBe(1);
+  expect(modelReads).toBe(modelReadsBeforeCheck);
   expect(healthChecks).toBe(before + 2);
   await page.screenshot({ path: 'test-results/configuration-check.png', fullPage: true });
 });
@@ -353,9 +359,21 @@ test('Gold design tokens keep primary actions distinct from neutral data and wor
   expect(await page.locator('body').evaluate((node) => getComputedStyle(node).fontSize)).toBe('15px');
   expect(await page.locator('h1').evaluate((node) => getComputedStyle(node).fontSize)).toBe('32px');
   const primary = page.getByRole('button', { name: '配置评测', exact: true });
-  expect(await primary.evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(242, 200, 121)');
+  // The existing design places brand gold in the gradient, not backgroundColor.
+  const expectedPrimaryFill = await page.evaluate(() => {
+    const probe = document.createElement('span');
+    probe.style.backgroundImage = 'linear-gradient(180deg, color-mix(in srgb, #f2c879 82%, #fff) 0%, #f2c879 52%, color-mix(in srgb, #f2c879 88%, #000) 100%)';
+    document.body.append(probe);
+    const fill = getComputedStyle(probe).backgroundImage;
+    probe.remove();
+    return fill;
+  });
+  await expect(primary).toHaveCSS('background-image', expectedPrimaryFill);
   expect(await primary.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(8, 11, 16)');
-  expect(await page.locator('.nav-item.active').evaluate((node) => getComputedStyle(node).color)).toBe('rgb(242, 200, 121)');
+  const activeNavigation = page.locator('.nav-item.active');
+  await expect(activeNavigation).toHaveCSS('color', 'rgb(245, 247, 250)');
+  await expect(activeNavigation.locator('.nav-icon')).toHaveCSS('color', 'rgb(8, 11, 16)');
+  await expect(activeNavigation.locator('.nav-icon')).toHaveCSS('background-image', /linear-gradient\(165deg, rgb\(242, 200, 121\)/);
   await page.getByRole('button', { name: '加载演示', exact: true }).click();
   expect(await page.locator('.ability-section').evaluate((node) => getComputedStyle(node).backgroundColor)).toBe('rgb(21, 27, 36)');
   expect(await page.locator('.ability-section h2').evaluate((node) => getComputedStyle(node).fontSize)).toBe('20px');

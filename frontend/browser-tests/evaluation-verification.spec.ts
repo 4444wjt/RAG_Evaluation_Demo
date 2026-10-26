@@ -25,6 +25,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       await expect(page.locator('.gate-interpretation')).toContainText('不代表模型总体可靠性');
       const nav = page.getByRole('navigation', { name: '工作区导航' });
       await expect(nav.getByRole('button')).toHaveCount(6);
+      await page.getByRole('tab', { name: '验证与审计', exact: true }).click();
       await nav.getByRole('button', { name: '评测验证', exact: true }).click();
       await expect(page.getByRole('heading', { level: 1 })).toHaveText('评测验证');
       await expect(page.locator('[data-review-record]')).toHaveCount(13);
@@ -90,6 +91,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       await page.getByLabel('核验状态', { exact: true }).selectOption('agree');
       await expect(page.getByText('没有符合筛选条件的核验记录。')).toBeVisible();
       for (const name of ['评测总览', '评测工作区', '多模型对比', '幻觉分析', '评测报告']) {
+        await page.getByRole('tab', { name: '评测', exact: true }).click();
         await nav.getByRole('button', { name, exact: true }).click();
         await expect(page.getByRole('heading', { name, level: 1, exact: true })).toBeVisible();
         await expect(page.getByText('已有评测快照 · 20260930-1958', { exact: true })).toBeVisible();
@@ -111,17 +113,21 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       });
       await page.goto('/#/lab');
       const nav = page.getByRole('navigation', { name: '工作区导航' });
+      await page.getByRole('tab', { name: '验证与审计', exact: true }).click();
       await nav.getByRole('button', { name: '评测验证', exact: true }).click();
       await expect(page.getByText('尚未加载可核验结果')).toBeVisible();
       await page.getByRole('button', { name: '加载演示', exact: true }).click();
+      await page.getByRole('tab', { name: '评测', exact: true }).click();
       await nav.getByRole('button', { name: '评测工作区', exact: true }).click();
       await page.getByRole('button', { name: '开始评测', exact: true }).click();
       await expect.poll(() => count).toBe(1);
+      await page.getByRole('tab', { name: '验证与审计', exact: true }).click();
       await nav.getByRole('button', { name: '评测验证', exact: true }).click();
       await expect(page.getByText('上次结果 · 本次尚未更新')).toBeVisible();
       await expect(page.locator('[data-review-record]')).toHaveCount(13);
       complete();
       await expect(page.getByRole('heading', { name: '评测总览', level: 1, exact: true })).toBeVisible();
+      await page.getByRole('tab', { name: '验证与审计', exact: true }).click();
       await nav.getByRole('button', { name: '评测验证', exact: true }).click();
       await expect(page.getByText('本次结果尚无对应人工核验材料')).toBeVisible();
       await expect(page.locator('[data-review-record]')).toHaveCount(0);

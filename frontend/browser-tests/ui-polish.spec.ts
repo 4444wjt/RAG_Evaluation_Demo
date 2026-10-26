@@ -165,7 +165,9 @@ test('controls use consistent standard, compact and icon sizes', async ({ page }
     await expect(page.locator(selector)).toHaveCSS('background-color', 'rgb(16, 22, 31)');
   }
   await page.getByRole('navigation').getByRole('button', { name: '评测工作区', exact: true }).click();
-  for (const control of await page.locator('.dataset-grid input, .dataset-grid select').all()) {
+  await page.locator('.workspace-input-advanced summary').filter({ hasText: '项目内路径（高级）' }).click();
+  for (const control of [page.locator('#doc-path'), page.locator('#testset-mode')]) {
+    await expect(control).toBeVisible();
     await expect(control).toHaveCSS('height', '40px');
     await expect(control).toHaveCSS('border-radius', '8px');
   }
