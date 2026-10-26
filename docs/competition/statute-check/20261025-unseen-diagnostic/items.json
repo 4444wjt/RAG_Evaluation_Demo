@@ -1,0 +1,5141 @@
+{
+  "excluded": [],
+  "items": [
+    {
+      "cited": "第八条第二款",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第八条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A8P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条第二款规定，医疗保障基金使用应当符合国家规定的支付范围。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第八条第一款",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第八条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A8P2toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条第一款规定，医疗保障基金支付范围由国务院医疗保障行政部门依法组织制定。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第八条第三款",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 3,
+      "contentFrom": "第八条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A8toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条第三款规定，医疗保障基金使用应当符合国家规定的支付范围。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第八条第一款",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第八条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A8P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条第一款规定，医疗保障基金使用应当符合国家规定的支付范围。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第八条第二款",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第八条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A8P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条第二款规定，医疗保障基金支付范围由国务院医疗保障行政部门依法组织制定。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第八条",
+      "citedArticle": 8,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": null,
+      "contentFrom": "第八条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A8",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第八条规定，医疗保障基金支付范围由国务院医疗保障行政部门依法组织制定。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第九条第二款",
+      "citedArticle": 9,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 2,
+      "contentFrom": "第九条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A9toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第九条第二款规定，国家建立健全全国统一的医疗保障经办管理体系，提供标准化、规范化的医疗保障经办服务，实现省、市、县、乡镇（街道）、村（社区）全覆盖。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第九条第一款",
+      "citedArticle": 9,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 1,
+      "contentFrom": "第九条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A9P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第九条第一款规定，国家建立健全全国统一的医疗保障经办管理体系，提供标准化、规范化的医疗保障经办服务，实现省、市、县、乡镇（街道）、村（社区）全覆盖。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第九条",
+      "citedArticle": 9,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": null,
+      "contentFrom": "第九条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A9",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第九条规定，国家建立健全全国统一的医疗保障经办管理体系，提供标准化、规范化的医疗保障经办服务，实现省、市、县、乡镇（街道）、村（社区）全覆盖。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十条第二款",
+      "citedArticle": 10,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 2,
+      "contentFrom": "第十条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A10toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十条第二款规定，医疗保障经办机构应当建立健全业务、财务、安全和风险管理制度，做好服务协议管理、费用监控、基金拨付、待遇审核及支付等工作，并定期向社会公开医疗保障基金的收入、支出、结余等情况，接受社会监督。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十条第一款",
+      "citedArticle": 10,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 1,
+      "contentFrom": "第十条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A10P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十条第一款规定，医疗保障经办机构应当建立健全业务、财务、安全和风险管理制度，做好服务协议管理、费用监控、基金拨付、待遇审核及支付等工作，并定期向社会公开医疗保障基金的收入、支出、结余等情况，接受社会监督。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十条",
+      "citedArticle": 10,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": null,
+      "contentFrom": "第十条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A10",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十条规定，医疗保障经办机构应当建立健全业务、财务、安全和风险管理制度，做好服务协议管理、费用监控、基金拨付、待遇审核及支付等工作，并定期向社会公开医疗保障基金的收入、支出、结余等情况，接受社会监督。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十一条第二款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 2,
+      "contentFrom": "第十一条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A11P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第二款规定，医疗保障经办机构应当与定点医药机构建立集体谈判协商机制，合理确定定点医药机构的医疗保障基金预算金额和拨付时限，并根据保障公众健康需求和管理服务的需要，与定点医药机构协商签订服务协议，规范医药服务行为，明确违反服务协议的行为及其责任。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十一条第三款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 3,
+      "contentFrom": "第十一条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A11P2toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第三款规定，医疗保障经办机构应当及时向社会公布签订服务协议的定点医药机构名单。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十一条第一款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 1,
+      "contentFrom": "第十一条第三款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A11P3toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第一款规定，医疗保障行政部门应当加强对服务协议订立、履行等情况的监督。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十一条第四款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 4,
+      "contentFrom": "第十一条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A11toP4",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第四款规定，医疗保障经办机构应当与定点医药机构建立集体谈判协商机制，合理确定定点医药机构的医疗保障基金预算金额和拨付时限，并根据保障公众健康需求和管理服务的需要，与定点医药机构协商签订服务协议，规范医药服务行为，明确违反服务协议的行为及其责任。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十一条第一款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 1,
+      "contentFrom": "第十一条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A11P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第一款规定，医疗保障经办机构应当与定点医药机构建立集体谈判协商机制，合理确定定点医药机构的医疗保障基金预算金额和拨付时限，并根据保障公众健康需求和管理服务的需要，与定点医药机构协商签订服务协议，规范医药服务行为，明确违反服务协议的行为及其责任。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十一条第二款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 2,
+      "contentFrom": "第十一条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A11P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第二款规定，医疗保障经办机构应当及时向社会公布签订服务协议的定点医药机构名单。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十一条第三款",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": 3,
+      "contentFrom": "第十一条第三款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A11P3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条第三款规定，医疗保障行政部门应当加强对服务协议订立、履行等情况的监督。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十一条",
+      "citedArticle": 11,
+      "citedArticleParagraphs": 3,
+      "citedParagraph": null,
+      "contentFrom": "第十一条第三款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A11",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十一条规定，医疗保障行政部门应当加强对服务协议订立、履行等情况的监督。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十二条第二款",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十二条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A12P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条第二款规定，医疗保障经办机构应当按照服务协议的约定，及时结算和拨付医疗保障基金。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十二条第一款",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十二条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A12P2toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条第一款规定，定点医药机构应当按照规定提供医药服务，提高服务质量，合理使用医疗保障基金，维护公民健康权益。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十二条第三款",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 3,
+      "contentFrom": "第十二条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A12toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条第三款规定，医疗保障经办机构应当按照服务协议的约定，及时结算和拨付医疗保障基金。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十二条第一款",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十二条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A12P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条第一款规定，医疗保障经办机构应当按照服务协议的约定，及时结算和拨付医疗保障基金。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十二条第二款",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十二条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A12P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条第二款规定，定点医药机构应当按照规定提供医药服务，提高服务质量，合理使用医疗保障基金，维护公民健康权益。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十二条",
+      "citedArticle": 12,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": null,
+      "contentFrom": "第十二条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A12",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十二条规定，定点医药机构应当按照规定提供医药服务，提高服务质量，合理使用医疗保障基金，维护公民健康权益。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十三条第二款",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十三条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A13P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条第二款规定，定点医药机构违反服务协议的，医疗保障经办机构可以督促其履行服务协议，按照服务协议约定暂停或者不予拨付费用、追回违规费用、中止相关责任人员或者所在部门涉及医疗保障基金使用的医药服务，直至解除服务协议；定点医药机构及其相关责任人员有权进行陈述、申辩。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十三条第一款",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十三条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A13P2toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条第一款规定，医疗保障经办机构违反服务协议的，定点医药机构有权要求纠正或者提请医疗保障行政部门协调处理、督促整改，也可以依法申请行政复议或者提起行政诉讼。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十三条第三款",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 3,
+      "contentFrom": "第十三条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A13toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条第三款规定，定点医药机构违反服务协议的，医疗保障经办机构可以督促其履行服务协议，按照服务协议约定暂停或者不予拨付费用、追回违规费用、中止相关责任人员或者所在部门涉及医疗保障基金使用的医药服务，直至解除服务协议；定点医药机构及其相关责任人员有权进行陈述、申辩。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十三条第一款",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十三条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A13P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条第一款规定，定点医药机构违反服务协议的，医疗保障经办机构可以督促其履行服务协议，按照服务协议约定暂停或者不予拨付费用、追回违规费用、中止相关责任人员或者所在部门涉及医疗保障基金使用的医药服务，直至解除服务协议；定点医药机构及其相关责任人员有权进行陈述、申辩。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十三条第二款",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十三条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A13P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条第二款规定，医疗保障经办机构违反服务协议的，定点医药机构有权要求纠正或者提请医疗保障行政部门协调处理、督促整改，也可以依法申请行政复议或者提起行政诉讼。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十三条",
+      "citedArticle": 13,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": null,
+      "contentFrom": "第十三条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A13",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十三条规定，医疗保障经办机构违反服务协议的，定点医药机构有权要求纠正或者提请医疗保障行政部门协调处理、督促整改，也可以依法申请行政复议或者提起行政诉讼。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十四条第二款",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十四条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A14P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条第二款规定，定点医药机构应当建立医疗保障基金使用内部管理制度，由专门机构或者人员负责医疗保障基金使用管理工作，建立健全考核评价体系。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十四条第一款",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十四条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A14P2toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条第一款规定，定点医药机构应当组织开展医疗保障基金相关制度、政策的培训，定期检查本单位医疗保障基金使用情况，及时纠正医疗保障基金使用不规范的行为。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十四条第三款",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 3,
+      "contentFrom": "第十四条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A14toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条第三款规定，定点医药机构应当建立医疗保障基金使用内部管理制度，由专门机构或者人员负责医疗保障基金使用管理工作，建立健全考核评价体系。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十四条第一款",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十四条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A14P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条第一款规定，定点医药机构应当建立医疗保障基金使用内部管理制度，由专门机构或者人员负责医疗保障基金使用管理工作，建立健全考核评价体系。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十四条第二款",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十四条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A14P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条第二款规定，定点医药机构应当组织开展医疗保障基金相关制度、政策的培训，定期检查本单位医疗保障基金使用情况，及时纠正医疗保障基金使用不规范的行为。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十四条",
+      "citedArticle": 14,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": null,
+      "contentFrom": "第十四条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A14",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十四条规定，定点医药机构应当组织开展医疗保障基金相关制度、政策的培训，定期检查本单位医疗保障基金使用情况，及时纠正医疗保障基金使用不规范的行为。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十五条第二款",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十五条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A15P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条第二款规定，定点医药机构及其工作人员应当执行实名就医和购药管理规定，核验参保人员医疗保障凭证，按照诊疗规范提供合理、必要的医药服务，向参保人员如实出具费用单据和相关资料，不得分解住院、挂床住院，不得违反诊疗规范过度诊疗、过度检查、分解处方、超量开药、重复开药，不得重复收费、超标准收费、分解项目收费，不得串换药品、医用耗材、诊疗项目和服务设施，不得诱导、协助他人冒名或者虚假就医、购药。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十五条第一款",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十五条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A15P2toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条第一款规定，定点医药机构应当确保医疗保障基金支付的费用符合规定的支付范围；除急诊、抢救等特殊情形外，提供医疗保障基金支付范围以外的医药服务的，应当经参保人员或者其近亲属、监护人同意。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十五条第三款",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 3,
+      "contentFrom": "第十五条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A15toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条第三款规定，定点医药机构及其工作人员应当执行实名就医和购药管理规定，核验参保人员医疗保障凭证，按照诊疗规范提供合理、必要的医药服务，向参保人员如实出具费用单据和相关资料，不得分解住院、挂床住院，不得违反诊疗规范过度诊疗、过度检查、分解处方、超量开药、重复开药，不得重复收费、超标准收费、分解项目收费，不得串换药品、医用耗材、诊疗项目和服务设施，不得诱导、协助他人冒名或者虚假就医、购药。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十五条第一款",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 1,
+      "contentFrom": "第十五条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A15P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条第一款规定，定点医药机构及其工作人员应当执行实名就医和购药管理规定，核验参保人员医疗保障凭证，按照诊疗规范提供合理、必要的医药服务，向参保人员如实出具费用单据和相关资料，不得分解住院、挂床住院，不得违反诊疗规范过度诊疗、过度检查、分解处方、超量开药、重复开药，不得重复收费、超标准收费、分解项目收费，不得串换药品、医用耗材、诊疗项目和服务设施，不得诱导、协助他人冒名或者虚假就医、购药。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十五条第二款",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": 2,
+      "contentFrom": "第十五条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A15P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条第二款规定，定点医药机构应当确保医疗保障基金支付的费用符合规定的支付范围；除急诊、抢救等特殊情形外，提供医疗保障基金支付范围以外的医药服务的，应当经参保人员或者其近亲属、监护人同意。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十五条",
+      "citedArticle": 15,
+      "citedArticleParagraphs": 2,
+      "citedParagraph": null,
+      "contentFrom": "第十五条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A15",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十五条规定，定点医药机构应当确保医疗保障基金支付的费用符合规定的支付范围；除急诊、抢救等特殊情形外，提供医疗保障基金支付范围以外的医药服务的，应当经参保人员或者其近亲属、监护人同意。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十六条第二款",
+      "citedArticle": 16,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 2,
+      "contentFrom": "第十六条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A16toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十六条第二款规定，定点医药机构应当按照规定保管财务账目、会计凭证、处方、病历、治疗检查记录、费用明细、药品和医用耗材出入库记录等资料，及时通过医疗保障信息系统全面准确传送医疗保障基金使用有关数据，向医疗保障行政部门报告医疗保障基金使用监督管理所需信息，向社会公开医药费用、费用结构等信息，接受社会监督。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十六条第一款",
+      "citedArticle": 16,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": 1,
+      "contentFrom": "第十六条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A16P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十六条第一款规定，定点医药机构应当按照规定保管财务账目、会计凭证、处方、病历、治疗检查记录、费用明细、药品和医用耗材出入库记录等资料，及时通过医疗保障信息系统全面准确传送医疗保障基金使用有关数据，向医疗保障行政部门报告医疗保障基金使用监督管理所需信息，向社会公开医药费用、费用结构等信息，接受社会监督。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十六条",
+      "citedArticle": 16,
+      "citedArticleParagraphs": 1,
+      "citedParagraph": null,
+      "contentFrom": "第十六条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A16",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十六条规定，定点医药机构应当按照规定保管财务账目、会计凭证、处方、病历、治疗检查记录、费用明细、药品和医用耗材出入库记录等资料，及时通过医疗保障信息系统全面准确传送医疗保障基金使用有关数据，向医疗保障行政部门报告医疗保障基金使用监督管理所需信息，向社会公开医药费用、费用结构等信息，接受社会监督。",
+      "type": "control_article"
+    },
+    {
+      "cited": "第十七条第二款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 2,
+      "contentFrom": "第十七条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A17P1toP2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第二款规定，参保人员应当持本人医疗保障凭证就医、购药，并主动出示接受查验。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十七条第三款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 3,
+      "contentFrom": "第十七条第二款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A17P2toP3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第三款规定，参保人员应当妥善保管本人医疗保障凭证，防止他人冒名使用。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十七条第四款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 4,
+      "contentFrom": "第十七条第三款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A17P3toP4",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第四款规定，参保人员应当按照规定享受医疗保障待遇，不得重复享受。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十七条第一款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 1,
+      "contentFrom": "第十七条第四款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_existing-A17P4toP1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第一款规定，参保人员有权要求医疗保障经办机构提供医疗保障咨询服务，对医疗保障基金的使用提出改进建议。",
+      "type": "paragraph_existing"
+    },
+    {
+      "cited": "第十七条第五款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 5,
+      "contentFrom": "第十七条第一款",
+      "expected": "not_supported",
+      "expectedStatus": "findings",
+      "id": "paragraph_absent-A17toP5",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第五款规定，参保人员应当持本人医疗保障凭证就医、购药，并主动出示接受查验。",
+      "type": "paragraph_absent"
+    },
+    {
+      "cited": "第十七条第一款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 1,
+      "contentFrom": "第十七条第一款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A17P1",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第一款规定，参保人员应当持本人医疗保障凭证就医、购药，并主动出示接受查验。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十七条第二款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 2,
+      "contentFrom": "第十七条第二款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A17P2",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第二款规定，参保人员应当妥善保管本人医疗保障凭证，防止他人冒名使用。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十七条第三款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 3,
+      "contentFrom": "第十七条第三款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A17P3",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第三款规定，参保人员应当按照规定享受医疗保障待遇，不得重复享受。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十七条第四款",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": 4,
+      "contentFrom": "第十七条第四款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_pinpoint-A17P4",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条第四款规定，参保人员有权要求医疗保障经办机构提供医疗保障咨询服务，对医疗保障基金的使用提出改进建议。",
+      "type": "control_pinpoint"
+    },
+    {
+      "cited": "第十七条",
+      "citedArticle": 17,
+      "citedArticleParagraphs": 4,
+      "citedParagraph": null,
+      "contentFrom": "第十七条第四款",
+      "expected": "supported",
+      "expectedStatus": "no_error_found",
+      "id": "control_article-A17",
+      "question": "《医疗保障基金使用监督管理条例》节选对此有什么规定？",
+      "statement": "按照第十七条规定，参保人员有权要求医疗保障经办机构提供医疗保障咨询服务，对医疗保障基金的使用提出改进建议。",
+      "type": "control_article"
+    }
+  ],
+  "jobs": [
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A8P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A8P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A8P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A8P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A8P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A8P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A8P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A8P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A8P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A8P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A8P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A8P1toP2",
+      "itemId": "paragraph_existing-A8P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A8P2toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A8P2toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A8P2toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A8P2toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A8P2toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A8P2toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A8P2toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A8P2toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A8P2toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A8P2toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A8P2toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A8P2toP1",
+      "itemId": "paragraph_existing-A8P2toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A8toP3.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A8toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A8toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A8toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A8toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A8toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A8toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A8toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A8toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A8toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A8toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A8toP3",
+      "itemId": "paragraph_absent-A8toP3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A8P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A8P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A8P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A8P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A8P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A8P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A8P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A8P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A8P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A8P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A8P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A8P1",
+      "itemId": "control_pinpoint-A8P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A8P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A8P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A8P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A8P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A8P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A8P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A8P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A8P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A8P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A8P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A8P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A8P2",
+      "itemId": "control_pinpoint-A8P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A8.json",
+      "group": "base",
+      "id": "base--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A8.json",
+      "group": "F1",
+      "id": "F1--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A8.json",
+      "group": "F2",
+      "id": "F2--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A8.json",
+      "group": "F3",
+      "id": "F3--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A8.json",
+      "group": "F4",
+      "id": "F4--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A8.json",
+      "group": "F5",
+      "id": "F5--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A8.json",
+      "group": "F6",
+      "id": "F6--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A8.json",
+      "group": "F7",
+      "id": "F7--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A8.json",
+      "group": "F8",
+      "id": "F8--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A8.json",
+      "group": "F9",
+      "id": "F9--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A8.json",
+      "group": "F10",
+      "id": "F10--control_article-A8",
+      "itemId": "control_article-A8"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A9toP2.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A9toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A9toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A9toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A9toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A9toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A9toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A9toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A9toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A9toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A9toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A9toP2",
+      "itemId": "paragraph_absent-A9toP2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A9P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A9P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A9P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A9P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A9P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A9P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A9P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A9P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A9P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A9P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A9P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A9P1",
+      "itemId": "control_pinpoint-A9P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A9.json",
+      "group": "base",
+      "id": "base--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A9.json",
+      "group": "F1",
+      "id": "F1--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A9.json",
+      "group": "F2",
+      "id": "F2--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A9.json",
+      "group": "F3",
+      "id": "F3--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A9.json",
+      "group": "F4",
+      "id": "F4--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A9.json",
+      "group": "F5",
+      "id": "F5--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A9.json",
+      "group": "F6",
+      "id": "F6--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A9.json",
+      "group": "F7",
+      "id": "F7--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A9.json",
+      "group": "F8",
+      "id": "F8--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A9.json",
+      "group": "F9",
+      "id": "F9--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A9.json",
+      "group": "F10",
+      "id": "F10--control_article-A9",
+      "itemId": "control_article-A9"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A10toP2.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A10toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A10toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A10toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A10toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A10toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A10toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A10toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A10toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A10toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A10toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A10toP2",
+      "itemId": "paragraph_absent-A10toP2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A10P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A10P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A10P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A10P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A10P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A10P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A10P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A10P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A10P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A10P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A10P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A10P1",
+      "itemId": "control_pinpoint-A10P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A10.json",
+      "group": "base",
+      "id": "base--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A10.json",
+      "group": "F1",
+      "id": "F1--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A10.json",
+      "group": "F2",
+      "id": "F2--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A10.json",
+      "group": "F3",
+      "id": "F3--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A10.json",
+      "group": "F4",
+      "id": "F4--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A10.json",
+      "group": "F5",
+      "id": "F5--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A10.json",
+      "group": "F6",
+      "id": "F6--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A10.json",
+      "group": "F7",
+      "id": "F7--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A10.json",
+      "group": "F8",
+      "id": "F8--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A10.json",
+      "group": "F9",
+      "id": "F9--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A10.json",
+      "group": "F10",
+      "id": "F10--control_article-A10",
+      "itemId": "control_article-A10"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A11P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A11P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A11P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A11P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A11P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A11P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A11P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A11P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A11P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A11P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A11P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A11P1toP2",
+      "itemId": "paragraph_existing-A11P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A11P2toP3.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A11P2toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A11P2toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A11P2toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A11P2toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A11P2toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A11P2toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A11P2toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A11P2toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A11P2toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A11P2toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A11P2toP3",
+      "itemId": "paragraph_existing-A11P2toP3"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A11P3toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A11P3toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A11P3toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A11P3toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A11P3toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A11P3toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A11P3toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A11P3toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A11P3toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A11P3toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A11P3toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A11P3toP1",
+      "itemId": "paragraph_existing-A11P3toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A11toP4.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A11toP4.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A11toP4.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A11toP4.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A11toP4.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A11toP4.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A11toP4.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A11toP4.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A11toP4.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A11toP4.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A11toP4.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A11toP4",
+      "itemId": "paragraph_absent-A11toP4"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A11P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A11P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A11P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A11P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A11P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A11P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A11P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A11P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A11P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A11P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A11P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A11P1",
+      "itemId": "control_pinpoint-A11P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A11P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A11P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A11P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A11P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A11P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A11P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A11P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A11P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A11P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A11P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A11P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A11P2",
+      "itemId": "control_pinpoint-A11P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A11P3.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A11P3.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A11P3.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A11P3.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A11P3.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A11P3.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A11P3.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A11P3.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A11P3.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A11P3.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A11P3.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A11P3",
+      "itemId": "control_pinpoint-A11P3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A11.json",
+      "group": "base",
+      "id": "base--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A11.json",
+      "group": "F1",
+      "id": "F1--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A11.json",
+      "group": "F2",
+      "id": "F2--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A11.json",
+      "group": "F3",
+      "id": "F3--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A11.json",
+      "group": "F4",
+      "id": "F4--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A11.json",
+      "group": "F5",
+      "id": "F5--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A11.json",
+      "group": "F6",
+      "id": "F6--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A11.json",
+      "group": "F7",
+      "id": "F7--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A11.json",
+      "group": "F8",
+      "id": "F8--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A11.json",
+      "group": "F9",
+      "id": "F9--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A11.json",
+      "group": "F10",
+      "id": "F10--control_article-A11",
+      "itemId": "control_article-A11"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A12P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A12P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A12P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A12P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A12P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A12P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A12P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A12P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A12P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A12P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A12P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A12P1toP2",
+      "itemId": "paragraph_existing-A12P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A12P2toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A12P2toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A12P2toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A12P2toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A12P2toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A12P2toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A12P2toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A12P2toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A12P2toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A12P2toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A12P2toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A12P2toP1",
+      "itemId": "paragraph_existing-A12P2toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A12toP3.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A12toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A12toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A12toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A12toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A12toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A12toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A12toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A12toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A12toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A12toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A12toP3",
+      "itemId": "paragraph_absent-A12toP3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A12P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A12P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A12P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A12P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A12P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A12P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A12P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A12P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A12P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A12P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A12P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A12P1",
+      "itemId": "control_pinpoint-A12P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A12P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A12P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A12P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A12P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A12P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A12P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A12P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A12P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A12P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A12P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A12P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A12P2",
+      "itemId": "control_pinpoint-A12P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A12.json",
+      "group": "base",
+      "id": "base--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A12.json",
+      "group": "F1",
+      "id": "F1--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A12.json",
+      "group": "F2",
+      "id": "F2--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A12.json",
+      "group": "F3",
+      "id": "F3--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A12.json",
+      "group": "F4",
+      "id": "F4--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A12.json",
+      "group": "F5",
+      "id": "F5--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A12.json",
+      "group": "F6",
+      "id": "F6--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A12.json",
+      "group": "F7",
+      "id": "F7--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A12.json",
+      "group": "F8",
+      "id": "F8--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A12.json",
+      "group": "F9",
+      "id": "F9--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A12.json",
+      "group": "F10",
+      "id": "F10--control_article-A12",
+      "itemId": "control_article-A12"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A13P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A13P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A13P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A13P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A13P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A13P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A13P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A13P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A13P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A13P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A13P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A13P1toP2",
+      "itemId": "paragraph_existing-A13P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A13P2toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A13P2toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A13P2toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A13P2toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A13P2toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A13P2toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A13P2toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A13P2toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A13P2toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A13P2toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A13P2toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A13P2toP1",
+      "itemId": "paragraph_existing-A13P2toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A13toP3.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A13toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A13toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A13toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A13toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A13toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A13toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A13toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A13toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A13toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A13toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A13toP3",
+      "itemId": "paragraph_absent-A13toP3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A13P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A13P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A13P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A13P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A13P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A13P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A13P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A13P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A13P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A13P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A13P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A13P1",
+      "itemId": "control_pinpoint-A13P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A13P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A13P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A13P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A13P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A13P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A13P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A13P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A13P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A13P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A13P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A13P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A13P2",
+      "itemId": "control_pinpoint-A13P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A13.json",
+      "group": "base",
+      "id": "base--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A13.json",
+      "group": "F1",
+      "id": "F1--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A13.json",
+      "group": "F2",
+      "id": "F2--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A13.json",
+      "group": "F3",
+      "id": "F3--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A13.json",
+      "group": "F4",
+      "id": "F4--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A13.json",
+      "group": "F5",
+      "id": "F5--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A13.json",
+      "group": "F6",
+      "id": "F6--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A13.json",
+      "group": "F7",
+      "id": "F7--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A13.json",
+      "group": "F8",
+      "id": "F8--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A13.json",
+      "group": "F9",
+      "id": "F9--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A13.json",
+      "group": "F10",
+      "id": "F10--control_article-A13",
+      "itemId": "control_article-A13"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A14P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A14P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A14P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A14P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A14P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A14P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A14P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A14P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A14P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A14P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A14P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A14P1toP2",
+      "itemId": "paragraph_existing-A14P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A14P2toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A14P2toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A14P2toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A14P2toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A14P2toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A14P2toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A14P2toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A14P2toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A14P2toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A14P2toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A14P2toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A14P2toP1",
+      "itemId": "paragraph_existing-A14P2toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A14toP3.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A14toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A14toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A14toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A14toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A14toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A14toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A14toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A14toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A14toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A14toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A14toP3",
+      "itemId": "paragraph_absent-A14toP3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A14P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A14P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A14P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A14P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A14P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A14P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A14P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A14P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A14P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A14P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A14P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A14P1",
+      "itemId": "control_pinpoint-A14P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A14P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A14P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A14P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A14P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A14P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A14P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A14P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A14P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A14P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A14P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A14P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A14P2",
+      "itemId": "control_pinpoint-A14P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A14.json",
+      "group": "base",
+      "id": "base--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A14.json",
+      "group": "F1",
+      "id": "F1--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A14.json",
+      "group": "F2",
+      "id": "F2--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A14.json",
+      "group": "F3",
+      "id": "F3--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A14.json",
+      "group": "F4",
+      "id": "F4--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A14.json",
+      "group": "F5",
+      "id": "F5--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A14.json",
+      "group": "F6",
+      "id": "F6--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A14.json",
+      "group": "F7",
+      "id": "F7--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A14.json",
+      "group": "F8",
+      "id": "F8--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A14.json",
+      "group": "F9",
+      "id": "F9--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A14.json",
+      "group": "F10",
+      "id": "F10--control_article-A14",
+      "itemId": "control_article-A14"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A15P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A15P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A15P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A15P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A15P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A15P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A15P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A15P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A15P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A15P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A15P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A15P1toP2",
+      "itemId": "paragraph_existing-A15P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A15P2toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A15P2toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A15P2toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A15P2toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A15P2toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A15P2toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A15P2toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A15P2toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A15P2toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A15P2toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A15P2toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A15P2toP1",
+      "itemId": "paragraph_existing-A15P2toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A15toP3.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A15toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A15toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A15toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A15toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A15toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A15toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A15toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A15toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A15toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A15toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A15toP3",
+      "itemId": "paragraph_absent-A15toP3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A15P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A15P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A15P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A15P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A15P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A15P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A15P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A15P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A15P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A15P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A15P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A15P1",
+      "itemId": "control_pinpoint-A15P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A15P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A15P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A15P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A15P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A15P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A15P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A15P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A15P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A15P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A15P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A15P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A15P2",
+      "itemId": "control_pinpoint-A15P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A15.json",
+      "group": "base",
+      "id": "base--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A15.json",
+      "group": "F1",
+      "id": "F1--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A15.json",
+      "group": "F2",
+      "id": "F2--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A15.json",
+      "group": "F3",
+      "id": "F3--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A15.json",
+      "group": "F4",
+      "id": "F4--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A15.json",
+      "group": "F5",
+      "id": "F5--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A15.json",
+      "group": "F6",
+      "id": "F6--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A15.json",
+      "group": "F7",
+      "id": "F7--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A15.json",
+      "group": "F8",
+      "id": "F8--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A15.json",
+      "group": "F9",
+      "id": "F9--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A15.json",
+      "group": "F10",
+      "id": "F10--control_article-A15",
+      "itemId": "control_article-A15"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A16toP2.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A16toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A16toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A16toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A16toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A16toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A16toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A16toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A16toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A16toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A16toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A16toP2",
+      "itemId": "paragraph_absent-A16toP2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A16P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A16P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A16P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A16P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A16P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A16P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A16P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A16P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A16P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A16P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A16P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A16P1",
+      "itemId": "control_pinpoint-A16P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A16.json",
+      "group": "base",
+      "id": "base--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A16.json",
+      "group": "F1",
+      "id": "F1--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A16.json",
+      "group": "F2",
+      "id": "F2--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A16.json",
+      "group": "F3",
+      "id": "F3--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A16.json",
+      "group": "F4",
+      "id": "F4--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A16.json",
+      "group": "F5",
+      "id": "F5--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A16.json",
+      "group": "F6",
+      "id": "F6--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A16.json",
+      "group": "F7",
+      "id": "F7--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A16.json",
+      "group": "F8",
+      "id": "F8--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A16.json",
+      "group": "F9",
+      "id": "F9--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A16.json",
+      "group": "F10",
+      "id": "F10--control_article-A16",
+      "itemId": "control_article-A16"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A17P1toP2.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A17P1toP2.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A17P1toP2.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A17P1toP2.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A17P1toP2.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A17P1toP2.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A17P1toP2.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A17P1toP2.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A17P1toP2.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A17P1toP2.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A17P1toP2.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A17P1toP2",
+      "itemId": "paragraph_existing-A17P1toP2"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A17P2toP3.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A17P2toP3.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A17P2toP3.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A17P2toP3.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A17P2toP3.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A17P2toP3.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A17P2toP3.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A17P2toP3.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A17P2toP3.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A17P2toP3.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A17P2toP3.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A17P2toP3",
+      "itemId": "paragraph_existing-A17P2toP3"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A17P3toP4.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A17P3toP4.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A17P3toP4.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A17P3toP4.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A17P3toP4.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A17P3toP4.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A17P3toP4.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A17P3toP4.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A17P3toP4.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A17P3toP4.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A17P3toP4.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A17P3toP4",
+      "itemId": "paragraph_existing-A17P3toP4"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_existing-A17P4toP1.json",
+      "group": "base",
+      "id": "base--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_existing-A17P4toP1.json",
+      "group": "F1",
+      "id": "F1--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_existing-A17P4toP1.json",
+      "group": "F2",
+      "id": "F2--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_existing-A17P4toP1.json",
+      "group": "F3",
+      "id": "F3--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_existing-A17P4toP1.json",
+      "group": "F4",
+      "id": "F4--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_existing-A17P4toP1.json",
+      "group": "F5",
+      "id": "F5--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_existing-A17P4toP1.json",
+      "group": "F6",
+      "id": "F6--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_existing-A17P4toP1.json",
+      "group": "F7",
+      "id": "F7--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_existing-A17P4toP1.json",
+      "group": "F8",
+      "id": "F8--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_existing-A17P4toP1.json",
+      "group": "F9",
+      "id": "F9--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_existing-A17P4toP1.json",
+      "group": "F10",
+      "id": "F10--paragraph_existing-A17P4toP1",
+      "itemId": "paragraph_existing-A17P4toP1"
+    },
+    {
+      "expectedStatus": "findings",
+      "file": "requests/base/paragraph_absent-A17toP5.json",
+      "group": "base",
+      "id": "base--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/paragraph_absent-A17toP5.json",
+      "group": "F1",
+      "id": "F1--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/paragraph_absent-A17toP5.json",
+      "group": "F2",
+      "id": "F2--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/paragraph_absent-A17toP5.json",
+      "group": "F3",
+      "id": "F3--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/paragraph_absent-A17toP5.json",
+      "group": "F4",
+      "id": "F4--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/paragraph_absent-A17toP5.json",
+      "group": "F5",
+      "id": "F5--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/paragraph_absent-A17toP5.json",
+      "group": "F6",
+      "id": "F6--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/paragraph_absent-A17toP5.json",
+      "group": "F7",
+      "id": "F7--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/paragraph_absent-A17toP5.json",
+      "group": "F8",
+      "id": "F8--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/paragraph_absent-A17toP5.json",
+      "group": "F9",
+      "id": "F9--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/paragraph_absent-A17toP5.json",
+      "group": "F10",
+      "id": "F10--paragraph_absent-A17toP5",
+      "itemId": "paragraph_absent-A17toP5"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A17P1.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A17P1.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A17P1.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A17P1.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A17P1.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A17P1.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A17P1.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A17P1.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A17P1.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A17P1.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A17P1.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A17P1",
+      "itemId": "control_pinpoint-A17P1"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A17P2.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A17P2.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A17P2.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A17P2.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A17P2.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A17P2.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A17P2.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A17P2.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A17P2.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A17P2.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A17P2.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A17P2",
+      "itemId": "control_pinpoint-A17P2"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A17P3.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A17P3.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A17P3.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A17P3.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A17P3.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A17P3.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A17P3.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A17P3.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A17P3.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A17P3.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A17P3.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A17P3",
+      "itemId": "control_pinpoint-A17P3"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_pinpoint-A17P4.json",
+      "group": "base",
+      "id": "base--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_pinpoint-A17P4.json",
+      "group": "F1",
+      "id": "F1--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_pinpoint-A17P4.json",
+      "group": "F2",
+      "id": "F2--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_pinpoint-A17P4.json",
+      "group": "F3",
+      "id": "F3--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_pinpoint-A17P4.json",
+      "group": "F4",
+      "id": "F4--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_pinpoint-A17P4.json",
+      "group": "F5",
+      "id": "F5--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_pinpoint-A17P4.json",
+      "group": "F6",
+      "id": "F6--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_pinpoint-A17P4.json",
+      "group": "F7",
+      "id": "F7--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_pinpoint-A17P4.json",
+      "group": "F8",
+      "id": "F8--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_pinpoint-A17P4.json",
+      "group": "F9",
+      "id": "F9--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_pinpoint-A17P4.json",
+      "group": "F10",
+      "id": "F10--control_pinpoint-A17P4",
+      "itemId": "control_pinpoint-A17P4"
+    },
+    {
+      "expectedStatus": "no_error_found",
+      "file": "requests/base/control_article-A17.json",
+      "group": "base",
+      "id": "base--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F1/control_article-A17.json",
+      "group": "F1",
+      "id": "F1--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F2/control_article-A17.json",
+      "group": "F2",
+      "id": "F2--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "invalid_input",
+      "file": "requests/F3/control_article-A17.json",
+      "group": "F3",
+      "id": "F3--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F4/control_article-A17.json",
+      "group": "F4",
+      "id": "F4--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F5/control_article-A17.json",
+      "group": "F5",
+      "id": "F5--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F6/control_article-A17.json",
+      "group": "F6",
+      "id": "F6--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F7/control_article-A17.json",
+      "group": "F7",
+      "id": "F7--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F8/control_article-A17.json",
+      "group": "F8",
+      "id": "F8--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F9/control_article-A17.json",
+      "group": "F9",
+      "id": "F9--control_article-A17",
+      "itemId": "control_article-A17"
+    },
+    {
+      "expectedStatus": "review",
+      "file": "requests/F10/control_article-A17.json",
+      "group": "F10",
+      "id": "F10--control_article-A17",
+      "itemId": "control_article-A17"
+    }
+  ],
+  "notApplicable": {
+    "F7": [],
+    "F9": []
+  }
+}

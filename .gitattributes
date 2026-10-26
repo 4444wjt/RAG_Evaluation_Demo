@@ -688,6 +688,19 @@ docs/integrations/external-rag.md -text
 /tests/test_statute_onboarding.py text eol=lf
 /tools/competition/statute_unseen_diagnostic.py text eol=lf
 /tests/test_statute_unseen_diagnostic.py text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/README.md text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/analysis.json text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/items.json text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/method.json text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/recompute.py text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/records.json text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/source.txt text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/sources/statute-diagnostic.v1.schema.json text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/sources/statute_diagnostic.py text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/sources/statute_locate.py text eol=lf
+/docs/competition/statute-check/20261025-unseen-diagnostic/sources/statute_unseen_diagnostic.py text eol=lf
 
 # Parent-context local preparation: preserve exact source bytes.
 /backend/api/app.py -text

@@ -1,0 +1,79 @@
+{
+  "E": 27,
+  "K": 30,
+  "articleRange": [
+    8,
+    17
+  ],
+  "authorEffort": {
+    "checkSource": {
+      "calls": 1,
+      "correctionsAfterCheck": 0,
+      "source": "source/check-source.jsonl",
+      "status": "no_error_found"
+    },
+    "itemReview": {
+      "approxMinutes": 6,
+      "from": "2026-10-25T03:22-04:00",
+      "source": "author correction in conversation, 2026-10-25",
+      "to": "2026-10-25T03:28-04:00",
+      "withinTimedWindow": true
+    },
+    "paragraphCounting": {
+      "correctionBasis": "official docx paragraph structure; author preparation record",
+      "from": "2026-10-25T03:30-04:00",
+      "initiallyWrongArticles": [
+        9,
+        10
+      ],
+      "minutes": 4,
+      "source": "author correction in conversation, 2026-10-25",
+      "to": "2026-10-25T03:34-04:00",
+      "withinTimedWindow": false,
+      "wrongArticleCount": 2
+    },
+    "sourcePreparation": {
+      "approxMinutes": 13,
+      "from": "2026-10-25T03:06-04:00",
+      "includesFormatRework": true,
+      "source": "author correction in conversation, 2026-10-25; disk timestamps",
+      "to": "2026-10-25T03:19-04:00",
+      "withinTimedWindow": true
+    },
+    "timedWindow": {
+      "from": "2026-10-25T03:06-04:00",
+      "includes": "source preparation with format rework, check-source, make, review checklist generation, item construction review",
+      "minutes": 22,
+      "source": "author preparation record timing table; split corrected by the author in conversation, 2026-10-25",
+      "to": "2026-10-25T03:28-04:00"
+    }
+  },
+  "codeLockedAt": "2026-10-25T02:40:03-04:00",
+  "codeSha256": {
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "backend/core/statute_locate.py": "1d220465bafc14c82af37a714502c10c587e6a05132d9340b062139bb15cd4b0",
+    "scripts/statute_diagnostic.py": "1621912c5e187c6f923d77044441439df21b09169696c973e43be3f7feaeb33a",
+    "tools/competition/statute_unseen_diagnostic.py": "7143ea2f78650c1921e4d5973eefb087bbcd01209de08db441063d2241bb7851"
+  },
+  "commit": "579b15cd32848695ceaa007c6cda7ce074d7b105",
+  "jsonschemaVersion": "4.26.0",
+  "officialDocx": {
+    "bytes": 32921,
+    "metadataSource": "author preparation record; original docx not included or rehashed here",
+    "sha256": "8e9728c71acbb010b8bc02d953aa1f0574c0ee03059053e27edb35e929e0254d"
+  },
+  "primaryEngine": "base",
+  "pythonVersion": "3.11.9",
+  "readmePolicy": "README 由主会话之后另写，不在 SHA256SUMS 中。",
+  "registrationLockedAt": "2026-10-25T02:08:44-04:00",
+  "registrationSha256": "f42e1b090576b06d846f95806c27815e7b2306e184f7685e24ad306bb0b9d9ad",
+  "reportOnlyEngine": "extended",
+  "statute": "医疗保障基金使用监督管理条例",
+  "thresholds": {
+    "detectionRule": "ceil(0.9 * E)",
+    "falsePositiveRule": "floor(0.1 * K)",
+    "maxFalsePositives": 3,
+    "minDetected": 25
+  },
+  "versionSource": "archive environment; matches versions recorded in the code lock"
+}

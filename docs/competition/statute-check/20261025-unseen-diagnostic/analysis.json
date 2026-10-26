@@ -1,0 +1,3081 @@
+{
+  "E": 27,
+  "H1": {
+    "E": 27,
+    "K": 30,
+    "detected": 27,
+    "falsePositiveIds": [],
+    "falsePositives": 0,
+    "missedErrorIds": [],
+    "passed": true,
+    "statuses": {
+      "findings": 27,
+      "no_error_found": 30
+    },
+    "unavailableIds": []
+  },
+  "H2": {
+    "failureIds": [],
+    "passed": true,
+    "variants": {
+      "F1": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F1--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A8",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A9",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A10",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A11",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A12",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A13",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A14",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A15",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A16",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F1--control_article-A17",
+            "passed": true,
+            "status": "invalid_input"
+          }
+        ]
+      },
+      "F10": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F10--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F10--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F2": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F2--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A8",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A9",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A10",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A11",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A12",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A13",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A14",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A15",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A16",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F2--control_article-A17",
+            "passed": true,
+            "status": "invalid_input"
+          }
+        ]
+      },
+      "F3": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F3--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A8",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A9",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A10",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A11",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A12",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A13",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A14",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A15",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A16",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "invalid_input"
+          },
+          {
+            "id": "F3--control_article-A17",
+            "passed": true,
+            "status": "invalid_input"
+          }
+        ]
+      },
+      "F4": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F4--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F4--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F5": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F5--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F5--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F6": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F6--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F6--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F7": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F7--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F7--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F8": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F8--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F8--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      },
+      "F9": {
+        "applicable": 57,
+        "denominator": 57,
+        "matched": 57,
+        "notApplicableIds": [],
+        "rows": [
+          {
+            "id": "F9--paragraph_existing-A8P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A8P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A8toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A8P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A8P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A8",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A9toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A9P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A9",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A10toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A10P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A10",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A11P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A11P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A11P3toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A11toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A11P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A11P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A11P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A11",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A12P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A12P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A12toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A12P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A12P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A12",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A13P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A13P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A13toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A13P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A13P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A13",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A14P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A14P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A14toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A14P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A14P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A14",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A15P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A15P2toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A15toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A15P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A15P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A15",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A16toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A16P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A16",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A17P1toP2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A17P2toP3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A17P3toP4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_existing-A17P4toP1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--paragraph_absent-A17toP5",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A17P1",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A17P2",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A17P3",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_pinpoint-A17P4",
+            "passed": true,
+            "status": "review"
+          },
+          {
+            "id": "F9--control_article-A17",
+            "passed": true,
+            "status": "review"
+          }
+        ]
+      }
+    }
+  },
+  "H3": {
+    "checked": 684,
+    "failures": [],
+    "passed": true
+  },
+  "K": 30,
+  "completed": true,
+  "conclusion": "成立",
+  "excludedIds": [],
+  "limitations": [
+    "旧材料演练不是未见法规验证，不据此提高竞赛评分。",
+    "未检出不等于支持或质量门禁 PASS。",
+    "F10 仅机械不一致测试，不是独立结构参照。"
+  ],
+  "missingIds": [],
+  "reportOnly": {
+    "authorCorrectionCount": null,
+    "authorPreparationNote": "运行目录未提供作者计时和修正记录，保留缺失；check-source 日志单独交付。",
+    "authorPreparationSeconds": null,
+    "baseByType": {
+      "control_article": {
+        "E": 0,
+        "K": 10,
+        "detected": 0,
+        "falsePositives": 0,
+        "statuses": {
+          "no_error_found": 10
+        },
+        "unavailableIds": []
+      },
+      "control_pinpoint": {
+        "E": 0,
+        "K": 20,
+        "detected": 0,
+        "falsePositives": 0,
+        "statuses": {
+          "no_error_found": 20
+        },
+        "unavailableIds": []
+      },
+      "paragraph_absent": {
+        "E": 10,
+        "K": 0,
+        "detected": 10,
+        "falsePositives": 0,
+        "statuses": {
+          "findings": 10
+        },
+        "unavailableIds": []
+      },
+      "paragraph_existing": {
+        "E": 17,
+        "K": 0,
+        "detected": 17,
+        "falsePositives": 0,
+        "statuses": {
+          "findings": 17
+        },
+        "unavailableIds": []
+      }
+    },
+    "extended": {
+      "E": 27,
+      "K": 30,
+      "detected": 27,
+      "falsePositives": 0,
+      "statuses": {
+        "findings": 27,
+        "no_error_found": 30
+      },
+      "unavailableIds": []
+    },
+    "extendedByType": {
+      "control_article": {
+        "E": 0,
+        "K": 10,
+        "detected": 0,
+        "falsePositives": 0,
+        "statuses": {
+          "no_error_found": 10
+        },
+        "unavailableIds": []
+      },
+      "control_pinpoint": {
+        "E": 0,
+        "K": 20,
+        "detected": 0,
+        "falsePositives": 0,
+        "statuses": {
+          "no_error_found": 20
+        },
+        "unavailableIds": []
+      },
+      "paragraph_absent": {
+        "E": 10,
+        "K": 0,
+        "detected": 10,
+        "falsePositives": 0,
+        "statuses": {
+          "findings": 10
+        },
+        "unavailableIds": []
+      },
+      "paragraph_existing": {
+        "E": 17,
+        "K": 0,
+        "detected": 17,
+        "falsePositives": 0,
+        "statuses": {
+          "findings": 17
+        },
+        "unavailableIds": []
+      }
+    },
+    "reviewDiagnosticCodeScope": "all_jobs_including_base_extended_and_failure_variants",
+    "reviewDiagnosticCodes": {
+      "DUPLICATE_ARTICLE": 57,
+      "INVISIBLE_FORMAT_CHARACTER": 171,
+      "NO_PROVISIONS": 57,
+      "REFERENCE_NUMBER_UNSUPPORTED": 57,
+      "SOURCE_STRUCTURE_MISMATCH": 57,
+      "UNPARSED_SOURCE_LINE": 1140
+    }
+  },
+  "thresholds": {
+    "maxFalsePositives": 3,
+    "minDetected": 25
+  }
+}
