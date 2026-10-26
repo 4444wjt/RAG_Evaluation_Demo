@@ -1,6 +1,6 @@
 # Third-party notices
 
-The VeriScope AI (鉴真全域) source code is offered under the repository's MIT License. Third-party code and packages keep their own licenses; the root MIT License does not replace them.
+The VeriScope AI (鉴真全域) source code is offered under the repository's Apache License 2.0. Third-party code and packages keep their own licenses; the root Apache-2.0 License does not replace them.
 
 ## Adapted source included in the frontend
 
