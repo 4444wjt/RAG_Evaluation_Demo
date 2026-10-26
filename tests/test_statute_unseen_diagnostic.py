@@ -1,21 +1,35 @@
 """只用已暴露的三部法规；第三部完整 CLI 演练不是未见验证。"""
 from copy import deepcopy
+import hashlib
 import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 
 import pytest
 
 from tools.competition import statute_unseen_diagnostic as ud
 
 ROOT = ud.ROOT
-THIRD = ROOT / "work/statute-injection/onboarding-20261023/run/package/contexts/plain.txt"
+# 已公开的同一份原字节，不依赖作者本地 work/ 材料。
+THIRD = ROOT / "docs/competition/statute-check/20261024-onboarding/contexts/plain.txt"
+THIRD_SHA256 = "b34aa65f795bca500e0817b5423f811ba1e7448e6c6b527a832bc57cbdea72f0"
 OLD = {"information_disclosure": "政府信息公开条例", "deposit_insurance": "存款保险条例"}
 
 
+@pytest.fixture(scope="module", autouse=True)
+def current_python():
+    """真实子进程复用测试解释器，不要求仓库内存在 Windows venv。"""
+    with pytest.MonkeyPatch.context() as monkeypatch:
+        monkeypatch.setattr(ud, "PYTHON", Path(sys.executable))
+        yield
+
+
 def third_source():
-    raw = THIRD.read_bytes().decode("utf-8")
+    original = THIRD.read_bytes()
+    assert hashlib.sha256(original).hexdigest() == THIRD_SHA256
+    raw = original.decode("utf-8")
     title, blank, source = raw.split("\n", 2)
     assert "不动产登记暂行条例" in title and blank == ""
     return source

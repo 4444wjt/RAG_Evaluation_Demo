@@ -650,9 +650,30 @@ def test_analysis_rejects_inconsistent_archive_before_writing(authorized, tamper
     assert not analysis.exists()
 
 
+def test_prepare_confirm_match_public_archived_bytes(tmp_path):
+    """公开包保存确认后材料；准备阶段共享五份原字节，确认阶段再核对正文与确认单。"""
+    archived = sp.ROOT / 'docs/competition/statute-check/20261021-pinpoint-prep'
+    si.verify_checksums(archived)
+    before = {p.name: p.read_bytes() for p in archived.iterdir() if p.is_file()}
+    prepared, confirmed = tmp_path / 'public-prep', tmp_path / 'public-confirmed'
+    sp.prepare(prepared)
+    review = si.load(archived / 'package.json')['review']
+    note = tmp_path / 'public-archived-note.txt'
+    note.write_bytes(review['note'].encode('utf-8'))
+    sp.confirm(prepared / 'package.json', review['reviewer'], review['reviewedAt'], note, confirmed)
+    shared = ('cost-estimate.json', 'prompt.original.txt', 'prompt.pinpoint.txt', 'prompts.diff', 'rules.json')
+    for generated, names in ((prepared, shared), (confirmed, (*shared, 'package.json', 'RUN_CONFIRMATION.md'))):
+        for name in names:
+            assert (generated / name).read_bytes() == before[name], name
+        si.verify_checksums(generated)
+    assert before == {p.name: p.read_bytes() for p in archived.iterdir() if p.is_file()}
+
+
 def test_prepare_confirm_still_match_archived_bytes(tmp_path):
     """工具哈希只影响授权草稿及清单中该草稿的一行；其余字节不变。"""
     archived = sp.ROOT / 'work/statute-injection/pinpoint-20261021'
+    if not archived.exists():
+        pytest.skip('missing-local-material: work/statute-injection/pinpoint-20261021')
     before = {p.relative_to(archived): p.read_bytes() for name in ('prep', 'confirmed')
               for p in (archived / name).iterdir() if p.is_file()}
     prepared, confirmed = tmp_path / 'compatible-prep', tmp_path / 'compatible-confirmed'

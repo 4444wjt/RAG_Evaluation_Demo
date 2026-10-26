@@ -30,7 +30,7 @@ jobs:
         run: python -m compileall -q main.py backend scripts tests
 
       - name: Run tests
-        run: python -m pytest -q tests
+        run: python -m pytest -q -ra tests
 
   # 自检仓库根目录的 action.yml：演示快照应放行，25 题正式运行（真实 FAIL）应拦截。
   gate-action:

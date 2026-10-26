@@ -52,6 +52,83 @@ CONSTANTS = {
 }
 
 
+class _TestCoverageSummary:
+    """Report executed cases separately from unavailable local research material."""
+
+    def __init__(self):
+        self.reports = []
+        self.collection_reports = []
+        self.collected = 0
+
+    def pytest_runtest_logreport(self, report):
+        self.reports.append(report)
+
+    def pytest_collectreport(self, report):
+        if report.failed or report.skipped:
+            self.collection_reports.append(report)
+
+    def pytest_sessionfinish(self, session):
+        self.collected = session.testscollected
+
+    def pytest_terminal_summary(self, terminalreporter):
+        calls = [report for report in self.reports if report.when == "call"]
+        errors = [report for report in self.reports
+                  if report.failed and report.when != "call"]
+        skipped = {report.nodeid: report for report in self.reports
+                   if report.skipped and not hasattr(report, "wasxfail")}
+        local_skips = {}
+        for nodeid, report in skipped.items():
+            reason = str(report.longrepr[2]) if isinstance(report.longrepr, tuple) else str(report.longrepr)
+            reason = reason.removeprefix("Skipped: ")
+            filename = nodeid.split("::", 1)[0].replace("\\", "/").rsplit("/", 1)[-1]
+            if (reason.startswith("missing-local-material:") or
+                    (filename == "test_statute_blindspot.py" and
+                     reason == "work/ 下没有真实题包")):
+                local_skips[nodeid] = reason
+
+        counts = {
+            "collected": self.collected,
+            "actually_executed": len({r.nodeid for r in calls if r.passed or r.failed}),
+            "passed": len({r.nodeid for r in calls if r.passed}),
+            "failed": len({r.nodeid for r in calls if r.failed}),
+            "error_cases": len({r.nodeid for r in errors}),
+            "error_reports": len(errors),
+            "skipped": len(skipped),
+            "local_material_skipped": len(local_skips),
+            "other_skipped": len(skipped) - len(local_skips),
+            "call_phase_reached": len({r.nodeid for r in calls}),
+            "xfailed": len({r.nodeid for r in self.reports
+                            if r.skipped and hasattr(r, "wasxfail")}),
+            "collection_errors": sum(r.failed for r in self.collection_reports),
+            "collection_skips": sum(r.skipped for r in self.collection_reports),
+        }
+        lines = [f"{name}={value}" for name, value in counts.items()]
+        lines.extend([
+            "actually_executed: unique cases with a passed/failed call report; skips excluded.",
+            "passed/failed: call outcomes; error_cases: setup/teardown failures (may overlap).",
+            "error_reports: setup/teardown reports; collection errors/skips are separate.",
+            "call_phase_reached includes in-call skips; xfailed is separate from skipped.",
+            "Local material skips (not validated in this run):",
+        ])
+        lines.extend(f"  {nodeid}: {reason}" for nodeid, reason in sorted(local_skips.items()))
+        if not local_skips:
+            lines.append("  none")
+        terminalreporter.section("Test execution coverage")
+        for line in lines:
+            terminalreporter.write_line(line)
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+        if summary_path:
+            try:
+                with open(summary_path, "a", encoding="utf-8") as summary:
+                    summary.write("\n### Test execution coverage\n\n```text\n" + "\n".join(lines) + "\n```\n")
+            except OSError:
+                terminalreporter.write_line("Could not write GITHUB_STEP_SUMMARY; counts remain in this log.")
+
+
+def pytest_configure(config):
+    config.pluginmanager.register(_TestCoverageSummary(), "test-execution-coverage")
+
+
 @pytest.fixture(autouse=True)
 def offline_guard(monkeypatch, tmp_path):
     """Fail immediately on networking or dotenv reads; confine relative writes."""

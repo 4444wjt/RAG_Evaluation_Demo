@@ -6,11 +6,14 @@
 from decimal import Decimal
 import importlib.util
 import json
+from pathlib import Path
 import shutil
 import subprocess
 import sys
 
 import pytest
+
+from local_materials import require_local_materials
 
 from backend.core import statute_check as sc
 from tools.competition import statute_injection as si
@@ -22,8 +25,37 @@ OLD = {'deposit_insurance': 1, 'information_disclosure': 29}
 TODAY = '2026-10-24'
 
 
+def require_registrations(*, package_materials=False):
+    """Only a wholly absent local group is optional; present evidence stays strict."""
+    onboarding = str(Path(so.REGISTRATION).parent.as_posix())
+    criterion = str(Path(so.CRITERION_REGISTRATION).parent.as_posix())
+    groups = {
+        onboarding: (Path(so.REGISTRATION).name, Path(so.CANDIDATES).name),
+        criterion: (Path(so.CRITERION_REGISTRATION).name, Path(so.CRITERION_MAKER).name),
+    }
+
+    def check_onboarding(path):
+        assert si.sha256(path / Path(so.REGISTRATION).name) == so.REGISTRATION_SHA256
+        assert si.sha256(path / Path(so.CANDIDATES).name) == so.CANDIDATES_SHA256
+
+    def check_criterion(path):
+        assert si.sha256(path / Path(so.CRITERION_REGISTRATION).name) == so.CRITERION_REGISTRATION_SHA256
+        assert so.criterion_constant() == so.CRITERION
+
+    checks = {onboarding: check_onboarding, criterion: check_criterion}
+    if package_materials:
+        groups[onboarding] += (Path(so.MAKER).name,)
+        lexical = Path(so.LEXICAL).parent.as_posix()
+        groups[lexical] = (Path(so.LEXICAL).name,)
+        checks[lexical] = lambda path: so.lexical_module()
+        groups[so.REFERENCE_RUN] = ('SHA256SUMS.txt', 'events.jsonl', 'authorization.json')
+        checks[so.REFERENCE_RUN] = si.verify_checksums
+    require_local_materials(ROOT, groups, checks=checks)
+
+
 @pytest.fixture(scope='module')
 def packages(tmp_path_factory):
+    require_registrations(package_materials=True)
     base = tmp_path_factory.mktemp('packages')
     with pytest.MonkeyPatch.context() as patch:
         patch.setattr(so, 'ENFORCE_EXCERPT_RULE', False)
@@ -143,7 +175,11 @@ def test_statement_construction_rules():
     assert all(r['expected'] == ('not_supported' if r['type'] in so.ERROR_TYPES else 'supported') for r in rows)
 
 
-def test_requests_rotate_arms_and_only_change_context_and_prompt():
+def test_requests_rotate_arms_and_only_change_context_and_prompt(monkeypatch):
+    # This synthetic contract needs only the identical, publicly archived baseline.
+    public_lexical = 'docs/competition/statute-check/20261023-stage3-baselines/sources/lexical_baseline.py'
+    assert si.sha256(ROOT / public_lexical) == so.LEXICAL_SHA256
+    monkeypatch.setattr(so, 'LEXICAL', public_lexical)
     text = excerpt(multi(range(3, 9)))
     derived = so.derive(text, 3)
     requests, rows = derived['requests'], derived['rows']
@@ -266,6 +302,7 @@ def test_template(deposit):
 
 
 def test_source_outside_repository_refused(tmp_path):
+    require_registrations()
     path = tmp_path / 'excerpt.txt'
     path.write_text(excerpt(multi(range(3, 9))), encoding='utf-8', newline='\n')
     with pytest.raises(ValueError, match='仓库内'):

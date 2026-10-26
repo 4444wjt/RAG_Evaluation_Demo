@@ -8,6 +8,8 @@ import socket
 
 import pytest
 
+from local_materials import require_local_materials
+
 from backend.core import statute_check as sc
 from tools.competition import statute_labeled as sl
 
@@ -140,15 +142,21 @@ def test_package_fixed_material_judges_schedule_and_verbatim_preregistration(pac
     assert package['items'] == si.load(sl.ROOT / sl.BASE)['items']
     assert package['sourceFiles'][sl.BASE] == sl.BASE_SHA256
     assert package['sourceFiles'][si.SOURCE] == sl.SOURCE_SHA256
-    task = (sl.ROOT / 'work/competition/codex-tasks/labeled-runner-20261022.md').read_text(encoding='utf-8')
-    expected = task.split('### 9. 预注册口径', 1)[1].split('\n', 1)[1].split('\n\n### 10.', 1)[0]
-    assert package['preregistration'] == expected
     jobs = sl.schedule(package)
     expected = [(i['id'], 'L', j) for i in package['items'] for j in ('deepseek', 'qwen72b')]
     expected += [(i['id'], 'S', 'qwen72b') for i in package['items'] if i['type'] in sl.SLICE_TYPES]
     assert len(jobs) == len({j['requestId'] for j in jobs}) == 163
     assert [(j['itemId'], j['condition'], j['judge']) for j in jobs] == expected
     assert all(j['requestId'] == '--'.join([j['itemId'], j['condition'], j['judge']]) for j in jobs)
+
+
+def test_verbatim_local_preregistration(package):
+    directory = 'work/competition/codex-tasks'
+    filename = 'labeled-runner-20261022.md'
+    require_local_materials(sl.ROOT, {directory: (filename,)})
+    task = (sl.ROOT / directory / filename).read_text(encoding='utf-8')
+    expected = task.split('### 9. 预注册口径', 1)[1].split('\n', 1)[1].split('\n\n### 10.', 1)[0]
+    assert package['preregistration'] == expected
 
 
 def test_messages_match_every_archived_j2_request_except_context(package):
