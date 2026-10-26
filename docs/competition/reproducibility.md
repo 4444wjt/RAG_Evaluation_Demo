@@ -10,7 +10,7 @@
 
 ## 无密钥展示重现
 
-推荐 Node.js 24。在独立源码目录运行：
+推荐 Node.js 24（24.15.0 及以上）。在独立源码目录运行：
 
 ```powershell
 cd frontend
@@ -22,6 +22,29 @@ npm run preview
 访问 `http://127.0.0.1:5173/#/lab/demo`，检查六个导航入口、三个模型、13条作者核验及历史 FAIL。没有后端时“服务未连接”提示正常；不能点击开始评测。检查过程中不应出现 `/api/evaluate` 请求。
 
 本轮独立副本不复制 `.env`、`node_modules`、Python环境、本地模型、向量库或旧运行结果，从锁文件重新安装前端依赖，并使用全新浏览器上下文。它在**同一台 Windows 机器**完成，不能描述为另一台机器或全新操作系统验收。源码包含尚未提交的文件，因此同时记录文件哈希，不能仅用 Git HEAD 表示这次源码版本。
+
+## 冷启动计时实测
+
+2026-10-21（UTC 2026-10-22 02:07–02:12），在作者的 Windows 11 机器上按 README 的无密钥路径，从公开仓库重新走了一遍：新的空目录，空的 npm 缓存，不复用本地依赖。克隆的是 Gitee `master`，提交 `9b23382`；Node 24.21.0、npm 11.19.0、Git 2.45.1。
+
+| 步骤 | 命令 | 用时 | 结果 |
+|---|---|---:|---|
+| 克隆 | `git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab` | 13 秒 | 成功 |
+| 安装前端依赖 | `cd frontend`，`npm ci`（空缓存） | 2 分 31 秒 | 退出码 0 |
+| 启动 | `npm run dev` | 约 1 秒 | 首页返回 200 |
+| 查看演示 | 打开 `http://127.0.0.1:5173/`，点「查看演示」 | — | 显示 25 题正式运行回放与门禁 FAIL；只有 `/api/health` 因没起后端返回 502，没有评测请求 |
+| 前端单元测试 | `npm test` | 25 秒 | 16 个文件、280 项通过 |
+| 类型检查 | `npm run typecheck` | 2 秒 | 通过 |
+
+命令本身合计约 3 分 12 秒。加上操作浏览器的时间，从开始克隆到看到演示约 4 分钟。
+
+边界：同一台机器、作者自己的网络；Node 与 Git 已预装，不计安装工具的时间；清空的只是 npm 缓存，系统层网络缓存没有清。浏览器由 Claude 的内置浏览器操作，不是人工计时。Python 测试、Docker 部署和真实评测不在这次计时内。
+
+**Windows 长路径。** 第一次计时把仓库克隆在约 150 个字符深的临时目录下，检出失败，报 `Filename too long`。仓库里最长的相对路径有 140 个字符，Windows 默认路径上限是 260 个字符，所以克隆目录本身超过约 118 个字符就会失败。两种办法：克隆到较短的路径（例如 `C:\src`），或者克隆时加 `-c core.longpaths=true`（只对这个仓库生效，不改全局配置）。后一种在 154 个字符深的目录下实测检出完整。
+
+```powershell
+git clone -c core.longpaths=true https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab
+```
 
 ## 已完成与未执行的批次
 

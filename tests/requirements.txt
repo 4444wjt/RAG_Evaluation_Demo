@@ -19,6 +19,7 @@ langchain-text-splitters
 matplotlib
 python-dotenv
 openpyxl
+pypdf
 
 # 校验 schemas/ 下公开的人工核验存档格式（Draft 2020-12）。
 jsonschema>=4.18

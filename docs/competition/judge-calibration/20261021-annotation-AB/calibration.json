@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "packageId": "3dc45b1aa403defeaa1bc546b64278fbedc7c8e09f45887236dec7083f6b0210",
+  "source": {
+    "runId": "20261005T144504Z-full-39511424",
+    "model": "deepseek-chat",
+    "evidence": "docs/competition/evidence/20261005T144504Z-full-39511424",
+    "sha256": {
+      "api-response.json": "769865042388b9020f8d70fe212af5066e221eb812e194d460a3103ccafadb9d",
+      "llm-events.jsonl": "30d2c31c08c729eda1752918ca63876fc0442493deecf16d9165b0dc2771d131",
+      "request.json": "79edbfd743c6e0e2ad24434009ce8de4bb5f9764f38451b4ab713acadb5f6147"
+    }
+  },
+  "q0": 1.0,
+  "m0": 6,
+  "q1": 0.95,
+  "m1": 40,
+  "q0Wilson95": [
+    0.6096657120978346,
+    1.0
+  ],
+  "q1Wilson95": [
+    0.8349612263085903,
+    0.9861793326138516
+  ],
+  "assumption": "裁判判定在本次与目标运行之间不变：同一裁判模型、同一 Ragas 忠实度提示词、同一领域。"
+}

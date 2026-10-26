@@ -5,7 +5,7 @@ import { Icon } from '../components/Icon';
 import { JudgeProvenance } from './JudgeProvenance';
 import { modelName, swatch, textValue } from '../utils/format';
 import sourceRegistry from '../fixtures/source-registry.json';
-import { lookupSource, sourceStatus } from '../utils/sourceStatus';
+import { lookupSource, sourceLookupMissReason, sourceStatus } from '../utils/sourceStatus';
 import type { SourceDocument, SourceRegistry } from '../utils/sourceStatus';
 import '../components/viz.css';
 import './details.css';
@@ -241,17 +241,23 @@ function verificationScope(trace: TraceData, statements: Statement[] | null, con
   const contradicted = list.some((statement) => statement.verdict === 'fact_error' || statement.verdict === 'fabrication');
 
   const registeredSource = lookupSource(document, sourceRegistry as SourceRegistry);
-  const source = sourceStatus(registeredSource);
-  const sourceNote = !document
-    ? '本次评测结果未携带资料哈希，无法与登记表对应'
-    : !registeredSource
-      ? '缺：来源登记；资料路径或哈希与登记表不匹配'
-      : source.state === '信息齐备'
-        ? '已登记来源与版本；是否现行有效未核查'
-        : source.state === '缺少版本'
-          ? `缺：${source.missing.join('、')}`
-          : [source.missing.some((field) => field !== '节选范围') && '适用对象、地域或条件未登记',
-            source.missing.includes('节选范围') && '节选未列出范围'].filter(Boolean).join('；');
+  const source = registeredSource ? sourceStatus(registeredSource) : null;
+  const missReason = registeredSource ? null : sourceLookupMissReason(document, sourceRegistry as SourceRegistry);
+  const sourceValue = source?.state ?? (missReason === 'unregistered' ? '未登记'
+    : missReason === 'hash_mismatch' ? '与登记版本不一致' : '无法核对来源');
+  const sourceNote = source
+    ? source.state === '信息齐备'
+      ? '已登记来源与版本；是否现行有效未核查'
+      : source.state === '缺少版本'
+        ? `缺：${source.missing.join('、')}`
+        : [source.missing.some((field) => field !== '节选范围') && '适用对象、地域或条件未登记',
+          source.missing.includes('节选范围') && '节选未列出范围'].filter(Boolean).join('；')
+    : missReason === 'unregistered'
+      ? '此资料未收录于本地来源登记表，不据此判断来源有问题'
+      : missReason === 'hash_mismatch'
+        ? '资料路径已有登记，但本次哈希与登记记录不一致；未关联登记信息'
+        : !document ? '本次评测结果未携带资料哈希，无法与登记表对应'
+          : '资料路径或哈希未提供，无法判断是否登记';
 
   const rows: ScopeRow[] = [
     { layer: '引用定位', method: '代码检查', value: citation,
@@ -261,9 +267,9 @@ function verificationScope(trace: TraceData, statements: Statement[] | null, con
       note: list.length > 0 ? '模型判定，有误差；「事实错误」指与检索资料矛盾' : '没有陈述，就没有语义判定',
       tone: contradicted ? 'danger' : list.length > 0 ? 'positive' : 'neutral' },
     { layer: '事实正确', method: '不检查', value: '未检查', note: '平台不核对资料或回答与现实是否一致', tone: 'neutral' },
-    { layer: '来源版本', method: '登记信息', value: source.state,
-      note: `${source.fictional ? '虚构示例资料，不是权威来源；' : ''}${sourceNote}`,
-      tone: source.state === '信息齐备' ? 'neutral' : 'warning' },
+    { layer: '来源版本', method: '登记信息', value: sourceValue,
+      note: `${source?.fictional ? '虚构示例资料，不是权威来源；' : ''}${sourceNote}`,
+      tone: source ? (source.state === '信息齐备' ? 'neutral' : 'warning') : missReason === 'hash_mismatch' ? 'warning' : 'neutral' },
     { layer: '抽取完整性', method: '需人工核查', value: '未核查',
       note: list.length > 0 ? `机器从回答中抽取了 ${list.length} 条陈述，回答里可能还有未抽取的内容` : '没有抽取到陈述，不能据此认为回答没有问题', tone: 'neutral' },
   ];
@@ -278,7 +284,9 @@ function verificationScope(trace: TraceData, statements: Statement[] | null, con
   if (state === 'unexpected_refusal') gaps.push({ label: '正向用例被拒答，需检查检索或生成' });
   if (state === 'no_trace') gaps.push({ label: '回答没有逐句证据链' });
   if (state === 'trace_error') gaps.push({ label: '核对链路异常，见处理记录' });
-  if (source.state !== '信息齐备') gaps.push({ label: `资料来源：${source.state}` });
+  if (source && source.state !== '信息齐备') gaps.push({ label: `资料来源：${source.state}` });
+  if (missReason === 'hash_mismatch') gaps.push({ label: '资料来源：与登记版本不一致' });
+  if (missReason === 'missing_identity') gaps.push({ label: '资料身份未提供，无法核对来源' });
   return { rows, gaps };
 }
 

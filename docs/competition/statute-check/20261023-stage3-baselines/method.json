@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "origin": "同一部公开法规节选上的定向合成引用扰动，T1原文复述、T2由AI改写；预期来自构造约束和用户会话确认范围。",
+  "independentHumanAnnotation": false,
+  "executorType": "AI",
+  "registrationSha256": "0091b1126ecffcbe96d2b42845c9b3e34ae9fae3021a6120f24c96ceb98ca680",
+  "originalArchiveManifestSha256": "0257cd518546c1ffbdf43c6b1099f2b58f75f812e7b945599cd42ccddbab0139",
+  "originalRecordsSha256": "17f806c6d40339b5ec76bd01185fc4ecbae2e8f7d5fcc6b79cebb05770508404",
+  "sourceSha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6",
+  "sourceCodeHashes": {
+    "sources/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "sources/statute_locate.py": "1d220465bafc14c82af37a714502c10c587e6a05132d9340b062139bb15cd4b0",
+    "sources/lexical_baseline.py": "cd6233558a95a91aab3b20c29ed2632dcfa42018d7e0c7110dbd390e22465351"
+  },
+  "ruleInput": {
+    "question": "",
+    "contexts": "底稿单元所在整条，原文各行 strip 后用换行连接",
+    "source": "整份原始节选"
+  },
+  "lexicalInput": {
+    "statement": "原陈述（不补标签）",
+    "provisions": "parse_provisions(整份原始节选)"
+  },
+  "stopThreshold": 4,
+  "minimumNetImprovement": 5,
+  "judgeArmsStatus": {
+    "J-U": "not_run",
+    "J-L": "not_run",
+    "J-S": "not_run"
+  },
+  "baselineModelCalls": 0,
+  "baselineCostCny": 0,
+  "exclusionTiming": "先于本次R/X运行锁定；仅排除U29-2-1全部6个T2变体，T1保留。",
+  "crossUnitDependency": "U33-3展开第三十三条第二款的期限描述，保留并记录跨款依赖。",
+  "limits": [
+    "同一部法规，共享底稿，条目非独立样本。",
+    "存在既有题面暴露；本次不称纯盲测。",
+    "本目录为公开派生重计包，不是原stage3严格分析器的完整运行包。",
+    "原始R/X均未改；公开sources仅供源码追溯，唯一复算入口为recompute.py。"
+  ]
+}

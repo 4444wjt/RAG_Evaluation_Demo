@@ -4,7 +4,7 @@
 
 ## 快速开始
 
-需要 Docker Engine 与 Compose v2.24 及以上版本。
+需要 Docker Engine 与 Compose v2.24 及以上版本。`deploy.sh` 是 POSIX shell 脚本，还会用到 `cp`、`grep`、`cut`、`curl`，请在 Linux 或 WSL 中执行。首次构建要拉取镜像、安装依赖，这段时间不计入脚本之后的健康检查等待。
 
 ```bash
 git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git

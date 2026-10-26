@@ -39,6 +39,7 @@ from backend.config import (
 )
 from backend.core.utils import _safe_mean, _is_refusal
 from backend.services.documents import load_and_split_doc
+from backend.services.parse_check import check_document
 from backend.services.retriever import build_vector_store
 from backend.services.testsets import generate_testset, load_custom_testset, load_benchmark
 from backend.services.answering import rag_answer
@@ -64,6 +65,7 @@ def prepare_resources(doc_path, progress_cb=None):
     """准备 RAG 评测运行时资源（从旧 run_pipeline 步骤 1~3 原样提取）。
 
     依次完成：
+      0. 检查源文件指纹与 PDF 文本层，FAIL 阻止入库，REVIEW 告警并保留记录
       1. 初始化嵌入模型（HuggingFaceEmbeddings，强制只读本地缓存，不联网）
       2. 加载并切分文档（load_and_split_doc）
       3. 构建向量库（build_vector_store，支持 REUSE_VECTOR_DB 复用）
@@ -76,7 +78,7 @@ def prepare_resources(doc_path, progress_cb=None):
         progress_cb: Optional[Callable[[int, str], None]] — 进度回调（step, desc）
 
     返回：
-        RunResources — 含 embeddings / chunks / retriever 三项运行时资源；
+        RunResources — 含 embeddings / chunks / retriever 与入库检查元数据；
         testset 字段在本阶段不产生，交由后续 evaluate 编排阶段填充。
     """
     def report_step(step, desc=""):
@@ -86,6 +88,18 @@ def prepare_resources(doc_path, progress_cb=None):
                 progress_cb(step, desc)
             except Exception:
                 pass
+
+    # 0. 在模型加载、切块和建库前检查；检查结论独立于评测质量门禁。
+    parse_check = check_document(doc_path)
+    if parse_check["verdict"] in ("FAIL", "REVIEW"):
+        details = "; ".join(
+            f"第 {page['page_number']} 页: {', '.join(page['reasons'])}"
+            for page in parse_check["pages"]
+            if page["verdict"] == parse_check["verdict"]
+        )
+        if parse_check["verdict"] == "FAIL":
+            raise RuntimeError(f"入库检查 FAIL，已阻止文档入库: {details}")
+        print(f"⚠️ 入库检查 REVIEW，需要复核；继续运行并保留检查记录: {details}")
 
     # 1. 初始化嵌入模型
     report_step(1, "初始化嵌入模型")
@@ -112,6 +126,8 @@ def prepare_resources(doc_path, progress_cb=None):
         "embeddings": embeddings,
         "chunks": chunks,
         "retriever": retriever,
+        "source_fingerprint": parse_check["source_fingerprint"],
+        "parse_check": parse_check,
     }
 
 
@@ -605,6 +621,9 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "version": version_label or datetime.now().strftime("%Y%m%d-%H%M"),
         "doc_name": os.path.basename(doc_path),
+        # 外部预置资源可能未检查：保留缺失值，不读取现文件冒充入库时的状态。
+        "source_fingerprint": resources.get("source_fingerprint"),
+        "parse_check": resources.get("parse_check"),
         "testset_source": benchmark if benchmark else (os.path.basename(testset_path) if testset_path else "自动生成"),
         "thresholds": {"faithfulness": faith_threshold, "context_precision": ctx_prec_threshold},
         "gate_passed": gate_passed,

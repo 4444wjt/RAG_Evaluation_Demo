@@ -1,0 +1,362 @@
+[
+  {
+    "case_id": "C03",
+    "combination_id": "1-C03-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C03",
+    "combination_id": "1-C03-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "C03",
+    "combination_id": "1-C03-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "1-F05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "1-F05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "1-F05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "1-C04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "1-C04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "1-C04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "1-F01-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "1-F01-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "1-F01-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "1-F04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "1-F04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "1-F04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "1-C01-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "1-C01-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "1-C01-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "1-C05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "1-C05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "1-C05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "1-D05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "1-D05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "1-D05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "1-D04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "1-D04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "1-D04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "1-D07-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 1
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "1-D07-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 1
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "1-D07-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 1
+  },
+  {
+    "case_id": "C03",
+    "combination_id": "2-C03-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C03",
+    "combination_id": "2-C03-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "C03",
+    "combination_id": "2-C03-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "2-F05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "2-F05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "F05",
+    "combination_id": "2-F05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "2-C04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "2-C04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C04",
+    "combination_id": "2-C04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "2-F01-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "2-F01-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "F01",
+    "combination_id": "2-F01-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "2-F04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "2-F04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "F04",
+    "combination_id": "2-F04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "2-C01-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "2-C01-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C01",
+    "combination_id": "2-C01-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "2-C05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "2-C05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "C05",
+    "combination_id": "2-C05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "2-D05-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "2-D05-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D05",
+    "combination_id": "2-D05-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "2-D04-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "2-D04-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D04",
+    "combination_id": "2-D04-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "2-D07-qwen72b",
+    "judge_id": "qwen72b",
+    "repeat": 2
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "2-D07-deepseek",
+    "judge_id": "deepseek",
+    "repeat": 2
+  },
+  {
+    "case_id": "D07",
+    "combination_id": "2-D07-glm32b",
+    "judge_id": "glm32b",
+    "repeat": 2
+  }
+]

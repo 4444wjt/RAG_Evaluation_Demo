@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as echarts from 'echarts/core';
 import type { EvaluationResult, ResultRow } from '../api/types';
 import { AbilityChart, DurationChart, RiskChart } from '../components/Charts';
+import { HeatMatrix } from '../components/HeatMatrix';
 import { ComparisonView } from '../features/ComparisonView';
 import { METRICS } from '../config';
 import fixture from '../fixtures/demo.json';
@@ -305,6 +306,55 @@ describe('evaluation charts', () => {
 });
 
 describe('comparison metrics table', () => {
+  it('explains unavailable values without inferring a cause or changing zero and best-value titles', () => {
+    const result: EvaluationResult = { ...fixture.result, summary_df: [
+      { model: 'zero', faithfulness: 0, neg_context_precision: 0, neg_faithfulness: null },
+      { model: 'best', faithfulness: 0.8, neg_context_precision: null },
+      { model: 'invalid-number', faithfulness: 'not-a-number' },
+    ] };
+    render(<ComparisonView result={result} />);
+    const table = screen.getByRole('table', { name: /各模型的全部原始指标/ });
+    const explanation = '本次结果没有该项可显示值；可能未计算、无适用样本或返回空值，具体原因未区分。';
+    expect(table.querySelector('caption')).toHaveTextContent('— 表示本次结果无此值，不等于 0');
+    expect(document.querySelector('.comparison-table-panel .comparison-source-note')).toHaveTextContent('— 表示本次结果无此值，不等于 0');
+    expect(table.querySelectorAll('td.comparison-missing span')).toHaveLength(6);
+    table.querySelectorAll('td.comparison-missing span').forEach((cell) => {
+      expect(cell).toHaveTextContent(/^—$/);
+      expect(cell).toHaveAttribute('title', explanation);
+    });
+    const zeroRow = within(table).getByRole('rowheader', { name: 'zero' }).closest('tr')!;
+    const zeroCells = within(zeroRow).getAllByRole('cell');
+    expect(zeroCells[0]).toHaveTextContent('0.0%');
+    expect(zeroCells[1]).toHaveTextContent('0.0%');
+    expect(zeroCells[0].querySelector('span')).toHaveAttribute('title', '0.0%');
+    expect(zeroCells[1].querySelector('span')).toHaveAttribute('title', '0.0%');
+    expect(zeroCells[0]).not.toHaveClass('comparison-missing');
+    expect(zeroCells[1]).not.toHaveClass('comparison-missing');
+    expect(within(table).getByTitle('80.0%（本列最佳）')).toHaveTextContent('80.0%');
+    expect(screen.queryByText(explanation)).not.toBeInTheDocument();
+  });
+
+  it('gives heat-matrix empty cells the same explanation while preserving zero and normal titles', () => {
+    render(<HeatMatrix rows={[
+      { model: 'zero', faithfulness: 0, context_precision: null },
+      { model: 'complete', faithfulness: 0.8, context_precision: 0.6 },
+      { model: 'absent' },
+    ]} />);
+    const table = screen.getByRole('table', { name: /各模型比率指标矩阵/ });
+    const missingCells = table.querySelectorAll('td.is-missing');
+    expect(missingCells).toHaveLength(3);
+    missingCells.forEach((cell) => {
+      expect(cell).toHaveTextContent(/^—$/);
+      expect(cell).toHaveAttribute('title', '本次结果没有该项可显示值；可能未计算、无适用样本或返回空值，具体原因未区分。');
+      expect(cell).not.toHaveAttribute('style');
+    });
+    const zero = within(table).getByTitle('zero 忠实度 0%');
+    expect(zero).toHaveTextContent('0%');
+    expect(zero).not.toHaveClass('is-missing');
+    expect(zero).toHaveAttribute('style', '--heat: 0.000;');
+    expect(within(table).getByTitle('complete 忠实度 80%')).toHaveTextContent('80%');
+  });
+
   it('keeps all original and trace fields in a semantic table with original row order', () => {
     render(<ComparisonView result={fixture.result} />);
     const table = screen.getByRole('table', { name: /各模型的全部原始指标/ });

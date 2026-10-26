@@ -1,0 +1,11 @@
+{
+  "checkedAtUtc": "2026-10-21T03:54:10.071798+00:00",
+  "url": "https://api.siliconflow.cn/v1/models",
+  "keyEnvName": "VERISCOPE_SILICONFLOW_API_KEY",
+  "keyPresent": true,
+  "httpStatus": 200,
+  "modelListed": true,
+  "listedModelCount": 98,
+  "errorType": null,
+  "note": "只请求模型列表，不发生成请求；未记录密钥。"
+}

@@ -1,0 +1,361 @@
+{
+  "protocol": "口径见 run/package.json 的 review.note（运行前确定）；本文件只按该口径对 analysis/analysis.json 计数。",
+  "detectionDefinition": {
+    "rules": "rules.flagged 为 true",
+    "judges": "裁判判定为 contradicted 或 insufficient（不被支持）；supported 记为未检出"
+  },
+  "groups": {
+    "content": {
+      "title": "主指标（内容 faithfulness）",
+      "positiveTypes": [
+        "quantity_value",
+        "quantity_unit",
+        "polarity"
+      ],
+      "negativeTypes": [
+        "control"
+      ],
+      "positives": 8,
+      "negatives": 11,
+      "methods": {
+        "rules": {
+          "detected": 6,
+          "falsePositives": 0,
+          "missed": [
+            "PO-S21",
+            "PO-S32"
+          ],
+          "falsePositiveIds": []
+        },
+        "deepseek": {
+          "detected": 8,
+          "falsePositives": 1,
+          "missed": [],
+          "falsePositiveIds": [
+            "C-S36"
+          ]
+        },
+        "qwen72b": {
+          "detected": 7,
+          "falsePositives": 1,
+          "missed": [
+            "QU-S27"
+          ],
+          "falsePositiveIds": [
+            "C-S36"
+          ]
+        }
+      },
+      "unions": {
+        "rules+deepseek": {
+          "detected": 8,
+          "falsePositives": 1
+        },
+        "rules+qwen72b": {
+          "detected": 8,
+          "falsePositives": 1
+        }
+      }
+    },
+    "citation": {
+      "title": "条号检测",
+      "positiveTypes": [
+        "article_swap",
+        "article_absent",
+        "paragraph_shift"
+      ],
+      "negativeTypes": [
+        "control",
+        "control_paragraph"
+      ],
+      "positives": 16,
+      "negatives": 13,
+      "methods": {
+        "rules": {
+          "detected": 14,
+          "falsePositives": 0,
+          "missed": [
+            "AS-S32",
+            "PS-S27"
+          ],
+          "falsePositiveIds": []
+        },
+        "deepseek": {
+          "detected": 14,
+          "falsePositives": 1,
+          "missed": [
+            "PS-S27",
+            "PS-S50"
+          ],
+          "falsePositiveIds": [
+            "C-S36"
+          ]
+        },
+        "qwen72b": {
+          "detected": 4,
+          "falsePositives": 1,
+          "missed": [
+            "AS-S03",
+            "AS-S21",
+            "AS-S28",
+            "AS-S41",
+            "AS-S49",
+            "AA-S03",
+            "AA-S21",
+            "AA-S28",
+            "AA-S41",
+            "AA-S49",
+            "PS-S27",
+            "PS-S50"
+          ],
+          "falsePositiveIds": [
+            "C-S36"
+          ]
+        }
+      },
+      "unions": {
+        "rules+deepseek": {
+          "detected": 15,
+          "falsePositives": 1
+        },
+        "rules+qwen72b": {
+          "detected": 15,
+          "falsePositives": 1
+        }
+      }
+    },
+    "modal": {
+      "title": "「应当」改「可以」（口径依赖项，单列）",
+      "positiveTypes": [
+        "modal"
+      ],
+      "negativeTypes": [],
+      "positives": 5,
+      "negatives": 0,
+      "methods": {
+        "rules": {
+          "detected": 4,
+          "falsePositives": 0,
+          "missed": [
+            "MD-S27"
+          ],
+          "falsePositiveIds": []
+        },
+        "deepseek": {
+          "detected": 5,
+          "falsePositives": 0,
+          "missed": [],
+          "falsePositiveIds": []
+        },
+        "qwen72b": {
+          "detected": 0,
+          "falsePositives": 0,
+          "missed": [
+            "MD-S13",
+            "MD-S27",
+            "MD-S41",
+            "MD-S49",
+            "MD-S50"
+          ],
+          "falsePositiveIds": []
+        }
+      },
+      "unions": {
+        "rules+deepseek": {
+          "detected": 5,
+          "falsePositives": 0
+        },
+        "rules+qwen72b": {
+          "detected": 4,
+          "falsePositives": 0
+        }
+      }
+    }
+  },
+  "ruleCoveredContent": {
+    "types": [
+      "quantity_value",
+      "quantity_unit"
+    ],
+    "positives": 6,
+    "rulesDetected": 6
+  },
+  "sensitivity": {
+    "excluded": [
+      "QV-S27",
+      "QU-S50",
+      "AS-S32",
+      "MD-S13",
+      "MD-S27",
+      "MD-S41",
+      "MD-S49",
+      "MD-S50"
+    ],
+    "groups": {
+      "content": {
+        "positives": 6,
+        "negatives": 11,
+        "methods": {
+          "rules": {
+            "detected": 4,
+            "falsePositives": 0,
+            "missed": [
+              "PO-S21",
+              "PO-S32"
+            ],
+            "falsePositiveIds": []
+          },
+          "deepseek": {
+            "detected": 6,
+            "falsePositives": 1,
+            "missed": [],
+            "falsePositiveIds": [
+              "C-S36"
+            ]
+          },
+          "qwen72b": {
+            "detected": 5,
+            "falsePositives": 1,
+            "missed": [
+              "QU-S27"
+            ],
+            "falsePositiveIds": [
+              "C-S36"
+            ]
+          }
+        },
+        "unions": {
+          "rules+deepseek": {
+            "detected": 6,
+            "falsePositives": 1
+          },
+          "rules+qwen72b": {
+            "detected": 6,
+            "falsePositives": 1
+          }
+        }
+      },
+      "citation": {
+        "positives": 15,
+        "negatives": 13,
+        "methods": {
+          "rules": {
+            "detected": 14,
+            "falsePositives": 0,
+            "missed": [
+              "PS-S27"
+            ],
+            "falsePositiveIds": []
+          },
+          "deepseek": {
+            "detected": 13,
+            "falsePositives": 1,
+            "missed": [
+              "PS-S27",
+              "PS-S50"
+            ],
+            "falsePositiveIds": [
+              "C-S36"
+            ]
+          },
+          "qwen72b": {
+            "detected": 3,
+            "falsePositives": 1,
+            "missed": [
+              "AS-S03",
+              "AS-S21",
+              "AS-S28",
+              "AS-S41",
+              "AS-S49",
+              "AA-S03",
+              "AA-S21",
+              "AA-S28",
+              "AA-S41",
+              "AA-S49",
+              "PS-S27",
+              "PS-S50"
+            ],
+            "falsePositiveIds": [
+              "C-S36"
+            ]
+          }
+        },
+        "unions": {
+          "rules+deepseek": {
+            "detected": 14,
+            "falsePositives": 1
+          },
+          "rules+qwen72b": {
+            "detected": 14,
+            "falsePositives": 1
+          }
+        }
+      },
+      "modal": {
+        "positives": 0,
+        "negatives": 0,
+        "methods": {
+          "rules": {
+            "detected": 0,
+            "falsePositives": 0,
+            "missed": [],
+            "falsePositiveIds": []
+          },
+          "deepseek": {
+            "detected": 0,
+            "falsePositives": 0,
+            "missed": [],
+            "falsePositiveIds": []
+          },
+          "qwen72b": {
+            "detected": 0,
+            "falsePositives": 0,
+            "missed": [],
+            "falsePositiveIds": []
+          }
+        },
+        "unions": {
+          "rules+deepseek": {
+            "detected": 0,
+            "falsePositives": 0
+          },
+          "rules+qwen72b": {
+            "detected": 0,
+            "falsePositives": 0
+          }
+        }
+      }
+    }
+  },
+  "judgeVerdicts": {
+    "deepseek": {
+      "contradicted": 23,
+      "insufficient": 5,
+      "supported": 14
+    },
+    "qwen72b": {
+      "contradicted": 12,
+      "supported": 30
+    }
+  },
+  "usage": {
+    "deepseek": {
+      "requests": 42,
+      "ok": 42,
+      "actualModels": [
+        "deepseek-flash"
+      ],
+      "promptTokens": 23766,
+      "completionTokens": 4016
+    },
+    "qwen72b": {
+      "requests": 42,
+      "ok": 42,
+      "actualModels": [
+        "Qwen/Qwen2.5-72B-Instruct"
+      ],
+      "promptTokens": 25872,
+      "completionTokens": 3704
+    }
+  }
+}

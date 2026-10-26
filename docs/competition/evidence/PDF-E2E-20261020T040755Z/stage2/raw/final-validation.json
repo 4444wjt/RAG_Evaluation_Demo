@@ -1,0 +1,24 @@
+{
+  "existing_protected_files_checked": 239,
+  "existing_protected_files_unchanged": true,
+  "changed_protected_files": [],
+  "six_root_paths_unchanged": true,
+  "per_root_path": {
+    "CHROMA_DIR": true,
+    "SUMMARY_OUTPUT": true,
+    "HTML_OUTPUT": true,
+    "CHART_PATH": true,
+    "HISTORY_PATH": true,
+    "TREND_CHART_PATH": true
+  },
+  "gitattributes_original_bytes_preserved": true,
+  "gitattributes_change": "Appended explicit rules only for this new stage2 archive.",
+  "new_archive_file_count_including_manifest": 20,
+  "source_or_dependency_changes": false,
+  "frontend_changes_by_this_task": false,
+  "evaluation_executed": false,
+  "preflight_exit_code": 20,
+  "evaluation_exit_code": null,
+  "git_status_before_file": "out/git-status-before.txt",
+  "git_status_after_file": "git-status-after.txt"
+}

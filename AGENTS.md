@@ -4,7 +4,18 @@
 
 - **适用范围**：本仓库及其全部 worktree。更深目录下的约定只能**补充**本文件，不能放宽。
 - **读者**：在本仓库执行写入的 AI agent 与人类维护者。
-- **与其它文档的分工**：[CONTRIBUTING.md](CONTRIBUTING.md) 回答「怎么贡献」（流程与验证命令）；[SECURITY.md](SECURITY.md) 回答「安全问题怎么报」；[docs/release-checklist.md](docs/release-checklist.md) 回答「发布前查什么」；**本文件回答「不能越过什么」**。
+- **与其它文档的分工**：[CONTRIBUTING.md](CONTRIBUTING.md) 回答「怎么贡献」（流程与验证命令）；[SECURITY.md](SECURITY.md) 回答「安全问题怎么报」；[docs/release-checklist.md](docs/release-checklist.md) 回答「发布前查什么」；[docs/STATE.md](docs/STATE.md) 回答「现在做到哪」；**本文件回答「不能越过什么」**。
+
+---
+
+## 0. 开工前先读当前状态
+
+动手之前先读 **[docs/STATE.md](docs/STATE.md)**：当前分支与 HEAD、测试规模、已完成的实验、
+本轮待办、以及容易混的命名。
+
+- **本文件只回答「不能越过什么」，不回答「现在做到哪」。**
+- STATE.md 是**摘要**，不是依据。与仓库实际字节冲突时，以第 1 节的事实优先级为准。
+- 完成实质进展后，同步更新 STATE.md 的表格与「最后更新」日期——**它是给下一个 agent 看的，不是存档。**
 
 ---
 
@@ -38,7 +49,7 @@
 - **禁止**添加 `* text=auto eol=...` 之类的通配规则。本仓库的哈希基准是**混合的**（部分文件按 CRLF 记录、部分按 LF 记录），任何全局规则都会一次性破坏其中一半。
 - 新增参与完整性校验的文件时，必须在 `.gitattributes` 中补一条显式规则。
 
-> 依据：仓库根目录 `.gitattributes`（当前不含任何 `*` 通配规则）。Windows 检出与 Linux 检出必须得到相同字节。
+> 依据：仓库根目录 `.gitattributes`。当前不含任何**全局**通配规则（如 `* text=auto`）；仅有 5 条**目录级** `**` 规则（`judge-sensitivity/run-20261012/**`、`judge-sensitivity/analysis-20261012/**`、`judge-rerun/20261021-pilot/**`、`deploy/**`、`robustness/20261013-formal-run/**`），各自只约束本目录。Windows 检出与 Linux 检出必须得到相同字节。
 
 ## 4. 缺失值不填零，预览不冒充实时
 

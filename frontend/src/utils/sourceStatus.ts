@@ -100,3 +100,15 @@ export function lookupSource(
     (entry) => entry.path === document.path && entry.sha256 === document.sha256,
   ) ?? null;
 }
+
+
+export type SourceLookupMissReason = 'missing_identity' | 'hash_mismatch' | 'unregistered';
+
+/** 仅在lookupSource未命中后分类；同路径探测只解释原因，不关联任何登记信息。 */
+export function sourceLookupMissReason(
+  document: SourceDocument | null,
+  registry: { readonly documents: readonly SourceEntry[] },
+): SourceLookupMissReason {
+  if (document === null || isMissing(document.path) || isMissing(document.sha256)) return 'missing_identity';
+  return registry.documents.some((entry) => entry.path === document.path) ? 'hash_mismatch' : 'unregistered';
+}

@@ -1,0 +1,45 @@
+{
+ "sample": "B",
+ "source_name": "cjk_no_tounicode.pdf",
+ "source_sha256": "b312476886dfe7976b4761a44896f1a44e8a780477bc6f6d0ad06ccd1d1b92be",
+ "source_bytes": 3756,
+ "pypdf_version": "6.19.0",
+ "checker_version": "1.0.0",
+ "loader": "langchain_community.document_loaders.PyPDFLoader (same class as backend/services/documents.py)",
+ "chunk_size": 200,
+ "chunk_overlap": 30,
+ "run_utc": "2026-10-20T04:08:00Z",
+ "parse": {
+  "exit": "ok",
+  "pages": 1,
+  "chars": 631,
+  "han": 37,
+  "surrogates": 0,
+  "c1_controls": 68,
+  "fffd": 0
+ },
+ "parse_check": {
+  "verdict": "FAIL",
+  "flagged_pages": [
+   {
+    "page": 1,
+    "verdict": "FAIL",
+    "reasons": [
+     "GARBLED_TEXT_LAYER"
+    ],
+    "control_ratio": 0.28526148969889065,
+    "replacement_ratio": 0.0,
+    "cid_marker_ratio": 0.0
+   }
+  ],
+  "page_verdicts": [
+   "FAIL"
+  ]
+ },
+ "ingested": false,
+ "ingest_rule": "pipeline.py: FAIL -> RuntimeError (blocked); REVIEW -> warning, continues; PASS -> continues",
+ "split": {
+  "exit": "skipped",
+  "reason": "parse_check FAIL blocks ingestion, as in pipeline.py"
+ }
+}

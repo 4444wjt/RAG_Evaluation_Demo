@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "humanMinutes": {
+    "steps": [
+      {
+        "step": "取得材料",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 1.6,
+        "activeMinutesByOperator": {
+          "Ll": 1.6
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": true,
+        "notes": [
+          "抽签根哈希 <第一行>；顺序 <第二行>",
+          "材料：保障农民工工资支付条例（C01）；网址 <URL>；公布 2019-12-30、施行 2020-05-01；取得时间 2026-10-24 01:30；文件SHA256 5da91afed4cb468fd43c3d266574eab3e882c133198db1a1d1ebb9467538036b；页面标'有效'、无'官方发布'标识，取数据库现行文本",
+          "更正01:25:26那条（占位符未替换，作废）：抽签根哈希 9d4dbb6665ff67f54187c3804989ea0b472092357de9e4ac22bca2eb9564ca5b；顺序 C10,C07,C05,C04,C08,C01,C06,C02,C09,C03",
+          "流程更正：抽签后未按顺序核对，直接下载了第6顺位C01（01:30，SHA256 5da91afe…8036b，仅下载未研读；01:32:23那条的网址字段同为未替换占位符）；现回到抽签顺序从C10起核对。条件2预查：C10/C07/C05/C04/C08名称在仓库均0次出现",
+          "材料：不动产登记暂行条例（C10，抽签第1顺位）；网址 <URL>；公布 2019-03-24修订、现行有效；取得时间 2026-10-24 01:39；文件SHA256 81f65cbba36352882a1855cc59be55082864349b7a1633ed3d3512074622cd89；节选预核：第八至十四条，多款条6、E=32、约5KB（agent协助核对）",
+          "更正01:41:21那条的网址占位符：材料页URL https://flk.npc.gov.cn/detail?id=ff8080816f3cbb3c016f4127f0361a2d （不动产登记暂行条例，C10）（本条由agent代录入）",
+          "材料：不动产登记暂行条例（2024年修订，现行有效）；网址 https://flk.npc.gov.cn/detail?id=ff8081819c46fdc3019cd18cd0a71cd0&fileId=&type=&title=%E4%B8%8D%E5%8A%A8%E4%BA%A7%E7%99%BB%E8%AE%B0%E6%9A%82%E8%A1%8C%E6%9D%A1%E4%BE%8B；docx SHA-256 d3f317be995062222e98c5d3d8fcbb58123c72ac35d3047512f464656405e899"
+        ]
+      },
+      {
+        "step": "整理节选",
+        "attempts": 2,
+        "outcomes": [
+          "done",
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 16.6,
+        "activeMinutesByOperator": {
+          "Ll": 16.6
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "更正01:41:21预核：E=32系误算（第十四条7个项被计为款，半角括号未识别）。正确口径下第八至十四条E=21不达标，节选扩展至第十五条。定稿：第八至十五条共8条，多款条7、E=24、K=25、2985字节、逐字与官方docx一致（971字）、各条行数与官方段落一致。过程更正：agent曾误提供全角（四）~（七）文本，已按docx半角原文更正；条内空行由agent归一化（纯空白，不改字）；校验由agent执行（agent代录入）",
+          "第 2 次：从现行版 docx 重新整理，不从原节选.txt 复制，不用 AI",
+          "第 2 次整理节选：从 2024 版 docx 粘贴第八至十五条，粘贴带入 9 个 U+2060（WORD JOINER），用清理脚本去除；其余未改字"
+        ]
+      },
+      {
+        "step": "结构还原",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 6.5,
+        "activeMinutesByOperator": {
+          "Ll": 6.5
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "结构还原：作者排版（标题行、条间空行、删第三章）；agent 脚本去除粘贴带入的 U+2060，其余字节未动；项号原为全角，改 0 处"
+        ]
+      },
+      {
+        "step": "核对标签",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 2.2,
+        "activeMinutesByOperator": {
+          "Ll": 2.2
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "核对 17 处标签，错 0 处"
+        ]
+      },
+      {
+        "step": "出题与配置",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 6.1,
+        "activeMinutesByOperator": {
+          "agent:claude": 6.1
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "第 2 次（2024 版节选）：出题前查节选无 BOM/CR/U+2060，锁定文件 18 行一致；生成题包、自检、核价、写授权草稿",
+          "题包 196 请求 / E24 K25 / 门槛 22、2、+5、+2，与预期一致；核价不变；授权草稿已写，待作者核对题目与授权"
+        ]
+      },
+      {
+        "step": "运行",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 0.1,
+        "activeMinutesByOperator": {
+          "Ll": 0.1
+        },
+        "pausedMinutes": 25.6,
+        "hasLateEntries": false,
+        "notes": []
+      },
+      {
+        "step": "离线分析",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 0.0,
+        "activeMinutesByOperator": {
+          "agent:claude": 0.0
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": []
+      },
+      {
+        "step": "核对结果",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 2.7,
+        "activeMinutesByOperator": {
+          "Ll": 2.7
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "审查 agent 的离线分析数字",
+          "核对结果：四臂 verdict 分布复算一致（L-C0/L-C1 各 24/25，U-C1 32/17，U-C0 10+1/38），判定「证据不足」成立；另发现 L-C0 与 L-C1 逐条相同，判据句在有标签时无作用",
+          "【agent:claude 代录作者原话，不计人工】核对结果 2.7 分钟（08:51:08–08:53:50）：agent 预先给出四臂的预期分布，作者只做比对；登记预估这一步 0.5–1 小时。不能写成「人工核对用时 2.7 分钟」。"
+        ]
+      },
+      {
+        "step": "归档",
+        "attempts": 1,
+        "outcomes": [
+          "done"
+        ],
+        "state": "ended",
+        "activeMinutes": 3.3,
+        "activeMinutesByOperator": {
+          "agent:claude": 3.3
+        },
+        "pausedMinutes": 0.0,
+        "hasLateEntries": false,
+        "notes": [
+          "归档：结果文件、哈希清单、手填调用；账单等次日",
+          "今日部分完成：结果、哈希清单、回放、手填调用；账单与 summary 次日另起第 2 次"
+        ]
+      }
+    ],
+    "humanActiveMinutes": 29.7,
+    "agentActiveMinutes": 9.4,
+    "pausedMinutes": 25.6,
+    "wallClockMinutes": 453.6,
+    "firstAt": "2026-10-24T01:25:26-04:00",
+    "lastAt": "2026-10-24T08:59:00-04:00",
+    "stepsWithLateEntries": [
+      "取得材料"
+    ],
+    "lateStepActiveMinutes": 1.6,
+    "openSteps": [],
+    "running": null,
+    "runningSince": null,
+    "recordNotes": [
+      "【agent:claude 核对，代录，不计人工】①所用 docx 为 2019 年版；现行为 2024-03-10 第二次修订（国务院令第777号，2024-05-01 施行），第八条第二款「国土资源主管部门」现行为「自然资源主管部门」，合格条件1要求取最新版本，需重新取得现行版本后更正节选。②官方 docx 项号为半角「(一)」（全文42处，节选11处），锁定解析器按款解析：E=35、K=36、最小性不通过，补标签会插错；E=24、K=25 只在项号改为全角后成立，待作者决定。③取得材料实测1.6分钟只覆盖01:41:22–01:42:59，01:25–01:41未计时；整理节选16.5分钟含agent参与，不算纯人工分钟。详见 核对记录-20261024.md",
+      "【agent:claude 更正，代录，不计人工】02:16:39 那条第③点的「整理节选16.5分钟」有误：整理节选实测 14.9 分钟（01:48:52–02:03:47）；status 显示的人工分钟 16.5 是取得材料 1.6 与整理节选 14.9 之和。两步都含 agent 参与或补记，不算纯人工实测。另：第 2 次整理节选从现行版 docx 重做，不从原节选.txt 复制。详见 核对记录-20261024.md",
+      "增加步骤「离线分析」：登记执行顺序第 6 步「离线分析」由主线 agent 运行锁定运行器的 analyze，与作者的「核对结果」分开计时"
+    ],
+    "attempts": [
+      {
+        "step": "取得材料",
+        "operator": "Ll",
+        "activeSeconds": 97,
+        "late": true,
+        "attempt": 1
+      },
+      {
+        "step": "整理节选",
+        "operator": "Ll",
+        "activeSeconds": 895,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "整理节选",
+        "operator": "Ll",
+        "activeSeconds": 98,
+        "late": false,
+        "attempt": 2
+      },
+      {
+        "step": "结构还原",
+        "operator": "Ll",
+        "activeSeconds": 389,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "核对标签",
+        "operator": "Ll",
+        "activeSeconds": 134,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "出题与配置",
+        "operator": "agent:claude",
+        "activeSeconds": 366,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "运行",
+        "operator": "Ll",
+        "activeSeconds": 7,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "离线分析",
+        "operator": "agent:claude",
+        "activeSeconds": 1,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "核对结果",
+        "operator": "Ll",
+        "activeSeconds": 162,
+        "late": false,
+        "attempt": 1
+      },
+      {
+        "step": "归档",
+        "operator": "agent:claude",
+        "activeSeconds": 195,
+        "late": false,
+        "attempt": 1
+      }
+    ],
+    "attemptTimingNote": "分次秒数只读原始计时打点派生，暂停不计；steps 保留原汇总的一位小数，不将其反推为精确秒数。",
+    "qualifications": {
+      "取得材料": "第1次补记且有AI参与，01:25–01:41未计时，材料作废；第2次仅note、未实测。",
+      "整理节选": "第1次作者与agent协作、作废；第2次熟手操作。",
+      "结构还原": "熟手；agent脚本去U+2060；另156秒在两步之间未计入。",
+      "核对标签": "熟手操作。",
+      "核对题目": "无start/end，未实测。",
+      "核对结果": "agent事先给出预期分布，作者只比对；不能写成独立人工核对用时。",
+      "归档": "agent操作，不算人工；账单后补。"
+    }
+  },
+  "deploymentHumanSeconds": 523,
+  "contextBytes": {
+    "deltaBytes": 279,
+    "deltaPercent": 9.2,
+    "deltaChars": 93,
+    "plain": {
+      "bytes": 3029,
+      "chars": 1037,
+      "sha256": "b34aa65f795bca500e0817b5423f811ba1e7448e6c6b527a832bc57cbdea72f0"
+    },
+    "labeled": {
+      "bytes": 3308,
+      "chars": 1130,
+      "sha256": "17b1f761f691cf73efdcf07fe65c09a42166f24457977f8a3dccf15cfd6f15f1"
+    }
+  },
+  "arms": {
+    "U-C0": {
+      "requests": 49,
+      "meanMessageBytes": 4171.1,
+      "meanPromptTokens": 845.4,
+      "meanCompletionTokens": 98.7,
+      "estimatedCostCny": "0.121548"
+    },
+    "L-C0": {
+      "requests": 49,
+      "meanMessageBytes": 4450.1,
+      "meanPromptTokens": 898.4,
+      "meanCompletionTokens": 107.4,
+      "estimatedCostCny": "0.130134"
+    },
+    "U-C1": {
+      "requests": 49,
+      "meanMessageBytes": 4414.1,
+      "meanPromptTokens": 898.4,
+      "meanCompletionTokens": 117.8,
+      "estimatedCostCny": "0.134238"
+    },
+    "L-C1": {
+      "requests": 49,
+      "meanMessageBytes": 4693.1,
+      "meanPromptTokens": 951.4,
+      "meanCompletionTokens": 105.4,
+      "estimatedCostCny": "0.134560"
+    }
+  },
+  "startedRequests": 196,
+  "failedOrIncomplete": 0,
+  "retries": 0,
+  "manualCalls": [
+    {
+      "kind": "assistant",
+      "provider": "Anthropic",
+      "model": "Claude（Claude Code 主线会话及其分叉会话）",
+      "requests": null,
+      "countSource": "没有统计；Claude Code 订阅会话不按请求计数",
+      "promptTokens": null,
+      "completionTokens": null,
+      "estimatedCostCny": null,
+      "billing": "subscription",
+      "authorization": null,
+      "notes": "用于核对、出题与配置、授权草稿、离线分析、归档；第 2 次结构还原里去 U+2060 的 agent 脚本也在其列（具体由哪个会话写的没有记录）。不发 DeepSeek 请求。"
+    },
+    {
+      "kind": "assistant",
+      "provider": null,
+      "model": "另一个 AI 会话（作者转述，具体产品未记录）",
+      "requests": null,
+      "countSource": "没有统计",
+      "promptTokens": null,
+      "completionTokens": null,
+      "estimatedCostCny": null,
+      "billing": null,
+      "authorization": null,
+      "notes": "参与第 1 次取得材料与整理节选（2026-10-24 01:25–02:03），这次材料已作废。"
+    }
+  ],
+  "estimatedCostCny": "0.520480",
+  "estimateComplete": false,
+  "estimateNote": "估算，不是账单",
+  "actualBillCny": "0.25",
+  "attributable": true,
+  "notMeasured": [
+    "人工分钟：取得材料 含补记时间，共 1.6 分钟不是实时打点",
+    "手填调用 assistant：请求数",
+    "手填调用 assistant：请求数",
+    "手填调用 assistant：费用估算"
+  ],
+  "bill": {
+    "schemaVersion": 1,
+    "provider": "deepseek",
+    "billingPeriod": {
+      "from": "2026-10-24",
+      "to": "2026-10-24"
+    },
+    "actualBillCny": "0.25",
+    "checkedAt": "2026-10-24",
+    "checkedBy": "Ll",
+    "evidence": {
+      "description": "DeepSeek 开放平台「用量信息」页截图。消费金额图悬停 2026-10-24，显示 deepseek-flash ¥0.25；下方分模型请求次数图悬停同一天，显示请求次数 196。与本次运行计划的 196 次请求逐一对上。",
+      "sha256": "96803ceee1c91af5543860305cb90475757d2452bba59aacfb039a93eabdff5d"
+    },
+    "otherUsageInPeriod": false,
+    "attributable": true,
+    "attributionNote": "控制台按日统计显示 2026-10-24 请求次数恰为 196，与本次运行 plannedRequests=196 一致，说明当日 deepseek-flash 的调用全部来自本次运行，无其他用量，故全额归因。deepseek-v4-pro 的 7 次不在当日。",
+    "notes": [
+      "账单按北京时间统计日期；本次运行实际发生在 2026-10-24 08:11–08:19（EDT，UTC-4），对应北京时间 2026-10-24 20:11–20:19，同为 10-24。",
+      "授权估算 ¥0.520480，实际账单 ¥0.25，估算偏高约 108%。估算方向偏保守，未低估。",
+      "差额的可能来源是输入缓存命中（缓存命中单价为未命中的 1/50），但控制台未提供逐次缓存命中明细，此点未核实，不作为结论。",
+      "实际费用取账单总额，未做分摊——依据是当日请求次数与运行计划完全一致。",
+      "本文件只记录账单事实，不改动运行结果、判定或台账分数。"
+    ]
+  },
+  "billScreenshotArchived": false,
+  "billEvidenceNote": "账单截图没有归档；只有账单记录中的说明及SHA-256，未独立核验截图。",
+  "machine": {
+    "firstRequestStartAt": "2026-10-24T12:11:52.121794+00:00",
+    "lastRequestEndAt": "2026-10-24T12:19:46.872993+00:00",
+    "elapsedSeconds": 474.751199,
+    "roundedSeconds": 475,
+    "display": "7分55秒",
+    "basis": "首个请求start至末个请求end，不采用人工pause打点。"
+  }
+}

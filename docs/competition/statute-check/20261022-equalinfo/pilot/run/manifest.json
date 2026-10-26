@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-equalinfo-v2",
+  "stopReason": "completed",
+  "attempts": 96,
+  "completedRecords": 64,
+  "plannedRequests": 160,
+  "plannedUnits": 64,
+  "estimatedCostCny": "0.76396677",
+  "actualBillCny": null,
+  "costNote": "各HTTP发送前按消息UTF-8字节+256输入、该调用maxTokens输出及授权单价预留；累计计费加本次预留超过budgetCny则拒发并停止。有usage按授权单价计费；无usage按此前同裁判同类别有usage调用的费用均值插补，再退回同裁判任意类别均值，最后本次预留。调用或解析失败记缺失后继续、不重试；实际模型缺失或超预留仅在haltOn列出时停止。消息最多65536字节，超限单元缺失，不发送不计费。费用是按授权单价的估算，不是账单或供应商扣费硬上限。",
+  "phase": "pilot",
+  "haltOn": [],
+  "requestsByCondition": {
+    "J1": 16,
+    "J2": 16,
+    "R1": 32,
+    "R2": 32
+  },
+  "finishedAt": "2026-10-22T08:02:39.182744+00:00"
+}

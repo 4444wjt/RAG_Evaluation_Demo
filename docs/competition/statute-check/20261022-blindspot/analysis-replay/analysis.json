@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-blindspot-v1",
+  "registrationSha256": "3703256a6e24f2a1c848a772638d7f71286896843ddfd4682239fc72a47f4d06",
+  "cells": {
+    "U--款级": {
+      "items": 10,
+      "notSupported": 1,
+      "ids": [
+        "paragraph_existing-A42P1toP2"
+      ],
+      "detected": 1,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": []
+    },
+    "U--条级": {
+      "items": 10,
+      "notSupported": 10,
+      "ids": [
+        "article_swap-A29toA30",
+        "article_swap-A30toA31",
+        "article_swap-A31toA32",
+        "article_swap-A32toA33",
+        "article_swap-A33toA34",
+        "article_absent-A29toA35",
+        "article_absent-A30toA36",
+        "article_absent-A31toA39",
+        "article_absent-A32toA40",
+        "article_absent-A33toA41"
+      ],
+      "detected": 10,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": []
+    },
+    "U--对照": {
+      "items": 5,
+      "notSupported": 0,
+      "ids": [],
+      "detected": 0,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": []
+    },
+    "L--款级": {
+      "items": 10,
+      "notSupported": 10,
+      "ids": [
+        "paragraph_existing-A29P1toP2",
+        "paragraph_existing-A29P2toP1",
+        "paragraph_existing-A33P1toP2",
+        "paragraph_existing-A33P2toP3",
+        "paragraph_existing-A33P3toP1",
+        "paragraph_existing-A42P1toP2",
+        "paragraph_existing-A42P2toP1",
+        "paragraph_absent-A29toP3",
+        "paragraph_absent-A30toP2",
+        "paragraph_absent-A31toP2"
+      ],
+      "detected": 10,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": []
+    },
+    "L--对照": {
+      "items": 5,
+      "notSupported": 0,
+      "ids": [],
+      "detected": 0,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": []
+    }
+  },
+  "thresholds": {
+    "blindSpot": {
+      "arm": "U",
+      "layer": "款级",
+      "rule": "detected <= 3",
+      "of": 10,
+      "detected": 1,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "met": true,
+      "robust": true
+    },
+    "intervention": {
+      "arm": "L",
+      "layer": "款级",
+      "rule": "detected >= 7",
+      "of": 10,
+      "detected": 10,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "met": true,
+      "robust": true
+    },
+    "usableU": {
+      "arm": "U",
+      "layer": "对照",
+      "rule": "falsePositives <= 1",
+      "of": 5,
+      "detected": 0,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "met": true,
+      "robust": true
+    },
+    "usableL": {
+      "arm": "L",
+      "layer": "对照",
+      "rule": "falsePositives <= 1",
+      "of": 5,
+      "detected": 0,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "met": true,
+      "robust": true
+    },
+    "layered": {
+      "arm": "U",
+      "layer": "条级",
+      "rule": "detected >= 7",
+      "of": 10,
+      "detected": 10,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "met": true,
+      "robust": true
+    }
+  },
+  "established": true,
+  "robust": true,
+  "pairedUtoL": {
+    "newDetections": {
+      "count": 9,
+      "ids": [
+        "paragraph_existing-A29P1toP2",
+        "paragraph_existing-A29P2toP1",
+        "paragraph_existing-A33P1toP2",
+        "paragraph_existing-A33P2toP3",
+        "paragraph_existing-A33P3toP1",
+        "paragraph_existing-A42P2toP1",
+        "paragraph_absent-A29toP3",
+        "paragraph_absent-A30toP2",
+        "paragraph_absent-A31toP2"
+      ]
+    },
+    "lostDetections": {
+      "count": 0,
+      "ids": []
+    },
+    "newFalsePositives": {
+      "count": 0,
+      "ids": []
+    },
+    "reducedFalsePositives": {
+      "count": 0,
+      "ids": []
+    },
+    "unavailable": {
+      "count": 0,
+      "ids": []
+    }
+  },
+  "records": {
+    "total": 40,
+    "ok": 40,
+    "failed": [],
+    "notAttempted": 0
+  },
+  "detection": "检出 = verdict 为 contradicted 或 insufficient；失败或解析失败单列为不可用，不算未检出。"
+}

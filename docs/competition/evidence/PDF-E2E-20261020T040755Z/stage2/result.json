@@ -1,0 +1,202 @@
+{
+  "status": "NOT_EXECUTED",
+  "executed": false,
+  "preflight_exit_code": 20,
+  "evaluation_exit_code": null,
+  "run_utc": "2026-10-20T04:13:33.723762+00:00",
+  "reasons": [
+    "TOKEN_ESTIMATE_EXCEEDS_100000",
+    "PER_MODEL_CSV_OUTSIDE_SIX_PATH_ISOLATION"
+  ],
+  "answer_model": {
+    "configured": "deepseek-chat",
+    "response_model": null
+  },
+  "judge_model": {
+    "configured": "deepseek-chat",
+    "mode": "self",
+    "response_model": null
+  },
+  "model_selection": "Only the first configured answer model; no model configuration or generation parameter changed.",
+  "testset": {
+    "planned_positive": 3,
+    "planned_negative": 3,
+    "planned_total": 6,
+    "generated_total": null,
+    "evaluated_total": 0
+  },
+  "token_usage": {
+    "calls": [],
+    "observed_model_api_calls": 0,
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "total_tokens": null,
+    "reason": "No model API call was made; no server usage exists. Planning proxies are not actual usage."
+  },
+  "estimated_tokens": 159929,
+  "ragas_metrics": {
+    "faithfulness": null,
+    "context_precision": null,
+    "answer_relevancy": null,
+    "answer_correctness": null,
+    "context_recall": null
+  },
+  "gate": {
+    "verdict": "NOT_RUN",
+    "gate_passed": null,
+    "reason": "Evaluation did not run; no gate decision was produced.",
+    "thresholds": {
+      "faithfulness": 0.8,
+      "context_precision": 0.8
+    }
+  },
+  "parse_check": {
+    "source_fingerprint": {
+      "sha256": "fa8f8923bde06cfb3c682e004ebd12fd14ce53cff72a9365e1fff740e92f1a4f",
+      "size_bytes": 543576,
+      "extension": ".pdf"
+    },
+    "loader": {
+      "name": "pypdf",
+      "version": "6.19.0"
+    },
+    "checker_version": "1.0.0",
+    "chunk_parameters": {
+      "chunk_size": 200,
+      "chunk_overlap": 30
+    },
+    "verdict": "PASS",
+    "pages": [
+      {
+        "page_number": 1,
+        "char_count": 614,
+        "han_count": 350,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": false,
+        "verdict": "PASS",
+        "reasons": []
+      },
+      {
+        "page_number": 2,
+        "char_count": 1080,
+        "han_count": 725,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": false,
+        "verdict": "PASS",
+        "reasons": []
+      },
+      {
+        "page_number": 3,
+        "char_count": 902,
+        "han_count": 556,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": false,
+        "verdict": "PASS",
+        "reasons": []
+      },
+      {
+        "page_number": 4,
+        "char_count": 826,
+        "han_count": 410,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": false,
+        "verdict": "PASS",
+        "reasons": []
+      },
+      {
+        "page_number": 5,
+        "char_count": 710,
+        "han_count": 422,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": false,
+        "verdict": "PASS",
+        "reasons": []
+      },
+      {
+        "page_number": 6,
+        "char_count": 7,
+        "han_count": 5,
+        "replacement_count": 0,
+        "c0_control_count": 0,
+        "c1_control_count": 0,
+        "del_control_count": 0,
+        "control_count": 0,
+        "cid_count": 0,
+        "control_ratio": 0.0,
+        "replacement_ratio": 0.0,
+        "cid_marker_ratio": 0.0,
+        "has_image": true,
+        "verdict": "PASS",
+        "reasons": []
+      }
+    ]
+  },
+  "source_fingerprint": {
+    "sha256": "fa8f8923bde06cfb3c682e004ebd12fd14ce53cff72a9365e1fff740e92f1a4f",
+    "size_bytes": 543576,
+    "extension": ".pdf"
+  },
+  "output_isolation": {
+    "root_paths_unchanged": true,
+    "per_path": {
+      "CHROMA_DIR": true,
+      "SUMMARY_OUTPUT": true,
+      "HTML_OUTPUT": true,
+      "CHART_PATH": true,
+      "HISTORY_PATH": true,
+      "TREND_CHART_PATH": true
+    },
+    "additional_csv_unchanged": true,
+    "protected_files_count": 239,
+    "protected_files_unchanged": true,
+    "source_sha256_unchanged": true,
+    "six_path_import_checks_passed": true,
+    "full_evaluate_output_isolation_possible_with_only_six_constants": false,
+    "additional_uncontrolled_output": "ragas_report_deepseek-chat.csv"
+  },
+  "limitations": [
+    "No embeddings, vector ingestion, retrieval, generation, Ragas, Trace or quality gate executed.",
+    "Budget is a conservative local proxy based on planning lengths, not exact DeepSeek billing.",
+    "Sample B was not processed. No pypdf patches, source changes, dependency changes, commit or push."
+  ]
+}

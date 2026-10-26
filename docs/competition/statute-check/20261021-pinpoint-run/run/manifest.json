@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-pinpoint-prep-v1",
+  "finishedAt": "2026-10-22T02:06:49.741090+00:00",
+  "stopReason": "completed",
+  "attempts": 264,
+  "completedRecords": 264,
+  "plannedRequests": 264,
+  "estimatedCostCny": "0.64859010",
+  "actualBillCny": null,
+  "costNote": "每次请求发送前按「消息 UTF-8 字节数 + 256」作输入 token、maxTokens 作输出 token，以授权单价预留本次费用；已累计费用加本次预留超过 budgetCny 即停止、不发送。返回 usage 有效时按实际 usage 与授权单价累计；usage 缺失（含调用失败）时按本次预留额累计并停止；实际模型缺失、或实际计费超过本次预留时同样停止。不重试。按授权单价估算，不是供应商实际扣费；供应商侧没有费用自动封顶。"
+}

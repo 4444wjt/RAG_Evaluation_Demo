@@ -1,0 +1,1635 @@
+{
+  "schemaVersion": 1,
+  "method": [
+    "只取 package.json 中 type 为 paragraph_existing 或 paragraph_absent、expected 为 not_supported 的材料；records.json 中 status == ok 且 result.verdict == supported 的记录计为漏检。original 与 pinpoint 分别报告，对外主张只引用 original。",
+    "用正则 第[一二三四五六七八九十]+款 抽取款号集合；stated 来自 statement，said 来自 result.reason；不匹配单个字符「款」。",
+    "分类优先级：said 为空为 no_paragraph_in_reason；否则 stated 与 said 有交集为 repeats_stated_paragraph；否则为 names_other_paragraph。",
+    "namesCorrectParagraph 仅在 names_other_paragraph 且 said 等于 {第<cn_label(sourceLocation.paragraph)>款} 时为 true；saidContainsCorrectParagraph 记录 said 是否含正确款号，包含 repeats_stated_paragraph 的情况，不改变分类。",
+    "hasArticleBoundParagraph 用正则 第[一二三四五六七八九十]+条第[一二三四五六七八九十]+款 抽取连续写法，检查其中是否含 sourceLocation 的正确条号与正确款号绑定的写法，不改变分类。"
+  ],
+  "inputSha256": {
+    "package.json": "a70506f4502780194fce6c3f611cc494e1bb371f9c5b2d36749fbc32e9fc958f",
+    "records.json": "437da9a0bcf08822a811e3c58bbbf224ec84cc7ab03a49d3cfe7f31ccb660711"
+  },
+  "recordLocator": "在输入 records.json 中以 itemId + judge + prompt 唯一定位；理由见 result.reason。",
+  "byPromptJudgeCategory": {
+    "original": {
+      "deepseek": {
+        "no_paragraph_in_reason": 22,
+        "repeats_stated_paragraph": 6,
+        "names_other_paragraph": 2
+      },
+      "qwen72b": {
+        "no_paragraph_in_reason": 10,
+        "repeats_stated_paragraph": 14,
+        "names_other_paragraph": 6
+      }
+    },
+    "pinpoint": {
+      "deepseek": {
+        "no_paragraph_in_reason": 0,
+        "repeats_stated_paragraph": 9,
+        "names_other_paragraph": 0
+      },
+      "qwen72b": {
+        "no_paragraph_in_reason": 10,
+        "repeats_stated_paragraph": 12,
+        "names_other_paragraph": 8
+      }
+    }
+  },
+  "byPromptCategory": {
+    "original": {
+      "no_paragraph_in_reason": 32,
+      "repeats_stated_paragraph": 20,
+      "names_other_paragraph": 8
+    },
+    "pinpoint": {
+      "no_paragraph_in_reason": 10,
+      "repeats_stated_paragraph": 21,
+      "names_other_paragraph": 8
+    }
+  },
+  "misses": [
+    {
+      "itemId": "paragraph_absent-S01",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S03",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S07",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S13",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S19",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S21",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S26",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S27",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S28",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S41",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第二款",
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S49",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S50",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P1",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P3",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P4",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S03-P2",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P3",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P4",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P2",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P3",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P4",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S13-P2",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P1",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P2",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P4",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S27-P1",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S41-P1",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S41-P3",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S49-P2",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S50-P1",
+      "judge": "deepseek",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S01",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [
+        "第五款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S03",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S07",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S13",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S19",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S21",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S26",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S27",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款",
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S28",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S41",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S49",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S50",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P1",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P3",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P4",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P2",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P3",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P4",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P2",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P3",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S07-P4",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S13-P2",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S19-P1",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P2",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P4",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S27-P1",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S41-P1",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S41-P3",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S49-P2",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S50-P1",
+      "judge": "qwen72b",
+      "prompt": "original",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S28",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S49",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P1",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S03-P2",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P4",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第四款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S13-P2",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S27-P1",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S49-P2",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S50-P1",
+      "judge": "deepseek",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S01",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S03",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S07",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第五款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S13",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S21",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S26",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S27",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款",
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S28",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S36",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_absent-S41",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S49",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_absent-S50",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_absent",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S01-P1",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P3",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第三款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S01-P4",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P2",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S03-P3",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S03-P4",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S07-P2",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P3",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S07-P4",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S13-P2",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S19-P1",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P2",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S19-P4",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第四款"
+      ],
+      "said": [],
+      "category": "no_paragraph_in_reason",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S27-P1",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款",
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S41-P1",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S41-P3",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第三款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "names_other_paragraph",
+      "namesCorrectParagraph": true,
+      "saidContainsCorrectParagraph": true,
+      "hasArticleBoundParagraph": true
+    },
+    {
+      "itemId": "paragraph_existing-S49-P2",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第二款"
+      ],
+      "said": [
+        "第二款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    },
+    {
+      "itemId": "paragraph_existing-S50-P1",
+      "judge": "qwen72b",
+      "prompt": "pinpoint",
+      "type": "paragraph_existing",
+      "stated": [
+        "第一款"
+      ],
+      "said": [
+        "第一款"
+      ],
+      "category": "repeats_stated_paragraph",
+      "namesCorrectParagraph": false,
+      "saidContainsCorrectParagraph": false,
+      "hasArticleBoundParagraph": false
+    }
+  ],
+  "namesOtherParagraphIds": {
+    "original": [
+      {
+        "itemId": "paragraph_existing-S01-P4",
+        "judge": "deepseek"
+      },
+      {
+        "itemId": "paragraph_existing-S50-P1",
+        "judge": "deepseek"
+      },
+      {
+        "itemId": "paragraph_absent-S07",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_absent-S13",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_absent-S49",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S07-P3",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S13-P2",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S49-P2",
+        "judge": "qwen72b"
+      }
+    ],
+    "pinpoint": [
+      {
+        "itemId": "paragraph_absent-S13",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_absent-S41",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_absent-S49",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_absent-S50",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S03-P3",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S03-P4",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S13-P2",
+        "judge": "qwen72b"
+      },
+      {
+        "itemId": "paragraph_existing-S41-P3",
+        "judge": "qwen72b"
+      }
+    ]
+  }
+}

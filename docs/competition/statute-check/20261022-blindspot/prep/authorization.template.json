@@ -1,0 +1,37 @@
+{
+  "status": "draft",
+  "allowPaidCalls": false,
+  "authorizedBy": null,
+  "authorizedAt": null,
+  "note": null,
+  "packageSha256": "f6fe7b3d79e2a7f1d4239c3b9699a0cb995e1d07c2be5d77641e6604c8c48b9e",
+  "checksumsSha256": "562adf2b93fa8ed59c531f7893aec2d6a7a540c8f0524b351368d6c33bf3cf01",
+  "requestsSha256": "04aa30becd19b3e9123d9535b0259990595f3ef5d6b35678db1dbeffc6feb28e",
+  "plainSha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6",
+  "labeledSha256": "965f33bc44cd35988039c6a8497ad8524c4ea462c89c8f2001021dcd517e7ea9",
+  "registrationSha256": "3703256a6e24f2a1c848a772638d7f71286896843ddfd4682239fc72a47f4d06",
+  "configurationSha256": "157e326e5c9d91e99904476fa2deac1a69e455586f893afee437d7bf9b782ee2",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "toolFiles": {
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "tools/competition/judge_sensitivity.py": "ed5ecf2e51801521738c5faf4ba5f66eb47ffe9bf48b5b4ff83d7b66225225d0",
+    "tools/competition/judge_compare.py": "8db1a8740ebb1b92b2853331663e2c1ea836ef80eeca5300b4edffa342cde127",
+    "tools/competition/run_evidence.py": "67d3d8194392f15b9ce884b5bb69f6df154396936f45fb99ea28276ce6999a43",
+    "tools/competition/judge_calibration.py": "65d689e70371240293fc8d439214efb9bab2cabaa9f920b87f909919ce4a0b31",
+    "tools/competition/statute_blindspot.py": "165710206d94ecce0277dc7d95dea6b022b31c23f171478bdeb1ebe4dd69b73d",
+    "tests/test_statute_blindspot.py": "2cb1909afc063bff6beed93471924208b772b6a7e1ca1e5b90a3364ae705cea0"
+  },
+  "maxRequests": 40,
+  "maxRetries": 0,
+  "budgetCny": null,
+  "prices": {
+    "deepseek": {
+      "inputCnyPerMillion": null,
+      "outputCnyPerMillion": null,
+      "source": null,
+      "checkedAt": null
+    }
+  },
+  "outputDirectory": null
+}

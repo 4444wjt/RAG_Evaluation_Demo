@@ -6,8 +6,36 @@
 
 ## [未发布]
 
+### 许可变更（2026-10-25）
+- 本项目自有代码的许可由 MIT 改为 Apache License 2.0：`LICENSE` 换为 Apache-2.0 官方全文，保留 `Copyright (c) 2026 KK`；README、README.en、CITATION、贡献指南、发布检查清单、作品介绍（md/html）与工作台、首页的许可文案同步更新，许可徽章改为静态 shields 徽章并删除旧图片。
+- 冻结的 `docs/competition/project-introduction.pdf`、`scenarios/competition_25/case-manifest.json` 及其归档副本仍写 MIT，按冻结规则不改；第三方代码与依赖的许可不变。
+
+### 冻结回答多裁判重复评分试跑（2026-10-21）
+- 归档 `docs/competition/judge-rerun/20261021-pilot/`：AnythingLLM 正式归档中 10 条正向回答不重新生成，三个裁判各重判两次，共 120 次请求，按冻结最高价估算 ¥1.62，无账单。Qwen2.5-72B、GLM-4-32B 两次之间分别有 4 题、3 题分数变化，10 题子集均值从 0.8 以下变为 0.8 以上；DeepSeek 1 题变化。这只是子集上的探索性观察，原正式 FAIL 与归档分数不变。
+- 258 个文件按源字节原样收录，附 `SHA256SUMS.txt` 与只读离线复算脚本 `verify_archive.js`；`.gitattributes` 为该目录增加一条 `-text` 目录级规则，`AGENTS.md` 第 3 节同步为 5 条。
+- 修正 `docs/competition/gate-credibility.md` 中「噪声基线说明原裁判自身稳定」的说法：基线只重判了一次，独立裁判自身的重判波动未测；`docs/judge-comparison.md`「边界」补充同一点。
+
+### 法条结构核对（2026-10-21）
+- 新增 `backend/core/statute_check.py`：用法规原文还原条、款、项结构，给缺少条号标题的检索片段补回所属条款，逐句核对条号归属、「某条未规定」类否定、数额期限、单位与情态词。纯函数，不调用模型，不进入门禁口径。
+- 四次已归档运行的 100 个回答中只检出 10-14 的 F04：回答引用节选中没有的第十八条，并称第十九条未规定偿付时限；同次运行的逐句核对把后一句判为有依据。C02 由题目推算的金额记为提示，不算检出。
+- 新增 `tools/competition/statute_injection.py`：以 V、A、B 三人都判为支持的 11 条陈述为底稿，构造 29 条单处注入错误与 13 条对照。规则离线检出 24 / 29，对照无误报（离线口径、无裁判对比）；漏检 5 条（含 2 条不在覆盖范围的极性反转）已逐条说明。
+- 正式运行规则与两个通用裁判的对比，归档 `docs/competition/statute-check/20261021-formal/`：作者运行前逐条确认 42 条材料并定下分组口径。内容类 8 条：规则在覆盖的两类上检出 6/6，「否定改肯定」2 条由裁判兜底，合用时 8/8；条号类 16 条：规则 14、DeepSeek 14、Qwen2.5-72B 4；「应当」改「可以」5 条单列：规则 4、DeepSeek 5、Qwen2.5-72B 0。规则零误报，两个裁判都把同一条正确对照 C-S36 判为矛盾。两套口径的规则结果相同（24 = 6 + 14 + 4），差别只在分组与是否和裁判对比。84 次请求全部成功、无重试，按返回用量估算约 ¥0.20（非账单）。`.gitattributes` 为归档的 28 个文件逐个写规则。
+- 新增 `tools/competition/statute_scan.py` 与测试 `tests/test_statute_check.py`、`tests/test_statute_injection.py`（离线，不调用模型）。说明见 `docs/competition/statute-check/README.md`。
+
+### 第二轮非作者人工标注：A、B 两人（2026-10-21）
+- 2 位新的非作者标注人（代号 A、B）各自标完门禁所用的 52 条陈述，用的是与 V 相同的盲标注材料。按事先写定的两人口径和命令分析，工具与口径都未改：四类标签一致率 88.5%、κ 0.639，只分支持与否 κ 0.764（49 条）。
+- 人工口径 68.8%–82.5%（裁判口径 73.75%），6 条未决，跨过 80% 门槛；有未决陈述时不给区间、不下结论，已记录的 FAIL 不改。V–A、V–B 两种组合都是 72.5%–82.5%，结论相同。
+- 裁判没有偏松：两人都判为不支持的 6 条，裁判全部判为不支持；不一致的 2 条都是裁判更严，与 V 标出的相同。
+- 归档于 `docs/competition/judge-calibration/20261021-annotation-AB/`。标注文件只把 `annotator` 改为代号，其余字节未改；`.gitattributes` 为新增文件补了逐文件规则。V 的归档未改动；工作台「门禁审计」页仍显示 V 的单人结果。
+
+### 第三方真实系统端到端实测：AnythingLLM（2026-10-21）
+- 经授权，在 AnythingLLM v1.18.0（官方 tag 源码构建的本机实例，非桌面安装包）上跑完 25 题，裁判 Qwen2.5-72B，与 10-14 自写示例应用逐字段相同：25 题全部评测完成，正向忠实度 0.765，门禁 FAIL。归档于 `docs/competition/external-rag/20261021-anythingllm-qwen72b/`。
+- 新增 `examples/anythingllm_shim/shim.py`，把 `veriscope.e2e.v1` 请求转换为 AnythingLLM 开发者 API 调用；DeepSeek 适配器拼在回答前的 `<think>` 推理块按运行前锁定的规则剥离，原文与哈希保留。
+- 运行前后用只读快照、受审源码逐字节比对和逐题字节上界检查，25 题的上下文对应关系均在所列前提下得到证明；这不是供应商侧抓包。
+- 拒答准确率仍为 0：AnythingLLM 的负样本回答没有被固定短语识别为拒答，与 10-14 的发现相同，识别规则未改。
+
 ### 独立裁判与外部 RAG 端到端的首次真实运行（2026-10-14）
-- 经授权，修复后的版本换 Qwen2.5-72B 作裁判重跑 25 题：正向忠实度 0.7992，门禁 FAIL。DeepSeek 自评时是 0.8607、PASS，修复后的 PASS 依赖裁判。归档于 `docs/competition/evidence/20261014T125415Z-full-a5002d4f/`。
+- 经授权，修复后的版本重新生成回答，并换 Qwen2.5-72B 作裁判重跑 25 题：正向忠实度 0.7992，门禁 FAIL。DeepSeek 自评时是 0.8607、PASS，两次部分回答不同，不能把 PASS／FAIL 变化全部归因于裁判。归档于 `docs/competition/evidence/20261014T125415Z-full-a5002d4f/`。
 - 经授权，用自写的示例应用 `examples/external_rag_app/app.py`（标准库，词法检索，DeepSeek 生成）跑通 `veriscope.e2e.v1` 端到端链路：25 题全部评测完成，门禁 FAIL。归档于 `docs/competition/external-rag/20261014-example-app-qwen72b/`。
 - `run_evidence.py` 新增 `--judge-model`，可在正式运行中单独指定裁判。
 - 两次运行都发现，同一裁判给出的忠实度与逐句核对互相矛盾：多道题逐句全部有依据，忠实度却很低。原因未核实，门禁口径未改。

@@ -1,0 +1,221 @@
+{
+  "accuracy": null,
+  "actual_paid_bill_cny": null,
+  "answer_generation_calls": 0,
+  "attempted_combinations": 60,
+  "budget_cny": "5.00",
+  "completed_http_responses": 120,
+  "estimated_ceiling_cost_cny": "1.62230796",
+  "false_positive_rate": null,
+  "finite_scores": 60,
+  "full_historical_gate_recomputed": false,
+  "git_status_unchanged": false,
+  "independent_correctness_labels": null,
+  "maximum_accounted_exposure_cny": "1.62230796",
+  "model_results": {
+    "deepseek": {
+      "completion_tokens": 11493,
+      "estimated_ceiling_cost_cny": "0.411782",
+      "model": "deepseek-flash",
+      "paired_cases": [
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C03"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C04"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F01"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F04"
+        },
+        {
+          "absolute_difference": 0.11111111111111116,
+          "case_id": "C01"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D04"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D07"
+        }
+      ],
+      "prompt_tokens": 159919,
+      "repetitions": {
+        "1": {
+          "all_ten_mean": 0.9146031746031745,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "PASS",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.9146031746031745
+        },
+        "2": {
+          "all_ten_mean": 0.9257142857142856,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "PASS",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.9257142857142856
+        }
+      }
+    },
+    "glm32b": {
+      "completion_tokens": 8623,
+      "estimated_ceiling_cost_cny": "0.34630281",
+      "model": "THUDM/GLM-4-32B-0414",
+      "paired_cases": [
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C03"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C04"
+        },
+        {
+          "absolute_difference": 0.4821428571428571,
+          "case_id": "F01"
+        },
+        {
+          "absolute_difference": 0.08333333333333337,
+          "case_id": "F04"
+        },
+        {
+          "absolute_difference": 0.16666666666666663,
+          "case_id": "C01"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D04"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D07"
+        }
+      ],
+      "prompt_tokens": 174606,
+      "repetitions": {
+        "1": {
+          "all_ten_mean": 0.7815476190476189,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "FAIL",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.7815476190476189
+        },
+        "2": {
+          "all_ten_mean": 0.8547619047619047,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "PASS",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.8547619047619047
+        }
+      }
+    },
+    "qwen72b": {
+      "completion_tokens": 14598,
+      "estimated_ceiling_cost_cny": "0.86422315",
+      "model": "Qwen/Qwen2.5-72B-Instruct",
+      "paired_cases": [
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C03"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F05"
+        },
+        {
+          "absolute_difference": 0.125,
+          "case_id": "C04"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "F01"
+        },
+        {
+          "absolute_difference": 0.6,
+          "case_id": "F04"
+        },
+        {
+          "absolute_difference": 0.4285714285714286,
+          "case_id": "C01"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "C05"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D05"
+        },
+        {
+          "absolute_difference": 0.5,
+          "case_id": "D04"
+        },
+        {
+          "absolute_difference": 0.0,
+          "case_id": "D07"
+        }
+      ],
+      "prompt_tokens": 194657,
+      "repetitions": {
+        "1": {
+          "all_ten_mean": 0.6703571428571429,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "FAIL",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.6703571428571429
+        },
+        "2": {
+          "all_ten_mean": 0.8357142857142857,
+          "attempted": 10,
+          "exploratory_subset_gate_at_0_8": "PASS",
+          "total": 10,
+          "valid": 10,
+          "valid_only_mean_descriptive": 0.8357142857142857
+        }
+      }
+    }
+  },
+  "other_metrics_calls": 0,
+  "planned_combinations": 60,
+  "protected_files_unchanged": true,
+  "reserved_requests": 120,
+  "unknown_usage_reserved_cny": "0",
+  "updated_at": "2026-10-21T10:00:29.096129+00:00"
+}

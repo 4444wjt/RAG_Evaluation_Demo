@@ -1,0 +1,29 @@
+backend\config.py:22:CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
+backend\config.py:23:SUMMARY_OUTPUT = os.path.join(BASE_DIR, "multi_model_summary.csv")
+backend\config.py:24:HTML_OUTPUT = os.path.join(BASE_DIR, "ragas_report.html")
+backend\config.py:25:CHART_PATH = os.path.join(BASE_DIR, "result_chart.png")
+backend\config.py:26:HISTORY_PATH = os.path.join(BASE_DIR, "eval_history.json")
+backend\config.py:27:TREND_CHART_PATH = os.path.join(BASE_DIR, "trend_chart.png")
+backend\storage\json_history.py:15:def load_history(path=config.HISTORY_PATH):
+backend\storage\json_history.py:31:def save_eval_record(record, path=config.HISTORY_PATH):
+backend\storage\json_history.py:42:def history_to_dataframe(path=config.HISTORY_PATH):
+backend\storage\json_history.py:76:        return load_history(path if path is not None else config.HISTORY_PATH)
+backend\storage\json_history.py:79:        save_eval_record(record, path if path is not None else config.HISTORY_PATH)
+backend\storage\json_history.py:82:        return history_to_dataframe(path if path is not None else config.HISTORY_PATH)
+backend\reporting\html.py:12:    CHART_PATH, HTML_OUTPUT, FAITH_THRESHOLD, CTX_PREC_THRESHOLD,
+backend\reporting\html.py:18:def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_OUTPUT,
+backend\reporting\charts.py:47:def generate_trend_chart(model_names=None, metric="score", path=config.TREND_CHART_PATH):
+backend\reporting\pdf.py:35:    chart = result.get("chart_path") or config.CHART_PATH
+backend\services\retriever.py:7:from backend.config import REUSE_VECTOR_DB, CHROMA_DIR
+backend\services\retriever.py:12:    if REUSE_VECTOR_DB and os.path.exists(CHROMA_DIR):
+backend\services\retriever.py:15:            persist_directory=CHROMA_DIR,
+backend\services\retriever.py:20:    shutil.rmtree(CHROMA_DIR, ignore_errors=True)
+backend\services\retriever.py:24:        persist_directory=CHROMA_DIR
+backend\core\pipeline.py:36:    BASE_DIR, DOC_PATH, SUMMARY_OUTPUT, HTML_OUTPUT, CHART_PATH,
+backend\core\pipeline.py:587:    summary_df.to_csv(SUMMARY_OUTPUT, index=False, encoding="utf-8-sig")
+backend\core\pipeline.py:588:    print(f"\n✅ 汇总报告已保存: {SUMMARY_OUTPUT}")
+backend\core\pipeline.py:592:    generate_evaluation_chart(summary, faith_threshold, CHART_PATH)
+backend\core\pipeline.py:600:        chart_path=CHART_PATH,
+backend\core\pipeline.py:601:        output_path=HTML_OUTPUT,
+backend\core\pipeline.py:641:        "chart_path": CHART_PATH,
+backend\core\pipeline.py:642:        "html_path": HTML_OUTPUT,

@@ -1,0 +1,24 @@
+{
+  "schema": "CitationResourcesV1",
+  "records": [
+    {
+      "message_id": "example-message",
+      "conversation_id": "example-conversation",
+      "resources": [
+        {
+          "segment_id": "s3",
+          "document_id": "example-doc",
+          "dataset_id": "example-set",
+          "content": "乙应复核凭证。",
+          "position": 900
+        },
+        {
+          "segment_id": "unknown",
+          "document_id": "example-doc",
+          "dataset_id": "example-set",
+          "content": "尚未映射的片段"
+        }
+      ]
+    }
+  ]
+}

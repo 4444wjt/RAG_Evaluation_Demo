@@ -1,0 +1,506 @@
+{
+  "totals": {
+    "errors": 24,
+    "controls": 25
+  },
+  "thresholds": {
+    "simpleSufficientMinDetected": 22,
+    "simpleSufficientMaxFalsePositives": 2,
+    "labelGainMinDifference": 5,
+    "labelGainMaxP": "1/20",
+    "labelGainFalsePositiveTolerance": 2
+  },
+  "arms": {
+    "U-C0": {
+      "items": 49,
+      "detected": 9,
+      "falsePositives": 2,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "detectionTotal": 24,
+      "falsePositiveTotal": 25,
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 5,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 4,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 2,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      },
+      "falsePositivesByControlKind": {
+        "singleParagraphFirst": {
+          "items": 1,
+          "detected": 0,
+          "falsePositives": 1,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "multiParagraphPinpoint": {
+          "items": 16,
+          "detected": 0,
+          "falsePositives": 1,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "articleOnly": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    },
+    "L-C0": {
+      "items": 49,
+      "detected": 24,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "detectionTotal": 24,
+      "falsePositiveTotal": 25,
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 16,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 8,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      },
+      "falsePositivesByControlKind": {
+        "singleParagraphFirst": {
+          "items": 1,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "multiParagraphPinpoint": {
+          "items": 16,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "articleOnly": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    },
+    "U-C1": {
+      "items": 49,
+      "detected": 23,
+      "falsePositives": 9,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "detectionTotal": 24,
+      "falsePositiveTotal": 25,
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 15,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 8,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 9,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      },
+      "falsePositivesByControlKind": {
+        "singleParagraphFirst": {
+          "items": 1,
+          "detected": 0,
+          "falsePositives": 1,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "multiParagraphPinpoint": {
+          "items": 16,
+          "detected": 0,
+          "falsePositives": 8,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "articleOnly": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    },
+    "L-C1": {
+      "items": 49,
+      "detected": 24,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "detectionTotal": 24,
+      "falsePositiveTotal": 25,
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 16,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 8,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      },
+      "falsePositivesByControlKind": {
+        "singleParagraphFirst": {
+          "items": 1,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "multiParagraphPinpoint": {
+          "items": 16,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "articleOnly": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    }
+  },
+  "verdictCounts": {
+    "U-C0": {
+      "contradicted": 10,
+      "insufficient": 1,
+      "supported": 38
+    },
+    "L-C0": {
+      "contradicted": 24,
+      "supported": 25
+    },
+    "U-C1": {
+      "contradicted": 32,
+      "supported": 17
+    },
+    "L-C1": {
+      "contradicted": 24,
+      "supported": 25
+    }
+  },
+  "primary": {
+    "b": 1,
+    "c": 0,
+    "d": 1,
+    "p": {
+      "fraction": "1/2",
+      "decimal": "0.500000"
+    },
+    "bIds": [
+      "paragraph_existing-A15P2toP1"
+    ],
+    "cIds": [],
+    "unavailableErrorIds": [],
+    "decision": "insufficient_evidence",
+    "U-C1": {
+      "detected": 23,
+      "falsePositives": 9,
+      "unavailable": 0
+    },
+    "L-C1": {
+      "detected": 24,
+      "falsePositives": 0,
+      "unavailable": 0
+    },
+    "containsUnavailable": false,
+    "note": null
+  },
+  "primaryDecisionTable": {
+    "simpleSufficient": false,
+    "labelGain": false,
+    "noGain": false,
+    "insufficientEvidence": true
+  },
+  "secondaryLabelC0": {
+    "b": 15,
+    "c": 0,
+    "d": 15,
+    "p": {
+      "fraction": "1/32768",
+      "decimal": "0.000031"
+    },
+    "bIds": [
+      "paragraph_existing-A8P2toP3",
+      "paragraph_existing-A8P3toP1",
+      "paragraph_absent-A8toP4",
+      "paragraph_existing-A9P1toP2",
+      "paragraph_absent-A9toP3",
+      "paragraph_absent-A10toP2",
+      "paragraph_existing-A11P2toP1",
+      "paragraph_existing-A12P1toP2",
+      "paragraph_existing-A12P2toP3",
+      "paragraph_absent-A12toP4",
+      "paragraph_existing-A13P1toP2",
+      "paragraph_existing-A13P2toP1",
+      "paragraph_existing-A14P1toP2",
+      "paragraph_existing-A14P2toP1",
+      "paragraph_existing-A15P2toP1"
+    ],
+    "cIds": [],
+    "unavailableErrorIds": [],
+    "falsePositives": {
+      "U-C0": 2,
+      "L-C0": 0
+    },
+    "note": "只报告，不判定"
+  },
+  "effects": {
+    "criterionU": {
+      "detected": 14,
+      "falsePositives": 7
+    },
+    "criterionL": {
+      "detected": 0,
+      "falsePositives": 0
+    },
+    "labelC0": {
+      "detected": 15,
+      "falsePositives": -2
+    },
+    "labelC1": {
+      "detected": 1,
+      "falsePositives": -9
+    }
+  },
+  "labeledVerdictsIdentical": 49,
+  "labeledVerdictPairs": 49,
+  "offlineBaselines": {
+    "rule": {
+      "items": 49,
+      "detected": 24,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 16,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 8,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    },
+    "lexical": {
+      "items": 49,
+      "detected": 24,
+      "falsePositives": 0,
+      "unavailable": 0,
+      "unavailableIds": [],
+      "byType": {
+        "paragraph_existing": {
+          "items": 16,
+          "detected": 16,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "paragraph_absent": {
+          "items": 8,
+          "detected": 8,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_pinpoint": {
+          "items": 17,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        },
+        "control_article": {
+          "items": 8,
+          "detected": 0,
+          "falsePositives": 0,
+          "unavailable": 0,
+          "unavailableIds": []
+        }
+      }
+    },
+    "note": "规则与字面基线只作参照，不是真值，不作优越性论据；真值来自构造。"
+  },
+  "cost": {
+    "arms": {
+      "U-C0": {
+        "requests": 49,
+        "meanMessageBytes": 4171.1,
+        "meanPromptTokens": 845.4,
+        "meanCompletionTokens": 98.7,
+        "estimatedCostCny": "0.121548"
+      },
+      "L-C0": {
+        "requests": 49,
+        "meanMessageBytes": 4450.1,
+        "meanPromptTokens": 898.4,
+        "meanCompletionTokens": 107.4,
+        "estimatedCostCny": "0.130134"
+      },
+      "U-C1": {
+        "requests": 49,
+        "meanMessageBytes": 4414.1,
+        "meanPromptTokens": 898.4,
+        "meanCompletionTokens": 117.8,
+        "estimatedCostCny": "0.134238"
+      },
+      "L-C1": {
+        "requests": 49,
+        "meanMessageBytes": 4693.1,
+        "meanPromptTokens": 951.4,
+        "meanCompletionTokens": 105.4,
+        "estimatedCostCny": "0.134560"
+      }
+    },
+    "estimatedCostCny": "0.520480",
+    "actualBillCny": "0.25",
+    "attributable": true,
+    "deploymentHumanSeconds": 523,
+    "machineSecondsRounded": 475,
+    "startedRequests": 196,
+    "failedOrIncomplete": 0,
+    "retries": 0,
+    "contextBytes": {
+      "deltaBytes": 279,
+      "deltaPercent": 9.2,
+      "deltaChars": 93,
+      "plain": {
+        "bytes": 3029,
+        "chars": 1037,
+        "sha256": "b34aa65f795bca500e0817b5423f811ba1e7448e6c6b527a832bc57cbdea72f0"
+      },
+      "labeled": {
+        "bytes": 3308,
+        "chars": 1130,
+        "sha256": "17b1f761f691cf73efdcf07fe65c09a42166f24457977f8a3dccf15cfd6f15f1"
+      }
+    },
+    "labelC1Delta": {
+      "meanMessageBytes": 279.0,
+      "meanPromptTokens": 53.0,
+      "meanCompletionTokens": -12.4,
+      "estimatedCostCny": "0.000322"
+    }
+  }
+}

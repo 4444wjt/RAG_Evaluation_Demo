@@ -46,7 +46,7 @@ Python 离线测试（项目根目录）：
 
 ```powershell
 .\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
-.\venv\Scripts\python.exe -m compileall -q main.py backend tests
+.\venv\Scripts\python.exe -m compileall -q main.py backend scripts tests
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
@@ -54,7 +54,7 @@ Python 离线测试（项目根目录）：
 
 ## 许可
 
-本项目自有代码采用现有 MIT LICENSE，保留原版权声明。第三方代码和依赖继续遵循各自许可证；查看 frontend/THIRD_PARTY_NOTICES.md、frontend/licenses/ 与依赖包元数据。提交新增组件或依赖前，应确认来源、许可证兼容性并保留所需声明。
+本项目自有代码采用 Apache-2.0 许可（见 LICENSE），保留原版权声明。第三方代码和依赖继续遵循各自许可证；查看 frontend/THIRD_PARTY_NOTICES.md、frontend/licenses/ 与依赖包元数据。提交新增组件或依赖前，应确认来源、许可证兼容性并保留所需声明。
 
 贡献内容应为本人有权提交的代码、文档或素材，并与对应文件的许可要求兼容。
 

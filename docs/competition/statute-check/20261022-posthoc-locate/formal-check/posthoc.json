@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "mode": "formal-added-only",
+  "consistency": {
+    "matched": true,
+    "originalFlaggedIds": [
+      "AA-S03",
+      "AA-S21",
+      "AA-S28",
+      "AA-S32",
+      "AA-S36",
+      "AA-S41",
+      "AA-S49",
+      "AS-S03",
+      "AS-S21",
+      "AS-S28",
+      "AS-S36",
+      "AS-S41",
+      "AS-S49",
+      "MD-S13",
+      "MD-S41",
+      "MD-S49",
+      "MD-S50",
+      "PS-S50",
+      "QU-S27",
+      "QU-S50",
+      "QV-S03",
+      "QV-S07",
+      "QV-S27",
+      "QV-S50"
+    ]
+  },
+  "inputSha256": {
+    "run/SHA256SUMS.txt": "a15f5612556e440059de8b90ddab8fced4dd85939736ec6a3e22bab24d4c9c54",
+    "run/package.json": "0a1344770accebde671e582877bbf06c799ff76e7131fc3ee0393ecc6ccf0a0f",
+    "run/inputs/scenarios/deposit_insurance.txt": "fee557dc493eb2b92f52834cf9b164720cff6b13f276aaa2054babccbc4666eb",
+    "analysis/rules.json": "e1611a9c35f1729c8618d9049d37ccb19db85a74b61e91863ba09affc40ff435",
+    "analysis/SHA256SUMS.txt": "2658a2103af58b33d5a4e832fb20d88dbafcdda11f121851ad42daf46a2da505"
+  },
+  "ruleModuleSha256": {
+    "backend/core/statute_check.py": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "backend/core/statute_locate.py": "1d220465bafc14c82af37a714502c10c587e6a05132d9340b062139bb15cd4b0",
+    "tools/competition/statute_posthoc.py": "5043e80b46a7147c6f4bfc9316f9467d230ba5e80186d1504801e3a77f9a4dd1",
+    "tools/competition/statute_injection.py": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "tools/competition/statute_pinpoint.py": "f275d133f56b2f967a862a4882f0f491ef51a201dc226b9f7416cfe07f350ebc"
+  },
+  "methods": [
+    "事后扩展，同批材料样本内检验，不是独立验证。仅 error 级算标记。",
+    "逐项读取 package.items 的 statement、contexts、question、expected；不读取标签决定规则结果。",
+    "规则读取 run/inputs/scenarios/deposit_insurance.txt 完整节选。",
+    "复用 ATTRIBUTION_MIN=0.6、ATTRIBUTION_GAP=0.25，不新增阈值。",
+    "项级比较仅使用项正文；不把款总领句拼入各项。项级判错比较最佳项与所引项。",
+    "回指每层比较第一、二名；不足阈值则该层及以下为 None，只返回确定前缀。",
+    "回指以每条引用 error 所在整句计算，不更改原 finding；并行列表用 origin 与 findingIndex 关联。",
+    "按材料汇总回指：任一确定层冲突为不一致，否则任一目标层未定为 undetermined，其余一致；无引用 error 亦为 undetermined。",
+    "formal 材料只报告新增标记，按 expected 分组，不参与款项材料汇总。"
+  ],
+  "addedByExpected": {
+    "not_supported": {
+      "total": 29,
+      "addedIds": [],
+      "addedCount": 0
+    },
+    "supported": {
+      "total": 13,
+      "addedIds": [],
+      "addedCount": 0
+    }
+  }
+}

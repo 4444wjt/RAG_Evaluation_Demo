@@ -68,6 +68,8 @@ class EvalRecord(TypedDict, total=False):
     timestamp: str
     version: str
     doc_name: str
+    source_fingerprint: Optional[Dict[str, Any]]
+    parse_check: Optional[Dict[str, Any]]
     testset_source: str
     thresholds: Dict[str, float]
     gate_passed: bool
@@ -94,6 +96,8 @@ class RunResources(TypedDict, total=False):
     chunks: Any
     retriever: Any
     testset: List[TestCase]
+    source_fingerprint: Dict[str, Any]
+    parse_check: Dict[str, Any]
 
 
 class RawModelEvaluation(TypedDict, total=False):

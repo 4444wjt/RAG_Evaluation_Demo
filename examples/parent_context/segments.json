@@ -1,0 +1,47 @@
+{
+  "page": 1,
+  "total_pages": 1,
+  "total": 5,
+  "data": [
+    {
+      "id": "s1",
+      "position": 1,
+      "document_id": "example-doc",
+      "content": "资料准备示例（人为构造，不是真实法规）",
+      "enabled": true,
+      "status": "completed"
+    },
+    {
+      "id": "s2",
+      "position": 2,
+      "document_id": "example-doc",
+      "content": "第七条　甲应保存凭证。",
+      "enabled": true,
+      "status": "completed"
+    },
+    {
+      "id": "s3",
+      "position": 3,
+      "document_id": "example-doc",
+      "content": "乙应复核凭证。",
+      "enabled": true,
+      "status": "completed"
+    },
+    {
+      "id": "s4",
+      "position": 4,
+      "document_id": "example-doc",
+      "content": "第八条　丙应归档记录。",
+      "enabled": true,
+      "status": "completed"
+    },
+    {
+      "id": "s5",
+      "position": 5,
+      "document_id": "example-doc",
+      "content": "丁应核对记录。",
+      "enabled": true,
+      "status": "completed"
+    }
+  ]
+}

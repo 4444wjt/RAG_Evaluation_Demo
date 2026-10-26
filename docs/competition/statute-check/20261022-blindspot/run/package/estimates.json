@@ -1,0 +1,21 @@
+{
+  "requests": 40,
+  "messageBytes": 235829,
+  "expectedCostCny": "0.1234",
+  "reservationUpperCny": "0.7379",
+  "reference": {
+    "run": "docs/competition/statute-check/20261022-equalinfo/run",
+    "judge": "deepseek",
+    "condition": "J2",
+    "costCny": "0.189510",
+    "messageBytes": 362128,
+    "eventsSha256": "094f560cf3ffd4e0eb2d9df08985fb2e537f26cb1a83ecbff0c6da503fc01bdf"
+  },
+  "price": {
+    "inputCnyPerMillion": 2,
+    "outputCnyPerMillion": 8,
+    "checkedAt": "2026-10-22",
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/ 2026-10-22核实：deepseek-flash 高峰 输入(缓存未命中)¥2/输出¥8，空闲时段半价；按高峰价计（保守），缓存命中按未命中计。"
+  },
+  "method": "期望=J2 DeepSeek 实计费×新/旧消息总字节；上限=每请求(消息字节+256)输入+maxTokens输出按授权单价。估算，不是账单。"
+}

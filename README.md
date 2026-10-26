@@ -5,7 +5,7 @@
   </picture>
 </a>
 
-<a href="CHANGELOG.md"><img src="docs/images/badge-version.png" alt="version v1.2.0" height="20"></a> <a href="#快速启动"><img src="docs/images/badge-platform.png" alt="platform Python 3.11+" height="20"></a> <a href="LICENSE"><img src="docs/images/badge-license.png" alt="license MIT" height="20"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI" alt="CI"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL" alt="CodeQL"></a>
+<a href="CHANGELOG.md"><img src="docs/images/badge-version.png" alt="version v1.2.0" height="20"></a> <a href="#快速启动"><img src="docs/images/badge-platform.png" alt="platform Python 3.11+" height="20"></a> <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="license Apache-2.0" height="20"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/ci.yml?label=CI" alt="CI"></a> <a href="https://github.com/4444wjt/RAG_Evaluation_Demo/actions/workflows/codeql.yml"><img src="https://img.shields.io/github/actions/workflow/status/4444wjt/RAG_Evaluation_Demo/codeql.yml?label=CodeQL" alt="CodeQL"></a>
 
 [简体中文](README.md) · [English](README.en.md)
 
@@ -25,7 +25,7 @@
 
 项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
-**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。
+**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。2026-10-22 又用银行公开的存款保险问答 11 题测了 AnythingLLM 源码构建实例：门禁 PASS，但 6 道负向题全部给出了节选外的内容，说明只看正向题的门禁拦不住不拒答的应用，见 [银行问答实测](docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md)。
 
 [快速启动](#快速启动) · [作品介绍](docs/competition/project-introduction.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
@@ -40,6 +40,8 @@
 | CI 门禁 | 每次改提示词、换模型、调检索后自动回归，门禁不通过则构建失败 | GitHub Action，见 [门禁回放](docs/gate-replay.md) |
 
 自有模型（vLLM、Ollama、内部网关等 OpenAI 兼容接口）在工作台「模型配置」页登记即可参评，密钥只写在本机 `.env`；私有化与内网部署的已核实项和未实测项见 [落地与接入](docs/DEPLOYMENT.md#私有化--内网部署)。
+
+行业需求与项目能力的对应关系见作品介绍的[行业要求对照](docs/competition/project-introduction.md#行业要求对照)，其中列明了各项能力的证据与边界。
 
 ### 适用行业
 
@@ -101,13 +103,20 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 
 详见 [鲁棒性体检](docs/competition/robustness/README.md)。
 
-**裁判判错校准：** 门禁区间原先把每条逐句判定都当作正确。现阶段：**已完成 1 位非作者的人工标注（2026-10-14）。** 区间方法为 Lee et al. 的校准校正（推广到按题聚集）与 PPI，并在本次题目结构下做了模拟。
+**裁判判错校准：** 门禁区间原先把每条逐句判定都当作正确。现阶段：**已完成 3 位非作者的人工标注（V 于 2026-10-14，A、B 于 2026-10-21）。** 区间方法为 Lee et al. 的校准校正（推广到按题聚集）与 PPI，并在本次题目结构下做了模拟。
 - 只计题目抽样的区间，实际覆盖率只有 3%–53%；按题聚集的校正为 94%–96%。
 - 作答题中判为不支持的陈述只有 5 条，全部改判才到 80%。
-- 1 位非作者盲标全部 52 条：人工口径 **77.5%–82.5%**（裁判口径 73.75%），跨过 80% 门槛。差别取决于拒答题 F03 的「资料中没有答案」一条，标注人选了「无法判断」。按事先写定的口径，有未决陈述时不给区间、不下结论，已记录的 FAIL 不改。
-- 裁判灵敏度 95.6%（43 / 45）、特异度 100%（6 / 6，样本少）；不一致的 2 条都是裁判更严。只有一位标注人，没有一致性指标。详见 [人工标注结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
+- 按事先写定的两人口径分析 A、B：四类标签 κ 0.64，只分支持与否 κ 0.76；人工口径 **68.8%–82.5%**（裁判口径 73.75%），6 条未决，跨过 80% 门槛。有未决陈述时不给区间、不下结论，已记录的 FAIL 不改。V–A、V–B 两种组合都是 72.5%–82.5%，结论相同。
+- 裁判没有偏松：两人都判为不支持的 6 条，裁判全部判为不支持；裁判灵敏度 95.0%（38 / 40）、特异度 100%（6 / 6，样本少），不一致的 2 条都是裁判更严，与 V 单人标出的相同。标注人的独立性只来自自述。详见 [第二轮人工标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md) 与 [V 的单人结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
 
 详见 [裁判判错校准](docs/competition/judge-calibration/README.md)。
+
+**法条结构核对：** 用法规原文还原条、款、项结构，给缺少条号标题的检索片段补回所属条款，再逐句核对条号归属、数额期限与情态词。它是独立的诊断通道，不进入门禁口径。
+- 四次归档运行的 100 个回答中只检出 10-14 的 F04。该回答引用了节选中没有的第十八条，并称第十九条未规定时限；同次运行的逐句核对把后一句判为有依据。
+- 42 条注入陈述上，规则检出 29 条错误中的 24 条，13 条对照无误报（离线口径、无裁判对比）。
+- 与两个通用裁判对比（按运行前确认的口径分组）：条号类 16 条，规则检出 14 条，与 DeepSeek 持平，Qwen2.5-72B 只检出 4 条；内容类 8 条，规则在覆盖的两类上检出 6/6，「否定改肯定」2 条由裁判兜底，合用时 8/8。规则零误报，两个裁判各误报 1 条。两套口径的规则结果相同，只是分组不同。详见 [法条结构核对](docs/competition/statute-check/README.md)。
+- [款项定位双提示运行](docs/competition/statute-check/20261021-pinpoint-run/README.md)：31 条款级错误，规则检出 30 条、DeepSeek 1→22 条、Qwen2.5-72B 1→1 条；DeepSeek 支持对照误报 2→7 条。3 条同款另一项规则全漏、DeepSeek 两种提示都检出。
+- 原提示下两个裁判漏检 60 次，其中 8 次理由里已写出正确款号，仍判「支持」，见 [漏检理由分类](docs/competition/statute-check/20261022-pinpoint-reasons/README.md)。[事后补查](docs/competition/statute-check/20261022-posthoc-locate/README.md)补写了项级比较，那 3 条仍未查出；规则为已检出的 31 条错误指出内容实际所在位置，28 条正确、0 条错误。两项都是看过结果后在同一批材料上做的检验。
 
 **用了本平台好在哪：** 同一次 FAIL，只看 Ragas 总分是 0.59（把 5 道正确拒答的负向题算作 0 分）。本平台给出正向题 0.7375，并说明：作答题 40 条陈述都有原文依据；拦截的 76% 来自 4 道错误前提题的拒答，该修提示词而不是检索；区间跨门槛，属于保守拦截。详见 [同一次 FAIL 的三种看法](docs/competition/value-comparison.md)。
 
@@ -167,6 +176,10 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 
 前端开发服务将 `/api` 代理到本地后端。评测为同步请求，后端按单进程执行保护运行；当前没有任务队列、取消或真实阶段进度接口。详细边界见 [架构说明](docs/architecture/README.md)。
 
+共享评测流程在入库前逐页检查 PDF 文本层：`PASS` 表示未发现所检异常，`FAIL` 表示明显乱码并阻止入库，`REVIEW` 表示疑似扫描页，告警后继续并保留待复核结论；空白页单独标记，不影响整体结论。
+新运行记录会写入源文件 SHA-256、字节数、扩展名、检查器版本与切块参数，PDF 另记 pypdf 版本；TXT / MD / DOCX 等非 PDF 文件只记录指纹，检查结论为 `NOT_APPLICABLE`。
+该检查仅筛查文本层可信度与缺页风险，与实际加载器同用 pypdf，不能证明提取内容与页面所见一致，也不执行 OCR。
+
 ### 目录结构
 
 ```text
@@ -193,9 +206,9 @@ RAG-Reliability-Lab/
 
 ## 快速启动
 
-建议 Python 3.11、Node.js 24。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
+建议 Python 3.11、Node.js 24（24.15.0 及以上，可用 `node --version` 查看）。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
 
-只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`，详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
+只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`（POSIX shell 脚本，Windows 请在 WSL 中执行），详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
 
 ### 1. 获取项目
 
@@ -211,6 +224,8 @@ git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reli
 git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
 ```
 
+Windows 上请克隆到较短的路径，例如 `C:\src`。归档证据的目录嵌套较深，克隆目录本身超过约 118 个字符时，检出会报 `Filename too long`；这时在克隆命令里加 `-c core.longpaths=true`，只对这个仓库生效。
+
 完成克隆后进入项目目录：
 
 ```powershell
@@ -225,7 +240,9 @@ npm ci
 npm run dev
 ```
 
-打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。
+打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。在作者的 Windows 机器上用全新目录、空 npm 缓存实测，从克隆到看到演示约 4 分钟，见 [冷启动计时实测](docs/competition/reproducibility.md#冷启动计时实测)。
+
+只看演示，到这里就够了。想验证不需要密钥的测试，直接跳到下文「开源贡献」里的前端验证和 Python 离线验证，不必安装第 3 步的完整依赖。
 
 ### 3. 配置真实评测环境
 
@@ -238,6 +255,8 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 ```
 
 如果 `.env` 已存在，请保留已有文件并按模板补充配置，不覆盖现有密钥。
+
+以上是 Windows PowerShell 写法。Linux / macOS 用 `python3 -m venv venv` 创建环境，下文的 `.\venv\Scripts\python.exe` 都换成 `./venv/bin/python`，复制配置用 `test -f .env || cp .env.example .env`。
 
 在本地 `.env` 填入凭据：
 
@@ -326,10 +345,12 @@ npm run build
 npm run test:browser -- browser-tests/landing.spec.ts
 ```
 
-Python 离线验证（项目根目录）：
+Python 离线验证（项目根目录；只装测试依赖，不需要先装 `requirements.txt`，也不需要密钥）：
 
 ```powershell
+python -m venv venv
 .\venv\Scripts\python.exe -m pip install -r tests/requirements.txt
+.\venv\Scripts\python.exe -m compileall -q main.py backend scripts tests
 .\venv\Scripts\python.exe -m pytest -q tests
 ```
 
@@ -339,7 +360,7 @@ GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 P
 
 ## 许可与仓库
 
-引用信息见 [CITATION.cff](CITATION.cff)（GitHub 仓库页的「Cite this repository」）。本项目自有代码按 [MIT License](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。根目录 MIT 许可不替代第三方依赖的许可证。
+引用信息见 [CITATION.cff](CITATION.cff)（GitHub 仓库页的「Cite this repository」）。本项目自有代码按 [Apache License 2.0](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。根目录 Apache-2.0 许可不替代第三方依赖的许可证。
 
 代码仓库与维护者远端名称：
 

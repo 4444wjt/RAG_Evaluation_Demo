@@ -27,7 +27,7 @@ export function HeatMatrix({ rows }: { rows: ResultRow[] }) {
         <th scope="row"><i style={{ background: MODEL_COLORS[index % MODEL_COLORS.length] }} />{modelName(row.model)}</th>
         {columns.map((column) => {
           const value = numberValue(row[column.key]);
-          if (value === null) return <td key={column.key} className="is-missing">—</td>;
+          if (value === null) return <td key={column.key} className="is-missing" title="本次结果没有该项可显示值；可能未计算、无适用样本或返回空值，具体原因未区分。">—</td>;
           const goodness = Math.min(1, Math.max(0, column.lowerIsBetter ? 1 - value : value));
           return <td key={column.key} className={goodness >= 0.6 ? 'is-strong' : undefined} style={{ '--heat': goodness.toFixed(3) } as CSSProperties} title={`${modelName(row.model)} ${column.label} ${ratioText(value)}`}>{ratioText(value)}</td>;
         })}

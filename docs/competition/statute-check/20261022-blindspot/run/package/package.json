@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "judge-blindspot-exam-v1",
+  "registration": {
+    "path": "work/competition/feature-pick-20261022/阈值与估分-20261022.md",
+    "sha256": "3703256a6e24f2a1c848a772638d7f71286896843ddfd4682239fc72a47f4d06"
+  },
+  "source": {
+    "path": "scenarios/information_disclosure.txt",
+    "sha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6"
+  },
+  "contexts": {
+    "U": {
+      "file": "contexts/plain.txt",
+      "sha256": "70b406d7895b4750d048afde9de8942e123acef13064170331773be7373ff0b6",
+      "note": "完整节选，未补标签（同 J2）"
+    },
+    "L": {
+      "file": "contexts/labeled.txt",
+      "sha256": "965f33bc44cd35988039c6a8497ad8524c4ea462c89c8f2001021dcd517e7ea9",
+      "note": "完整节选，每款开头补「第X条第Y款」",
+      "insertions": [
+        {
+          "line": 2,
+          "article": 29,
+          "paragraph": 1,
+          "offset": 34,
+          "text": "第一款"
+        },
+        {
+          "line": 3,
+          "article": 29,
+          "paragraph": 2,
+          "offset": 153,
+          "text": "第二十九条第二款　"
+        },
+        {
+          "line": 8,
+          "article": 30,
+          "paragraph": 1,
+          "offset": 280,
+          "text": "第一款"
+        },
+        {
+          "line": 10,
+          "article": 31,
+          "paragraph": 1,
+          "offset": 428,
+          "text": "第一款"
+        },
+        {
+          "line": 15,
+          "article": 32,
+          "paragraph": 1,
+          "offset": 663,
+          "text": "第一款"
+        },
+        {
+          "line": 17,
+          "article": 33,
+          "paragraph": 1,
+          "offset": 857,
+          "text": "第一款"
+        },
+        {
+          "line": 18,
+          "article": 33,
+          "paragraph": 2,
+          "offset": 894,
+          "text": "第三十三条第二款　"
+        },
+        {
+          "line": 19,
+          "article": 33,
+          "paragraph": 3,
+          "offset": 991,
+          "text": "第三十三条第三款　"
+        },
+        {
+          "line": 21,
+          "article": 34,
+          "paragraph": 1,
+          "offset": 1040,
+          "text": "第一款"
+        },
+        {
+          "line": 23,
+          "article": 37,
+          "paragraph": 1,
+          "offset": 1156,
+          "text": "第一款"
+        },
+        {
+          "line": 25,
+          "article": 38,
+          "paragraph": 1,
+          "offset": 1244,
+          "text": "第一款"
+        },
+        {
+          "line": 27,
+          "article": 42,
+          "paragraph": 1,
+          "offset": 1342,
+          "text": "第一款"
+        },
+        {
+          "line": 28,
+          "article": 42,
+          "paragraph": 2,
+          "offset": 1411,
+          "text": "第四十二条第二款　"
+        }
+      ]
+    }
+  },
+  "judges": {
+    "deepseek": {
+      "model": "deepseek-flash",
+      "baseUrl": "https://api.deepseek.com",
+      "baseUrlEnv": "DEEPSEEK_BASE_URL",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "temperature": 0,
+      "maxTokens": 768,
+      "timeoutSeconds": 90,
+      "maxRetries": 0,
+      "thinking": {
+        "type": "disabled"
+      }
+    }
+  },
+  "judgeSource": "docs/competition/statute-check/20261022-equalinfo/run/package.json",
+  "promptSha256": "a679fe03177db37bd8a34513c9994a6c891f57abde2643b112768c2b298b7da8",
+  "code": {
+    "makeExam": "b08b8d7c7764ea71ce4cc355c62c846c16ba160409c0c19773ab3e3cba8e1d31",
+    "statuteCheck": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+    "statuteInjection": "2c40b95873b9855ccc8e7dfe3602ba941bf042aaefc7b4de56e4560879597261",
+    "statuteLabeled": "8d7f7c354662fdbcd4c9f4bce94567f55c89625d028c747736863b4e86063ea0"
+  },
+  "rules": {
+    "statement": "「按照<所引>规定，<内容>」。内容取被取用那一款原文的第一句（到第一个「。」为止）；该款以「：」结尾并带项时，内容为该款原文加其全部项原文直接相连。逐字取原文，不改写。",
+    "question": "所有陈述用同一个问题：「《中华人民共和国政府信息公开条例》节选对此有什么规定？」。J2 用的是真实用户问题，这里没有，固定为不提示核对的中性问句。",
+    "paragraph_existing": "每个多款条的每一款 j，引为同条下一款（最后一款引回第一款），内容取第 j 款。",
+    "paragraph_absent": "按条序取前 3 条，引为「该条款数 + 1」款，内容取该条第一款。",
+    "article_swap": "按条序取前 5 条，引为节选中的下一条（只引到条），内容取该条第一款。",
+    "article_absent": "节选条号范围（第二十九至四十二条）内不在节选中的条号，按从小到大依次配给前 5 条，只引到条，内容取该条第一款。",
+    "control_pinpoint": "多款条的各款按条序取前 5 款，引用正确的条和款，内容取该款。",
+    "labels": "逐行 normalize 后按 parse_provisions 识别，输出原始行：条标题第一个第X条之后插入第一款；其他非空非项款行前插入第X条第N款及全角空格；数字用 cn_label；项、标题、空行不变，保留换行符。",
+    "schedule": "先 U 臂再 L 臂，臂内按陈述顺序；L 臂不跑条级（条在原文里本来就有标号）。每个请求只发一次，不重试。"
+  },
+  "counts": {
+    "paragraph_existing": 7,
+    "paragraph_absent": 3,
+    "article_swap": 5,
+    "article_absent": 5,
+    "control_pinpoint": 5
+  },
+  "items": [
+    {
+      "id": "paragraph_existing-A29P1toP2",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第二十九条第二款",
+      "contentFrom": "第二十九条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第二十九条第二款规定，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+    },
+    {
+      "id": "paragraph_existing-A29P2toP1",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第二十九条第一款",
+      "contentFrom": "第二十九条第二款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第二十九条第一款规定，政府信息公开申请应当包括下列内容：（一）申请人的姓名或者名称、身份证明、联系方式；（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+    },
+    {
+      "id": "paragraph_existing-A33P1toP2",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第三十三条第二款",
+      "contentFrom": "第三十三条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第二款规定，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+    },
+    {
+      "id": "paragraph_existing-A33P2toP3",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第三十三条第三款",
+      "contentFrom": "第三十三条第二款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第三款规定，行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+    },
+    {
+      "id": "paragraph_existing-A33P3toP1",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第三十三条第一款",
+      "contentFrom": "第三十三条第三款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第一款规定，行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+    },
+    {
+      "id": "paragraph_existing-A42P1toP2",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第四十二条第二款",
+      "contentFrom": "第四十二条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第四十二条第二款规定，行政机关依申请提供政府信息，不收取费用。"
+    },
+    {
+      "id": "paragraph_existing-A42P2toP1",
+      "type": "paragraph_existing",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第四十二条第一款",
+      "contentFrom": "第四十二条第二款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第四十二条第一款规定，行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定。"
+    },
+    {
+      "id": "paragraph_absent-A29toP3",
+      "type": "paragraph_absent",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第二十九条第三款",
+      "contentFrom": "第二十九条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第二十九条第三款规定，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+    },
+    {
+      "id": "paragraph_absent-A30toP2",
+      "type": "paragraph_absent",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第三十条第二款",
+      "contentFrom": "第三十条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十条第二款规定，政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+    },
+    {
+      "id": "paragraph_absent-A31toP2",
+      "type": "paragraph_absent",
+      "layer": "款级",
+      "expected": "not_supported",
+      "cited": "第三十一条第二款",
+      "contentFrom": "第三十一条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十一条第二款规定，行政机关收到政府信息公开申请的时间，按照下列规定确定：（一）申请人当面提交政府信息公开申请的，以提交之日为收到申请之日；（二）申请人以邮寄方式提交政府信息公开申请的，以行政机关签收之日为收到申请之日；以平常信函等无需签收的邮寄方式提交政府信息公开申请的，政府信息公开工作机构应当于收到申请的当日与申请人确认，确认之日为收到申请之日；（三）申请人通过互联网渠道或者政府信息公开工作机构的传真提交政府信息公开申请的，以双方确认之日为收到申请之日。"
+    },
+    {
+      "id": "article_swap-A29toA30",
+      "type": "article_swap",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十条",
+      "contentFrom": "第二十九条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十条规定，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+    },
+    {
+      "id": "article_swap-A30toA31",
+      "type": "article_swap",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十一条",
+      "contentFrom": "第三十条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十一条规定，政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+    },
+    {
+      "id": "article_swap-A31toA32",
+      "type": "article_swap",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十二条",
+      "contentFrom": "第三十一条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十二条规定，行政机关收到政府信息公开申请的时间，按照下列规定确定：（一）申请人当面提交政府信息公开申请的，以提交之日为收到申请之日；（二）申请人以邮寄方式提交政府信息公开申请的，以行政机关签收之日为收到申请之日；以平常信函等无需签收的邮寄方式提交政府信息公开申请的，政府信息公开工作机构应当于收到申请的当日与申请人确认，确认之日为收到申请之日；（三）申请人通过互联网渠道或者政府信息公开工作机构的传真提交政府信息公开申请的，以双方确认之日为收到申请之日。"
+    },
+    {
+      "id": "article_swap-A32toA33",
+      "type": "article_swap",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十三条",
+      "contentFrom": "第三十二条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条规定，依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。"
+    },
+    {
+      "id": "article_swap-A33toA34",
+      "type": "article_swap",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十四条",
+      "contentFrom": "第三十三条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十四条规定，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+    },
+    {
+      "id": "article_absent-A29toA35",
+      "type": "article_absent",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十五条",
+      "contentFrom": "第二十九条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十五条规定，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+    },
+    {
+      "id": "article_absent-A30toA36",
+      "type": "article_absent",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十六条",
+      "contentFrom": "第三十条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十六条规定，政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。"
+    },
+    {
+      "id": "article_absent-A31toA39",
+      "type": "article_absent",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第三十九条",
+      "contentFrom": "第三十一条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十九条规定，行政机关收到政府信息公开申请的时间，按照下列规定确定：（一）申请人当面提交政府信息公开申请的，以提交之日为收到申请之日；（二）申请人以邮寄方式提交政府信息公开申请的，以行政机关签收之日为收到申请之日；以平常信函等无需签收的邮寄方式提交政府信息公开申请的，政府信息公开工作机构应当于收到申请的当日与申请人确认，确认之日为收到申请之日；（三）申请人通过互联网渠道或者政府信息公开工作机构的传真提交政府信息公开申请的，以双方确认之日为收到申请之日。"
+    },
+    {
+      "id": "article_absent-A32toA40",
+      "type": "article_absent",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第四十条",
+      "contentFrom": "第三十二条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第四十条规定，依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。"
+    },
+    {
+      "id": "article_absent-A33toA41",
+      "type": "article_absent",
+      "layer": "条级",
+      "expected": "not_supported",
+      "cited": "第四十一条",
+      "contentFrom": "第三十三条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第四十一条规定，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+    },
+    {
+      "id": "control_pinpoint-A29P1",
+      "type": "control_pinpoint",
+      "layer": "对照",
+      "expected": "supported",
+      "cited": "第二十九条第一款",
+      "contentFrom": "第二十九条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第二十九条第一款规定，公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。"
+    },
+    {
+      "id": "control_pinpoint-A29P2",
+      "type": "control_pinpoint",
+      "layer": "对照",
+      "expected": "supported",
+      "cited": "第二十九条第二款",
+      "contentFrom": "第二十九条第二款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第二十九条第二款规定，政府信息公开申请应当包括下列内容：（一）申请人的姓名或者名称、身份证明、联系方式；（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。"
+    },
+    {
+      "id": "control_pinpoint-A33P1",
+      "type": "control_pinpoint",
+      "layer": "对照",
+      "expected": "supported",
+      "cited": "第三十三条第一款",
+      "contentFrom": "第三十三条第一款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第一款规定，行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。"
+    },
+    {
+      "id": "control_pinpoint-A33P2",
+      "type": "control_pinpoint",
+      "layer": "对照",
+      "expected": "supported",
+      "cited": "第三十三条第二款",
+      "contentFrom": "第三十三条第二款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第二款规定，行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。"
+    },
+    {
+      "id": "control_pinpoint-A33P3",
+      "type": "control_pinpoint",
+      "layer": "对照",
+      "expected": "supported",
+      "cited": "第三十三条第三款",
+      "contentFrom": "第三十三条第三款",
+      "question": "《中华人民共和国政府信息公开条例》节选对此有什么规定？",
+      "statement": "按照第三十三条第三款规定，行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。"
+    }
+  ],
+  "requestsSha256": "04aa30becd19b3e9123d9535b0259990595f3ef5d6b35678db1dbeffc6feb28e",
+  "maxRequests": 40,
+  "maxRetries": 0,
+  "detection": "裁判 verdict 为 contradicted 或 insufficient 记为检出；supported 记为未检出；失败或解析失败单列为不可用。",
+  "scope": "单一法规、自动构造、单裁判单次；不参与 Quality Gate；只报条数。"
+}

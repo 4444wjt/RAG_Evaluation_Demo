@@ -1,0 +1,46 @@
+{
+ "sample": "A",
+ "source_name": "project-introduction.pdf",
+ "source_sha256": "fa8f8923bde06cfb3c682e004ebd12fd14ce53cff72a9365e1fff740e92f1a4f",
+ "source_bytes": 543576,
+ "pypdf_version": "6.19.0",
+ "checker_version": "1.0.0",
+ "loader": "langchain_community.document_loaders.PyPDFLoader (same class as backend/services/documents.py)",
+ "chunk_size": 200,
+ "chunk_overlap": 30,
+ "run_utc": "2026-10-20T04:07:59Z",
+ "parse": {
+  "exit": "ok",
+  "pages": 6,
+  "chars": 4139,
+  "han": 2468,
+  "surrogates": 0,
+  "c1_controls": 0,
+  "fffd": 0
+ },
+ "parse_check": {
+  "verdict": "PASS",
+  "flagged_pages": [],
+  "page_verdicts": [
+   "PASS",
+   "PASS",
+   "PASS",
+   "PASS",
+   "PASS",
+   "PASS"
+  ]
+ },
+ "ingested": true,
+ "ingest_rule": "pipeline.py: FAIL -> RuntimeError (blocked); REVIEW -> warning, continues; PASS -> continues",
+ "split": {
+  "exit": "ok",
+  "chunks": 26,
+  "len_min": 6,
+  "len_median": 182.5,
+  "len_max": 199,
+  "first_two_head80": [
+   "鉴真全域 VeriScope AI 作品介绍\n逐句核对与质量门禁平台：AI 的每个回答，都能逐句查到出处。\n材料日期：2026-10-14。证据运行：2026-",
+   "错在哪一句，也说不清这批回答能不能放行。\n本平台的做法分三步：\n1. 把模型回答拆成逐句；\n2. 每一句对照检索原文，核对有没有依据；\n3. 由质量门禁（Qua"
+  ]
+ }
+}

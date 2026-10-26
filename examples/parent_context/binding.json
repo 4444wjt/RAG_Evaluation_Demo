@@ -1,0 +1,12 @@
+{
+  "schema": "ParentContextBindingV1",
+  "source_format": "blank-line-articles-v1",
+  "structure_assertion": "operator-declared-complete-parent-blocks",
+  "source_sha256": "39f7eadb731468854072464f952e45f2342adcfc823784cf52c2af40c36a2b1d",
+  "segments_sha256": "24500e1148478e07eba0adb85e1e4525aae4a0bdc438eb6f2ff37a29b918c4d6",
+  "document_id": "example-doc",
+  "dataset_id": "example-set",
+  "metadata_positions": [
+    1
+  ]
+}

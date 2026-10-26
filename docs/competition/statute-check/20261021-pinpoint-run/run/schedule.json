@@ -1,0 +1,1586 @@
+[
+  {
+    "requestId": "control-S03--deepseek--original",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S03--deepseek--pinpoint",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S03--qwen72b--original",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S03--qwen72b--pinpoint",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S07--deepseek--original",
+    "itemId": "control-S07",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S07--deepseek--pinpoint",
+    "itemId": "control-S07",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S07--qwen72b--original",
+    "itemId": "control-S07",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S07--qwen72b--pinpoint",
+    "itemId": "control-S07",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S13--deepseek--original",
+    "itemId": "control-S13",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S13--deepseek--pinpoint",
+    "itemId": "control-S13",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S13--qwen72b--original",
+    "itemId": "control-S13",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S13--qwen72b--pinpoint",
+    "itemId": "control-S13",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S21--deepseek--original",
+    "itemId": "control-S21",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S21--deepseek--pinpoint",
+    "itemId": "control-S21",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S21--qwen72b--original",
+    "itemId": "control-S21",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S21--qwen72b--pinpoint",
+    "itemId": "control-S21",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S27--deepseek--original",
+    "itemId": "control-S27",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S27--deepseek--pinpoint",
+    "itemId": "control-S27",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S27--qwen72b--original",
+    "itemId": "control-S27",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S27--qwen72b--pinpoint",
+    "itemId": "control-S27",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S28--deepseek--original",
+    "itemId": "control-S28",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S28--deepseek--pinpoint",
+    "itemId": "control-S28",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S28--qwen72b--original",
+    "itemId": "control-S28",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S28--qwen72b--pinpoint",
+    "itemId": "control-S28",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S32--deepseek--original",
+    "itemId": "control-S32",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S32--deepseek--pinpoint",
+    "itemId": "control-S32",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S32--qwen72b--original",
+    "itemId": "control-S32",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S32--qwen72b--pinpoint",
+    "itemId": "control-S32",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S36--deepseek--original",
+    "itemId": "control-S36",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S36--deepseek--pinpoint",
+    "itemId": "control-S36",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S36--qwen72b--original",
+    "itemId": "control-S36",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S36--qwen72b--pinpoint",
+    "itemId": "control-S36",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S41--deepseek--original",
+    "itemId": "control-S41",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S41--deepseek--pinpoint",
+    "itemId": "control-S41",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S41--qwen72b--original",
+    "itemId": "control-S41",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S41--qwen72b--pinpoint",
+    "itemId": "control-S41",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S49--deepseek--original",
+    "itemId": "control-S49",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S49--deepseek--pinpoint",
+    "itemId": "control-S49",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S49--qwen72b--original",
+    "itemId": "control-S49",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S49--qwen72b--pinpoint",
+    "itemId": "control-S49",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S50--deepseek--original",
+    "itemId": "control-S50",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S50--deepseek--pinpoint",
+    "itemId": "control-S50",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S50--qwen72b--original",
+    "itemId": "control-S50",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S50--qwen72b--pinpoint",
+    "itemId": "control-S50",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S01--deepseek--original",
+    "itemId": "control-S01",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S01--deepseek--pinpoint",
+    "itemId": "control-S01",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S01--qwen72b--original",
+    "itemId": "control-S01",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S01--qwen72b--pinpoint",
+    "itemId": "control-S01",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S19--deepseek--original",
+    "itemId": "control-S19",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S19--deepseek--pinpoint",
+    "itemId": "control-S19",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S19--qwen72b--original",
+    "itemId": "control-S19",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S19--qwen72b--pinpoint",
+    "itemId": "control-S19",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S26--deepseek--original",
+    "itemId": "control-S26",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S26--deepseek--pinpoint",
+    "itemId": "control-S26",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control-S26--qwen72b--original",
+    "itemId": "control-S26",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control-S26--qwen72b--pinpoint",
+    "itemId": "control-S26",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S03--deepseek--original",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S03--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S03--qwen72b--original",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S03--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P2--deepseek--original",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P2--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P2--qwen72b--original",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P2--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P3--deepseek--original",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P3--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P3--qwen72b--original",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P3--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P4--deepseek--original",
+    "itemId": "paragraph_existing-S03-P4",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P4--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S03-P4",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P4--qwen72b--original",
+    "itemId": "paragraph_existing-S03-P4",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S03-P4--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S03-P4",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S03--deepseek--original",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S03--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S03--qwen72b--original",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S03--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S07--deepseek--original",
+    "itemId": "control_pinpoint-S07",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S07--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S07",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S07--qwen72b--original",
+    "itemId": "control_pinpoint-S07",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S07--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S07",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P2--deepseek--original",
+    "itemId": "paragraph_existing-S07-P2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P2--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S07-P2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P2--qwen72b--original",
+    "itemId": "paragraph_existing-S07-P2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P2--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S07-P2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P3--deepseek--original",
+    "itemId": "paragraph_existing-S07-P3",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P3--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S07-P3",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P3--qwen72b--original",
+    "itemId": "paragraph_existing-S07-P3",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P3--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S07-P3",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P4--deepseek--original",
+    "itemId": "paragraph_existing-S07-P4",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P4--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S07-P4",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P4--qwen72b--original",
+    "itemId": "paragraph_existing-S07-P4",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S07-P4--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S07-P4",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S07--deepseek--original",
+    "itemId": "paragraph_absent-S07",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S07--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S07",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S07--qwen72b--original",
+    "itemId": "paragraph_absent-S07",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S07--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S07",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S13--deepseek--original",
+    "itemId": "control_pinpoint-S13",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S13--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S13",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S13--qwen72b--original",
+    "itemId": "control_pinpoint-S13",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S13--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S13",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S13-P2--deepseek--original",
+    "itemId": "paragraph_existing-S13-P2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S13-P2--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S13-P2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S13-P2--qwen72b--original",
+    "itemId": "paragraph_existing-S13-P2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S13-P2--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S13-P2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S13--deepseek--original",
+    "itemId": "paragraph_absent-S13",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S13--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S13",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S13--qwen72b--original",
+    "itemId": "paragraph_absent-S13",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S13--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S13",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S21--deepseek--original",
+    "itemId": "control_pinpoint-S21",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S21--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S21",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S21--qwen72b--original",
+    "itemId": "control_pinpoint-S21",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S21--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S21",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S21--deepseek--original",
+    "itemId": "paragraph_absent-S21",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S21--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S21",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S21--qwen72b--original",
+    "itemId": "paragraph_absent-S21",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S21--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S21",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S27--deepseek--original",
+    "itemId": "control_pinpoint-S27",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S27--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S27",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S27--qwen72b--original",
+    "itemId": "control_pinpoint-S27",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S27--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S27",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S27-P1--deepseek--original",
+    "itemId": "paragraph_existing-S27-P1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S27-P1--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S27-P1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S27-P1--qwen72b--original",
+    "itemId": "paragraph_existing-S27-P1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S27-P1--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S27-P1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S27--deepseek--original",
+    "itemId": "paragraph_absent-S27",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S27--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S27",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S27--qwen72b--original",
+    "itemId": "paragraph_absent-S27",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S27--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S27",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S27--deepseek--original",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S27--deepseek--pinpoint",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S27--qwen72b--original",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S27--qwen72b--pinpoint",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S28--deepseek--original",
+    "itemId": "control_pinpoint-S28",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S28--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S28",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S28--qwen72b--original",
+    "itemId": "control_pinpoint-S28",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S28--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S28",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S28--deepseek--original",
+    "itemId": "paragraph_absent-S28",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S28--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S28",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S28--qwen72b--original",
+    "itemId": "paragraph_absent-S28",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S28--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S28",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S36--deepseek--original",
+    "itemId": "control_pinpoint-S36",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S36--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S36",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S36--qwen72b--original",
+    "itemId": "control_pinpoint-S36",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S36--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S36",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S36--deepseek--original",
+    "itemId": "paragraph_absent-S36",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S36--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S36",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S36--qwen72b--original",
+    "itemId": "paragraph_absent-S36",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S36--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S36",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S41--deepseek--original",
+    "itemId": "control_pinpoint-S41",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S41--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S41",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S41--qwen72b--original",
+    "itemId": "control_pinpoint-S41",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S41--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S41",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P1--deepseek--original",
+    "itemId": "paragraph_existing-S41-P1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P1--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S41-P1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P1--qwen72b--original",
+    "itemId": "paragraph_existing-S41-P1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P1--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S41-P1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P3--deepseek--original",
+    "itemId": "paragraph_existing-S41-P3",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P3--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S41-P3",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P3--qwen72b--original",
+    "itemId": "paragraph_existing-S41-P3",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S41-P3--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S41-P3",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S41--deepseek--original",
+    "itemId": "paragraph_absent-S41",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S41--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S41",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S41--qwen72b--original",
+    "itemId": "paragraph_absent-S41",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S41--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S41",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S49--deepseek--original",
+    "itemId": "control_pinpoint-S49",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S49--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S49",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S49--qwen72b--original",
+    "itemId": "control_pinpoint-S49",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S49--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S49",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S49-P2--deepseek--original",
+    "itemId": "paragraph_existing-S49-P2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S49-P2--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S49-P2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S49-P2--qwen72b--original",
+    "itemId": "paragraph_existing-S49-P2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S49-P2--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S49-P2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S49--deepseek--original",
+    "itemId": "paragraph_absent-S49",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S49--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S49",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S49--qwen72b--original",
+    "itemId": "paragraph_absent-S49",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S49--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S49",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S50--deepseek--original",
+    "itemId": "control_pinpoint-S50",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S50--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S50",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S50--qwen72b--original",
+    "itemId": "control_pinpoint-S50",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S50--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S50",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S50-P1--deepseek--original",
+    "itemId": "paragraph_existing-S50-P1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S50-P1--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S50-P1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S50-P1--qwen72b--original",
+    "itemId": "paragraph_existing-S50-P1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S50-P1--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S50-P1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S50--deepseek--original",
+    "itemId": "paragraph_absent-S50",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S50--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S50",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S50--qwen72b--original",
+    "itemId": "paragraph_absent-S50",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S50--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S50",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S50--deepseek--original",
+    "itemId": "paragraph_omitted-S50",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S50--deepseek--pinpoint",
+    "itemId": "paragraph_omitted-S50",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S50--qwen72b--original",
+    "itemId": "paragraph_omitted-S50",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S50--qwen72b--pinpoint",
+    "itemId": "paragraph_omitted-S50",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S01--deepseek--original",
+    "itemId": "control_pinpoint-S01",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S01--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S01",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S01--qwen72b--original",
+    "itemId": "control_pinpoint-S01",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S01--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S01",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P1--deepseek--original",
+    "itemId": "paragraph_existing-S01-P1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P1--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S01-P1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P1--qwen72b--original",
+    "itemId": "paragraph_existing-S01-P1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P1--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S01-P1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P3--deepseek--original",
+    "itemId": "paragraph_existing-S01-P3",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P3--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S01-P3",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P3--qwen72b--original",
+    "itemId": "paragraph_existing-S01-P3",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P3--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S01-P3",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P4--deepseek--original",
+    "itemId": "paragraph_existing-S01-P4",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P4--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S01-P4",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P4--qwen72b--original",
+    "itemId": "paragraph_existing-S01-P4",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S01-P4--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S01-P4",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S01--deepseek--original",
+    "itemId": "paragraph_absent-S01",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S01--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S01",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S01--qwen72b--original",
+    "itemId": "paragraph_absent-S01",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S01--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S01",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S01--deepseek--original",
+    "itemId": "paragraph_omitted-S01",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S01--deepseek--pinpoint",
+    "itemId": "paragraph_omitted-S01",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S01--qwen72b--original",
+    "itemId": "paragraph_omitted-S01",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S01--qwen72b--pinpoint",
+    "itemId": "paragraph_omitted-S01",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S19--deepseek--original",
+    "itemId": "control_pinpoint-S19",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S19--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S19",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S19--qwen72b--original",
+    "itemId": "control_pinpoint-S19",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S19--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S19",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P1--deepseek--original",
+    "itemId": "paragraph_existing-S19-P1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P1--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S19-P1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P1--qwen72b--original",
+    "itemId": "paragraph_existing-S19-P1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P1--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S19-P1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P2--deepseek--original",
+    "itemId": "paragraph_existing-S19-P2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P2--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S19-P2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P2--qwen72b--original",
+    "itemId": "paragraph_existing-S19-P2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P2--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S19-P2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P4--deepseek--original",
+    "itemId": "paragraph_existing-S19-P4",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P4--deepseek--pinpoint",
+    "itemId": "paragraph_existing-S19-P4",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P4--qwen72b--original",
+    "itemId": "paragraph_existing-S19-P4",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_existing-S19-P4--qwen72b--pinpoint",
+    "itemId": "paragraph_existing-S19-P4",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S19--deepseek--original",
+    "itemId": "paragraph_absent-S19",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S19--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S19",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S19--qwen72b--original",
+    "itemId": "paragraph_absent-S19",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S19--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S19",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S19--deepseek--original",
+    "itemId": "paragraph_omitted-S19",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S19--deepseek--pinpoint",
+    "itemId": "paragraph_omitted-S19",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_omitted-S19--qwen72b--original",
+    "itemId": "paragraph_omitted-S19",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_omitted-S19--qwen72b--pinpoint",
+    "itemId": "paragraph_omitted-S19",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S26--deepseek--original",
+    "itemId": "control_pinpoint-S26",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S26--deepseek--pinpoint",
+    "itemId": "control_pinpoint-S26",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "control_pinpoint-S26--qwen72b--original",
+    "itemId": "control_pinpoint-S26",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "control_pinpoint-S26--qwen72b--pinpoint",
+    "itemId": "control_pinpoint-S26",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S26--deepseek--original",
+    "itemId": "paragraph_absent-S26",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S26--deepseek--pinpoint",
+    "itemId": "paragraph_absent-S26",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "paragraph_absent-S26--qwen72b--original",
+    "itemId": "paragraph_absent-S26",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "paragraph_absent-S26--qwen72b--pinpoint",
+    "itemId": "paragraph_absent-S26",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I1--deepseek--original",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I1--deepseek--pinpoint",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I1--qwen72b--original",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I1--qwen72b--pinpoint",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I2--deepseek--original",
+    "itemId": "item_existing-S26-I2",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I2--deepseek--pinpoint",
+    "itemId": "item_existing-S26-I2",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I2--qwen72b--original",
+    "itemId": "item_existing-S26-I2",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I2--qwen72b--pinpoint",
+    "itemId": "item_existing-S26-I2",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I4--deepseek--original",
+    "itemId": "item_existing-S26-I4",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I4--deepseek--pinpoint",
+    "itemId": "item_existing-S26-I4",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_existing-S26-I4--qwen72b--original",
+    "itemId": "item_existing-S26-I4",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_existing-S26-I4--qwen72b--pinpoint",
+    "itemId": "item_existing-S26-I4",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_absent-S26--deepseek--original",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_absent-S26--deepseek--pinpoint",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "prompt": "pinpoint"
+  },
+  {
+    "requestId": "item_absent-S26--qwen72b--original",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "prompt": "original"
+  },
+  {
+    "requestId": "item_absent-S26--qwen72b--pinpoint",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "prompt": "pinpoint"
+  }
+]

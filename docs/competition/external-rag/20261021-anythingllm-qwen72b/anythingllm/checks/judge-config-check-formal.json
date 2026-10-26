@@ -1,0 +1,23 @@
+{
+  "checkedAtUtc": "2026-10-21T03:54:09.648221+00:00",
+  "baselineJudge": {
+    "name": "Qwen/Qwen2.5-72B-Instruct",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+  },
+  "entry": {
+    "name": "Qwen/Qwen2.5-72B-Instruct",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+  },
+  "action": "already_registered",
+  "publicConfig": {
+    "name": "Qwen/Qwen2.5-72B-Instruct",
+    "base_url": "https://api.siliconflow.cn/v1",
+    "api_key_env": "VERISCOPE_SILICONFLOW_API_KEY"
+  },
+  "equalToBaseline": true,
+  "error": null,
+  "note": "只核对登记字段；未读取密钥值。",
+  "registryEntriesBefore": 1
+}

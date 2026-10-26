@@ -1,0 +1,41 @@
+{
+  "six_paths": {
+    "CHROMA_DIR": "work/pdf-e2e-stage2-20261020/out/chroma_db",
+    "SUMMARY_OUTPUT": "work/pdf-e2e-stage2-20261020/out/multi_model_summary.csv",
+    "HTML_OUTPUT": "work/pdf-e2e-stage2-20261020/out/ragas_report.html",
+    "CHART_PATH": "work/pdf-e2e-stage2-20261020/out/result_chart.png",
+    "HISTORY_PATH": "work/pdf-e2e-stage2-20261020/out/eval_history.json",
+    "TREND_CHART_PATH": "work/pdf-e2e-stage2-20261020/out/trend_chart.png"
+  },
+  "import_and_default_parameter_checks": {
+    "retriever.CHROMA_DIR": true,
+    "pipeline.SUMMARY_OUTPUT": true,
+    "pipeline.HTML_OUTPUT": true,
+    "pipeline.CHART_PATH": true,
+    "html.CHART_PATH": true,
+    "html.HTML_OUTPUT": true,
+    "load_history.path": true,
+    "save_eval_record.path": true,
+    "history_to_dataframe.path": true,
+    "generate_trend_chart.path": true,
+    "generate_html_report.chart_path": true,
+    "generate_html_report.output_path": true
+  },
+  "six_path_checks_passed": true,
+  "all_output_isolated": false,
+  "additional_csv_path": "ragas_report_deepseek-chat.csv",
+  "additional_csv_before": {
+    "kind": "file",
+    "size_bytes": 12546,
+    "mtime_ns": 1790765519919936200,
+    "sha256": "499640e1e2aa363644b5e7c05df32b765f210793311f51d33298ebdd04c25623"
+  },
+  "blocker": "evaluate passes BASE_DIR to run_models; per-model CSV is not controlled by the six allowed path constants.",
+  "references": [
+    "backend/core/pipeline.py:446",
+    "backend/core/pipeline.py:447",
+    "backend/core/pipeline.py:573"
+  ],
+  "BASE_DIR_changed": false,
+  "functions_monkey_patched": false
+}

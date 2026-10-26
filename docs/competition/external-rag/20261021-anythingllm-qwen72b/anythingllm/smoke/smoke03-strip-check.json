@@ -1,0 +1,37 @@
+{
+  "checkedAtUtc": "2026-10-21T00:28:03.995187+00:00",
+  "id": "SMOKE03",
+  "inputSha256": "640db194696908bab587b5e101bb2451e3748c693cbd332bb1826bb556406ae7",
+  "shimSha256": "53057b9dc1081310337a0d73929ba253bd9519aa5fe954ab8efeab5b46e2b20c",
+  "method": "Load shim by file path; call split_reasoning(meta.rawAnswer); no network or model calls.",
+  "answerStartsWithThink": false,
+  "status": "checked",
+  "answerUtf8Bytes": 202,
+  "answerSha256": "c54aff4c430ef95c4c006fe55a6a983a35558b27ee729d92f56cb152853f3ad6",
+  "recomputedAnswerSha256": "c54aff4c430ef95c4c006fe55a6a983a35558b27ee729d92f56cb152853f3ad6",
+  "answerBytesEqual": true,
+  "reasoningBlockKeysEqual": true,
+  "reasoningBlockFieldsEqual": {
+    "rawAnswerSha256": true,
+    "rawAnswerUtf8Bytes": true,
+    "reasoningSha256": true,
+    "reasoningUtf8Bytes": true,
+    "status": true
+  },
+  "reasoningBlockEqual": true,
+  "reasoningBlockStatus": "stripped",
+  "recordedReasoningBlock": {
+    "status": "stripped",
+    "rawAnswerUtf8Bytes": 430,
+    "rawAnswerSha256": "e9f0ad8bd8715c605d953cbbbb238f1f94e3dc59c7a0789935253ffee2281f44",
+    "reasoningUtf8Bytes": 213,
+    "reasoningSha256": "1d0a68f5b4ae812c917cd2d215e94333aa6f7ef490fdd7de8788a630b019a18c"
+  },
+  "recomputedReasoningBlock": {
+    "status": "stripped",
+    "rawAnswerUtf8Bytes": 430,
+    "rawAnswerSha256": "e9f0ad8bd8715c605d953cbbbb238f1f94e3dc59c7a0789935253ffee2281f44",
+    "reasoningUtf8Bytes": 213,
+    "reasoningSha256": "1d0a68f5b4ae812c917cd2d215e94333aa6f7ef490fdd7de8788a630b019a18c"
+  }
+}

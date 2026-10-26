@@ -1,0 +1,7 @@
+Source SHA-256 matched; parse_check=PASS; chunks=26.
+Planned model=deepseek-chat; judge=self; planned questions=6; normal-path calls=83.
+Estimated input=139689; output allowance=20240; total=159929; limit=100000.
+STOP: mandatory cost redline exceeded; independent per-model CSV isolation conflict recorded.
+No evaluate/model API/embedding/vector DB invocation. Provider usage=null; gate=NOT_RUN.
+Six root paths unchanged=True; protected files unchanged=True.
+Preflight exit=20; evaluation exit=null (not invoked).

@@ -154,6 +154,39 @@
 /docs/competition/judge-sensitivity/run-20261012/** -text
 /docs/competition/judge-sensitivity/analysis-20261012/** -text
 
+# 冻结回答多裁判重复评分试跑：复制文件保留源字节（含 CRLF），哈希按原样记录，不做换行转换。
+/docs/competition/judge-rerun/20261021-pilot/** -text
+
+# 法条注入正式运行归档：逐文件规则（不用通配）。含 CRLF 的原样副本用 -text 保留源字节；纯 LF 文件用 text eol=lf。
+/docs/competition/statute-check/20261021-formal/README.md text eol=lf
+/docs/competition/statute-check/20261021-formal/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261021-formal/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261021-formal/precheck.md text eol=lf
+/docs/competition/statute-check/20261021-formal/results.json text eol=lf
+/docs/competition/statute-check/20261021-formal/results.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/events.jsonl -text
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/judge_compare.py -text
+/docs/competition/statute-check/20261021-formal/run/sources/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261021-formal/run/sources/statute_injection.py text eol=lf
+
 # 部署文件在 Linux 容器和服务器上执行，固定为 LF，避免从 Windows 检出后 shell 脚本和 Dockerfile 续行失效。
 /deploy/** text eol=lf
 
@@ -259,6 +292,14 @@
 /docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
 /docs/competition/judge-calibration/20261014-annotation-V/calibration.json text eol=lf
 
+# 第二轮非作者人工标注（A、B）：同上，均为 LF；标注文件只把 annotator 改为代号。
+/docs/competition/judge-calibration/20261021-annotation-AB/README.md text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/SHA256SUMS.txt text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/analysis.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/judge-calibration/20261021-annotation-AB/calibration.json text eol=lf
+
 # 资料来源登记表：按 LF 归一化哈希关联资料，固定新登记文件为 LF。
 /frontend/src/fixtures/source-registry.json text eol=lf
 
@@ -266,3 +307,414 @@
 /backend/adapters/models/judging.py text eol=lf
 /backend/adapters/rag_application.py text eol=lf
 /tools/competition/evaluate_external.py text eol=lf
+
+# Constructed PDF fixtures: preserve the original binary bytes on every platform.
+/tests/fixtures/parse_check/constructed_blank.pdf binary
+/tests/fixtures/parse_check/constructed_cjk_builtin_font_mojibake.pdf binary
+/tests/fixtures/parse_check/constructed_english_control.pdf binary
+
+# PDF stage-2 preflight: preserve each new evidence file explicitly.
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/README.md text eol=lf
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/SHA256SUMS.txt text eol=lf
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/driver.py -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/final-validation.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/git-status-after.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/git-status-after-preflight.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/git-status-before.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/isolation-check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/parse-check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/path-comparison.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/path-references.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/protected-files-after.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/protected-files-before.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/result.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/root-paths-after.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/root-paths-before.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/out/token-estimate.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/run.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/raw/secret-scan.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/stage2/result.json -text
+# PDF stage-1 archive: preserve each archived file explicitly.
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/README.md -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/summary.md -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/run-A.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/run-B.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-extracted.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-parse_check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/A-stderr.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-extracted.txt -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-parse_check.json -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/B-stderr.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/logging.log -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/raw/pdf_e2e_stage1.py -text
+/docs/competition/evidence/PDF-E2E-20261020T040755Z/SHA256SUMS.txt text eol=lf
+
+# AnythingLLM shim: 预注册与归档锁定其 SHA-256，需逐文件固定行尾。
+/examples/anythingllm_shim/shim.py text eol=lf
+/tests/test_anythingllm_shim.py text eol=lf
+# AnythingLLM 正式 25 题归档（2026-10-21）：逐文件固定字节，不用通配。
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md text eol=lf
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/SHA256SUMS.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/SHA256SUMS.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/context-bound-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/formal-summary.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/judge-config-check-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/judge-models-check-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/checks/manifest-compare-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/shim/shim.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke01-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke02-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke03-result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/smoke/smoke03-strip-check.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/after-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/before-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-head-before-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-status-after-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/git-status-before-formal.txt -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/source-after-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/snapshots/source-before-formal.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/check_context_bound.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/check_context_bound_v2.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/compare_installed_source.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/anythingllm/tools/round3/reference-v1.18.0.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/manifest.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/records.jsonl -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/report.html -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/report.md -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/result.json -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/judging.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/openai_compatible.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/models/registry.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/rag_application.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/adapters/ragas_compat.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/config.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/gate.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/pipeline.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/core/utils.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/backend/services/trace.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/sources/tools/competition/evaluate_external.py -text
+/docs/competition/external-rag/20261021-anythingllm-qwen72b/testset.json -text
+
+# 法条注入正式运行（statute-check/20261021-formal）的 authorization.json 与 SHA256SUMS.txt 记录了以下在库工具的原始字节哈希，
+# analyze 还会用在库的 statute_check.py 重算规则；按记录逐个固定换行符（judge_compare.py 当时按 CRLF 记录）。
+/tools/competition/statute_injection.py text eol=lf
+/backend/core/statute_check.py text eol=lf
+/tools/competition/judge_sensitivity.py text eol=lf
+/tools/competition/judge_compare.py text eol=crlf
+/tools/competition/run_evidence.py text eol=lf
+/tools/competition/judge_calibration.py text eol=lf
+# 款项定位准备工具：源码与测试的哈希绑定在其授权草稿中，固定为 LF。
+/tools/competition/statute_pinpoint.py text eol=lf
+/tests/test_statute_pinpoint.py text eol=lf
+
+# 款项定位已确认材料与规则离线结果：逐文件固定 LF。
+/docs/competition/statute-check/20261021-pinpoint-prep/README.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/RUN_CONFIRMATION.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/cost-estimate.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompt.pinpoint.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/prompts.diff text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-prep/rules.json text eol=lf
+
+# 款项定位双提示运行：逐文件固定源字节；CRLF 副本不转换，纯 LF 文件固定 LF。
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/README.md text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/events.jsonl -text
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/package.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/prompt.pinpoint.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/records.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tests/test_statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_compare.py -text
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/run/sources/tools/competition/statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261021-pinpoint-run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/README.md text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-pinpoint-reasons/analysis/reasons.json text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/README.md text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/analysis/posthoc.json text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/formal-check/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-posthoc-locate/formal-check/posthoc.json text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/SHA256SUMS.txt text eol=lf
+/docs/competition/external-rag/20261022-bank-qa-anythingllm/summary.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/README.md text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/analysis/pilot-report.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/analysis/rules.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/events.jsonl text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/statute-check/20261021-pinpoint-run/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/docs/competition/statute-check/20261021-pinpoint-run/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/prompt.ragas.FIX_OUTPUT_FORMAT.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/prompt.ragas.nli_statements_message.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/prompt.ragas.statement_prompt.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/backend/adapters/ragas_compat.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tests/test_statute_equalinfo.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/judge_compare.py text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/statute_equalinfo.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/pilot/run/sources/tools/competition/statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/posthoc/output.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/posthoc/probe_decompose.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/authorization.json text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/run/events.jsonl text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/evidence/20261005T144504Z-full-39511424/llm-events.jsonl text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/judge-calibration/20261014-annotation-V/annotation-V.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/statute-check/20261021-formal/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/statute-check/20261021-formal/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/statute-check/20261021-formal/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/statute-check/20261021-pinpoint-run/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/docs/competition/statute-check/20261021-pinpoint-run/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/frontend/src/fixtures/judge-annotation.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/prompt.original.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/prompt.ragas.FIX_OUTPUT_FORMAT.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/prompt.ragas.nli_statements_message.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/prompt.ragas.statement_prompt.txt text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/runtime.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/backend/adapters/ragas_compat.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tests/test_statute_equalinfo.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/judge_compare.py text eol=crlf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/statute_equalinfo.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261022-equalinfo/run/sources/tools/competition/statute_pinpoint.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/README.md text eol=lf
+/docs/competition/statute-check/20261022-labeled/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/analysis-replay/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/analysis-replay/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/prep/authorization.template.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/prep/estimates.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/prep/labeled.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/prep/package.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/prep/slices.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run.stdout.txt text eol=crlf
+/docs/competition/statute-check/20261022-labeled/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/events.jsonl text eol=crlf
+/docs/competition/statute-check/20261022-labeled/run/inputs/docs/competition/statute-check/20261021-pinpoint-run/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/inputs/docs/competition/statute-check/20261022-equalinfo/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/inputs/docs/competition/statute-check/20261022-equalinfo/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/inputs/labeled.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/inputs/scenarios/deposit_insurance.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/inputs/slices.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/package.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/prompt.txt text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/schedule.json text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tests/test_statute_labeled.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/judge_compare.py text eol=crlf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261022-labeled/run/sources/tools/competition/statute_labeled.py text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/README.md text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis-replay.stdout.txt text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis-replay/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis-replay/formal.json text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis-replay/pinpoint.json text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis.stdout.txt text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis/formal.json text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/analysis/pinpoint.json text eol=lf
+/docs/competition/statute-check/20261022-lexical-baseline/lexical_baseline.py text eol=lf
+/tools/competition/statute_equalinfo.py text eol=lf
+/tests/test_statute_equalinfo.py text eol=lf
+/tools/competition/statute_labeled.py text eol=lf
+/tests/test_statute_labeled.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis-replay/analysis.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/analysis-replay/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/prep/authorization.template.json -text
+/docs/competition/statute-check/20261022-blindspot/prep/make_exam.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/README.md text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/authorization.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/events.jsonl -text
+/docs/competition/statute-check/20261022-blindspot/run/manifest.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/contexts/labeled.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/contexts/plain.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/estimates.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/package.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/requests.jsonl text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/rules.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/package/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/records.json text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/backend/core/statute_check.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tests/test_statute_blindspot.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_calibration.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_compare.py -text
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/judge_sensitivity.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/run_evidence.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/statute_blindspot.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run/sources/tools/competition/statute_injection.py text eol=lf
+/docs/competition/statute-check/20261022-blindspot/run.stdout.txt -text
+/docs/competition/statute-check/20261022-blindspot/SHA256SUMS.txt text eol=lf
+/tools/competition/statute_blindspot.py text eol=lf
+/tests/test_statute_blindspot.py text eol=lf
+/docs/competition/scoring-rubric-v1.md text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/excluded-items.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/gap-audit.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/items.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/method.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/README.md text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/recompute.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/records.json text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/source.txt text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/lexical_baseline.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/sources/statute_locate.py text eol=lf
+/docs/competition/statute-check/20261023-stage3-baselines/summary.json text eol=lf
+/frontend/src/fixtures/blindspot-check.json text eol=lf
+/scripts/statute_diagnostic.py text eol=lf
+/backend/__init__.py text eol=lf
+/backend/core/__init__.py text eol=lf
+/backend/core/statute_locate.py text eol=lf
+/schemas/statute-diagnostic.v1.schema.json text eol=lf
+/examples/statute_check/constructed-request.json text eol=lf
+/tests/test_statute_diagnostic.py text eol=lf
+backend/core/statute_scope.py -text
+backend/core/statute_scope_rc.py -text
+scripts/statute_scope_diagnostic.py -text
+schemas/statute-scope-diagnostic.v1.schema.json -text
+tests/test_statute_scope_diagnostic.py -text
+examples/statute_scope/request.json -text
+examples/statute_scope/README.md -text
+backend/core/statute_scope_guarded.py -text
+scripts/statute_scope_guarded_diagnostic.py -text
+schemas/statute-scope-guarded-diagnostic.v1.schema.json -text
+tests/test_statute_scope_guarded.py -text
+examples/statute_scope/guarded-request.json -text
+examples/statute_scope/guarded-README.md -text
+backend/core/statute_item_context.py -text
+tests/test_statute_item_context.py -text
+examples/statute_scope/item-context-request.json -text
+scripts/statute_scope_source_diagnostic.py -text
+schemas/statute-scope-source-diagnostic.v1.schema.json -text
+tests/test_statute_scope_source.py -text
+examples/statute_scope/source-envelope-request.json -text
+examples/statute_scope/source-README.md -text
+
+examples/dify_adapter/import_response.py -text
+examples/dify_adapter/README.md -text
+examples/dify_adapter/request.json -text
+examples/dify_adapter/response.json -text
+tests/test_dify_import.py -text
+docs/integrations/external-rag.md -text
+/docs/competition/statute-check/20261024-onboarding/README.md text eol=lf
+/docs/competition/statute-check/20261024-onboarding/SHA256SUMS.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/contexts/labeled.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/contexts/plain.txt text eol=lf
+/docs/competition/statute-check/20261024-onboarding/cost.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/items.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/method.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/recompute.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/records.json text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/lexical_baseline.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/make_package.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/statute_check.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/sources/statute_onboarding.py text eol=lf
+/docs/competition/statute-check/20261024-onboarding/summary.json text eol=lf
+/tools/competition/statute_onboarding.py text eol=lf
+/tests/test_statute_onboarding.py text eol=lf
+/tools/competition/statute_unseen_diagnostic.py text eol=lf
+/tests/test_statute_unseen_diagnostic.py text eol=lf
+
+# Parent-context local preparation: preserve exact source bytes.
+/backend/api/app.py -text
+/backend/api/parent_context.py -text
+/backend/core/parent_context.py -text
+/backend/core/parent_context_mapping.py -text
+/scripts/parent_context.py -text
+/tests/test_parent_context.py -text
+/tests/test_parent_context_api.py -text
+/tests/test_api.py -text
+/schemas/parent-context.v1.schema.json -text
+/docs/integrations/parent-context.md -text
+/examples/parent_context/README.md -text
+/examples/parent_context/binding.json -text
+/examples/parent_context/retrieval-invalid.json -text
+/examples/parent_context/retrieval.json -text
+/examples/parent_context/segments.json -text
+/examples/parent_context/source.txt -text
+
+# Parent-context UI candidate: exact per-file bytes.
+/frontend/src/features/ParentContextView.tsx -text
+/frontend/src/features/parent-context.css -text
+/frontend/src/api/parentContext.ts -text
+/frontend/src/test/parent-context.test.tsx -text
+/frontend/src/App.tsx -text
+/frontend/src/labRoute.ts -text
+/frontend/src/styles.css -text
+/frontend/src/test/App.test.tsx -text
+/frontend/browser-tests/competition-release.spec.ts -text
+/frontend/browser-tests/evaluation-verification.spec.ts -text

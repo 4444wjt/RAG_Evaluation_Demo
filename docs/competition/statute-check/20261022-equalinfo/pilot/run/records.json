@@ -1,0 +1,1944 @@
+[
+  {
+    "unitId": "control-S03--J1--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段（第五条）明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control-S03--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--J1--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control-S03--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--J2--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第五条明确载明存款保险实行限额偿付，最高偿付限额为人民币50万元，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control-S03--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--J2--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control-S03--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--R1--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 5, the maximum compensation limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 5, the maximum compensation limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to Article 5, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in Article 5 that the maximum compensation limit is 500,000 yuan (最高赔付限额为人民币50万元).\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 5, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in Article 5 that the maximum compensation limit is 500,000 yuan (最高赔付限额为人民币50万元).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control-S03--R1--deepseek--call-1",
+      "control-S03--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--R1--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the fifth rule, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the fifth rule, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the fifth rule, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context directly states that the highest compensation limit is 500,000 yuan for people's currency, which is the Chinese yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the highest compensation limit is 500,000 yuan for people's currency, which is the Chinese yuan.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the fifth rule, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context directly states that the highest compensation limit is 500,000 yuan for people's currency, which is the Chinese yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the highest compensation limit is 500,000 yuan for people's currency, which is the Chinese yuan.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control-S03--R1--qwen72b--call-1",
+      "control-S03--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--R2--deepseek",
+    "itemId": "control-S03",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 5, the maximum compensation limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 5, the maximum compensation limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to Article 5, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"Article 5 explicitly states that the maximum compensation limit is 500,000 yuan (最高偿付限额为人民币50万元).\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 5, the maximum compensation limit is 500,000 yuan.",
+          "reason": "Article 5 explicitly states that the maximum compensation limit is 500,000 yuan (最高偿付限额为人民币50万元).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control-S03--R2--deepseek--call-1",
+      "control-S03--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control-S03--R2--qwen72b",
+    "itemId": "control-S03",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the fifth rule, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the fifth rule, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the fifth rule, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in the fifth rule that the maximum compensation limit is 500,000 yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the compensation limit is in yuan, which is the Chinese currency.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the fifth rule, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in the fifth rule that the maximum compensation limit is 500,000 yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the compensation limit is in yuan, which is the Chinese currency.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control-S03--R2--qwen72b--call-1",
+      "control-S03--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--J1--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段（第五条）明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control_pinpoint-S03--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--J1--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条第一款明确规定了最高偿付限额为人民币50万元，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control_pinpoint-S03--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--J2--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第五条第一款明确载明“最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control_pinpoint-S03--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--J2--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条第一款明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "control_pinpoint-S03--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--R1--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 1, the maximum compensation limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 1, the maximum compensation limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 1, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context states in Article 5 that the maximum compensation limit is 500,000 yuan, which directly supports the statement.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 1, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context states in Article 5 that the maximum compensation limit is 500,000 yuan, which directly supports the statement.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control_pinpoint-S03--R1--deepseek--call-1",
+      "control_pinpoint-S03--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--R1--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context directly states that the highest compensation limit is 500,000 yuan for the fifth clause.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the compensation limit is in Chinese yuan (人民幣).\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context directly states that the highest compensation limit is 500,000 yuan for the fifth clause.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the compensation limit is in Chinese yuan (人民幣).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control_pinpoint-S03--R1--qwen72b--call-1",
+      "control_pinpoint-S03--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--R2--deepseek",
+    "itemId": "control_pinpoint-S03",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 1, the maximum payment limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 1, the maximum payment limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 1, the maximum payment limit is 500,000 yuan.\", \"reason\": \"The context states in Article 5 that deposit insurance implements limited payment, with the maximum payment limit being 500,000 yuan, which directly supports the statement.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 1, the maximum payment limit is 500,000 yuan.",
+          "reason": "The context states in Article 5 that deposit insurance implements limited payment, with the maximum payment limit being 500,000 yuan, which directly supports the statement.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control_pinpoint-S03--R2--deepseek--call-1",
+      "control_pinpoint-S03--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "control_pinpoint-S03--R2--qwen72b",
+    "itemId": "control_pinpoint-S03",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the maximum compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the maximum compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in the fifth clause, first provision, that the maximum compensation limit is 500,000 yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the maximum compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the maximum compensation limit is 500,000 yuan, which is the Chinese currency.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the first provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in the fifth clause, first provision, that the maximum compensation limit is 500,000 yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the maximum compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the maximum compensation limit is 500,000 yuan, which is the Chinese currency.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "control_pinpoint-S03--R2--qwen72b--call-1",
+      "control_pinpoint-S03--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J1--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段（第五条）明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P2--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J1--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P2--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J2--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第五条明确载明存款保险实行限额偿付，最高偿付限额为人民币50万元，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P2--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--J2--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P2--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R1--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.\", \"reason\": \"The context states in Article 5 that the maximum compensation limit is 500,000 yuan in Renminbi, but it does not specify that this is in Paragraph 2. The statement adds a specific paragraph reference not supported by the context.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.",
+          "reason": "The context states in Article 5 that the maximum compensation limit is 500,000 yuan in Renminbi, but it does not specify that this is in Paragraph 2. The statement adds a specific paragraph reference not supported by the context.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P2--R1--deepseek--call-1",
+      "paragraph_existing-S03-P2--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R1--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the second provision of the fifth clause, the maximum compensation limit is 50,000 yuan.\", \"The currency for the maximum compensation limit is the Renminbi (RMB).\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the second provision of the fifth clause, the maximum compensation limit is 50,000 yuan.",
+        "The currency for the maximum compensation limit is the Renminbi (RMB)."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the second provision of the fifth clause, the maximum compensation limit is 50,000 yuan.\", \"reason\": \"The context directly states that the highest compensation limit is 50,000 yuan for the people's currency, which is RMB.\", \"verdict\": 1}, {\"statement\": \"The currency for the maximum compensation limit is the Renminbi (RMB).\", \"reason\": \"The context specifies that the highest compensation limit is 50,000 yuan for the people's currency, which is RMB.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the second provision of the fifth clause, the maximum compensation limit is 50,000 yuan.",
+          "reason": "The context directly states that the highest compensation limit is 50,000 yuan for the people's currency, which is RMB.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the maximum compensation limit is the Renminbi (RMB).",
+          "reason": "The context specifies that the highest compensation limit is 50,000 yuan for the people's currency, which is RMB.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P2--R1--qwen72b--call-1",
+      "paragraph_existing-S03-P2--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R2--deepseek",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.\", \"reason\": \"The context states in Article 5 that the maximum compensation limit is 500,000 yuan in Renminbi, but this appears in the first paragraph of Article 5, not the second paragraph. The second paragraph discusses how deposits are calculated and paid within the limit. Therefore, the statement incorrectly attributes the limit to Paragraph 2.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 2, the maximum compensation limit is 500,000 yuan in Renminbi.",
+          "reason": "The context states in Article 5 that the maximum compensation limit is 500,000 yuan in Renminbi, but this appears in the first paragraph of Article 5, not the second paragraph. The second paragraph discusses how deposits are calculated and paid within the limit. Therefore, the statement incorrectly attributes the limit to Paragraph 2.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P2--R2--deepseek--call-1",
+      "paragraph_existing-S03-P2--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P2--R2--qwen72b",
+    "itemId": "paragraph_existing-S03-P2",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the second provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the maximum compensation limit is the Renminbi (RMB).\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the second provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the maximum compensation limit is the Renminbi (RMB)."
+      ],
+      "nliRaw": "```\n[{\"statement\": \"According to the second provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in the fifth clause, second provision, that the maximum compensation limit is 500,000 yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the maximum compensation limit is the Renminbi (RMB).\", \"reason\": \"The context specifies the maximum compensation limit in yuan, which is the currency of the Renminbi (RMB).\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the second provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in the fifth clause, second provision, that the maximum compensation limit is 500,000 yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the maximum compensation limit is the Renminbi (RMB).",
+          "reason": "The context specifies the maximum compensation limit in yuan, which is the currency of the Renminbi (RMB).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P2--R2--qwen72b--call-1",
+      "paragraph_existing-S03-P2--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J1--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段（第五条）明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P3--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J1--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P3--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J2--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第五条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P3--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--J2--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_existing-S03-P3--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R1--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan in Renminbi.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan in Renminbi."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan in Renminbi.\", \"reason\": \"The context states in Article 5 that the maximum payment limit is 500,000 yuan in Renminbi, but it does not specify that this is in Paragraph 3. The statement adds a specific paragraph reference not supported by the context.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan in Renminbi.",
+          "reason": "The context states in Article 5 that the maximum payment limit is 500,000 yuan in Renminbi, but it does not specify that this is in Paragraph 3. The statement adds a specific paragraph reference not supported by the context.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P3--R1--deepseek--call-1",
+      "paragraph_existing-S03-P3--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R1--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context states that the maximum compensation limit is 500,000 yuan, which is directly mentioned in the third provision of the fifth clause.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the compensation limit is 500,000 yuan, and yuan is the currency of China.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context states that the maximum compensation limit is 500,000 yuan, which is directly mentioned in the third provision of the fifth clause.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the compensation limit is 500,000 yuan, and yuan is the currency of China.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P3--R1--qwen72b--call-1",
+      "paragraph_existing-S03-P3--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R2--deepseek",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan.\", \"reason\": \"The context states in Article 5 that the maximum payment limit is 500,000 yuan, but this appears in the first paragraph of Article 5, not the third paragraph. The third paragraph discusses the calculation of principal and interest for the same depositor across all insured deposit accounts at the same insured institution. Therefore, the statement incorrectly attributes the 500,000 yuan limit to Paragraph 3.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 3, the maximum payment limit is 500,000 yuan.",
+          "reason": "The context states in Article 5 that the maximum payment limit is 500,000 yuan, but this appears in the first paragraph of Article 5, not the third paragraph. The third paragraph discusses the calculation of principal and interest for the same depositor across all insured deposit accounts at the same insured institution. Therefore, the statement incorrectly attributes the 500,000 yuan limit to Paragraph 3.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P3--R2--deepseek--call-1",
+      "paragraph_existing-S03-P3--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_existing-S03-P3--R2--qwen72b",
+    "itemId": "paragraph_existing-S03-P3",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the maximum compensation limit is the Renminbi (RMB).\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the maximum compensation limit is the Renminbi (RMB)."
+      ],
+      "nliRaw": "```\n[{\"statement\": \"According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in the fifth clause, third provision, that the maximum compensation limit is 500,000 yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the maximum compensation limit is the Renminbi (RMB).\", \"reason\": \"The context specifies the maximum compensation limit in yuan, which is the currency of the Renminbi (RMB).\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the third provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in the fifth clause, third provision, that the maximum compensation limit is 500,000 yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the maximum compensation limit is the Renminbi (RMB).",
+          "reason": "The context specifies the maximum compensation limit in yuan, which is the currency of the Renminbi (RMB).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_existing-S03-P3--R2--qwen72b--call-1",
+      "paragraph_existing-S03-P3--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--J1--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第0段（第五条）明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_absent-S03--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--J1--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元，这与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_absent-S03--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--J2--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第五条明确载明“存款保险实行限额偿付，最高偿付限额为人民币50万元”，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_absent-S03--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--J2--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第五条明确规定了存款保险实行限额偿付，最高偿付限额为人民币50万元。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_absent-S03--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--R1--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context states in Article 5 that the maximum compensation limit is 500,000 yuan, but it does not specify 'Paragraph 5'. The statement adds a specific paragraph reference not present in the context.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context states in Article 5 that the maximum compensation limit is 500,000 yuan, but it does not specify 'Paragraph 5'. The statement adds a specific paragraph reference not present in the context.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_absent-S03--R1--deepseek--call-1",
+      "paragraph_absent-S03--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--R1--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context directly states that the highest compensation limit is 500,000 yuan for the fifth provision of the fifth clause.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the compensation limit is in Chinese yuan (人民幣).\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context directly states that the highest compensation limit is 500,000 yuan for the fifth provision of the fifth clause.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the compensation limit is in Chinese yuan (人民幣).",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_absent-S03--R1--qwen72b--call-1",
+      "paragraph_absent-S03--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--R2--deepseek",
+    "itemId": "paragraph_absent-S03",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context states in Article 5 that the maximum compensation limit is 500,000 yuan, but it does not specify that this is in 'Paragraph 5' of Article 5. The statement adds a paragraph reference not supported by the context.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the provisions of Article 5, Paragraph 5, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context states in Article 5 that the maximum compensation limit is 500,000 yuan, but it does not specify that this is in 'Paragraph 5' of Article 5. The statement adds a paragraph reference not supported by the context.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_absent-S03--R2--deepseek--call-1",
+      "paragraph_absent-S03--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_absent-S03--R2--qwen72b",
+    "itemId": "paragraph_absent-S03",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"The currency for the compensation limit is the Chinese yuan.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+        "The currency for the compensation limit is the Chinese yuan."
+      ],
+      "nliRaw": "```\n[{\"statement\": \"According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.\", \"reason\": \"The context explicitly states in the fifth clause, fifth provision, that the maximum compensation limit is 500,000 yuan.\", \"verdict\": 1}, {\"statement\": \"The currency for the compensation limit is the Chinese yuan.\", \"reason\": \"The context specifies that the compensation limit is in yuan, which is the Chinese currency.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the fifth provision of the fifth clause, the maximum compensation limit is 500,000 yuan.",
+          "reason": "The context explicitly states in the fifth clause, fifth provision, that the maximum compensation limit is 500,000 yuan.",
+          "verdict": 1
+        },
+        {
+          "statement": "The currency for the compensation limit is the Chinese yuan.",
+          "reason": "The context specifies that the compensation limit is in yuan, which is the Chinese currency.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_absent-S03--R2--qwen72b--call-1",
+      "paragraph_absent-S03--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J1--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第十九条列明人民法院裁定受理对投保机构的破产申请属于存款人有权要求偿付的情形，且紧随其后的条文明确存款保险基金管理机构应在前款规定情形发生之日起7个工作日内足额偿付存款，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "contextIndex": 1,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_omitted-S27--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J1--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条明确规定了存款保险基金管理机构应当在人民法院裁定受理对投保机构的破产申请等情形发生之日起7个工作日内足额偿付存款。",
+      "citations": [
+        {
+          "contextIndex": 1,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_omitted-S27--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J2--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第十九条明确规定了人民法院裁定受理对投保机构破产申请的情形下存款人有权要求偿付，并规定存款保险基金管理机构应在前款规定情形发生之日起7个工作日内足额偿付存款，与待核查陈述一致。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款："
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_omitted-S27--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--J2--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条明确规定了在人民法院裁定受理对投保机构的破产申请等情形下，存款保险基金管理机构应当在7个工作日内足额偿付存款。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "paragraph_omitted-S27--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R1--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。\", \"规定情形发生之日是起算点。\", \"存款保险基金管理机构需要足额偿付存款。\", \"足额偿付存款的期限是7个工作日。\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。",
+        "规定情形发生之日是起算点。",
+        "存款保险基金管理机构需要足额偿付存款。",
+        "足额偿付存款的期限是7个工作日。"
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。\", \"reason\": \"The context explicitly states that the deposit insurance fund management institution shall pay the insured deposits in full within 7 working days from the date the specified circumstances occur, as per Article 19.\", \"verdict\": 1}, {\"statement\": \"规定情形发生之日是起算点。\", \"reason\": \"The context states '在前款规定情形发生之日起7个工作日内', which directly indicates that the date the specified circumstances occur is the starting point for counting the 7 working days.\", \"verdict\": 1}, {\"statement\": \"存款保险基金管理机构需要足额偿付存款。\", \"reason\": \"The context states that the deposit insurance fund management institution shall pay the insured deposits in full within the specified time limit.\", \"verdict\": 1}, {\"statement\": \"足额偿付存款的期限是7个工作日。\", \"reason\": \"The context explicitly states that the full payment of deposits shall be made within 7 working days from the date the specified circumstances occur.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。",
+          "reason": "The context explicitly states that the deposit insurance fund management institution shall pay the insured deposits in full within 7 working days from the date the specified circumstances occur, as per Article 19.",
+          "verdict": 1
+        },
+        {
+          "statement": "规定情形发生之日是起算点。",
+          "reason": "The context states '在前款规定情形发生之日起7个工作日内', which directly indicates that the date the specified circumstances occur is the starting point for counting the 7 working days.",
+          "verdict": 1
+        },
+        {
+          "statement": "存款保险基金管理机构需要足额偿付存款。",
+          "reason": "The context states that the deposit insurance fund management institution shall pay the insured deposits in full within the specified time limit.",
+          "verdict": 1
+        },
+        {
+          "statement": "足额偿付存款的期限是7个工作日。",
+          "reason": "The context explicitly states that the full payment of deposits shall be made within 7 working days from the date the specified circumstances occur.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_omitted-S27--R1--deepseek--call-1",
+      "paragraph_omitted-S27--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R1--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"The management institution of the deposit insurance fund is responsible for paying the deposit in advance.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+        "The management institution of the deposit insurance fund is responsible for paying the deposit in advance."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"reason\": \"The context does not mention Article Nineteen, but it does state that the deposit insurance fund management institution should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"verdict\": 1}, {\"statement\": \"The management institution of the deposit insurance fund is responsible for paying the deposit in advance.\", \"reason\": \"The context clearly states that the deposit insurance fund management institution is responsible for advancing the payment of the deposit.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+          "reason": "The context does not mention Article Nineteen, but it does state that the deposit insurance fund management institution should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+          "verdict": 1
+        },
+        {
+          "statement": "The management institution of the deposit insurance fund is responsible for paying the deposit in advance.",
+          "reason": "The context clearly states that the deposit insurance fund management institution is responsible for advancing the payment of the deposit.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_omitted-S27--R1--qwen72b--call-1",
+      "paragraph_omitted-S27--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R2--deepseek",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。"
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。\", \"reason\": \"第十九条明确规定：存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "根据第十九条，存款保险基金管理机构应当在规定情形发生之日起7个工作日内足额偿付存款。",
+          "reason": "第十九条明确规定：存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_omitted-S27--R2--deepseek--call-1",
+      "paragraph_omitted-S27--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "paragraph_omitted-S27--R2--qwen72b",
+    "itemId": "paragraph_omitted-S27",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"The management institution of the deposit insurance fund is responsible for paying the deposit in advance.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+        "The management institution of the deposit insurance fund is responsible for paying the deposit in advance."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"reason\": \"The context explicitly states in the 19th article that the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.\", \"verdict\": 1}, {\"statement\": \"The management institution of the deposit insurance fund is responsible for paying the deposit in advance.\", \"reason\": \"The context in the 19th article mentions that the management institution of the deposit insurance fund is responsible for advancing the payment of the deposit, which implies that it is responsible for paying the deposit in advance.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article Nineteen, the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+          "reason": "The context explicitly states in the 19th article that the management institution of the deposit insurance fund should advance the payment of the deposit within 7 working days from the date when the situation specified in the current regulations occurs.",
+          "verdict": 1
+        },
+        {
+          "statement": "The management institution of the deposit insurance fund is responsible for paying the deposit in advance.",
+          "reason": "The context in the 19th article mentions that the management institution of the deposit insurance fund is responsible for advancing the payment of the deposit, which implies that it is responsible for paying the deposit in advance.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 1.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "paragraph_omitted-S27--R2--qwen72b--call-1",
+      "paragraph_omitted-S27--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--J1--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文第十九条明确列举了存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形，其中第三项即为“人民法院裁定受理对投保机构的破产申请”。待核查陈述将其表述为“第十九条第一款第一项”与原文列举序号不符，但核心内容（人民法院裁定受理对投保机构的破产申请属于偿付情形之一）在上下文中得到支持。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_existing-S26-I1--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--J1--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条第三项明确指出，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_existing-S26-I1--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--J2--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第十九条第一款中，人民法院裁定受理对投保机构的破产申请是第（三）项，而非第（一）项；第（一）项为存款保险基金管理机构担任投保机构的接管组织。因此陈述关于“第十九条第一款第一项”的条款定位与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_existing-S26-I1--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--J2--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条第一款第一项明确指出，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_existing-S26-I1--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--R1--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which depositors have the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which depositors have the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which depositors have the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\", \"reason\": \"The context states that a people's court ruling to accept a bankruptcy application against an insured institution is Item 3 (三), not Item 1 (一), of Article 19. Item 1 refers to the deposit insurance fund management agency acting as the takeover organization for the insured institution.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which depositors have the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.",
+          "reason": "The context states that a people's court ruling to accept a bankruptcy application against an insured institution is Item 3 (三), not Item 1 (一), of Article 19. Item 1 refers to the deposit insurance fund management agency acting as the takeover organization for the insured institution.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_existing-S26-I1--R1--deepseek--call-1",
+      "item_existing-S26-I1--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--R1--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Section 1, Item 1, the People's Court determines that the applicant for the destruction of the insurance company is a person with the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits.\", \"The applicant has the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits within a certain period.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Section 1, Item 1, the People's Court determines that the applicant for the destruction of the insurance company is a person with the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits.",
+        "The applicant has the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits within a certain period."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to Article 19, Section 1, Item 1, the People's Court determines that the applicant for the destruction of the insurance company is a person with the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits.\", \"reason\": \"The context does not mention the People's Court determining the applicant's right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits. It only outlines the responsibilities of the deposit insurance fund management institution and the process for paying out deposits.\", \"verdict\": 0}, {\"statement\": \"The applicant has the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits within a certain period.\", \"reason\": \"The context states that the deposit insurance fund management institution shall pay the insured deposits within 7 working days from the date when the advance payment situation occurs, and the applicant can take the deposit after the payment. This implies that the applicant has the right to request the payment within a certain period.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Section 1, Item 1, the People's Court determines that the applicant for the destruction of the insurance company is a person with the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits.",
+          "reason": "The context does not mention the People's Court determining the applicant's right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits. It only outlines the responsibilities of the deposit insurance fund management institution and the process for paying out deposits.",
+          "verdict": 0
+        },
+        {
+          "statement": "The applicant has the right to request the deposit insurance fund management institution to use the deposit insurance fund to pay the insured deposits within a certain period.",
+          "reason": "The context states that the deposit insurance fund management institution shall pay the insured deposits within 7 working days from the date when the advance payment situation occurs, and the applicant can take the deposit after the payment. This implies that the applicant has the right to request the payment within a certain period.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.5,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_existing-S26-I1--R1--qwen72b--call-1",
+      "item_existing-S26-I1--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--R2--deepseek",
+    "itemId": "item_existing-S26-I1",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\", \"reason\": \"The context states that under Article 19, Item 3 (not Item 1) is '人民法院裁定受理对投保机构的破产申请' (a people's court ruling to accept a bankruptcy application against an insured institution). Item 1 refers to the deposit insurance fund management agency acting as the takeover organization. Therefore, the statement misattributes the bankruptcy circumstance to Item 1 instead of Item 3.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Paragraph 1, Item 1, a people's court ruling to accept a bankruptcy application against an insured institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.",
+          "reason": "The context states that under Article 19, Item 3 (not Item 1) is '人民法院裁定受理对投保机构的破产申请' (a people's court ruling to accept a bankruptcy application against an insured institution). Item 1 refers to the deposit insurance fund management agency acting as the takeover organization. Therefore, the statement misattributes the bankruptcy circumstance to Item 1 instead of Item 3.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_existing-S26-I1--R2--deepseek--call-1",
+      "item_existing-S26-I1--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_existing-S26-I1--R2--qwen72b",
+    "itemId": "item_existing-S26-I1",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to the first item of the first section of the nineteenth article, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.\", \"The deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to the first item of the first section of the nineteenth article, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.",
+        "The deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit."
+      ],
+      "nliRaw": "```\n[{\"statement\": \"According to the first item of the first section of the nineteenth article, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.\", \"reason\": \"The context does not mention the People's Court ruling on the applicant of the insurance company's destruction application. The context only specifies the conditions under which a deposit holder can request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit.\", \"verdict\": 0}, {\"statement\": \"The deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit.\", \"reason\": \"The context explicitly states that the deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit under certain conditions.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to the first item of the first section of the nineteenth article, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.",
+          "reason": "The context does not mention the People's Court ruling on the applicant of the insurance company's destruction application. The context only specifies the conditions under which a deposit holder can request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit.",
+          "verdict": 0
+        },
+        {
+          "statement": "The deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit.",
+          "reason": "The context explicitly states that the deposit holder has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay the insured deposit under certain conditions.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.5,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_existing-S26-I1--R2--qwen72b--call-1",
+      "item_existing-S26-I1--R2--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--J1--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第十九条列举的情形中，第三项为“人民法院裁定受理对投保机构的破产申请”，而非第五项；且该条仅列四项，不存在第五项。陈述将情形序号错误表述为“第一款第五项”。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（四）经国务院批准的其他情形。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_absent-S26--J1--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--J1--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "J1",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条第一款第五项确实提到了人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_absent-S26--J1--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--J2--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "contradicted",
+      "reason": "上下文第十九条列举的第四项情形为“人民法院裁定受理对投保机构的破产申请”，对应的是第（三）项，而非陈述所称的“第一款第五项”；且该条仅列四项，不存在第五项。陈述对条款序号的表述与上下文矛盾。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        },
+        {
+          "contextIndex": 0,
+          "quote": "（四）经国务院批准的其他情形。"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_absent-S26--J2--deepseek--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--J2--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "J2",
+    "status": "ok",
+    "result": {
+      "verdict": "supported",
+      "reason": "上下文中的第十九条第一款第五项明确指出，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+      "citations": [
+        {
+          "contextIndex": 0,
+          "quote": "（三）人民法院裁定受理对投保机构的破产申请；"
+        }
+      ],
+      "citationStatus": "located"
+    },
+    "ragas": null,
+    "calls": [
+      "item_absent-S26--J2--qwen72b--call-1"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--R1--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Paragraph 1, Item 5, a people's court ruling to accept a bankruptcy application against an insurance institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Paragraph 1, Item 5, a people's court ruling to accept a bankruptcy application against an insurance institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits."
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"According to Article 19, Paragraph 1, Item 5, a people's court ruling to accept a bankruptcy application against an insurance institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.\", \"reason\": \"The context lists four circumstances under Article 19, and the people's court ruling to accept a bankruptcy application is Item 3, not Item 5. There is no Item 5 in the context.\", \"verdict\": 0}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Paragraph 1, Item 5, a people's court ruling to accept a bankruptcy application against an insurance institution is one of the circumstances in which a depositor has the right to request the deposit insurance fund management agency to use the deposit insurance fund to pay insured deposits.",
+          "reason": "The context lists four circumstances under Article 19, and the people's court ruling to accept a bankruptcy application is Item 3, not Item 5. There is no Item 5 in the context.",
+          "verdict": 0
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.0,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_absent-S26--R1--deepseek--call-1",
+      "item_absent-S26--R1--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--R1--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "R1",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Paragraph 1, Item 5, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.\", \"The deposit holder has the right to request the deposit insurance management organization to use the deposit insurance fund to pay the insured deposit.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Paragraph 1, Item 5, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.",
+        "The deposit holder has the right to request the deposit insurance management organization to use the deposit insurance fund to pay the insured deposit."
+      ],
+      "nliRaw": "```[{\"statement\": \"According to Article 19, Paragraph 1, Item 5, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.\", \"reason\": \"The context does not mention Article 19, Paragraph 1, Item 5, nor does it specify that the People's Court rules the applicant of the insurance company's destruction application is the deposit holder.\", \"verdict\": 0}, {\"statement\": \"The deposit holder has the right to request the deposit insurance management organization to use the deposit insurance fund to pay the insured deposit.\", \"reason\": \"The context states that the deposit insurance management organization should pay the deposit holder's deposit according to the regulations, which implies that the deposit holder has the right to request such payment.\", \"verdict\": 1}]```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Paragraph 1, Item 5, the People's Court rules that the applicant of the insurance company's destruction application is the deposit holder.",
+          "reason": "The context does not mention Article 19, Paragraph 1, Item 5, nor does it specify that the People's Court rules the applicant of the insurance company's destruction application is the deposit holder.",
+          "verdict": 0
+        },
+        {
+          "statement": "The deposit holder has the right to request the deposit insurance management organization to use the deposit insurance fund to pay the insured deposit.",
+          "reason": "The context states that the deposit insurance management organization should pay the deposit holder's deposit according to the regulations, which implies that the deposit holder has the right to request such payment.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.5,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_absent-S26--R1--qwen72b--call-1",
+      "item_absent-S26--R1--qwen72b--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--R2--deepseek",
+    "itemId": "item_absent-S26",
+    "judge": "deepseek",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```json\n[{\"sentence_index\": 0, \"simpler_statements\": [\"根据第十九条第一款第五项，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\", \"人民法院裁定受理对投保机构的破产申请是存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\", \"存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款。\"]}]\n```",
+      "statementsFixRaw": null,
+      "statements": [
+        "根据第十九条第一款第五项，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+        "人民法院裁定受理对投保机构的破产申请是存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+        "存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款。"
+      ],
+      "nliRaw": "```json\n[{\"statement\": \"根据第十九条第一款第五项，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\", \"reason\": \"第十九条列举的情形包括第（三）项“人民法院裁定受理对投保机构的破产申请”，而非第（五）项；该条只有四项，不存在第五项。\", \"verdict\": 0}, {\"statement\": \"人民法院裁定受理对投保机构的破产申请是存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\", \"reason\": \"第十九条第（三）项明确规定人民法院裁定受理对投保机构的破产申请属于存款人有权要求使用存款保险基金偿付被保险存款的情形之一。\", \"verdict\": 1}, {\"statement\": \"存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款。\", \"reason\": \"第十九条规定在特定情形下存款人有权要求存款保险基金管理机构在本条例规定的限额内使用存款保险基金偿付被保险存款，该表述与条文一致。\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "根据第十九条第一款第五项，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+          "reason": "第十九条列举的情形包括第（三）项“人民法院裁定受理对投保机构的破产申请”，而非第（五）项；该条只有四项，不存在第五项。",
+          "verdict": 0
+        },
+        {
+          "statement": "人民法院裁定受理对投保机构的破产申请是存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。",
+          "reason": "第十九条第（三）项明确规定人民法院裁定受理对投保机构的破产申请属于存款人有权要求使用存款保险基金偿付被保险存款的情形之一。",
+          "verdict": 1
+        },
+        {
+          "statement": "存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款。",
+          "reason": "第十九条规定在特定情形下存款人有权要求存款保险基金管理机构在本条例规定的限额内使用存款保险基金偿付被保险存款，该表述与条文一致。",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.6666666666666666,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_absent-S26--R2--deepseek--call-1",
+      "item_absent-S26--R2--deepseek--call-2"
+    ],
+    "error": null
+  },
+  {
+    "unitId": "item_absent-S26--R2--qwen72b",
+    "itemId": "item_absent-S26",
+    "judge": "qwen72b",
+    "condition": "R2",
+    "status": "ok",
+    "result": null,
+    "ragas": {
+      "statementsRaw": "```[{\"sentence_index\": 0, \"simpler_statements\": [\"According to Article 19, Section 1, Item 5, the People's Court has the authority to require the deposit of funds for the preservation of assets in cases involving the destruction of insurance institutions.\", \"The management agency is required to use the deposit funds to cover the costs of preserving the insured deposits.\"]}]```",
+      "statementsFixRaw": null,
+      "statements": [
+        "According to Article 19, Section 1, Item 5, the People's Court has the authority to require the deposit of funds for the preservation of assets in cases involving the destruction of insurance institutions.",
+        "The management agency is required to use the deposit funds to cover the costs of preserving the insured deposits."
+      ],
+      "nliRaw": "```\n[{\"statement\": \"According to Article 19, Section 1, Item 5, the People's Court has the authority to require the deposit of funds for the preservation of assets in cases involving the destruction of insurance institutions.\", \"reason\": \"The context explicitly states in Article 19, Section 1, Item 4 that the People's Court can determine the use of deposit funds for the preservation of assets in cases involving the destruction of insurance institutions, which is close but not exactly Item 5 as mentioned in the statement.\", \"verdict\": 0}, {\"statement\": \"The management agency is required to use the deposit funds to cover the costs of preserving the insured deposits.\", \"reason\": \"The context in Article 10, Section 1, Item 3 clearly states that the management agency should use the deposit funds to cover the costs of preserving the insured deposits.\", \"verdict\": 1}]\n```",
+      "nliFixRaw": null,
+      "verdicts": [
+        {
+          "statement": "According to Article 19, Section 1, Item 5, the People's Court has the authority to require the deposit of funds for the preservation of assets in cases involving the destruction of insurance institutions.",
+          "reason": "The context explicitly states in Article 19, Section 1, Item 4 that the People's Court can determine the use of deposit funds for the preservation of assets in cases involving the destruction of insurance institutions, which is close but not exactly Item 5 as mentioned in the statement.",
+          "verdict": 0
+        },
+        {
+          "statement": "The management agency is required to use the deposit funds to cover the costs of preserving the insured deposits.",
+          "reason": "The context in Article 10, Section 1, Item 3 clearly states that the management agency should use the deposit funds to cover the costs of preserving the insured deposits.",
+          "verdict": 1
+        }
+      ],
+      "formatFixUsed": false,
+      "score": 0.5,
+      "unavailable": false,
+      "extractionValid": true
+    },
+    "calls": [
+      "item_absent-S26--R2--qwen72b--call-1",
+      "item_absent-S26--R2--qwen72b--call-2"
+    ],
+    "error": null
+  }
+]

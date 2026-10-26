@@ -1,0 +1,16 @@
+test_cannot_send_without_full_reservation (__main__.PilotSafety.test_cannot_send_without_full_reservation) ... ok
+test_invalid_usage_types_and_caps_not_free (__main__.PilotSafety.test_invalid_usage_types_and_caps_not_free) ... ok
+test_known_usage_releases_only_unused_reservation (__main__.PilotSafety.test_known_usage_releases_only_unused_reservation) ... ok
+test_no_redirect (__main__.PilotSafety.test_no_redirect) ... ok
+test_no_repeat_reserved_or_settled_request (__main__.PilotSafety.test_no_repeat_reserved_or_settled_request) ... ok
+test_original_metric_duck_typing_has_two_calls_no_repair (__main__.PilotSafety.test_original_metric_duck_typing_has_two_calls_no_repair) ... Failed to parse output. Returning None.
+ok
+test_real_adapter_reserves_sends_once_and_settles (__main__.PilotSafety.test_real_adapter_reserves_sends_once_and_settles) ... ok
+test_second_runner_lock_is_rejected (__main__.PilotSafety.test_second_runner_lock_is_rejected) ... ok
+test_secret_write_refused (__main__.PilotSafety.test_secret_write_refused) ... ok
+test_unknown_usage_holds_full_reservation_after_restart (__main__.PilotSafety.test_unknown_usage_holds_full_reservation_after_restart) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.216s
+
+OK

@@ -1,0 +1,636 @@
+{
+  "tokenizer_proxy": "cl100k_base (not the provider tokenizer)",
+  "planned_call_count": 83,
+  "planned_questions": {
+    "positive": 3,
+    "negative": 3,
+    "total": 6
+  },
+  "chunk_count": 26,
+  "context_characters_per_case": 787,
+  "context_chunk_characters": [
+    199,
+    198,
+    195,
+    195
+  ],
+  "input_tokens_proxy": 139689,
+  "output_tokens_budget": 20240,
+  "total_tokens_estimate": 159929,
+  "limit": 100000,
+  "exceeds_limit": true,
+  "assumptions": [
+    "Four longest actual chunks for conservative Top-K planning; no real retrieval performed.",
+    "Positive question/answer/reference: 40/120/60 characters sliced from current source for planning only.",
+    "Negative question: 80 source characters; answer: normal refusal; reference: document does not mention it.",
+    "Ragas uses its actual local prompt formatting, including JSON escaping of Chinese strings.",
+    "Normal successful path only; excludes API retries, Ragas retries and JSON repair.",
+    "Output budgets are planning allowances, not max_tokens changes or hard upper bounds.",
+    "Some normal branches may skip negative review or correctness comparison; 83 calls is not a guarantee."
+  ],
+  "by_stage": {
+    "testset": {
+      "calls": 5,
+      "input_tokens_proxy": 9207,
+      "output_tokens_budget": 4280
+    },
+    "answer": {
+      "calls": 6,
+      "input_tokens_proxy": 5547,
+      "output_tokens_budget": 1080
+    },
+    "ragas": {
+      "calls": 66,
+      "input_tokens_proxy": 117186,
+      "output_tokens_budget": 12480
+    },
+    "trace": {
+      "calls": 6,
+      "input_tokens_proxy": 7749,
+      "output_tokens_budget": 2400
+    }
+  },
+  "calls": [
+    {
+      "stage": "testset",
+      "call": "positive_generation_1",
+      "input_tokens_proxy": 304,
+      "output_tokens_budget": 160,
+      "server_usage": null
+    },
+    {
+      "stage": "testset",
+      "call": "positive_generation_2",
+      "input_tokens_proxy": 321,
+      "output_tokens_budget": 160,
+      "server_usage": null
+    },
+    {
+      "stage": "testset",
+      "call": "positive_generation_3",
+      "input_tokens_proxy": 281,
+      "output_tokens_budget": 160,
+      "server_usage": null
+    },
+    {
+      "stage": "testset",
+      "call": "negative_generation",
+      "input_tokens_proxy": 2773,
+      "output_tokens_budget": 2200,
+      "server_usage": null
+    },
+    {
+      "stage": "testset",
+      "call": "negative_review",
+      "input_tokens_proxy": 5528,
+      "output_tokens_budget": 1600,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "positive_1",
+      "input_tokens_proxy": 907,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.faith_statements",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.faith_nli",
+      "input_tokens_proxy": 3025,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.precision_1",
+      "input_tokens_proxy": 1559,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.precision_2",
+      "input_tokens_proxy": 1673,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.precision_3",
+      "input_tokens_proxy": 1707,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.precision_4",
+      "input_tokens_proxy": 1708,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.relevancy",
+      "input_tokens_proxy": 2793,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.correctness_answer",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.correctness_reference",
+      "input_tokens_proxy": 972,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.correctness_compare",
+      "input_tokens_proxy": 1261,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_1.recall",
+      "input_tokens_proxy": 3231,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "positive_1",
+      "input_tokens_proxy": 1345,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "positive_2",
+      "input_tokens_proxy": 907,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.faith_statements",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.faith_nli",
+      "input_tokens_proxy": 3025,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.precision_1",
+      "input_tokens_proxy": 1559,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.precision_2",
+      "input_tokens_proxy": 1673,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.precision_3",
+      "input_tokens_proxy": 1707,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.precision_4",
+      "input_tokens_proxy": 1708,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.relevancy",
+      "input_tokens_proxy": 2793,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.correctness_answer",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.correctness_reference",
+      "input_tokens_proxy": 972,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.correctness_compare",
+      "input_tokens_proxy": 1261,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_2.recall",
+      "input_tokens_proxy": 3231,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "positive_2",
+      "input_tokens_proxy": 1345,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "positive_3",
+      "input_tokens_proxy": 907,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.faith_statements",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.faith_nli",
+      "input_tokens_proxy": 3025,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.precision_1",
+      "input_tokens_proxy": 1559,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.precision_2",
+      "input_tokens_proxy": 1673,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.precision_3",
+      "input_tokens_proxy": 1707,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.precision_4",
+      "input_tokens_proxy": 1708,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.relevancy",
+      "input_tokens_proxy": 2793,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.correctness_answer",
+      "input_tokens_proxy": 1183,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.correctness_reference",
+      "input_tokens_proxy": 972,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.correctness_compare",
+      "input_tokens_proxy": 1261,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "positive_3.recall",
+      "input_tokens_proxy": 3231,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "positive_3",
+      "input_tokens_proxy": 1345,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "negative_1",
+      "input_tokens_proxy": 942,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.faith_statements",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.faith_nli",
+      "input_tokens_proxy": 2779,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.precision_1",
+      "input_tokens_proxy": 1516,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.precision_2",
+      "input_tokens_proxy": 1630,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.precision_3",
+      "input_tokens_proxy": 1664,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.precision_4",
+      "input_tokens_proxy": 1665,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.relevancy",
+      "input_tokens_proxy": 2598,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.correctness_answer",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.correctness_reference",
+      "input_tokens_proxy": 790,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.correctness_compare",
+      "input_tokens_proxy": 1201,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_1.recall",
+      "input_tokens_proxy": 3188,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "negative_1",
+      "input_tokens_proxy": 1238,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "negative_2",
+      "input_tokens_proxy": 942,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.faith_statements",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.faith_nli",
+      "input_tokens_proxy": 2779,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.precision_1",
+      "input_tokens_proxy": 1516,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.precision_2",
+      "input_tokens_proxy": 1630,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.precision_3",
+      "input_tokens_proxy": 1664,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.precision_4",
+      "input_tokens_proxy": 1665,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.relevancy",
+      "input_tokens_proxy": 2598,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.correctness_answer",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.correctness_reference",
+      "input_tokens_proxy": 790,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.correctness_compare",
+      "input_tokens_proxy": 1201,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_2.recall",
+      "input_tokens_proxy": 3188,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "negative_2",
+      "input_tokens_proxy": 1238,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    },
+    {
+      "stage": "answer",
+      "call": "negative_3",
+      "input_tokens_proxy": 942,
+      "output_tokens_budget": 180,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.faith_statements",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.faith_nli",
+      "input_tokens_proxy": 2779,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.precision_1",
+      "input_tokens_proxy": 1516,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.precision_2",
+      "input_tokens_proxy": 1630,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.precision_3",
+      "input_tokens_proxy": 1664,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.precision_4",
+      "input_tokens_proxy": 1665,
+      "output_tokens_budget": 100,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.relevancy",
+      "input_tokens_proxy": 2598,
+      "output_tokens_budget": 80,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.correctness_answer",
+      "input_tokens_proxy": 868,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.correctness_reference",
+      "input_tokens_proxy": 790,
+      "output_tokens_budget": 200,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.correctness_compare",
+      "input_tokens_proxy": 1201,
+      "output_tokens_budget": 350,
+      "server_usage": null
+    },
+    {
+      "stage": "ragas",
+      "call": "negative_3.recall",
+      "input_tokens_proxy": 3188,
+      "output_tokens_budget": 300,
+      "server_usage": null
+    },
+    {
+      "stage": "trace",
+      "call": "negative_3",
+      "input_tokens_proxy": 1238,
+      "output_tokens_budget": 400,
+      "server_usage": null
+    }
+  ]
+}

@@ -10,6 +10,7 @@ for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 80
       const request = route.request();
       const url = new URL(request.url());
       if (url.pathname === '/api/health') return route.fulfill({ json: { status: 'ok' } });
+      if (request.method() === 'GET' && url.pathname === '/api/models') return route.fulfill({ json: { models: [] } });
       if (url.pathname === '/api/inputs') {
         const kind = url.searchParams.get('kind');
         const filename = url.searchParams.get('filename');

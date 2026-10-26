@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "statute-labeled-v1",
+  "stopReason": "request_limit",
+  "attempts": 163,
+  "completedRecords": 163,
+  "plannedRequests": 163,
+  "estimatedCostCny": "0.61518288",
+  "actualBillCny": null,
+  "costNote": "费用为授权单价估算，不是账单。无 usage（含失败）按本次预留计；不重试。"
+}

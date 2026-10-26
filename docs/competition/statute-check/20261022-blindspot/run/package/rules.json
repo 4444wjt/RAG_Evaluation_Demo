@@ -1,0 +1,145 @@
+{
+  "note": "规则只作参照，不是真值；真值来自构造。",
+  "items": {
+    "paragraph_existing-A29P1toP2": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A29P2toP1": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A33P1toP2": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A33P2toP3": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A33P3toP1": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A42P1toP2": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_existing-A42P2toP1": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "paragraph_absent-A29toP3": {
+      "flagged": true,
+      "errorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    "paragraph_absent-A30toP2": {
+      "flagged": true,
+      "errorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    "paragraph_absent-A31toP2": {
+      "flagged": true,
+      "errorCodes": [
+        "PROVISION_NOT_IN_SOURCE"
+      ]
+    },
+    "article_swap-A29toA30": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "article_swap-A30toA31": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "article_swap-A31toA32": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "article_swap-A32toA33": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "article_swap-A33toA34": {
+      "flagged": true,
+      "errorCodes": [
+        "MISATTRIBUTED"
+      ]
+    },
+    "article_absent-A29toA35": {
+      "flagged": true,
+      "errorCodes": [
+        "ARTICLE_NOT_IN_SOURCE"
+      ]
+    },
+    "article_absent-A30toA36": {
+      "flagged": true,
+      "errorCodes": [
+        "ARTICLE_NOT_IN_SOURCE"
+      ]
+    },
+    "article_absent-A31toA39": {
+      "flagged": true,
+      "errorCodes": [
+        "ARTICLE_NOT_IN_SOURCE"
+      ]
+    },
+    "article_absent-A32toA40": {
+      "flagged": true,
+      "errorCodes": [
+        "ARTICLE_NOT_IN_SOURCE"
+      ]
+    },
+    "article_absent-A33toA41": {
+      "flagged": true,
+      "errorCodes": [
+        "ARTICLE_NOT_IN_SOURCE"
+      ]
+    },
+    "control_pinpoint-A29P1": {
+      "flagged": false,
+      "errorCodes": []
+    },
+    "control_pinpoint-A29P2": {
+      "flagged": false,
+      "errorCodes": []
+    },
+    "control_pinpoint-A33P1": {
+      "flagged": false,
+      "errorCodes": []
+    },
+    "control_pinpoint-A33P2": {
+      "flagged": false,
+      "errorCodes": []
+    },
+    "control_pinpoint-A33P3": {
+      "flagged": false,
+      "errorCodes": []
+    }
+  }
+}
