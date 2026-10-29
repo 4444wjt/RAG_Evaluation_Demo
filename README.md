@@ -55,7 +55,9 @@
 
 [作品介绍](docs/competition/project-introduction.md) · [同一次 FAIL 的三种看法](docs/competition/value-comparison.md) · [快速启动](#快速启动) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
-![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
+![鉴真全域 VeriScope AI 四个界面：首页、修复复核、人工核验、门禁审计](docs/images/demo-overview-4up.png)
+
+真实界面，来自演示快照 `20260930-1958`。四格依次是：首页、修复复核（0.7375 低于门槛 0.8）、人工核验（机器判定与人工结论并存）、门禁审计（复算 / 换裁判 / 证据 / 确定性）。截图出处与尺寸见 [截图说明](docs/screenshots/README.md)。
 
 ## 快速启动
 
@@ -401,23 +403,11 @@ RAG-Reliability-Lab/
 
 项目品牌为鉴真全域 VeriScope AI；现有远端仓库和本地目录名称未强制重命名。仓库保留架构、用户、演示和贡献文档；内部交接、提示词及阶段记录不作为公开项目文档。
 
-## Demo 截图
-
-下列图片来自已有产品页面与快照 `20260930-1958`，不是本轮重新执行的模型评测。
-
-### 笔记本展示
-
-![1280×800 展示首页](docs/images/landing-laptop.png)
-
-### 实验结论与质量门禁
-
-![质量门禁章节](docs/images/evidence-desktop.png)
-
-### 逐句判定与原始证据
+## 逐句核对的最小证据单元
 
 ![逐句判定与原始证据](docs/images/evidence-trace-3x.png)
 
-这是逐句核对的最小证据单元：回答里的一句陈述、它依据的检索原文，以及两者是否匹配的判定。它看的是单条回答的每一句有没有依据；门禁看的是整批回答的指标有没有达标，两者分开呈现，可以对照回查。截图出处见 [截图说明](docs/screenshots/README.md)，展示步骤见 [演示指南](docs/demo/README.md)。
+回答里的一句陈述、它依据的检索原文，以及两者是否匹配的判定。它看的是单条回答的每一句有没有依据；门禁看的是整批回答的指标有没有达标，两者分开呈现，可以对照回查。展示步骤见 [演示指南](docs/demo/README.md)。
 
 ## Roadmap
 

@@ -4,11 +4,12 @@
 
 | 图片 | 视口 | 内容 |
 |---|---|---|
-| `../images/landing-desktop.png` | 1920×1080 | 展示首页首屏 |
-| `../images/landing-laptop.png` | 1280×800 | 笔记本首页首屏 |
-| `../images/evidence-desktop.png` | 1920×1080 | 门禁结论与证据章节 |
-| `../images/evidence-trace-3x.png` | 1920×1080 / 3× | 首页逐句判定卡片，按 3 倍像素截取（3198×843） |
+| `../images/demo-overview-4up.png` | 1596×1118（2×2） | 四联总览：首页、修复复核、人工核验、门禁审计 |
+| `../images/landing-desktop.png` | 1920×1080 | 展示首页首屏（已被四联图取代，保留作单图来源） |
+| `../images/landing-laptop.png` | 1280×800 | 笔记本首页首屏（不再在 README 中引用） |
+| `../images/evidence-desktop.png` | 1920×1080 | 门禁结论与证据章节（已被四联图取代） |
+| `../images/evidence-trace-3x.png` | 1920×1080 / 3× | 逐句判定卡片，按 3 倍像素截取（3198×843） |
 
-来源：2026-10-16 用 Playwright（Chromium，深色）从在线演示站 kk444444444444.cloud 截取，等首屏动效结束后再截；图片未放大、压缩或修改数据。页面预览取自快照 `20260930-1958`，并非截图时新执行的评测。
+来源：单图于 2026-10-16 用 Playwright（Chromium，深色）从在线演示站 kk444444444444.cloud 截取，等首屏动效结束后再截；图片未放大、压缩或修改数据。四联图于 2026-10-29 用 Chrome 无头模式（1600×1000，`--virtual-time-budget=22000`）按同一站点重新截取四页，再等比缩放拼合：`/`、`#/lab/fix`、`#/lab/demo/verification`、`#/lab/audit`；拼合只做等比缩放与直角裁切，未改画面内容。页面预览取自快照 `20260930-1958`，并非截图时新执行的评测。
 
 更新图片前检查画面中没有真实密钥、账号配置、控制台内容或个人数据。临时截图继续放在被忽略的 `frontend/test-results/`，不将整个测试目录加入仓库。

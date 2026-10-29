@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 界面截图更新为四联总览（2026-10-29）
+- 新增 `docs/images/demo-overview-4up.png`（1596×1118）：用 Chrome 无头模式从在线演示站重截四页——`/`、`#/lab/fix`、`#/lab/demo/verification`、`#/lab/audit`（1600×1000，`--virtual-time-budget=22000`），等比缩放到 760×475 后按 2×2 拼合。只做缩放与直角裁切，未改画面内容、未美化界面。
+- 根 README 首屏下方的单张首页图换成这张四联图，位置在「项目价值与对照验证」之后；配一句说明四格分别是什么。
+- 原「Demo 截图」小节改为「逐句核对的最小证据单元」，只保留 3 倍逐句判定卡片；`landing-desktop` / `landing-laptop` / `evidence-desktop` 不再在 README 中引用，文件保留，取代关系写进 `docs/screenshots/README.md`。
+
 ### 法条 CLI 输入边界勘误（2026-10-29）
 - 原文写「不支持的排版进入待复核，不自动重排」，与实测不符：`article-lines-v1` 把每个非空行算一款，**段内硬换行会被当成新的一款**，不进入复核。
 - 已用同一句回答、只改源文折点做对照：折在「，」之后时，折出的下半段正好等于答案主张的内容，引用原文不存在的款被判 exit 0 / `no_error_found`；折在句中则报 `MISATTRIBUTED` 并拦截（exit 1）。两次运行的 `structureCheck.observedUnits` 均从 2 变 3，`status` 恒为 `not_provided`、`expectedUnits` 恒为 `null`，输出里没有排版被误读的线索。
