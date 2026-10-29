@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon } from '../components/Icon';
-import { REPO_URL } from '../config';
 import fixData from '../fixtures/fix-verification.json';
-import { modelName, returnedModelText } from '../utils/format';
+import { FixCaseTour } from './FixCaseTour';
+import { REPLAY, pinnedUrl } from './fixCase';
+import { returnedModelText } from '../utils/format';
 import './gate-audit.css';
 import './fix-verification.css';
 
@@ -30,7 +31,6 @@ const CHANGE: Record<string, { label: string; tone: Tone }> = {
 /** Rows a reader should look at first: anything that moved, plus the one the fix did not reach. */
 const NOTABLE = formal.rows.filter((row) => row.change !== 'same' && row.change !== 'kept_refusal');
 
-const sourceLink = (path: string) => `${REPO_URL}/blob/master/${path}`;
 const runDate = (path: string) => path.match(/(\d{4})(\d{2})(\d{2})T/)?.slice(2, 4).join('-') ?? '';
 const BEFORE_DATE = runDate(data.source.baseline.path);
 const AFTER_DATE = runDate(data.source.fixed.path);
@@ -41,16 +41,16 @@ const SCALE = [0.5, 1] as const;
 const at = (value: number) => `${((value - SCALE[0]) / (SCALE[1] - SCALE[0])) * 100}%`;
 
 function Chip({ tone, children }: { tone: Tone; children: ReactNode }) {
-  return <span className={`audit-chip audit-chip--${tone}`}>{children}</span>;
+  return <span className={`audit-chip audit-chip--${tone}`} style={{ whiteSpace: 'normal', maxWidth: '100%', minWidth: 0 }}>{children}</span>;
 }
 
 function Source({ path, children }: { path: string; children: ReactNode }) {
-  return <a className="audit-source" href={sourceLink(path)} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>{children}</a>;
+  return <a className="audit-source" href={pinnedUrl(path)} target="_blank" rel="noopener noreferrer"><Icon name="file" size={13}/>{children}</a>;
 }
 
 function Subject() {
   return <section className="audit-subject" aria-label="对照对象">
-    <div><span className="audit-kicker">对照对象</span><p>{`25 题正式运行 · 存款保险条例节选 · ${modelName(data.model)}`}</p></div>
+    <div><span className="audit-kicker">对照对象</span><p>{`25 题正式运行 · 存款保险条例节选 · 请求配置 ${data.model}`}</p></div>
     <div><span className="audit-kicker">两次运行</span><p>{`${BEFORE_DATE} 基线 → ${AFTER_DATE} 修复后，同题、同资料、同门槛`}</p></div>
     <p className="audit-note">本页数据由 tools/competition/build_fix_fixture.py 从三份归档生成：核对文件哈希，逐题重算正向均值、回放门禁，并由调用记录重算留出题结果。不改门禁，也不改判任何已记录的结论。</p>
   </section>;
@@ -64,13 +64,13 @@ function Story() {
   const otherChanges = data.code.changed.filter((path) => path !== 'backend/services/answering.py');
   return <section className="audit-panel" aria-labelledby="fx-story-title">
     <div className="audit-panel-head"><div><h2 id="fx-story-title">从拦下到放行</h2>
-      <p>门禁先拦下了一次运行，原因找到后只改问答提示词，再按相同条件重跑。</p></div>
+      <p>门禁先拦下了一次运行；回查拒答后调整问答提示词，再用相同题目、资料与门槛重跑。另有源码变化，不能据此确认单一原因。</p></div>
       <Chip tone="success">{'FAIL → PASS'}</Chip></div>
     <ol className="fx-story">
       <li className="fx-story-step fx-story-step--blocked"><strong>门禁拦下</strong><span>{`${BEFORE_DATE} · 正向忠实度 ${before.posFaithfulness} < ${threshold}，FAIL`}</span></li>
-      <li className="fx-story-step"><strong>找到原因</strong><span>{`${refused.join('、')} 这 ${refused.length} 道错误前提题都回答「无法回答」，按 0 计`}</span></li>
+      <li className="fx-story-step"><strong>回查拒答</strong><span>{`${refused.join('、')} 这 ${refused.length} 道错误前提题都回答「无法回答」，按 0 计`}</span></li>
       <li className="fx-story-step"><strong>改一句提示词</strong><span>{`提交 ${data.fix.commit}：「${data.fix.line}」`}</span></li>
-      <li className="fx-story-step fx-story-step--passed"><strong>同条件重跑</strong><span>{`${AFTER_DATE} · 正向忠实度 ${after.posFaithfulness} ≥ ${threshold}，PASS`}</span></li>
+      <li className="fx-story-step fx-story-step--passed"><strong>同题重跑</strong><span>{`${AFTER_DATE} · 正向忠实度 ${after.posFaithfulness} ≥ ${threshold}，PASS`}</span></li>
     </ol>
     <ul className="fx-same" aria-label="两次运行之间">
       <li><Icon name="check" size={15}/>{`请求参数相同：${formal.request.compared.length} 项（资料、题集、模型、两项门槛）`}</li>
@@ -146,7 +146,7 @@ function QuestionRow({ row }: { row: Row }) {
         <div><span className="audit-kicker">{`修复前回答 · ${BEFORE_DATE}`}</span><p>{row.before.answer}</p></div>
         <div><span className="audit-kicker">{`修复后回答 · ${AFTER_DATE}`}</span><p>{row.after.answer}</p></div>
       </div>
-      {row.sameAnswer && <p className="audit-note">{row.change === 'judge_only' ? `两次回答逐字相同，忠实度却从 ${score(row.before.faithfulness)} 变为 ${score(row.after.faithfulness)}：变化来自裁判打分的波动，不是回答变了。` : '两次回答逐字相同。'}</p>}
+      {row.sameAnswer && <p className="audit-note">{row.change === 'judge_only' ? `两次回答逐字相同，忠实度却从 ${score(row.before.faithfulness)} 变为 ${score(row.after.faithfulness)}；这是两次归档的 Ragas 分数差别，不能据此单独确认原因。` : '两次回答逐字相同。'}</p>}
       {!row.after.refusal && trace.statements > 0 && <p className="audit-note">{`修复后逐句核对 ${trace.statements} 句：与资料矛盾 ${trace.factErrors} 句，资料中找不到依据 ${trace.fabrications} 句。`}</p>}
     </div>
   </details></li>;
@@ -160,7 +160,7 @@ function Questions() {
   const dropRow = drop && formal.rows.find((row) => row.id === drop.id);
   const judgeOnly = formal.rows.filter((row) => row.change === 'judge_only');
   return <section className="audit-panel" aria-labelledby="fx-questions-title">
-    <div className="audit-panel-head"><div><h2 id="fx-questions-title">逐题对照</h2>
+    <div className="audit-panel-head"><div><h2 id="fx-questions-title" tabIndex={-1} className="workspace-focus-target">逐题对照</h2>
       <p>同一道题，两次运行的回答并排。分数是该题的忠实度：回答拆成陈述后，有原文支持的占比；拒答按 0 计。点开一行看两次回答原文。</p></div>
       <div className="fx-filter" role="group" aria-label="显示范围">
         <button type="button" aria-pressed={notableOnly} onClick={() => setNotableOnly(true)}>{`有变化或未修好 ${NOTABLE.length} 题`}</button>
@@ -178,7 +178,7 @@ function Questions() {
     <div className="fx-list-head" aria-hidden="true"><span>题</span><span>题型</span><span>问题</span><span>修复前</span><span/><span>修复后</span><span>变化</span></div>
     <ul className="fx-list">{rows.map((row) => <QuestionRow key={row.id} row={row}/>)}</ul>
     <p className="audit-note">{`正向题平均变化 ${signed(regression.meanDelta)}：被纠正的 ${contribution.correctedIds.join('、')} 贡献 ${signed(contribution.corrected)}，其余 ${contribution.restCount} 题合计 ${signed(contribution.rest)}。逐题变化的 95% 区间 ${regression.interval[0]}–${regression.interval[1]}，包含 0。`}</p>
-    <p className="audit-note">{`${judgeOnly.map((row) => `${row.id} 两次回答逐字相同，分数 ${score(row.before.faithfulness)} → ${score(row.after.faithfulness)}`).join('；')}${dropRow ? `；${dropRow.id} 两次回答只差「规定」两字，分数 ${score(dropRow.before.faithfulness)} → ${score(dropRow.after.faithfulness)}` : ''}。同一裁判对几乎相同的回答也会打出不同分数。`}</p>
+    <p className="audit-note">{`${judgeOnly.map((row) => `${row.id} 两次回答逐字相同，分数 ${score(row.before.faithfulness)} → ${score(row.after.faithfulness)}`).join('；')}${dropRow ? `；${dropRow.id} 两次回答只差「规定」两字，分数 ${score(dropRow.before.faithfulness)} → ${score(dropRow.after.faithfulness)}` : ''}。这些相同或近似回答在两次归档中的 Ragas 分数不同，不能据此单独确认原因。`}</p>
   </section>;
 }
 
@@ -204,7 +204,7 @@ function Heldout() {
       <div><dt>错误前提题：全部陈述有依据</dt><dd>{`${falsePremise.fullySupportedBefore} → ${falsePremise.fullySupportedAfter}`}<small>{`/ ${falsePremise.questions}`}</small></dd></div>
       <div><dt>配对符号检验（双侧）</dt><dd>{`p = ${falsePremise.signTestP}`}<small>未达 0.05</small></dd></div>
       <div><dt>调用</dt><dd>{`${held.usage.requests} 次`}<small>{`${held.usage.errors} 次错误`}</small></dd></div>
-      <div><dt>费用（按公开价估算）</dt><dd>{`约 ¥${held.usage.costCny.toFixed(2)}`}</dd></div>
+      <div><dt>费用（按归档时单价估算）</dt><dd>{`约 ¥${held.usage.costCny.toFixed(2)}`}</dd></div>
     </dl>
     {exception && <p className="audit-note">{`修复后唯一没做到「全部陈述有依据」的是 ${exception.id}：「${exception.statements.join('」「')}」被判为资料中找不到依据。这句在否定题目的错误前提，资料里确实没有直接这样写；按逐句核对的规则照实计入。`}</p>}
     <p className="audit-note">{`实际返回模型 ${returnedModelText(held.returnedModels)}，温度 ${held.model.temperature}，一次运行。留出题不算 Ragas 指标，不给门禁结论。`}</p>
@@ -218,24 +218,21 @@ function Limits() {
   return <section className="audit-panel" aria-labelledby="fx-limits-title">
     <div className="audit-panel-head"><div><h2 id="fx-limits-title">这份对照不能说明什么</h2></div></div>
     <ul className="fx-limits">
-      <li><strong>PASS 依赖裁判。</strong>{`本页两次都由 ${modelName(data.model)} 自己打分。同一修复版本换 ${rerun.judgeModel} 作裁判重跑，正向忠实度 ${rerun.gate.posFaithfulness}，门禁 FAIL；${rerun.samePositive} 道回答逐字相同的正向题，平均分 ${rerun.samePositiveSelf} → ${rerun.samePositiveJudge}。`}<Source path={`${data.source.judge.path}/README.md`}>独立裁判复核</Source></li>
+      <li><strong>PASS 依赖裁判。</strong>{`本页两次回答与裁判的请求配置均为 ${data.model}，请求名不确认实际响应身份。同一修复版本换 ${rerun.judgeModel} 作裁判重跑，正向忠实度 ${rerun.gate.posFaithfulness}，门禁 FAIL；${rerun.samePositive} 道回答逐字相同的正向题，平均分 ${rerun.samePositiveSelf} → ${rerun.samePositiveJudge}。`}<Source path={`${data.source.judge.path}/README.md`}>独立裁判复核</Source></li>
       <li><strong>25 题是发现问题的同一批题。</strong>留出题是新题，但只有 24 道，符号检验没有达到 0.05。</li>
-      <li><strong>一个领域、一个模型、各跑一次。</strong>修复后的 PASS 区间仍跨过门槛，再跑一次可能不同。</li>
-      <li><strong>只验证了这一句的效果。</strong>没有比较其他写法，也没有找出它为什么有效。</li>
+      <li><strong>一个领域、一套请求模型配置、各跑一次。</strong>修复后的 PASS 区间仍跨过门槛，再跑一次可能不同。</li>
+      <li><strong>留出题只比较这一句的开关。</strong>没有比较其他写法，也未确认生效机制；25 题重跑还包含其他源码变化。</li>
       <li><strong>{`${stillRefused.join('、')} 没修好。`}</strong>它的检索资料里有「7个工作日内足额偿付存款」原文，模型仍然拒答；本次没有继续调整。</li>
       <li><strong>原因分析尚未人工确认。</strong>「提示词只给了拒答一个出口」是归档里 AI 辅助的分析；本页只列出可由数据核对的部分：这几道题都回答了「无法回答」。</li>
     </ul>
   </section>;
 }
 
-const COMMANDS = `python scripts/gate_replay.py ${data.source.fixed.path}/api-response.json --baseline ${data.source.baseline.path}/api-response.json
-python tools/competition/build_fix_fixture.py --check`;
-
 function Reproduce() {
   return <section className="audit-panel" aria-labelledby="fx-reproduce-title">
     <div className="audit-panel-head"><div><h2 id="fx-reproduce-title">自己复核</h2>
-      <p>两条命令都离线运行，不调用模型、不需要密钥：第一条用正式门禁回放修复后的结果并逐题对比基线，第二条核对本页数据能否由三份归档重新算出。</p></div></div>
-    <pre className="fx-commands"><code>{COMMANDS}</code></pre>
+      <p>四条命令都离线运行，不调用模型、不需要密钥：前两条用正式门禁分别回放原运行与修复后的结果（修复后逐题对比基线），后两条核对本页数字与原文能否由归档重新算出。</p></div></div>
+    <pre className="fx-commands"><code>{REPLAY.map((line) => line.command).join('\n')}</code></pre>
     <div className="fx-sources">
       <Source path={`${data.source.baseline.path}/README.md`}>{`${BEFORE_DATE} 正式运行`}</Source>
       <Source path={`${data.source.fixed.path}/README.md`}>{`${AFTER_DATE} 修复验证重跑`}</Source>
@@ -247,6 +244,7 @@ function Reproduce() {
 
 export function FixVerificationView() {
   return <div className="audit-view fx-view">
+    <FixCaseTour/>
     <Subject/>
     <Story/>
     <GatePanel/>

@@ -47,7 +47,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
   { id: 'verification', label: '评测验证', icon: 'check', title: '评测验证', description: '查看人工核验状态与原始依据。' },
   { id: 'audit', label: '门禁审计', icon: 'shield', title: '门禁审计', description: '检验门禁本身：结论能否复算、换裁判会不会变、有多确定，以及门禁代码对不对。' },
-  { id: 'fix', label: '修复验证', icon: 'wrench', title: '修复验证', description: '门禁拦下之后：找到原因、改一句提示词、同条件重跑，并换一批新题再验证。逐题对照两次运行。' },
+  { id: 'fix', label: '修复验证', icon: 'wrench', title: '修复验证', description: '门禁拦下之后：回查原文、跟踪提示词调整后的同题重跑，再看留出题对照。逐题核对改善与未解决项。' },
   { id: 'robustness', label: '鲁棒性体检', icon: 'pulse', title: '鲁棒性体检', description: '打乱、加噪、移除依据、改成反事实：看被测应用和逐句核对是否真的依据资料。' },
   { id: 'blindspot', label: '盲区体检', icon: 'layers', title: '盲区体检', description: '从发现引用盲区，到补标签处理、核对归档复测，再导出复核记录。' },
   { id: 'annotate', label: '人工标注', icon: 'pen', title: '人工标注', description: '请非作者逐条判断门禁所用的陈述能否由资料推出，用来估计裁判判错的程度。' },

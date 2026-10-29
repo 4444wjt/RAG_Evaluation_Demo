@@ -1,7 +1,7 @@
 import { Component, lazy, Suspense, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { LandingPage } from './features/landing/LandingPage';
-import { parseLabHash } from './labRoute';
+import { labHash, parseLabHash } from './labRoute';
 import type { LabTarget, LabView } from './labRoute';
 
 const Dashboard = lazy(() => import('./App'));
@@ -47,11 +47,12 @@ export default function AppEntry() {
     return () => window.removeEventListener('hashchange', update);
   }, []);
 
-  const enter = (target: LabTarget) => {
-    setEntry((previous) => ({ id: previous.id + 1, target }));
+  const enter = (target: LabTarget, view?: LabView) => {
+    setEntry((previous) => ({ id: previous.id + 1, target, view }));
     setVisited(true);
     setShowLab(true);
-    window.location.hash = target === 'lab' ? '/lab' : `/lab/${target}`;
+    // A view opens that page directly (the case tour is #/lab/fix); it never loads the demo snapshot on its own.
+    window.location.hash = view ? labHash(view, target === 'demo').slice(1) : target === 'lab' ? '/lab' : `/lab/${target}`;
     markEntryHandled();
   };
 
