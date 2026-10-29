@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veriscope"
+version = "0.1.0"
+description = "VeriScope 法条引用离线诊断命令行（零依赖）"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = []
+
+[project.scripts]
+veriscope-statute = "veriscope.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["veriscope*"]
+
+[tool.setuptools.package-data]
+veriscope = ["_root/**/*.py", "_root/**/*.json"]

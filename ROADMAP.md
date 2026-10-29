@@ -18,6 +18,9 @@
 
 ### 近期交付与发布状态（2026-10-29）
 
+- **可安装的法条诊断 CLI**：包装源码已纳入仓库，CLI 0.1.0 与主项目 v1.2.0 分开编号；Windows Python 3.11/3.12 的 wheel 安装已验证，sdist 在 3.11 离线重建并安装核对，分发见 [GitHub Releases](https://github.com/4444wjt/RAG_Evaluation_Demo/releases)。只覆盖 base/extended 法条诊断；未发布 PyPI，不宣称其它平台或独立用户验收。
+- **Action 外部验证**：本仓 CI 自检已通过；暂无第三方仓库或协作者，真实他人仓验证仍待完成。
+
 - **演示站工作台 r5（已部署）**：2026-10-29 上线四步修复导览与正式运行回放；公开站只读。标准环境前端 339 项、Python 专项 23 项及只读生产构建通过，公网 13 项功能检查通过；不是新的模型评测或远程 CI 结果。
 - **自资料规则诊断**：已有[标准库 CLI 与失效输入契约](docs/competition/statute-check/README.md#自资料离线诊断)，以及[未见医疗法规派生重计包](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)；这部分不进入门禁。
 - **外部使用记录**：[操作者 O](docs/competition/external-repro-20261027/README.md) 自选法规，远程登录作者电脑完成 1 次操作；它支持使用流程记录，不是异机安装或已发表结果的复现。
