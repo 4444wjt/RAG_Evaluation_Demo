@@ -293,7 +293,7 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_check/constructed-request.json --json
 ```
 
-只接收提供者确认的行结构：条标题带正文、每行一款、项单独成行；不支持的排版进入待复核，不自动重排。样例故意引用不存在的第三款，预期退出码为 1；0 表示当前规则未检出，2 表示输入无效或待复核。未检出不等于事实有依据或门禁 PASS；[输入输出契约](schemas/statute-diagnostic.v1.schema.json)与[详细用法](docs/competition/statute-check/README.md#自资料离线诊断)可独立查看。
+只按「每行一款」解析：条标题带正文、每个非空行算一款、项单独成行。**段内硬换行会被当成新的一款**——从 PDF 复制来的法规若带折行，会多出并不存在的款；折出来的下半段恰好构成答案主张的内容时，引用不存在的款会被判为通过。请先把原文整理成每行一款再跑，工具不做复核也不重排。样例故意引用不存在的第三款，预期退出码为 1；0 表示当前规则未检出，2 表示输入无效或待复核。未检出不等于事实有依据或门禁 PASS；[输入输出契约](schemas/statute-diagnostic.v1.schema.json)与[详细用法](docs/competition/statute-check/README.md#自资料离线诊断)可独立查看。
 
 装了 CLI 就可以对自备资料直接跑同一套规则，不必装整个平台；安装命令与退出码说明见[快速启动](#快速启动)里的「只装法条诊断 CLI」。源码与打包方式见 [packaging/veriscope](packaging/veriscope/README.md)。
 

@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 法条 CLI 输入边界勘误（2026-10-29）
+- 原文写「不支持的排版进入待复核，不自动重排」，与实测不符：`article-lines-v1` 把每个非空行算一款，**段内硬换行会被当成新的一款**，不进入复核。
+- 已用同一句回答、只改源文折点做对照：折在「，」之后时，折出的下半段正好等于答案主张的内容，引用原文不存在的款被判 exit 0 / `no_error_found`；折在句中则报 `MISATTRIBUTED` 并拦截（exit 1）。两次运行的 `structureCheck.observedUnits` 均从 2 变 3，`status` 恒为 `not_provided`、`expectedUnits` 恒为 `null`，输出里没有排版被误读的线索。
+- 只改文档表述：`README.md` 与 `docs/competition/statute-check/README.md` 写明「每行一款」的实际含义与从 PDF 复制后须先整理的要求。**未改 `backend/core/statute_check.py`**——按 [AGENTS.md 第 5 节](AGENTS.md#5-门禁口径不得为变绿而放宽)，规则改动须单独提出并附兼容性分析；改解析口径会让 `statute-check/` 已归档的检出数字不再可复现，需另开带新锚点的运行。
+
 ### README 首屏与章节重排（2026-10-29）
 - 首屏改为「品类断言 + 三句能力 + 一行导航」：补上「RAG 回答的逐句核对与质量门禁平台」这一定位，把原第 20 行的 CLML 边界说明移出首屏，改为 `## 核心能力` 表里的一行。
 - `## 快速启动` 提到第二个二级标题，开头给三条跨平台 Docker 命令（`git clone` → `cd deploy` → `cp .env.example .env && docker compose up -d --build`），不再要求 Windows 走 WSL。法条诊断 CLI 的安装说明从「实测结果」移到这里，补上下载命令与虚拟环境步骤；中英文 README 同步。
