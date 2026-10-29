@@ -37,8 +37,6 @@ The engineering contribution connects verification, source inspection, gate repl
 
 ![VeriScope capability and evidence map, with Chinese labels](docs/images/veriscope-capabilities.png)
 
-[View the original SVG](docs/images/veriscope-capabilities.svg)
-
 - **Engineering:** bring your own legal source and answers to the [offline diagnostic](docs/competition/statute-check/README.md#自资料离线诊断), with explicit invalid-input and review states. The [unseen medical-fund regulation package](docs/competition/statute-check/20261025-unseen-diagnostic/README.md) reports 27/27 constructed errors detected and 0/30 control false positives, with input-failure tests reported separately.
 - **Evidence tracing:** the [25-question formal archive](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) links answers, contexts, metrics, Trace, reports and hashes; 18 traces are non-empty and 7 empty traces are retained with causes unconfirmed.
 - **Gate review:** [`scripts/gate_replay.py`](scripts/gate_replay.py) reproduces the archived 0.7375 < 0.8 FAIL and supports CI and paired baseline comparisons ([guide](docs/gate-replay.md)).

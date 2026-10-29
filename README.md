@@ -63,8 +63,6 @@
 
 ![VeriScope 六项能力与证据导航](docs/images/veriscope-capabilities.png)
 
-[查看 SVG 原图](docs/images/veriscope-capabilities.svg)
-
 | 维度 | 能带来什么 | 证据与状态 |
 |---|---|---|
 | 工程创新 | 自带法规、回答和检索片段即可离线诊断；无效输入与待复核状态明确分开 | [标准库 CLI 与输入契约](docs/competition/statute-check/README.md#自资料离线诊断)；[未见医疗法规包](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)：构造错误检出 27/27、对照误报 0/30，另列失效输入验证 |
