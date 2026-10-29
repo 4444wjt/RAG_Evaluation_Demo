@@ -273,7 +273,7 @@ On pushes and pull requests to master/main in the GitHub mirror, GitHub Actions 
 - **Delivered:** CLI/Gradio, FastAPI and the React workbench, with sentence evidence, model metrics, gate replay, reports and fix comparisons.
 - **Calibration:** judge configuration, V/A/B annotations and interval methods/simulations are complete; unresolved cases prevent a corrected conclusion, and business calibration of the 0.8 threshold remains open.
 - **Broader materials and use:** government held-out questions, medical-fund rule diagnostics, AnythingLLM and O's one-time use have records; formal end-to-end gates still focus on finance.
-- **Recent local work:** workbench r5 passed build, typecheck and targeted acceptance checks; it is not yet committed or deployed. The demo reflects the published version.
+- **Demo updated (2026-10-29):** workbench r5 is deployed with a four-step fix tour and formal-run replay. Follow the gate decision, source passages, handling and recalculation records, then download the review card. The public site remains read-only and starts no new evaluations.
 - **Next engineering work:** task queues, cancellation and progress, authentication and isolation, more independent samples and continued browser acceptance checks.
 
 Milestones, original target dates and the issue response commitment (first reply within 3 working days) are in the [roadmap](ROADMAP.md) (Chinese).

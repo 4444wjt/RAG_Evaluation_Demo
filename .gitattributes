@@ -741,3 +741,18 @@ docs/competition/external-repro-20261027/output.json -text
 docs/competition/external-repro-20261027/terminal.txt -text
 /docs/images/veriscope-capabilities.svg -text
 /docs/images/veriscope-capabilities.png -text
+
+# r5 frontend publication: retain reviewed source and derived fixture bytes.
+/frontend/src/AppEntry.tsx -text
+/frontend/src/features/FixCaseTour.tsx -text
+/frontend/src/features/FixVerificationView.tsx -text
+/frontend/src/features/FormalRunReplay.tsx -text
+/frontend/src/features/fix-case.css -text
+/frontend/src/features/fix-verification.css -text
+/frontend/src/features/fixCase.ts -text
+/frontend/src/features/formal-replay.css -text
+/frontend/src/features/landing/LandingPage.tsx -text
+/frontend/src/fixtures/fix-case.json -text
+/frontend/src/test/fix-case.test.tsx -text
+/tests/test_fix_case.py -text
+/tools/competition/build_fix_case.py -text

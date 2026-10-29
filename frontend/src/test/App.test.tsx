@@ -334,14 +334,16 @@ describe('Current model quality gate transparency', () => {
     render(<OverviewView result={sample()} gateProvenance={demo.provenance} {...callbacks}/>);
     const replay = screen.getByRole('region', { name: '正式运行回放' });
     expect(replay.nextElementSibling).toBe(screen.getByRole('region', { name: '当前模型质量门禁' }));
-    expect(within(replay).getByText('来源：25 题正式运行 · DeepSeek-V4.1-Flash · 20261005T144504Z（冻结证据，非本页演示快照）')).toBeInTheDocument();
-    expect(within(replay).getByText(/自研 Trace，与门禁并列、不参与计算/)).toBeInTheDocument();
+    expect(within(replay).getByText('来源：25 题正式运行 · 请求配置 deepseek-chat · 20261005T144504Z（冻结证据，非本页演示快照）')).toBeInTheDocument();
+    expect(within(replay).getByText(/自研 Trace 不参与门禁计算/)).toBeInTheDocument();
     expect(within(replay).getByText('门禁 FAIL')).toBeInTheDocument();
     expect(within(replay).getByText('正向忠实度 73.8% · 门槛 ≥ 80.0%')).toBeInTheDocument();
-    expect(within(replay).getByText('4 题为拒答（按 0 计）；其余 16 题均值 92.2%')).toBeInTheDocument();
-    expect(within(replay).getByText('每题得分 = 原文支持的陈述占比，共 52 句')).toBeInTheDocument();
-    expect(within(replay).getAllByText('拒答')).toHaveLength(4);
-    expect(within(replay).getByText('裁判判为原文不支持')).toBeInTheDocument();
+    expect(within(replay).getByText('4 题拒答拉低了均值；上下文精度 98.3% 达标。')).toBeInTheDocument();
+    // Point → line → surface: 20 scored questions, 4 refusals drawn at 0, then the mean against the threshold.
+    expect(within(replay).getByRole('img', { name: '20 道正向题的得分：4 题拒答按 0 计，均值 0.7375，低于门槛 0.8' })).toBeInTheDocument();
+    expect(replay.querySelectorAll('.fr-dot')).toHaveLength(20);
+    expect(replay.querySelectorAll('.fr-dot--refusal')).toHaveLength(4);
+    expect(within(replay).getByRole('list', { name: '回放步骤' })).toHaveTextContent('点逐题得分线按题连接面门槛差距');
     // jsdom has no IntersectionObserver: the final frame is shown without animation classes.
     expect(replay).not.toHaveClass('replay-animated');
   });

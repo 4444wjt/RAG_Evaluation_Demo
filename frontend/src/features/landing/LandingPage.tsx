@@ -10,7 +10,7 @@ import { EvidenceTracePreview, QualityGatePreview } from './ProductPreview';
 import './landing.css';
 
 export type { LabTarget } from '../../labRoute';
-import type { LabTarget } from '../../labRoute';
+import type { LabTarget, LabView } from '../../labRoute';
 
 const capabilities = [
   { icon: 'layers', title: '选题与模型', description: '选择文档、测试集与参与评测的模型。' },
@@ -22,7 +22,7 @@ const capabilities = [
 /** 标题里「逐句查到出处」的核对动效播完后，右侧流程图再开始走。 */
 const heroMomentMs = 1500;
 
-export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void }) {
+export function LandingPage({ onEnter }: { onEnter: (target: LabTarget, view?: LabView) => void }) {
   const [reduced, setReduced] = useState(() => typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const motionEnabled = !reduced;
   useEffect(() => {
@@ -32,9 +32,10 @@ export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void 
     preference.addEventListener('change', update);
     return () => preference.removeEventListener('change', update);
   }, []);
-  const enter = (target: LabTarget) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const enter = (target: LabTarget, view?: LabView) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault(); onEnter(target);
+    event.preventDefault();
+    if (view) onEnter(target, view); else onEnter(target);
   };
   return <div className="landing-page" data-motion={motionEnabled ? 'on' : 'off'}>
     <a className="landing-skip" href="#landing-content">跳到主要内容</a>
@@ -42,7 +43,7 @@ export function LandingPage({ onEnter }: { onEnter: (target: LabTarget) => void 
     <main id="landing-content" className="landing-main" tabIndex={-1}>
       <ResearchField enabled={motionEnabled}/>
       <section className="landing-hero" aria-labelledby="landing-title">
-        <div className="landing-hero-copy"><h1 id="landing-title"><b className="landing-latin">AI</b> 的每个回答，<br/>都能<span>逐句查到出处。</span></h1><p className="landing-intro">把模型回答拆成逐句，一条条对着原文核对；<br className="landing-desktop-break"/>达不到阈值的，门禁不放行。</p><div className="landing-actions"><a className="btn btn-primary" href="#/lab/demo" onClick={enter('demo')}><Icon name="play" size={17}/>查看演示</a><a className="landing-text-link" href="#/lab/workspace" onClick={enter('workspace')}>配置评测<Icon name="arrow" size={17}/></a></div><p className="landing-demo-note">已有评测快照 · 无需连接模型服务</p><div className="landing-models"><span>多模型，同一套题横向对比</span><ul aria-label="演示包含的模型"><li>{DEEPSEEK_VERSION}</li><li>Qwen2.5-7B</li><li>GLM-5.2-Fast</li></ul></div></div>
+        <div className="landing-hero-copy"><h1 id="landing-title"><b className="landing-latin">AI</b> 的每个回答，<br/>都能<span>逐句查到出处。</span></h1><p className="landing-intro">看到发布拦截的依据，回查回答与原文，核验处理后的结果。</p><div className="landing-actions"><a className="btn btn-primary" href="#/lab/fix" onClick={enter('lab', 'fix')}><Icon name="shield" size={17}/>看一次拦截如何复核</a><a className="landing-text-link" href="#/lab/demo" onClick={enter('demo')}>查看演示<Icon name="arrow" size={17}/></a></div><p className="landing-demo-note">真实归档案例 · 无需连接模型服务，不执行新的评测</p><div className="landing-models"><span>多模型，同一套题横向对比</span><ul aria-label="演示包含的模型"><li>{DEEPSEEK_VERSION}</li><li>Qwen2.5-7B</li><li>GLM-5.2-Fast</li></ul></div></div>
         <EvidenceFlow enabled={motionEnabled} startDelay={heroMomentMs}/>
       </section>
       <section className="landing-proof" id="verification" aria-labelledby="verification-title"><div className="landing-section-heading"><h2 id="verification-title">从一个分数，追到原文那一句。</h2><p>点开任意一条回答，从模型原话看到它引用的原文。</p></div>
