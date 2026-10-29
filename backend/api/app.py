@@ -84,6 +84,20 @@ def create_app(
         from backend.api.parent_context import prepare_parent_context_request
         return await prepare_parent_context_request(request)
 
+    @application.post("/citations/versions/inspect", tags=["citations"])
+    async def inspect_citation_versions(request: Request) -> dict[str, Any]:
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点不接收文件，请在本地检查引用版本。")
+        from backend.api.citation_version import citation_version_request
+        return await citation_version_request(request, operation="inspect")
+
+    @application.post("/citations/versions/check", tags=["citations"])
+    async def check_citation_versions(request: Request) -> dict[str, Any]:
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点不接收文件，请在本地检查引用版本。")
+        from backend.api.citation_version import citation_version_request
+        return await citation_version_request(request, operation="check")
+
     @application.post("/evaluate", response_model=EvaluateResponse, tags=["evaluation"])
     def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
         # Read per request so a public demo deployment can switch it via environment alone.

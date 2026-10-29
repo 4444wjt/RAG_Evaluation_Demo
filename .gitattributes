@@ -764,3 +764,20 @@ packaging/veriscope/pyproject.toml -text
 packaging/veriscope/stage.py -text
 packaging/veriscope/src/veriscope/__init__.py -text
 packaging/veriscope/src/veriscope/cli.py -text
+
+# Citation version checker: preserve explicitly bound source bytes.
+/backend/api/citation_version.py -text
+/backend/core/_citation_version_rules.py -text
+/backend/core/citation_version.py -text
+/docs/integrations/citation-version.md -text
+/frontend/src/api/citationVersion.ts -text
+/frontend/src/features/CitationVersionView.tsx -text
+/frontend/src/features/citation-version.css -text
+/frontend/src/test/citation-version.test.tsx -text
+/scripts/citation_version_check.py -text
+/tests/test_citation_version.py -text
+/tests/test_citation_version_api.py -text
+/tests/test_citation_version_cli.py -text
+/tests/test_citation_version_hardening.py -text
+/tests/test_citation_version_namespace.py -text
+/frontend/THIRD_PARTY_NOTICES.md -text
