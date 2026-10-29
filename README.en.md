@@ -212,14 +212,16 @@ See [independent-judge rerun](docs/competition/evidence/20261014T125415Z-full-a5
 
 Python 3.11 and Node.js 24 are recommended.
 
-**Install only the offline statute CLI:** download the `cli-v0.1.0` wheel from [GitHub Releases](https://github.com/4444wjt/RAG_Evaluation_Demo/releases), then install it in a virtual environment:
+**Install only the offline statute CLI (without the rest of the platform):** Python 3.11+, no third-party dependencies, no network calls after install.
 
 ```bash
-python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
-veriscope-statute --example --json
+gh release download cli-v0.1.0 -R 4444wjt/RAG_Evaluation_Demo -p "veriscope-*.whl" -D .
+python -m venv venv-cli
+./venv-cli/bin/python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
+./venv-cli/bin/veriscope-statute --example --json
 ```
 
-CLI package 0.1.0 is versioned separately from main project v1.2.0 and has no third-party runtime dependencies. It includes only base/extended statute diagnostics, not the Web workbench or model evaluation; it is not on PyPI. The example deliberately exits 1. Exit 0 means no error detected by the current rules; exit 2 means invalid input or manual review. Local installation was tested on Windows Python 3.11/3.12; other platforms remain unverified. See [packaging sources](packaging/veriscope/README.md); Release assets include hashes and source bindings.
+Without `gh`, download the same wheel from the [release page](https://github.com/4444wjt/RAG_Evaluation_Demo/releases/tag/cli-v0.1.0) into the current directory. On Windows use the `Scripts` directory inside `venv-cli` instead of `bin`. CLI package 0.1.0 is versioned separately from main project v1.2.0. It includes only base/extended statute diagnostics, not the Web workbench or model evaluation; it is not on PyPI. The example deliberately exits 1. Exit 0 means no error detected by the current rules; exit 2 means invalid input or manual review. Local installation was tested on Windows Python 3.11 and 3.12; other platforms remain unverified. See [packaging sources](packaging/veriscope/README.md); Release assets include hashes and source bindings.
 
 
 **Demo only (no API keys):**

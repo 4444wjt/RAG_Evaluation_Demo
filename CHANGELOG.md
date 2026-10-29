@@ -6,6 +6,13 @@
 
 ## [未发布]
 
+### README 首屏与章节重排（2026-10-29）
+- 首屏改为「品类断言 + 三句能力 + 一行导航」：补上「RAG 回答的逐句核对与质量门禁平台」这一定位，把原第 20 行的 CLML 边界说明移出首屏，改为 `## 核心能力` 表里的一行。
+- `## 快速启动` 提到第二个二级标题，开头给三条跨平台 Docker 命令（`git clone` → `cd deploy` → `cp .env.example .env && docker compose up -d --build`），不再要求 Windows 走 WSL。法条诊断 CLI 的安装说明从「实测结果」移到这里，补上下载命令与虚拟环境步骤；中英文 README 同步。
+- 原 `## 核心能力` 98 行拆成两节：表格留在 `## 核心能力`（新增「引文版本（CLML）」一行），82 行实验记录独立为 `## 实测结果` 并后移，开头加 8 行「实验 / 结论 / 不能说明什么」速览表。
+- 新增 `## 限制与边界`，六条，位置在许可之前；与英文版既有的 `## Limitations` 对齐。中文版此前没有这一节，边界散落在各段。
+- 校验：相对链接 120 条 0 缺失，页内锚点全部可达，表格均 ≤3 列，代码围栏成对。
+
 ### 文档索引引导与数据勘误（2026-10-29）
 - 新增 [`docs/competition/README.md`](docs/competition/README.md)（项目索引：技术创新／场景落地／开源治理／长期发展四维，每维给「判据 → 做到了什么 → 证据表（结论／证据／边界）→ 短板」；另含 9 份说明页去向、目录构成、运行目录读法、复算入口）与 [`scripts/README.md`](scripts/README.md)（零依赖脚本索引：想验一件事就跑哪个、三组清单、退出码约定、`tools/` 与 `scripts/` 分工）；重写 [`docs/README.md`](docs/README.md)（原页全仓无入链，现由根 README「全部文档」末尾接入）；根 README 补四处入口与措辞。索引页只给摘要与去处，不复述结论；表格一律不超过 3 列（Gitee 渲染约束）。同批把三处页面标题统一为中性表述（[`reviewer-questions.md`](docs/competition/reviewer-questions.md)「常见问题与回答口径」、[`demo-script.md`](docs/competition/demo-script.md)「三分钟演示脚本」、[`docs/demo/README.md`](docs/demo/README.md)「演示指南」），并同步到所有入链文字。
 - 修正留出题通过数：**12/14 → 9/14**（`README.md`、`docs/competition/project-introduction.md` 与 `.html`）。与归档 [`heldout-fix/20261014-deepseek`](docs/competition/heldout-fix/20261014-deepseek/README.md) 的 `9/14 → 14/14`（结果表 2+7=9 → 6+8=14）一致；此前该数在仓库内自相矛盾，且无任何源档支持 12/14。

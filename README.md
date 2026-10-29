@@ -11,13 +11,11 @@
 
 # 鉴真全域 VeriScope AI
 
-**逐句核对回答，回查检索原文，复算归档门禁，对照修复效果。**
+**RAG 回答的逐句核对与质量门禁平台。** 把回答拆成逐句、每句对回检索原文，再由门禁按阈值判定这批回答能否放行——错在哪句、修完有没有变好、凭什么放行，都能回查。归档结果可离线复算，不调用模型、也不需要密钥。
 
-**▶ 在线演示（免登录 · 不需要密钥 · 不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/) — 打开就能看到三样东西：一次真实 FAIL 的门禁结论、支撑它的逐句证据、换裁判之后的对比。（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
+**▶ 在线演示**：[kk444444444444.cloud](https://kk444444444444.cloud/)（免登录、不调用模型，打开就是一次真实 FAIL 的门禁结论 + 逐句证据 + 换裁判对比） · **一键起站**：[Docker 三行](#快速启动) · **全部文档**：[docs/](docs/README.md)
 
 代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
-
-**引用版本检查（CLML）**：[本地上传、重查、HTML/JSON 导出与离线复算](docs/integrations/citation-version.md)；[只读入口](https://kk444444444444.cloud/#/lab/citation-version)禁用上传且无示例结果；桌面入口已上线，完整文件处理请在本地运行。
 
 ## 项目价值与对照验证
 
@@ -59,6 +57,119 @@
 
 ![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
 
+## 快速启动
+
+**一键起站（Docker，Windows / macOS / Linux 同一套命令）。** 需要 Docker Desktop，或 Docker Engine + Compose v2.24 以上。三行跑完，默认只监听本机：
+
+```bash
+git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git
+cd rag-hallucination-evaluator/deploy
+cp .env.example .env && docker compose up -d --build
+```
+
+打开 `http://127.0.0.1:8080/` 就是只读演示站，与公网演示同一个入口：只能看快照，不能发起在线评测。Linux 与 macOS 也可以直接跑 `./deploy.sh`（多一步健康检查轮询）。首次构建要拉镜像、装依赖，需要几分钟；完整选项见 [部署说明](deploy/README.md)。
+
+不想装 Docker、只想在浏览器里看：[GitHub Pages 备用站](https://4444wjt.github.io/RAG_Evaluation_Demo/) 是纯静态只读版本，由 `pages.yml` 自动构建。
+
+**只装法条诊断 CLI（不装整个平台）。** Python 3.11+，零第三方依赖，装完不联网。适合只想要「条号 / 数额期限核对」这一个能力的人：
+
+```bash
+gh release download cli-v0.1.0 -R 4444wjt/RAG_Evaluation_Demo -p "veriscope-*.whl" -D .
+python -m venv venv-cli
+./venv-cli/bin/python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
+./venv-cli/bin/veriscope-statute --example --json
+```
+
+Windows 把路径里的 `venv-cli/bin` 换成 `venv-cli` 下的 `Scripts` 目录即可。没有 `gh` 时，从 [Release 页面](https://github.com/4444wjt/RAG_Evaluation_Demo/releases/tag/cli-v0.1.0) 手动下载同一个 wheel 放到当前目录，其余不变。包版本 0.1.0，与主项目 v1.2.0 分开编号；只含 base/extended 法条诊断，不含 Web 或模型评测，未发布到 PyPI。示例预期退出 1；退出 0 只表示现有规则未检出，退出 2 表示输入无效或待复核。Windows Python 3.11 / 3.12 的本地安装已验证，其它平台尚未验证。
+
+**在本机分步跑。** 建议 Python 3.11、Node.js 24（24.15.0 及以上，可用 `node --version` 查看）。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
+
+### 1. 获取项目
+
+优先从 Gitee 主仓库获取，本地目录可以命名为 `RAG-Reliability-Lab`：
+
+```powershell
+git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab
+```
+
+也可使用 GitHub 镜像，克隆命令任选其一：
+
+```powershell
+git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
+```
+
+Windows 上请克隆到较短的路径，例如 `C:\src`。归档证据的目录嵌套较深，克隆目录本身超过约 118 个字符时，检出会报 `Filename too long`；这时在克隆命令里加 `-c core.longpaths=true`，只对这个仓库生效。
+
+完成克隆后进入项目目录：
+
+```powershell
+cd RAG-Reliability-Lab
+```
+
+### 2. 只看演示：不需要模型密钥
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。在作者的 Windows 机器上用全新目录、空 npm 缓存实测，从克隆到看到演示约 4 分钟，见 [冷启动计时实测](docs/competition/reproducibility.md#冷启动计时实测)。
+
+只看演示，到这里就够了。想验证不需要密钥的测试，直接跳到下文「开源贡献」里的前端验证和 Python 离线验证，不必安装第 3 步的完整依赖。
+
+### 3. 配置真实评测环境
+
+另开终端，在项目根目录执行：
+
+```powershell
+python -m venv venv
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
+if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -Destination .env }
+```
+
+如果 `.env` 已存在，请保留已有文件并按模板补充配置，不覆盖现有密钥。
+
+以上是 Windows PowerShell 写法。Linux / macOS 用 `python3 -m venv venv` 创建环境，下文的 `.\venv\Scripts\python.exe` 都换成 `./venv/bin/python`，复制配置用 `test -f .env || cp .env.example .env`。
+
+在本地 `.env` 填入凭据：
+
+| 变量 | 用途 |
+|---|---|
+| `OPENAI_API_KEY` | 现有 DeepSeek 适配器使用的变量，填写 DeepSeek 凭据 |
+| `SILICONFLOW_API_KEY` | Qwen / SiliconFlow 凭据 |
+| `DASHSCOPE_API_KEY` | GLM-5.2-Fast / 百炼凭据 |
+| `DEEPSEEK_MODEL` / `DEEPSEEK_BASE_URL` | 已有 DeepSeek 配置覆盖项 |
+| `QWEN_MODEL` / `QWEN_BASE_URL` | 已有 Qwen 配置覆盖项 |
+| `RAG_ENABLE_TRACE` | 既有溯源开关，默认 1；设为 0 关闭额外溯源调用 |
+| `EMBEDDING_MODEL` | 可选，指定已准备好的本地 Embedding 路径／缓存模型 |
+| `VERISCOPE_<名称>_API_KEY` | 可选，自有模型的密钥；模型在工作台「模型配置」页登记，见 [接入自有模型](docs/DEPLOYMENT.md#接入自有模型) |
+
+预先准备 `BAAI/bge-small-zh-v1.5`，放在 `models/bge-small-zh-v1.5/` 或可用的 Hugging Face 本地缓存。引擎以离线方式加载，不会在评测时自动下载模型。
+
+密钥只存放在本地 `.env` 或后端环境变量中；不要写进源码、截图、Issue 或 `VITE_*` 前端变量。真实评测会调用提供方服务并产生费用。
+
+### 4. 启动后端
+
+在项目根目录执行：
+
+```powershell
+.\venv\Scripts\python.exe -m uvicorn backend.api.app:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
+```
+
+前端继续通过 `npm run dev` 启动。进入工作区，默认可直接选择项目自带示例，也可切换“电脑文件”选择或拖入资料，再配置测试集、模型和阈值。文档支持 TXT / PDF / DOCX / MD，自定义测试集支持 JSON / CSV / TXT，单个文件最多 10 MiB；导入会保存到当前评测服务的 `work/uploads/`，不会调用模型。确认配置后点击“开始评测”。已有项目文件的手动路径入口位于高级选项中。
+
+`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
+
+### 5. 保留的 CLI / Gradio 入口
+
+```powershell
+.\venv\Scripts\python.exe main.py --doc demo.txt --testset testset_example.json
+.\venv\Scripts\python.exe main.py --web
+```
+
+Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；入口参数、模型工厂和请求校验仍有区别，不能据此认定不同入口的运行条件完全相同。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
+
 ## 创新与能力证据
 
 本项目的工程创新，是把逐句核对、原文回查、门禁复算、修复对照与人工复核连成可检查的工作流。下图的六个区块用于导航，面积不代表评分、占比或成熟度。
@@ -75,6 +186,28 @@
 | 开源上游贡献 | 将依赖库中可复现的中文 PDF 解码问题反馈并修复到上游 | 作者提交的 [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231)、[#4236](https://github.com/py-pdf/pypdf/pull/4236) 均已合并；发布状态与项目依赖见[下方记录](#开源上游贡献) |
 
 这些证据分别支持功能实现、特定材料上的结果与使用过程，不合并为总体准确率、算法独创性或强基线优势。
+
+## 核心能力
+
+一条从「题集」到「人工核验」的逐句核对链路：
+
+| 环节 | 能力 | 已有实现 |
+|---|---|---|
+| 测试用例集 | RAG 可靠性验证 | 文档处理、Chroma 检索、模型问答及 Ragas 评测；支持自动出题、自定义测试集和 TruthfulQA 入口 |
+| 断言结果 | 逐句证据追踪 | 展示原始回答、原子陈述、有依据／事实错误／无依据编造等原判定，以及对应证据与检索原文 |
+| 质量门禁 | Quality Gate | 后端按首个有效评测模型的正向忠实度与正向上下文精度判定；默认阈值各为 0.8 |
+| 多模型对比 | 多模型评测 | 内置 DeepSeek、Qwen2.5-7B、GLM-5.2-Fast，可在「模型配置」页登记自有的 OpenAI 兼容模型；统一测试集，呈现已有指标与耗时 |
+| 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
+| 人工复核 | 评测验证 | 人工结论与机器原判定分开展示，核验材料绑定冻结快照版本与 SHA-256 |
+| 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
+| 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
+| 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
+| 引文版本 | 引用版本检查（CLML） | 本地上传 XML、填写版本需求、修改后重查、HTML/JSON 导出与源码 CLI 离线复算；公开入口只读、禁用上传 |
+| 展示层 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
+
+Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
+
+每条能力的实测结果、样本规模与「不能说明什么」，见下一节[实测结果](#实测结果)。
 
 ## 落地场景
 
@@ -110,26 +243,22 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 - **断言结果在哪里？** 同一测试集上呈现多模型的指标、风险统计与耗时，逐句给出依据。
 - **是否通过质量门禁？** 将样本范围、正向指标、阈值与原始门禁记录分开展示，给出可复核的放行结论。
 
-## 核心能力
+## 实测结果
 
-一条从「题集」到「人工核验」的逐句核对链路：
+八组跑过的实验，先看结论和边界，细节在下面。数字都来自归档，可用[门禁回放](docs/gate-replay.md)离线复算。
 
-| 环节 | 能力 | 已有实现 |
+| 实验 | 结论 | 不能说明什么 |
 |---|---|---|
-| 测试用例集 | RAG 可靠性验证 | 文档处理、Chroma 检索、模型问答及 Ragas 评测；支持自动出题、自定义测试集和 TruthfulQA 入口 |
-| 断言结果 | 逐句证据追踪 | 展示原始回答、原子陈述、有依据／事实错误／无依据编造等原判定，以及对应证据与检索原文 |
-| 质量门禁 | Quality Gate | 后端按首个有效评测模型的正向忠实度与正向上下文精度判定；默认阈值各为 0.8 |
-| 多模型对比 | 多模型评测 | 内置 DeepSeek、Qwen2.5-7B、GLM-5.2-Fast，可在「模型配置」页登记自有的 OpenAI 兼容模型；统一测试集，呈现已有指标与耗时 |
-| 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
-| 人工复核 | 评测验证 | 人工结论与机器原判定分开展示，核验材料绑定冻结快照版本与 SHA-256 |
-| 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
-| 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
-| 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
-| 展示层 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
+| [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)（DeepSeek，325 次调用） | 正向忠实度 0.7375，门禁 FAIL | 单材料、单模型、单次，不给总体准确率 |
+| [修复后重跑 25 题](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md) | 0.7375 → 0.8607，FAIL → PASS | 非单因素（另有 15 个源文件变化），离阈值只差约 0.06 |
+| [换独立裁判重跑](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md) | 0.7992，回到 FAIL | 回答重新生成，不能把变化全归因于裁判 |
+| [24 道留出题](docs/competition/heldout-fix/20261014-deepseek/README.md) | 错误前提题 9/14 → 14/14，无一道变差 | 题量小，配对符号检验 p = 0.0625 |
+| [外部基准 ANAH / RGB](docs/competition/external-validation/README.md) | 召回 0.89、精确 0.87；40 个正确回答 0 误判 | 单次抽样；按实际比例折算精确率约 0.72 |
+| [鲁棒性体检](docs/competition/robustness/README.md)（20 题 × 4 条件） | 58 项检验 57 项符合预期 | 一次运行、单一裁判 |
+| [三人盲标 52 条](docs/competition/judge-calibration/README.md) | 人工口径 68.8%–82.5%，裁判 73.75% | 点估计上下界，不是置信区间 |
+| [法条结构核对](docs/competition/statute-check/README.md) | 款级检出 30/31，支持对照误报 0/31 | 受控注入材料，检出不等于正确定位 |
 
-Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
-
-**解释边界：** 逐句核对分三层，不能互相替代：**引用定位**（证据能否在检索原文里逐字找到，由代码检查）、**语义支持**（陈述能否由那段原文推出，由模型裁判判定，有误差）、**事实正确**（陈述在现实中是否正确，平台不检查）。PASS 仅表示对应样本和门槛的规则检查通过，不等于所有指标优秀或每条回答正确。缺失指标不填为零，空溯源不代表没有幻觉。详见 [三层口径](docs/evaluation-credibility.md#三层口径引用定位语义支持事实正确)。
+**测算口径：** 逐句核对分三层，不能互相替代：**引用定位**（证据能否在检索原文里逐字找到，由代码检查）、**语义支持**（陈述能否由那段原文推出，由模型裁判判定，有误差）、**事实正确**（陈述在现实中是否正确，平台不检查）。PASS 仅表示对应样本和门槛的规则检查通过，不等于所有指标优秀或每条回答正确。缺失指标不填为零，空溯源不代表没有幻觉。详见 [三层口径](docs/evaluation-credibility.md#三层口径引用定位语义支持事实正确)。
 
 **可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工材料通过现有 JSON 单独录入，不覆盖机器结果、不生成准确率；该核验仅覆盖冻结 Demo 的 13 条定向样本，不代表总体准确率、独立认证或模型复跑验证。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
 
@@ -166,15 +295,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 只接收提供者确认的行结构：条标题带正文、每行一款、项单独成行；不支持的排版进入待复核，不自动重排。样例故意引用不存在的第三款，预期退出码为 1；0 表示当前规则未检出，2 表示输入无效或待复核。未检出不等于事实有依据或门禁 PASS；[输入输出契约](schemas/statute-diagnostic.v1.schema.json)与[详细用法](docs/competition/statute-check/README.md#自资料离线诊断)可独立查看。
 
-**只安装法条诊断 CLI：** Python 3.11+ 可从 [GitHub Releases](https://github.com/4444wjt/RAG_Evaluation_Demo/releases) 下载 `cli-v0.1.0` 的 wheel，在虚拟环境安装后从仓库外运行：
-
-```powershell
-python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
-veriscope-statute --example --json
-```
-
-包版本为 0.1.0，与主项目 v1.2.0 分开编号；零第三方运行依赖，仅含 base/extended 法条诊断，不含 Web 或模型评测，未发布到 PyPI。示例预期退出 1；退出 0 仅表示现有规则未检出，退出 2 表示无效输入或待复核。Windows Python 3.11/3.12 的本地安装已验证；其它平台尚未验证。另见 [包装源码](packaging/veriscope/README.md)，附件另附 SHA-256 与来源绑定。
-
+装了 CLI 就可以对自备资料直接跑同一套规则，不必装整个平台；安装命令与退出码说明见[快速启动](#快速启动)里的「只装法条诊断 CLI」。源码与打包方式见 [packaging/veriscope](packaging/veriscope/README.md)。
 
 - 四次归档运行的 100 个回答中只检出 10-14 的 F04。该回答引用了节选中没有的第十八条，并称第十九条未规定时限；同次运行的逐句核对把后一句判为有依据。
 - 42 条注入陈述上，规则检出 29 条错误中的 24 条，13 条对照无误报（离线口径、无裁判对比）。
@@ -280,98 +401,6 @@ RAG-Reliability-Lab/
 
 项目品牌为鉴真全域 VeriScope AI；现有远端仓库和本地目录名称未强制重命名。仓库保留架构、用户、演示和贡献文档；内部交接、提示词及阶段记录不作为公开项目文档。
 
-## 快速启动
-
-建议 Python 3.11、Node.js 24（24.15.0 及以上，可用 `node --version` 查看）。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
-
-只想在服务器上部署只读演示站时，可以跳过下面的步骤，直接用 Docker 一键部署：在 `deploy/` 目录执行 `./deploy.sh`（POSIX shell 脚本，Windows 请在 WSL 中执行），详见 [部署说明](deploy/README.md)。无需服务器的备用只读站发布在 GitHub Pages：[4444wjt.github.io/RAG_Evaluation_Demo](https://4444wjt.github.io/RAG_Evaluation_Demo/)（纯静态，由 `pages.yml` 自动构建）。
-
-### 1. 获取项目
-
-优先从 Gitee 主仓库获取，本地目录可以命名为 `RAG-Reliability-Lab`：
-
-```powershell
-git clone https://gitee.com/kkbushishou/rag-hallucination-evaluator.git RAG-Reliability-Lab
-```
-
-也可使用 GitHub 镜像，克隆命令任选其一：
-
-```powershell
-git clone https://github.com/4444wjt/RAG_Evaluation_Demo.git RAG-Reliability-Lab
-```
-
-Windows 上请克隆到较短的路径，例如 `C:\src`。归档证据的目录嵌套较深，克隆目录本身超过约 118 个字符时，检出会报 `Filename too long`；这时在克隆命令里加 `-c core.longpaths=true`，只对这个仓库生效。
-
-完成克隆后进入项目目录：
-
-```powershell
-cd RAG-Reliability-Lab
-```
-
-### 2. 只看演示：不需要模型密钥
-
-```powershell
-cd frontend
-npm ci
-npm run dev
-```
-
-打开 `http://127.0.0.1:5173/`，点击 **查看演示**。前端直接加载已有快照，不启动真实模型评测；后端未启动时的健康检查提示不影响演示内容。在作者的 Windows 机器上用全新目录、空 npm 缓存实测，从克隆到看到演示约 4 分钟，见 [冷启动计时实测](docs/competition/reproducibility.md#冷启动计时实测)。
-
-只看演示，到这里就够了。想验证不需要密钥的测试，直接跳到下文「开源贡献」里的前端验证和 Python 离线验证，不必安装第 3 步的完整依赖。
-
-### 3. 配置真实评测环境
-
-另开终端，在项目根目录执行：
-
-```powershell
-python -m venv venv
-.\venv\Scripts\python.exe -m pip install -r requirements.txt
-if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -Destination .env }
-```
-
-如果 `.env` 已存在，请保留已有文件并按模板补充配置，不覆盖现有密钥。
-
-以上是 Windows PowerShell 写法。Linux / macOS 用 `python3 -m venv venv` 创建环境，下文的 `.\venv\Scripts\python.exe` 都换成 `./venv/bin/python`，复制配置用 `test -f .env || cp .env.example .env`。
-
-在本地 `.env` 填入凭据：
-
-| 变量 | 用途 |
-|---|---|
-| `OPENAI_API_KEY` | 现有 DeepSeek 适配器使用的变量，填写 DeepSeek 凭据 |
-| `SILICONFLOW_API_KEY` | Qwen / SiliconFlow 凭据 |
-| `DASHSCOPE_API_KEY` | GLM-5.2-Fast / 百炼凭据 |
-| `DEEPSEEK_MODEL` / `DEEPSEEK_BASE_URL` | 已有 DeepSeek 配置覆盖项 |
-| `QWEN_MODEL` / `QWEN_BASE_URL` | 已有 Qwen 配置覆盖项 |
-| `RAG_ENABLE_TRACE` | 既有溯源开关，默认 1；设为 0 关闭额外溯源调用 |
-| `EMBEDDING_MODEL` | 可选，指定已准备好的本地 Embedding 路径／缓存模型 |
-| `VERISCOPE_<名称>_API_KEY` | 可选，自有模型的密钥；模型在工作台「模型配置」页登记，见 [接入自有模型](docs/DEPLOYMENT.md#接入自有模型) |
-
-预先准备 `BAAI/bge-small-zh-v1.5`，放在 `models/bge-small-zh-v1.5/` 或可用的 Hugging Face 本地缓存。引擎以离线方式加载，不会在评测时自动下载模型。
-
-密钥只存放在本地 `.env` 或后端环境变量中；不要写进源码、截图、Issue 或 `VITE_*` 前端变量。真实评测会调用提供方服务并产生费用。
-
-### 4. 启动后端
-
-在项目根目录执行：
-
-```powershell
-.\venv\Scripts\python.exe -m uvicorn backend.api.app:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
-```
-
-前端继续通过 `npm run dev` 启动。进入工作区，默认可直接选择项目自带示例，也可切换“电脑文件”选择或拖入资料，再配置测试集、模型和阈值。文档支持 TXT / PDF / DOCX / MD，自定义测试集支持 JSON / CSV / TXT，单个文件最多 10 MiB；导入会保存到当前评测服务的 `work/uploads/`，不会调用模型。确认配置后点击“开始评测”。已有项目文件的手动路径入口位于高级选项中。
-
-`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
-
-### 5. 保留的 CLI / Gradio 入口
-
-```powershell
-.\venv\Scripts\python.exe main.py --doc demo.txt --testset testset_example.json
-.\venv\Scripts\python.exe main.py --web
-```
-
-Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；入口参数、模型工厂和请求校验仍有区别，不能据此认定不同入口的运行条件完全相同。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
-
 ## Demo 截图
 
 下列图片来自已有产品页面与快照 `20260930-1958`，不是本轮重新执行的模型评测。
@@ -426,6 +455,17 @@ python -m venv venv
 Gitee 不运行 GitHub Actions；CI、CodeQL、Scorecard 的运行记录在 [GitHub 镜像的 Actions 页面](https://github.com/4444wjt/RAG_Evaluation_Demo/actions)查看。
 
 GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；另有 `gate-action` 任务自检根目录的门禁 Action（演示快照应放行、25 题正式运行应拦截）；门禁代码变动时，`mutation.yml` 在 Linux 上对其做变异测试（本地结果：42 个变异抓住 39 个，见 [门禁可信度](docs/competition/gate-credibility.md) 附录）；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [演示指南](docs/demo/README.md)。
+
+## 限制与边界
+
+- **端到端门禁仍集中在金融监管文本。** 政务留出题、医疗法规规则诊断与 RGB 新闻抽样检验都有，但任务与分母各不相同，不能据此推断跨领域端到端效果。
+- **默认裁判就是被测模型。** 换独立裁判的对照量化了这部分偏差，但没有消除它。
+- **0.8 阈值没有业务校准。** PASS 只说明这批样本达到设定门槛，不代表每条回答正确。
+- **只查「回答与资料是否一致」，不查资料本身对不对。** 资料写错时，照抄资料的错误回答会被判为有依据。
+- **没有鉴权与访问隔离。** 公开演示站只读，不开放在线评测；评测是同步请求，没有任务队列、取消和阶段进度。
+- **人工核验规模有限。** 作者定向核验 13 条；另有三人各标同一材料包 52 条陈述，独立性依据为自述、6 条未决，不构成总体准确率。
+
+完整口径、未验证事项与各条边界的出处见 [评测可信度与限制](docs/evaluation-credibility.md)。
 
 ## 许可与仓库
 
