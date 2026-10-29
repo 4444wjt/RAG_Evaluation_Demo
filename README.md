@@ -13,7 +13,7 @@
 
 **逐句核对回答，回查检索原文，复算归档门禁，对照修复效果。**
 
-**▶ 在线演示（免登录，不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/)（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
+**▶ 在线演示（免登录 · 不需要密钥 · 不调用模型）**：[kk444444444444.cloud](https://kk444444444444.cloud/) — 打开就能看到三样东西：一次真实 FAIL 的门禁结论、支撑它的逐句证据、换裁判之后的对比。（云服务器部署；若临时中断，可用下方 GitHub Pages 备用站）
 
 代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
@@ -51,11 +51,11 @@
 
 **典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。** 已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束。门禁已打包为 GitHub Action（[action.yml](action.yml)，Action 托管在 GitHub 镜像），其他仓库加一步 `uses: 4444wjt/RAG_Evaluation_Demo@master` 即可接入，CI 页面会显示哪个指标没过、差多少（作业摘要与 JUnit 报告）。指定基线（`--baseline` / `baseline`）后还会逐题对比上一次运行，区分「确定退步」和「在题目抽样与裁判波动范围内的下降」，只有前者拦截；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
 
-项目采用 React 比赛展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
+项目采用 React 展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
 
 **裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。2026-10-22 又用银行公开的存款保险问答 11 题测了 AnythingLLM 源码构建实例：门禁 PASS，但 6 道负向题全部给出了节选外的内容，说明只看正向题的门禁拦不住不拒答的应用，见 [银行问答实测](docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md)。
 
-[快速启动](#快速启动) · [作品介绍](docs/competition/project-introduction.md) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
+[作品介绍](docs/competition/project-introduction.md) · [同一次 FAIL 的三种看法](docs/competition/value-comparison.md) · [快速启动](#快速启动) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
 ![鉴真全域 VeriScope AI 桌面首页](docs/images/landing-desktop.png)
 
@@ -92,11 +92,11 @@
 
 平台在上线前和每次改动后拦下不合格的版本，不是线上逐条过滤；它只检查回答与资料是否一致，所以适合资料本身权威、答错代价高、需要留痕、要求私有化的行业。
 
-**银行 / 保险条款问答。** 银行和保险机构负责智能客服、员工助手的测试人员，在上线前和每次换模型、改提示词后使用本平台。不拦截时，偿付限额、投保期限、免责条款答错，或顺着客户的错误说法作答，会以机构口径传给客户，引发投诉和理赔纠纷，事后也说不清哪一句出自哪条原文。平台把每句回答对回条款原文，正向忠实度或上下文精度低于阈值即判 FAIL、CI 步骤失败：《存款保险条例》节选的 25 题运行就这样被拦下（0.7375 < 0.8），归因到错误前提题被拒答，加入纠正指引后的跨版本重跑为 0.8607（非单因素对照）（[正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)、[修复验证](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)）。
-
-**政务咨询问答。** 承建政务服务智能问答和热线知识库的团队，在交付验收和政策文件修订后使用本平台。不拦截时，申请期限、答复时限、所需材料答错，或对带错误前提的提问只回一句「无法回答」，群众会错过期限、白跑一趟，再转为投诉或行政复议。平台逐句把回答对回条例原文，忠实度或上下文精度不达标即判 FAIL，再用错误前提、正确前提、资料无答案三类留出题检验改动有没有矫枉过正；在一份没参与调试的《政府信息公开条例》节选上，14 道留出题修复后全部通过（修复前 12/14，见[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)）。
-
-**央国企制度问答。** 集团数科公司和信息中心负责制度问答助手的测试人员，在上线前和制度修订后使用本平台，由合规、内审人员复核结果。不拦截时，采购限额、审批权限、报销标准答错，员工照着办理，内审查出违规时责任落到经办人身上。平台和自有模型都可以部署在内网，资料不出内网；每句回答对回制度条文，门禁不通过即停止发布，人工核验页让复核人员逐条确认，并与机器判定分开保存（本仓库尚未在这类资料上实测）。
+| 行业 | 不拦截会发生什么 | 平台怎么拦、实测证据 |
+|---|---|---|
+| 银行 / 保险条款问答 | 偿付限额、投保期限、免责条款答错，或顺着客户的错误说法作答，以机构口径外传，引发投诉与理赔纠纷 | 逐句对回条款原文，正向忠实度或上下文精度低于 0.8 即判 FAIL、CI 步骤失败：[正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) 0.7375 被拦、[修复验证](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md) 0.8607 放行 |
+| 政务咨询问答 | 申请期限、答复时限、所需材料答错，或对带错误前提的提问只回一句「无法回答」，群众错过期限、白跑一趟 | 逐句对回条例原文，不达标即判 FAIL，再用错误前提、正确前提、资料无答案三类留出题检验有没有矫枉过正：[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md) 14/14，修复前 9/14 |
+| 央国企制度问答 | 采购限额、审批权限、报销标准答错，员工照着办理，内审查出违规时责任落到经办人身上 | 平台与自有模型都部署在内网，资料不出内网；门禁不通过即停止发布，人工核验页逐条确认并与机器判定分开保存。本仓库尚未在这类资料上实测 |
 
 **不适合：** 新闻资讯与联网搜索问答（资料本身不保证正确）；营销文案、创意写作、闲聊（没有可对照的原文）；投资建议、医疗诊断（结论不在资料里）；需要线上逐条实时拦截的场景。部署条件与已实测项见 [落地与接入](docs/DEPLOYMENT.md)。
 
@@ -125,7 +125,7 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 | 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
 | 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
 | 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
-| 比赛展示 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
+| 展示层 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
 
 Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
 
@@ -260,7 +260,7 @@ veriscope-statute --example --json
 
 ```text
 RAG-Reliability-Lab/
-├── frontend/                 # 比赛首页与研究工作台
+├── frontend/                 # 展示首页与研究工作台
 ├── backend/                  # API、core、services、adapters、reporting、storage
 ├── docs/
 │   ├── images/               # README 引用的正式 PNG
@@ -308,7 +308,7 @@ Windows 上请克隆到较短的路径，例如 `C:\src`。归档证据的目录
 cd RAG-Reliability-Lab
 ```
 
-### 2. 仅看比赛演示：不需要模型密钥
+### 2. 只看演示：不需要模型密钥
 
 ```powershell
 cd frontend
@@ -378,7 +378,7 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 
 ### 笔记本展示
 
-![1280×800 比赛首页](docs/images/landing-laptop.png)
+![1280×800 展示首页](docs/images/landing-laptop.png)
 
 ### 实验结论与质量门禁
 
@@ -425,7 +425,7 @@ python -m venv venv
 
 Gitee 不运行 GitHub Actions；CI、CodeQL、Scorecard 的运行记录在 [GitHub 镜像的 Actions 页面](https://github.com/4444wjt/RAG_Evaluation_Demo/actions)查看。
 
-GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；另有 `gate-action` 任务自检根目录的门禁 Action（演示快照应放行、25 题正式运行应拦截）；门禁代码变动时，`mutation.yml` 在 Linux 上对其做变异测试（本地结果：42 个变异抓住 39 个，见 [门禁可信度](docs/competition/gate-credibility.md) 附录）；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [比赛演示指南](docs/demo/README.md)。
+GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 Pull Request 时执行 Python 离线测试与前端单元测试（含类型检查），两项均自提交 `c66de7b` 起通过；另有 `gate-action` 任务自检根目录的门禁 Action（演示快照应放行、25 题正式运行应拦截）；门禁代码变动时，`mutation.yml` 在 Linux 上对其做变异测试（本地结果：42 个变异抓住 39 个，见 [门禁可信度](docs/competition/gate-credibility.md) 附录）；浏览器端用例需本地运行，未纳入 CI。演示步骤和结果解释边界见 [演示指南](docs/demo/README.md)。
 
 ## 许可与仓库
 
@@ -463,8 +463,11 @@ GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 P
 - [验收记录](docs/competition/validation.md)
 - [25题作者确认材料](scenarios/competition_25/README.md)
 
-**比赛材料**
+**项目价值与演示**
 
+- [项目索引](docs/competition/README.md) — 按技术创新、场景落地、开源治理、长期发展四块，每块给证据入口与短板
 - [作品介绍](docs/competition/project-introduction.md)
-- [比赛演示](docs/demo/README.md)
+- [演示指南](docs/demo/README.md)
 - [三分钟演示](docs/competition/demo-script.md)
+
+逐目录索引（每个目录里的 README 分别讲什么）见 [docs/](docs/README.md)。

@@ -4,7 +4,7 @@
 
 | 图片 | 视口 | 内容 |
 |---|---|---|
-| `../images/landing-desktop.png` | 1920×1080 | 比赛首页首屏 |
+| `../images/landing-desktop.png` | 1920×1080 | 展示首页首屏 |
 | `../images/landing-laptop.png` | 1280×800 | 笔记本首页首屏 |
 | `../images/evidence-desktop.png` | 1920×1080 | 门禁结论与证据章节 |
 | `../images/evidence-trace-3x.png` | 1920×1080 / 3× | 首页逐句判定卡片，按 3 倍像素截取（3198×843） |

@@ -18,7 +18,7 @@ flowchart LR
 
 | 层 | 位置 | 职责 |
 |---|---|---|
-| Frontend | `frontend/src/` | 比赛首页、总览、工作区、对比、幻觉分析与报告预览；React、TypeScript、Vite、ECharts、原生 CSS |
+| Frontend | `frontend/src/` | 展示首页、总览、工作区、对比、幻觉分析与报告预览；React、TypeScript、Vite、ECharts、原生 CSS |
 | Backend API | `backend/api/` | FastAPI 请求合同、路径校验、同步调用和结果序列化 |
 | Evaluation Pipeline | `backend/core/` | 评测流程编排、结果聚合、质量门禁；保留既有指标与判定口径 |
 | Services | `backend/services/` | 文档处理、正负样本、检索、回答和逐句溯源 |

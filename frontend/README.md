@@ -1,6 +1,6 @@
 # 鉴真全域 VeriScope AI · React 前端
 
-React + TypeScript + Vite + Apache ECharts 前端，包含比赛首页与评测工作台。保留现有 Gradio、CLI 和 FastAPI 合同，不修改评测引擎。
+React + TypeScript + Vite + Apache ECharts 前端，包含展示首页与评测工作台。保留现有 Gradio、CLI 和 FastAPI 合同，不修改评测引擎。
 
 ## 本地启动
 

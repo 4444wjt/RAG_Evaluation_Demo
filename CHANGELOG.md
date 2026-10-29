@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 文档索引引导与数据勘误（2026-10-29）
+- 新增 [`docs/competition/README.md`](docs/competition/README.md)（项目索引：技术创新／场景落地／开源治理／长期发展四维，每维给「判据 → 做到了什么 → 证据表（结论／证据／边界）→ 短板」；另含 9 份说明页去向、目录构成、运行目录读法、复算入口）与 [`scripts/README.md`](scripts/README.md)（零依赖脚本索引：想验一件事就跑哪个、三组清单、退出码约定、`tools/` 与 `scripts/` 分工）；重写 [`docs/README.md`](docs/README.md)（原页全仓无入链，现由根 README「全部文档」末尾接入）；根 README 补四处入口与措辞。索引页只给摘要与去处，不复述结论；表格一律不超过 3 列（Gitee 渲染约束）。同批把三处页面标题统一为中性表述（[`reviewer-questions.md`](docs/competition/reviewer-questions.md)「常见问题与回答口径」、[`demo-script.md`](docs/competition/demo-script.md)「三分钟演示脚本」、[`docs/demo/README.md`](docs/demo/README.md)「演示指南」），并同步到所有入链文字。
+- 修正留出题通过数：**12/14 → 9/14**（`README.md`、`docs/competition/project-introduction.md` 与 `.html`）。与归档 [`heldout-fix/20261014-deepseek`](docs/competition/heldout-fix/20261014-deepseek/README.md) 的 `9/14 → 14/14`（结果表 2+7=9 → 6+8=14）一致；此前该数在仓库内自相矛盾，且无任何源档支持 12/14。
+- **已知遗留：`docs/competition/project-introduction.pdf` 未重新生成。** 该文件是 [`evidence/PDF-E2E-20261020T040755Z`](docs/competition/evidence/PDF-E2E-20261020T040755Z/summary.md) 的样本 A，其 SHA-256 `fa8f8923…` 与 543,576 字节已被该运行的 `summary.md` 记为锚点。重新生成会使锚点失效，而 `summary.md` 与 `raw/A-extracted.txt` 均在冻结区、不可就地修改。因此 pdf 与抽取件内部仍是旧值 12/14，与本条修正不同步——这是**为保住证据链而刻意保留的不一致**，不是遗漏。若要同步，须另开一次带新锚点的运行，而不是覆盖旧文件。
+
 ### 引用版本检查（CLML，2026-10-29）
 - 新增本地 XML 上传、独立版本需求、修改后重查、HTML/自包含 JSON 导出及源码 CLI 离线复算；逐条保留冲突与待复核，known_by 始终复核。公开只读入口禁用上传且无示例结果，不判断引文语义或法律适用。合并版前端 378 项、类型检查与只读构建通过，公开桌面入口已上线并完成 13 项检查；远程 CI 按最终提交核对，详见[使用说明](docs/integrations/citation-version.md)。
 
