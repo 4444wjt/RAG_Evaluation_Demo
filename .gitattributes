@@ -756,3 +756,11 @@ docs/competition/external-repro-20261027/terminal.txt -text
 /frontend/src/test/fix-case.test.tsx -text
 /tests/test_fix_case.py -text
 /tools/competition/build_fix_case.py -text
+
+# Installable statute CLI: preserve audited package source bytes.
+packaging/veriscope/.gitignore -text
+packaging/veriscope/README.md -text
+packaging/veriscope/pyproject.toml -text
+packaging/veriscope/stage.py -text
+packaging/veriscope/src/veriscope/__init__.py -text
+packaging/veriscope/src/veriscope/cli.py -text

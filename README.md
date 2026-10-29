@@ -164,6 +164,16 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 只接收提供者确认的行结构：条标题带正文、每行一款、项单独成行；不支持的排版进入待复核，不自动重排。样例故意引用不存在的第三款，预期退出码为 1；0 表示当前规则未检出，2 表示输入无效或待复核。未检出不等于事实有依据或门禁 PASS；[输入输出契约](schemas/statute-diagnostic.v1.schema.json)与[详细用法](docs/competition/statute-check/README.md#自资料离线诊断)可独立查看。
 
+**只安装法条诊断 CLI：** Python 3.11+ 可从 [GitHub Releases](https://github.com/4444wjt/RAG_Evaluation_Demo/releases) 下载 `cli-v0.1.0` 的 wheel，在虚拟环境安装后从仓库外运行：
+
+```powershell
+python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
+veriscope-statute --example --json
+```
+
+包版本为 0.1.0，与主项目 v1.2.0 分开编号；零第三方运行依赖，仅含 base/extended 法条诊断，不含 Web 或模型评测，未发布到 PyPI。示例预期退出 1；退出 0 仅表示现有规则未检出，退出 2 表示无效输入或待复核。Windows Python 3.11/3.12 的本地安装已验证；其它平台尚未验证。另见 [包装源码](packaging/veriscope/README.md)，附件另附 SHA-256 与来源绑定。
+
+
 - 四次归档运行的 100 个回答中只检出 10-14 的 F04。该回答引用了节选中没有的第十八条，并称第十九条未规定时限；同次运行的逐句核对把后一句判为有依据。
 - 42 条注入陈述上，规则检出 29 条错误中的 24 条，13 条对照无误报（离线口径、无裁判对比）。
 - 与两个通用裁判对比（按运行前确认的口径分组）：条号类 16 条，规则检出 14 条，与 DeepSeek 持平，Qwen2.5-72B 只检出 4 条；内容类 8 条，规则在覆盖的两类上检出 6/6，「否定改肯定」2 条由裁判兜底，合用时 8/8。规则零误报，两个裁判各误报 1 条。两套口径的规则结果相同，只是分组不同。详见 [法条结构核对](docs/competition/statute-check/README.md)。
