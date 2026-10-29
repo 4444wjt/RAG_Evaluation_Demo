@@ -1,42 +1,48 @@
 # 路线图
 
-本文件说明鉴真全域 VeriScope AI 接下来准备做什么、为什么这样排序，以及哪些事情**目前没有做到**。
-所有条目均为计划，不代表已实现；已实现的能力以 [README](README.md) 和 [CHANGELOG](CHANGELOG.md) 为准。
+本文件说明鉴真全域 VeriScope AI 的里程碑、当前进展与下一步。已完成部分与待办分开列出；未完成条目仍为计划，功能与历史变更见 [README](README.md) 和 [CHANGELOG](CHANGELOG.md)。
 
 ## 里程碑与时间
 
 负责人：Ll（当前唯一维护者）。本表制定于 2026-10-13，下表日期为目标日期；M1–M3 对应[作品介绍](docs/competition/project-introduction.md)中的「未来 3 个月路线图」。项目目前单人维护，日期可能顺延；顺延时在本文件更新日期并写明原因，不删除原条目。
 
-| 里程碑 | 目标日期 | 内容 | 验收方式 |
-|---|---|---|---|
-| M1 | 2026-11-15 | 裁判可单独配置、写入报告的能力已于 2026-10-14 实现，并完成一次重新生成回答且更换裁判的真实运行（[独立裁判复核](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)：门禁 FAIL，部分回答发生变化，不能把修复后的 PASS／FAIL 变化全部归因于裁判）。由非作者复核人对争议样本做独立标注 | 一次换裁判运行的证据目录；按 [人工核验存档格式](docs/review-archive-format.md) 保存的独立标注 |
-| M2 | 2026-12-15 | 用 M1 的独立标注估计裁判误差，给出同时考虑题目抽样与裁判误差的门禁区间；用同一批标注对 0.8 门槛做一次业务校准 | 可离线复算的分析脚本与测试；校准结论写入 [门禁可信度四问](docs/competition/gate-credibility.md) |
-| M3 | 2027-01-15 | 评测任务化（任务队列、取消、阶段进度）；鉴权与访问隔离；第一个非金融场景（约 10 题，公开题集与来源） | API 合同与测试；部署说明更新；`scenarios/<name>/` 目录与运行证据 |
-| M4 | 2027-03-31 | Bi'an 子集外部验证；专门判断模型交叉核查；逐句判定提示词加入人工标注的幻觉例子；门禁规则包 | 各自的运行证据目录；规则文件与回放测试 |
-| 持续 | 每次合并与发布 | CI 全绿后才合并；按语义化版本发布并更新 CHANGELOG；Issue / PR 在 3 个工作日内首次回复 | GitHub Actions 记录；Release 与 tag；Issue 响应记录 |
+| 里程碑 | 原目标日期 | 已完成 | 待完成 | 验收方式 |
+|---|---|---|---|---|
+| M1 | 2026-11-15 | 裁判单独配置与报告记录已于 10-14 实现，并有[换裁判真实运行](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)；V、A、B 各标完同包 52 条陈述 | 扩大标注材料，继续保留分歧与无法判断；现有标注独立性依据为自述 | 换裁判运行归档；[V 标注](docs/competition/judge-calibration/20261014-annotation-V/README.md)与 [A/B 标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md) |
+| M2 | 2026-12-15 | 同时考虑题目抽样与裁判误差的方法、离线脚本、测试及模拟验证已实现 | 真实标注仍有未决，按预定口径不报告校正置信区间、不下结论；0.8 门槛的业务校准尚未完成 | [裁判判错校准](docs/competition/judge-calibration/README.md)；可复算的真实校正结果与业务校准依据 |
+| M3 | 2027-01-15 | 已有政务留出题与医疗法规规则诊断，见下文 | 评测任务化（队列、取消、阶段进度）；鉴权与访问隔离；补充非金融场景的完整端到端门禁运行（约 10 题，公开题集与来源） | API 合同与测试；部署说明更新；题集、来源与运行证据 |
+| M4 | 2027-03-31 | — | Bi'an 子集外部验证；专门判断模型交叉核查；逐句判定提示词加入人工标注的幻觉例子；门禁规则包 | 各自的运行证据目录；规则文件与回放测试 |
+| 持续 | 每次合并与发布 | 治理流程见 [GOVERNANCE.md](GOVERNANCE.md) | CI 全绿后才合并；按语义化版本发布并更新 CHANGELOG；Issue / PR 在 3 个工作日内首次回复 | GitHub Actions 记录；Release 与 tag；Issue 响应记录 |
 
 各阶段的具体条目见下文；里程碑按依赖排序，例如 M2 依赖 M1 的独立标注。
+
+### 近期交付与发布状态（2026-10-29）
+
+- **本地工作台 r5**：build、typecheck 与定向验收已通过，尚未提交、部署。在线演示以已发布版本为准。
+- **自资料规则诊断**：已有[标准库 CLI 与失效输入契约](docs/competition/statute-check/README.md#自资料离线诊断)，以及[未见医疗法规派生重计包](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)；这部分不进入门禁。
+- **外部使用记录**：[操作者 O](docs/competition/external-repro-20261027/README.md) 自选法规，远程登录作者电脑完成 1 次操作；它支持使用流程记录，不是异机安装或已发表结果的复现。
 
 ## 现状与已知短板
 
 | 短板 | 影响 | 对应计划 |
 |---|---|---|
 | 逐句判定与被评模型可能同源（裁判偏差） | 机器判定不能当作独立真实性保证 | 第一阶段：独立裁判 |
-| 场景集中在金融监管类文本（存款保险条例、信息披露） | 不能推断在其他领域同样有效；逐句核对本身已在 RGB 新闻领域做过一次 100 题抽样检验（[外部基准验证](docs/competition/external-validation/README.md)），[鲁棒性体检](docs/competition/robustness/README.md) 可用于任何 RAG 应用，但评测场景仍只有一个 | 第二阶段：跨领域场景 |
-| 人工核验仅覆盖 13 条定向样本 | 不能给出总体准确率 | 第一阶段：扩大人工核验并保留分歧 |
+| 正式端到端门禁仍集中在金融监管文本 | 已有[政务留出题](docs/competition/heldout-fix/20261014-deepseek/README.md)、[医疗法规规则诊断](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)与 RGB 新闻抽样检验，任务与分母各不相同，尚不能据此推断跨领域端到端效果 | 第二阶段：跨领域端到端场景 |
+| 作者定向核验 13 条 Demo 回答；V/A/B 另各标注同包 52 条陈述 | 不是 156 条独立样本；A/B 有 6 条未决，含分歧与「无法判断」，独立性依自述。不能给出总体准确率 | 第一阶段：扩大材料并保留未决；第二步完成真实校准 |
 | 评测为同步请求，无任务队列、取消、阶段进度 | 题量大时体验和稳定性受限 | 第三阶段：任务化 |
 | 在线演示依赖试用期云资源与免费隧道 | 长期可用性没有保证；已有 GitHub Pages 静态备用站兜底只读演示 | 第四阶段：基础设施 |
 
 ## 第一阶段 · 让判定更可信
 
-- **独立裁判**：2026-10-11 已做一次只换裁判的对照实验，见 [独立裁判对照](docs/judge-comparison.md)。2026-10-14 已实现工作区／API／CLI 的裁判选择，五项指标与 Trace 使用指定裁判，报告分别记录请求名与响应名；2026-10-14 已真实运行一次：同一修复版本换 Qwen2.5-72B 裁判后，正向忠实度 0.7992，门禁 FAIL；还发现同一裁判的忠实度与逐句核对互相矛盾，见 [独立裁判复核](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)。见 [配置与边界](docs/integrations/independent-judge.md)。
+- **独立裁判**：2026-10-11 已做一次固定回答、只换裁判的对照实验，见 [独立裁判对照](docs/judge-comparison.md)。2026-10-14 已实现工作区／API／CLI 的裁判选择，五项指标与 Trace 使用指定裁判，报告分别记录请求名与响应名；同一修复版本换 Qwen2.5-72B 裁判并重新生成回答后，正向忠实度 0.7992，门禁 FAIL。25 题中有 7 条回答变化，不能把整批变化全归因于裁判；忠实度与逐句核对是独立计算的管线，信号不同不能直接认定为裁判矛盾，见 [独立裁判复核](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)与[配置边界](docs/integrations/independent-judge.md)。
 - **外部 RAG 端到端接入**：已实现 `veriscope.e2e.v1` 客户端与独立归档工具，只发送题号和问题，由应用返回自己的回答及实际生成 contexts；2026-10-14 已用本仓库自写的示例应用完整实测一次（25 题，链路跑通，门禁 FAIL），见 [示例应用实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)；2026-10-21 已在第三方真实系统 AnythingLLM v1.18.0（源码构建实例，非桌面安装包）上完整实测一次（25 题，正向忠实度 0.765，门禁 FAIL），见 [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)。实测发现按固定短语识别拒答认不出应用自己的拒答句，改动需单独提出。与平台提供 contexts 的受控资料体检分开，见 [端到端契约与运行](docs/integrations/external-rag.md)。
 - **裁判一致性对照**：同一批回答用两个以上裁判判定，把不一致的句子单独列出，沿用现有"机器判定与人工意见并列保留"的展示方式。
 - **扩大人工核验**：新增记录沿用公开的 [人工核验存档格式](docs/review-archive-format.md)；核验包保持"不覆盖机器结果、不生成准确率"的原则；新增样本继续绑定冻结快照版本与 SHA-256。
 - **独立人工标注与考虑裁判误差的区间**（参照 [ICML 2026：How to Correctly Report LLM-as-a-Judge Evaluations](https://proceedings.mlr.press/v306/lee26bl.html)）：
   - 2026-10-13 已实现裁判误差分析工具和模拟验证，见 [裁判判错校准](docs/competition/judge-calibration/README.md)：校准校正推广到按题聚集，并实现 PPI；标注页与分析口径已就绪。
-  - 2026-10-14 已完成 1 位非作者的人工标注，人工口径 77.5%–82.5%，取决于 1 条未决陈述，未下结论，见 [人工标注结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
-  - 2026-10-21 已完成第二轮 2 位非作者（A、B）的标注：四类 κ 0.64，人工口径 68.8%–82.5%，6 条未决，未下结论，见 [第二轮人工标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md)。工作台「门禁审计」页仍显示 V 的单人结果，待更新。
+  - 2026-10-14 V 已标完 52 条陈述，人工口径 77.5%–82.5%，取决于 1 条未决陈述，未下结论，见 [人工标注结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
+  - 2026-10-21 A、B 各标完与 V 相同的 52 条陈述：四类 κ 0.64，人工口径 68.8%–82.5%，6 条未决包含分歧与「无法判断」。这些是点估计上下界，不是置信区间；按预定口径不报告校正置信区间、不下结论，见 [第二轮人工标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md)。三人的标注不是 156 条独立样本，独立性依据为自述；已发布的门禁审计页仍显示 V 的单人结果。
+  - **尚未完成**：真实校正结论与 0.8 门槛的业务校准。方法实现、模拟覆盖率与人工标注完成不代替这两项。
 - **在逐句判定提示词中加入人工标注的幻觉例子**：参照 [FaithJudge](https://arxiv.org/html/2505.04847v2) 的做法；提示词变化后另建运行证据，不与已冻结的运行直接混比。
 - **专门判断模型交叉核查**：在大模型裁判之外，引入专门做「支持 / 反驳 / 无关」判断的模型作为另一类裁判（思路同 [Azure 依据检测](https://learn.microsoft.com/en-gb/azure/ai-services/content-safety/concepts/groundedness)），两类裁判的分歧进入人工复核。
 - **外部基准验证**：2026-10-13 已在 ANAH（中文逐句人工幻觉标注）与 RGB（中文新闻检索增强问答）上各做一次抽样检验，见 [外部基准验证](docs/competition/external-validation/README.md)。下一步：扩大样本，换第二个裁判重跑同一样本包，并补英文部分。中英双语 RAG 幻觉基准 [Bi'an](https://hub.baai.ac.cn/paper/0c46eff6-4e01-43b7-955a-2cc886a20118) 的官方数据与使用条件尚未确认，暂未运行。
@@ -45,7 +51,8 @@
 
 ## 第二阶段 · 跨领域场景
 
-- 在金融监管之外增加至少一个**非金融**场景（候选：政务办事指南、产品说明书/售后条款、医疗器械说明书等公开文本），每个场景先做小规模（约 10 题）并公开题集与来源。
+- **已有材料**：[24 道修复留出题](docs/competition/heldout-fix/20261014-deepseek/README.md)含 14 道政府信息公开题；[未见法规规则诊断](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)使用《医疗保障基金使用监督管理条例》，27 条构造错误、30 条正确对照，另检验失效输入。二者不合并为跨领域端到端门禁验证。
+- **下一步**：在金融监管之外补充完整端到端门禁场景（候选：政务办事指南、产品说明书／售后条款、医疗器械说明书等公开文本），先做小规模（约 10 题）并公开题集与来源。
 - 场景以 `scenarios/<name>/` 目录组织，包含原文、题集、作者确认记录，与现有 `competition_25` 结构一致。
 - 明确**不做**的事：不用单一场景的结果宣称"通用评测基准"。
 

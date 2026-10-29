@@ -731,3 +731,13 @@ docs/integrations/external-rag.md -text
 /frontend/src/test/App.test.tsx -text
 /frontend/browser-tests/competition-release.spec.ts -text
 /frontend/browser-tests/evaluation-verification.spec.ts -text
+
+# External operator O: preserve the published archive bytes.
+docs/competition/external-repro-20261027/README.md -text
+docs/competition/external-repro-20261027/SHA256SUMS.txt -text
+docs/competition/external-repro-20261027/input/我的资料.txt -text
+docs/competition/external-repro-20261027/input/请求.json -text
+docs/competition/external-repro-20261027/output.json -text
+docs/competition/external-repro-20261027/terminal.txt -text
+/docs/images/veriscope-capabilities.svg -text
+/docs/images/veriscope-capabilities.png -text

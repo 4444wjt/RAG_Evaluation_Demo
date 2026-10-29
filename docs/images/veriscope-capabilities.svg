@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="capability-title capability-desc">
+  <title id="capability-title">VeriScope AI 六项核验能力与证据导航</title>
+  <desc id="capability-desc">六个等分环形扇区：工程创新，自资料诊断与失败契约；证据追溯，逐句原文与版本绑定；门禁复核，离线回放与差异对照；风险与人工复核，未决保留与人工接管；外部接入，真实 RAG 与自选资料；开源上游贡献，pypdf 两项修复已合并。扇区等分，不代表能力评分或比赛得分。证据链接见 README 图下文字表。</desc>
+  <defs>
+    <radialGradient id="backlight" cx="50%" cy="48%" r="48%">
+      <stop offset="0" stop-color="#253342" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#101723" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    text {font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif;}
+    .sector {fill:#322F2A;stroke:#C5A464;stroke-opacity:.52;stroke-width:1.2;}
+    .icon {fill:none;stroke:#F2C879;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .leader {fill:none;stroke:#827451;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;}
+    .label-title {font-size:25px;font-weight:600;fill:#F2C879;}
+    .label-subtitle {font-size:18px;font-weight:400;fill:#C5CCD5;}
+  </style>
+  <rect width="1200" height="680" fill="#101723"/>
+  <rect width="1200" height="680" fill="url(#backlight)"/>
+  <rect x="14" y="14" width="1172" height="652" rx="14" fill="none" stroke="#314052" stroke-opacity=".55"/>
+  <text x="52" y="62" fill="#EFF1F4" font-size="26" font-weight="600">能力与证据导航</text>
+  <text x="1148" y="61" text-anchor="end" fill="#93A1B3" font-size="15" letter-spacing="1.4">VERISCOPE AI</text>
+  <path d="M52 89H1148" stroke="#314052" stroke-opacity=".6"/>
+  <circle cx="600" cy="348" r="211" fill="none" stroke="#334153" stroke-opacity=".38" stroke-dasharray="2 9"/>
+  <g id="sector-1" aria-label="工程创新">
+    <path class="sector" d="M 605.637 158.084 A 190 190 0 0 1 761.654 248.160 L 712.307 278.638 A 132 132 0 0 0 603.916 216.058 Z"/>
+    <g transform="translate(680.500 208.570)" class="icon"><path d="M-7-8-15 0l8 8M7-8l8 8-8 8M3-13-3 13"/></g>
+  </g>
+<g id="sector-2" aria-label="证据追溯">
+    <path class="sector" d="M 767.291 257.923 A 190 190 0 0 1 767.291 438.077 L 716.223 410.580 A 132 132 0 0 0 716.223 285.420 Z"/>
+    <g transform="translate(761.000 348.000)" class="icon"><path d="M-10-14H4l8 8v20h-22zM4-14v8h8M-5 1H7M-5 7h9"/></g>
+  </g>
+<g id="sector-3" aria-label="门禁复核">
+    <path class="sector" d="M 761.654 447.840 A 190 190 0 0 1 605.637 537.916 L 603.916 479.942 A 132 132 0 0 0 712.307 417.362 Z"/>
+    <g transform="translate(680.500 487.430)" class="icon"><path d="M-12 14V-14H12v28M-4 1l5 5 9-11M-15 14h30"/></g>
+  </g>
+<g id="sector-4" aria-label="风险与人工复核">
+    <path class="sector" d="M 594.363 537.916 A 190 190 0 0 1 438.346 447.840 L 487.693 417.362 A 132 132 0 0 0 596.084 479.942 Z"/>
+    <g transform="translate(519.500 487.430)" class="icon"><circle cx="-4" cy="-7" r="6"/><path d="M-15 13c0-6 4-10 11-10 3 0 5 1 7 3M11 0v7M11 12v1"/></g>
+  </g>
+<g id="sector-5" aria-label="外部接入">
+    <path class="sector" d="M 432.709 438.077 A 190 190 0 0 1 432.709 257.923 L 483.777 285.420 A 132 132 0 0 0 483.777 410.580 Z"/>
+    <g transform="translate(439.000 348.000)" class="icon"><path d="M-12-2h7v-8h10v8h7M0-10v-5M-7 12h14V4H-7zM0 4V-2M-12-2v7M12-2v7"/></g>
+  </g>
+<g id="sector-6" aria-label="开源上游贡献">
+    <path class="sector" d="M 438.346 248.160 A 190 190 0 0 1 594.363 158.084 L 596.084 216.058 A 132 132 0 0 0 487.693 278.638 Z"/>
+    <g transform="translate(519.500 208.570)" class="icon"><circle cx="-9" cy="-12" r="3"/><circle cx="10" cy="-10" r="3"/><circle cx="-9" cy="13" r="3"/><path d="M-9-9V10M10-7c0 9-19 6-19 14"/></g>
+  </g>
+  <circle cx="600" cy="348" r="118" fill="#15202D" stroke="#5E5949" stroke-width="1"/>
+  <path d="M580 303h40" stroke="#F2C879" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="600" y="349" text-anchor="middle" fill="#F4F2EC" font-size="29" font-weight="600">VeriScope AI</text>
+  <text x="600" y="382" text-anchor="middle" fill="#D1C2A4" font-size="17">可追溯核验 · 发布门禁</text>
+  <g id="label-1" class="label" text-anchor="start">
+    <path class="leader" d="M 699.500 175.661 L 813 175.661 L 846 209"/>
+    <circle cx="699.500" cy="175.661" r="3" fill="#F2C879"/>
+    <text class="label-title" x="868" y="207">工程创新</text>
+    <text class="label-subtitle" x="868" y="237">自资料诊断 · 失败契约</text>
+  </g>
+<g id="label-2" class="label" text-anchor="start">
+    <path class="leader" d="M 799.000 348.000 L 813 348.000 L 846 348"/>
+    <circle cx="799.000" cy="348.000" r="3" fill="#F2C879"/>
+    <text class="label-title" x="868" y="346">证据追溯</text>
+    <text class="label-subtitle" x="868" y="376">逐句原文 · 版本绑定</text>
+  </g>
+<g id="label-3" class="label" text-anchor="start">
+    <path class="leader" d="M 699.500 520.339 L 813 520.339 L 846 487"/>
+    <circle cx="699.500" cy="520.339" r="3" fill="#F2C879"/>
+    <text class="label-title" x="868" y="485">门禁复核</text>
+    <text class="label-subtitle" x="868" y="515">离线回放 · 差异对照</text>
+  </g>
+<g id="label-4" class="label" text-anchor="end">
+    <path class="leader" d="M 500.500 520.339 L 387 520.339 L 354 487"/>
+    <circle cx="500.500" cy="520.339" r="3" fill="#F2C879"/>
+    <text class="label-title" x="332" y="485">风险与人工复核</text>
+    <text class="label-subtitle" x="332" y="515">未决保留 · 人工接管</text>
+  </g>
+<g id="label-5" class="label" text-anchor="end">
+    <path class="leader" d="M 401.000 348.000 L 387 348.000 L 354 348"/>
+    <circle cx="401.000" cy="348.000" r="3" fill="#F2C879"/>
+    <text class="label-title" x="332" y="346">外部接入</text>
+    <text class="label-subtitle" x="332" y="376">真实 RAG · 自选资料</text>
+  </g>
+<g id="label-6" class="label" text-anchor="end">
+    <path class="leader" d="M 500.500 175.661 L 387 175.661 L 354 209"/>
+    <circle cx="500.500" cy="175.661" r="3" fill="#F2C879"/>
+    <text class="label-title" x="332" y="207">开源上游贡献</text>
+    <text class="label-subtitle" x="332" y="237">pypdf 两项修复已合并</text>
+  </g>
+  <path d="M52 605H1148" stroke="#314052" stroke-opacity=".6"/>
+  <text x="600" y="640" text-anchor="middle" fill="#ABB6C5" font-size="17">能力与证据导航；扇区等分，不代表能力评分或比赛得分</text>
+</svg>

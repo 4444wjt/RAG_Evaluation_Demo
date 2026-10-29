@@ -11,17 +11,48 @@
 
 # VeriScope AI (鉴真全域)
 
-**Every sentence of an AI answer, traceable to its source.**
+**Check RAG answers sentence by sentence, return to the source, replay the release gate, and compare the fix.**
+
+**[Open the read-only demo](https://kk444444444444.cloud/)** · [Run the demo locally without API keys](#quick-start) · [Replay an archived gate](docs/gate-replay.md)
 
 Repositories: [Gitee (primary)](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub (mirror, CI and Pages fallback)](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
 [Gate credibility (Chinese)](docs/competition/gate-credibility.md) · [Gate replay](docs/gate-replay.md) · [Deploy](deploy/README.md) · [Adoption & integration (Chinese)](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
-VeriScope AI is a sentence-level verification and quality-gate platform for RAG (retrieval-augmented generation) question answering. It splits each model answer into atomic statements, checks every statement against the retrieved context, and lets a quality gate decide, by threshold, whether a batch of answers may ship. Test set, retrieved context, answers from several models, Ragas metrics, per-sentence verdicts, gate records and human review are kept in one chain, so "can this answer be trusted?" can be traced step by step: test set → sentence check → gate → report → human review.
+VeriScope AI is a sentence-level verification and quality-gate platform for RAG (retrieval-augmented generation) question answering. Before release, it helps teams find the problematic statement, inspect its retrieved evidence, and check whether a change fixes the problem. Test sets, answers, Ragas metrics, sentence verdicts, gate records and human review stay linked for review.
+
+- **Inspect the evidence:** see each statement next to the retrieved source and retain missing or empty traces explicitly.
+- **Compare a fix:** on the archived 25-question run, attribution identified false-premise questions that were refused despite sufficient retrieval. A cross-version rerun after adding correction guidance corrected 3 of those 4 cases; this was not a single-factor comparison. Separately, on 24 new held-out questions with two arms differing only by that sentence, false-premise corrections rose from 9/14 to 14/14 ([comparison and evidence](docs/competition/value-comparison.md), one model, one run per check).
+- **Recompute the decision:** replay archived gate results without model calls or keys; compare a baseline question by question and keep machine and human verdicts separate ([gate replay](docs/gate-replay.md)).
+
+The separate statute diagnostic is compared with stronger judge prompts, equal source information and a lexical-nearest-neighbour baseline, including rewritten legal material. The [archived comparisons](docs/competition/statute-check/20261023-stage3-baselines/README.md) help identify which method is sufficient; they do not establish overall accuracy or superiority over strong baselines.
 
 Most project documents are written in Chinese; this page summarises them in English.
 
 **Judge configuration and external applications:** the workbench, API and CLI support a [separately configured judge](docs/integrations/independent-judge.md), used for all five metrics and Trace while the tested model generates the answer. Requested and observed judge identities are recorded separately. The [external RAG end-to-end tool](docs/integrations/external-rag.md) sends only an ID and question; the application returns its answer and the actual contexts used for generation. Runs have separate archives. Each was run once for real on 2026-10-14 (authorized): a [25-question rerun with an independent judge](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md) and an [end-to-end run against a self-written example app](docs/competition/external-rag/20261014-example-app-qwen72b/README.md), both in Chinese. Both gates FAIL; see "With an independent judge" below. Historical results are unchanged.
+
+## Engineering and capability evidence
+
+The engineering contribution connects verification, source inspection, gate replay, fix comparisons and human review in one inspectable workflow. The six regions below organize capabilities; their area does not represent a score, share or maturity rating.
+
+![VeriScope capability and evidence map, with Chinese labels](docs/images/veriscope-capabilities.png)
+
+[View the original SVG](docs/images/veriscope-capabilities.svg)
+
+- **Engineering:** bring your own legal source and answers to the [offline diagnostic](docs/competition/statute-check/README.md#自资料离线诊断), with explicit invalid-input and review states. The [unseen medical-fund regulation package](docs/competition/statute-check/20261025-unseen-diagnostic/README.md) reports 27/27 constructed errors detected and 0/30 control false positives, with input-failure tests reported separately.
+- **Evidence tracing:** the [25-question formal archive](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) links answers, contexts, metrics, Trace, reports and hashes; 18 traces are non-empty and 7 empty traces are retained with causes unconfirmed.
+- **Gate review:** [`scripts/gate_replay.py`](scripts/gate_replay.py) reproduces the archived 0.7375 < 0.8 FAIL and supports CI and paired baseline comparisons ([guide](docs/gate-replay.md)).
+- **Risk and human review:** [A/B annotations](docs/competition/judge-calibration/20261021-annotation-AB/README.md) cover the same 52 statements; 6 remain unresolved. The 68.8%–82.5% range bounds the point estimate, not a confidence interval.
+- **External use:** an [AnythingLLM integration run](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md) and [operator O's single use](docs/competition/external-repro-20261027/README.md) are documented. O chose the legal material and operated remotely on the author's computer; this is not a reproduction on another machine.
+- **Upstream contributions:** the author's [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) and [#4236](https://github.com/py-pdf/pypdf/pull/4236) are merged; see the [version and contribution record](#upstream-open-source-contributions).
+
+For the standard-library diagnostic, start with the [constructed request](examples/statute_check/constructed-request.json):
+
+```bash
+python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_check/constructed-request.json --json
+```
+
+The example deliberately cites a nonexistent paragraph, so exit 1 is expected. Exit 0 means the current rules found no error; exit 2 means invalid input or review is required. Sources must follow the documented line structure, confirmed by the provider. A no-error result does not establish support or a gate PASS; see the [input/output contract](schemas/statute-diagnostic.v1.schema.json).
 
 ## Where it fits
 
@@ -37,7 +68,7 @@ Your own models (any OpenAI-compatible endpoint: vLLM, Ollama, an internal gatew
 
 The platform blocks a release that falls short, before launch and after every change; it does not filter answers one by one in production. It only checks whether answers agree with the source documents, so it suits industries where those documents are authoritative, wrong answers are costly, decisions must be traceable, and data must stay on premises.
 
-**Banking and insurance terms.** Testers of customer-service bots and staff assistants at banks and insurers use it before launch and after every model or prompt change. Without the gate, a wrong payout limit, enrolment deadline or exclusion clause, or an answer that goes along with a customer's mistaken premise, reaches customers as the institution's word, leading to complaints and claim disputes with no way to tell which sentence came from which clause. The platform checks every sentence against the clause text and fails the gate, and the CI step, when positive faithfulness or context precision falls below the threshold: the 25-question run on an excerpt of the Deposit Insurance Regulations was blocked this way (0.7375 < 0.8), traced to refused false-premise questions, and passed at 0.8607 after a one-sentence prompt fix ([formal run](docs/competition/evidence/20261005T144504Z-full-39511424/README.md), [fix rerun](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md), in Chinese).
+**Banking and insurance terms.** Testers of customer-service bots and staff assistants at banks and insurers use it before launch and after every model or prompt change. Without the gate, a wrong payout limit, enrolment deadline or exclusion clause, or an answer that goes along with a customer's mistaken premise, reaches customers as the institution's word, leading to complaints and claim disputes with no way to tell which sentence came from which clause. The platform checks every sentence against the clause text and fails the gate, and the CI step, when positive faithfulness or context precision falls below the threshold: the 25-question run on an excerpt of the Deposit Insurance Regulations was blocked this way (0.7375 < 0.8), traced to refused false-premise questions, and passed at 0.8607 in a cross-version rerun after adding correction guidance (not a single-factor comparison) ([formal run](docs/competition/evidence/20261005T144504Z-full-39511424/README.md), [fix rerun](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md), in Chinese).
 
 **Government service enquiries.** Teams that build government Q&A services and hotline knowledge bases use it at delivery acceptance and whenever a policy document is revised. Without the gate, wrong application deadlines, response periods or required documents, or a bare "cannot answer" to a question built on a false premise, leave citizens missing deadlines or making wasted trips, which turn into complaints and administrative appeals. The platform checks every sentence against the regulation text and fails the gate when faithfulness or context precision is too low, and held-out questions with false premises, true premises and no answer in the source show whether a change overcorrects: on an excerpt of the Open Government Information Regulations that played no part in debugging, all 14 held-out questions passed after the fix, up from 12 ([held-out check](docs/competition/heldout-fix/20261014-deepseek/README.md), in Chinese).
 
@@ -91,6 +122,17 @@ Metrics are not reinvented: they come from Ragas 0.1.21. This project works abov
 
 Neither threshold gates nor statement-level checking is unique to this project. [DeepEval](https://github.com/confident-ai/deepeval) can fail CI on metric thresholds. [RAGChecker](https://github.com/amazon-science/RAGChecker) (NeurIPS 2024) also splits answers into claims, checks each one, and reports separate diagnostics for retrieval and generation; it is the closest prior work on statement-level checking. [TruLens](https://www.trulens.org/getting_started/core_concepts/rag_triad/) checks groundedness claim by claim, and [Phoenix](https://github.com/Arize-ai/phoenix) offers tracing and experiments with separate faithfulness and correctness evaluators. The difference here is the combination: the verdict sits next to sentence-level evidence that traces back to the retrieved text, together with human-review disagreements, all in one frozen snapshot — and the gate itself is audited. This compares stated features from public material (checked up to 2026-10-14), not performance under the same conditions; no claim is made that this project checks more accurately.
 
+## Upstream open-source contributions
+
+The author, `4444wjt`, contributed two PDF decoding fixes with regression tests to pypdf, a dependency used by this project:
+
+| Contribution | Problem addressed | Merge and release evidence |
+|---|---|---|
+| [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | Decode `UniGB-UTF16-H/V` as UTF-16BE, fixing garbled Chinese text in affected PDFs without ToUnicode maps | Merged 2026-10-21; included in [6.21.2](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
+| [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | Avoid an exception in the decoding fallback for odd-length UTF-16BE strings whose final byte is below `0x80` | Merged 2026-10-22 (UTC); merge evidence in the PR |
+
+This project still pins [`pypdf==6.19.0`](requirements.txt) and has not upgraded. Its affected CJK fixture still returns FAIL under that version. These are contributions by the author to the dependency ecosystem, not evidence of this project's algorithmic novelty, functional accuracy or external participation.
+
 ## Auditing the gate
 
 A gate's PASS / FAIL drives a release decision, so the gate itself is checked ([details in Chinese](docs/competition/gate-credibility.md)). All numbers come from the 25-question formal run of 2026-10-05 (DeepSeek-V4.1-Flash: requested `deepseek-chat`, the server returned `deepseek-flash`; gate FAIL: positive faithfulness 0.7375 < 0.8, context precision 0.9833).
@@ -142,11 +184,11 @@ See [details in Chinese](docs/competition/robustness/README.md).
 - the calibration-based correction of Lee et al. (ICML 2026), extended to statements clustered by question through an effective sample size;
 - prediction-powered inference (PPI) for partial annotation.
 
-In a simulation with this run's question structure, the question-sampling-only interval covered the truth only 3%–53% of the time, while the clustered correction covered it 94%–96%. Only 5 answered statements were judged unsupported, and all 5 would have to flip to reach 0.80. Status: **three non-authors have each annotated all 52 statements blind** (V on 2026-10-14; A and B on 2026-10-21). Under the two-annotator protocol fixed in advance, A and B agree with Cohen's κ 0.64 on the four labels and 0.76 on supported vs. not. On the human scale, positive faithfulness lies between **68.8% and 82.5%** (the judge gave 73.75%), straddling the 80% threshold, with 6 unresolved statements. An unresolved statement means no interval and no verdict; the recorded FAIL stands. The pairs V–A and V–B both give 72.5%–82.5%, the same conclusion. The judge's sensitivity is 95.0% (38 / 40) and its specificity 100% (6 / 6, a small sample); both disagreements are cases where the judge was stricter, the same two statements V flagged. Annotator independence rests on self-report. See the [second-round result](docs/competition/judge-calibration/20261021-annotation-AB/README.md) and [V's single-annotator result](docs/competition/judge-calibration/20261014-annotation-V/README.md), in Chinese. See [details in Chinese](docs/competition/judge-calibration/README.md).
+In a simulation with this run's question structure, the question-sampling-only interval covered the truth only 3%–53% of the time, while the clustered correction covered it 94%–96%. Only 5 answered statements were judged unsupported, and all 5 would have to flip to reach 0.80. Status: **three non-authors each annotated the same package of 52 statements blind** (V on 2026-10-14; A and B on 2026-10-21), not 156 independent samples. Under the two-annotator protocol fixed in advance, A and B agree with Cohen's κ 0.64 on the four labels and 0.76 on supported vs. not. On the human scale, positive faithfulness has point-estimate bounds of **68.8%–82.5%** (not a confidence interval; the judge gave 73.75%), straddling the 80% threshold. The 6 unresolved statements include both label disagreements and "cannot judge" labels. Under the protocol, no confidence interval or corrected conclusion is reported while statements remain unresolved; the recorded FAIL stands. The pairs V–A and V–B both give 72.5%–82.5%, the same conclusion. The judge's sensitivity is 95.0% (38 / 40) and its specificity 100% (6 / 6, a small sample); both disagreements are cases where the judge was stricter, the same two statements V flagged. Annotator independence rests on self-report. See the [second-round result](docs/competition/judge-calibration/20261021-annotation-AB/README.md) and [V's single-annotator result](docs/competition/judge-calibration/20261014-annotation-V/README.md), in Chinese. See [details in Chinese](docs/competition/judge-calibration/README.md).
 
-**What the platform adds:** for the same FAIL, the plain Ragas average is 0.59, because it counts 5 correct refusals on negative questions as 0. The platform reports 0.7375 on positive questions and explains it: all 40 statements in the answered questions are grounded; 76% of the gap comes from 4 refusals on false-premise questions, so the fix is the prompt, not retrieval; and the interval spans the threshold, so the block is conservative. See [details in Chinese](docs/competition/value-comparison.md).
+**What the platform adds:** for the same FAIL, the plain Ragas average is 0.59, because it counts 5 correct refusals on negative questions as 0. The platform reports 0.7375 on positive questions and explains it: all 40 statements in the answered questions are grounded; 76% of the gap comes from 4 refusals on false-premise questions, the required source was already retrieved, making the prompt a concrete repair entry point; and the interval spans the threshold, so the block is conservative. See [details in Chinese](docs/competition/value-comparison.md).
 
-**Fix verified:** following that attribution, on 2026-10-14 one sentence was added to the answer prompt: when the question's claim or premise contradicts the context, point it out and correct it from the context instead of refusing (commit `b90a14c`). The 25 questions were then rerun with the same question set, contexts and model (authorized, 325 calls). The gate, thresholds and judge were not changed.
+**Fix verified:** following that attribution, on 2026-10-14 one sentence was added to the answer prompt: when the question's claim or premise contradicts the context, point it out and correct it from the context instead of refusing (commit `b90a14c`). The 25 questions were then rerun with the same question set, contexts and model (authorized, 325 calls). The gate rules, thresholds and judge request configuration were unchanged. Besides `answering.py`, 15 other source files were added or changed between runs. This is not a single-factor experiment, so the full change cannot be attributed to that sentence.
 - Positive faithfulness went from 0.7375 to **0.8607**, and the gate went from **FAIL to PASS**.
 - Of the 4 refused false-premise questions, 3 are now corrected; F04 is still refused.
 - All 5 unanswerable questions are still correctly refused.
@@ -222,13 +264,21 @@ On pushes and pull requests to master/main in the GitHub mirror, GitHub Actions 
 
 ## Limitations
 
-- One domain: the formal run uses excerpts of a single Chinese financial regulation; results do not generalise to other domains. The statement-level check has been spot-checked on news (RGB), but the evaluation scenario itself is still single-domain.
+- Formal end-to-end gate runs still focus on financial regulation. [Government-service held-out questions](docs/competition/heldout-fix/20261014-deepseek/README.md), [medical-fund regulation rule diagnostics](docs/competition/statute-check/20261025-unseen-diagnostic/README.md) and a news benchmark check (RGB) exist, but do not establish cross-domain end-to-end performance.
 - Same-source judge: by default the evaluated model also acts as the Ragas judge; the independent-judge comparison above quantifies, but does not remove, this bias.
 - The 0.8 threshold is not yet calibrated against business outcomes.
 - No authentication or access isolation; the public demo is read-only.
-- Human review so far covers 13 targeted samples checked by the author, not an independent review.
+- The author reviewed 13 targeted demo answers. Separately, V, A and B each annotated the same 52 statements; their independence is self-reported, unresolved cases remain, and these records do not establish overall accuracy.
 
-Plans, target dates and the issue response commitment (first reply within 3 working days) are in the [roadmap](ROADMAP.md) (Chinese).
+## Status and plans
+
+- **Delivered:** CLI/Gradio, FastAPI and the React workbench, with sentence evidence, model metrics, gate replay, reports and fix comparisons.
+- **Calibration:** judge configuration, V/A/B annotations and interval methods/simulations are complete; unresolved cases prevent a corrected conclusion, and business calibration of the 0.8 threshold remains open.
+- **Broader materials and use:** government held-out questions, medical-fund rule diagnostics, AnythingLLM and O's one-time use have records; formal end-to-end gates still focus on finance.
+- **Recent local work:** workbench r5 passed build, typecheck and targeted acceptance checks; it is not yet committed or deployed. The demo reflects the published version.
+- **Next engineering work:** task queues, cancellation and progress, authentication and isolation, more independent samples and continued browser acceptance checks.
+
+Milestones, original target dates and the issue response commitment (first reply within 3 working days) are in the [roadmap](ROADMAP.md) (Chinese).
 
 ## License and repositories
 
