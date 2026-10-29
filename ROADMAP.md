@@ -18,6 +18,10 @@
 
 ### 近期交付与发布状态（2026-10-29）
 
+| 本轮能力 | 已实现范围 | 待验收与发布 |
+|---|---|---|
+| [引用版本检查（CLML）](docs/integrations/citation-version.md) | 本地上传 XML、填写版本需求、修改后重查、HTML/JSON 导出与源码 CLI 离线复算；公开入口只读，禁用上传且无示例结果 | 只读桌面入口已上线；前端 378 项、类型检查与构建通过，预览及公网各 13 项检查通过。API/CLI 随源码交付；远程 CI 按最终提交核对。不判断引文语义或法律适用 |
+
 - **可安装的法条诊断 CLI**：包装源码已纳入仓库，CLI 0.1.0 与主项目 v1.2.0 分开编号；Windows Python 3.11/3.12 的 wheel 安装已验证，sdist 在 3.11 离线重建并安装核对，分发见 [GitHub Releases](https://github.com/4444wjt/RAG_Evaluation_Demo/releases)。只覆盖 base/extended 法条诊断；未发布 PyPI，不宣称其它平台或独立用户验收。
 - **Action 外部验证**：本仓 CI 自检已通过；暂无第三方仓库或协作者，真实他人仓验证仍待完成。
 

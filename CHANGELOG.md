@@ -6,6 +6,9 @@
 
 ## [未发布]
 
+### 引用版本检查（CLML，2026-10-29）
+- 新增本地 XML 上传、独立版本需求、修改后重查、HTML/自包含 JSON 导出及源码 CLI 离线复算；逐条保留冲突与待复核，known_by 始终复核。公开只读入口禁用上传且无示例结果，不判断引文语义或法律适用。合并版前端 378 项、类型检查与只读构建通过，公开桌面入口已上线并完成 13 项检查；远程 CI 按最终提交核对，详见[使用说明](docs/integrations/citation-version.md)。
+
 ### 法条诊断 CLI 安装包（2026-10-29）
 - 纳入 `packaging/veriscope/` 包装源码，命令 `veriscope-statute` 转交现有离线诊断；包版本 0.1.0，与主项目 v1.2.0 分开编号。零第三方运行依赖，仅含 base/extended，不含 Web、模型评测、scope/guarded 或表格核验。
 - 原 wheel 23,978 字节、sdist 21,789 字节；原 wheel 在 Windows Python 3.11/3.12 隔离安装，sdist 仅在 3.11 离线重建 wheel 后安装。15 组安装版／源码输出比较和 3 次 `pip check` 通过；重建的 14 个成员与原 wheel 相同，不宣称 ZIP 归档哈希相同。分发见 GitHub Releases，未发布 PyPI。

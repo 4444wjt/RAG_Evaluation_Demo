@@ -17,6 +17,8 @@
 
 代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
+**引用版本检查（CLML）**：[本地上传、重查、HTML/JSON 导出与离线复算](docs/integrations/citation-version.md)；[只读入口](https://kk444444444444.cloud/#/lab/citation-version)禁用上传且无示例结果；桌面入口已上线，完整文件处理请在本地运行。
+
 ## 项目价值与对照验证
 
 面向中文 RAG 上线前的质量验证：查清哪句话有问题、修复是否有效、版本放行依据是什么。
