@@ -364,7 +364,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 共享评测流程在入库前逐页检查 PDF 文本层：`PASS` 表示未发现所检异常，`FAIL` 表示明显乱码并阻止入库，`REVIEW` 表示疑似扫描页，告警后继续并保留待复核结论；空白页单独标记，不影响整体结论。
 新运行记录会写入源文件 SHA-256、字节数、扩展名、检查器版本与切块参数，PDF 另记 pypdf 版本；TXT / MD / DOCX 等非 PDF 文件只记录指纹，检查结论为 `NOT_APPLICABLE`。
 该检查仅筛查文本层可信度与缺页风险，与实际加载器同用 pypdf，不能证明提取内容与页面所见一致，也不执行 OCR。
-`FAIL` 也可能来自解析库，而不是文件本身：本项目锁定的 pypdf 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码（6.21.2 起改为 UTF-16BE），字体没有 ToUnicode 时，文本层正常的中文 PDF 也会解出乱码。测试夹具 `constructed_cjk_builtin_font_mojibake.pdf` 就属于这种情况，在 6.19.0 下判 `FAIL`。该问题已由作者在上游修复（见下表）；当前锁定版本下的判定不变。
+`FAIL` 也可能来自解析库，而不是文件本身：旧版 pypdf 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码，字体没有 ToUnicode 时，文本层正常的中文 PDF 也会解出乱码。本项目已将 pypdf 锁定到 6.21.4，包含下方表格中的 [#4231](https://github.com/py-pdf/pypdf/pull/4231)。原中文构造夹具 `constructed_cjk_builtin_font_mojibake.pdf` 回归通过：控制字符 180 → 0，汉字 37 → 238，实际 PDF 加载与切块已验证。
 
 ### 开源上游贡献
 
@@ -375,7 +375,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | 将 `UniGB-UTF16-H/V` 按 UTF-16BE 解码，修复缺少 ToUnicode 时部分中文 PDF 的乱码 | 2026-10-21 合并；见 [6.21.2 发布记录](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
 | [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | 修复奇数长度、末字节小于 `0x80` 的 UTF-16BE 字符串在解码回退时抛错 | 2026-10-22（UTC）合并；合并状态见 PR |
 
-本项目当前锁定 [`pypdf==6.19.0`](requirements.txt)。
+本项目锁定 [`pypdf==6.21.4`](requirements.txt)，不再使用 6.19.0。
 
 ### 目录结构
 

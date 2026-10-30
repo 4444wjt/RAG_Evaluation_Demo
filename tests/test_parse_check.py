@@ -8,6 +8,7 @@ import ast
 from datetime import datetime
 import functools
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -21,12 +22,40 @@ import pytest
 
 from backend import config
 from backend.core.gate import check_quality_gate
-from backend.services import parse_check
 from backend.storage.json_history import save_eval_record
 
 
 FIXTURES = Path(__file__).parent / "fixtures" / "parse_check"
 CHINESE_TEXT = "文档解析可信检查。中文正文。"
+# Literal reference from the fixture's 12 hexadecimal TJ operands, decoded with
+# the standard UTF-16BE codec for /UniGB-UTF16-H, independently of pypdf output.
+CJK_EXPECTED_LINES = (
+    "构造中文对照文档。预算12000元，年份2026年，比例35%。",
+    "档案依次记录雪松枫树白桦杨柳橡树青松云杉梣树榆树。",
+    "核对人员逐句比较解析产物与源文件，完整保留每段文字。",
+    "合同48120号，交付2027年，余额65000元，期限180天。",
+    "花园河流高山峡谷海岛草甸森林沙漠海洋湖泊依次排列。",
+    "可靠解析需要保留名称金额日期，以及每条完整的约定。",
+    "仓库34567号，数量2400件，收入89000元，增长42%。",
+    "铜银钴镍铁锌碳氧钠钙用于构造固定且可复现的文字。",
+    "证据应当绑定源文件内容以及解析时实际采用的配置。",
+    "发票90876号，储备73000元，期限2030年，容量5600件。",
+    "橙紫黄红靛青松绿琥珀等颜色名称只用于构造核对对照。",
+    "缺失段落应当先复核，再决定是否允许后续检索入库。",
+)
+
+
+def _load_service_module(name):
+    """Load unchanged service code without model imports from services.__init__."""
+    source = Path(__file__).resolve().parents[1] / "backend" / "services" / f"{name}.py"
+    spec = importlib.util.spec_from_file_location(f"parse_check_test_{name}", source)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+parse_check = _load_service_module("parse_check")
 
 
 def _minimal_pdf(pages):
@@ -108,7 +137,7 @@ def _write_pdf(tmp_path, pages, name="constructed_test.pdf"):
 
 
 @pytest.mark.parametrize("filename,expected", [
-    ("constructed_cjk_builtin_font_mojibake.pdf", "FAIL"),
+    ("constructed_cjk_builtin_font_mojibake.pdf", "PASS"),
     ("constructed_english_control.pdf", "PASS"),
     ("constructed_blank.pdf", "PASS"),
 ])
@@ -116,11 +145,35 @@ def test_constructed_pdf_samples(filename, expected):
     report = parse_check.check_pdf(FIXTURES / filename)
     assert report["verdict"] == expected
     assert report["pages"]
-    if expected == "FAIL":
-        assert any("GARBLED_TEXT_LAYER" in page["reasons"] for page in report["pages"])
     if filename == "constructed_blank.pdf":
         assert all("BLANK_PAGE" in page["reasons"] for page in report["pages"])
         assert all(page["verdict"] != "FAIL" for page in report["pages"])
+
+
+def test_builtin_utf16_cmap_preserves_expected_chinese_text():
+    path = FIXTURES / "constructed_cjk_builtin_font_mojibake.pdf"
+    reader = pypdf.PdfReader(path)
+    assert len(reader.pages) == 1
+    assert reader.pages[0].extract_text().splitlines() == list(CJK_EXPECTED_LINES)
+    report = parse_check.check_pdf(path)
+    assert report["verdict"] == "PASS"
+    for key in ("replacement_count", "control_count", "cid_count"):
+        assert report["pages"][0][key] == 0
+
+
+def test_real_pdf_loader_and_splitter_preserve_expected_chinese_text():
+    documents = _load_service_module("documents")
+    path = (FIXTURES / "constructed_cjk_builtin_font_mojibake.pdf").resolve()
+    chunks = documents.load_and_split_doc(str(path))
+    expected_text = "\n".join(CJK_EXPECTED_LINES)
+    assert len(chunks) > 1  # Exercise the configured 200-character splitting.
+    for chunk in chunks:
+        assert chunk.page_content in expected_text
+        assert len(chunk.page_content) <= config.CHUNK_SIZE
+        assert chunk.metadata["source"] == str(path)
+        assert chunk.metadata["page"] == 0
+    for line in CJK_EXPECTED_LINES:
+        assert any(line in chunk.page_content for chunk in chunks)
 
 
 def test_tounicode_chinese_text_passes(tmp_path):
@@ -299,9 +352,13 @@ def isolated_pipeline(tmp_path):
     return module
 
 
-def test_pipeline_fail_stops_before_loading_and_vector_store(isolated_pipeline):
+def test_pipeline_fail_stops_before_loading_and_vector_store(isolated_pipeline, tmp_path):
+    text = "\x81" * 30
+    path = _write_pdf(tmp_path, [text], name="constructed_garbled_text.pdf")
+    assert pypdf.PdfReader(path).pages[0].extract_text() == text
+    assert parse_check.check_pdf(path)["verdict"] == "FAIL"
     with pytest.raises(RuntimeError) as error:
-        isolated_pipeline.prepare_resources(str(FIXTURES / "constructed_cjk_builtin_font_mojibake.pdf"))
+        isolated_pipeline.prepare_resources(str(path))
     assert "GARBLED_TEXT_LAYER" in str(error.value)
     assert "1" in str(error.value)
     isolated_pipeline.HuggingFaceEmbeddings.assert_not_called()

@@ -42,3 +42,13 @@ flowchart LR
 - 生产构建不会自动建立服务代理；快速启动针对本地展示。公网部署需独立设计鉴权、代理和资源隔离。
 
 根目录 `.env` 只供 Python 后端使用。前端不读取模型密钥，不应将它们放入 `VITE_*` 变量。
+
+## 设计决策
+
+### 中文句号兼容层
+
+- **故障现象：** [修复前五题预跑](../competition/evidence/20261005T101847Z-pilot-c72cb679/README.md)返回 HTTP 200，但 Faithfulness 缺失 2/5，Trace 为空 2/5。
+- **为什么难发现：** 请求成功和指标缺失同时出现，从日志分不清是模型调用失败，还是分句环节把内容丢掉了。
+- **根因：** [兼容层](../../backend/adapters/ragas_compat.py)与[原指标测试](../../tests/test_ragas_compat.py)显示，Ragas 0.1.21 的 Faithfulness 和 Answer Correctness 只保留英文句号结尾的分句，中文分句进不了陈述抽取提示。
+- **做法与代价：** [兼容层](../../backend/adapters/ragas_compat.py)保留中文非空分句的原顺序和标点，纯英文走父类实现，并深拷贝提示对象；不改公式、门禁或 site-packages。代价是该层钉住 Ragas 0.1.21，升级时须重新验证。
+- **效果：** [修后五题记录](../competition/evidence/20261005T131353Z-pilot-35f623cb/README.md)、[提示验证](../competition/evidence/20261005T131353Z-pilot-35f623cb/technical-validation.json)与[覆盖记录](../competition/evidence/20261005T131353Z-pilot-35f623cb/result-coverage.json)：15 条提示包含中文输入，五指标各 5/5 有效。

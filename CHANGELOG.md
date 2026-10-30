@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 依赖升级：pypdf 6.19.0 → 6.21.4（2026-10-30）
+- 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码；字体缺少 ToUnicode 时，文本层正常的中文 PDF 会解出乱码，被 `parse_check` 判 `FAIL` 并阻止入库。6.21.2 起改为 UTF-16BE，本项目升级到 6.21.4。
+- 原中文构造夹具 `constructed_cjk_builtin_font_mojibake.pdf` 的控制字符由 180 降至 0、汉字由 37 增至 238，测试断言由 `FAIL` 改为 `PASS`；新增用 30 个 U+0081 构造的真乱码样本仍判 `FAIL`，`CONTROL_RATIO_THRESHOLD = 0.05` 未改。
+- 另 3 份 PDF（2 份构造样本 + 1 份真实 6 页文件）在 6.19.0 与 6.21.4 下的逐页指标一致。
+
 ### 移除冗余入口文件（2026-10-30）
 - 删除根目录 `CLAUDE.md`。其四块内容均非独有：约束与 `AGENTS.md` 重复，状态摘要与 `docs/STATE.md` 重复，最小验收命令与 `CONTRIBUTING.md` 重复且所记用例数停留在 2026-10-22；另有两项对外部读者不可达——`work/competition/codex-tasks/` 被 `.gitignore` 整目录忽略，`basic-memory` MCP 的记忆目录 `.memory/` 不在仓库内。仓库内无其他文件引用该文件，删除不改变任何链接或哈希。AI agent 入口统一以 [AGENTS.md](AGENTS.md) 为准，对外治理说明见 [GOVERNANCE.md](GOVERNANCE.md)。
 

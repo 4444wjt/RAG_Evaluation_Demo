@@ -20,7 +20,7 @@ langchain-openai==0.1.25
 langchain-text-splitters==0.2.4
 
 # 文档加载器按需导入的解析包（未声明时上传 PDF/DOCX 会在解析时报 ImportError）
-pypdf==6.19.0
+pypdf==6.21.4
 docx2txt==0.9
 
 # ragas 与数据层
