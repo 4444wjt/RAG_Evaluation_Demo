@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <title>鉴真全域 VeriScope AI 作品介绍</title>
 <style>
-  @page { size: A4; margin: 22mm 20mm; }
+  @page {
+    size: A4; margin: 22mm 20mm;
+    @top-left { content: "鉴真全域 VeriScope AI 作品介绍"; font: 9pt "Microsoft YaHei", sans-serif; color: #aaa; }
+    @bottom-right { content: counter(page) " / " counter(pages); font: 9pt "Microsoft YaHei", sans-serif; color: #888; }
+  }
+  @page :first { @top-left { content: none; } }
   * { box-sizing: border-box; }
   body {
     font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
@@ -49,6 +54,8 @@
   th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
   th { background: #faf6ec; font-weight: 700; }
   td:first-child, th:first-child { white-space: nowrap; }
+  table.long-first td:first-child, table.long-first th:first-child { white-space: normal; width: 30%; }
+  table.long-first td:last-child, table.long-first th:last-child { width: 22%; }
   h1, h2, h3 { break-after: avoid; }
   hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
   img { display: block; max-width: 100%; height: auto; margin: 12px auto; }
@@ -78,7 +85,7 @@
 </blockquote>
 <h3>行业要求对照</h3>
 <p>《国家金融监督管理总局关于银行业保险业人工智能安全开发应用的指导意见》（金发〔2026〕8号，2026-06-18 发布；<a href="https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1261784">官方页面</a>、<a href="https://www.secrss.com/articles/91470">全文</a>）为上述需求提供行业依据。下表按条款转述，仅对应其中的能力，不代表监管认定或金融机构使用记录。</p>
-<table>
+<table class="long-first">
 <thead>
 <tr>
 <th>监管要求（条款）</th>

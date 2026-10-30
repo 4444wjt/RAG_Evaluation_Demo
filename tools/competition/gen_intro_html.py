@@ -33,13 +33,30 @@ def repo_link(match):
 
 body = re.sub(r'href="([^"]+)"', repo_link, body)
 
+
+# 第一列很长的表（行业要求对照）放开第一列换行，否则整表被撑出页面；其余表的第一列仍不换行。
+def mark_long_first(match):
+    table = match.group(0)
+    firsts = re.findall(r"<tr>\s*<t[dh][^>]*>(.*?)</t[dh]>", table, re.S)
+    if max(len(re.sub(r"<[^>]+>", "", cell)) for cell in firsts) <= 12:
+        return table
+    return table.replace("<table>", '<table class="long-first">', 1)
+
+
+body = re.sub(r"<table>.*?</table>", mark_long_first, body, flags=re.S)
+
 html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <title>鉴真全域 VeriScope AI 作品介绍</title>
 <style>
-  @page {{ size: A4; margin: 22mm 20mm; }}
+  @page {{
+    size: A4; margin: 22mm 20mm;
+    @top-left {{ content: "鉴真全域 VeriScope AI 作品介绍"; font: 9pt "Microsoft YaHei", sans-serif; color: #aaa; }}
+    @bottom-right {{ content: counter(page) " / " counter(pages); font: 9pt "Microsoft YaHei", sans-serif; color: #888; }}
+  }}
+  @page :first {{ @top-left {{ content: none; }} }}
   * {{ box-sizing: border-box; }}
   body {{
     font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
@@ -84,6 +101,8 @@ html = f"""<!DOCTYPE html>
   th, td {{ border: 1px solid #ddd; padding: 8px 12px; text-align: left; }}
   th {{ background: #faf6ec; font-weight: 700; }}
   td:first-child, th:first-child {{ white-space: nowrap; }}
+  table.long-first td:first-child, table.long-first th:first-child {{ white-space: normal; width: 30%; }}
+  table.long-first td:last-child, table.long-first th:last-child {{ width: 22%; }}
   h1, h2, h3 {{ break-after: avoid; }}
   hr {{ border: none; border-top: 1px solid #eee; margin: 20px 0; }}
   img {{ display: block; max-width: 100%; height: auto; margin: 12px auto; }}
