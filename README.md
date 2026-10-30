@@ -358,7 +358,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | Frontend | React 19、TypeScript、Vite、Apache ECharts、原生 CSS；首页与七个工作台视图 |
 | Backend | Python、FastAPI；参数／项目路径校验、同步评测调用、结果序列化 |
 | Evaluation Pipeline | LangChain、Chroma、本地 Embedding、Ragas；文档 → 测试集 → 检索与回答 → 指标与溯源 → 门禁与报告 |
-| Model Adapter | 既有 OpenAI-compatible 模型适配；模型配置和凭据读取集中管理 |
+| Model Adapter | 只有一个 OpenAI 兼容适配器；DeepSeek、Qwen2.5-7B、GLM-5.2-Fast 是内置配置，其它兼容接口（vLLM、Ollama、内部网关）在「模型配置」页自行登记，密钥只读本机 `.env` |
 | Compatibility | `main.py` 保留 CLI 和 Gradio；报告、存储、服务与核心评测分层在 `backend/` |
 
 前端开发服务将 `/api` 代理到本地后端。评测为同步请求，后端按单进程执行保护运行；当前没有任务队列、取消或真实阶段进度接口。详细边界见 [架构说明](docs/architecture/README.md)。

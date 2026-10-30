@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 架构图与适配器表述更正（2026-10-30）
+- 架构图的「模型适配器」原来只画 DeepSeek / Qwen2.5-7B / GLM-5.2-Fast 三个方框，容易被读成只支持这三个模型。实际 `backend/adapters/models/registry.py` 只有**一个** `OpenAICompatibleAdapter`，这三个是 `backend/config.py` 里的内置配置；其它兼容接口按 `VERISCOPE_<名称>_API_KEY` 在「模型配置」页登记，密钥只读本机 `.env`。
+- `docs/images/architecture.svg` 的适配器区改为四格，第四格是虚线「＋ 任意兼容 / 自行登记」；`architecture.png` 用无头 Chrome 按 2 倍重新渲染，尺寸仍为 1840×1200。只改这一个区块，其余图形与文字未动。
+- 根 README「技术架构」表的 Model Adapter 一行写明这层关系，不再只写「既有 OpenAI-compatible 模型适配」。
+
 ### 界面截图更新为四联总览（2026-10-29）
 - 新增 `docs/images/demo-overview-4up.png`（1596×1118）：用 Chrome 无头模式从在线演示站重截四页——`/`、`#/lab/fix`、`#/lab/demo/verification`、`#/lab/audit`（1600×1000，`--virtual-time-budget=22000`），等比缩放到 760×475 后按 2×2 拼合。只做缩放与直角裁切，未改画面内容、未美化界面。
 - 根 README 首屏下方的单张首页图换成这张四联图，位置在「项目价值与对照验证」之后；配一句说明四格分别是什么。
