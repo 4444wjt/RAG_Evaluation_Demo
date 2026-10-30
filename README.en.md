@@ -130,7 +130,7 @@ The author, `4444wjt`, contributed two PDF decoding fixes with regression tests 
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | Decode `UniGB-UTF16-H/V` as UTF-16BE, fixing garbled Chinese text in affected PDFs without ToUnicode maps | Merged 2026-10-21; included in [6.21.2](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
 | [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | Avoid an exception in the decoding fallback for odd-length UTF-16BE strings whose final byte is below `0x80` | Merged 2026-10-22 (UTC); merge evidence in the PR |
 
-This project still pins [`pypdf==6.19.0`](requirements.txt). Its affected CJK fixture still returns FAIL under that version.
+This project now pins [`pypdf==6.21.4`](requirements.txt), which includes #4231. The original CJK fixture `constructed_cjk_builtin_font_mojibake.pdf` now passes: control characters 180 → 0, CJK characters 37 → 238, with real PDF loading and chunking verified.
 
 ## Auditing the gate
 
