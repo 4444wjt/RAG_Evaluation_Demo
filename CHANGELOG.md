@@ -6,6 +6,9 @@
 
 ## [未发布]
 
+### 移除冗余入口文件（2026-10-30）
+- 删除根目录 `CLAUDE.md`。其四块内容均非独有：约束与 `AGENTS.md` 重复，状态摘要与 `docs/STATE.md` 重复，最小验收命令与 `CONTRIBUTING.md` 重复且所记用例数停留在 2026-10-22；另有两项对外部读者不可达——`work/competition/codex-tasks/` 被 `.gitignore` 整目录忽略，`basic-memory` MCP 的记忆目录 `.memory/` 不在仓库内。仓库内无其他文件引用该文件，删除不改变任何链接或哈希。AI agent 入口统一以 [AGENTS.md](AGENTS.md) 为准，对外治理说明见 [GOVERNANCE.md](GOVERNANCE.md)。
+
 ### 架构图与适配器表述更正（2026-10-30）
 - 架构图的「模型适配器」原来只画 DeepSeek / Qwen2.5-7B / GLM-5.2-Fast 三个方框，容易被读成只支持这三个模型。实际 `backend/adapters/models/registry.py` 只有**一个** `OpenAICompatibleAdapter`，这三个是 `backend/config.py` 里的内置配置；其它兼容接口按 `VERISCOPE_<名称>_API_KEY` 在「模型配置」页登记，密钥只读本机 `.env`。
 - `docs/images/architecture.svg` 的适配器区改为四格，第四格是虚线「＋ 任意兼容 / 自行登记」；`architecture.png` 用无头 Chrome 按 2 倍重新渲染，尺寸仍为 1840×1200。只改这一个区块，其余图形与文字未动。
