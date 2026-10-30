@@ -41,7 +41,7 @@ The engineering contribution connects verification, source inspection, gate repl
 - **Evidence tracing:** the [25-question formal archive](docs/competition/evidence/20261005T144504Z-full-39511424/README.md) links answers, contexts, metrics, Trace, reports and hashes; 18 traces are non-empty and 7 empty traces are retained with causes unconfirmed.
 - **Gate review:** [`scripts/gate_replay.py`](scripts/gate_replay.py) reproduces the archived 0.7375 < 0.8 FAIL and supports CI and paired baseline comparisons ([guide](docs/gate-replay.md)).
 - **Risk and human review:** [A/B annotations](docs/competition/judge-calibration/20261021-annotation-AB/README.md) cover the same 52 statements; 6 remain unresolved. The 68.8%–82.5% range bounds the point estimate, not a confidence interval.
-- **External use:** an [AnythingLLM integration run](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md) and [operator O's single use](docs/competition/external-repro-20261027/README.md) are documented. O chose the legal material and operated remotely on the author's computer; this is not a reproduction on another machine.
+- **External use:** an [AnythingLLM integration run](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md) is documented. The same operator O [used the author's computer remotely on 10-27](docs/competition/external-repro-20261027/README.md), then [completed one self-selected regulation test on O's own computer on 10-29](docs/competition/external-use-20261029/README.md): 3 constructed statements, 3 requests, original exit codes 0/0/1.
 - **Upstream contributions:** the author's [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) and [#4236](https://github.com/py-pdf/pypdf/pull/4236) are merged; see the [version and contribution record](#upstream-open-source-contributions).
 
 For the standard-library diagnostic, start with the [constructed request](examples/statute_check/constructed-request.json):
@@ -108,6 +108,7 @@ python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39
 | Multi-model comparison | Built-in DeepSeek, Qwen2.5-7B, GLM-5.2-Fast, plus any OpenAI-compatible model registered locally, on the same test set |
 | Reports | CSV, HTML, Excel, PDF and charts |
 | Human review | Human conclusions stored next to machine verdicts, never overwriting them, bound to a frozen snapshot by SHA-256 ([archive format](docs/review-archive-format.md)) |
+| Citation version (CLML) | [Check XML version fields and requirements locally](docs/integrations/citation-version.md), export HTML/JSON and recompute with the source CLI; the public entry is read-only with uploads disabled |
 
 **Interpretation limits.** The sentence check has three layers that do not substitute for one another: **citation located** (the quoted evidence appears verbatim in the retrieved text, checked by code), **semantic support** (the statement follows from that text, judged by a model and subject to error), and **factual correctness** (whether the statement is true in the world, which the platform does not check). PASS only means the sampled cases met the configured thresholds; it does not mean every metric is good or every answer is correct. Missing metrics are never filled with zero, and an empty trace does not mean "no hallucination". See [evaluation credibility](docs/evaluation-credibility.md) (Chinese).
 
@@ -129,7 +130,7 @@ The author, `4444wjt`, contributed two PDF decoding fixes with regression tests 
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | Decode `UniGB-UTF16-H/V` as UTF-16BE, fixing garbled Chinese text in affected PDFs without ToUnicode maps | Merged 2026-10-21; included in [6.21.2](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
 | [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | Avoid an exception in the decoding fallback for odd-length UTF-16BE strings whose final byte is below `0x80` | Merged 2026-10-22 (UTC); merge evidence in the PR |
 
-This project still pins [`pypdf==6.19.0`](requirements.txt) and has not upgraded. Its affected CJK fixture still returns FAIL under that version. These are contributions by the author to the dependency ecosystem, not evidence of this project's algorithmic novelty, functional accuracy or external participation.
+This project still pins [`pypdf==6.19.0`](requirements.txt). Its affected CJK fixture still returns FAIL under that version.
 
 ## Auditing the gate
 
@@ -274,17 +275,15 @@ On pushes and pull requests to master/main in the GitHub mirror, GitHub Actions 
 
 ## Limitations
 
-- Formal end-to-end gate runs still focus on financial regulation. [Government-service held-out questions](docs/competition/heldout-fix/20261014-deepseek/README.md), [medical-fund regulation rule diagnostics](docs/competition/statute-check/20261025-unseen-diagnostic/README.md) and a news benchmark check (RGB) exist, but do not establish cross-domain end-to-end performance.
-- Same-source judge: by default the evaluated model also acts as the Ragas judge; the independent-judge comparison above quantifies, but does not remove, this bias.
-- The 0.8 threshold is not yet calibrated against business outcomes.
-- No authentication or access isolation; the public demo is read-only.
-- The author reviewed 13 targeted demo answers. Separately, V, A and B each annotated the same 52 statements; their independence is self-reported, unresolved cases remain, and these records do not establish overall accuracy.
+The default gate threshold is 0.8; business calibration remains open. The judge can be configured separately and defaults to the evaluated model. The public demo is read-only; online evaluation deployments need access controls.
+
+Materials, sample sizes and human review are reported with each experiment above. Full evaluation scope is in the [credibility guide](docs/evaluation-credibility.md) (Chinese).
 
 ## Status and plans
 
 - **Delivered:** CLI/Gradio, FastAPI and the React workbench, with sentence evidence, model metrics, gate replay, reports and fix comparisons.
 - **Calibration:** judge configuration, V/A/B annotations and interval methods/simulations are complete; unresolved cases prevent a corrected conclusion, and business calibration of the 0.8 threshold remains open.
-- **Broader materials and use:** government held-out questions, medical-fund rule diagnostics, AnythingLLM and O's one-time use have records; formal end-to-end gates still focus on finance.
+- **Broader materials and use:** government held-out questions, medical-fund rule diagnostics and AnythingLLM have records, alongside the same operator O's [10-27 remote use](docs/competition/external-repro-20261027/README.md) and [10-29 use and feedback from O's own computer](docs/competition/external-use-20261029/README.md). Formal end-to-end gates still focus on finance.
 - **Demo updated (2026-10-29):** workbench r5 is deployed with a four-step fix tour and formal-run replay. Follow the gate decision, source passages, handling and recalculation records, then download the review card. The public site remains read-only and starts no new evaluations.
 - **Next engineering work:** task queues, cancellation and progress, authentication and isolation, more independent samples and continued browser acceptance checks.
 

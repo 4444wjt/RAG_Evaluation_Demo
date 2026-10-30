@@ -781,3 +781,31 @@ packaging/veriscope/src/veriscope/cli.py -text
 /tests/test_citation_version_hardening.py -text
 /tests/test_citation_version_namespace.py -text
 /frontend/THIRD_PARTY_NOTICES.md -text
+
+# Operator O 2026-10-29: explicit paths retain the public subset bytes.
+docs/competition/external-use-20261029/confirmation-feedback.md text eol=lf
+docs/competition/external-use-20261029/okit-001/task/bindings-001.json text eol=lf
+docs/competition/external-use-20261029/okit-001/task/hash-001.json text eol=lf
+docs/competition/external-use-20261029/okit-001/task/output-001.json -text
+docs/competition/external-use-20261029/okit-001/task/request-001.json text eol=lf
+docs/competition/external-use-20261029/okit-001/task/source.txt text eol=lf
+docs/competition/external-use-20261029/okit-001/task/statement.txt -text
+docs/competition/external-use-20261029/okit-001/task/stderr-001.bin -text
+docs/competition/external-use-20261029/okit-002/task/bindings-001.json text eol=lf
+docs/competition/external-use-20261029/okit-002/task/hash-001.json text eol=lf
+docs/competition/external-use-20261029/okit-002/task/output-001.json -text
+docs/competition/external-use-20261029/okit-002/task/request-001.json text eol=lf
+docs/competition/external-use-20261029/okit-002/task/source.txt text eol=lf
+docs/competition/external-use-20261029/okit-002/task/statement.txt -text
+docs/competition/external-use-20261029/okit-002/task/stderr-001.bin -text
+docs/competition/external-use-20261029/okit-003/task/bindings-001.json text eol=lf
+docs/competition/external-use-20261029/okit-003/task/hash-001.json text eol=lf
+docs/competition/external-use-20261029/okit-003/task/output-001.json -text
+docs/competition/external-use-20261029/okit-003/task/request-001.json text eol=lf
+docs/competition/external-use-20261029/okit-003/task/source.txt text eol=lf
+docs/competition/external-use-20261029/okit-003/task/statement.txt -text
+docs/competition/external-use-20261029/okit-003/task/stderr-001.bin -text
+docs/competition/external-use-20261029/README.md text eol=lf
+docs/competition/external-use-20261029/SHA256SUMS.txt text eol=lf
+docs/competition/external-use-20261029/原件/缔结条约管理办法-gov.cn-原件.html text eol=lf
+docs/competition/external-use-20261029/原件/缔结条约管理办法-source.txt text eol=lf

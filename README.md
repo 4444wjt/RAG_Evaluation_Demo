@@ -32,7 +32,7 @@
 <details>
 <summary>展开查看四项对照的归档结果</summary>
 
-前三行用同一批 66 条款项定位材料（《存款保险条例》节选，受控注入，含 31 条款级错误、31 条支持对照）；规则在这批材料上款级检出 30/31、支持对照误报 0/31。第四行换用《政府信息公开条例》节选，T2 为 AI 改写层（40 条错误、32 条对照）。四行条件不同，应分别阅读，不是一次联合验证。
+前三行用同一批 66 条款项定位材料（《存款保险条例》节选，受控注入，含 31 条款级错误、31 条支持对照）；规则在这批材料上款级检出 30/31、支持对照误报 0/31。第四行换用《政府信息公开条例》节选，T2 为 AI 改写层（40 条错误、32 条对照）。下表按各项实验的材料与条件分别列示。
 
 | 对照怎么加强 | 已归档结果 | 对使用者的意义 |
 |---|---|---|
@@ -41,7 +41,7 @@
 | [加入词面最近邻基线](docs/competition/statute-check/20261022-lexical-baseline/README.md) | 款级错误：规则 30/31、词面基线 31/31；两者支持对照误报均为 0/31 | 识别简单方法已能完成的检查 |
 | [在改写材料上再比较](docs/competition/statute-check/20261023-stage3-baselines/README.md) | T2：规则检出 27/40、误报 0/32；词面基线检出 39/40、误报 1/32，其中 1 条检出正确但回指位置错误 | 12 条差距中 9 条源于规则未比较同款各项内容；检出不等于正确定位 |
 
-以上为受控注入或改写材料上的归档结果，不代表总体准确率或规则优于强基线；门禁判定范围见[评测可信度与限制](docs/evaluation-credibility.md)。
+各项对照保留检出、误报与定位结果；门禁判定范围见[评测可信度与限制](docs/evaluation-credibility.md)。
 
 </details>
 
@@ -170,11 +170,11 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 .\venv\Scripts\python.exe main.py --web
 ```
 
-Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；入口参数、模型工厂和请求校验仍有区别，不能据此认定不同入口的运行条件完全相同。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
+Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；各入口的参数、模型工厂和请求校验按对应接口配置。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
 
 ## 创新与能力证据
 
-本项目的工程创新，是把逐句核对、原文回查、门禁复算、修复对照与人工复核连成可检查的工作流。下图的六个区块用于导航，面积不代表评分、占比或成熟度。
+本项目的工程创新，是把逐句核对、原文回查、门禁复算、修复对照与人工复核连成可检查的工作流。下图的六个区块对应能力与证据入口。
 
 ![VeriScope 六项能力与证据导航](docs/images/veriscope-capabilities.png)
 
@@ -184,10 +184,8 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 | 证据追溯 | 从一句回答回到检索原文，连同指标、Trace、报告与哈希归档 | [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)：25/25 回答、Trace 非空 18 条，空 7 条及原因未确认状态保留 |
 | 门禁复核 | 不调用模型即可重放固定结果；接入 CI 并与基线逐题比较 | [门禁回放](docs/gate-replay.md)与 [`scripts/gate_replay.py`](scripts/gate_replay.py)：原始 0.7375 对 0.8 的 FAIL 可复算 |
 | 风险与人工复核 | 机器判定与人工意见并列，未决样本保留上下界 | [A/B 标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md)：同包 52 条，6 条未决；68.8%–82.5% 为点估计上下界，不是置信区间 |
-| 外部接入 | 接入实际 RAG 应用，也记录他人用自选资料操作的过程 | [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)；[操作者 O](docs/competition/external-repro-20261027/README.md) 自选法规，远程登录作者电脑完成 1 次操作，不算异机复现 |
+| 外部接入 | 接入实际 RAG 应用，也记录他人用自选资料操作的过程 | [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)；同一操作者 O [10-27 远程使用作者电脑](docs/competition/external-repro-20261027/README.md)，[10-29 在本人电脑完成 1 项自选法规规则验收](docs/competition/external-use-20261029/README.md)（3 条构造陈述、3 次请求，原退出码 0/0/1） |
 | 开源上游贡献 | 将依赖库中可复现的中文 PDF 解码问题反馈并修复到上游 | 作者提交的 [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231)、[#4236](https://github.com/py-pdf/pypdf/pull/4236) 均已合并；发布状态与项目依赖见[下方记录](#开源上游贡献) |
-
-这些证据分别支持功能实现、特定材料上的结果与使用过程，不合并为总体准确率、算法独创性或强基线优势。
 
 ## 核心能力
 
@@ -209,7 +207,7 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 
 Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
 
-每条能力的实测结果、样本规模与「不能说明什么」，见下一节[实测结果](#实测结果)。
+各项能力的实测结果、样本规模与验证条件，见下一节[实测结果](#实测结果)。
 
 ## 落地场景
 
@@ -225,7 +223,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 
 ### 适用行业
 
-平台在上线前和每次改动后拦下不合格的版本，不是线上逐条过滤；它只检查回答与资料是否一致，所以适合资料本身权威、答错代价高、需要留痕、要求私有化的行业。
+平台用于上线前和每次改动后的批量质量验证，检查回答与给定资料的一致性，适合资料权威、答错代价高、需要留痕与私有化部署的场景。
 
 | 行业 | 不拦截会发生什么 | 平台怎么拦、实测证据 |
 |---|---|---|
@@ -233,7 +231,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 | 政务咨询问答 | 申请期限、答复时限、所需材料答错，或对带错误前提的提问只回一句「无法回答」，群众错过期限、白跑一趟 | 逐句对回条例原文，不达标即判 FAIL，再用错误前提、正确前提、资料无答案三类留出题检验有没有矫枉过正：[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md) 14/14，修复前 9/14 |
 | 央国企制度问答 | 采购限额、审批权限、报销标准答错，员工照着办理，内审查出违规时责任落到经办人身上 | 平台与自有模型都部署在内网，资料不出内网；门禁不通过即停止发布，人工核验页逐条确认并与机器判定分开保存。本仓库尚未在这类资料上实测 |
 
-**不适合：** 新闻资讯与联网搜索问答（资料本身不保证正确）；营销文案、创意写作、闲聊（没有可对照的原文）；投资建议、医疗诊断（结论不在资料里）；需要线上逐条实时拦截的场景。部署条件与已实测项见 [落地与接入](docs/DEPLOYMENT.md)。
+**选用条件：** 有明确参考原文，需要上线前批量验收。资料真实性核实、创意写作、投资或医疗决策、线上逐条实时拦截由对应系统承担。部署条件与已实测项见 [落地与接入](docs/DEPLOYMENT.md)。
 
 ## 背景问题
 
@@ -247,30 +245,30 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 
 ## 实测结果
 
-八组跑过的实验，先看结论和边界，细节在下面。数字都来自归档，可用[门禁回放](docs/gate-replay.md)离线复算。
+下表汇总八组实测结果与验证条件，细节在下面。数字都来自归档，可用[门禁回放](docs/gate-replay.md)离线复算。
 
-| 实验 | 结论 | 不能说明什么 |
+| 实验 | 实测结果 | 验证条件 |
 |---|---|---|
-| [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)（DeepSeek，325 次调用） | 正向忠实度 0.7375，门禁 FAIL | 单材料、单模型、单次，不给总体准确率 |
-| [修复后重跑 25 题](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md) | 0.7375 → 0.8607，FAIL → PASS | 非单因素（另有 15 个源文件变化），离阈值只差约 0.06 |
-| [换独立裁判重跑](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md) | 0.7992，回到 FAIL | 回答重新生成，不能把变化全归因于裁判 |
-| [24 道留出题](docs/competition/heldout-fix/20261014-deepseek/README.md) | 错误前提题 9/14 → 14/14，无一道变差 | 题量小，配对符号检验 p = 0.0625 |
+| [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)（DeepSeek，325 次调用） | 正向忠实度 0.7375，门禁 FAIL | 单材料、单模型、单次运行 |
+| [修复后重跑 25 题](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md) | 0.7375 → 0.8607，FAIL → PASS | 跨版本非单因素对照，另有 15 个源文件变化；距阈值约 0.06 |
+| [换独立裁判重跑](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md) | 0.7992，回到 FAIL | 更换裁判并重新生成回答 |
+| [24 道留出题](docs/competition/heldout-fix/20261014-deepseek/README.md) | 错误前提题 9/14 → 14/14，无一道变差 | 配对符号检验 p = 0.0625 |
 | [外部基准 ANAH / RGB](docs/competition/external-validation/README.md) | 召回 0.89、精确 0.87；40 个正确回答 0 误判 | 单次抽样；按实际比例折算精确率约 0.72 |
 | [鲁棒性体检](docs/competition/robustness/README.md)（20 题 × 4 条件） | 58 项检验 57 项符合预期 | 一次运行、单一裁判 |
-| [三人盲标 52 条](docs/competition/judge-calibration/README.md) | 人工口径 68.8%–82.5%，裁判 73.75% | 点估计上下界，不是置信区间 |
-| [法条结构核对](docs/competition/statute-check/README.md) | 款级检出 30/31，支持对照误报 0/31 | 受控注入材料，检出不等于正确定位 |
+| [A/B 主分析（同包 52 条）](docs/competition/judge-calibration/README.md) | 人工口径 68.8%–82.5%，裁判 73.75% | 点估计上下界，不是置信区间 |
+| [法条结构核对](docs/competition/statute-check/README.md) | 款级检出 30/31，支持对照误报 0/31 | 受控注入材料，检出与定位分别统计 |
 
-**测算口径：** 逐句核对分三层，不能互相替代：**引用定位**（证据能否在检索原文里逐字找到，由代码检查）、**语义支持**（陈述能否由那段原文推出，由模型裁判判定，有误差）、**事实正确**（陈述在现实中是否正确，平台不检查）。PASS 仅表示对应样本和门槛的规则检查通过，不等于所有指标优秀或每条回答正确。缺失指标不填为零，空溯源不代表没有幻觉。详见 [三层口径](docs/evaluation-credibility.md#三层口径引用定位语义支持事实正确)。
+**测算口径：** **引用定位**由代码检查证据原文位置，**语义支持**由模型裁判判断陈述与证据的关系；**事实正确**需要另行核实。PASS 表示本批正向指标达到设定门槛，不等于每条回答正确。缺失指标不填零，空溯源保留为空。详见 [三层口径](docs/evaluation-credibility.md#三层口径引用定位语义支持事实正确)。
 
-**可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工材料通过现有 JSON 单独录入，不覆盖机器结果、不生成准确率；该核验仅覆盖冻结 Demo 的 13 条定向样本，不代表总体准确率、独立认证或模型复跑验证。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
+**可信度核验：** Demo 包含 6 个问题、3 个模型、18 条回答；“评测验证”定向预选 13 条回答，已由 AI 辅助整理材料、作者人工逐条核验（一致 3、分歧 5、无法确认 5）。人工结论通过现有 JSON 单独存档，与机器结果并列；核验范围为冻结 Demo 的 13 条定向样本。历史金融 FAIL 案例保留真实回答与保存指标。范围、四种核验状态和未验证事项见 [评测结果可信度与限制](docs/evaluation-credibility.md)。
 
-**当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景，不是跨领域 Benchmark：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`，按 DeepSeek 官方[模型页](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)即 DeepSeek-V4.1-Flash；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。该结果不代表总体准确率或独立裁判可靠性；新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
+**当前真实运行：** 2026-10-05 已完成一次经授权的25题单模型正式运行。输入是同一《存款保险条例》节选的固定场景：25条回答全部完成，使用请求模型 `deepseek-chat`，实际返回模型记录为 `deepseek-flash`，按 DeepSeek 官方[模型页](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)即 DeepSeek-V4.1-Flash；Ragas 0.1.21 与 `zh-sentence-v1`，325次完整调用、558,958 token。五项指标均25/25有效，Trace非空18条、空7条。正向 Faithfulness 为 0.7375、正向 Context Precision 为 0.9833，前者低于0.8所以保留真实 FAIL。新分析标为“AI辅助分析、待人工确认”。[正式运行证据](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)与[离线分析表](docs/competition/evidence/20261005T144504Z-full-39511424/analysis.md)保存完整回答、contexts、指标、Trace、报告和哈希。
 
 **外部基准：** 2026-10-13 用两个公开、带人工标注的中文数据集检验逐句核对本身，直接调用生产代码，500 次请求（经授权，按用量估算约 ¥2.68）。
 - **ANAH**（ACL 2024）逐句幻觉标注 300 句，各类等量抽取：有幻觉句子的召回率 0.89（95% 区间 0.84–0.93）；精确率 0.87，按实际比例折算约 0.72。人工判为无幻觉的句子有 27% 被判无依据，即核对比人工更严。
-- **RGB**（AAAI 2024）新闻领域 100 题：含噪声资料时 40 个正确回答全部判为有依据；资料无关时拒答 87.5%。资料本身含错误时，照抄错误的回答多半仍被判为有依据（11 题中只标出 3 题）。这是忠实度核对的固有边界：它检查回答与证据是否一致，不检查证据本身对不对。
+- **RGB**（AAAI 2024）新闻领域 100 题：含噪声资料时 40 个正确回答全部判为有依据；资料无关时拒答 87.5%。资料本身含错误时，照抄错误的回答多半仍被判为有依据（11 题中只标出 3 题）。本项统计回答对给定资料的忠实度。
 
-这是单次运行、单一裁判的抽样检验，不代表总体准确率，详见 [外部基准验证](docs/competition/external-validation/README.md)。
+本次为单次运行、单一裁判的抽样检验，详见 [外部基准验证](docs/competition/external-validation/README.md)。
 
 **鲁棒性体检：** 2026-10-13 在 25 题正式运行的 20 道正向题上运行一次（260 次请求，经授权，按用量估算约 ¥0.47）。
 - 核对侧 58 项检验中 57 项符合预期：移除依据后 16 / 16 标出；反事实 9 / 10 判为矛盾，唯一漏判的改动落在修饰语上。
@@ -283,7 +281,7 @@ AI 应用上线前，可靠性判断往往停在「一个平均分」或「肉�
 - 只计题目抽样的区间，实际覆盖率只有 3%–53%；按题聚集的校正为 94%–96%。
 - 作答题中判为不支持的陈述只有 5 条，全部改判才到 80%。
 - 按事先写定的两人口径分析 A、B：四类标签 κ 0.64，只分支持与否 κ 0.76；人工口径 **68.8%–82.5%**（裁判口径 73.75%）是点估计上下界，不是置信区间。6 条未决包含标签分歧与「无法判断」，上下界跨过 80% 门槛；按预定口径不报告置信区间、不下校正结论，已记录的 FAIL 不改。V–A、V–B 两种组合都是 72.5%–82.5%，结论相同。
-- 裁判没有偏松：两人都判为不支持的 6 条，裁判全部判为不支持；裁判灵敏度 95.0%（38 / 40）、特异度 100%（6 / 6，样本少），不一致的 2 条都是裁判更严，与 V 单人标出的相同。标注人的独立性只来自自述。详见 [第二轮人工标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md) 与 [V 的单人结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
+- 裁判没有偏松：两人都判为不支持的 6 条，裁判全部判为不支持；裁判灵敏度 95.0%（38 / 40）、特异度 100%（6 / 6，样本少），不一致的 2 条都是裁判更严，与 V 单人标出的相同。标注独立性依据为本人声明。详见 [第二轮人工标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md) 与 [V 的单人结果](docs/competition/judge-calibration/20261014-annotation-V/README.md)。
 
 详见 [裁判判错校准](docs/competition/judge-calibration/README.md)。
 
@@ -307,7 +305,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 **用了本平台好在哪：** 同一次 FAIL，只看 Ragas 总分是 0.59（把 5 道正确拒答的负向题算作 0 分）。本平台给出正向题 0.7375，并说明：作答题 40 条陈述都有原文依据；失分的 76% 来自 4 道错误前提题的拒答，所需原文已检索到，提示词成为具体修复入口；区间跨门槛，属于保守拦截。详见 [同一次 FAIL 的三种看法](docs/competition/value-comparison.md)。
 
-**修复后验证：** 按归因的指向，2026-10-14 在问答提示词中加了一句「问题的说法或前提与参考资料不一致时，依据资料指出并纠正，不要拒答」（提交 `b90a14c`）。然后用同一题集、同一资料、同一模型重跑 25 题（经授权，325 次调用），门禁规则、阈值与裁判请求配置未变；但除 `answering.py` 外，另有 15 个源文件新增或变化。这不是单因素实验，不能把全部变化归因于这一句提示：
+**修复后验证：** 按归因的指向，2026-10-14 在问答提示词中加了一句「问题的说法或前提与参考资料不一致时，依据资料指出并纠正，不要拒答」（提交 `b90a14c`）。然后用同一题集、同一资料、同一模型重跑 25 题（经授权，325 次调用），门禁规则、阈值与裁判请求配置未变；但除 `answering.py` 外，另有 15 个源文件新增或变化。因此是跨版本的非单因素对照：
 - 正向忠实度 0.7375 → **0.8607**，门禁 **FAIL → PASS**；
 - 4 道被拒答的错误前提题中纠正了 3 道，F04 仍然拒答；
 - 资料无答案的 5 道题仍全部正确拒答；
@@ -318,36 +316,36 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 - 正确前提题 4/5 → 5/5：修复后没有把正确说法「纠正」成错的；
 - 资料无答案的 5 道题仍全部正确拒答。
 
-局限：题量小，错误前提题的配对符号检验 p = 0.0625，未达到 0.05；两轮验证都只用了一个模型（DeepSeek-V4.1-Flash，历史请求 ID 为 `deepseek-chat`），各跑一次；25 题重跑离阈值只有约 0.06。详见 [修复验证证据](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)、[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)。
+**验证条件：** 错误前提题的配对符号检验 p = 0.0625（未达到 0.05）；两轮验证使用一个模型（DeepSeek-V4.1-Flash，历史请求 ID 为 `deepseek-chat`），各跑一次；25 题重跑距阈值约 0.06。详见 [修复验证证据](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)、[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)。
 
 **换独立裁判后：** 上面的 PASS 由 DeepSeek 自己打分。同一修复版本、同一 25 题，生成仍用 DeepSeek，裁判改用 Qwen2.5-72B 重跑（经授权），正向忠实度 **0.7992**，门禁回到 **FAIL**。
 - 问题、检索资料、参考答案和回答均相同的 13 道正向题，平均分从 0.9377 降到 0.8718，说明固定输入下裁判输出存在差异；单次复评仍不能分离裁判选择与判定随机性的影响；
-- 两批共有 7 条回答发生变化，不能把整批分数变化全部归因于裁判。修复后的 PASS 不能单独作为「门禁已稳定通过」的证据；两次的 bootstrap 区间都跨过 0.8，说明小样本下稳定性证据不足，原始 PASS／FAIL 均保留；
-- 两条独立核对链给出不一致信号：D10、F02 等题逐句核对全部有依据，Faithfulness 却只有 0.2–0.75。二者独立计算，不能仅凭差异认定裁判自相矛盾或计算错误；原因待核实。
+- 两批共有 7 条回答发生变化；两次的 bootstrap 区间都跨过 0.8，原始 PASS／FAIL 并列归档；
+- 两条独立核对链给出不一致信号：D10、F02 等题逐句核对全部有依据，Faithfulness 却只有 0.2–0.75。两条链路独立计算，差异原因待核实。
 
 详见 [独立裁判复核](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)。留出题的 9/14 → 14/14 看的是是否拒答、逐句核对有无事实错误，不用忠实度分数；那次的逐句核对同样由 DeepSeek 完成，没有换裁判复核。
 
-**外部案例：** 2026-10-14 检验了 [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) 的默认知识库提示词（经授权，100 次请求，约 ¥0.15）。同一模型、同一批资料，只换提示词：5 道错误前提题中，它拒答 2 道，本项目自己的提示拒答 3 道；其中 F03、F04 两道资料里有纠正所需的原文，两种提示都回答「无法回答」。资料无答案的 5 道题两者都正确拒答，作答的陈述逐句核对全部有原文依据。只测了默认提示词，不代表该项目的实际部署效果。详见 [外部案例](docs/competition/cases/langchain-chatchat/README.md)。
+**外部案例：** 2026-10-14 检验了 [Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat) 的默认知识库提示词（经授权，100 次请求，约 ¥0.15）。同一模型、同一批资料，只换提示词：5 道错误前提题中，它拒答 2 道，本项目自己的提示拒答 3 道；其中 F03、F04 两道资料里有纠正所需的原文，两种提示都回答「无法回答」。资料无答案的 5 道题两者都正确拒答，作答的陈述逐句核对全部有原文依据。本次对照对象为默认提示词。详见 [外部案例](docs/competition/cases/langchain-chatchat/README.md)。
 
 完整性哈希基于文件原始字节；仓库通过 [`.gitattributes`](.gitattributes) 逐文件固定检出换行符，以保证各平台校验一致。
 
 ## 复用与自研
 
-指标计算不重复造轮子；本项目的工作在指标层之上。
+本项目复用成熟指标与检索组件，在其上实现逐句证据回查、门禁裁决和人工复核工作流。
 
 | 层 | 内容 |
 |---|---|
 | 自研 | 逐句判定与证据定位（`backend/services/trace.py`：回答拆成原子陈述，逐句对应检索原文）；质量门禁裁决（`backend/core/gate.py`：正向样本双阈值，保留真实 FAIL）；人工核验存档（人工意见与机器判定并列保存、互不覆盖，绑定冻结快照 SHA-256，格式见 [人工核验存档格式](docs/review-archive-format.md)）；中文陈述兼容层 `zh-sentence-v1`（`backend/adapters/ragas_compat.py`） |
 | 复用 | 指标计算：Ragas 0.1.21；检索与模型调用：LangChain、Chroma、OpenAI-compatible 接口；界面：React、ECharts；部署：Docker Compose（[deploy/](deploy/README.md)） |
 
-阈值卡口和陈述级核查本身都不是本项目独有：
+相关工具的功能侧重点：
 
 - [DeepEval](https://github.com/confident-ai/deepeval) 支持为指标设阈值，并在 CI 中判定通过与否；
 - [RAGChecker](https://github.com/amazon-science/RAGChecker)（NeurIPS 2024）同样把回答拆成陈述逐条核查，并分检索、生成两侧给诊断指标，是陈述级核查上最接近的已有工作；
 - [TruLens](https://www.trulens.org/getting_started/core_concepts/rag_triad/) 的依据支持（groundedness）也按陈述找证据；
 - [Phoenix](https://github.com/Arize-ai/phoenix) 提供调用追踪与实验，并把 Faithfulness 和 Correctness 分成两个评测器。
 
-本项目的差异在于组合：门禁结论旁并列给出逐句核对证据，可回查到检索原文，并与人工核验的分歧放在同一份冻结快照里对照；门禁本身也被审计（复算、换裁判、证据敏感性、不确定性、非作者人工标注）。逐句证据与门禁并列呈现，不参与门禁计算；门禁由正向忠实度与正向上下文精度决定。以上是功能定位比较，基于各项目公开资料（核对至 2026-10-14），没有做同条件对照，不排除其内部已有类似实现，也不声称核查准确度更高。
+本项目的差异在于组合：门禁结论旁并列给出逐句核对证据，可回查到检索原文，并与人工核验的分歧放在同一份冻结快照里对照；门禁本身也被审计（复算、换裁判、证据敏感性、不确定性、非作者人工标注）。逐句证据与门禁并列呈现，不参与门禁计算；门禁由正向忠实度与正向上下文精度决定。上述产品的功能定位依据公开资料（核对至 2026-10-14）。
 
 **同源裁判偏差的实测：** 用 Qwen2.5-72B 作为独立裁判，重判 25 题正式运行（不重新生成回答）。门禁仍为 FAIL（正向 Faithfulness 0.7233），均值层面变化很小；但逐题差异明显：Faithfulness 平均绝对差 0.095，而原裁判自己重判一次只差 0.017；Trace 回答级标签一致率 72%，而原裁判重判为 92%。详见 [独立裁判对照](docs/judge-comparison.md)。
 
@@ -355,29 +353,29 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 | 模块 | 技术与职责 |
 |---|---|
-| Frontend | React 19、TypeScript、Vite、Apache ECharts、原生 CSS；首页与七个工作台视图 |
+| Frontend | React 19、TypeScript、Vite、Apache ECharts、原生 CSS；首页与分组工作台视图 |
 | Backend | Python、FastAPI；参数／项目路径校验、同步评测调用、结果序列化 |
 | Evaluation Pipeline | LangChain、Chroma、本地 Embedding、Ragas；文档 → 测试集 → 检索与回答 → 指标与溯源 → 门禁与报告 |
-| Model Adapter | 只有一个 OpenAI 兼容适配器；DeepSeek、Qwen2.5-7B、GLM-5.2-Fast 是内置配置，其它兼容接口（vLLM、Ollama、内部网关）在「模型配置」页自行登记，密钥只读本机 `.env` |
+| Model Adapter | 统一使用 OpenAI 兼容适配器；DeepSeek、Qwen2.5-7B、GLM-5.2-Fast 是内置配置，其它兼容接口（vLLM、Ollama、内部网关）在「模型配置」页自行登记，密钥只读本机 `.env` |
 | Compatibility | `main.py` 保留 CLI 和 Gradio；报告、存储、服务与核心评测分层在 `backend/` |
 
-前端开发服务将 `/api` 代理到本地后端。评测为同步请求，后端按单进程执行保护运行；当前没有任务队列、取消或真实阶段进度接口。详细边界见 [架构说明](docs/architecture/README.md)。
+前端开发服务将 `/api` 代理到本地后端。后端采用单进程同步评测，部署与扩展安排见 [架构说明](docs/architecture/README.md)。
 
 共享评测流程在入库前逐页检查 PDF 文本层：`PASS` 表示未发现所检异常，`FAIL` 表示明显乱码并阻止入库，`REVIEW` 表示疑似扫描页，告警后继续并保留待复核结论；空白页单独标记，不影响整体结论。
 新运行记录会写入源文件 SHA-256、字节数、扩展名、检查器版本与切块参数，PDF 另记 pypdf 版本；TXT / MD / DOCX 等非 PDF 文件只记录指纹，检查结论为 `NOT_APPLICABLE`。
 该检查仅筛查文本层可信度与缺页风险，与实际加载器同用 pypdf，不能证明提取内容与页面所见一致，也不执行 OCR。
-`FAIL` 也可能来自解析库，而不是文件本身：本项目锁定的 pypdf 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码（6.21.2 起改为 UTF-16BE），字体没有 ToUnicode 时，文本层正常的中文 PDF 也会解出乱码。测试夹具 `constructed_cjk_builtin_font_mojibake.pdf` 就属于这种情况，在 6.19.0 下判 `FAIL`。作者已将修复提交上游，见下表；本项目尚未升级，上述判定暂不变。
+`FAIL` 也可能来自解析库，而不是文件本身：本项目锁定的 pypdf 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码（6.21.2 起改为 UTF-16BE），字体没有 ToUnicode 时，文本层正常的中文 PDF 也会解出乱码。测试夹具 `constructed_cjk_builtin_font_mojibake.pdf` 就属于这种情况，在 6.19.0 下判 `FAIL`。该问题已由作者在上游修复（见下表）；当前锁定版本下的判定不变。
 
 ### 开源上游贡献
 
-作者以 `4444wjt` 向本项目使用的 PDF 解析库 pypdf 提交了两项修复，将复现用例和回归测试交由上游审查：
+作者以 `4444wjt` 向本项目使用的 PDF 解析库 pypdf 提交了两项修复，附复现用例与回归测试，均已获上游合并：
 
 | 贡献 | 解决的问题 | 合并与发布证据 |
 |---|---|---|
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | 将 `UniGB-UTF16-H/V` 按 UTF-16BE 解码，修复缺少 ToUnicode 时部分中文 PDF 的乱码 | 2026-10-21 合并；见 [6.21.2 发布记录](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
 | [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | 修复奇数长度、末字节小于 `0x80` 的 UTF-16BE 字符串在解码回退时抛错 | 2026-10-22（UTC）合并；合并状态见 PR |
 
-本项目仍锁定 [`pypdf==6.19.0`](requirements.txt)，没有随上游合并自动升级。这些是作者对依赖生态的贡献。
+本项目当前锁定 [`pypdf==6.19.0`](requirements.txt)。
 
 ### 目录结构
 
@@ -415,7 +413,7 @@ RAG-Reliability-Lab/
 
 - **已交付的评测链路**：CLI／Gradio、FastAPI 与 React 工作台，覆盖逐句溯源、多模型指标、门禁回放、报告和修复对照。
 - **裁判与人工校准**：裁判配置、V/A/B 同包 52 条标注及区间方法／模拟已完成；真实校正结论因未决样本保留，0.8 门槛的业务校准待完成。
-- **材料扩展与外部使用**：政务留出题、未见医疗法规规则诊断、AnythingLLM 接入与 O 的一次自选资料操作已有记录；正式端到端门禁仍集中金融场景。
+- **材料扩展与外部使用**：政务留出题、未见医疗法规规则诊断与 AnythingLLM 接入已有记录；同一操作者 O 的 [10-27 远程操作](docs/competition/external-repro-20261027/README.md)与 [10-29 本人电脑验收及反馈](docs/competition/external-use-20261029/README.md)均可回查。正式端到端门禁仍集中金融场景。
 - **演示站已更新（2026-10-29）**：工作台 r5 的四步修复导览与正式运行回放已部署；可交互回查拦截、原文、处理和复算记录，下载复核卡。公开站保持只读，不启动新评测。
 - **后续工程**：任务队列、取消与阶段进度，鉴权与资源隔离，扩大独立样本与持续浏览器验收。
 
@@ -448,18 +446,13 @@ GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 P
 
 ## 限制与边界
 
-- **端到端门禁仍集中在金融监管文本。** 政务留出题、医疗法规规则诊断与 RGB 新闻抽样检验都有，但任务与分母各不相同，不能据此推断跨领域端到端效果。
-- **默认裁判就是被测模型。** 换独立裁判的对照量化了这部分偏差，但没有消除它。
-- **0.8 阈值没有业务校准。** PASS 只说明这批样本达到设定门槛，不代表每条回答正确。
-- **只查「回答与资料是否一致」，不查资料本身对不对。** 资料写错时，照抄资料的错误回答会被判为有依据。
-- **没有鉴权与访问隔离。** 公开演示站只读，不开放在线评测；评测是同步请求，没有任务队列、取消和阶段进度。
-- **人工核验规模有限。** 作者定向核验 13 条；另有三人各标同一材料包 52 条陈述，独立性依据为自述、6 条未决，不构成总体准确率。
+默认门禁阈值为 0.8，业务校准待完成；裁判可单独配置，默认使用被测模型。公开演示站只读，在线评测部署需配置访问控制。
 
-完整口径、未验证事项与各条边界的出处见 [评测可信度与限制](docs/evaluation-credibility.md)。
+各组实验的材料、样本规模与人工复核情况分别列于上文。完整测算口径见 [评测可信度与限制](docs/evaluation-credibility.md)。
 
 ## 许可与仓库
 
-引用信息见 [CITATION.cff](CITATION.cff)（GitHub 仓库页的「Cite this repository」）。本项目自有代码按 [Apache License 2.0](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。根目录 Apache-2.0 许可不替代第三方依赖的许可证。
+引用信息见 [CITATION.cff](CITATION.cff)（GitHub 仓库页的「Cite this repository」）。本项目自有代码按 [Apache License 2.0](LICENSE) 发布，保留现有 `Copyright (c) 2026 KK`。第三方代码与依赖仍适用各自许可证；前端已移除 React Bits 组件和 Commons Clause 代码。当前保留的第三方源码改编及运行依赖许可证见 [第三方说明](frontend/THIRD_PARTY_NOTICES.md) 和 [许可文件](frontend/licenses/)。
 
 代码仓库与维护者远端名称：
 

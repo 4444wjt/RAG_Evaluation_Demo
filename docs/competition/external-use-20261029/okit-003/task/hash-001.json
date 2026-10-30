@@ -1,0 +1,47 @@
+{
+  "ready": true,
+  "files": [
+    {
+      "path": "scripts/statute_diagnostic.py",
+      "expected": "1621912c5e187c6f923d77044441439df21b09169696c973e43be3f7feaeb33a",
+      "actual": "1621912c5e187c6f923d77044441439df21b09169696c973e43be3f7feaeb33a",
+      "matches": true
+    },
+    {
+      "path": "backend/__init__.py",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "backend/core/__init__.py",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "backend/core/statute_check.py",
+      "expected": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+      "actual": "2cb440bb852bbce0e89370717e9cbe9c2eeb667ccf374cfe21ba138110b7cad5",
+      "matches": true
+    },
+    {
+      "path": "backend/core/statute_locate.py",
+      "expected": "1d220465bafc14c82af37a714502c10c587e6a05132d9340b062139bb15cd4b0",
+      "actual": "1d220465bafc14c82af37a714502c10c587e6a05132d9340b062139bb15cd4b0",
+      "matches": true
+    },
+    {
+      "path": "schemas/statute-diagnostic.v1.schema.json",
+      "expected": "c0e52a7f6803316c2428e52dbd651188f062f249326f44f17c91ce35241d3870",
+      "actual": "c0e52a7f6803316c2428e52dbd651188f062f249326f44f17c91ce35241d3870",
+      "matches": true
+    },
+    {
+      "path": "LICENSE",
+      "expected": "f6c5cac3fdb93b99d8dea8587f1149e90476e1dd52e8248a006b2339cc48bbb1",
+      "actual": "f6c5cac3fdb93b99d8dea8587f1149e90476e1dd52e8248a006b2339cc48bbb1",
+      "matches": true
+    }
+  ]
+}

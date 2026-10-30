@@ -55,6 +55,8 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 ## 它查什么
 
+基础数额规则汇总 `contexts` 中的数值与单位，不绑定回答所引条款。若提供全文，其他条款出现相同数额也可能不触发数额提示，需回到所引条文核对条件、主体与期限；见 [O 的使用反馈](../external-use-20261029/confirmation-feedback.md)。
+
 RAG 回答法规问题时，常见的错误不是整句编造，而是细节：把内容归到另一条、引用资料里没有的条号、改了期限或单位、把「应当」说成「可以」。通用的忠实度裁判按句子判断「资料能否推出」，不专门核对条款结构；检索片段在切块时又常常丢掉条号标题，例如资料里只剩「（四）经国务院批准的其他情形。存款保险基金管理机构应当……7个工作日内足额偿付存款」，看不出这是第十九条第二款。
 
 [`backend/core/statute_check.py`](../../../backend/core/statute_check.py) 分三步：
