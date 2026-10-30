@@ -28,7 +28,7 @@ jsonschema>=4.18
 pyyaml
 
 # 门禁性质测试（tests/test_gate_properties.py）；固定版本，使 derandomize 生成的输入序列可复现。
-hypothesis==6.169.0
+hypothesis==6.170.12
 
 # pyarrow 是 datasets 的传递依赖，且未被 requirements.txt 钉住。
 # pyarrow 26.x 在运行时要求 numpy>=2，与本项目钉住的 numpy==1.26.4
