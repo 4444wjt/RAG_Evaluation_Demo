@@ -6,6 +6,11 @@
 
 ## [未发布]
 
+### 工作约束文档改为通用命名（2026-10-30）
+- 根目录 `AGENTS.md` 改名为 `docs/ENGINEERING-CONSTRAINTS.md`，内容逐条保留，仅把面向 AI 工具的措辞改为面向维护者（标题、读者说明，以及「给下一位接手的人看」这句）；git 记录为重命名，历史可追溯。
+- `GOVERNANCE.md` 的 7 处引用与 `docs/STATE.md` 的 2 处引用已改指新路径，章节锚点不变，链接仍可跳转。
+- 约束条款本身未放宽：冻结文件只读、`.gitattributes` 逐文件规则、门禁不得为变绿而放宽、授权边界与改动前自查清单全部保留。本条目之前的历史记录中仍写 `AGENTS.md`，指的就是这份文件。
+
 ### 依赖升级：pypdf 6.19.0 → 6.21.4（2026-10-30）
 - 6.19.0 把预定义 CMap `UniGB-UTF16-H/V` 按 GB18030 解码；字体缺少 ToUnicode 时，文本层正常的中文 PDF 会解出乱码，被 `parse_check` 判 `FAIL` 并阻止入库。6.21.2 起改为 UTF-16BE，本项目升级到 6.21.4。
 - 原中文构造夹具 `constructed_cjk_builtin_font_mojibake.pdf` 的控制字符由 180 降至 0、汉字由 37 增至 238，测试断言由 `FAIL` 改为 `PASS`；新增用 30 个 U+0081 构造的真乱码样本仍判 `FAIL`，`CONTROL_RATIO_THRESHOLD = 0.05` 未改。

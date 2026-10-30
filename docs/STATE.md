@@ -1,6 +1,6 @@
 # 当前状态（开工前先读）
 
-> 本文件只记「现在做到哪」，不记规则——规则见 [AGENTS.md](../AGENTS.md)。
+> 本文件只记「现在做到哪」，不记规则——规则见 [工程约束](ENGINEERING-CONSTRAINTS.md)。
 > 每次有实质进展时同步更新，并改掉下方日期。
 > **最后更新：2026-10-30**
 
@@ -76,7 +76,7 @@ git ls-remote github refs/heads/master refs/heads/next
 `docs/competition/judge-calibration/20261014-annotation-V/**`、
 `docs/competition/project-introduction.pdf`
 
-（完整清单与理由见 [AGENTS.md](../AGENTS.md) 第 2 节。）
+（完整清单与理由见 [工程约束](ENGINEERING-CONSTRAINTS.md) 第 2 节。）
 
 ## 模型命名（容易混，写在这里）
 
