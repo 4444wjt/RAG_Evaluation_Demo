@@ -153,3 +153,7 @@ git ls-remote github refs/heads/master refs/heads/next
 - 依赖锁由 `pypdf==6.19.0` 升到 `6.21.4`，含上游已合并的 [#4231](https://github.com/py-pdf/pypdf/pull/4231)：`UniGB-UTF16-H/V` 按 UTF-16BE 解码，修复字体缺 ToUnicode 时中文 PDF 的文本层乱码。
 - 原中文构造夹具 `constructed_cjk_builtin_font_mojibake.pdf` 控制字符 180 → 0、汉字 37 → 238，测试断言由 `FAIL` 改为 `PASS`；新增用 30 个 U+0081 构造的真乱码样本仍判 `FAIL`，`CONTROL_RATIO_THRESHOLD = 0.05` 未改。
 - 另 3 份 PDF（2 份构造样本 + 1 份真实 6 页文件）的逐页指标在 6.19.0 与 6.21.4 下一致。解析规则、门禁条件与冻结归档未改。
+
+### README 信息分层（2026-10-30）
+
+- 调整中文 README 的接入说明与实测内容位置，保留实验数据、来源和操作条件。

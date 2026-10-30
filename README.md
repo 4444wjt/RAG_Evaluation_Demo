@@ -45,13 +45,9 @@
 
 </details>
 
-鉴真全域 VeriScope AI 面向 RAG 问答应用：把模型回答拆成逐句，每一句对照检索原文核对是否有依据，再由质量门禁（Quality Gate）按阈值决定这批回答能否放行。题集、检索上下文、多模型回答、Ragas 指标、逐句判定、门禁记录和人工核验保存在同一条链路上，「回答是否可信」可以按「题集 → 逐句核对 → 门禁 → 报告 → 人工核验」逐条回查。
+**典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。**
 
-**典型用法：RAG 应用上线前，把它接进 CI 当回归门禁——门禁不通过，构建失败。** 已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束。门禁已打包为 GitHub Action（[action.yml](action.yml)，Action 托管在 GitHub 镜像），其他仓库加一步 `uses: 4444wjt/RAG_Evaluation_Demo@master` 即可接入，CI 页面会显示哪个指标没过、差多少（作业摘要与 JUnit 报告）。指定基线（`--baseline` / `baseline`）后还会逐题对比上一次运行，区分「确定退步」和「在题目抽样与裁判波动范围内的下降」，只有前者拦截；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
-
-项目采用 React 展示首页与仪表盘、FastAPI 本地接口及既有 Python 评测引擎；CLI 和 Gradio 入口继续保留。支持无密钥演示快照与配置后的真实评测。
-
-**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。2026-10-22 又用银行公开的存款保险问答 11 题测了 AnythingLLM 源码构建实例：门禁 PASS，但 6 道负向题全部给出了节选外的内容，说明只看正向题的门禁拦不住不拒答的应用，见 [银行问答实测](docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md)。
+支持无密钥演示快照与配置后的真实评测；Web、API、CLI 与 Gradio 四种入口共用同一套评测编排。
 
 [作品介绍](docs/competition/project-introduction.md) · [同一次 FAIL 的三种看法](docs/competition/value-comparison.md) · [快速启动](#快速启动) · [评测可信度与限制](docs/evaluation-credibility.md) · [全部文档](#全部文档)
 
@@ -161,7 +157,7 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 
 前端继续通过 `npm run dev` 启动。进入工作区，默认可直接选择项目自带示例，也可切换“电脑文件”选择或拖入资料，再配置测试集、模型和阈值。文档支持 TXT / PDF / DOCX / MD，自定义测试集支持 JSON / CSV / TXT，单个文件最多 10 MiB；导入会保存到当前评测服务的 `work/uploads/`，不会调用模型。确认配置后点击“开始评测”。已有项目文件的手动路径入口位于高级选项中。
 
-`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。React 报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
+`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
 
 ### 5. 保留的 CLI / Gradio 入口
 
@@ -171,6 +167,10 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 ```
 
 Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` 委托 `backend.core.pipeline.evaluate`，与 Web API 共享后端评测编排；各入口的参数、模型工厂和请求校验按对应接口配置。`_legacy_run_pipeline` 保留旧实现供历史回查和离线回归，并非当前正常入口。中文句子兼容层随共享编排生效，不改指标公式、Trace 或门禁阈值。运行产物仍按各自配置保存，历史产物不重算。
+
+### 6. 接入 CI 门禁
+
+已归档的评测结果可离线重放门禁裁决，不调用模型、不需要密钥，不通过时以非零退出码结束。门禁已打包为 GitHub Action（[action.yml](action.yml)，Action 托管在 GitHub 镜像），其他仓库加一步 `uses: 4444wjt/RAG_Evaluation_Demo@master` 即可接入，CI 页面会显示哪个指标没过、差多少（作业摘要与 JUnit 报告）。指定基线（`--baseline` / `baseline`）后还会逐题对比上一次运行，区分「确定退步」和「在题目抽样与裁判波动范围内的下降」，只有前者拦截；接入示例见 [quality-gate-example.yml](.github/workflows/quality-gate-example.yml)，用法见 [门禁回放](docs/gate-replay.md)。
 
 ## 创新与能力证据
 
@@ -197,13 +197,14 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 | 断言结果 | 逐句证据追踪 | 展示原始回答、原子陈述、有依据／事实错误／无依据编造等原判定，以及对应证据与检索原文 |
 | 质量门禁 | Quality Gate | 后端按首个有效评测模型的正向忠实度与正向上下文精度判定；默认阈值各为 0.8 |
 | 多模型对比 | 多模型评测 | 内置 DeepSeek、Qwen2.5-7B、GLM-5.2-Fast，可在「模型配置」页登记自有的 OpenAI 兼容模型；统一测试集，呈现已有指标与耗时 |
-| 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；React 报告页支持本地 HTML 隔离预览 |
+| 报告导出 | 报告生成 | 后端已有 CSV、HTML、Excel、PDF 和图表能力；报告页支持本地 HTML 隔离预览 |
 | 人工复核 | 评测验证 | 人工结论与机器原判定分开展示，核验材料绑定冻结快照版本与 SHA-256 |
 | 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
 | 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
 | 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
 | 引文版本 | 引用版本检查（CLML） | 本地上传 XML、填写版本需求、修改后重查、HTML/JSON 导出与源码 CLI 离线复算；公开入口只读、禁用上传 |
-| 展示层 | 演示与呈现 | 中文优先、Gold Design System、证据流程示意、清晰原生预览及已有演示快照 |
+
+**裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。
 
 Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致性和上下文召回。幻觉率、拒答准确率等沿用既有统计口径，不在展示层重新定义。
 
@@ -318,7 +319,9 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 **验证条件：** 错误前提题的配对符号检验 p = 0.0625（未达到 0.05）；两轮验证使用一个模型（DeepSeek-V4.1-Flash，历史请求 ID 为 `deepseek-chat`），各跑一次；25 题重跑距阈值约 0.06。详见 [修复验证证据](docs/competition/evidence/20261014T073859Z-full-1c6f091f/README.md)、[留出题验证](docs/competition/heldout-fix/20261014-deepseek/README.md)。
 
-**换独立裁判后：** 上面的 PASS 由 DeepSeek 自己打分。同一修复版本、同一 25 题，生成仍用 DeepSeek，裁判改用 Qwen2.5-72B 重跑（经授权），正向忠实度 **0.7992**，门禁回到 **FAIL**。
+**裁判与外部应用接入实测：** 以下两项已于 2026-10-14 各真实运行一次（经授权）：[换独立裁判重跑 25 题](docs/competition/evidence/20261014T125415Z-full-a5002d4f/README.md)、[自写示例应用的端到端实测](docs/competition/external-rag/20261014-example-app-qwen72b/README.md)，门禁都是 FAIL，见下文「换独立裁判后」。历史实验不回填。2026-10-22 又用银行公开的存款保险问答 11 题测了 AnythingLLM 源码构建实例：门禁 PASS，但 6 道负向题全部给出了节选外的内容，说明只看正向题的门禁拦不住不拒答的应用，见 [银行问答实测](docs/competition/external-rag/20261022-bank-qa-anythingllm/README.md)。
+
+**换独立裁判后：** 上文「修复后验证」的 PASS 由 DeepSeek 自己打分。同一修复版本、同一 25 题，生成仍用 DeepSeek，裁判改用 Qwen2.5-72B 重跑（经授权），正向忠实度 **0.7992**，门禁回到 **FAIL**。
 - 问题、检索资料、参考答案和回答均相同的 13 道正向题，平均分从 0.9377 降到 0.8718，说明固定输入下裁判输出存在差异；单次复评仍不能分离裁判选择与判定随机性的影响；
 - 两批共有 7 条回答发生变化；两次的 bootstrap 区间都跨过 0.8，原始 PASS／FAIL 并列归档；
 - 两条独立核对链给出不一致信号：D10、F02 等题逐句核对全部有依据，Faithfulness 却只有 0.2–0.75。两条链路独立计算，差异原因待核实。
@@ -336,7 +339,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | 层 | 内容 |
 |---|---|
 | 自研 | 逐句判定与证据定位（`backend/services/trace.py`：回答拆成原子陈述，逐句对应检索原文）；质量门禁裁决（`backend/core/gate.py`：正向样本双阈值，保留真实 FAIL）；人工核验存档（人工意见与机器判定并列保存、互不覆盖，绑定冻结快照 SHA-256，格式见 [人工核验存档格式](docs/review-archive-format.md)）；中文陈述兼容层 `zh-sentence-v1`（`backend/adapters/ragas_compat.py`） |
-| 复用 | 指标计算：Ragas 0.1.21；检索与模型调用：LangChain、Chroma、OpenAI-compatible 接口；界面：React、ECharts；部署：Docker Compose（[deploy/](deploy/README.md)） |
+| 复用 | 指标计算：Ragas 0.1.21；检索与模型调用：LangChain、Chroma、OpenAI-compatible 接口；界面组件见[技术架构](#技术架构)；部署：Docker Compose（[deploy/](deploy/README.md)） |
 
 相关工具的功能侧重点：
 
@@ -411,7 +414,7 @@ RAG-Reliability-Lab/
 
 当前进展与下一步，完整里程碑及目标日期见 [ROADMAP.md](ROADMAP.md)：
 
-- **已交付的评测链路**：CLI／Gradio、FastAPI 与 React 工作台，覆盖逐句溯源、多模型指标、门禁回放、报告和修复对照。
+- **已交付的评测链路**：覆盖逐句溯源、多模型指标、门禁回放、报告和修复对照；使用入口见[快速启动](#快速启动)。
 - **裁判与人工校准**：裁判配置、V/A/B 同包 52 条标注及区间方法／模拟已完成；真实校正结论因未决样本保留，0.8 门槛的业务校准待完成。
 - **材料扩展与外部使用**：政务留出题、未见医疗法规规则诊断与 AnythingLLM 接入已有记录；同一操作者 O 的 [10-27 远程操作](docs/competition/external-repro-20261027/README.md)与 [10-29 本人电脑验收及反馈](docs/competition/external-use-20261029/README.md)均可回查。正式端到端门禁仍集中金融场景。
 - **演示站已更新（2026-10-29）**：工作台 r5 的四步修复导览与正式运行回放已部署；可交互回查拦截、原文、处理和复算记录，下载复核卡。公开站保持只读，不启动新评测。
