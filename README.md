@@ -377,7 +377,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | 将 `UniGB-UTF16-H/V` 按 UTF-16BE 解码，修复缺少 ToUnicode 时部分中文 PDF 的乱码 | 2026-10-21 合并；见 [6.21.2 发布记录](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
 | [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | 修复奇数长度、末字节小于 `0x80` 的 UTF-16BE 字符串在解码回退时抛错 | 2026-10-22（UTC）合并；合并状态见 PR |
 
-本项目仍锁定 [`pypdf==6.19.0`](requirements.txt)，没有随上游合并自动升级。这些是作者对依赖生态的贡献，不计为本项目算法、功能准确率或外部参与的证据。
+本项目仍锁定 [`pypdf==6.19.0`](requirements.txt)，没有随上游合并自动升级。这些是作者对依赖生态的贡献。
 
 ### 目录结构
 
