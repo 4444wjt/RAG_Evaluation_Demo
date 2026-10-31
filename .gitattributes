@@ -812,3 +812,4 @@ docs/competition/external-use-20261029/原件/缔结条约管理办法-source.tx
 
 # 2026-10-30 RefChecker 同条件对照：原始记录按字节受 SHA256SUMS 约束，换行符不统一，整目录不做换行转换。
 /docs/competition/judge-comparison/20261030-refchecker/** -text
+docs/competition/external-validation/ragtruth-20261031/prereg.md text eol=lf
