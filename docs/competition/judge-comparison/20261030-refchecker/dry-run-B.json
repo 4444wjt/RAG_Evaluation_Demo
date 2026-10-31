@@ -1,0 +1,1306 @@
+{
+  "mode": "offline_prompt_capture",
+  "arm": "B",
+  "requests": [
+    {
+      "statement_ids": [
+        "S01"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 1,
+      "arm": "B",
+      "prompt_chars": 1645,
+      "reserved_cny": "0.022964",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S02"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n该存款人的资金总额为49万元本金加2万元利息，合计51万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 2,
+      "arm": "B",
+      "prompt_chars": 1639,
+      "reserved_cny": "0.022940",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n该存款人的资金总额为49万元本金加2万元利息，合计51万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S03"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n按照第五条规定，最高偿付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 3,
+      "arm": "B",
+      "prompt_chars": 1632,
+      "reserved_cny": "0.022912",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n按照第五条规定，最高偿付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S04"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n在最高偿付限额以内的50万元实行全额偿付。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 4,
+      "arm": "B",
+      "prompt_chars": 1630,
+      "reserved_cny": "0.022904",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n在最高偿付限额以内的50万元实行全额偿付。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S05"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n超出最高偿付限额的部分为1万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 5,
+      "arm": "B",
+      "prompt_chars": 1625,
+      "reserved_cny": "0.022884",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n超出最高偿付限额的部分为1万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S06"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n超出最高偿付限额的1万元依法从投保机构清算财产中受偿。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 6,
+      "arm": "B",
+      "prompt_chars": 1636,
+      "reserved_cny": "0.022928",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n假设同一存款人在同一家投保机构的多个被保险存款账户，本金合计49万元、利息合计2万元。按照节选如何计算限额内和超限部分？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n超出最高偿付限额的1万元依法从投保机构清算财产中受偿。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S07"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据节选，存款保险的最高偿付限额是多少？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险的最高赔付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 7,
+      "arm": "B",
+      "prompt_chars": 1392,
+      "reserved_cny": "0.021952",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据节选，存款保险的最高偿付限额是多少？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险的最高赔付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S08"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是为了建立和规范存款保险制度。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 8,
+      "arm": "B",
+      "prompt_chars": 1422,
+      "reserved_cny": "0.022072",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是为了建立和规范存款保险制度。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S09"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是依法保护存款人的合法权益。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 9,
+      "arm": "B",
+      "prompt_chars": 1421,
+      "reserved_cny": "0.022068",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是依法保护存款人的合法权益。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S10"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是及时防范和化解金融风险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 10,
+      "arm": "B",
+      "prompt_chars": 1420,
+      "reserved_cny": "0.022064",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是及时防范和化解金融风险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S11"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是维护金融稳定。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 11,
+      "arm": "B",
+      "prompt_chars": 1415,
+      "reserved_cny": "0.022044",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n根据提供的《存款保险条例》节选，建立存款保险制度的目的是什么？ 存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n\n### Claim:\n建立存款保险制度的目的是维护金融稳定。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S12"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\nThe provided document does not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 12,
+      "arm": "B",
+      "prompt_chars": 1512,
+      "reserved_cny": "0.022432",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n为获得存款保险保障，存款人必须每6个月向管理机构缴纳一次保费，对吗？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\nThe provided document does not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S13"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n根据提供的文档，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构应当依照本条例的规定投保存款保险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 13,
+      "arm": "B",
+      "prompt_chars": 1608,
+      "reserved_cny": "0.022816",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n根据提供的文档，在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构应当依照本条例的规定投保存款保险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S14"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构吸收存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 14,
+      "arm": "B",
+      "prompt_chars": 1570,
+      "reserved_cny": "0.022664",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构吸收存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S15"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构在中华人民共和国境内设立。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 15,
+      "arm": "B",
+      "prompt_chars": 1578,
+      "reserved_cny": "0.022696",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构在中华人民共和国境内设立。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S16"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构应当依照本条例的规定投保存款保险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 16,
+      "arm": "B",
+      "prompt_chars": 1582,
+      "reserved_cny": "0.022712",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选规定哪些境内吸收存款的银行业金融机构应当投保存款保险？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n\n### Claim:\n商业银行、农村合作银行、农村信用合作社等银行业金融机构应当依照本条例的规定投保存款保险。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S17"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\nThe provided documents do not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 17,
+      "arm": "B",
+      "prompt_chars": 1596,
+      "reserved_cny": "0.022768",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n既然存款保险保护存款人利益，超过50万元的部分也由基金保证全额偿付，对吗？请按节选说明。 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\nThe provided documents do not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S18"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n管理机构偿付被保险存款后，在债权关系上取得什么权利？ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n存款保险基金管理机构偿付存款人的被保险存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 18,
+      "arm": "B",
+      "prompt_chars": 1413,
+      "reserved_cny": "0.022036",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n管理机构偿付被保险存款后，在债权关系上取得什么权利？ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n存款保险基金管理机构偿付存款人的被保险存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S19"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n管理机构偿付被保险存款后，在债权关系上取得什么权利？ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n存款保险基金管理机构在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 19,
+      "arm": "B",
+      "prompt_chars": 1430,
+      "reserved_cny": "0.022104",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n管理机构偿付被保险存款后，在债权关系上取得什么权利？ 存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n存款保险基金管理机构在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S20"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nThe provided document does not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 20,
+      "arm": "B",
+      "prompt_chars": 1655,
+      "reserved_cny": "0.023004",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构高级管理人员在本投保机构的存款，也和普通被保险存款一样纳入保险范围，对吗？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nThe provided document does not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S21"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 21,
+      "arm": "B",
+      "prompt_chars": 1498,
+      "reserved_cny": "0.022376",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：金融机构同业存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S22"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：投保机构的高级管理人员在本投保机构的存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 22,
+      "arm": "B",
+      "prompt_chars": 1510,
+      "reserved_cny": "0.022424",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：投保机构的高级管理人员在本投保机构的存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S23"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：存款保险基金管理机构规定不予保险的其他存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 23,
+      "arm": "B",
+      "prompt_chars": 1511,
+      "reserved_cny": "0.022428",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第四条列出的不属于被保险存款范围的存款有哪些？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n\n### Claim:\n根据参考资料第四条，不属于被保险存款范围的存款包括：存款保险基金管理机构规定不予保险的其他存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S24"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\n根据提供的文档，最高赔付限额如需调整，由中国人民银行会同国务院有关部门根据经济发展、存款结构变化、金融风险状况等因素提出调整。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 24,
+      "arm": "B",
+      "prompt_chars": 1388,
+      "reserved_cny": "0.021936",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\n根据提供的文档，最高赔付限额如需调整，由中国人民银行会同国务院有关部门根据经济发展、存款结构变化、金融风险状况等因素提出调整。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S25"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\n最高赔付限额的调整报国务院批准后公布执行。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 25,
+      "arm": "B",
+      "prompt_chars": 1346,
+      "reserved_cny": "0.021768",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n最高偿付限额如需调整，节选规定由谁提出调整，经过什么批准后执行？ 第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n来源说明：真实公开行政法规节选，非仿真。来源为上海市发展和改革委员会公开的《存款保险条例》PDF，第1—3页及第5—6页；仅整理空白与换行，保留所选条文内容。核验日期：2026-09-28。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n\n### Claim:\n最高赔付限额的调整报国务院批准后公布执行。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S26"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 26,
+      "arm": "B",
+      "prompt_chars": 1407,
+      "reserved_cny": "0.022012",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n根据提供的文档，人民法院裁定受理对投保机构的破产申请属于存款人有权要求存款保险基金管理机构使用存款保险基金偿付被保险存款的情形之一。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S27"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 27,
+      "arm": "B",
+      "prompt_chars": 1378,
+      "reserved_cny": "0.021896",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n人民法院裁定受理投保机构破产申请后，存款人能否要求基金偿付，管理机构应在多久内偿付？ 第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n存款保险基金管理机构应当在前款规定情形发生之日起7个工作日内足额偿付存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S28"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n根据参考资料第三条规定，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 28,
+      "arm": "B",
+      "prompt_chars": 1439,
+      "reserved_cny": "0.022140",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n根据参考资料第三条规定，存款保险制度中，投保机构向存款保险基金管理机构交纳保费。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S29"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n投保机构交纳保费形成存款保险基金。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 29,
+      "arm": "B",
+      "prompt_chars": 1416,
+      "reserved_cny": "0.022048",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n投保机构交纳保费形成存款保险基金。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S30"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 30,
+      "arm": "B",
+      "prompt_chars": 1429,
+      "reserved_cny": "0.022100",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S31"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险基金管理机构采取必要措施维护存款以及存款保险基金安全。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 31,
+      "arm": "B",
+      "prompt_chars": 1430,
+      "reserved_cny": "0.022104",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险制度中，谁交纳保费，谁负责按条例偿付被保险存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险基金管理机构采取必要措施维护存款以及存款保险基金安全。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S32"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n中国投保机构的境外分支机构不适用第二条关于投保存款保险的要求。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 32,
+      "arm": "B",
+      "prompt_chars": 1570,
+      "reserved_cny": "0.022664",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n中国投保机构的境外分支机构不适用第二条关于投保存款保险的要求。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S33"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n外国银行的境内分支机构不适用第二条关于投保存款保险的要求。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 33,
+      "arm": "B",
+      "prompt_chars": 1568,
+      "reserved_cny": "0.022656",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n外国银行的境内分支机构不适用第二条关于投保存款保险的要求。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S34"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的情况除外。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 34,
+      "arm": "B",
+      "prompt_chars": 1574,
+      "reserved_cny": "0.022680",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n中国投保机构的境外分支机构和外国银行的境内分支机构，是否当然适用第二条的投保要求？有没有例外？ 第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\n### Claim:\n中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的情况除外。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S35"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n外币存款不属于存款保险保障范围是不对的。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 35,
+      "arm": "B",
+      "prompt_chars": 1592,
+      "reserved_cny": "0.022752",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n外币存款不属于存款保险保障范围是不对的。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S36"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据第四条，被保险存款包括投保机构吸收的人民币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 36,
+      "arm": "B",
+      "prompt_chars": 1598,
+      "reserved_cny": "0.022776",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据第四条，被保险存款包括投保机构吸收的人民币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S37"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据第四条，被保险存款包括投保机构吸收的外币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 37,
+      "arm": "B",
+      "prompt_chars": 1597,
+      "reserved_cny": "0.022772",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据第四条，被保险存款包括投保机构吸收的外币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S38"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n外币存款属于存款保险保障范围。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 38,
+      "arm": "B",
+      "prompt_chars": 1587,
+      "reserved_cny": "0.022732",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n外币存款不属于存款保险保障范围，对吗？请按第四条说明。 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n外币存款属于存款保险保障范围。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S39"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选中被保险存款包括哪些币种的存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n被保险存款包括投保机构吸收的人民币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 39,
+      "arm": "B",
+      "prompt_chars": 1497,
+      "reserved_cny": "0.022372",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选中被保险存款包括哪些币种的存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n被保险存款包括投保机构吸收的人民币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S40"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选中被保险存款包括哪些币种的存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n被保险存款包括投保机构吸收的外币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 40,
+      "arm": "B",
+      "prompt_chars": 1496,
+      "reserved_cny": "0.022368",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n节选中被保险存款包括哪些币种的存款？ 第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n被保险存款包括投保机构吸收的外币存款。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S41"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 41,
+      "arm": "B",
+      "prompt_chars": 1576,
+      "reserved_cny": "0.022688",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S42"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送存款结构情况。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 42,
+      "arm": "B",
+      "prompt_chars": 1575,
+      "reserved_cny": "0.022684",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送存款结构情况。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S43"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与确定适用费率相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 43,
+      "arm": "B",
+      "prompt_chars": 1585,
+      "reserved_cny": "0.022724",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与确定适用费率相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S44"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与核算保费相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 44,
+      "arm": "B",
+      "prompt_chars": 1583,
+      "reserved_cny": "0.022716",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与核算保费相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S45"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与偿付存款相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 45,
+      "arm": "B",
+      "prompt_chars": 1583,
+      "reserved_cny": "0.022716",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n投保机构应定期报送哪些与存款保险有关的资料？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\n根据参考资料第十条规定，投保机构应当按照存款保险基金管理机构的要求定期报送与偿付存款相关的其他必要资料。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S46"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？ （四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n\n### Claim:\nThe provided documents do not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 46,
+      "arm": "B",
+      "prompt_chars": 1426,
+      "reserved_cny": "0.022088",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第十九条要求在触发情形发生后7个自然日内偿付，节选是否支持这一说法？ （四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n存款保险条例（节选）\n\n第一条　为了建立和规范存款保险制度，依法保护存款人的合法权益，及时防范和化解金融风险，维护金融稳定，制定本条例。\n\n### Claim:\nThe provided documents do not contain information to answer the question.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S47"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n按节选，投保机构应交保费按照哪些因素计算？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n投保机构应当交纳的保费按照本投保机构的被保险存款计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 47,
+      "arm": "B",
+      "prompt_chars": 1579,
+      "reserved_cny": "0.022700",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n按节选，投保机构应交保费按照哪些因素计算？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n投保机构应当交纳的保费按照本投保机构的被保险存款计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S48"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n按节选，投保机构应交保费按照哪些因素计算？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n投保机构应当交纳的保费按照存款保险基金管理机构确定的适用费率计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 48,
+      "arm": "B",
+      "prompt_chars": 1585,
+      "reserved_cny": "0.022724",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n按节选，投保机构应交保费按照哪些因素计算？ 第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n\n### Claim:\n投保机构应当交纳的保费按照存款保险基金管理机构确定的适用费率计算。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S49"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？ 第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n根据参考资料第八条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 49,
+      "arm": "B",
+      "prompt_chars": 1590,
+      "reserved_cny": "0.022744",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？ 第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n根据参考资料第八条规定，本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S50"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？ 第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 50,
+      "arm": "B",
+      "prompt_chars": 1598,
+      "reserved_cny": "0.022776",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n条例施行前已开业和施行后开业的吸收存款机构，办理投保手续的期限有什么区别？ 第八条　本条例施行前已开业的吸收存款的银行业金融机构，应当在存款保险基金管理机构规定的期限内办理投保手续。\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n本条例施行后开业的吸收存款的银行业金融机构，应当自工商行政管理部门颁发营业执照之日起6个月内，按照存款保险基金管理机构的规定办理投保手续。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S51"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险费率由哪两部分构成？ 第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nAccording to Article 9 of the reference materials, the deposit insurance premium rate consists of two parts.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 51,
+      "arm": "B",
+      "prompt_chars": 1644,
+      "reserved_cny": "0.022960",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险费率由哪两部分构成？ 第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nAccording to Article 9 of the reference materials, the deposit insurance premium rate consists of two parts.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    {
+      "statement_ids": [
+        "S52"
+      ],
+      "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险费率由哪两部分构成？ 第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nThe two parts are the base premium rate and the ri<REDACTED_LABEL> premium rate.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+      "upstream_max_new_tokens": 10,
+      "index": 52,
+      "arm": "B",
+      "prompt_chars": 1616,
+      "reserved_cny": "0.022848",
+      "payload": {
+        "model": "deepseek-flash",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n存款保险费率由哪两部分构成？ 第九条　存款保险费率由基准费率和风险差别费率构成。费率标准由存款保险基金管理机构根据经济金融发展状况、存款结构情况以及存款保险基金的累积水平等因素制定和调整，报国务院批准后执行。\n各投保机构的适用费率，由存款保险基金管理机构根据投保机构的经营管理状况和风险状况等因素确定。\n第三条　本条例所称存款保险，是指投保机构向存款保险基金管理机构交纳保费，形成存款保险基金，存款保险基金管理机构依照本条例的规定向存款人偿付被保险存款，并采取必要措施维护存款以及存款保险基金安全的制度。\n\n第四条　被保险存款包括投保机构吸收的人民币存款和外币存款。但是，金融机构同业存款、投保机构的高级管理人员在本投保机构的存款以及存款保险基金管理机构规定不予保险的其他存款除外。\n第十条　投保机构应当交纳的保费，按照本投保机构的被保险存款和存款保险基金管理机构确定的适用费率计算，具体办法由存款保险基金管理机构规定。\n投保机构应当按照存款保险基金管理机构的要求定期报送被保险存款余额、存款结构情况以及与确定适用费率、核算保费、偿付存款相关的其他必要资料。\n投保机构应当按照存款保险基金管理机构的规定，每6个月交纳一次保费。\n第二条　在中华人民共和国境内设立的商业银行、农村合作银行、农村信用合作社等吸收存款的银行业金融机构（以下统称投保机构），应当依照本条例的规定投保存款保险。\n投保机构在中华人民共和国境外设立的分支机构，以及外国银行在中华人民共和国境内设立的分支机构不适用前款规定。但是，中华人民共和国与其他国家或者地区之间对存款保险制度另有安排的除外。\n\n### Claim:\nThe two parts are the base premium rate and the ri<REDACTED_LABEL> premium rate.\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 2048,
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    }
+  ]
+}

@@ -809,3 +809,6 @@ docs/competition/external-use-20261029/README.md text eol=lf
 docs/competition/external-use-20261029/SHA256SUMS.txt text eol=lf
 docs/competition/external-use-20261029/原件/缔结条约管理办法-gov.cn-原件.html text eol=lf
 docs/competition/external-use-20261029/原件/缔结条约管理办法-source.txt text eol=lf
+
+# 2026-10-30 RefChecker 同条件对照：原始记录按字节受 SHA256SUMS 约束，换行符不统一，整目录不做换行转换。
+/docs/competition/judge-comparison/20261030-refchecker/** -text

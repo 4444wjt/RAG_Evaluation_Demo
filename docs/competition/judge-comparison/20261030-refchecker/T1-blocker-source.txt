@@ -1,0 +1,176 @@
+venv-ragchecker/Lib/site-packages/refchecker/checker/checker_base.py
+sha256=64eb4329bffaf1ccf54bcfc5cf25e4cd112c7ae76fee6a702b167bf6750ef7f5
+42:     def check(
+43:         self, 
+44:         batch_claims: List[List[Union[str, List[str]]]],
+45:         batch_references: Union[List[str], List[List[str]]],
+46:         batch_questions: List[str] = None,
+47:         max_reference_segment_length: int = 0,
+48:         merge_psg: bool = False,
+49:         is_joint: bool = True,
+50:         joint_check_num: int = 5,
+51:         sagemaker_client=None,
+52:         sagemaker_params=None,
+53:         sagemaker_get_response_func=None,
+54:         custom_llm_api_func=None,
+105:         if is_joint:
+106:             # joint checking is for LLM-based checkers only, and it doesn't need merge_psg
+107:             labels = self._check(
+108:                 claims=valid_batch_claims, 
+109:                 references=valid_batch_references, 
+110:                 questions=valid_batch_questions,
+111:                 is_joint=True,
+112:                 joint_check_num=joint_check_num,
+113:                 sagemaker_client=sagemaker_client,
+114:                 sagemaker_params=sagemaker_params,
+115:                 sagemaker_get_response_func=sagemaker_get_response_func,
+116:                 custom_llm_api_func=custom_llm_api_func,
+117:                 **kwargs
+
+venv-ragchecker/Lib/site-packages/refchecker/checker/llm_checker.py
+sha256=99f460fa10d1c521ae7e4395197d75ad8227a8ececf961129a2e7f3a707f5d83
+86:             
+87:             prompt_template = JOINT_CHECKING_PROMPT_Q
+88:             
+89:             prompt_list = []
+90:             prompt_ids = [] # for setting the limit of max num of claims
+91:             claim_nums = []
+92:             p_id = 0
+93:             for claims_per_batch, references_per_batch, question_per_batch in zip(claims, references, questions):
+94:                 if len(claims_per_batch) == 0:
+95:                     continue
+96:                     
+97:                 if isinstance(references_per_batch, str):
+98:                     references_per_batch = [references_per_batch]
+99:                 
+100:                 for ref in references_per_batch:
+101:                     _claim_cnt = 0
+102:                     claims_text = ''
+103:                     
+104:                     for _ci, c in enumerate(claims_per_batch):
+105:                         claims_text += f'("{c[0]}", "{c[1]}", "{c[2]}")\n'
+106:                         _claim_cnt += 1
+107:                         if _claim_cnt >= joint_check_num or _ci == len(claims_per_batch) - 1:
+108:                             prompt = prompt_template.replace('[QUESTION]', question_per_batch)
+109:                             prompt = prompt.replace('[REFERENCE]', ref)
+110:                             prompt = prompt.replace('[CLAIMS]', claims_text.strip())
+119:             
+120:             labels_list = []
+121:             for i in tqdm(range(0, len(prompt_list), self.batch_size)):
+122:                 batch_prompts = prompt_list[i:i + self.batch_size]
+123: 
+124:                 llm_responses = get_model_batch_response(
+125:                     prompts=batch_prompts,
+126:                     temperature=0,
+127:                     model=self.model,
+128:                     max_new_tokens=joint_check_num * 10 + 100,
+129:                     api_base=self.api_base,
+130:                     sagemaker_client=sagemaker_client,
+131:                     sagemaker_params=sagemaker_params,
+132:                     sagemaker_get_response_func=sagemaker_get_response_func,
+133:                     custom_llm_api_func=custom_llm_api_func,
+134:                     **kwargs
+135:                 )
+136:                 
+137:                 for llm_response in llm_responses:
+138:                     if llm_response is not None:
+139:                         labels = self._parse_joint_checking_labels(llm_response)
+140:                         labels_list.append(labels)
+141:                     else:
+142:                         raise 'API returns None or empty string'
+143:             
+144:             # pad labels with Neutral
+145:             assert len(claim_nums) == len(labels_list)
+146:             for _i, claim_n in enumerate(claim_nums):
+147:                 if len(labels_list[_i]) < claim_n:
+148:                     labels_list[_i] = labels_list[_i] + ['Neutral'] * (claim_n - len(labels_list[_i]))
+149:                 elif len(labels_list[_i]) > claim_n:
+150:                     labels_list[_i] = labels_list[_i][:claim_n]
+233:     def _parse_joint_checking_labels(self, text):
+234:         pattern = r'\b(Entailment|Neutral|Contradiction)\b'
+235:         matches = re.findall(pattern, text, re.IGNORECASE)
+236:         parsed_labels = [label.title() for label in matches]
+237:         return parsed_labels
+
+venv-ragchecker/Lib/site-packages/refchecker/checker/checker_prompts.py
+sha256=7d8780305263ff4937bba4241bd548f940f1928a41ff93aa4d8c3ca3602d78aa
+1: JOINT_CHECKING_PROMPT_Q = """I have a list of claims that made by a language model to a question, please help me for checking whether the claims can be entailed according to the provided reference which is related to the question. 
+2: The reference is a list of passages, and each of the claims is represented as a triplet formatted with ("subject", "predicate", "object").
+3: 
+4: If the claim is supported by ANY passage in the reference, answer 'Entailment'. 
+5: If NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.
+6: If NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. 
+7: 
+8: Please DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.
+9: 
+10: ### Question:
+11: [QUESTION]
+12: 
+13: ### Reference:
+14: [REFERENCE]
+15: 
+16: ### Claims:
+17: [CLAIMS]
+18: 
+19: 
+20: Your answer should always be only a list of labels, each of the labels is a single word in ['Entailment', 'Neutral', 'Contradiction'], for example, you should output a list like follows:
+21: 
+22: Entailment
+23: Neutral
+24: Contradiction
+
+venv-ragchecker/Lib/site-packages/ragchecker/evaluator.py
+sha256=ffe74c4e8551bdeb52a505d85f2edc6571c84ec56c6ed5e2fd7108ae0c52a016
+36:         OpenAI API key for using OpenAI models. Default: None.
+37:     joint_check: bool, optional
+38:         Enable joint checking of the claims. Default: True.
+39:     joint_check_num: int, optional
+40:         Number of claims to check jointly in one prompt. Default: 5.
+41:     """
+42:     def __init__(
+43:         self,
+50:         batch_size_checker=32,
+51:         openai_api_key=None,
+52:         joint_check=True,
+53:         joint_check_num=5,
+54:         sagemaker_client=None,
+55:         sagemaker_params=None,
+56:         sagemaker_get_response_func=None,
+57:         custom_llm_api_func=None,
+61:             os.environ['OPENAI_API_KEY'] = openai_api_key
+62:         self.extractor_max_new_tokens = extractor_max_new_tokens
+63:         self.joint_check = joint_check
+64:         self.joint_check_num = joint_check_num
+65:         self.kwargs = kwargs
+66:         
+67:         self.sagemaker_client = sagemaker_client
+68:         self.sagemaker_params = sagemaker_params
+80:         elif checker_name == "alignscore":
+81:             self.checker = AlignScoreChecker(batch_size=batch_size_checker)
+82:         else:
+83:             self.checker = LLMChecker(
+84:                 model=checker_name, 
+85:                 batch_size=batch_size_checker,
+86:                 api_base=checker_api_base
+87:             )
+177:             batch_questions=[ret.query for ret in results],
+178:             max_reference_segment_length=0,
+179:             merge_psg=merge_psg,
+180:             is_joint=self.joint_check,
+181:             joint_check_num=self.joint_check_num,
+182:             sagemaker_client=self.sagemaker_client,
+183:             sagemaker_params=self.sagemaker_params,
+184:             sagemaker_get_response_func=self.sagemaker_get_response_func,
+178:             max_reference_segment_length=0,
+179:             merge_psg=merge_psg,
+180:             is_joint=self.joint_check,
+181:             joint_check_num=self.joint_check_num,
+182:             sagemaker_client=self.sagemaker_client,
+183:             sagemaker_params=self.sagemaker_params,
+184:             sagemaker_get_response_func=self.sagemaker_get_response_func,
+185:             custom_llm_api_func=self.custom_llm_api_func,
+
+Static input illustration (not an LLM call or package execution):
+S01 statement=同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息需合并计算。
+llm_checker.py:105 renders=("同", "一", "存")
+This is only the first three characters; the rest of the fixed statement is absent from this claim slot.

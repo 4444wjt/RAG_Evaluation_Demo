@@ -1,0 +1,495 @@
+{"event": "reserve", "request_id": "Bq01-001", "arm": "Bq0", "prompt_chars": 1584, "reserved_cny": "0.022720", "settled_before_cny": "0", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-001", "actual_estimated_cny": "0.00113400", "usage": {"prompt_tokens": 555, "completion_tokens": 3, "total_tokens": 558, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 555}}
+{"event": "outcome", "request_id": "Bq01-001", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-002", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.00113400", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-002", "actual_estimated_cny": "0.00061824", "usage": {"prompt_tokens": 552, "completion_tokens": 2, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 296}}
+{"event": "outcome", "request_id": "Bq01-002", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-003", "arm": "Bq0", "prompt_chars": 1571, "reserved_cny": "0.022668", "settled_before_cny": "0.00175224", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-003", "actual_estimated_cny": "0.00061424", "usage": {"prompt_tokens": 546, "completion_tokens": 3, "total_tokens": 549, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 290}}
+{"event": "outcome", "request_id": "Bq01-003", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-004", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.00236648", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-004", "actual_estimated_cny": "0.00061224", "usage": {"prompt_tokens": 545, "completion_tokens": 3, "total_tokens": 548, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 289}}
+{"event": "outcome", "request_id": "Bq01-004", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-005", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.00297872", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-005", "actual_estimated_cny": "0.00060024", "usage": {"prompt_tokens": 543, "completion_tokens": 2, "total_tokens": 545, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 287}}
+{"event": "outcome", "request_id": "Bq01-005", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-006", "arm": "Bq0", "prompt_chars": 1575, "reserved_cny": "0.022684", "settled_before_cny": "0.00357896", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-006", "actual_estimated_cny": "0.00062424", "usage": {"prompt_tokens": 551, "completion_tokens": 3, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 295}}
+{"event": "outcome", "request_id": "Bq01-006", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-007", "arm": "Bq0", "prompt_chars": 1371, "reserved_cny": "0.021868", "settled_before_cny": "0.00420320", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-007", "actual_estimated_cny": "0.00091400", "usage": {"prompt_tokens": 445, "completion_tokens": 3, "total_tokens": 448, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 445}}
+{"event": "outcome", "request_id": "Bq01-007", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-008", "arm": "Bq0", "prompt_chars": 1390, "reserved_cny": "0.021944", "settled_before_cny": "0.00511720", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-008", "actual_estimated_cny": "0.00096600", "usage": {"prompt_tokens": 471, "completion_tokens": 3, "total_tokens": 474, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 471}}
+{"event": "outcome", "request_id": "Bq01-008", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-009", "arm": "Bq0", "prompt_chars": 1389, "reserved_cny": "0.021940", "settled_before_cny": "0.00608320", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-009", "actual_estimated_cny": "0.00046024", "usage": {"prompt_tokens": 469, "completion_tokens": 3, "total_tokens": 472, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 213}}
+{"event": "outcome", "request_id": "Bq01-009", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-010", "arm": "Bq0", "prompt_chars": 1388, "reserved_cny": "0.021936", "settled_before_cny": "0.00654344", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-010", "actual_estimated_cny": "0.00046224", "usage": {"prompt_tokens": 470, "completion_tokens": 3, "total_tokens": 473, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 214}}
+{"event": "outcome", "request_id": "Bq01-010", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-011", "arm": "Bq0", "prompt_chars": 1383, "reserved_cny": "0.021916", "settled_before_cny": "0.00700568", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-011", "actual_estimated_cny": "0.00045624", "usage": {"prompt_tokens": 467, "completion_tokens": 3, "total_tokens": 470, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 211}}
+{"event": "outcome", "request_id": "Bq01-011", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-012", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.00746192", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-012", "actual_estimated_cny": "0.00094600", "usage": {"prompt_tokens": 465, "completion_tokens": 2, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 465}}
+{"event": "outcome", "request_id": "Bq01-012", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-013", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.00840792", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-013", "actual_estimated_cny": "0.00108800", "usage": {"prompt_tokens": 532, "completion_tokens": 3, "total_tokens": 535, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 532}}
+{"event": "outcome", "request_id": "Bq01-013", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-014", "arm": "Bq0", "prompt_chars": 1540, "reserved_cny": "0.022544", "settled_before_cny": "0.00949592", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-014", "actual_estimated_cny": "0.00055224", "usage": {"prompt_tokens": 515, "completion_tokens": 3, "total_tokens": 518, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 259}}
+{"event": "outcome", "request_id": "Bq01-014", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-015", "arm": "Bq0", "prompt_chars": 1548, "reserved_cny": "0.022576", "settled_before_cny": "0.01004816", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-015", "actual_estimated_cny": "0.00055624", "usage": {"prompt_tokens": 517, "completion_tokens": 3, "total_tokens": 520, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 261}}
+{"event": "outcome", "request_id": "Bq01-015", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-016", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.01060440", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-016", "actual_estimated_cny": "0.00056424", "usage": {"prompt_tokens": 521, "completion_tokens": 3, "total_tokens": 524, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 265}}
+{"event": "outcome", "request_id": "Bq01-016", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-017", "arm": "Bq0", "prompt_chars": 1551, "reserved_cny": "0.022588", "settled_before_cny": "0.01116864", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-017", "actual_estimated_cny": "0.00078312", "usage": {"prompt_tokens": 509, "completion_tokens": 2, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 381}}
+{"event": "outcome", "request_id": "Bq01-017", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-018", "arm": "Bq0", "prompt_chars": 1386, "reserved_cny": "0.021928", "settled_before_cny": "0.01195176", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-018", "actual_estimated_cny": "0.00092200", "usage": {"prompt_tokens": 449, "completion_tokens": 3, "total_tokens": 452, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 449}}
+{"event": "outcome", "request_id": "Bq01-018", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-019", "arm": "Bq0", "prompt_chars": 1403, "reserved_cny": "0.021996", "settled_before_cny": "0.01287376", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-019", "actual_estimated_cny": "0.00043824", "usage": {"prompt_tokens": 458, "completion_tokens": 3, "total_tokens": 461, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 202}}
+{"event": "outcome", "request_id": "Bq01-019", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-020", "arm": "Bq0", "prompt_chars": 1613, "reserved_cny": "0.022836", "settled_before_cny": "0.01331200", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-020", "actual_estimated_cny": "0.00108400", "usage": {"prompt_tokens": 534, "completion_tokens": 2, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 534}}
+{"event": "outcome", "request_id": "Bq01-020", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-021", "arm": "Bq0", "prompt_chars": 1474, "reserved_cny": "0.022280", "settled_before_cny": "0.01439600", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-021", "actual_estimated_cny": "0.00076512", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 368}}
+{"event": "outcome", "request_id": "Bq01-021", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-022", "arm": "Bq0", "prompt_chars": 1486, "reserved_cny": "0.022328", "settled_before_cny": "0.01516112", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-022", "actual_estimated_cny": "0.00052424", "usage": {"prompt_tokens": 501, "completion_tokens": 3, "total_tokens": 504, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 245}}
+{"event": "outcome", "request_id": "Bq01-022", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-023", "arm": "Bq0", "prompt_chars": 1487, "reserved_cny": "0.022332", "settled_before_cny": "0.01568536", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-023", "actual_estimated_cny": "0.00052624", "usage": {"prompt_tokens": 502, "completion_tokens": 3, "total_tokens": 505, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 246}}
+{"event": "outcome", "request_id": "Bq01-023", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-024", "arm": "Bq0", "prompt_chars": 1355, "reserved_cny": "0.021804", "settled_before_cny": "0.01621160", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-024", "actual_estimated_cny": "0.00091800", "usage": {"prompt_tokens": 447, "completion_tokens": 3, "total_tokens": 450, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 447}}
+{"event": "outcome", "request_id": "Bq01-024", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-025", "arm": "Bq0", "prompt_chars": 1313, "reserved_cny": "0.021636", "settled_before_cny": "0.01712960", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-025", "actual_estimated_cny": "0.00063312", "usage": {"prompt_tokens": 430, "completion_tokens": 3, "total_tokens": 433, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 302}}
+{"event": "outcome", "request_id": "Bq01-025", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-026", "arm": "Bq0", "prompt_chars": 1364, "reserved_cny": "0.021840", "settled_before_cny": "0.01776272", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-026", "actual_estimated_cny": "0.00089200", "usage": {"prompt_tokens": 434, "completion_tokens": 3, "total_tokens": 437, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 434}}
+{"event": "outcome", "request_id": "Bq01-026", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-027", "arm": "Bq0", "prompt_chars": 1335, "reserved_cny": "0.021724", "settled_before_cny": "0.01865472", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-027", "actual_estimated_cny": "0.00061312", "usage": {"prompt_tokens": 420, "completion_tokens": 3, "total_tokens": 423, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 292}}
+{"event": "outcome", "request_id": "Bq01-027", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-028", "arm": "Bq0", "prompt_chars": 1410, "reserved_cny": "0.022024", "settled_before_cny": "0.01926784", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-028", "actual_estimated_cny": "0.00095200", "usage": {"prompt_tokens": 464, "completion_tokens": 3, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 464}}
+{"event": "outcome", "request_id": "Bq01-028", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-029", "arm": "Bq0", "prompt_chars": 1387, "reserved_cny": "0.021932", "settled_before_cny": "0.02021984", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-029", "actual_estimated_cny": "0.00042824", "usage": {"prompt_tokens": 453, "completion_tokens": 3, "total_tokens": 456, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 197}}
+{"event": "outcome", "request_id": "Bq01-029", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-030", "arm": "Bq0", "prompt_chars": 1400, "reserved_cny": "0.021984", "settled_before_cny": "0.02064808", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-030", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq01-030", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-031", "arm": "Bq0", "prompt_chars": 1401, "reserved_cny": "0.021988", "settled_before_cny": "0.02108832", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-031", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq01-031", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-032", "arm": "Bq0", "prompt_chars": 1522, "reserved_cny": "0.022472", "settled_before_cny": "0.02152856", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-032", "actual_estimated_cny": "0.00104200", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 509}}
+{"event": "outcome", "request_id": "Bq01-032", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-033", "arm": "Bq0", "prompt_chars": 1520, "reserved_cny": "0.022464", "settled_before_cny": "0.02257056", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-033", "actual_estimated_cny": "0.00053824", "usage": {"prompt_tokens": 508, "completion_tokens": 3, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 252}}
+{"event": "outcome", "request_id": "Bq01-033", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-034", "arm": "Bq0", "prompt_chars": 1526, "reserved_cny": "0.022488", "settled_before_cny": "0.02310880", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-034", "actual_estimated_cny": "0.00054024", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq01-034", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-035", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.02364904", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-035", "actual_estimated_cny": "0.00109800", "usage": {"prompt_tokens": 537, "completion_tokens": 3, "total_tokens": 540, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 537}}
+{"event": "outcome", "request_id": "Bq01-035", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-036", "arm": "Bq0", "prompt_chars": 1570, "reserved_cny": "0.022664", "settled_before_cny": "0.02474704", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-036", "actual_estimated_cny": "0.00060424", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 285}}
+{"event": "outcome", "request_id": "Bq01-036", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-037", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.02535128", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-037", "actual_estimated_cny": "0.00060424", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 285}}
+{"event": "outcome", "request_id": "Bq01-037", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-038", "arm": "Bq0", "prompt_chars": 1559, "reserved_cny": "0.022620", "settled_before_cny": "0.02595552", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-038", "actual_estimated_cny": "0.00059224", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 279}}
+{"event": "outcome", "request_id": "Bq01-038", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-039", "arm": "Bq0", "prompt_chars": 1478, "reserved_cny": "0.022296", "settled_before_cny": "0.02654776", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-039", "actual_estimated_cny": "0.00076512", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 368}}
+{"event": "outcome", "request_id": "Bq01-039", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-040", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.02731288", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-040", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq01-040", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-041", "arm": "Bq0", "prompt_chars": 1553, "reserved_cny": "0.022596", "settled_before_cny": "0.02782712", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-041", "actual_estimated_cny": "0.00081312", "usage": {"prompt_tokens": 520, "completion_tokens": 3, "total_tokens": 523, "prompt_tokens_details": {"cached_tokens": 128}, "prompt_cache_hit_tokens": 128, "prompt_cache_miss_tokens": 392}}
+{"event": "outcome", "request_id": "Bq01-041", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-042", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.02864024", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-042", "actual_estimated_cny": "0.00056024", "usage": {"prompt_tokens": 519, "completion_tokens": 3, "total_tokens": 522, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 263}}
+{"event": "outcome", "request_id": "Bq01-042", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-043", "arm": "Bq0", "prompt_chars": 1562, "reserved_cny": "0.022632", "settled_before_cny": "0.02920048", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-043", "actual_estimated_cny": "0.00057024", "usage": {"prompt_tokens": 524, "completion_tokens": 3, "total_tokens": 527, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 268}}
+{"event": "outcome", "request_id": "Bq01-043", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-044", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.02977072", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-044", "actual_estimated_cny": "0.00056824", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 267}}
+{"event": "outcome", "request_id": "Bq01-044", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-045", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.03033896", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-045", "actual_estimated_cny": "0.00056824", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 267}}
+{"event": "outcome", "request_id": "Bq01-045", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-046", "arm": "Bq0", "prompt_chars": 1391, "reserved_cny": "0.021948", "settled_before_cny": "0.03090720", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-046", "actual_estimated_cny": "0.00088800", "usage": {"prompt_tokens": 436, "completion_tokens": 2, "total_tokens": 438, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 436}}
+{"event": "outcome", "request_id": "Bq01-046", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-047", "arm": "Bq0", "prompt_chars": 1557, "reserved_cny": "0.022612", "settled_before_cny": "0.03179520", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-047", "actual_estimated_cny": "0.00110400", "usage": {"prompt_tokens": 540, "completion_tokens": 3, "total_tokens": 543, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 540}}
+{"event": "outcome", "request_id": "Bq01-047", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-048", "arm": "Bq0", "prompt_chars": 1563, "reserved_cny": "0.022636", "settled_before_cny": "0.03289920", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-048", "actual_estimated_cny": "0.00060424", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 285}}
+{"event": "outcome", "request_id": "Bq01-048", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-049", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.03350344", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-049", "actual_estimated_cny": "0.00106800", "usage": {"prompt_tokens": 522, "completion_tokens": 3, "total_tokens": 525, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 522}}
+{"event": "outcome", "request_id": "Bq01-049", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-050", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.03457144", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-050", "actual_estimated_cny": "0.00057224", "usage": {"prompt_tokens": 525, "completion_tokens": 3, "total_tokens": 528, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 269}}
+{"event": "outcome", "request_id": "Bq01-050", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-051", "arm": "Bq0", "prompt_chars": 1629, "reserved_cny": "0.022900", "settled_before_cny": "0.03514368", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-051", "actual_estimated_cny": "0.00109000", "usage": {"prompt_tokens": 533, "completion_tokens": 3, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 0}, "prompt_cache_hit_tokens": 0, "prompt_cache_miss_tokens": 533}}
+{"event": "outcome", "request_id": "Bq01-051", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq01-052", "arm": "Bq0", "prompt_chars": 1601, "reserved_cny": "0.022788", "settled_before_cny": "0.03623368", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq01-052", "actual_estimated_cny": "0.00059224", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 279}}
+{"event": "outcome", "request_id": "Bq01-052", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "S1-S02", "arm": "S", "prompt_chars": 1639, "reserved_cny": "0.022940", "settled_before_cny": "0.03682592", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S1-S02", "actual_estimated_cny": "0.00044936", "usage": {"prompt_tokens": 589, "completion_tokens": 3, "total_tokens": 592, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 205}}
+{"event": "outcome", "request_id": "S1-S02", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S1-S05", "arm": "S", "prompt_chars": 1625, "reserved_cny": "0.022884", "settled_before_cny": "0.03727528", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S1-S05", "actual_estimated_cny": "0.00043136", "usage": {"prompt_tokens": 580, "completion_tokens": 3, "total_tokens": 583, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 196}}
+{"event": "outcome", "request_id": "S1-S05", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S1-S06", "arm": "S", "prompt_chars": 1636, "reserved_cny": "0.022928", "settled_before_cny": "0.03770664", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S1-S06", "actual_estimated_cny": "0.00044736", "usage": {"prompt_tokens": 588, "completion_tokens": 3, "total_tokens": 591, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 204}}
+{"event": "outcome", "request_id": "S1-S06", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-001", "arm": "Bq0", "prompt_chars": 1584, "reserved_cny": "0.022720", "settled_before_cny": "0.03815400", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-001", "actual_estimated_cny": "0.00038136", "usage": {"prompt_tokens": 555, "completion_tokens": 3, "total_tokens": 558, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 171}}
+{"event": "outcome", "request_id": "Bq02-001", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-002", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.03853536", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-002", "actual_estimated_cny": "0.00036736", "usage": {"prompt_tokens": 552, "completion_tokens": 2, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 168}}
+{"event": "outcome", "request_id": "Bq02-002", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-003", "arm": "Bq0", "prompt_chars": 1571, "reserved_cny": "0.022668", "settled_before_cny": "0.03890272", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-003", "actual_estimated_cny": "0.00036336", "usage": {"prompt_tokens": 546, "completion_tokens": 3, "total_tokens": 549, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 162}}
+{"event": "outcome", "request_id": "Bq02-003", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-004", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.03926608", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-004", "actual_estimated_cny": "0.00036136", "usage": {"prompt_tokens": 545, "completion_tokens": 3, "total_tokens": 548, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 161}}
+{"event": "outcome", "request_id": "Bq02-004", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-005", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.03962744", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-005", "actual_estimated_cny": "0.00034936", "usage": {"prompt_tokens": 543, "completion_tokens": 2, "total_tokens": 545, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 159}}
+{"event": "outcome", "request_id": "Bq02-005", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-006", "arm": "Bq0", "prompt_chars": 1575, "reserved_cny": "0.022684", "settled_before_cny": "0.03997680", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-006", "actual_estimated_cny": "0.00037336", "usage": {"prompt_tokens": 551, "completion_tokens": 3, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 167}}
+{"event": "outcome", "request_id": "Bq02-006", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-007", "arm": "Bq0", "prompt_chars": 1371, "reserved_cny": "0.021868", "settled_before_cny": "0.04035016", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-007", "actual_estimated_cny": "0.00041224", "usage": {"prompt_tokens": 445, "completion_tokens": 3, "total_tokens": 448, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 189}}
+{"event": "outcome", "request_id": "Bq02-007", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-008", "arm": "Bq0", "prompt_chars": 1390, "reserved_cny": "0.021944", "settled_before_cny": "0.04076240", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-008", "actual_estimated_cny": "0.00045624", "usage": {"prompt_tokens": 471, "completion_tokens": 2, "total_tokens": 473, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 215}}
+{"event": "outcome", "request_id": "Bq02-008", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-009", "arm": "Bq0", "prompt_chars": 1389, "reserved_cny": "0.021940", "settled_before_cny": "0.04121864", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-009", "actual_estimated_cny": "0.00046024", "usage": {"prompt_tokens": 469, "completion_tokens": 3, "total_tokens": 472, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 213}}
+{"event": "outcome", "request_id": "Bq02-009", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-010", "arm": "Bq0", "prompt_chars": 1388, "reserved_cny": "0.021936", "settled_before_cny": "0.04167888", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-010", "actual_estimated_cny": "0.00046224", "usage": {"prompt_tokens": 470, "completion_tokens": 3, "total_tokens": 473, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 214}}
+{"event": "outcome", "request_id": "Bq02-010", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-011", "arm": "Bq0", "prompt_chars": 1383, "reserved_cny": "0.021916", "settled_before_cny": "0.04214112", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-011", "actual_estimated_cny": "0.00045624", "usage": {"prompt_tokens": 467, "completion_tokens": 3, "total_tokens": 470, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 211}}
+{"event": "outcome", "request_id": "Bq02-011", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-012", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.04259736", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-012", "actual_estimated_cny": "0.00044424", "usage": {"prompt_tokens": 465, "completion_tokens": 2, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 209}}
+{"event": "outcome", "request_id": "Bq02-012", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-013", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.04304160", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-013", "actual_estimated_cny": "0.00033536", "usage": {"prompt_tokens": 532, "completion_tokens": 3, "total_tokens": 535, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 148}}
+{"event": "outcome", "request_id": "Bq02-013", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-014", "arm": "Bq0", "prompt_chars": 1540, "reserved_cny": "0.022544", "settled_before_cny": "0.04337696", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-014", "actual_estimated_cny": "0.00030724", "usage": {"prompt_tokens": 515, "completion_tokens": 3, "total_tokens": 518, "prompt_tokens_details": {"cached_tokens": 381}, "prompt_cache_hit_tokens": 381, "prompt_cache_miss_tokens": 134}}
+{"event": "outcome", "request_id": "Bq02-014", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-015", "arm": "Bq0", "prompt_chars": 1548, "reserved_cny": "0.022576", "settled_before_cny": "0.04368420", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-015", "actual_estimated_cny": "0.00030732", "usage": {"prompt_tokens": 517, "completion_tokens": 3, "total_tokens": 520, "prompt_tokens_details": {"cached_tokens": 383}, "prompt_cache_hit_tokens": 383, "prompt_cache_miss_tokens": 134}}
+{"event": "outcome", "request_id": "Bq02-015", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-016", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.04399152", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-016", "actual_estimated_cny": "0.00031336", "usage": {"prompt_tokens": 521, "completion_tokens": 3, "total_tokens": 524, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 137}}
+{"event": "outcome", "request_id": "Bq02-016", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-017", "arm": "Bq0", "prompt_chars": 1551, "reserved_cny": "0.022588", "settled_before_cny": "0.04430488", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-017", "actual_estimated_cny": "0.00053224", "usage": {"prompt_tokens": 509, "completion_tokens": 2, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq02-017", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-018", "arm": "Bq0", "prompt_chars": 1386, "reserved_cny": "0.021928", "settled_before_cny": "0.04483712", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-018", "actual_estimated_cny": "0.00042024", "usage": {"prompt_tokens": 449, "completion_tokens": 3, "total_tokens": 452, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 193}}
+{"event": "outcome", "request_id": "Bq02-018", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-019", "arm": "Bq0", "prompt_chars": 1403, "reserved_cny": "0.021996", "settled_before_cny": "0.04525736", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-019", "actual_estimated_cny": "0.00043824", "usage": {"prompt_tokens": 458, "completion_tokens": 3, "total_tokens": 461, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 202}}
+{"event": "outcome", "request_id": "Bq02-019", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-020", "arm": "Bq0", "prompt_chars": 1613, "reserved_cny": "0.022836", "settled_before_cny": "0.04569560", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-020", "actual_estimated_cny": "0.00033136", "usage": {"prompt_tokens": 534, "completion_tokens": 2, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 150}}
+{"event": "outcome", "request_id": "Bq02-020", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-021", "arm": "Bq0", "prompt_chars": 1474, "reserved_cny": "0.022280", "settled_before_cny": "0.04602696", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-021", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq02-021", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-022", "arm": "Bq0", "prompt_chars": 1486, "reserved_cny": "0.022328", "settled_before_cny": "0.04654120", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-022", "actual_estimated_cny": "0.00052424", "usage": {"prompt_tokens": 501, "completion_tokens": 3, "total_tokens": 504, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 245}}
+{"event": "outcome", "request_id": "Bq02-022", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-023", "arm": "Bq0", "prompt_chars": 1487, "reserved_cny": "0.022332", "settled_before_cny": "0.04706544", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-023", "actual_estimated_cny": "0.00052624", "usage": {"prompt_tokens": 502, "completion_tokens": 3, "total_tokens": 505, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 246}}
+{"event": "outcome", "request_id": "Bq02-023", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-024", "arm": "Bq0", "prompt_chars": 1355, "reserved_cny": "0.021804", "settled_before_cny": "0.04759168", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-024", "actual_estimated_cny": "0.00041624", "usage": {"prompt_tokens": 447, "completion_tokens": 3, "total_tokens": 450, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 191}}
+{"event": "outcome", "request_id": "Bq02-024", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-025", "arm": "Bq0", "prompt_chars": 1313, "reserved_cny": "0.021636", "settled_before_cny": "0.04800792", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-025", "actual_estimated_cny": "0.00038224", "usage": {"prompt_tokens": 430, "completion_tokens": 3, "total_tokens": 433, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 174}}
+{"event": "outcome", "request_id": "Bq02-025", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-026", "arm": "Bq0", "prompt_chars": 1364, "reserved_cny": "0.021840", "settled_before_cny": "0.04839016", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-026", "actual_estimated_cny": "0.00039024", "usage": {"prompt_tokens": 434, "completion_tokens": 3, "total_tokens": 437, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 178}}
+{"event": "outcome", "request_id": "Bq02-026", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-027", "arm": "Bq0", "prompt_chars": 1335, "reserved_cny": "0.021724", "settled_before_cny": "0.04878040", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-027", "actual_estimated_cny": "0.00036224", "usage": {"prompt_tokens": 420, "completion_tokens": 3, "total_tokens": 423, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 164}}
+{"event": "outcome", "request_id": "Bq02-027", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-028", "arm": "Bq0", "prompt_chars": 1410, "reserved_cny": "0.022024", "settled_before_cny": "0.04914264", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-028", "actual_estimated_cny": "0.00045024", "usage": {"prompt_tokens": 464, "completion_tokens": 3, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 208}}
+{"event": "outcome", "request_id": "Bq02-028", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-029", "arm": "Bq0", "prompt_chars": 1387, "reserved_cny": "0.021932", "settled_before_cny": "0.04959288", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-029", "actual_estimated_cny": "0.00042824", "usage": {"prompt_tokens": 453, "completion_tokens": 3, "total_tokens": 456, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 197}}
+{"event": "outcome", "request_id": "Bq02-029", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-030", "arm": "Bq0", "prompt_chars": 1400, "reserved_cny": "0.021984", "settled_before_cny": "0.05002112", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-030", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq02-030", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-031", "arm": "Bq0", "prompt_chars": 1401, "reserved_cny": "0.021988", "settled_before_cny": "0.05046136", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-031", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq02-031", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-032", "arm": "Bq0", "prompt_chars": 1522, "reserved_cny": "0.022472", "settled_before_cny": "0.05090160", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-032", "actual_estimated_cny": "0.00054024", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq02-032", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-033", "arm": "Bq0", "prompt_chars": 1520, "reserved_cny": "0.022464", "settled_before_cny": "0.05144184", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-033", "actual_estimated_cny": "0.00053824", "usage": {"prompt_tokens": 508, "completion_tokens": 3, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 252}}
+{"event": "outcome", "request_id": "Bq02-033", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-034", "arm": "Bq0", "prompt_chars": 1526, "reserved_cny": "0.022488", "settled_before_cny": "0.05198008", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-034", "actual_estimated_cny": "0.00054024", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq02-034", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-035", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.05252032", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-035", "actual_estimated_cny": "0.00034536", "usage": {"prompt_tokens": 537, "completion_tokens": 3, "total_tokens": 540, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 153}}
+{"event": "outcome", "request_id": "Bq02-035", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-036", "arm": "Bq0", "prompt_chars": 1570, "reserved_cny": "0.022664", "settled_before_cny": "0.05286568", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-036", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq02-036", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-037", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.05321904", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-037", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq02-037", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-038", "arm": "Bq0", "prompt_chars": 1559, "reserved_cny": "0.022620", "settled_before_cny": "0.05357240", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-038", "actual_estimated_cny": "0.00034136", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 151}}
+{"event": "outcome", "request_id": "Bq02-038", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-039", "arm": "Bq0", "prompt_chars": 1478, "reserved_cny": "0.022296", "settled_before_cny": "0.05391376", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-039", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq02-039", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-040", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.05442800", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-040", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq02-040", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-041", "arm": "Bq0", "prompt_chars": 1553, "reserved_cny": "0.022596", "settled_before_cny": "0.05494224", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-041", "actual_estimated_cny": "0.00031136", "usage": {"prompt_tokens": 520, "completion_tokens": 3, "total_tokens": 523, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 136}}
+{"event": "outcome", "request_id": "Bq02-041", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-042", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.05525360", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-042", "actual_estimated_cny": "0.00030936", "usage": {"prompt_tokens": 519, "completion_tokens": 3, "total_tokens": 522, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 135}}
+{"event": "outcome", "request_id": "Bq02-042", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-043", "arm": "Bq0", "prompt_chars": 1562, "reserved_cny": "0.022632", "settled_before_cny": "0.05556296", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-043", "actual_estimated_cny": "0.00031936", "usage": {"prompt_tokens": 524, "completion_tokens": 3, "total_tokens": 527, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 140}}
+{"event": "outcome", "request_id": "Bq02-043", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-044", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.05588232", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-044", "actual_estimated_cny": "0.00031736", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 139}}
+{"event": "outcome", "request_id": "Bq02-044", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-045", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.05619968", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-045", "actual_estimated_cny": "0.00031736", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 139}}
+{"event": "outcome", "request_id": "Bq02-045", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-046", "arm": "Bq0", "prompt_chars": 1391, "reserved_cny": "0.021948", "settled_before_cny": "0.05651704", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-046", "actual_estimated_cny": "0.00038624", "usage": {"prompt_tokens": 436, "completion_tokens": 2, "total_tokens": 438, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 180}}
+{"event": "outcome", "request_id": "Bq02-046", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-047", "arm": "Bq0", "prompt_chars": 1557, "reserved_cny": "0.022612", "settled_before_cny": "0.05690328", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-047", "actual_estimated_cny": "0.00035136", "usage": {"prompt_tokens": 540, "completion_tokens": 3, "total_tokens": 543, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 156}}
+{"event": "outcome", "request_id": "Bq02-047", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-048", "arm": "Bq0", "prompt_chars": 1563, "reserved_cny": "0.022636", "settled_before_cny": "0.05725464", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-048", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq02-048", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-049", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.05760800", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-049", "actual_estimated_cny": "0.00031536", "usage": {"prompt_tokens": 522, "completion_tokens": 3, "total_tokens": 525, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 138}}
+{"event": "outcome", "request_id": "Bq02-049", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-050", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.05792336", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-050", "actual_estimated_cny": "0.00032136", "usage": {"prompt_tokens": 525, "completion_tokens": 3, "total_tokens": 528, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 141}}
+{"event": "outcome", "request_id": "Bq02-050", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-051", "arm": "Bq0", "prompt_chars": 1629, "reserved_cny": "0.022900", "settled_before_cny": "0.05824472", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-051", "actual_estimated_cny": "0.00033736", "usage": {"prompt_tokens": 533, "completion_tokens": 3, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 149}}
+{"event": "outcome", "request_id": "Bq02-051", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq02-052", "arm": "Bq0", "prompt_chars": 1601, "reserved_cny": "0.022788", "settled_before_cny": "0.05858208", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq02-052", "actual_estimated_cny": "0.00034136", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 151}}
+{"event": "outcome", "request_id": "Bq02-052", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "S2-S02", "arm": "S", "prompt_chars": 1639, "reserved_cny": "0.022940", "settled_before_cny": "0.05892344", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S2-S02", "actual_estimated_cny": "0.00044936", "usage": {"prompt_tokens": 589, "completion_tokens": 3, "total_tokens": 592, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 205}}
+{"event": "outcome", "request_id": "S2-S02", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S2-S05", "arm": "S", "prompt_chars": 1625, "reserved_cny": "0.022884", "settled_before_cny": "0.05937280", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S2-S05", "actual_estimated_cny": "0.00043136", "usage": {"prompt_tokens": 580, "completion_tokens": 3, "total_tokens": 583, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 196}}
+{"event": "outcome", "request_id": "S2-S05", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S2-S06", "arm": "S", "prompt_chars": 1636, "reserved_cny": "0.022928", "settled_before_cny": "0.05980416", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S2-S06", "actual_estimated_cny": "0.00044736", "usage": {"prompt_tokens": 588, "completion_tokens": 3, "total_tokens": 591, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 204}}
+{"event": "outcome", "request_id": "S2-S06", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-001", "arm": "Bq0", "prompt_chars": 1584, "reserved_cny": "0.022720", "settled_before_cny": "0.06025152", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-001", "actual_estimated_cny": "0.00038136", "usage": {"prompt_tokens": 555, "completion_tokens": 3, "total_tokens": 558, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 171}}
+{"event": "outcome", "request_id": "Bq03-001", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-002", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.06063288", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-002", "actual_estimated_cny": "0.00036736", "usage": {"prompt_tokens": 552, "completion_tokens": 2, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 168}}
+{"event": "outcome", "request_id": "Bq03-002", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-003", "arm": "Bq0", "prompt_chars": 1571, "reserved_cny": "0.022668", "settled_before_cny": "0.06100024", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-003", "actual_estimated_cny": "0.00036336", "usage": {"prompt_tokens": 546, "completion_tokens": 3, "total_tokens": 549, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 162}}
+{"event": "outcome", "request_id": "Bq03-003", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-004", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.06136360", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-004", "actual_estimated_cny": "0.00036136", "usage": {"prompt_tokens": 545, "completion_tokens": 3, "total_tokens": 548, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 161}}
+{"event": "outcome", "request_id": "Bq03-004", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-005", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.06172496", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-005", "actual_estimated_cny": "0.00034936", "usage": {"prompt_tokens": 543, "completion_tokens": 2, "total_tokens": 545, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 159}}
+{"event": "outcome", "request_id": "Bq03-005", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-006", "arm": "Bq0", "prompt_chars": 1575, "reserved_cny": "0.022684", "settled_before_cny": "0.06207432", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-006", "actual_estimated_cny": "0.00037336", "usage": {"prompt_tokens": 551, "completion_tokens": 3, "total_tokens": 554, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 167}}
+{"event": "outcome", "request_id": "Bq03-006", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-007", "arm": "Bq0", "prompt_chars": 1371, "reserved_cny": "0.021868", "settled_before_cny": "0.06244768", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-007", "actual_estimated_cny": "0.00041224", "usage": {"prompt_tokens": 445, "completion_tokens": 3, "total_tokens": 448, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 189}}
+{"event": "outcome", "request_id": "Bq03-007", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-008", "arm": "Bq0", "prompt_chars": 1390, "reserved_cny": "0.021944", "settled_before_cny": "0.06285992", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-008", "actual_estimated_cny": "0.00045624", "usage": {"prompt_tokens": 471, "completion_tokens": 2, "total_tokens": 473, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 215}}
+{"event": "outcome", "request_id": "Bq03-008", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-009", "arm": "Bq0", "prompt_chars": 1389, "reserved_cny": "0.021940", "settled_before_cny": "0.06331616", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-009", "actual_estimated_cny": "0.00046024", "usage": {"prompt_tokens": 469, "completion_tokens": 3, "total_tokens": 472, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 213}}
+{"event": "outcome", "request_id": "Bq03-009", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-010", "arm": "Bq0", "prompt_chars": 1388, "reserved_cny": "0.021936", "settled_before_cny": "0.06377640", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-010", "actual_estimated_cny": "0.00046224", "usage": {"prompt_tokens": 470, "completion_tokens": 3, "total_tokens": 473, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 214}}
+{"event": "outcome", "request_id": "Bq03-010", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-011", "arm": "Bq0", "prompt_chars": 1383, "reserved_cny": "0.021916", "settled_before_cny": "0.06423864", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-011", "actual_estimated_cny": "0.00045624", "usage": {"prompt_tokens": 467, "completion_tokens": 3, "total_tokens": 470, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 211}}
+{"event": "outcome", "request_id": "Bq03-011", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-012", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.06469488", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-012", "actual_estimated_cny": "0.00044424", "usage": {"prompt_tokens": 465, "completion_tokens": 2, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 209}}
+{"event": "outcome", "request_id": "Bq03-012", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-013", "arm": "Bq0", "prompt_chars": 1578, "reserved_cny": "0.022696", "settled_before_cny": "0.06513912", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-013", "actual_estimated_cny": "0.00033536", "usage": {"prompt_tokens": 532, "completion_tokens": 3, "total_tokens": 535, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 148}}
+{"event": "outcome", "request_id": "Bq03-013", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-014", "arm": "Bq0", "prompt_chars": 1540, "reserved_cny": "0.022544", "settled_before_cny": "0.06547448", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-014", "actual_estimated_cny": "0.00030724", "usage": {"prompt_tokens": 515, "completion_tokens": 3, "total_tokens": 518, "prompt_tokens_details": {"cached_tokens": 381}, "prompt_cache_hit_tokens": 381, "prompt_cache_miss_tokens": 134}}
+{"event": "outcome", "request_id": "Bq03-014", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-015", "arm": "Bq0", "prompt_chars": 1548, "reserved_cny": "0.022576", "settled_before_cny": "0.06578172", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-015", "actual_estimated_cny": "0.00030732", "usage": {"prompt_tokens": 517, "completion_tokens": 3, "total_tokens": 520, "prompt_tokens_details": {"cached_tokens": 383}, "prompt_cache_hit_tokens": 383, "prompt_cache_miss_tokens": 134}}
+{"event": "outcome", "request_id": "Bq03-015", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-016", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.06608904", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-016", "actual_estimated_cny": "0.00031336", "usage": {"prompt_tokens": 521, "completion_tokens": 3, "total_tokens": 524, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 137}}
+{"event": "outcome", "request_id": "Bq03-016", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-017", "arm": "Bq0", "prompt_chars": 1551, "reserved_cny": "0.022588", "settled_before_cny": "0.06640240", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-017", "actual_estimated_cny": "0.00053224", "usage": {"prompt_tokens": 509, "completion_tokens": 2, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq03-017", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-018", "arm": "Bq0", "prompt_chars": 1386, "reserved_cny": "0.021928", "settled_before_cny": "0.06693464", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-018", "actual_estimated_cny": "0.00042024", "usage": {"prompt_tokens": 449, "completion_tokens": 3, "total_tokens": 452, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 193}}
+{"event": "outcome", "request_id": "Bq03-018", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-019", "arm": "Bq0", "prompt_chars": 1403, "reserved_cny": "0.021996", "settled_before_cny": "0.06735488", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-019", "actual_estimated_cny": "0.00043824", "usage": {"prompt_tokens": 458, "completion_tokens": 3, "total_tokens": 461, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 202}}
+{"event": "outcome", "request_id": "Bq03-019", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-020", "arm": "Bq0", "prompt_chars": 1613, "reserved_cny": "0.022836", "settled_before_cny": "0.06779312", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-020", "actual_estimated_cny": "0.00033136", "usage": {"prompt_tokens": 534, "completion_tokens": 2, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 150}}
+{"event": "outcome", "request_id": "Bq03-020", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-021", "arm": "Bq0", "prompt_chars": 1474, "reserved_cny": "0.022280", "settled_before_cny": "0.06812448", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-021", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq03-021", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-022", "arm": "Bq0", "prompt_chars": 1486, "reserved_cny": "0.022328", "settled_before_cny": "0.06863872", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-022", "actual_estimated_cny": "0.00052424", "usage": {"prompt_tokens": 501, "completion_tokens": 3, "total_tokens": 504, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 245}}
+{"event": "outcome", "request_id": "Bq03-022", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-023", "arm": "Bq0", "prompt_chars": 1487, "reserved_cny": "0.022332", "settled_before_cny": "0.06916296", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-023", "actual_estimated_cny": "0.00052624", "usage": {"prompt_tokens": 502, "completion_tokens": 3, "total_tokens": 505, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 246}}
+{"event": "outcome", "request_id": "Bq03-023", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-024", "arm": "Bq0", "prompt_chars": 1355, "reserved_cny": "0.021804", "settled_before_cny": "0.06968920", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-024", "actual_estimated_cny": "0.00041624", "usage": {"prompt_tokens": 447, "completion_tokens": 3, "total_tokens": 450, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 191}}
+{"event": "outcome", "request_id": "Bq03-024", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-025", "arm": "Bq0", "prompt_chars": 1313, "reserved_cny": "0.021636", "settled_before_cny": "0.07010544", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-025", "actual_estimated_cny": "0.00038224", "usage": {"prompt_tokens": 430, "completion_tokens": 3, "total_tokens": 433, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 174}}
+{"event": "outcome", "request_id": "Bq03-025", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-026", "arm": "Bq0", "prompt_chars": 1364, "reserved_cny": "0.021840", "settled_before_cny": "0.07048768", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-026", "actual_estimated_cny": "0.00039024", "usage": {"prompt_tokens": 434, "completion_tokens": 3, "total_tokens": 437, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 178}}
+{"event": "outcome", "request_id": "Bq03-026", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-027", "arm": "Bq0", "prompt_chars": 1335, "reserved_cny": "0.021724", "settled_before_cny": "0.07087792", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-027", "actual_estimated_cny": "0.00036224", "usage": {"prompt_tokens": 420, "completion_tokens": 3, "total_tokens": 423, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 164}}
+{"event": "outcome", "request_id": "Bq03-027", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-028", "arm": "Bq0", "prompt_chars": 1410, "reserved_cny": "0.022024", "settled_before_cny": "0.07124016", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-028", "actual_estimated_cny": "0.00045024", "usage": {"prompt_tokens": 464, "completion_tokens": 3, "total_tokens": 467, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 208}}
+{"event": "outcome", "request_id": "Bq03-028", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-029", "arm": "Bq0", "prompt_chars": 1387, "reserved_cny": "0.021932", "settled_before_cny": "0.07169040", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-029", "actual_estimated_cny": "0.00042824", "usage": {"prompt_tokens": 453, "completion_tokens": 3, "total_tokens": 456, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 197}}
+{"event": "outcome", "request_id": "Bq03-029", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-030", "arm": "Bq0", "prompt_chars": 1400, "reserved_cny": "0.021984", "settled_before_cny": "0.07211864", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-030", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq03-030", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-031", "arm": "Bq0", "prompt_chars": 1401, "reserved_cny": "0.021988", "settled_before_cny": "0.07255888", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-031", "actual_estimated_cny": "0.00044024", "usage": {"prompt_tokens": 459, "completion_tokens": 3, "total_tokens": 462, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 203}}
+{"event": "outcome", "request_id": "Bq03-031", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-032", "arm": "Bq0", "prompt_chars": 1522, "reserved_cny": "0.022472", "settled_before_cny": "0.07299912", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-032", "actual_estimated_cny": "0.00054024", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq03-032", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-033", "arm": "Bq0", "prompt_chars": 1520, "reserved_cny": "0.022464", "settled_before_cny": "0.07353936", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-033", "actual_estimated_cny": "0.00053824", "usage": {"prompt_tokens": 508, "completion_tokens": 3, "total_tokens": 511, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 252}}
+{"event": "outcome", "request_id": "Bq03-033", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-034", "arm": "Bq0", "prompt_chars": 1526, "reserved_cny": "0.022488", "settled_before_cny": "0.07407760", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-034", "actual_estimated_cny": "0.00054024", "usage": {"prompt_tokens": 509, "completion_tokens": 3, "total_tokens": 512, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 253}}
+{"event": "outcome", "request_id": "Bq03-034", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-035", "arm": "Bq0", "prompt_chars": 1564, "reserved_cny": "0.022640", "settled_before_cny": "0.07461784", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-035", "actual_estimated_cny": "0.00034536", "usage": {"prompt_tokens": 537, "completion_tokens": 3, "total_tokens": 540, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 153}}
+{"event": "outcome", "request_id": "Bq03-035", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-036", "arm": "Bq0", "prompt_chars": 1570, "reserved_cny": "0.022664", "settled_before_cny": "0.07496320", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-036", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq03-036", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-037", "arm": "Bq0", "prompt_chars": 1569, "reserved_cny": "0.022660", "settled_before_cny": "0.07531656", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-037", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq03-037", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-038", "arm": "Bq0", "prompt_chars": 1559, "reserved_cny": "0.022620", "settled_before_cny": "0.07566992", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-038", "actual_estimated_cny": "0.00034136", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 151}}
+{"event": "outcome", "request_id": "Bq03-038", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-039", "arm": "Bq0", "prompt_chars": 1478, "reserved_cny": "0.022296", "settled_before_cny": "0.07601128", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-039", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq03-039", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-040", "arm": "Bq0", "prompt_chars": 1477, "reserved_cny": "0.022292", "settled_before_cny": "0.07652552", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-040", "actual_estimated_cny": "0.00051424", "usage": {"prompt_tokens": 496, "completion_tokens": 3, "total_tokens": 499, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 240}}
+{"event": "outcome", "request_id": "Bq03-040", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-041", "arm": "Bq0", "prompt_chars": 1553, "reserved_cny": "0.022596", "settled_before_cny": "0.07703976", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-041", "actual_estimated_cny": "0.00031136", "usage": {"prompt_tokens": 520, "completion_tokens": 3, "total_tokens": 523, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 136}}
+{"event": "outcome", "request_id": "Bq03-041", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-042", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.07735112", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-042", "actual_estimated_cny": "0.00030936", "usage": {"prompt_tokens": 519, "completion_tokens": 3, "total_tokens": 522, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 135}}
+{"event": "outcome", "request_id": "Bq03-042", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-043", "arm": "Bq0", "prompt_chars": 1562, "reserved_cny": "0.022632", "settled_before_cny": "0.07766048", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-043", "actual_estimated_cny": "0.00031936", "usage": {"prompt_tokens": 524, "completion_tokens": 3, "total_tokens": 527, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 140}}
+{"event": "outcome", "request_id": "Bq03-043", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-044", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.07797984", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-044", "actual_estimated_cny": "0.00031736", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 139}}
+{"event": "outcome", "request_id": "Bq03-044", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-045", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.07829720", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-045", "actual_estimated_cny": "0.00031736", "usage": {"prompt_tokens": 523, "completion_tokens": 3, "total_tokens": 526, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 139}}
+{"event": "outcome", "request_id": "Bq03-045", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-046", "arm": "Bq0", "prompt_chars": 1391, "reserved_cny": "0.021948", "settled_before_cny": "0.07861456", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-046", "actual_estimated_cny": "0.00038624", "usage": {"prompt_tokens": 436, "completion_tokens": 2, "total_tokens": 438, "prompt_tokens_details": {"cached_tokens": 256}, "prompt_cache_hit_tokens": 256, "prompt_cache_miss_tokens": 180}}
+{"event": "outcome", "request_id": "Bq03-046", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-047", "arm": "Bq0", "prompt_chars": 1557, "reserved_cny": "0.022612", "settled_before_cny": "0.07900080", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-047", "actual_estimated_cny": "0.00035136", "usage": {"prompt_tokens": 540, "completion_tokens": 3, "total_tokens": 543, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 156}}
+{"event": "outcome", "request_id": "Bq03-047", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-048", "arm": "Bq0", "prompt_chars": 1563, "reserved_cny": "0.022636", "settled_before_cny": "0.07935216", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-048", "actual_estimated_cny": "0.00035336", "usage": {"prompt_tokens": 541, "completion_tokens": 3, "total_tokens": 544, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 157}}
+{"event": "outcome", "request_id": "Bq03-048", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-049", "arm": "Bq0", "prompt_chars": 1552, "reserved_cny": "0.022592", "settled_before_cny": "0.07970552", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-049", "actual_estimated_cny": "0.00031536", "usage": {"prompt_tokens": 522, "completion_tokens": 3, "total_tokens": 525, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 138}}
+{"event": "outcome", "request_id": "Bq03-049", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-050", "arm": "Bq0", "prompt_chars": 1560, "reserved_cny": "0.022624", "settled_before_cny": "0.08002088", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-050", "actual_estimated_cny": "0.00032136", "usage": {"prompt_tokens": 525, "completion_tokens": 3, "total_tokens": 528, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 141}}
+{"event": "outcome", "request_id": "Bq03-050", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-051", "arm": "Bq0", "prompt_chars": 1629, "reserved_cny": "0.022900", "settled_before_cny": "0.08034224", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-051", "actual_estimated_cny": "0.00033736", "usage": {"prompt_tokens": 533, "completion_tokens": 3, "total_tokens": 536, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 149}}
+{"event": "outcome", "request_id": "Bq03-051", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "Bq03-052", "arm": "Bq0", "prompt_chars": 1601, "reserved_cny": "0.022788", "settled_before_cny": "0.08067960", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "Bq03-052", "actual_estimated_cny": "0.00034136", "usage": {"prompt_tokens": 535, "completion_tokens": 3, "total_tokens": 538, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 151}}
+{"event": "outcome", "request_id": "Bq03-052", "arm": "Bq0", "interface_error": false}
+{"event": "reserve", "request_id": "S3-S02", "arm": "S", "prompt_chars": 1639, "reserved_cny": "0.022940", "settled_before_cny": "0.08102096", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S3-S02", "actual_estimated_cny": "0.00044936", "usage": {"prompt_tokens": 589, "completion_tokens": 3, "total_tokens": 592, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 205}}
+{"event": "outcome", "request_id": "S3-S02", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S3-S05", "arm": "S", "prompt_chars": 1625, "reserved_cny": "0.022884", "settled_before_cny": "0.08147032", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S3-S05", "actual_estimated_cny": "0.00043136", "usage": {"prompt_tokens": 580, "completion_tokens": 3, "total_tokens": 583, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 196}}
+{"event": "outcome", "request_id": "S3-S05", "arm": "S", "interface_error": false}
+{"event": "reserve", "request_id": "S3-S06", "arm": "S", "prompt_chars": 1636, "reserved_cny": "0.022928", "settled_before_cny": "0.08190168", "unsettled_before_cny": "0"}
+{"event": "settle", "request_id": "S3-S06", "actual_estimated_cny": "0.00044736", "usage": {"prompt_tokens": 588, "completion_tokens": 3, "total_tokens": 591, "prompt_tokens_details": {"cached_tokens": 384}, "prompt_cache_hit_tokens": 384, "prompt_cache_miss_tokens": 204}}
+{"event": "outcome", "request_id": "S3-S06", "arm": "S", "interface_error": false}

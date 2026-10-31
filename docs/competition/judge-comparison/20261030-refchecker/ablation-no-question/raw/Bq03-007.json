@@ -1,0 +1,73 @@
+{
+  "request_id": "Bq03-007",
+  "arm": "Bq0",
+  "round": 3,
+  "prompt": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险的最高赔付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n",
+  "payload": {
+    "model": "deepseek-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "I have a claim that made by a language model, please help me for checking whether the claim can be entailed according to the provided reference. \nThe reference is a list of passages, and the claim is a sentence.\n\nIf the claim is supported by ANY passage in the reference, answer 'Entailment'. \nIf NO passage in the reference entail the claim, and the claim is contradicted with some passage in the reference, answer 'Contradiction'.\nIf NO passage entail or contradict with claim, or DOES NOT contain information to verify the claim, answer 'Neutral'. \n\nPlease DO NOT use your own knowledge for the judgement, just compare the reference and the claim to get the answer.\n\n### Reference:\n第五条　存款保险实行限额偿付，最高偿付限额为人民币50万元。中国人民银行会同国务院有关部门可以根据经济发展、存款结构变化、金融风险状况等因素调整最高偿付限额，报国务院批准后公布执行。\n同一存款人在同一家投保机构所有被保险存款账户的存款本金和利息合并计算的资金数额在最高偿付限额以内的，实行全额偿付；超出最高偿付限额的部分，依法从投保机构清算财产中受偿。\n（四）经国务院批准的其他情形。\n存款保险基金管理机构应当依照本条例的规定，在前款规定情形发生之日起7个工作日内足额偿付存款。\n存款保险基金管理机构偿付存款人的被保险存款后，即在偿付金额范围内取得该存款人对投保机构相同清偿顺序的债权。\n社会保险基金、住房公积金存款的偿付办法由中国人民银行会同国务院有关部门另行制定，报国务院批准。\n第十九条　有下列情形之一的，存款人有权要求存款保险基金管理机构在本条例规定的限额内，使用存款保险基金偿付存款人的被保险存款：\n（一）存款保险基金管理机构担任投保机构的接管组织；\n（二）存款保险基金管理机构实施被撤销投保机构的清算；\n（三）人民法院裁定受理对投保机构的破产申请；\n（四）经国务院批准的其他情形。\n\n### Claim:\n存款保险的最高赔付限额为人民币50万元。\n\nYour answer should always be only a single word in ['Entailment', 'Neutral', 'Contradiction']. DO NOT add explanations or you own reasoning to the output.\n"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 2048,
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "upstream_max_new_tokens": 10,
+  "reserved_cny": "0.021868",
+  "actual_estimated_cny": "0.00041224",
+  "response_text": "{\"id\":\"62da31b3-072a-4431-a773-8b0b7ae63923\",\"object\":\"chat.completion\",\"created\":1793378746,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Entailment\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":445,\"completion_tokens\":3,\"total_tokens\":448,\"prompt_tokens_details\":{\"cached_tokens\":256},\"prompt_cache_hit_tokens\":256,\"prompt_cache_miss_tokens\":189},\"system_fingerprint\":\"bc19ba97cbe016479903222bb1578db6\"}",
+  "response": {
+    "id": "62da31b3-072a-4431-a773-8b0b7ae63923",
+    "object": "chat.completion",
+    "created": 1793378746,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Entailment"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 445,
+      "completion_tokens": 3,
+      "total_tokens": 448,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 189
+    },
+    "system_fingerprint": "bc19ba97cbe016479903222bb1578db6"
+  },
+  "model_text": "Entailment",
+  "interface_error": false,
+  "native_parser": {
+    "return": [
+      [
+        [
+          "Entailment"
+        ]
+      ]
+    ],
+    "exception": null
+  },
+  "outer_results": [
+    {
+      "judgment": "支持",
+      "original_label": "Entailment",
+      "parse_failed": false
+    }
+  ],
+  "status": "parsed",
+  "http_status": 200
+}

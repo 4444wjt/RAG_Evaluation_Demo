@@ -1,0 +1,45 @@
+{
+  "commit": "05099e7365fd734b26aa5737e10d5579033def2b",
+  "files": [
+    {
+      "source": "frontend/src/fixtures/judge-annotation.json",
+      "local": "inputs/judge-annotation.json",
+      "expected_blob": "eea6f758b96b0099fa32232a1697fdadc401b440",
+      "actual_blob": "eea6f758b96b0099fa32232a1697fdadc401b440",
+      "sha256": "b976e33a223f4b79f9debce463d5325b960cf4befad763f63f40643935094a4e",
+      "bytes": 50409
+    },
+    {
+      "source": "docs/competition/judge-calibration/20261021-annotation-AB/annotation-A.json",
+      "local": "inputs/annotation-A.json",
+      "expected_blob": "39b17df9ab8fbb8265e23d3ba5da49b926fcdca6",
+      "actual_blob": "39b17df9ab8fbb8265e23d3ba5da49b926fcdca6",
+      "sha256": "6b0a6d273f0432426eecbfe48e4b4a8c859d6fadaefd8a2905a18a52a64a64d7",
+      "bytes": 2610
+    },
+    {
+      "source": "docs/competition/judge-calibration/20261021-annotation-AB/annotation-B.json",
+      "local": "inputs/annotation-B.json",
+      "expected_blob": "860c6051f9cc0b86621f5c27cd12c8f52c5ea0dc",
+      "actual_blob": "860c6051f9cc0b86621f5c27cd12c8f52c5ea0dc",
+      "sha256": "2b719ba6aeee02c199a05da8a5091a73f6f0b1fcd418ede099a701b6996e3650",
+      "bytes": 2538
+    },
+    {
+      "source": "docs/competition/judge-calibration/20261021-annotation-AB/analysis.json",
+      "local": "inputs/analysis.json",
+      "expected_blob": "55435ed260f413934bd27903ae968af514d2a0c0",
+      "actual_blob": "55435ed260f413934bd27903ae968af514d2a0c0",
+      "sha256": "e332ebd780358874d5b8e1d11f35c37bf61433ba78586f3a46d5778dd52bbdcd",
+      "bytes": 23567
+    },
+    {
+      "source": "backend/adapters/ragas_compat.py",
+      "local": "inputs/ragas_compat.py",
+      "expected_blob": "e476246487e0be72ae7f5284d61a6c5efbfc112c",
+      "actual_blob": "e476246487e0be72ae7f5284d61a6c5efbfc112c",
+      "sha256": "22f47511eff6981ce8d417a095202de12e2c62c5ae516600d3693e9be0074647",
+      "bytes": 3068
+    }
+  ]
+}

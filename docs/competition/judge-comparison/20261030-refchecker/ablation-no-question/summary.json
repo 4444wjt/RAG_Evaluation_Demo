@@ -1,0 +1,3634 @@
+{
+  "decision": "不确定",
+  "hypothesis_evaluated": true,
+  "sentinel_gate": {
+    "checked_first": true,
+    "entailment_required": 9,
+    "passed": true,
+    "non_entailment_request_ids": [],
+    "rows": [
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S1-S02",
+        "arm": "S",
+        "round": 1,
+        "statement_id": "S02",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 589,
+          "completion_tokens": 3,
+          "total_tokens": 592,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 205
+        },
+        "raw_path": "raw/S1-S02.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S1-S05",
+        "arm": "S",
+        "round": 1,
+        "statement_id": "S05",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 580,
+          "completion_tokens": 3,
+          "total_tokens": 583,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 196
+        },
+        "raw_path": "raw/S1-S05.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S1-S06",
+        "arm": "S",
+        "round": 1,
+        "statement_id": "S06",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 588,
+          "completion_tokens": 3,
+          "total_tokens": 591,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 204
+        },
+        "raw_path": "raw/S1-S06.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S2-S02",
+        "arm": "S",
+        "round": 2,
+        "statement_id": "S02",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 589,
+          "completion_tokens": 3,
+          "total_tokens": 592,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 205
+        },
+        "raw_path": "raw/S2-S02.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S2-S05",
+        "arm": "S",
+        "round": 2,
+        "statement_id": "S05",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 580,
+          "completion_tokens": 3,
+          "total_tokens": 583,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 196
+        },
+        "raw_path": "raw/S2-S05.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S2-S06",
+        "arm": "S",
+        "round": 2,
+        "statement_id": "S06",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 588,
+          "completion_tokens": 3,
+          "total_tokens": 591,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 204
+        },
+        "raw_path": "raw/S2-S06.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S3-S02",
+        "arm": "S",
+        "round": 3,
+        "statement_id": "S02",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 589,
+          "completion_tokens": 3,
+          "total_tokens": 592,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 205
+        },
+        "raw_path": "raw/S3-S02.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S3-S05",
+        "arm": "S",
+        "round": 3,
+        "statement_id": "S05",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 580,
+          "completion_tokens": 3,
+          "total_tokens": 583,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 196
+        },
+        "raw_path": "raw/S3-S05.json"
+      },
+      {
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false,
+        "request_id": "S3-S06",
+        "arm": "S",
+        "round": 3,
+        "statement_id": "S06",
+        "interface_error": false,
+        "model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 588,
+          "completion_tokens": 3,
+          "total_tokens": 591,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 204
+        },
+        "raw_path": "raw/S3-S06.json"
+      }
+    ]
+  },
+  "hypothesis_targets": [
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq01-002",
+      "arm": "Bq0",
+      "round": 1,
+      "statement_id": "S02",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 296
+      },
+      "raw_path": "raw/Bq01-002.json"
+    },
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq01-005",
+      "arm": "Bq0",
+      "round": 1,
+      "statement_id": "S05",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 287
+      },
+      "raw_path": "raw/Bq01-005.json"
+    },
+    {
+      "judgment": "支持",
+      "original_label": "Entailment",
+      "parse_failed": false,
+      "request_id": "Bq01-006",
+      "arm": "Bq0",
+      "round": 1,
+      "statement_id": "S06",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 295
+      },
+      "raw_path": "raw/Bq01-006.json"
+    },
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq02-002",
+      "arm": "Bq0",
+      "round": 2,
+      "statement_id": "S02",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 168
+      },
+      "raw_path": "raw/Bq02-002.json"
+    },
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq02-005",
+      "arm": "Bq0",
+      "round": 2,
+      "statement_id": "S05",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 159
+      },
+      "raw_path": "raw/Bq02-005.json"
+    },
+    {
+      "judgment": "支持",
+      "original_label": "Entailment",
+      "parse_failed": false,
+      "request_id": "Bq02-006",
+      "arm": "Bq0",
+      "round": 2,
+      "statement_id": "S06",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 167
+      },
+      "raw_path": "raw/Bq02-006.json"
+    },
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq03-002",
+      "arm": "Bq0",
+      "round": 3,
+      "statement_id": "S02",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 168
+      },
+      "raw_path": "raw/Bq03-002.json"
+    },
+    {
+      "judgment": "不支持",
+      "original_label": "Neutral",
+      "parse_failed": false,
+      "request_id": "Bq03-005",
+      "arm": "Bq0",
+      "round": 3,
+      "statement_id": "S05",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 159
+      },
+      "raw_path": "raw/Bq03-005.json"
+    },
+    {
+      "judgment": "支持",
+      "original_label": "Entailment",
+      "parse_failed": false,
+      "request_id": "Bq03-006",
+      "arm": "Bq0",
+      "round": 3,
+      "statement_id": "S06",
+      "interface_error": false,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 167
+      },
+      "raw_path": "raw/Bq03-006.json"
+    }
+  ],
+  "reference": {
+    "resolved": 46,
+    "supported": 40,
+    "unsupported": 6,
+    "unresolved_ids": [
+      "S12",
+      "S14",
+      "S16",
+      "S18",
+      "S26",
+      "S35"
+    ]
+  },
+  "request_count": 165,
+  "Bq0_request_count": 156,
+  "sentinel_request_count": 9,
+  "Bq0_runs": [
+    {
+      "round": 1,
+      "agree": 45,
+      "denominator": 46,
+      "supported_hits": 40,
+      "supported_denominator": 40,
+      "unsupported_hits": 5,
+      "unsupported_denominator": 6,
+      "parse_failures": 0,
+      "interface_errors": 0,
+      "no_result": 0,
+      "no_result_on_resolved": 0
+    },
+    {
+      "round": 2,
+      "agree": 44,
+      "denominator": 46,
+      "supported_hits": 39,
+      "supported_denominator": 40,
+      "unsupported_hits": 5,
+      "unsupported_denominator": 6,
+      "parse_failures": 0,
+      "interface_errors": 0,
+      "no_result": 0,
+      "no_result_on_resolved": 0
+    },
+    {
+      "round": 3,
+      "agree": 44,
+      "denominator": 46,
+      "supported_hits": 39,
+      "supported_denominator": 40,
+      "unsupported_hits": 5,
+      "unsupported_denominator": 6,
+      "parse_failures": 0,
+      "interface_errors": 0,
+      "no_result": 0,
+      "no_result_on_resolved": 0
+    }
+  ],
+  "binary_flip_count": 1,
+  "binary_flip_ids": [
+    "S08"
+  ],
+  "any_no_result_count": 0,
+  "any_no_result_ids": [],
+  "all_state_change_count": 1,
+  "all_state_change_ids": [
+    "S08"
+  ],
+  "flip_definition": "52条中三轮同时出现支持和不支持的陈述数；无结果不归入任一类，另列状态变化与缺失。",
+  "unresolved": {
+    "S12": [
+      {
+        "round": 1,
+        "judgment": "不支持",
+        "original_label": "Neutral",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "不支持",
+        "original_label": "Neutral",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "不支持",
+        "original_label": "Neutral",
+        "parse_failed": false
+      }
+    ],
+    "S14": [
+      {
+        "round": 1,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      }
+    ],
+    "S16": [
+      {
+        "round": 1,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      }
+    ],
+    "S18": [
+      {
+        "round": 1,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      }
+    ],
+    "S26": [
+      {
+        "round": 1,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      }
+    ],
+    "S35": [
+      {
+        "round": 1,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 2,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      },
+      {
+        "round": 3,
+        "judgment": "支持",
+        "original_label": "Entailment",
+        "parse_failed": false
+      }
+    ]
+  },
+  "parse_failures": {
+    "Bq0": 0,
+    "sentinel": 0
+  },
+  "interface_errors": {
+    "Bq0": 0,
+    "sentinel": 0
+  },
+  "returned_models": [
+    "deepseek-flash"
+  ],
+  "missing_model_request_count": 0,
+  "usage_total": {
+    "prompt_tokens": 83547,
+    "completion_tokens": 475,
+    "prompt_cache_hit_tokens": 45176
+  },
+  "estimated_total_cny": "0.08234904",
+  "known_usage_estimated_cny": "0.08234904",
+  "unknown_cost_request_count": 0,
+  "requests": [
+    {
+      "request_id": "Bq01-001",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 555,
+        "completion_tokens": 3,
+        "total_tokens": 558,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 555
+      },
+      "estimated_cny": "0.00113400",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-002",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 296
+      },
+      "estimated_cny": "0.00061824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-003",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 546,
+        "completion_tokens": 3,
+        "total_tokens": 549,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 290
+      },
+      "estimated_cny": "0.00061424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-004",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 545,
+        "completion_tokens": 3,
+        "total_tokens": 548,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 289
+      },
+      "estimated_cny": "0.00061224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-005",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 287
+      },
+      "estimated_cny": "0.00060024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-006",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 295
+      },
+      "estimated_cny": "0.00062424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-007",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 445,
+        "completion_tokens": 3,
+        "total_tokens": 448,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 445
+      },
+      "estimated_cny": "0.00091400",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-008",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 471,
+        "completion_tokens": 3,
+        "total_tokens": 474,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 471
+      },
+      "estimated_cny": "0.00096600",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-009",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 469,
+        "completion_tokens": 3,
+        "total_tokens": 472,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 213
+      },
+      "estimated_cny": "0.00046024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-010",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 470,
+        "completion_tokens": 3,
+        "total_tokens": 473,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 214
+      },
+      "estimated_cny": "0.00046224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-011",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 467,
+        "completion_tokens": 3,
+        "total_tokens": 470,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 211
+      },
+      "estimated_cny": "0.00045624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-012",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 465,
+        "completion_tokens": 2,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 465
+      },
+      "estimated_cny": "0.00094600",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-013",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 532,
+        "completion_tokens": 3,
+        "total_tokens": 535,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 532
+      },
+      "estimated_cny": "0.00108800",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-014",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 515,
+        "completion_tokens": 3,
+        "total_tokens": 518,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 259
+      },
+      "estimated_cny": "0.00055224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-015",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 517,
+        "completion_tokens": 3,
+        "total_tokens": 520,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 261
+      },
+      "estimated_cny": "0.00055624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-016",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 521,
+        "completion_tokens": 3,
+        "total_tokens": 524,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 265
+      },
+      "estimated_cny": "0.00056424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-017",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 2,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 381
+      },
+      "estimated_cny": "0.00078312",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-018",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 449,
+        "completion_tokens": 3,
+        "total_tokens": 452,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 449
+      },
+      "estimated_cny": "0.00092200",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-019",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 458,
+        "completion_tokens": 3,
+        "total_tokens": 461,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 202
+      },
+      "estimated_cny": "0.00043824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-020",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 534,
+        "completion_tokens": 2,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 534
+      },
+      "estimated_cny": "0.00108400",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-021",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 368
+      },
+      "estimated_cny": "0.00076512",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-022",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 501,
+        "completion_tokens": 3,
+        "total_tokens": 504,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 245
+      },
+      "estimated_cny": "0.00052424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-023",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 502,
+        "completion_tokens": 3,
+        "total_tokens": 505,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 246
+      },
+      "estimated_cny": "0.00052624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-024",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 447,
+        "completion_tokens": 3,
+        "total_tokens": 450,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 447
+      },
+      "estimated_cny": "0.00091800",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-025",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 3,
+        "total_tokens": 433,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 302
+      },
+      "estimated_cny": "0.00063312",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-026",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 434,
+        "completion_tokens": 3,
+        "total_tokens": 437,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 434
+      },
+      "estimated_cny": "0.00089200",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-027",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 3,
+        "total_tokens": 423,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 292
+      },
+      "estimated_cny": "0.00061312",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-028",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 464,
+        "completion_tokens": 3,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 464
+      },
+      "estimated_cny": "0.00095200",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-029",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 453,
+        "completion_tokens": 3,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 197
+      },
+      "estimated_cny": "0.00042824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-030",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-031",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-032",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 509
+      },
+      "estimated_cny": "0.00104200",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-033",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 508,
+        "completion_tokens": 3,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 252
+      },
+      "estimated_cny": "0.00053824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-034",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00054024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-035",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 537,
+        "completion_tokens": 3,
+        "total_tokens": 540,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 537
+      },
+      "estimated_cny": "0.00109800",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-036",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 285
+      },
+      "estimated_cny": "0.00060424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-037",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 285
+      },
+      "estimated_cny": "0.00060424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-038",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 279
+      },
+      "estimated_cny": "0.00059224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-039",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 368
+      },
+      "estimated_cny": "0.00076512",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-040",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-041",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 520,
+        "completion_tokens": 3,
+        "total_tokens": 523,
+        "prompt_tokens_details": {
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 392
+      },
+      "estimated_cny": "0.00081312",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-042",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 519,
+        "completion_tokens": 3,
+        "total_tokens": 522,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 263
+      },
+      "estimated_cny": "0.00056024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-043",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 524,
+        "completion_tokens": 3,
+        "total_tokens": 527,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 268
+      },
+      "estimated_cny": "0.00057024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-044",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 267
+      },
+      "estimated_cny": "0.00056824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-045",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 267
+      },
+      "estimated_cny": "0.00056824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-046",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 436,
+        "completion_tokens": 2,
+        "total_tokens": 438,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 436
+      },
+      "estimated_cny": "0.00088800",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-047",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 540,
+        "completion_tokens": 3,
+        "total_tokens": 543,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 540
+      },
+      "estimated_cny": "0.00110400",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-048",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 285
+      },
+      "estimated_cny": "0.00060424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-049",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 522,
+        "completion_tokens": 3,
+        "total_tokens": 525,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 522
+      },
+      "estimated_cny": "0.00106800",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-050",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 3,
+        "total_tokens": 528,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 269
+      },
+      "estimated_cny": "0.00057224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-051",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 3,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 533
+      },
+      "estimated_cny": "0.00109000",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq01-052",
+      "arm": "Bq0",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 279
+      },
+      "estimated_cny": "0.00059224",
+      "interface_error": false
+    },
+    {
+      "request_id": "S1-S02",
+      "arm": "S",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 589,
+        "completion_tokens": 3,
+        "total_tokens": 592,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 205
+      },
+      "estimated_cny": "0.00044936",
+      "interface_error": false
+    },
+    {
+      "request_id": "S1-S05",
+      "arm": "S",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 580,
+        "completion_tokens": 3,
+        "total_tokens": 583,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 196
+      },
+      "estimated_cny": "0.00043136",
+      "interface_error": false
+    },
+    {
+      "request_id": "S1-S06",
+      "arm": "S",
+      "round": 1,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 3,
+        "total_tokens": 591,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 204
+      },
+      "estimated_cny": "0.00044736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-001",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 555,
+        "completion_tokens": 3,
+        "total_tokens": 558,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 171
+      },
+      "estimated_cny": "0.00038136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-002",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 168
+      },
+      "estimated_cny": "0.00036736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-003",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 546,
+        "completion_tokens": 3,
+        "total_tokens": 549,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 162
+      },
+      "estimated_cny": "0.00036336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-004",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 545,
+        "completion_tokens": 3,
+        "total_tokens": 548,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 161
+      },
+      "estimated_cny": "0.00036136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-005",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 159
+      },
+      "estimated_cny": "0.00034936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-006",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 167
+      },
+      "estimated_cny": "0.00037336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-007",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 445,
+        "completion_tokens": 3,
+        "total_tokens": 448,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 189
+      },
+      "estimated_cny": "0.00041224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-008",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 471,
+        "completion_tokens": 2,
+        "total_tokens": 473,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 215
+      },
+      "estimated_cny": "0.00045624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-009",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 469,
+        "completion_tokens": 3,
+        "total_tokens": 472,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 213
+      },
+      "estimated_cny": "0.00046024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-010",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 470,
+        "completion_tokens": 3,
+        "total_tokens": 473,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 214
+      },
+      "estimated_cny": "0.00046224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-011",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 467,
+        "completion_tokens": 3,
+        "total_tokens": 470,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 211
+      },
+      "estimated_cny": "0.00045624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-012",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 465,
+        "completion_tokens": 2,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 209
+      },
+      "estimated_cny": "0.00044424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-013",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 532,
+        "completion_tokens": 3,
+        "total_tokens": 535,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 148
+      },
+      "estimated_cny": "0.00033536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-014",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 515,
+        "completion_tokens": 3,
+        "total_tokens": 518,
+        "prompt_tokens_details": {
+          "cached_tokens": 381
+        },
+        "prompt_cache_hit_tokens": 381,
+        "prompt_cache_miss_tokens": 134
+      },
+      "estimated_cny": "0.00030724",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-015",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 517,
+        "completion_tokens": 3,
+        "total_tokens": 520,
+        "prompt_tokens_details": {
+          "cached_tokens": 383
+        },
+        "prompt_cache_hit_tokens": 383,
+        "prompt_cache_miss_tokens": 134
+      },
+      "estimated_cny": "0.00030732",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-016",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 521,
+        "completion_tokens": 3,
+        "total_tokens": 524,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 137
+      },
+      "estimated_cny": "0.00031336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-017",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 2,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00053224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-018",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 449,
+        "completion_tokens": 3,
+        "total_tokens": 452,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 193
+      },
+      "estimated_cny": "0.00042024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-019",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 458,
+        "completion_tokens": 3,
+        "total_tokens": 461,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 202
+      },
+      "estimated_cny": "0.00043824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-020",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 534,
+        "completion_tokens": 2,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 150
+      },
+      "estimated_cny": "0.00033136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-021",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-022",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 501,
+        "completion_tokens": 3,
+        "total_tokens": 504,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 245
+      },
+      "estimated_cny": "0.00052424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-023",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 502,
+        "completion_tokens": 3,
+        "total_tokens": 505,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 246
+      },
+      "estimated_cny": "0.00052624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-024",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 447,
+        "completion_tokens": 3,
+        "total_tokens": 450,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 191
+      },
+      "estimated_cny": "0.00041624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-025",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 3,
+        "total_tokens": 433,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 174
+      },
+      "estimated_cny": "0.00038224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-026",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 434,
+        "completion_tokens": 3,
+        "total_tokens": 437,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 178
+      },
+      "estimated_cny": "0.00039024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-027",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 3,
+        "total_tokens": 423,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "estimated_cny": "0.00036224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-028",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 464,
+        "completion_tokens": 3,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 208
+      },
+      "estimated_cny": "0.00045024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-029",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 453,
+        "completion_tokens": 3,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 197
+      },
+      "estimated_cny": "0.00042824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-030",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-031",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-032",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00054024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-033",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 508,
+        "completion_tokens": 3,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 252
+      },
+      "estimated_cny": "0.00053824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-034",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00054024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-035",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 537,
+        "completion_tokens": 3,
+        "total_tokens": 540,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 153
+      },
+      "estimated_cny": "0.00034536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-036",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-037",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-038",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 151
+      },
+      "estimated_cny": "0.00034136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-039",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-040",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-041",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 520,
+        "completion_tokens": 3,
+        "total_tokens": 523,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 136
+      },
+      "estimated_cny": "0.00031136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-042",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 519,
+        "completion_tokens": 3,
+        "total_tokens": 522,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 135
+      },
+      "estimated_cny": "0.00030936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-043",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 524,
+        "completion_tokens": 3,
+        "total_tokens": 527,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 140
+      },
+      "estimated_cny": "0.00031936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-044",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 139
+      },
+      "estimated_cny": "0.00031736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-045",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 139
+      },
+      "estimated_cny": "0.00031736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-046",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 436,
+        "completion_tokens": 2,
+        "total_tokens": 438,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 180
+      },
+      "estimated_cny": "0.00038624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-047",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 540,
+        "completion_tokens": 3,
+        "total_tokens": 543,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 156
+      },
+      "estimated_cny": "0.00035136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-048",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-049",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 522,
+        "completion_tokens": 3,
+        "total_tokens": 525,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 138
+      },
+      "estimated_cny": "0.00031536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-050",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 3,
+        "total_tokens": 528,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 141
+      },
+      "estimated_cny": "0.00032136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-051",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 3,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 149
+      },
+      "estimated_cny": "0.00033736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq02-052",
+      "arm": "Bq0",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 151
+      },
+      "estimated_cny": "0.00034136",
+      "interface_error": false
+    },
+    {
+      "request_id": "S2-S02",
+      "arm": "S",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 589,
+        "completion_tokens": 3,
+        "total_tokens": 592,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 205
+      },
+      "estimated_cny": "0.00044936",
+      "interface_error": false
+    },
+    {
+      "request_id": "S2-S05",
+      "arm": "S",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 580,
+        "completion_tokens": 3,
+        "total_tokens": 583,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 196
+      },
+      "estimated_cny": "0.00043136",
+      "interface_error": false
+    },
+    {
+      "request_id": "S2-S06",
+      "arm": "S",
+      "round": 2,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 3,
+        "total_tokens": 591,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 204
+      },
+      "estimated_cny": "0.00044736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-001",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 555,
+        "completion_tokens": 3,
+        "total_tokens": 558,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 171
+      },
+      "estimated_cny": "0.00038136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-002",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 552,
+        "completion_tokens": 2,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 168
+      },
+      "estimated_cny": "0.00036736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-003",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 546,
+        "completion_tokens": 3,
+        "total_tokens": 549,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 162
+      },
+      "estimated_cny": "0.00036336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-004",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 545,
+        "completion_tokens": 3,
+        "total_tokens": 548,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 161
+      },
+      "estimated_cny": "0.00036136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-005",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 543,
+        "completion_tokens": 2,
+        "total_tokens": 545,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 159
+      },
+      "estimated_cny": "0.00034936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-006",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 551,
+        "completion_tokens": 3,
+        "total_tokens": 554,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 167
+      },
+      "estimated_cny": "0.00037336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-007",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 445,
+        "completion_tokens": 3,
+        "total_tokens": 448,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 189
+      },
+      "estimated_cny": "0.00041224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-008",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 471,
+        "completion_tokens": 2,
+        "total_tokens": 473,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 215
+      },
+      "estimated_cny": "0.00045624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-009",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 469,
+        "completion_tokens": 3,
+        "total_tokens": 472,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 213
+      },
+      "estimated_cny": "0.00046024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-010",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 470,
+        "completion_tokens": 3,
+        "total_tokens": 473,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 214
+      },
+      "estimated_cny": "0.00046224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-011",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 467,
+        "completion_tokens": 3,
+        "total_tokens": 470,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 211
+      },
+      "estimated_cny": "0.00045624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-012",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 465,
+        "completion_tokens": 2,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 209
+      },
+      "estimated_cny": "0.00044424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-013",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 532,
+        "completion_tokens": 3,
+        "total_tokens": 535,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 148
+      },
+      "estimated_cny": "0.00033536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-014",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 515,
+        "completion_tokens": 3,
+        "total_tokens": 518,
+        "prompt_tokens_details": {
+          "cached_tokens": 381
+        },
+        "prompt_cache_hit_tokens": 381,
+        "prompt_cache_miss_tokens": 134
+      },
+      "estimated_cny": "0.00030724",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-015",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 517,
+        "completion_tokens": 3,
+        "total_tokens": 520,
+        "prompt_tokens_details": {
+          "cached_tokens": 383
+        },
+        "prompt_cache_hit_tokens": 383,
+        "prompt_cache_miss_tokens": 134
+      },
+      "estimated_cny": "0.00030732",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-016",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 521,
+        "completion_tokens": 3,
+        "total_tokens": 524,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 137
+      },
+      "estimated_cny": "0.00031336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-017",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 2,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00053224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-018",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 449,
+        "completion_tokens": 3,
+        "total_tokens": 452,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 193
+      },
+      "estimated_cny": "0.00042024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-019",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 458,
+        "completion_tokens": 3,
+        "total_tokens": 461,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 202
+      },
+      "estimated_cny": "0.00043824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-020",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 534,
+        "completion_tokens": 2,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 150
+      },
+      "estimated_cny": "0.00033136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-021",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-022",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 501,
+        "completion_tokens": 3,
+        "total_tokens": 504,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 245
+      },
+      "estimated_cny": "0.00052424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-023",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 502,
+        "completion_tokens": 3,
+        "total_tokens": 505,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 246
+      },
+      "estimated_cny": "0.00052624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-024",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 447,
+        "completion_tokens": 3,
+        "total_tokens": 450,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 191
+      },
+      "estimated_cny": "0.00041624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-025",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 3,
+        "total_tokens": 433,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 174
+      },
+      "estimated_cny": "0.00038224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-026",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 434,
+        "completion_tokens": 3,
+        "total_tokens": 437,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 178
+      },
+      "estimated_cny": "0.00039024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-027",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 3,
+        "total_tokens": 423,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 164
+      },
+      "estimated_cny": "0.00036224",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-028",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 464,
+        "completion_tokens": 3,
+        "total_tokens": 467,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 208
+      },
+      "estimated_cny": "0.00045024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-029",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 453,
+        "completion_tokens": 3,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 197
+      },
+      "estimated_cny": "0.00042824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-030",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-031",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 459,
+        "completion_tokens": 3,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 203
+      },
+      "estimated_cny": "0.00044024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-032",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00054024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-033",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 508,
+        "completion_tokens": 3,
+        "total_tokens": 511,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 252
+      },
+      "estimated_cny": "0.00053824",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-034",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 509,
+        "completion_tokens": 3,
+        "total_tokens": 512,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 253
+      },
+      "estimated_cny": "0.00054024",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-035",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 537,
+        "completion_tokens": 3,
+        "total_tokens": 540,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 153
+      },
+      "estimated_cny": "0.00034536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-036",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-037",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-038",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 151
+      },
+      "estimated_cny": "0.00034136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-039",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-040",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 496,
+        "completion_tokens": 3,
+        "total_tokens": 499,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 240
+      },
+      "estimated_cny": "0.00051424",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-041",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 520,
+        "completion_tokens": 3,
+        "total_tokens": 523,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 136
+      },
+      "estimated_cny": "0.00031136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-042",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 519,
+        "completion_tokens": 3,
+        "total_tokens": 522,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 135
+      },
+      "estimated_cny": "0.00030936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-043",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 524,
+        "completion_tokens": 3,
+        "total_tokens": 527,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 140
+      },
+      "estimated_cny": "0.00031936",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-044",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 139
+      },
+      "estimated_cny": "0.00031736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-045",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 523,
+        "completion_tokens": 3,
+        "total_tokens": 526,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 139
+      },
+      "estimated_cny": "0.00031736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-046",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 436,
+        "completion_tokens": 2,
+        "total_tokens": 438,
+        "prompt_tokens_details": {
+          "cached_tokens": 256
+        },
+        "prompt_cache_hit_tokens": 256,
+        "prompt_cache_miss_tokens": 180
+      },
+      "estimated_cny": "0.00038624",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-047",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 540,
+        "completion_tokens": 3,
+        "total_tokens": 543,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 156
+      },
+      "estimated_cny": "0.00035136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-048",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 541,
+        "completion_tokens": 3,
+        "total_tokens": 544,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 157
+      },
+      "estimated_cny": "0.00035336",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-049",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 522,
+        "completion_tokens": 3,
+        "total_tokens": 525,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 138
+      },
+      "estimated_cny": "0.00031536",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-050",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 3,
+        "total_tokens": 528,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 141
+      },
+      "estimated_cny": "0.00032136",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-051",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 533,
+        "completion_tokens": 3,
+        "total_tokens": 536,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 149
+      },
+      "estimated_cny": "0.00033736",
+      "interface_error": false
+    },
+    {
+      "request_id": "Bq03-052",
+      "arm": "Bq0",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 535,
+        "completion_tokens": 3,
+        "total_tokens": 538,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 151
+      },
+      "estimated_cny": "0.00034136",
+      "interface_error": false
+    },
+    {
+      "request_id": "S3-S02",
+      "arm": "S",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 589,
+        "completion_tokens": 3,
+        "total_tokens": 592,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 205
+      },
+      "estimated_cny": "0.00044936",
+      "interface_error": false
+    },
+    {
+      "request_id": "S3-S05",
+      "arm": "S",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 580,
+        "completion_tokens": 3,
+        "total_tokens": 583,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 196
+      },
+      "estimated_cny": "0.00043136",
+      "interface_error": false
+    },
+    {
+      "request_id": "S3-S06",
+      "arm": "S",
+      "round": 3,
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 588,
+        "completion_tokens": 3,
+        "total_tokens": 591,
+        "prompt_tokens_details": {
+          "cached_tokens": 384
+        },
+        "prompt_cache_hit_tokens": 384,
+        "prompt_cache_miss_tokens": 204
+      },
+      "estimated_cny": "0.00044736",
+      "interface_error": false
+    }
+  ],
+  "scope": "仅适用于RefChecker整句核查器的去题面对照；三个目标陈述来自同一道题，非独立样本，最多E级。",
+  "interpretation": "支持假设也只说明这3条去题面后改判；其他陈述的变化仅描述，不比较Bq0与A，不改写主实验无可证优势结论。",
+  "parent_integrity": {
+    "checked": 237,
+    "passed": 237,
+    "manifest_sha256": "465ed89cfec7756888031c937735dd6239087009e4068928ce71cfb898a8a0e2"
+  },
+  "input_verification": [
+    {
+      "file": "inputs/judge-annotation.json",
+      "blob": "eea6f758b96b0099fa32232a1697fdadc401b440",
+      "verified": true
+    },
+    {
+      "file": "inputs/annotation-A.json",
+      "blob": "39b17df9ab8fbb8265e23d3ba5da49b926fcdca6",
+      "verified": true
+    },
+    {
+      "file": "inputs/annotation-B.json",
+      "blob": "860c6051f9cc0b86621f5c27cd12c8f52c5ea0dc",
+      "verified": true
+    },
+    {
+      "file": "inputs/analysis.json",
+      "blob": "55435ed260f413934bd27903ae968af514d2a0c0",
+      "verified": true
+    },
+    {
+      "file": "inputs/ragas_compat.py",
+      "blob": "e476246487e0be72ae7f5284d61a6c5efbfc112c",
+      "verified": true
+    }
+  ],
+  "reference_counts": {
+    "resolved": 46,
+    "supported": 40,
+    "unsupported": 6,
+    "unresolved": 6
+  },
+  "settled_estimated_cny": "0.08234904",
+  "unsettled_reserved_cny": "0"
+}
