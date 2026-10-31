@@ -10,7 +10,7 @@
 
 | 范围 | 已核实状态与边界 |
 |---|---|
-| 公开 master 基线 | 2026-10-31 核对 Gitee 与 GitHub master 均为 `6215c398`；本轮 Scorecard 与 CLI 发布配置候选基于该提交，尚未暂存、提交或推送，远程 CI 按精确提交另核。 |
+| 本轮发布配置基线 | 2026-10-31 配置提交 `9bf8b3b` 已同步 Gitee 与 GitHub master；该提交的 CI、Pages、CodeQL 均成功，CLI 0.1.0 已发布 PyPI，运行记录见文末。 |
 | 外部使用记录 | O 的 [10-27 远程操作](competition/external-repro-20261027/README.md)公开件已原字节同步到 master；本轮新增 [10-29 本人电脑验收与反馈](competition/external-use-20261029/README.md)，同一人、1 项自选法规规则验收、3 条构造陈述与 3 次请求，原退出码 0/0/1。 |
 | 本地共享开发目录 | 2026-10-29 实查本地 master/next 仍为 `936f3a9`，公开更新此前从独立工作区提交；共享目录的未提交研究与候选不能整批视为发布范围。 |
 | 历史 r5 四步导览发布 | 2026-10-29 基于远端 `74cd36c`，精确纳入 r5 的 16 个产品／工具／测试文件并部署公开演示站。当轮标准环境前端 339/339、Python 专项 23/23、只读生产构建及公网 13 项功能检查通过；远程 CI 单独核验。 |
@@ -29,7 +29,7 @@ git ls-remote github refs/heads/master refs/heads/next
 
 ## 规模
 
-- Scorecard 配置候选的本地验收（2026-10-31，`6215c398` 的 LF 独立副本）：Python **1875 收集 / 1774 通过 / 101 本地材料跳过 / 0 失败或错误**，耗时 691.39 秒；原断言与跳过规则未改，不代表候选已运行远程 CI。
+- Scorecard 配置候选的本地验收（2026-10-31，`6215c398` 的 LF 独立副本）：Python **1875 收集 / 1774 通过 / 101 本地材料跳过 / 0 失败或错误**，耗时 691.39 秒；原断言与跳过规则未改，远程 CI 结果另列于文末。
 - 引用版本检查发布的本地验收（2026-10-29，详见文末）：Python **1873 收集 / 1772 通过 / 101 跳过 / 0 失败或错误**，前端 **378/378**。这是干净发布副本的本地验收，远程 CI 按最终提交核对。
 - 历史远程 CI（`5cdfea1`，2026-10-26）：1750 收集，1649 通过、101 本地材料跳过、0 失败/错误；frontend 324 项通过。
 - 历史 Python 早期提交基线：**52 个 `test_*.py` 文件 / 1140 个用例**（`venv\Scripts\python.exe -m pytest tests -q`）
@@ -159,8 +159,11 @@ git ls-remote github refs/heads/master refs/heads/next
 
 - 调整中文 README 的接入说明与实测内容位置，保留实验数据、来源和操作条件。
 
-### Scorecard 与 CLI 发布准备（2026-10-31）
+### Scorecard 与 CLI 发布（2026-10-31）
 
-- 本地候选将四份既有 workflow 与根 Action 的 15 处引用钉到实查 SHA，沿用现有每周 Dependabot；新增 CLI 构建、仓库外安装自检及 OIDC 发布工作流。手动默认只构建，新 `cli-v*` 标签会触发发布，启用前须作者授权并配置 PyPI 与 GitHub 环境。
-- 零依赖法条诊断 CLI 0.1.0 的 wheel/sdist 构建、隔离安装、help 与构造示例均通过；没有上传 PyPI。已有 `cli-v0.1.0` GitHub Release 保留，平台安装范围不扩张。
-- 首轮 Windows 检出的 LF→CRLF 差异导致来源哈希检查失败；保留原失败，在命令级关闭自动换行的新副本完成上述全量复验，未改全局配置、测试、依赖或冻结归档。当前远端 Scorecard 仍为 4.8，尚无本轮远端增分。
+- `9bf8b3b` 已推送至 Gitee 与 GitHub master：四份既有 workflow 与根 Action 的 15 处引用钉到实查 SHA，沿用现有每周 Dependabot；新增 CLI 构建、仓库外安装自检及 OIDC 发布工作流。手动运行默认只构建，在 master 上勾选 `publish` 才发布（0.1.0 即由此发出），新 `cli-v*` 标签也会触发发布；PyPI Trusted Publisher 与 GitHub `pypi` 环境已配置。
+- 该提交的 [CI 41177579422](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177579422) 三个 job 成功：Python **1875 收集 / 1772 通过 / 103 跳过 / 0 失败或错误**，其中 101 项依赖本地材料，2 项固定提交字节检查因浅克隆缺少历史提交而跳过；前端 **378 通过 / 20 个测试文件**。正式 25 题门禁真实 **FAIL（0.7375 < 0.8）**保留。[Pages 41177579538](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177579538)、[CodeQL 41177579488](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177579488) 与 [mutation 41177579511](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177579511) 均成功。
+- 零依赖法条诊断 CLI [0.1.0 已发布 PyPI](https://pypi.org/project/veriscope/0.1.0/)：[仅构建运行 41177598855](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177598855) 成功且跳过发布，[正式发布运行 41177996798](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177996798) 的 build、publish 均成功，精确源码提交为 `9bf8b3b`。仓库外全新环境从官方 PyPI 安装后，`pip check` 与 help 退出 0，构造示例退出 1 且 JSON 有效；没有第三方运行依赖。
+- 本次 PyPI wheel 为 23968 字节／SHA-256 `d69139563326b651381a248341fb115fcbf6871e7323a49d3047143648654a3c`，sdist 为 21697 字节／SHA-256 `941c0a1c1d4d98e38a6d9c4c87850506bb7b546d0281e86e5c01fc3f07617ce6`；文件名、大小与 SHA-256 均匹配上述发布运行产物。10-29 的 `cli-v0.1.0` GitHub Release 旧构建及归档保持原样，CLI 与主项目 v1.2.0 分开编号。
+- 配置发布后的首次、PyPI 发布前 [Scorecard 41177579428](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41177579428) 总分由 4.8 到 5.0，Pinned-Dependencies 由 2 到 4；该次运行的 Packaging 为 -1。
+- 首轮 Windows 检出的 LF→CRLF 差异导致来源哈希检查失败；原失败保留，在命令级关闭自动换行的新副本完成上述本地全量复验，未改全局配置、测试、依赖或冻结归档。

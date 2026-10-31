@@ -72,13 +72,12 @@ cp .env.example .env && docker compose up -d --build
 **只装法条诊断 CLI（不装整个平台）。** Python 3.11+，零第三方依赖，装完不联网。适合只想要「条号 / 数额期限核对」这一个能力的人：
 
 ```bash
-gh release download cli-v0.1.0 -R 4444wjt/RAG_Evaluation_Demo -p "veriscope-*.whl" -D .
 python -m venv venv-cli
-./venv-cli/bin/python -m pip install --no-index --no-deps ./veriscope-0.1.0-py3-none-any.whl
+./venv-cli/bin/python -m pip install veriscope==0.1.0
 ./venv-cli/bin/veriscope-statute --example --json
 ```
 
-Windows 把路径里的 `venv-cli/bin` 换成 `venv-cli` 下的 `Scripts` 目录即可。没有 `gh` 时，从 [Release 页面](https://github.com/4444wjt/RAG_Evaluation_Demo/releases/tag/cli-v0.1.0) 手动下载同一个 wheel 放到当前目录，其余不变。包版本 0.1.0，与主项目 v1.2.0 分开编号；只含 base/extended 法条诊断，不含 Web 或模型评测，未发布到 PyPI。示例预期退出 1；退出 0 只表示现有规则未检出，退出 2 表示输入无效或待复核。Windows Python 3.11 / 3.12 的本地安装已验证，其它平台尚未验证。
+Windows 把路径里的 `venv-cli/bin` 换成 `venv-cli` 下的 `Scripts` 目录即可。包版本 [0.1.0](https://pypi.org/project/veriscope/0.1.0/)，与主项目 v1.2.0 分开编号；只含 base/extended 法条诊断，不含 Web 或模型评测。[GitHub Release](https://github.com/4444wjt/RAG_Evaluation_Demo/releases/tag/cli-v0.1.0) 也提供可离线安装的 wheel。示例预期退出 1；退出 0 只表示现有规则未检出，退出 2 表示输入无效或待复核。Windows Python 3.11 / 3.12 本地安装及 GitHub Actions Ubuntu / Python 3.11 安装自检已验证。
 
 **在本机分步跑。** 建议 Python 3.11、Node.js 24（24.15.0 及以上，可用 `node --version` 查看）。依赖版本以 `requirements.txt` 和 `frontend/package-lock.json` 为准。
 
