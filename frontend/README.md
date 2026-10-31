@@ -19,6 +19,8 @@ npm run dev
 
 打开 http://127.0.0.1:5173/ 。后端未启动时，可以点击“加载演示”离线查看完整结果，不触发模型调用。
 
+后端不在默认的 `127.0.0.1:8000` 时（例如已在 8000 跑了别的检出版本，又要在旁边预览当前分支），用 `VITE_API_TARGET` 把 dev 代理指过去，无需改代码：`VITE_API_TARGET=http://127.0.0.1:8010 npm run dev`。生产构建的同源代理不受此变量影响。
+
 `/api/health`、`/api/inputs`、`/api/evaluate` 和 `/api/models` 经 Vite 代理移除 `/api` 前缀，分别调用后端 `/health`、`/inputs`、`/evaluate` 与 `/models`。「模型配置」页（`#/lab/models`）登记自有模型，只显示密钥是否已设置；只读站和纯静态站不请求该接口。生产构建的同源代理和只读拦截见 [deploy/](../deploy/README.md)。
 
 ## 页面与数据语义

@@ -489,6 +489,9 @@ describe('citation version navigation', () => {
     const hash = labHash('citation-version', demo);
     expect(parseLabHash(hash)).toEqual({ target: demo ? 'demo' : 'lab', view: 'citation-version' });
   });
+  it.each([false, true])('also parses the knowledge update view with demo=%s', (demo) => {
+    expect(parseLabHash(labHash('knowledge-update', demo))).toEqual({ target: demo ? 'demo' : 'lab', view: 'knowledge-update' });
+  });
   it('opens from a fresh deep-link entry in the preparation navigation group', async () => {
     render(<App entryRequest={{ id: 1, target: 'lab', view: 'citation-version' }}/>);
     expect(await screen.findByRole('heading', { name: '引用版本检查' })).toBeVisible();

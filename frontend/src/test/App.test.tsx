@@ -682,7 +682,7 @@ describe('Verification navigation regression', () => {
     vi.stubGlobal('crypto', webcrypto);
     render(<App/>);
     const nav = screen.getByRole('navigation', { name: '工作区导航' });
-    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '模型配置', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '修复验证', '鲁棒性体检', '盲区体检', '人工标注', '父条资料准备', '引用版本检查']);
+    expect(within(nav).getAllByRole('button').map(button => button.textContent)).toEqual(['评测总览', '评测工作区', '模型配置', '多模型对比', '幻觉分析', '评测报告', '评测验证', '门禁审计', '修复验证', '鲁棒性体检', '盲区体检', '人工标注', '父条资料准备', '引用版本检查', '知识更新']);
     await userEvent.click(within(nav).getByRole('button', { name: '评测验证' }));
     expect(screen.getByText('尚未加载可核验结果')).toBeVisible();
     await userEvent.click(screen.getByRole('button', { name: '加载演示' }));

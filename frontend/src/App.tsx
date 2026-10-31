@@ -20,6 +20,7 @@ import { BlindspotView } from './features/BlindspotView';
 import { AnnotateView } from './features/AnnotateView';
 import { ParentContextView } from './features/ParentContextView';
 import { CitationVersionView } from './features/CitationVersionView';
+import { KnowledgeUpdateView } from './features/KnowledgeUpdateView';
 import { ModelsView } from './features/ModelsView';
 import { fetchModels } from './api/models';
 import type { ModelEntry } from './api/models';
@@ -53,7 +54,8 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
   { id: 'blindspot', label: '盲区体检', icon: 'layers', title: '盲区体检', description: '从发现引用盲区，到补标签处理、核对归档复测，再导出复核记录。' },
   { id: 'annotate', label: '人工标注', icon: 'pen', title: '人工标注', description: '请非作者逐条判断门禁所用的陈述能否由资料推出，用来估计裁判判错的程度。' },
   { id: 'parent-context', label: '父条资料准备', icon: 'folder', title: '父条资料准备', description: '导入原文、段快照、检索命中和绑定声明，把命中段补全为完整父条，复核后在本机下载。不调用模型，不作门禁判定。' },
-  { id: 'citation-version', label: '引用版本检查', icon: 'file', title: '引用版本检查', description: '上传英国官方 CLML XML，按你的日期、地域和语言需求核对版本字段，不判断引文语义或法律适用。' },
+  { id: 'citation-version', label: '引用版本检查', icon: 'file', title: '引用版本检查', description: '上传英国官方 CLML XML，核对版本字段是否满足日期、地域与语言要求。只认原件明示字段：其他格式没有可比对的版本元数据，不在范围内。' },
+  { id: 'knowledge-update', label: '知识更新', icon: 'file', title: '知识更新', description: '比较固定来源版本，定位条目引文，人工修订后复核并下载。不判断语义，不批准发布。' },
 ];
 
 /** Navigation groups: the evaluation itself, the checks on it, then material preparation. The top tabs choose which
@@ -61,7 +63,7 @@ const navigation: { id: DashboardView; label: string; icon: IconName; title: str
 const NAV_GROUPS: { id: string; label: string; tone: 'eval' | 'audit' | 'prep'; views: DashboardView[] }[] = [
   { id: 'nav-group-eval', label: '评测', tone: 'eval', views: ['overview', 'workspace', 'models', 'comparison', 'trace', 'report'] },
   { id: 'nav-group-audit', label: '验证与审计', tone: 'audit', views: ['verification', 'audit', 'fix', 'robustness', 'blindspot', 'annotate'] },
-  { id: 'nav-group-prep', label: '资料准备', tone: 'prep', views: ['parent-context', 'citation-version'] },
+  { id: 'nav-group-prep', label: '资料准备', tone: 'prep', views: ['parent-context', 'citation-version', 'knowledge-update'] },
 ];
 const groupOf = (target: DashboardView) => (NAV_GROUPS.find((group) => group.views.includes(target)) ?? NAV_GROUPS[0]).id;
 
@@ -122,7 +124,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     setReadingTarget(null);
     setView(next);
     if (!onHome || !parseLabHash(window.location.hash)) return;
-    const hash = labHash(next, isDemo);
+    const hash = labHash(next, isDemo, next === 'knowledge-update' ? parseLabHash(window.location.hash)?.step : undefined);
     if (window.location.hash === hash) return;
     window.history.replaceState({ ...window.history.state, labView: view }, '');
     window.history.pushState({ labEntryHandled: true, labView: next }, '', hash);
@@ -287,10 +289,10 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
           {NAV_GROUPS.map((group, index) => <button key={group.id} ref={(element) => { groupTabs.current[index] = element; }} type="button" role="tab" id={`${group.id}-tab`} className={`nav-tab nav-tab--${group.tone}`} aria-selected={index === groupIndex} aria-controls={`${group.id}-panel`} tabIndex={index === groupIndex ? 0 : -1} onClick={() => setNavGroup(group.id)}>{group.label}{index !== groupIndex && group.views.includes(view) && <span className="nav-tab-mark" aria-hidden="true"/>}</button>)}
         </div>
         {STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
-      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}${view === 'citation-version' ? ' cv-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div>{view !== 'citation-version' && <div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div>}</div>
+      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}${view === 'citation-version' ? ' cv-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div>{view !== 'citation-version' && view !== 'knowledge-update' && <div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div>}</div>
         {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
-        {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && resultMeta}
+        {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && view !== 'knowledge-update' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
         {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels} onInspectExample={inspectExample}/>}
         {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
@@ -305,7 +307,8 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         {view === 'annotate' && <AnnotateView/>}
         {view === 'parent-context' && <ParentContextView/>}
         {view === 'citation-version' && <CitationVersionView/>}
-        {run.source === 'demo' && view !== 'workspace' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
+        {view === 'knowledge-update' && <KnowledgeUpdateView/>}
+        {run.source === 'demo' && view !== 'workspace' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && view !== 'knowledge-update' && <details className="demo-provenance"><summary>查看演示数据来源</summary><p>{demo.provenance.description}</p><p>快照仅用于离线展示，加载时未执行模型评测。</p><ul>{demo.provenance.files.map((file) => <li key={file}>{file}</li>)}</ul></details>}
         <footer className="page-footer"><span>鉴真全域 VeriScope AI</span><span>逐句核对 / 证据溯源 / 质量门禁</span></footer>
       </main>
     </div>
