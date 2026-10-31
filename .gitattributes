@@ -812,3 +812,13 @@ docs/competition/external-use-20261029/原件/缔结条约管理办法-source.tx
 
 # 2026-10-30 RefChecker 同条件对照：原始记录按字节受 SHA256SUMS 约束，换行符不统一，整目录不做换行转换。
 /docs/competition/judge-comparison/20261030-refchecker/** -text
+
+# 知识更新：实现文件与示例输入的字节进入 core/cli/http 哈希和 task 指纹，固定为 LF，使各平台检出后的指纹一致。
+backend/core/knowledge_update.py text eol=lf
+backend/api/knowledge_update.py text eol=lf
+scripts/knowledge_update.py text eol=lf
+examples/knowledge_update/task.json text eol=lf
+examples/knowledge_update/revisions.json text eol=lf
+examples/knowledge_update/sources/old.txt text eol=lf
+examples/knowledge_update/sources/new.txt text eol=lf
+

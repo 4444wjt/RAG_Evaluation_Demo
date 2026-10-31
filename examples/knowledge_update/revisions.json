@@ -1,0 +1,6 @@
+{
+  "schema_version": "knowledge-update-revisions/v1",
+  "revisions": [
+    {"item_id": "F1", "proposed_draft": "新稿", "citations": [{"source_id": "S1", "quote": "新原文"}], "open_questions": []}
+  ]
+}

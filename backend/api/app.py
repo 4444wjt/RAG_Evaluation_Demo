@@ -105,6 +105,10 @@ def create_app(
             raise EvaluationAPIError(423, "公开演示站点未开放在线评测。")
         return run_evaluation(request, evaluator, project_root=project_root)
 
+    from backend.api.knowledge_update import router as knowledge_update_router
+    application.include_router(knowledge_update_router,
+                               include_in_schema=os.environ.get("VERISCOPE_KNOWLEDGE_UPDATE") == "1")
+
     return application
 
 

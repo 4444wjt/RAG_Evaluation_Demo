@@ -1,0 +1,11 @@
+{
+  "schema_version": "knowledge-update-task/v1",
+  "task_id": "demo-中文",
+  "sources": [
+    {"source_id": "S1", "old": {"path": "sources/old.txt", "version_tag": "v1"}, "new": {"path": "sources/new.txt", "version_tag": "v2"}}
+  ],
+  "items": [
+    {"item_id": "F1", "question": "如何处理？", "old_draft": "旧稿", "source_ids": ["S1"], "old_citations": [{"source_id": "S1", "quote": "旧原文", "line_start": 1, "line_end": 1}]},
+    {"item_id": "F2", "old_draft": "未修订稿", "source_ids": [], "old_citations": []}
+  ]
+}
