@@ -54,6 +54,17 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
+    # 知识更新工具只放行三个检查路由的 POST；是否开启由后端 VERISCOPE_KNOWLEDGE_UPDATE 决定，未开启时返回 404。
+    location ~ ^/api/knowledge-update/(scan|recheck|export)$ {
+        limit_except POST { deny all; }
+        client_max_body_size 8m;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 120s;
+        proxy_pass http://api:8000/knowledge-update/$1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
     # 与前端开发代理一致：去掉 /api 前缀后转发给后端。
     location /api/ {
         limit_except GET HEAD { deny all; }

@@ -1,0 +1,19 @@
+{
+  "schema_version": "knowledge-sources/v1",
+  "sources": [
+    {
+      "source_id": "nodejs-building",
+      "title": "Node.js BUILDING.md",
+      "url": "https://raw.githubusercontent.com/nodejs/node/main/BUILDING.md",
+      "watch_uuid": "a1cb1588-c266-45c2-9a32-03e0da04a021",
+      "extraction": {"fetch_backend": "html_requests", "include_filters": []}
+    },
+    {
+      "source_id": "curl-install",
+      "title": "curl installation",
+      "url": "https://curl.se/docs/install.html",
+      "watch_uuid": "12ec99a6-35c3-4f9a-8397-ffbb9a7f7812",
+      "extraction": {"fetch_backend": "html_requests", "include_filters": []}
+    }
+  ]
+}

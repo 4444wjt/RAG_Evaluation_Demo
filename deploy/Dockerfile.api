@@ -1,5 +1,5 @@
 # 后端 API 镜像。构建上下文为仓库根目录（见 deploy/docker-compose.yml）。
-#   INSTALL=demo（默认）：只装 API 启动所需的 fastapi、uvicorn、pydantic、numpy、pandas，适合只读演示站，镜像小、构建快。
+#   INSTALL=demo（默认）：只装 API 启动所需的 fastapi、uvicorn、pydantic、numpy、pandas，以及知识更新采集用的 httpx，适合只读演示站，镜像小、构建快。
 #   INSTALL=full：安装 requirements.txt 全部依赖（含 Ragas、LangChain、torch），用于真实评测，镜像较大。
 FROM python:3.11-slim
 
@@ -14,7 +14,7 @@ COPY requirements.txt ./
 RUN if [ "$INSTALL" = "full" ]; then \
         pip install -r requirements.txt; \
     else \
-        pip install -c requirements.txt fastapi uvicorn pydantic numpy pandas; \
+        pip install -c requirements.txt fastapi uvicorn pydantic numpy pandas httpx; \
     fi
 
 # 只复制 API 与评测引擎需要的目录，不带入前端、证据归档或本地运行产物。
@@ -22,6 +22,7 @@ COPY main.py ./
 COPY demo.txt testset_example.csv testset_example.json ./
 COPY backend ./backend
 COPY scenarios ./scenarios
+COPY deploy/knowledge-sources.json ./deploy/
 
 RUN useradd --create-home --uid 10001 app && chown -R app /app
 USER app

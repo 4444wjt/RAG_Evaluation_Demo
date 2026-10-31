@@ -12,6 +12,9 @@ services:
         required: false
     environment:
       VERISCOPE_READ_ONLY: ${VERISCOPE_READ_ONLY:-1}
+      # 知识更新工具默认关闭；采集服务的 API 密钥写在 .env 的 VERISCOPE_CHANGEDETECTION_API_KEY。
+      VERISCOPE_KNOWLEDGE_UPDATE: ${VERISCOPE_KNOWLEDGE_UPDATE:-0}
+      VERISCOPE_CHANGEDETECTION_URL: ${VERISCOPE_CHANGEDETECTION_URL:-http://changedetection:5000}
     expose:
       - "8000"
     restart: unless-stopped
@@ -36,3 +39,24 @@ services:
       api:
         condition: service_healthy
     restart: unless-stopped
+
+  # 知识更新的私有采集服务，默认不启动：docker compose --profile knowledge up -d。
+  # 管理界面只绑定本机回环，用来登记来源 watch 和生成 API 密钥；不对外开放。
+  changedetection:
+    image: ghcr.io/dgtlmoon/changedetection.io:0.60.9
+    profiles: ["knowledge"]
+    environment:
+      DISABLE_VERSION_CHECK: "true"
+      LLM_FEATURES_DISABLED: "true"
+      # 若所在网络的出口把公网域名解析到 198.18.0.0/15 等保留段（代理/沙箱常见），抓取会被
+      # changedetection 的 SSRF 防护拦成 `Fetch blocked: resolves to a private/reserved IP`。
+      # 只有在这种环境下才由部署方自行追加 ALLOW_IANA_RESTRICTED_ADDRESSES: "true"；
+      # 默认保持拦截，不要把它写进本文件，否则会把放宽后的安全默认值带给所有部署。
+    volumes:
+      - changedetection-data:/datastore
+    ports:
+      - "127.0.0.1:${CHANGEDETECTION_PORT:-5000}:5000"
+    restart: unless-stopped
+
+volumes:
+  changedetection-data:
