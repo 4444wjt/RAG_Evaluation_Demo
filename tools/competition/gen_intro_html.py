@@ -18,9 +18,6 @@ body = markdown.markdown(
     extensions=["tables", "sane_lists", "nl2br"],
 )
 
-# 标题后紧跟一张整图的小节（技术架构）单独排在一页横版 A4 上，图可以放大且不与标题分页。
-body = re.sub(r"(<h2>[^<]*</h2>\s*<p><img [^>]*></p>)", r'<section class="wide-page">\1</section>', body)
-
 
 def repo_link(match):
     href = match.group(1)
@@ -34,16 +31,25 @@ def repo_link(match):
 body = re.sub(r'href="([^"]+)"', repo_link, body)
 
 
-# 第一列很长的表（行业要求对照）放开第一列换行，否则整表被撑出页面；其余表的第一列仍不换行。
-def mark_long_first(match):
-    table = match.group(0)
-    firsts = re.findall(r"<tr>\s*<t[dh][^>]*>(.*?)</t[dh]>", table, re.S)
-    if max(len(re.sub(r"<[^>]+>", "", cell)) for cell in firsts) <= 12:
-        return table
-    return table.replace("<table>", '<table class="long-first">', 1)
+# 列宽沿用 pandoc 的约定：表头分隔行各列的横线数之比就是列宽之比；横线数相同的表仍按内容自动排。
+separators = [
+    [len(cell.strip().strip(":")) for cell in line.strip().strip("|").split("|")]
+    for line in md_text.splitlines()
+    if re.fullmatch(r"\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?", line.strip())
+]
+widths = iter(separators)
 
 
-body = re.sub(r"<table>.*?</table>", mark_long_first, body, flags=re.S)
+def size_columns(match):
+    dashes = next(widths)
+    if len(set(dashes)) == 1:
+        return match.group(0)
+    cols = "".join(f'<col style="width:{100 * d / sum(dashes):.1f}%">' for d in dashes)
+    return f'<table class="sized"><colgroup>{cols}</colgroup>'
+
+
+body = re.sub(r"<table>", size_columns, body)
+assert next(widths, None) is None, "表格数与分隔行数不一致"
 
 html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -97,19 +103,19 @@ html = f"""<!DOCTYPE html>
   }}
   pre {{ background: #f6f6f6; padding: 12px 14px; border-radius: 6px; overflow-x: auto; }}
   pre code {{ background: none; padding: 0; }}
-  table {{ border-collapse: collapse; width: 100%; margin: 14px 0; }}
-  th, td {{ border: 1px solid #ddd; padding: 8px 12px; text-align: left; }}
+  table {{ border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 13.5px; line-height: 1.6; }}
+  th, td {{ border: 1px solid #ddd; padding: 6px 10px; text-align: left; vertical-align: top; }}
   th {{ background: #faf6ec; font-weight: 700; }}
+  thead {{ display: table-header-group; }}
   td:first-child, th:first-child {{ white-space: nowrap; }}
-  table.long-first td:first-child, table.long-first th:first-child {{ white-space: normal; width: 30%; }}
-  table.long-first td:last-child, table.long-first th:last-child {{ width: 22%; }}
+  table.sized {{ table-layout: fixed; }}
+  table.sized td, table.sized th {{ white-space: normal; }}
+  td a {{ overflow-wrap: normal; }}
   h1, h2, h3 {{ break-after: avoid; }}
   hr {{ border: none; border-top: 1px solid #eee; margin: 20px 0; }}
   img {{ display: block; max-width: 100%; height: auto; margin: 12px auto; }}
-  table, tr, img, blockquote {{ break-inside: avoid; }}
-  @page wide {{ size: A4 landscape; margin: 14mm 16mm; }}
-  .wide-page {{ page: wide; }}
-  .wide-page img {{ width: auto; max-width: 100%; max-height: 158mm; }}
+  tr, img, blockquote {{ break-inside: avoid; }}
+  p:has(+ p > img) {{ break-after: avoid; }}
 </style>
 </head>
 <body>

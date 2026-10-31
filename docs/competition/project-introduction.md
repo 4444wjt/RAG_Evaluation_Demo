@@ -23,7 +23,7 @@ RAG 问答应用上线前，「回答是否可信」通常只看一个平均分�
 《国家金融监督管理总局关于银行业保险业人工智能安全开发应用的指导意见》（金发〔2026〕8号，2026-06-18 发布；[官方页面](https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1261784)、[全文](https://www.secrss.com/articles/91470)）为上述需求提供行业依据。下表按条款转述，仅对应其中的能力，不代表监管认定或金融机构使用记录。
 
 | 监管要求（条款） | 本项目对应的能力 | 证据 |
-|---|---|---|
+|------------|-------------------------|------------|
 | （四）建设测试工具链、测评指标和测试用例集，提高自动化测评能力 | 复用 Ragas 指标与固定题集，支持离线门禁回放接入 CI；对应测评工具链中的部分能力 | [门禁 Action](../../action.yml)、[正式运行与题集](evidence/20261005T144504Z-full-39511424/README.md) |
 | （十四）防范模型生成结果不可靠的风险 | 逐句核对回答与检索原文，配合质量门禁发现无依据或矛盾；只查与资料的一致性，不验证资料本身的事实正确性 | [门禁可信度](gate-credibility.md)、[外部基准验证](external-validation/README.md) |
 | （十八）对外部模型建立内部评估框架，评价优缺点和适配性 | 可接入外部 RAG 系统评测；第三方系统仅实测过 AnythingLLM 一个源码构建实例（25 题与银行问答 11 题各运行一次），不代表完整的外部模型选型与适配性评估 | [AnythingLLM 实测](external-rag/20261021-anythingllm-qwen72b/README.md)、[银行问答实测](external-rag/20261022-bank-qa-anythingllm/README.md) |
@@ -70,7 +70,7 @@ Ragas、TruLens 及补入的 Opik、Renumics Spotlight、Langfuse 依据 2026-10
 **适用行业：** 拦的是上线前和每次改动后的版本，只查回答与资料是否一致，因此面向资料权威、答错代价高、需要留痕、要求私有化的行业。
 
 | 场景 | 谁用 | 不拦截的后果 | 已有证据 |
-|---|---|---|---|
+|-----|-------|-------|--------|
 | 银行 / 保险条款问答 | 智能客服、员工助手的测试人员；合规复核 | 限额、期限、免责条款答错，引发投诉和理赔纠纷 | 存款保险 25 题：FAIL → 归因 → 改提示词 → PASS |
 | 政务咨询问答 | 政务问答、热线知识库的承建与测试团队 | 期限、材料答错，群众误期、白跑，转为投诉 | 未参与调试的政府信息公开节选：留出题 9/14 → 14/14 |
 | 央国企制度问答 | 数科公司测试；合规、内审复核 | 审批权限、报销标准答错，内审查出违规 | 尚无实测 |
@@ -106,7 +106,7 @@ Ragas、TruLens 及补入的 Opik、Renumics Spotlight、Langfuse 依据 2026-10
 ## 四、证据一览
 
 | 日期 | 内容（点击查看证据） | 结果 |
-|---|---|---|
+|---|------------|----------------|
 | 10-05 | [25 题正式运行](evidence/20261005T144504Z-full-39511424/README.md) | 门禁 FAIL（0.7375） |
 | 10-11 | [换独立裁判（Qwen2.5-72B）重判](judge-comparison/20261011-qwen72b/README.md) | 结论不变，逐题分数差异约为自我重判的 5–6 倍 |
 | 10-13 | [外部基准（ANAH 300 句、RGB 100 题）](external-validation/README.md) | 召回率 0.89，精确率 0.87 |
@@ -136,8 +136,9 @@ Ragas、TruLens 及补入的 Opik、Renumics Spotlight、Langfuse 依据 2026-10
 
 ## 六、开源治理与路线图
 
-- **许可**：自有代码 Apache-2.0；第三方依赖适用各自许可。
-- **治理**：README、CONTRIBUTING、CHANGELOG、安全策略、行为准则齐备；CI、CodeQL、Scorecard 在 GitHub 镜像运行。
+- **许可**：自有代码 Apache-2.0（[LICENSE](../../LICENSE)）；第三方依赖适用各自许可，见[前端第三方声明](../../frontend/THIRD_PARTY_NOTICES.md)。
+- **治理**：[CONTRIBUTING](../../CONTRIBUTING.md)、[CHANGELOG](../../CHANGELOG.md)、[安全策略](../../SECURITY.md)、[行为准则](../../CODE_OF_CONDUCT.md)、[Issue](../../.github/ISSUE_TEMPLATE/bug_report.md) 与 [PR 模板](../../.github/pull_request_template.md)齐备。
+- **自动检查**：GitHub 镜像上，提交 `38942c5` 的 [CI](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41098229154)、[CodeQL](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41098229118)、[Scorecard](https://github.com/4444wjt/RAG_Evaluation_Demo/actions/runs/41098229240) 均通过。
 - **维护**：1 人（Ll）；Issue / PR 承诺 3 个工作日内首次回复。
 - **未来 3 个月**（详见 [ROADMAP](../../ROADMAP.md)）：
     1. 多裁判对照，分歧的题交人工复核；
@@ -148,4 +149,14 @@ Ragas、TruLens 及补入的 Opik、Renumics Spotlight、Langfuse 依据 2026-10
 
 ## 七、技术架构
 
-![鉴真全域 VeriScope AI 技术架构](../images/architecture.png)
+| 模块 | 组成 | 职责 |
+|----|------|-------------|
+| 前端工作台 | React、ECharts | 评测总览、评测工作区、多模型对比、逐句溯源、报告交付、评测验证 |
+| 本地接口 | FastAPI | 同步评测、参数校验、结果序列化；公开演示站只读 |
+| 评测编排 | `pipeline.evaluate` | 文档切分 → 测试集生成（自动 / 自定义 / 负样本）→ Chroma 检索 → 模型问答 → Ragas 指标 → 逐句溯源 → 质量门禁 |
+| 模型适配 | OpenAI 兼容接口 | 如 DeepSeek、Qwen2.5-7B、GLM-5.2-Fast；vLLM、Ollama、内部网关可自行登记，密钥只留在本机 |
+| 存储与交付 | Chroma、报告导出、人工复核 | 本地向量库持久化；CSV / HTML / XLSX / PDF 报告；人工复核记录以 SHA-256 绑定 |
+
+评测与门禁的完整流程，以及人工核验回路，见下图：
+
+![鉴真全域 VeriScope AI 评测与质量门禁流程](../images/veriscope-flow.svg)

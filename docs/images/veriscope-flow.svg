@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 1006 1234" width="1000" height="1230" font-family="'Microsoft YaHei','PingFang SC','Noto Sans SC',sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7C8BA1"/>
+    </marker>
+    <style>
+      .bx { fill: #EEF5FD; stroke: #A9C6E8; stroke-width: 1.5; }
+      .ok { fill: #EAF6EE; stroke: #9ACFAE; stroke-width: 1.5; }
+      .no { fill: #FFF4F1; stroke: #E8B4A8; stroke-width: 1.5; }
+      .dia { fill: #FFF5D6; stroke: #E0B341; stroke-width: 1.5; }
+      .t { font-size: 20px; font-weight: 700; fill: #1f2a3a; text-anchor: middle; }
+      .s { font-size: 16px; fill: #667085; text-anchor: middle; }
+      .ln { stroke: #7C8BA1; stroke-width: 1.8; fill: none; }
+      .yn { font-size: 16px; font-weight: 700; fill: #4B5B73; }
+      .lb { font-size: 15px; fill: #4B5B73; }
+      .card { fill: #fff; stroke: #D6DEE8; stroke-width: 1.2; }
+      .todo { fill: #FFFBEB; stroke: #EBD9A6; stroke-width: 1.2; }
+      .sec { font-size: 19px; font-weight: 700; fill: #1f2a3a; }
+    </style>
+  </defs>
+  <rect width="1000" height="1230" fill="#fff"/>
+
+  <text x="0" y="34" font-size="28" font-weight="700" fill="#1a1d24">鉴真全域 VeriScope AI｜评测与质量门禁流程</text>
+  <text x="0" y="62" font-size="15" fill="#6b7280">从题集到放行决定的一条可回查链路：每个结论都能追到逐句证据与原始记录</text>
+
+  <rect x="1" y="80" width="998" height="46" rx="8" fill="#EAF3FC" stroke="#BCD5EF" stroke-width="1.2"/>
+  <text x="20" y="109"><tspan font-size="16" font-weight="700" fill="#2F5D8C">适用范围</tspan><tspan dx="14" font-size="15" fill="#3d4a5c">上线前与每次改动后的 RAG 问答版本 · 只查回答与资料是否一致，不检查资料本身的事实正确性 · 不做线上逐条实时拦截</tspan></text>
+
+  <!-- 主流程 -->
+  <rect class="bx" x="240" y="152" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="179">题集与资料准备</text>
+  <text class="s" x="410" y="204">固定题集 · 正负样本 · 法规与条款节选</text>
+  <line class="ln" x1="410" y1="216" x2="410" y2="238" marker-end="url(#ah)"/>
+
+  <rect class="bx" x="240" y="240" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="267">检索与作答</text>
+  <text class="s" x="410" y="292">Chroma 检索 · 被测模型或外部 RAG 接入</text>
+  <line class="ln" x1="410" y1="304" x2="410" y2="326" marker-end="url(#ah)"/>
+
+  <rect class="bx" x="240" y="328" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="355">逐句核对与证据定位</text>
+  <text class="s" x="410" y="380">有依据 / 事实错误 / 无依据编造，原文并排</text>
+  <line class="ln" x1="410" y1="392" x2="410" y2="414" marker-end="url(#ah)"/>
+
+  <rect class="bx" x="240" y="416" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="443">指标计算</text>
+  <text class="s" x="410" y="468">复用 Ragas 0.1.21 · 正负样本分开计分</text>
+  <line class="ln" x1="410" y1="480" x2="410" y2="498" marker-end="url(#ah)"/>
+
+  <polygon class="dia" points="410,500 560,578 410,656 260,578"/>
+  <text class="t" x="410" y="566">质量门禁</text>
+  <text class="s" x="410" y="592" font-size="15">正向忠实度、正向上下文精度</text>
+  <text class="s" x="410" y="614" font-size="15">均 ≥ 0.8（默认）？</text>
+
+  <line class="ln" x1="410" y1="656" x2="410" y2="686" marker-end="url(#ah)"/>
+  <text class="yn" x="422" y="676">是</text>
+
+  <rect class="bx" x="240" y="688" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="715">报告与归档</text>
+  <text class="s" x="410" y="740">逐句证据 · 运行清单附哈希 · 可离线复算</text>
+  <line class="ln" x1="410" y1="752" x2="410" y2="774" marker-end="url(#ah)"/>
+
+  <rect class="ok" x="240" y="776" width="340" height="64" rx="10"/>
+  <text class="t" x="410" y="803">放行 / CI 通过</text>
+  <text class="s" x="410" y="828">归档运行可离线重放门禁，不再调用模型</text>
+
+  <!-- 未通过：归因后回到检索与作答 -->
+  <line class="ln" x1="260" y1="578" x2="192" y2="578" marker-end="url(#ah)"/>
+  <text class="yn" x="218" y="568">否</text>
+  <rect class="bx" x="10" y="546" width="180" height="64" rx="10"/>
+  <text class="t" x="100" y="573">失败归因</text>
+  <text class="s" x="100" y="598">修检索还是修生成</text>
+  <path class="ln" d="M40,546 V272 H236" marker-end="url(#ah)"/>
+  <text class="lb" x="54" y="372" font-weight="700">回到检索与作答</text>
+  <text class="lb" x="54" y="396">修改检索或提示词后</text>
+  <text class="lb" x="54" y="418">同题集、同阈值、同裁判</text>
+
+  <!-- 人工核验回路 -->
+  <line class="ln" x1="580" y1="360" x2="646" y2="360" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <rect x="650" y="152" width="349" height="688" rx="12" fill="#FAFBFC" stroke="#9AA5B1" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="670" y="184" font-size="20" font-weight="700" fill="#1f2a3a">人工核验回路</text>
+  <text x="670" y="208" font-size="15" fill="#6b7280">与机器判定并列存档，互不覆盖</text>
+
+  <rect x="666" y="224" width="318" height="152" rx="8" fill="#F2F4F7"/>
+  <text x="682" y="250" font-size="15.5" font-weight="700" fill="#344054">需要人工看的信号（来自已有运行）</text>
+  <text x="682" y="278" font-size="15" fill="#475467">· 结论离阈值近：25 题重跑仅差约 0.06</text>
+  <text x="682" y="304" font-size="15" fill="#475467">· 换独立裁判重跑，PASS 变回 FAIL</text>
+  <text x="682" y="330" font-size="15" fill="#475467">· Ragas 与逐句核对信号不一致</text>
+  <text x="682" y="356" font-size="15" fill="#475467">· 条号、款号错误：通用裁判原提示多漏检</text>
+  <line class="ln" x1="825" y1="376" x2="825" y2="402" marker-end="url(#ah)"/>
+
+  <rect class="bx" x="666" y="404" width="318" height="64" rx="10"/>
+  <text class="t" x="825" y="431">人工标注</text>
+  <text class="s" x="825" y="456">3 位非作者各标 52 条，估计裁判误差</text>
+  <line class="ln" x1="825" y1="468" x2="825" y2="490" marker-end="url(#ah)"/>
+
+  <rect class="bx" x="666" y="492" width="318" height="64" rx="10"/>
+  <text class="t" x="825" y="519">门禁可信度四问</text>
+  <text class="s" x="825" y="544">能否复算 · 换裁判 · 依据证据 · 确定性</text>
+  <line class="ln" x1="825" y1="556" x2="825" y2="578" marker-end="url(#ah)"/>
+
+  <polygon class="dia" points="825,580 945,640 825,700 705,640"/>
+  <text class="t" x="825" y="647">结论确定？</text>
+  <path class="ln" d="M825,700 V716 H742 V738" marker-end="url(#ah)"/>
+  <path class="ln" d="M825,716 H908 V738" marker-end="url(#ah)"/>
+  <text class="yn" x="766" y="709">是</text>
+  <text class="yn" x="870" y="709">否</text>
+
+  <rect class="ok" x="666" y="740" width="152" height="64" rx="10"/>
+  <text class="t" x="742" y="767">采信并归档</text>
+  <text class="s" x="742" y="792" font-size="15">随运行一并留存</text>
+  <rect class="no" x="832" y="740" width="152" height="64" rx="10"/>
+  <text class="t" x="908" y="767">标为未决</text>
+  <text class="s" x="908" y="792" font-size="14">保留分歧，不下结论</text>
+
+  <!-- 角色与职责 -->
+  <text class="sec" x="0" y="884">角色与职责</text>
+  <g font-size="15">
+    <rect class="card" x="0" y="898" width="155" height="100" rx="10"/>
+    <circle cx="28" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="28" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C">测</text>
+    <text x="52" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">测试人员</text>
+    <text x="14" y="964" fill="#667085">运行评测，</text>
+    <text x="14" y="986" fill="#667085">查看逐句证据</text>
+
+    <rect class="card" x="169" y="898" width="155" height="100" rx="10"/>
+    <circle cx="197" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="197" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C">合</text>
+    <text x="221" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">合规复核</text>
+    <text x="183" y="964" fill="#667085">核对门禁结论</text>
+    <text x="183" y="986" fill="#667085">与检索原文</text>
+
+    <rect class="card" x="338" y="898" width="155" height="100" rx="10"/>
+    <circle cx="366" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="366" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C">开</text>
+    <text x="390" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">开发人员</text>
+    <text x="352" y="964" fill="#667085">按归因修改检索</text>
+    <text x="352" y="986" fill="#667085">或问答提示词</text>
+
+    <rect class="card" x="507" y="898" width="155" height="100" rx="10"/>
+    <circle cx="535" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="535" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C" font-size="13">CI</text>
+    <text x="559" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">CI 流水线</text>
+    <text x="521" y="964" fill="#667085">离线重放门禁，</text>
+    <text x="521" y="986" fill="#667085">未通过即阻断</text>
+
+    <rect class="card" x="676" y="898" width="155" height="100" rx="10"/>
+    <circle cx="704" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="704" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C">判</text>
+    <text x="728" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">裁判模型</text>
+    <text x="690" y="964" fill="#667085">逐句判定，</text>
+    <text x="690" y="986" fill="#667085">可换独立裁判</text>
+
+    <rect class="card" x="845" y="898" width="155" height="100" rx="10"/>
+    <circle cx="873" cy="928" r="16" fill="#EAF3FC" stroke="#A9C6E8"/>
+    <text x="873" y="933" text-anchor="middle" font-weight="700" fill="#2F5D8C">标</text>
+    <text x="897" y="934" font-size="16.5" font-weight="700" fill="#1f2a3a">人工标注者</text>
+    <text x="859" y="964" fill="#667085">3 位非作者，</text>
+    <text x="859" y="986" fill="#667085">估计裁判误差</text>
+  </g>
+
+  <!-- 待验证事项 -->
+  <text class="sec" x="0" y="1042">待验证事项<tspan dx="10" font-size="14" font-weight="400" fill="#8a8f98">详见「五、限制与诚实边界」</tspan></text>
+  <g font-size="14.5" fill="#5b5340">
+    <rect class="todo" x="0" y="1056" width="188.8" height="100" rx="10"/>
+    <text x="14" y="1086" font-size="16" font-weight="700" fill="#7a5b12">阈值校准</text>
+    <text x="14" y="1112">0.8 门槛</text>
+    <text x="14" y="1134">未经业务校准</text>
+
+    <rect class="todo" x="202.8" y="1056" width="188.8" height="100" rx="10"/>
+    <text x="216.8" y="1086" font-size="16" font-weight="700" fill="#7a5b12">样本规模</text>
+    <text x="216.8" y="1112">25 题来自同一份金融材料</text>
+    <text x="216.8" y="1134">留出题检验 p = 0.0625</text>
+
+    <rect class="todo" x="405.6" y="1056" width="188.8" height="100" rx="10"/>
+    <text x="419.6" y="1086" font-size="16" font-weight="700" fill="#7a5b12">裁判波动</text>
+    <text x="419.6" y="1112">换独立裁判重跑</text>
+    <text x="419.6" y="1134">PASS 变回 FAIL</text>
+
+    <rect class="todo" x="608.4" y="1056" width="188.8" height="100" rx="10"/>
+    <text x="622.4" y="1086" font-size="16" font-weight="700" fill="#7a5b12">外部系统</text>
+    <text x="622.4" y="1112">第三方仅实测</text>
+    <text x="622.4" y="1134">AnythingLLM 一个实例</text>
+
+    <rect class="todo" x="811.2" y="1056" width="188.8" height="100" rx="10"/>
+    <text x="825.2" y="1086" font-size="16" font-weight="700" fill="#7a5b12">部署</text>
+    <text x="825.2" y="1112">当前没有鉴权</text>
+    <text x="825.2" y="1134">评测为同步请求</text>
+  </g>
+
+  <text x="0" y="1190" font-size="15" fill="#8a8f98">说明：本图表示模块与数据流向，不代表性能或部署承诺。门禁结论只说明样本达到设定门槛，不代表每条回答都正确。</text>
+  <text x="0" y="1214" font-size="15" fill="#8a8f98">技术栈：React + ECharts 工作台 · FastAPI 接口 · LangChain、Chroma、OpenAI 兼容接口 · Ragas 0.1.21 · Docker Compose</text>
+</svg>
