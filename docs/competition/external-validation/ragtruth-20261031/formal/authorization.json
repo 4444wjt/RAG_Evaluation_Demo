@@ -1,0 +1,37 @@
+{
+  "phase": "formal",
+  "package_sha256": "0e39ea7dbf9519d0a71317d9c79e49876421564843ec97fda582f5c64d39eebe",
+  "sample_ids_sha256": "f4fcebecf791e8dcd75e160f1d5a423a53909c4926e5fbae96de2f8d8ad9a3c8",
+  "tool_sha256": {
+    "tools/competition/ragtruth_validation.py": "d6e12439c6630bef9a7cc0bbd1bd505f0aa153514641ac8968909bb588aca59e",
+    "tools/competition/external_validation.py": "4765c9774e62ceddc0d0ce472e4e604ad5c751922d2a4abc4f2cbb5cd3da16f3",
+    "backend/services/trace.py": "52216335456feecf2adc31cf3884620abe424d7217aa234c2ca70483c6e034aa",
+    "backend/services/answering.py": "3cbe9c879f4da24f45091b7446d943ba40d7d2578045c3eecd9cf283509b9ad7",
+    "backend/core/attribution.py": "6860b3a43ce0b0e2c10f42e6f8672c9a6985942061aafb6d5aa261ae47ad605d"
+  },
+  "request_parameters": {
+    "model": "deepseek-flash",
+    "temperature": 0,
+    "max_tokens": 4096,
+    "thinking": {
+      "type": "disabled"
+    },
+    "stream": false
+  },
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "timeout_seconds": 180,
+  "max_retries": 0,
+  "max_requests": 400,
+  "hard_cap_cny": 15,
+  "r_max_cny": 2.12992,
+  "price": {
+    "input_cny_per_million": 2,
+    "output_cny_per_million": 8
+  },
+  "trial_ledger_sha256": "d2e73d029e2a9a9f135b13c62820c92b4301e6f5d9af0923b685f505998c9bcf",
+  "trial_records_sha256": "e9171300b901b83750e535b134d4ae4d2443353f3cd20ec8c57bff8c472810e8",
+  "trial_total_cny": 0.021952,
+  "model_baseline": "deepseek-flash",
+  "authorized_by": "4444wjt",
+  "authorized_at": "2026-10-31T05:48:42.555994+00:00"
+}

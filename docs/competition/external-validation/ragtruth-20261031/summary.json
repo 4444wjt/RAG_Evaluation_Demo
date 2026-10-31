@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "package_sha256": "0e39ea7dbf9519d0a71317d9c79e49876421564843ec97fda582f5c64d39eebe",
+  "sample_ids_sha256": "f4fcebecf791e8dcd75e160f1d5a423a53909c4926e5fbae96de2f8d8ad9a3c8",
+  "metrics": {
+    "M2": {
+      "count": 125,
+      "total": 300,
+      "rate": 0.4167,
+      "wilson95": [
+        0.3623,
+        0.4732
+      ]
+    },
+    "M2_conservative": {
+      "count": 125,
+      "total": 300,
+      "rate": 0.4167,
+      "wilson95": [
+        0.3623,
+        0.4732
+      ]
+    },
+    "M1": {
+      "count": 94,
+      "total": 100,
+      "rate": 0.94,
+      "wilson95": [
+        0.8752,
+        0.9722
+      ]
+    },
+    "M2_ok": {
+      "count": 111,
+      "total": 268,
+      "rate": 0.4142,
+      "wilson95": [
+        0.3568,
+        0.474
+      ]
+    }
+  },
+  "counts": {
+    "sampled": 400,
+    "conclusions": {
+      "PASS": 181,
+      "FAIL": 219,
+      "UNVERIFIED": 0,
+      "NOT_RUN": 0
+    },
+    "trace_status": {
+      "ok": 362,
+      "partial": 38
+    },
+    "partial": 38,
+    "unverified_status": {},
+    "not_run": 0,
+    "finish_reason_length": 0,
+    "rejected_reasons": {
+      "evidence_not_in_context": 74
+    },
+    "quality": {
+      "good": 397,
+      "incorrect_refusal": 2,
+      "truncated": 1
+    },
+    "generated_model": {
+      "llama-2-70b-chat": 54,
+      "mistral-7B-instruct": 68,
+      "gpt-3.5-turbo-0613": 87,
+      "llama-2-7b-chat": 53,
+      "llama-2-13b-chat": 61,
+      "gpt-4-0613": 77
+    }
+  },
+  "by_group": {
+    "N2": {
+      "sampled": 300,
+      "conclusions": {
+        "PASS": 175,
+        "FAIL": 125,
+        "UNVERIFIED": 0,
+        "NOT_RUN": 0
+      },
+      "trace_status": {
+        "ok": 268,
+        "partial": 32
+      },
+      "partial": 32,
+      "unverified_status": {},
+      "not_run": 0,
+      "finish_reason_length": 0,
+      "rejected_reasons": {
+        "evidence_not_in_context": 66
+      },
+      "quality": {
+        "good": 297,
+        "incorrect_refusal": 2,
+        "truncated": 1
+      },
+      "generated_model": {
+        "llama-2-70b-chat": 41,
+        "mistral-7B-instruct": 32,
+        "gpt-3.5-turbo-0613": 86,
+        "llama-2-7b-chat": 27,
+        "llama-2-13b-chat": 40,
+        "gpt-4-0613": 74
+      }
+    },
+    "N1": {
+      "sampled": 100,
+      "conclusions": {
+        "PASS": 6,
+        "FAIL": 94,
+        "UNVERIFIED": 0,
+        "NOT_RUN": 0
+      },
+      "trace_status": {
+        "ok": 94,
+        "partial": 6
+      },
+      "partial": 6,
+      "unverified_status": {},
+      "not_run": 0,
+      "finish_reason_length": 0,
+      "rejected_reasons": {
+        "evidence_not_in_context": 8
+      },
+      "quality": {
+        "good": 100
+      },
+      "generated_model": {
+        "llama-2-70b-chat": 13,
+        "mistral-7B-instruct": 36,
+        "llama-2-13b-chat": 21,
+        "llama-2-7b-chat": 26,
+        "gpt-3.5-turbo-0613": 1,
+        "gpt-4-0613": 3
+      }
+    }
+  },
+  "by_task": {
+    "QA": {
+      "metrics": {
+        "M2": {
+          "count": 40,
+          "total": 102,
+          "rate": 0.3922,
+          "wilson95": [
+            0.303,
+            0.4892
+          ]
+        },
+        "M2_conservative": {
+          "count": 40,
+          "total": 102,
+          "rate": 0.3922,
+          "wilson95": [
+            0.303,
+            0.4892
+          ]
+        },
+        "M1": {
+          "count": 21,
+          "total": 24,
+          "rate": 0.875,
+          "wilson95": [
+            0.69,
+            0.9566
+          ]
+        },
+        "M2_ok": {
+          "count": 38,
+          "total": 97,
+          "rate": 0.3918,
+          "wilson95": [
+            0.3005,
+            0.4912
+          ]
+        }
+      },
+      "counts": {
+        "sampled": 126,
+        "conclusions": {
+          "PASS": 65,
+          "FAIL": 61,
+          "UNVERIFIED": 0,
+          "NOT_RUN": 0
+        },
+        "trace_status": {
+          "ok": 121,
+          "partial": 5
+        },
+        "partial": 5,
+        "unverified_status": {},
+        "not_run": 0,
+        "finish_reason_length": 0,
+        "rejected_reasons": {
+          "evidence_not_in_context": 5
+        },
+        "quality": {
+          "good": 123,
+          "incorrect_refusal": 2,
+          "truncated": 1
+        },
+        "generated_model": {
+          "llama-2-70b-chat": 21,
+          "mistral-7B-instruct": 26,
+          "gpt-3.5-turbo-0613": 23,
+          "llama-2-7b-chat": 10,
+          "llama-2-13b-chat": 26,
+          "gpt-4-0613": 20
+        }
+      }
+    },
+    "Summary": {
+      "metrics": {
+        "M2": {
+          "count": 36,
+          "total": 101,
+          "rate": 0.3564,
+          "wilson95": [
+            0.2699,
+            0.4535
+          ]
+        },
+        "M2_conservative": {
+          "count": 36,
+          "total": 101,
+          "rate": 0.3564,
+          "wilson95": [
+            0.2699,
+            0.4535
+          ]
+        },
+        "M1": {
+          "count": 35,
+          "total": 35,
+          "rate": 1.0,
+          "wilson95": [
+            0.9011,
+            1.0
+          ]
+        },
+        "M2_ok": {
+          "count": 34,
+          "total": 91,
+          "rate": 0.3736,
+          "wilson95": [
+            0.2812,
+            0.4762
+          ]
+        }
+      },
+      "counts": {
+        "sampled": 136,
+        "conclusions": {
+          "PASS": 65,
+          "FAIL": 71,
+          "UNVERIFIED": 0,
+          "NOT_RUN": 0
+        },
+        "trace_status": {
+          "ok": 124,
+          "partial": 12
+        },
+        "partial": 12,
+        "unverified_status": {},
+        "not_run": 0,
+        "finish_reason_length": 0,
+        "rejected_reasons": {
+          "evidence_not_in_context": 13
+        },
+        "quality": {
+          "good": 136
+        },
+        "generated_model": {
+          "gpt-4-0613": 24,
+          "llama-2-70b-chat": 19,
+          "llama-2-7b-chat": 23,
+          "llama-2-13b-chat": 22,
+          "mistral-7B-instruct": 29,
+          "gpt-3.5-turbo-0613": 19
+        }
+      }
+    },
+    "Data2txt": {
+      "metrics": {
+        "M2": {
+          "count": 49,
+          "total": 97,
+          "rate": 0.5052,
+          "wilson95": [
+            0.4074,
+            0.6025
+          ]
+        },
+        "M2_conservative": {
+          "count": 49,
+          "total": 97,
+          "rate": 0.5052,
+          "wilson95": [
+            0.4074,
+            0.6025
+          ]
+        },
+        "M1": {
+          "count": 38,
+          "total": 41,
+          "rate": 0.9268,
+          "wilson95": [
+            0.8057,
+            0.9748
+          ]
+        },
+        "M2_ok": {
+          "count": 39,
+          "total": 80,
+          "rate": 0.4875,
+          "wilson95": [
+            0.3811,
+            0.5951
+          ]
+        }
+      },
+      "counts": {
+        "sampled": 138,
+        "conclusions": {
+          "PASS": 51,
+          "FAIL": 87,
+          "UNVERIFIED": 0,
+          "NOT_RUN": 0
+        },
+        "trace_status": {
+          "ok": 117,
+          "partial": 21
+        },
+        "partial": 21,
+        "unverified_status": {},
+        "not_run": 0,
+        "finish_reason_length": 0,
+        "rejected_reasons": {
+          "evidence_not_in_context": 56
+        },
+        "quality": {
+          "good": 138
+        },
+        "generated_model": {
+          "gpt-3.5-turbo-0613": 45,
+          "llama-2-7b-chat": 20,
+          "gpt-4-0613": 33,
+          "llama-2-70b-chat": 14,
+          "llama-2-13b-chat": 13,
+          "mistral-7B-instruct": 13
+        }
+      }
+    }
+  },
+  "S4": null,
+  "invalidated": false,
+  "reportable": true,
+  "result_wording": "RAGTruth 测试集按登记抽取 300 条无标注、非固定拒答的回答，逐句核对判 FAIL 的比例为 41.67%（95% CI 36.23–47.32%，有效 300）；未核验 0 条、未执行 0 条，全部计为 FAIL 时为 41.67%（95% CI 36.23–47.32%）。单位为整条回答。"
+}

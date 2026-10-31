@@ -1,0 +1,9 @@
+{
+  "phase": "formal",
+  "completed": 400,
+  "requests": 400,
+  "stopped": null,
+  "invalidated": false,
+  "model_baseline": "deepseek-flash",
+  "spent_cny": 2.454934
+}
