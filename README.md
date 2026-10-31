@@ -173,18 +173,18 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 
 ## 创新与能力证据
 
-本项目的工程创新，是把逐句核对、原文回查、门禁复算、修复对照与人工复核连成可检查的工作流。下图的六个区块对应能力与证据入口。
+本项目的工程创新，是把逐句核对、原文回查、门禁复算、修复对照与人工复核连成可检查的工作流。
 
 ![VeriScope 六项能力与证据导航](docs/images/veriscope-capabilities.png)
 
 | 维度 | 能带来什么 | 证据与状态 |
 |---|---|---|
-| 工程创新 | 自带法规、回答和检索片段即可离线诊断；无效输入与待复核状态明确分开 | [标准库 CLI 与输入契约](docs/competition/statute-check/README.md#自资料离线诊断)；[未见医疗法规包](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)：构造错误检出 27/27、对照误报 0/30，另列失效输入验证 |
-| 证据追溯 | 从一句回答回到检索原文，连同指标、Trace、报告与哈希归档 | [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)：25/25 回答、Trace 非空 18 条，空 7 条及原因未确认状态保留 |
+| 工程创新 | 自带法规、回答和检索片段即可离线诊断；无效输入与待复核状态明确分开 | [标准库 CLI 与输入契约](docs/competition/statute-check/README.md#自资料离线诊断)；[未见过的医疗法规包](docs/competition/statute-check/20261025-unseen-diagnostic/README.md)：构造错误检出 27/27、对照误报 0/30 |
+| 证据追溯 | 从一句回答回到检索原文，连同指标、Trace、报告与哈希归档 | [25 题正式运行](docs/competition/evidence/20261005T144504Z-full-39511424/README.md)：25/25 回答、Trace 非空 18/25 |
 | 门禁复核 | 不调用模型即可重放固定结果；接入 CI 并与基线逐题比较 | [门禁回放](docs/gate-replay.md)与 [`scripts/gate_replay.py`](scripts/gate_replay.py)：原始 0.7375 对 0.8 的 FAIL 可复算 |
-| 风险与人工复核 | 机器判定与人工意见并列，未决样本保留上下界 | [A/B 标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md)：同包 52 条，6 条未决；68.8%–82.5% 为点估计上下界，不是置信区间 |
-| 外部接入 | 接入实际 RAG 应用，也记录他人用自选资料操作的过程 | [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)；同一操作者 O [10-27 远程使用作者电脑](docs/competition/external-repro-20261027/README.md)，[10-29 在本人电脑完成 1 项自选法规规则验收](docs/competition/external-use-20261029/README.md)（3 条构造陈述、3 次请求，原退出码 0/0/1） |
-| 开源上游贡献 | 将依赖库中可复现的中文 PDF 解码问题反馈并修复到上游 | 作者提交的 [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231)、[#4236](https://github.com/py-pdf/pypdf/pull/4236) 均已合并；发布状态与项目依赖见[下方记录](#开源上游贡献) |
+| 风险与人工复核 | 机器判定与人工意见并列，未决样本给出上下界 | [A/B 标注](docs/competition/judge-calibration/20261021-annotation-AB/README.md)：同包 52 条，6 条未决；人工口径 68.8%–82.5%（点估计上下界） |
+| 外部接入 | 接入实际 RAG 应用，也记录他人用自选资料操作的过程 | [AnythingLLM 实测](docs/competition/external-rag/20261021-anythingllm-qwen72b/README.md)；[10-27 远程操作](docs/competition/external-repro-20261027/README.md)，[10-29 在本人电脑完成 1 项自选法规规则验收](docs/competition/external-use-20261029/README.md) |
+| 开源上游贡献 | 将依赖库中可复现的中文 PDF 解码问题反馈并修复到上游 | 作者提交的 [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231)、[#4236](https://github.com/py-pdf/pypdf/pull/4236) 均已合并，见[下方记录](#开源上游贡献) |
 
 ## 核心能力
 
@@ -355,7 +355,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 
 | 模块 | 技术与职责 |
 |---|---|
-| Frontend | React 19、TypeScript、Vite、Apache ECharts、原生 CSS；首页与分组工作台视图 |
+| Frontend | 首页与分组工作台视图（评测、验证与审计、资料准备） |
 | Backend | Python、FastAPI；参数／项目路径校验、同步评测调用、结果序列化 |
 | Evaluation Pipeline | LangChain、Chroma、本地 Embedding、Ragas；文档 → 测试集 → 检索与回答 → 指标与溯源 → 门禁与报告 |
 | Model Adapter | 统一使用 OpenAI 兼容适配器；DeepSeek、Qwen2.5-7B、GLM-5.2-Fast 是内置配置，其它兼容接口（vLLM、Ollama、内部网关）在「模型配置」页自行登记，密钥只读本机 `.env` |
@@ -375,7 +375,7 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | 贡献 | 解决的问题 | 合并与发布证据 |
 |---|---|---|
 | [pypdf #4231](https://github.com/py-pdf/pypdf/pull/4231) | 将 `UniGB-UTF16-H/V` 按 UTF-16BE 解码，修复缺少 ToUnicode 时部分中文 PDF 的乱码 | 2026-10-21 合并；见 [6.21.2 发布记录](https://github.com/py-pdf/pypdf/releases/tag/6.21.2) |
-| [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | 修复奇数长度、末字节小于 `0x80` 的 UTF-16BE 字符串在解码回退时抛错 | 2026-10-22（UTC）合并；合并状态见 PR |
+| [pypdf #4236](https://github.com/py-pdf/pypdf/pull/4236) | 修复奇数长度、末字节小于 `0x80` 的 UTF-16BE 字符串在解码回退时抛错 | 2026-10-22（UTC）合并 |
 
 本项目锁定 [`pypdf==6.21.4`](requirements.txt)，不再使用 6.19.0。
 
