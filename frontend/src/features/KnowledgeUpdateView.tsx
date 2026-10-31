@@ -1,12 +1,15 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
-import { STATIC_SITE } from '../config';
+import { READ_ONLY, STATIC_SITE } from '../config';
+import { Icon } from '../components/Icon';
 import { KUError, exportKU, fetchKUSnapshot, fetchKUSources, fetchKUVersions, lineCitation, logicalLines, makeKUInput, runKU, saveKUZip } from '../api/knowledgeUpdate';
 import type { KUBundle, KUCitation, KUInput, KUItemInput, KUMode, KUSide, KUSnapshotInput, KUSource, KUSourceInput, KUVersion } from '../api/knowledgeUpdate';
 import { KU_STEPS, type KUStep } from '../labRoute';
 import { KU_STEP_LABEL, useKuStep } from './knowledge-update/useKuStep';
 import './gate-audit.css';
 import './knowledge-update.css';
+
+const KU_PUBLIC_MESSAGE = '公开演示站不接入采集服务，不能抓取来源，请在本地部署后使用知识更新。';
 
 const emptySnapshot = (): KUSnapshotInput => ({ version: '', text: null });
 const newItem = (key: number): KUItemInput => ({ key, item_id: `item-${key}`, question: '', old_draft: '', source_ids: [], old_citations: [], revision: { enabled: false, proposed_draft: '', citations: [], open_questions: '' } });
@@ -391,6 +394,8 @@ export function KnowledgeUpdateView() {
         </button>
       </li>)}</ol>
     </nav>
+
+    {READ_ONLY && <p className="readonly-notice" role="status"><Icon name="alert" size={16}/><span><strong>只读演示</strong>{KU_PUBLIC_MESSAGE}</span></p>}
 
     <div className={`ku-step-body ku-step-${step}`} data-dir={direction} key={step}>
       {step === 'sources' && <section className="ku-panel-stack" aria-labelledby="ku-title-sources">
