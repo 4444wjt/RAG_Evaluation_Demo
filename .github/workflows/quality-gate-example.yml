@@ -34,7 +34,7 @@ jobs:
       checks: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       # 使用仓库根目录的 action.yml；其他仓库写 uses: 4444wjt/RAG_Evaluation_Demo@<tag 或分支>。
       # 结果表写入作业摘要，JUnit 报告由下一步发布到检查结果。
@@ -48,7 +48,7 @@ jobs:
 
       - name: Publish gate report
         if: always()
-        uses: EnricoMi/publish-unit-test-result-action@v2
+        uses: EnricoMi/publish-unit-test-result-action@7622c5bf3d112a72ab4fa3951c2aa5723d8ab92d # v2
         with:
           files: quality-gate.junit.xml
           check_name: Quality gate report
