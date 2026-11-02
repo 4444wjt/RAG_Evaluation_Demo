@@ -1,0 +1,50 @@
+# 独立访客配置，不与 docker-compose.yml 叠加，不加载作者的 .env。
+# 启动命令与本地 Embedding 路径说明见 deploy/README.md。
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.api
+      args:
+        INSTALL: full
+    environment:
+      VERISCOPE_READ_ONLY: "0"
+      VERISCOPE_BYOK: "1"
+      VERISCOPE_KNOWLEDGE_UPDATE: "1"
+      VERISCOPE_BYOK_DATA_DIR: /app/work/visitors
+      EMBEDDING_MODEL: /opt/embedding
+      MPLCONFIGDIR: /tmp/matplotlib
+    volumes:
+      - visitor-data:/app/work
+      - type: bind
+        source: ${BYOK_EMBEDDING_DIR:?请设置已缓存完整模型的绝对目录}
+        target: /opt/embedding
+        read_only: true
+        bind:
+          create_host_path: false
+    expose:
+      - "8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.web
+      args:
+        VITE_READ_ONLY: "0"
+        VITE_BYOK: "1"
+        NGINX_TEMPLATE: deploy/nginx/byok.conf.template
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8081}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  visitor-data:

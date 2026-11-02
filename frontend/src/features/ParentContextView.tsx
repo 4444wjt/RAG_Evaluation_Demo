@@ -1,3 +1,4 @@
+import { BYOK } from '../config';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { CSSProperties, DragEvent } from 'react';
 import { Icon } from '../components/Icon';
@@ -225,7 +226,7 @@ export function ParentContextView() {
   };
 
   const hint = locked ? PUBLIC_DEMO_MESSAGE
-    : busy ? '正在由本机后端准备，期间不能更换文件。'
+    : busy ? BYOK ? '正在由服务端准备，期间不能更换文件。' : '正在由本机后端准备，期间不能更换文件。'
       : reading ? '正在读取文件…'
         : filesProblem ?? `四份文件已就绪。资料上限 ${PARENT_CONTEXT_LIMIT_BYTES} UTF-8 字节，超过时整包待复核，不会截断。`;
   const facts = result?.facts;
@@ -234,8 +235,8 @@ export function ParentContextView() {
   return <div className="audit-view pc-view">
     <section className="audit-panel pc-panel" aria-labelledby={`${id}-title`}>
       <div className="audit-panel-head">
-        <div><h2 id={`${id}-title`}>导入四份文件，把命中段补全为完整父条</h2><p>只在本机准备资料：不调用模型、不核验回答、不改变质量门禁。准备成功只表示等待你复核，不代表通过质量门禁。</p></div>
-        <span className="audit-chip pc-chip">本地处理 · 不调用模型</span>
+        <div><h2 id={`${id}-title`}>导入四份文件，把命中段补全为完整父条</h2><p>{BYOK ? '上传资料由云端准备，不调用模型、不核验回答、不改变质量门禁。' : '只在本机准备资料：不调用模型、不核验回答、不改变质量门禁。'}准备成功只表示等待你复核，不代表通过质量门禁。</p></div>
+        <span className="audit-chip pc-chip">{BYOK ? '云端处理 · 不调用模型' : '本地处理 · 不调用模型'}</span>
       </div>
       {locked && <p className="readonly-notice"><Icon name="alert" size={16}/><span><strong>只读演示</strong>{PUBLIC_DEMO_MESSAGE}</span></p>}
 
@@ -351,7 +352,7 @@ export function ParentContextView() {
           <button type="button" className="btn btn-secondary" disabled={downloadsPaused} onClick={downloadReport}><Icon name="copy" size={15}/>下载报告 report.json</button>
         </div>
         <p className="audit-note">{downloadsPaused ? '正在读取新文件，下载暂不可用。' : prepared
-          ? contextAllowed ? '资料和复核记录只保存在本机，复核表不会上传。' : '完成复核并选择“可用于后续处理”后，才能下载资料。'
+          ? contextAllowed ? BYOK ? '资料已在云端准备；复核表留在当前页面，不会上传，下载后保存在你的电脑。' : '资料和复核记录只保存在本机，复核表不会上传。' : '完成复核并选择“可用于后续处理”后，才能下载资料。'
           : '待复核结果没有可用资料，不提供 context.txt；可以下载报告和“仍需核查”的复核记录。'}</p>
         <p className="pc-download-notice" role="status">{notice}</p>
       </section>}

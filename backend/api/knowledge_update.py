@@ -27,6 +27,8 @@ router = APIRouter(prefix="/knowledge-update", tags=["knowledge-update"], depend
 
 
 def _collector(operation: str, source_id: str | None = None, timestamp: str | None = None):
+    if os.environ.get("VERISCOPE_BYOK") == "1":
+        raise HTTPException(404, "访客模式不开放服务器采集配置。")
     from backend.core.knowledge_sources import KnowledgeSources, SourceError
     try:
         collector = KnowledgeSources()
@@ -41,6 +43,16 @@ def _collector(operation: str, source_id: str | None = None, timestamp: str | No
 
 @router.get("/sources")
 def sources():
+    if os.environ.get("VERISCOPE_BYOK") == "1":
+        # Only the repository's public catalogue supports manual input here.
+        # Never load the administrator's private source file or collector config.
+        path = Path(__file__).resolve().parents[2] / "deploy" / "knowledge-sources.json"
+        try:
+            catalogue = json.loads(path.read_bytes())
+            return {"sources": [{**{field: row[field] for field in ("source_id", "title", "url", "extraction")},
+                                 "collector_ready": False} for row in catalogue["sources"]]}
+        except (OSError, ValueError, TypeError, KeyError):
+            raise HTTPException(503, "公开来源清单暂时不可用。") from None
     return _collector("sources")
 
 

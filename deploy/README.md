@@ -1,6 +1,6 @@
 # 一键部署
 
-用 Docker Compose 启动两个容器：`api`（FastAPI 后端）和 `web`（前端静态站点 + nginx 反向代理）。默认部署为**只读演示站**，与公网演示的访问方式一致：只能查看快照，不能发起在线评测。
+用 Docker Compose 启动两个容器：`api`（FastAPI 后端）和 `web`（前端静态站点 + nginx 反向代理）。默认配置提供**只读演示站**；需要访客填写自己的模型和 API Key 在线评测时，使用下文独立的 **BYOK 配置**。
 
 ## 快速开始
 
@@ -67,6 +67,33 @@ SILICONFLOW_API_KEY=...
 - 可评测模式允许从电脑导入资料和测试集，单个文件最多 10 MiB；nginx 与后端均限制大小。内置示例随 API 镜像提供。导入文件保存到容器 `/app/work/uploads/`，默认没有持久卷，重建容器后需重新导入；导入成功只说明文件已保存，内容格式仍由既有评测流程检查。
 - 这样部署会开放付费模型调用。请自行加上访问控制（例如反向代理鉴权或仅限内网访问），不要直接暴露在公网。
 
+## 访客自带 API Key（BYOK）
+
+需要访客自己填写模型和密钥时，使用独立配置 [docker-compose.byok.yml](docker-compose.byok.yml)，不要与默认配置叠加。默认 `docker-compose.yml` 继续提供只读演示。
+
+先准备完整的本地 Embedding 模型目录，再在 `deploy/` 下操作：
+
+```bash
+cp byok.env.example .env.byok
+# 编辑 .env.byok，把 BYOK_EMBEDDING_DIR 改为服务器上完整模型目录的绝对路径。
+docker compose --env-file .env.byok -f docker-compose.byok.yml -p veriscope-byok config --quiet
+docker compose --env-file .env.byok -f docker-compose.byok.yml -p veriscope-byok up -d --build
+curl --fail http://127.0.0.1:8081/api/health
+```
+
+默认访问 `http://127.0.0.1:8081/`。健康检查仅确认 API 启动，不代表模型、Embedding 或完整评测已通过。首次使用请在页面填写自己的模型和 Key，用少量题目试跑；这会使用该 Key 对应的模型额度。对外访问须经 HTTPS。
+
+- 配置固定后端 `VERISCOPE_BYOK=1`、`VERISCOPE_READ_ONLY=0`、`VERISCOPE_KNOWLEDGE_UPDATE=1`，前端构建固定 `VITE_BYOK=1`、`VITE_READ_ONLY=0`。无需修改默认 `.env`，不会把作者的 `.env` 或模型密钥传入容器。
+- API 安装完整评测依赖；本地模型以只读方式挂载到 `/opt/embedding`。模型须已完整缓存，运行评测时不下载。固定的 Node.js/curl 来源清单随 API 镜像复制。
+- 访客资料与记录按随机会话保存到 API 私有的 `visitor-data` 卷，web 不挂载它；会话标识保留在当前标签页，Key 只保留在页面内存和本次后台任务。刷新后需重新填写 Key，关闭标签页可能失去原记录入口，请先下载备份。
+- `POST /api/evaluate` 返回 202 和任务编号，页面每两秒查询 `GET /api/jobs/{id}`；不要因等待再次提交。只运行一个后台评测，繁忙时返回 409，不自动排队。容器重启不会自动恢复在途任务，已完成记录保存在卷中。
+- 每会话最多 50 题、3 个模型（含裁判）、10 次评测、32 个导入文件、100 MiB 资料与结果；单文件最多 10 MiB。生成中的磁盘占用可能短暂超过限制，超额任务或上传不保留本次新增结果。24 小时未活动会话会在后续请求时清理。
+- nginx 使用独立的 [byok.conf.template](nginx/byok.conf.template)，允许既有上传、导回、评测及手动检查请求；其他接口仅允许读取。不开放服务器模型登记、任意地址抓取或采集配置；知识更新仅有固定公开目录和手动文本检查。它不是账号体系，持有会话标识的人可以访问对应数据，服务器管理员也能读取磁盘。
+
+停止使用时执行 `docker compose --env-file .env.byok -f docker-compose.byok.yml -p veriscope-byok down`，不加 `-v`，以保留资料卷。恢复默认只读演示时，在独立项目中使用原 `docker-compose.yml`，不要把两份配置合并。
+
+2026-11-02 已完成 BYOK 云预览验收：使用访客 API 自动生成并评测 6 题（3 正向、3 负向），后端耗时 112.26 秒，保存完整 JSON、演示后返回及历史恢复通过；引用版本、知识更新、父条资料和历史记录共 4 条桌面流程、8 份下载及 23 项绑定与边界检查通过。正式入口尚待切换与发布后核验。
+
 ## HTTPS
 
 compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS 的反向代理（如宿主机 nginx 或 Caddy），转发到 `127.0.0.1:${WEB_PORT}`。证书文件不要放进仓库。
@@ -88,9 +115,9 @@ compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS �
 
 这次服务器测试发现并修复了一处问题：`default_type` 原写在 `if` 块内，nginx 不允许，web 容器启动即退出；已移到 `location` 层。
 
-尚未验证：`API_INSTALL=full` 的全量镜像构建与真实评测，以及 `WEB_BIND=0.0.0.0` 直接对外开放的情形。
+上述 2026-10-13 只读验收未覆盖全量评测镜像与真实评测，也未验证 `WEB_BIND=0.0.0.0` 直接对外开放；本轮 BYOK 云预览结果见上文。
 
-后续新增的 `/api/inputs` 代理和示例文件复制规则不属于上述服务器验收记录。本轮仅完成本地 API / 前端离线验证，未重建或修改线上容器。
+后来新增的 `/api/inputs` 代理和示例文件复制规则不属于上述历史只读记录。
 
 ## 备用静态站：GitHub Pages
 
@@ -100,4 +127,4 @@ compose 只提供 HTTP。公网部署建议在宿主机前置一层终止 TLS �
 - 首次使用前，在仓库 Settings → Pages 把 Source 设为 “GitHub Actions”；之后每次推送自动更新，也可在 Actions 页手动运行 “Pages demo”。
 - 本地预览同一产物：在 `frontend/` 执行 `VITE_READ_ONLY=1 VITE_STATIC_SITE=1 npx vite build --base=./`，再用任意静态服务器打开 `dist/`。
 
-公网演示站的实际服务器配置未入库；本目录是按仓库代码编写的标准部署方式，与公网站点采用相同的只读机制。
+本目录提供默认只读与可选 BYOK 两种部署方式；实际入口的能力以所选配置及发布后核验为准。

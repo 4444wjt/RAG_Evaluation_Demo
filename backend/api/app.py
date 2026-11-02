@@ -31,6 +31,21 @@ def create_app(
         version="0.1.0",
         description="Local synchronous evaluation API. Health reports service liveness only.",
     )
+    record_root = Path(__file__).resolve().parents[2] if project_root is None else Path(project_root)
+    visitors = None
+    if os.environ.get("VERISCOPE_BYOK") == "1":
+        from backend.api.byok import VisitorWorkspaces
+        visitors = VisitorWorkspaces(record_root)
+
+    def request_root(request: Request) -> Path:
+        return record_root if visitors is None else visitors.scope(request)
+
+    if visitors is not None:
+        @application.middleware("http")
+        async def visitor_private_responses(request: Request, call_next):
+            response = await call_next(request)
+            response.headers["Cache-Control"] = "no-store"
+            return response
 
     @application.exception_handler(RequestValidationError)
     async def request_error(_request: Request, _error: RequestValidationError) -> JSONResponse:
@@ -52,21 +67,28 @@ def create_app(
     ) -> dict[str, str | int]:
         if os.environ.get("VERISCOPE_READ_ONLY") == "1":
             raise EvaluationAPIError(423, "公开演示站点未开放文件导入。")
+        if visitors is not None:
+            return await visitors.upload(request, kind=kind, filename=filename)
         return await import_input_file(
             request, kind=kind, filename=filename, project_root=project_root,
         )
 
     @application.get("/models", tags=["models"])
-    def models_request() -> dict[str, Any]:
+    def models_request(request: Request) -> dict[str, Any]:
         """Built-in and locally registered models; reports whether each key is set, never its value."""
         if os.environ.get("VERISCOPE_READ_ONLY") == "1":
             raise EvaluationAPIError(423, "公开演示站点未开放模型配置。")
+        if visitors is not None:
+            request_root(request)
+            return {"models": [], "localFile": ""}
         return list_models(project_root)
 
     @application.put("/models/local", tags=["models"])
     async def save_models_request(request: Request) -> dict[str, Any]:
         if os.environ.get("VERISCOPE_READ_ONLY") == "1":
             raise EvaluationAPIError(423, "公开演示站点未开放模型配置。")
+        if visitors is not None:
+            raise EvaluationAPIError(403, "访客模型只在浏览器本次使用，不写入服务器模型配置。")
         # Registration decides where an existing key may be sent, so only this machine may change it.
         if request.client is None or request.client.host not in _LOCAL_HOSTS:
             raise EvaluationAPIError(403, "模型登记只能在运行服务的本机上修改。")
@@ -99,32 +121,32 @@ def create_app(
         from backend.api.citation_version import citation_version_request
         return await citation_version_request(request, operation="check")
 
-    record_root = Path(__file__).resolve().parents[2] if project_root is None else Path(project_root)
-
     def history_allowed() -> None:
         if os.environ.get("VERISCOPE_READ_ONLY") == "1":
             raise EvaluationAPIError(423, "公开演示站点未开放本机评测记录。")
 
-    def get_record(ident: str) -> evaluation_records.EvaluationRecord:
+    def get_record(ident: str, request: Request) -> evaluation_records.EvaluationRecord:
         history_allowed()
         try:
-            return evaluation_records.read_record(record_root, ident)
+            return evaluation_records.read_record(request_root(request), ident)
         except FileNotFoundError:
             raise EvaluationAPIError(404, "没有找到这份评测记录。") from None
         except (OSError, ValueError):
             raise EvaluationAPIError(500, "这份评测记录无法读取，请保留原文件并检查本地存储。") from None
 
     @application.get("/evaluations", tags=["history"])
-    def evaluation_history() -> dict[str, Any]:
+    def evaluation_history(request: Request) -> dict[str, Any]:
         history_allowed()
         try:
-            return evaluation_records.list_records(record_root)
+            return evaluation_records.list_records(request_root(request))
         except OSError:
             raise EvaluationAPIError(500, "历史记录无法读取，请检查本地存储。") from None
 
     @application.post("/evaluations/import", status_code=201, tags=["history"])
     async def import_evaluation(request: Request) -> dict[str, Any]:
         history_allowed()
+        if visitors is not None:
+            return await visitors.import_record(request)
         try:
             record = evaluation_records.import_record(record_root, await request.json())
         except ValueError:
@@ -134,19 +156,19 @@ def create_app(
         return record.model_dump(mode="json")
 
     @application.get("/evaluations/{ident}", tags=["history"])
-    def evaluation_record(ident: str) -> dict[str, Any]:
-        return get_record(ident).model_dump(mode="json")
+    def evaluation_record(ident: str, request: Request) -> dict[str, Any]:
+        return get_record(ident, request).model_dump(mode="json")
 
     @application.get("/evaluations/{ident}/download", tags=["history"])
-    def download_evaluation(ident: str) -> Response:
-        record = get_record(ident)
+    def download_evaluation(ident: str, request: Request) -> Response:
+        record = get_record(ident, request)
         return Response(record.model_dump_json(indent=2), media_type="application/json",
                         headers={"Content-Disposition": f'attachment; filename="veriscope-{record.id}.json"',
                                  "Cache-Control": "no-store"})
 
     @application.get("/evaluations/{ident}/report", tags=["history"])
-    def evaluation_report(ident: str) -> Response:
-        record = get_record(ident)
+    def evaluation_report(ident: str, request: Request) -> Response:
+        record = get_record(ident, request)
         if record.report_html is None:
             raise EvaluationAPIError(404, "此记录没有附带 HTML 报告。")
         return Response(record.report_html, media_type="text/html", headers={
@@ -154,12 +176,24 @@ def create_app(
             "Cache-Control": "no-store",
         })
 
-    @application.post("/evaluate", response_model=SavedEvaluateResponse, tags=["evaluation"])
-    def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
-        # Read per request so a public demo deployment can switch it via environment alone.
-        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
-            raise EvaluationAPIError(423, "公开演示站点未开放在线评测。")
-        return run_evaluation(request, evaluator, project_root=project_root)
+    if visitors is None:
+        @application.post("/evaluate", response_model=SavedEvaluateResponse, tags=["evaluation"])
+        def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
+            if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+                raise EvaluationAPIError(423, "公开演示站点未开放在线评测。")
+            return run_evaluation(request, evaluator, project_root=project_root)
+    else:
+        @application.post("/evaluate", status_code=202, tags=["evaluation"])
+        async def evaluate_visitor(request: Request) -> dict[str, str]:
+            history_allowed()
+            from backend.api.byok import read_json
+            root = request_root(request)
+            return visitors.submit(root, await read_json(request), evaluator)
+
+        @application.get("/jobs/{ident}", tags=["evaluation"])
+        def evaluation_job(ident: str, request: Request) -> dict[str, Any]:
+            history_allowed()
+            return visitors.job(request_root(request), ident)
 
     from backend.api.knowledge_update import router as knowledge_update_router
     application.include_router(knowledge_update_router,

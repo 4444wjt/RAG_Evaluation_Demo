@@ -13,7 +13,9 @@
 
 **RAG 回答的逐句核对与质量门禁平台。** 把回答拆成逐句、每句对回检索原文，再由门禁按阈值判定这批回答能否放行——错在哪句、修完有没有变好、凭什么放行，都能回查。归档结果可离线复算，不调用模型、也不需要密钥。
 
-**▶ 在线演示**：[kk444444444444.cloud](https://kk444444444444.cloud/)（免登录、不调用模型，打开就是一次真实 FAIL 的门禁结论 + 逐句证据 + 换裁判对比） · **一键起站**：[Docker 三行](#快速启动) · **全部文档**：[docs/](docs/README.md)
+**▶ 在线使用**：[kk444444444444.cloud](https://kk444444444444.cloud/)：上传资料 → 配置自己的 API → 开始评测 → 查看并下载结果。
+
+**▶ 查看演示**：[加载演示快照](https://kk444444444444.cloud/#/lab/demo)，免登录、不调用模型，查看一次真实 FAIL 的门禁结论、逐句证据与换裁判对比。 · **一键起站**：[Docker 三行](#快速启动) · **全部文档**：[docs/](docs/README.md)
 
 **使用教程与核心实测**：[视频（GitHub）](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [视频（Gitee）](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4)
 
@@ -59,6 +61,8 @@
 
 ## 快速启动
 
+**直接在线使用：** 打开[评测工作区](https://kk444444444444.cloud/#/lab/workspace)，上传自己的资料，选择自动生成题目或上传自定义题集；到「模型配置」填写 OpenAI 兼容接口地址、模型名和自己的 API Key，返回工作区选择被测模型与裁判，点击「开始评测」。完成后查看指标、逐句证据和报告，点击「保存记录」下载结果。只看已有案例时，点击页头「加载演示」。
+
 **一键起站（Docker，Windows / macOS / Linux 同一套命令）。** 需要 Docker Desktop，或 Docker Engine + Compose v2.24 以上。三行跑完，默认只监听本机：
 
 ```bash
@@ -67,7 +71,7 @@ cd rag-hallucination-evaluator/deploy
 cp .env.example .env && docker compose up -d --build
 ```
 
-打开 `http://127.0.0.1:8080/` 就是只读演示站，与公网演示同一个入口：只能看快照，不能发起在线评测。Linux 与 macOS 也可以直接跑 `./deploy.sh`（多一步健康检查轮询）。首次构建要拉镜像、装依赖，需要几分钟；完整选项见 [部署说明](deploy/README.md)。
+打开 `http://127.0.0.1:8080/`，默认启动为只读演示：可查看演示快照，不能发起评测。Linux 与 macOS 也可以直接跑 `./deploy.sh`（多一步健康检查轮询）。首次构建要拉镜像、装依赖，需要几分钟；完整选项见 [部署说明](deploy/README.md)。
 
 不想装 Docker、只想在浏览器里看：[GitHub Pages 备用站](https://4444wjt.github.io/RAG_Evaluation_Demo/) 是纯静态只读版本，由 `pages.yml` 自动构建。
 
@@ -158,7 +162,7 @@ if (-not (Test-Path -LiteralPath .env)) { Copy-Item -LiteralPath .env.example -D
 
 前端继续通过 `npm run dev` 启动。进入工作区，默认可直接选择项目自带示例，也可切换“电脑文件”选择或拖入资料，再配置测试集、模型和阈值。文档支持 TXT / PDF / DOCX / MD，自定义测试集支持 JSON / CSV / TXT，单个文件最多 10 MiB；导入会保存到当前评测服务的 `work/uploads/`，不会调用模型。确认配置后点击“开始评测”。已有项目文件的手动路径入口位于高级选项中。
 
-`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。报告页通过本地文件选择导入 HTML；不是服务端报告下载入口。`npm run build` 生成静态产物；公网部署的代理与只读拦截配置见 [deploy/](deploy/README.md)，可评测部署还需自行加上访问控制。
+`/health` 仅表示服务存活，不验证模型、Embedding 或密钥。报告页读取当前记录保存的 HTML，也可导入本地报告预览。`npm run build` 生成静态产物；默认只读部署与代理配置见 [deploy/](deploy/README.md)。
 
 ### 5. 保留的 CLI / Gradio 入口
 
@@ -203,7 +207,7 @@ Gradio 默认端口为 7860。当前 CLI 和 Gradio 经 `main.py.run_pipeline` �
 | 门禁自身 | 门禁审计 | 集中展示：门禁可信度四问的结论、失败归因（问题出在检索还是生成）、逐句核对的外部基准（ANAH / RGB）、门禁代码自检（性质测试、变异测试）与回归对比样例；数据由 `tools/competition/build_audit_fixture.py` 从冻结证据生成并核对哈希 |
 | 鲁棒性 | 鲁棒性体检 | 对任意 RAG 应用改动检索资料（打乱、加噪、移除依据、反事实），检验应用会不会被资料带偏、逐句核对是否跟着证据走；可接入被测应用的 HTTP 接口 |
 | 裁判误差 | 人工标注 | 请非作者盲标门禁所用的逐条判定，估计裁判判错的程度，给出同时计入题目抽样与裁判判错的区间 |
-| 引文版本 | 引用版本检查（CLML） | 本地上传 XML、填写版本需求、修改后重查、HTML/JSON 导出与源码 CLI 离线复算；公开入口只读、禁用上传 |
+| 引文版本 | 引用版本检查（CLML） | 在线或本地上传 XML、填写版本需求、修改后重查、HTML/JSON 导出与源码 CLI 离线复算；不调用模型 |
 
 **裁判与外部应用接入：** 评测工作区、API 和 CLI 支持[单独配置裁判](docs/integrations/independent-judge.md)，回答生成与五项指标／Trace 核对可使用不同模型，并记录裁判请求名和实际响应名。[外部 RAG 端到端接入](docs/integrations/external-rag.md)只发送题号与问题，由应用返回回答和实际生成资料，结果独立归档。
 
@@ -215,7 +219,7 @@ Ragas 指标包含忠实度、上下文精度、答案相关性、事实一致�
 
 | 形态 | 一句话说明 | 怎么接 |
 |---|---|---|
-| 独立质检平台 | 上线前对 RAG 应用做一次完整评测：逐句核对、多模型对比、门禁结论和报告 | 本机工作台，或 [Docker Compose 部署](deploy/README.md) 到内网 |
+| 独立质检平台 | 上线前对 RAG 应用做一次完整评测：逐句核对、多模型对比、门禁结论和报告 | [在线工作区](https://kk444444444444.cloud/#/lab/workspace)、本机工作台，或 [Docker Compose 部署](deploy/README.md) 到内网 |
 | 嵌入现有系统 | 在已有平台里调用逐句核对和门禁，或把自己 RAG 应用的接口交给平台检验 | HTTP 接口、Python 函数、`--generator-endpoint`，见 [落地与接入](docs/DEPLOYMENT.md#嵌入现有系统) |
 | CI 门禁 | 每次改提示词、换模型、调检索后自动回归，门禁不通过则构建失败 | GitHub Action，见 [门禁回放](docs/gate-replay.md) |
 
@@ -358,12 +362,12 @@ python -I -S -B -X utf8 scripts/statute_diagnostic.py --input examples/statute_c
 | 模块 | 技术与职责 |
 |---|---|
 | Frontend | 首页与分组工作台视图（评测、验证与审计、资料准备） |
-| Backend | Python、FastAPI；参数／项目路径校验、同步评测调用、结果序列化 |
+| Backend | Python、FastAPI；参数／路径校验、评测调用、结果序列化；云端按访客会话隔离上传与历史，后台运行评测并返回阶段进度 |
 | Evaluation Pipeline | LangChain、Chroma、本地 Embedding、Ragas；文档 → 测试集 → 检索与回答 → 指标与溯源 → 门禁与报告 |
-| Model Adapter | 统一使用 OpenAI 兼容适配器；DeepSeek、Qwen2.5-7B、GLM-5.2-Fast 是内置配置，其它兼容接口（vLLM、Ollama、内部网关）在「模型配置」页自行登记，密钥只读本机 `.env` |
+| Model Adapter | 统一使用 OpenAI 兼容适配器；云端使用访客填写的接口与 API Key；本地支持内置模型与自有兼容接口，密钥从本机 `.env` 读取 |
 | Compatibility | `main.py` 保留 CLI 和 Gradio；报告、存储、服务与核心评测分层在 `backend/` |
 
-前端开发服务将 `/api` 代理到本地后端。后端采用单进程同步评测，部署与扩展安排见 [架构说明](docs/architecture/README.md)。
+前端开发服务将 `/api` 代理到本地后端。本地评测沿用同步请求；云端评测提交后查询任务进度，同一实例每次运行一个任务。部署与扩展安排见 [架构说明](docs/architecture/README.md)。
 
 共享评测流程在入库前逐页检查 PDF 文本层：`PASS` 表示未发现所检异常，`FAIL` 表示明显乱码并阻止入库，`REVIEW` 表示疑似扫描页，告警后继续并保留待复核结论；空白页单独标记，不影响整体结论。
 新运行记录会写入源文件 SHA-256、字节数、扩展名、检查器版本与切块参数，PDF 另记 pypdf 版本；TXT / MD / DOCX 等非 PDF 文件只记录指纹，检查结论为 `NOT_APPLICABLE`。
@@ -418,8 +422,9 @@ RAG-Reliability-Lab/
 - **已交付的评测链路**：覆盖逐句溯源、多模型指标、门禁回放、报告和修复对照；使用入口见[快速启动](#快速启动)。
 - **裁判与人工校准**：裁判配置、V/A/B 同包 52 条标注及区间方法／模拟已完成；真实校正结论因未决样本保留，0.8 门槛的业务校准待完成。
 - **材料扩展与外部使用**：政务留出题、未见医疗法规规则诊断与 AnythingLLM 接入已有记录；同一操作者 O 的 [10-27 远程操作](docs/competition/external-repro-20261027/README.md)与 [10-29 本人电脑验收及反馈](docs/competition/external-use-20261029/README.md)均可回查。正式端到端门禁仍集中金融场景。
-- **演示站已更新（2026-10-29）**：工作台 r5 的四步修复导览与正式运行回放已部署；可交互回查拦截、原文、处理和复算记录，下载复核卡。公开站保持只读，不启动新评测。
-- **后续工程**：任务队列、取消与阶段进度，鉴权与资源隔离，扩大独立样本与持续浏览器验收。
+- **历史更新（2026-10-29）**：工作台 r5 上线四步修复导览与正式运行回放，当时公开站为只读演示。
+- **在线使用（2026-11-02）**：上传自有资料和题集，配置自己的 API，运行评测并下载完整记录；保留演示快照与13步使用引导。
+- **后续工程**：任务队列、取消、账户管理，扩大独立样本与持续浏览器验收。
 
 ## 开源贡献
 
@@ -450,7 +455,7 @@ GitHub Actions 的 CI 在向 GitHub 镜像推送或向其 master／main 发起 P
 
 ## 限制与边界
 
-默认门禁阈值为 0.8，业务校准待完成；裁判可单独配置，默认使用被测模型。公开演示站只读，在线评测部署需配置访问控制。
+默认门禁阈值为 0.8，业务校准待完成；裁判可单独配置，默认使用被测模型。在线评测使用访客自己的 API，GitHub Pages 与默认 Docker 部署保留只读演示。
 
 各组实验的材料、样本规模与人工复核情况分别列于上文。完整测算口径见 [评测可信度与限制](docs/evaluation-credibility.md)。
 

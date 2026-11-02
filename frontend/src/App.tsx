@@ -14,6 +14,7 @@ import { ComparisonView } from './features/ComparisonView';
 import { TraceView } from './features/TraceView';
 import { ReportView } from './features/ReportView';
 import { EvaluationHistory } from './features/EvaluationHistory';
+import { EvaluationGuide } from './features/EvaluationGuide';
 import { EvaluationVerificationView } from './features/EvaluationVerificationView';
 import { GateAuditView } from './features/GateAuditView';
 import { FixVerificationView } from './features/FixVerificationView';
@@ -26,9 +27,10 @@ import { KnowledgeUpdateView } from './features/KnowledgeUpdateView';
 import { ModelsView } from './features/ModelsView';
 import { fetchModels } from './api/models';
 import type { ModelEntry } from './api/models';
+import { byokEntries } from './api/byok';
 import demoData from './fixtures/demo.json';
 import sourceRegistry from './fixtures/source-registry.json';
-import { MODEL_COLORS, MODELS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
+import { BYOK, MODEL_COLORS, MODELS, READ_ONLY, REPO_URL, STATIC_SITE } from './config';
 import { labHash, parseLabHash } from './labRoute';
 import type { LabView } from './labRoute';
 import { fromRequest, initialConfig, initialRunState, runReducer, toRequest, validateConfig } from './state';
@@ -45,7 +47,7 @@ type DashboardView = LabView;
 const navigation: { id: DashboardView; label: string; icon: IconName; title: string; description: string }[] = [
   { id: 'overview', label: '评测总览', icon: 'overview', title: '评测总览', description: '从质量门禁到逐句证据，检查模型回答的可靠性。' },
   { id: 'workspace', label: '评测工作区', icon: 'layers', title: '评测工作区', description: '选择数据和模型，运行一次可解释的可靠性评测。' },
-  { id: 'models', label: '模型配置', icon: 'sliders', title: '模型配置', description: '登记自己的 OpenAI 兼容模型；密钥留在本机 .env，页面只显示是否已设置。' },
+  { id: 'models', label: '模型配置', icon: 'sliders', title: '模型配置', description: BYOK ? '云端使用自己的模型；填写接口和 API Key，配置仅留在当前页面内存。' : '登记自己的 OpenAI 兼容模型；密钥留在本机 .env，页面只显示是否已设置。' },
   { id: 'comparison', label: '多模型对比', icon: 'chart', title: '多模型对比', description: '同一测试集上的指标与耗时，保留原有模型顺序。' },
   { id: 'trace', label: '幻觉分析', icon: 'trace', title: '幻觉分析', description: '阅读模型回答，逐句检查事实判断与检索证据。' },
   { id: 'report', label: '评测报告', icon: 'file', title: '评测报告', description: '查看已生成的 HTML 报告，保留原始评测内容。' },
@@ -96,12 +98,14 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const [formError, setFormError] = useState<string | null>(null);
   const [health, setHealth] = useState<'checking' | 'connected' | 'disconnected'>('checking');
   const [configurationCheck, setConfigurationCheck] = useState<ConfigurationCheck | null>(null);
-  const [registeredModels, setRegisteredModels] = useState<ModelEntry[]>([]);
+  const [registeredModels, setRegisteredModels] = useState<ModelEntry[]>(() => BYOK ? byokEntries() : []);
+  const [progressMessage, setProgressMessage] = useState('');
   // A fresh token per loaded result lets the overview replay the gate settle on every load, but not when switching views.
   const [resultLoad, setResultLoad] = useState<object>(() => ({}));
   const inflight = useRef(false);
   const configurationInflight = useRef(false);
   const healthRequest = useRef(0);
+  const guideWorkspaceVisit = useRef(false);
   const mounted = useRef(true);
   const current = navigation.find((item) => item.id === view)!;
   const running = run.status === 'running';
@@ -135,6 +139,12 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     if (window.location.hash === hash) return;
     window.history.replaceState({ ...window.history.state, labView: view }, '');
     window.history.pushState({ labEntryHandled: true, labView: next }, '', hash);
+  };
+
+  const navigateGuide = (next: DashboardView) => {
+    // Merely visiting a tutorial step must not reconcile or replace selected models.
+    guideWorkspaceVisit.current = next === 'workspace' && view !== 'workspace';
+    navigate(next);
   };
 
   // Cards marked data-spotlight light up under the pointer; one listener serves them all.
@@ -175,8 +185,12 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const applyModels = useCallback((models: ModelEntry[]) => {
     setRegisteredModels(models);
     const builtin = models.filter((model) => model.source === 'builtin').map((model) => model.name);
-    const known = new Set<string>([...(builtin.length ? builtin : MODELS.map((model) => model.id)), ...models.map((model) => model.name)]);
+    const known = new Set<string>([...(BYOK ? [] : builtin.length ? builtin : MODELS.map((model) => model.id)), ...models.map((model) => model.name)]);
     setConfig((current) => {
+      if (BYOK) {
+        const selected = current.modelNames.filter((name) => known.has(name));
+        return { ...current, modelNames: selected.length ? selected : models.slice(0, 1).map((model) => model.name), judgeModelName: current.judgeModelName && known.has(current.judgeModelName) ? current.judgeModelName : undefined };
+      }
       const defaults = current.modelNames.length === MODELS.length && MODELS.every((model) => current.modelNames.includes(model.id));
       return { ...current, modelNames: defaults && builtin.length ? builtin : current.modelNames.filter((name) => known.has(name)) };
     });
@@ -185,6 +199,8 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   // Read on opening the workspace, not on start, so the first screen stays a health check only.
   useEffect(() => {
     if (view !== 'workspace' || READ_ONLY || STATIC_SITE) return;
+    if (BYOK) { applyModels(byokEntries()); return; }
+    if (guideWorkspaceVisit.current) { guideWorkspaceVisit.current = false; return; }
     const controller = new AbortController();
     // Without a backend the workspace simply keeps the built-in models.
     fetchModels(controller.signal).then(applyModels).catch(() => undefined);
@@ -203,16 +219,16 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     const message = validateConfig(config);
     setFormError(message);
     if (message) {
-      setConfigurationCheck({ status: 'error', message: '配置未通过本地检查。请修正下方提示后重新检查。' });
+      setConfigurationCheck({ status: 'error', message: BYOK ? '配置未通过检查。请修正下方提示后重新检查。' : '配置未通过本地检查。请修正下方提示后重新检查。' });
       return;
     }
     configurationInflight.current = true;
-    setConfigurationCheck({ status: 'checking', message: '正在校验本地参数并检查 API 连接…' });
+    setConfigurationCheck({ status: 'checking', message: BYOK ? '正在校验参数并检查 API 连接…' : '正在校验本地参数并检查 API 连接…' });
     try {
       const connected = await refreshHealth();
       if (mounted.current) setConfigurationCheck({
         status: connected ? 'success' : 'error',
-        message: connected ? '本地参数检查通过，服务可连接。' : '本地参数检查通过，但服务未连接。请确认 FastAPI 服务正在运行，再重新检查。',
+        message: BYOK ? connected ? '参数检查通过，云端服务可连接。' : '参数检查通过，但云端服务未连接。请稍后重新检查。' : connected ? '本地参数检查通过，服务可连接。' : '本地参数检查通过，但服务未连接。请确认 FastAPI 服务正在运行，再重新检查。',
       });
     } finally {
       configurationInflight.current = false;
@@ -273,9 +289,10 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     if (message) return;
     setHistoryOpen(false);
     inflight.current = true;
+    setProgressMessage(BYOK ? '正在提交评测任务…' : '');
     dispatch({ type: 'start', config });
     try {
-      const result = await evaluate(toRequest(config));
+      const result = await evaluate(toRequest(config), BYOK ? (message) => { if (mounted.current) setProgressMessage(message); } : undefined);
       if (mounted.current) { dispatch({ type: 'complete', result }); setResultLoad({}); setView('overview'); }
     } catch (error) {
       if (mounted.current) dispatch({ type: 'fail', message: error instanceof Error ? error.message : '评测未完成，请检查服务日志。', uncertain: error instanceof ConnectionError });
@@ -351,20 +368,21 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
           <span className="nav-tabs-indicator" aria-hidden="true"/>
           {NAV_GROUPS.map((group, index) => <button key={group.id} ref={(element) => { groupTabs.current[index] = element; }} type="button" role="tab" id={`${group.id}-tab`} className={`nav-tab nav-tab--${group.tone}`} aria-selected={index === groupIndex} aria-controls={`${group.id}-panel`} tabIndex={index === groupIndex ? 0 : -1} onClick={() => setNavGroup(group.id)}>{group.label}{index !== groupIndex && group.views.includes(view) && <span className="nav-tab-mark" aria-hidden="true"/>}</button>)}
         </div>
+        <EvaluationGuide view={view} onNavigate={navigateGuide} hasResult={Boolean(run.result)} isDemo={isDemo} busy={running || checkingConfiguration} readOnly={READ_ONLY} staticSite={STATIC_SITE} allowWelcome={!entryRequest?.view && entryRequest?.target !== 'demo' && !parseLabHash(window.location.hash)?.view}/>
         {STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
-      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}${view === 'citation-version' ? ' cv-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div>{view !== 'citation-version' && view !== 'knowledge-update' && <div className="page-actions evaluation-record-actions">{isDemo && run.lastReal && <button type="button" className="btn btn-secondary" onClick={restoreResult} disabled={running || checkingConfiguration}>返回评测结果</button>}<button type="button" className="btn btn-secondary" onClick={() => { void saveRecord(); }} disabled={!run.result || isDemo || running || saving || READ_ONLY || STATIC_SITE}><Icon name="file" size={15}/>{saving ? '正在下载…' : '保存记录'}</button><button ref={historyToggle} type="button" className="btn btn-secondary" aria-expanded={historyOpen} aria-controls="evaluation-history" disabled={READ_ONLY || STATIC_SITE} onClick={() => setHistoryOpen((open) => !open)}><Icon name="folder" size={15}/>历史记录</button><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div>}</div>
+      <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}${view === 'citation-version' ? ' cv-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div>{view !== 'citation-version' && view !== 'knowledge-update' && <div className="page-actions evaluation-record-actions" data-evaluation-guide="history">{isDemo && run.lastReal && <button type="button" className="btn btn-secondary" onClick={restoreResult} disabled={running || checkingConfiguration}>返回评测结果</button>}<button type="button" className="btn btn-secondary" data-evaluation-guide="save" onClick={() => { void saveRecord(); }} disabled={!run.result || isDemo || running || saving || READ_ONLY || STATIC_SITE}><Icon name="file" size={15}/>{saving ? '正在下载…' : '保存记录'}</button><button ref={historyToggle} type="button" className="btn btn-secondary" aria-expanded={historyOpen} aria-controls="evaluation-history" disabled={READ_ONLY || STATIC_SITE} onClick={() => setHistoryOpen((open) => !open)}><Icon name="folder" size={15}/>历史记录</button><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} data-evaluation-guide="new" onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div>}</div>
         {historyOpen && <EvaluationHistory disabled={running || checkingConfiguration} onOpen={openRecord} onClose={() => { setHistoryOpen(false); historyToggle.current?.focus(); }}/>}
         {run.result?.save_error && !isDemo && <p className="record-notice record-notice--error">{run.result.save_error}</p>}
         {saveNotice?.result === run.result && <p className={`record-notice${saveNotice.error ? ' record-notice--error' : ''}`} role={saveNotice.error ? 'alert' : 'status'}>{saveNotice.text}</p>}
-        {running && view !== 'workspace' && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span><div className="operation-progress" role="progressbar" aria-label="评测进度"><span/></div></div>}
+        {running && view !== 'workspace' && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>{BYOK ? progressMessage : '正在等待评测完成，请保持页面打开。'}</span><div className="operation-progress" role="progressbar" aria-label="评测进度"><span/></div></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
         {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && view !== 'knowledge-update' && resultMeta}
-        {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={gateRequest} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
-        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} registeredModels={registeredModels} onInspectExample={inspectExample}/>}
+        {view === 'overview' && <div data-evaluation-guide="result"><OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={gateRequest} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/></div>}
+        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} progressMessage={progressMessage} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} registeredModels={registeredModels} onInspectExample={inspectExample}/>}
         {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
-        {view === 'trace' && <TraceView result={run.result} document={run.source === 'demo' ? demoDocument : null}/>}
-        {view === 'report' && <ReportView result={run.result}/>}
+        {view === 'trace' && <div data-evaluation-guide="trace"><TraceView result={run.result} document={run.source === 'demo' ? demoDocument : null}/></div>}
+        {view === 'report' && <div data-evaluation-guide="report"><ReportView result={run.result}/></div>}
         {view === 'verification' && <EvaluationVerificationView result={run.result} source={run.source}/>}
         {view === 'audit' && <GateAuditView/>}
         {view === 'fix' && <FixVerificationView/>}

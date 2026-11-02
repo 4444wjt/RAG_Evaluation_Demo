@@ -8,7 +8,7 @@ export function JudgeConfiguration({ value, models, testedModels, onChange }: {
   const missing = Boolean(value) && !models.some((model) => model.id === value);
   return <div className="judge-configuration">
     <div className="judge-configuration-heading"><label htmlFor="evaluation-judge">评测裁判</label><span>五项指标与 Trace</span></div>
-    <select id="evaluation-judge" value={value ?? ''} aria-describedby="evaluation-judge-help" onChange={(event) => onChange(event.target.value)}>
+    <select data-evaluation-guide="judge" id="evaluation-judge" value={value ?? ''} aria-describedby="evaluation-judge-help" onChange={(event) => onChange(event.target.value)}>
       <option value="">沿用各自被测模型（原有方式）</option>
       {missing && <option value={value}>{value}（当前未登记）</option>}
       {models.map((model) => <option key={model.id} value={model.id}>{model.label} · {model.id}</option>)}

@@ -24,7 +24,7 @@ COPY backend ./backend
 COPY scenarios ./scenarios
 COPY deploy/knowledge-sources.json ./deploy/
 
-RUN useradd --create-home --uid 10001 app && chown -R app /app
+RUN mkdir -p /app/work && useradd --create-home --uid 10001 app && chown -R app /app
 USER app
 
 EXPOSE 8000

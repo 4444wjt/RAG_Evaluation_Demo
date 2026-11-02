@@ -1,0 +1,43 @@
+# 只供独立 docker-compose.byok.yml 使用；默认只读配置仍用 default.conf.template。
+server {
+    listen 80;
+    server_name _;
+    server_tokens off;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /assets/ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~ ^/api/(docs|redoc|openapi\.json)$ {
+        return 404;
+    }
+
+    # 仅放行现有手动输入与评测入口；路径限制和大小限制仍由后端检查。
+    location ~ ^/api/(evaluate|inputs|evaluations/import|contexts/parent/prepare|citations/versions/(inspect|check)|knowledge-update/(scan|recheck|export))$ {
+        limit_except POST { deny all; }
+        client_max_body_size 10m;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 120s;
+        proxy_request_buffering off;
+        proxy_buffering off;
+        rewrite ^/api/(.*)$ /$1 break;
+        proxy_pass http://api:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # 包含 /jobs/{id} 轮询、评测记录下载和固定公开来源清单。
+    location /api/ {
+        limit_except GET HEAD { deny all; }
+        proxy_pass http://api:8000/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}

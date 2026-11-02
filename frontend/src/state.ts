@@ -1,5 +1,5 @@
 import type { EvaluateRequest, EvaluationRecord, EvaluationResult, ResultSource } from './api/types';
-import { MODELS } from './config';
+import { BYOK, MODELS } from './config';
 import type { ImportedInput } from './api/inputFiles';
 
 export interface WorkspaceConfig {
@@ -19,7 +19,7 @@ export interface WorkspaceConfig {
 
 export const initialConfig: WorkspaceConfig = {
   docPath: 'demo.txt', testsetMode: 'auto', testsetPath: 'testset_example.csv',
-  benchmarkLimit: 20, modelNames: MODELS.map((model) => model.id),
+  benchmarkLimit: 20, modelNames: BYOK ? [] : MODELS.map((model) => model.id),
   useDefaultThresholds: true, faithThreshold: 0.8, contextThreshold: 0.8,
 };
 
@@ -41,6 +41,7 @@ export function toRequest(config: WorkspaceConfig): EvaluateRequest {
 }
 
 export function validateConfig(config: WorkspaceConfig): string | null {
+  if (BYOK && config.testsetMode === 'benchmark') return '云端未开放 TruthfulQA，请选择自动生成或上传自定义题集。';
   if (!config.modelNames.length) return '请至少选择一个模型。';
   if (config.testsetMode === 'custom' && !config.testsetPath.trim()) return '请先选择或导入自定义测试集。';
   if (config.testsetMode === 'benchmark' && (!Number.isInteger(config.benchmarkLimit) || config.benchmarkLimit < 1)) return '基准样本数量必须是正整数。';

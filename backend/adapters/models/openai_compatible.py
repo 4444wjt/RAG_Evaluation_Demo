@@ -10,6 +10,7 @@ from langchain_openai import ChatOpenAI
 
 from backend import config
 from .base import ModelAdapter
+from .judging import ObservedJudge
 
 
 class OpenAICompatibleAdapter(ModelAdapter):
@@ -56,3 +57,53 @@ class OpenAICompatibleAdapter(ModelAdapter):
             http_client=http_client,
             extra_body=extra_body
         )
+
+
+class VisitorChatOpenAI(ObservedJudge):
+    """Contain upstream exception text before Ragas or legacy helpers log it."""
+
+    def _generate(self, *args, **kwargs):
+        try:
+            return self._visitor_result(super()._generate(*args, **kwargs))
+        except Exception as error:
+            raise RuntimeError(f"模型服务调用失败（{type(error).__name__}）。") from None
+
+    async def _agenerate(self, *args, **kwargs):
+        try:
+            return self._visitor_result(await super()._agenerate(*args, **kwargs))
+        except Exception as error:
+            raise RuntimeError(f"模型服务调用失败（{type(error).__name__}）。") from None
+
+    def _visitor_result(self, result):
+        # A provider may reflect a key even in a successful response. Remove it
+        # before downstream JSON parsers, Ragas callbacks or Trace see the text.
+        key = self.openai_api_key.get_secret_value()
+        def clean(value):
+            if isinstance(value, str):
+                return value.replace(key, "[API Key 已隐藏]")
+            if isinstance(value, list):
+                return [clean(item) for item in value]
+            if isinstance(value, dict):
+                return {clean(name): clean(item) for name, item in value.items()}
+            return value
+        result.llm_output = clean(result.llm_output)
+        for generation in result.generations:
+            generation.text = clean(generation.text)
+            generation.generation_info = clean(generation.generation_info)
+            generation.message.content = clean(generation.message.content)
+            generation.message.response_metadata = clean(generation.message.response_metadata)
+            generation.message.additional_kwargs = clean(generation.message.additional_kwargs)
+        return result
+
+
+def build_visitor_llm(credentials):
+    """Explicit visitor credentials only; never read a key from environment."""
+    key = credentials.get("api_key")
+    if not key:
+        raise ValueError("访客 API Key 缺失。")
+    return VisitorChatOpenAI(
+        model=credentials["name"], base_url=credentials["base_url"], api_key=key,
+        temperature=0, max_retries=0, timeout=config.LLM_TIMEOUT,
+        http_client=httpx.Client(timeout=config.LLM_TIMEOUT, follow_redirects=False),
+        http_async_client=httpx.AsyncClient(timeout=config.LLM_TIMEOUT, follow_redirects=False),
+    )

@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { EvaluationResult } from '../api/types';
 import { fetchEvaluationReport } from '../api/evaluations';
+import { saveKUZip as downloadBlob } from '../api/knowledgeUpdate';
 import { Icon } from '../components/Icon';
-import { READ_ONLY } from '../config';
+import { BYOK, READ_ONLY } from '../config';
 import { JudgeProvenance } from './JudgeProvenance';
 import './details.css';
 
@@ -115,6 +116,18 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
     setImportError('');
   }
 
+  function downloadReport() {
+    if (!visibleReport) return;
+    const name = visibleReport.saved && result?.record_id
+      ? `veriscope-report-${result.record_id}.html` : fileName(visibleReport.name);
+    try {
+      downloadBlob(new Blob([visibleReport.document], { type: 'text/html;charset=utf-8' }), name);
+      setCopyNotice({ kind: 'success', text: '已发起当前预览报告下载，请在浏览器下载列表确认。' });
+    } catch {
+      setCopyNotice({ kind: 'error', text: '报告下载未完成，请重试或检查浏览器下载权限。' });
+    }
+  }
+
   const paths = [
     { label: 'HTML 报告', value: result?.html_path, icon: 'file' as const },
     { label: '结果图表', value: result?.chart_path, icon: 'chart' as const },
@@ -128,21 +141,22 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
       <input ref={fileInput} className="report-file-input" type="file" accept=".html,text/html" aria-label="选择本地 HTML 报告" onChange={importReport} />
     </header>
 
-    <div className="report-path-panel">
+    {!BYOK && <div className="report-path-panel">
       <div className="report-path-heading"><h3>本地产物路径</h3><span>来自当前结果</span></div>
       <div className="report-paths">{paths.map((path) => <div className="report-path-row" key={path.label}>
         <div className="report-path-label"><Icon name={path.icon} size={17} /><span>{path.label}</span></div>
         {path.value && READ_ONLY ? <code className="report-path-value" tabIndex={0}>{fileName(path.value)}</code> : path.value ? <><code className="report-path-value" tabIndex={0}>{path.value}</code><button type="button" className="btn btn-ghost report-copy-button" aria-label={`复制${path.label}本地路径`} onClick={() => void copyPath(path.value!)}><Icon name="copy" size={15} /><span>复制路径</span></button></> : <span className="report-path-missing">{result ? '当前结果未记录路径' : '尚未载入评测结果'}</span>}
       </div>)}</div>
       <p className="report-path-note">{READ_ONLY ? '这些是评测时在本机生成的产物，公开站点不提供下载；可导入你自己的 HTML 报告预览。' : result?.record_id ? '预览从当前记录读取；这些原始路径不用于加载报告。' : '路径指向本地文件。请从本地选择报告导入；文件可能被后续评测覆盖。'}</p>
-      {copyNotice && <p className={`report-notice report-notice--${copyNotice.kind}`} role="status">{copyNotice.text}</p>}
-    </div>
+    </div>}
+    {copyNotice && <p className={`report-notice report-notice--${copyNotice.kind}`} role="status">{copyNotice.text}</p>}
 
     {importError && <div className="report-import-error" role="alert"><Icon name="alert" size={17} /><span>{importError}</span></div>}
 
     {visibleReport ? <div className="report-preview">
       <div className="report-preview-heading">
         <div className="report-filename"><Icon name="file" size={18} /><span>{visibleReport.name}</span><span className="badge report-local-badge">{visibleReport.saved ? '当前记录' : '本地文件'}</span></div>
+        <button type="button" className="btn btn-secondary" onClick={downloadReport}><Icon name="file" size={15} />下载当前预览 HTML 报告</button>
         <button type="button" className="btn btn-ghost" onClick={clearReport}>清除预览</button>
       </div>
       <div className="report-source-notice"><Icon name={visibleReport.saved ? 'check' : 'alert'} size={15} /><span>{visibleReport.saved ? '按当前记录 ID 读取，未重新执行评测' : '手动导入，未自动核验与当前结果对应'}</span></div>

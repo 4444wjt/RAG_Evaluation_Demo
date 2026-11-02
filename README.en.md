@@ -13,7 +13,9 @@
 
 **Check RAG answers sentence by sentence, return to the source, replay the release gate, and compare the fix.**
 
-**[Open the read-only demo](https://kk444444444444.cloud/)** · [Run the demo locally without API keys](#quick-start) · [Replay an archived gate](docs/gate-replay.md)
+**[Use online](https://kk444444444444.cloud/)**: upload materials → add your own API → run evaluation → view and download results.
+
+[Load the demo snapshot](https://kk444444444444.cloud/#/lab/demo): no login or model calls; inspect a real FAIL verdict, sentence evidence and judge comparison. · [Run locally](#quick-start) · [Replay an archived gate](docs/gate-replay.md)
 
 **Usage tutorial and feature tests:** [Video (GitHub)](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [Video (Gitee)](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4)
 
@@ -58,11 +60,11 @@ The example deliberately cites a nonexistent paragraph, so exit 1 is expected. E
 
 | Form | In one sentence | How to adopt |
 |---|---|---|
-| Stand-alone QA platform | Evaluate a RAG application before release: sentence-level checks, model comparison, gate verdict and reports | Local workbench, or [Docker Compose](deploy/README.md) on an internal network |
+| Stand-alone QA platform | Evaluate a RAG application before release: sentence-level checks, model comparison, gate verdict and reports | [Online workspace](https://kk444444444444.cloud/#/lab/workspace), local workbench, or [Docker Compose](deploy/README.md) on an internal network |
 | Embedded in an existing system | Call the sentence check and gate from your own platform, or point the platform at your RAG application's endpoint | HTTP API, Python function, `--generator-endpoint` ([integration guide](docs/DEPLOYMENT.md), Chinese) |
 | CI gate | Re-check after every prompt, model or retrieval change; a blocked gate fails the build | GitHub Action, below |
 
-Your own models (any OpenAI-compatible endpoint: vLLM, Ollama, an internal gateway) can be registered on the workbench's model-configuration page; keys stay in the local `.env`. The integration guide also lists what has and has not been verified for private or air-gapped deployment.
+When running locally, your own models (any OpenAI-compatible endpoint: vLLM, Ollama, an internal gateway) can be registered on the workbench's model-configuration page; keys stay in the local `.env`. The integration guide also lists what has and has not been verified for private or air-gapped deployment.
 
 ### Target industries
 
@@ -110,7 +112,7 @@ python scripts/gate_replay.py docs/competition/evidence/20261005T144504Z-full-39
 | Multi-model comparison | Built-in DeepSeek, Qwen2.5-7B, GLM-5.2-Fast, plus any OpenAI-compatible model registered locally, on the same test set |
 | Reports | CSV, HTML, Excel, PDF and charts |
 | Human review | Human conclusions stored next to machine verdicts, never overwriting them, bound to a frozen snapshot by SHA-256 ([archive format](docs/review-archive-format.md)) |
-| Citation version (CLML) | [Check XML version fields and requirements locally](docs/integrations/citation-version.md), export HTML/JSON and recompute with the source CLI; the public entry is read-only with uploads disabled |
+| Citation version (CLML) | [Upload XML and check version requirements](docs/integrations/citation-version.md) online or locally, export HTML/JSON and recompute with the source CLI; no model calls |
 
 **Interpretation limits.** The sentence check has three layers that do not substitute for one another: **citation located** (the quoted evidence appears verbatim in the retrieved text, checked by code), **semantic support** (the statement follows from that text, judged by a model and subject to error), and **factual correctness** (whether the statement is true in the world, which the platform does not check). PASS only means the sampled cases met the configured thresholds; it does not mean every metric is good or every answer is correct. Missing metrics are never filled with zero, and an empty trace does not mean "no hallucination". See [evaluation credibility](docs/evaluation-credibility.md) (Chinese).
 
@@ -213,6 +215,8 @@ See [independent-judge rerun](docs/competition/evidence/20261014T125415Z-full-a5
 
 ## Quick start
 
+**Use online:** open the [evaluation workspace](https://kk444444444444.cloud/#/lab/workspace), upload your materials, and choose generated questions or upload a custom test set. In Model configuration (模型配置), enter an OpenAI-compatible base URL, model name and your own API Key. Return to the workspace, select the tested models and judge, then start evaluation. Review metrics, sentence evidence and the report; use Save record (保存记录) to download the result. Load demo (加载演示) opens the archived snapshot.
+
 Python 3.11 and Node.js 24 are recommended.
 
 **Install only the offline statute CLI (without the rest of the platform):** Python 3.11+, no third-party dependencies, no network calls after install.
@@ -252,7 +256,7 @@ Open `http://127.0.0.1:5173/` and click the demo button. The front end loads a f
 
 **Static fallback on GitHub Pages:** https://4444wjt.github.io/RAG_Evaluation_Demo/ serves the same read-only snapshot as a static front end (no back end, no API calls), built by `.github/workflows/pages.yml`.
 
-**Read-only demo site with Docker:** run `./deploy.sh` in `deploy/` ([deploy guide](deploy/README.md)). By default it listens on 127.0.0.1 only and rejects online evaluation (HTTP 423) at both nginx and the back end.
+**Local Docker demo (read-only by default):** run `./deploy.sh` in `deploy/` ([deploy guide](deploy/README.md)). By default it listens on 127.0.0.1 only and rejects online evaluation (HTTP 423) at both nginx and the back end.
 
 **Real evaluation:** install `requirements.txt` into a virtual environment, copy `.env.example` to `.env` and fill in provider keys (`OPENAI_API_KEY` for DeepSeek, `SILICONFLOW_API_KEY`, `DASHSCOPE_API_KEY`), prepare the local embedding model `BAAI/bge-small-zh-v1.5`, then start the API:
 
@@ -260,7 +264,7 @@ Open `http://127.0.0.1:5173/` and click the demo button. The front end loads a f
 python -m uvicorn backend.api.app:create_app --factory --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-Keys stay in the local `.env` or back-end environment only. Real evaluation calls paid model APIs. Evaluation is a synchronous request; there is no task queue, cancellation or progress API yet.
+For this local setup, keys stay in `.env` or the back-end environment, and evaluation uses synchronous requests. The online workspace instead uses the API configuration you supply and displays background-task progress. Model calls are billed by the selected service; one task runs at a time.
 
 ## Tests and CI
 
@@ -276,7 +280,7 @@ On pushes and pull requests to master/main in the GitHub mirror, GitHub Actions 
 
 ## Limitations
 
-The default gate threshold is 0.8; business calibration remains open. The judge can be configured separately and defaults to the evaluated model. The public demo is read-only; online evaluation deployments need access controls.
+The default gate threshold is 0.8; business calibration remains open. The judge can be configured separately and defaults to the evaluated model. Online evaluation uses your own API; GitHub Pages and default Docker deployments retain the read-only demo.
 
 Materials, sample sizes and human review are reported with each experiment above. Full evaluation scope is in the [credibility guide](docs/evaluation-credibility.md) (Chinese).
 
@@ -285,8 +289,9 @@ Materials, sample sizes and human review are reported with each experiment above
 - **Delivered:** CLI/Gradio, FastAPI and the React workbench, with sentence evidence, model metrics, gate replay, reports and fix comparisons.
 - **Calibration:** judge configuration, V/A/B annotations and interval methods/simulations are complete; unresolved cases prevent a corrected conclusion, and business calibration of the 0.8 threshold remains open.
 - **Broader materials and use:** government held-out questions, medical-fund rule diagnostics and AnythingLLM have records, alongside the same operator O's [10-27 remote use](docs/competition/external-repro-20261027/README.md) and [10-29 use and feedback from O's own computer](docs/competition/external-use-20261029/README.md). Formal end-to-end gates still focus on finance.
-- **Demo updated (2026-10-29):** workbench r5 is deployed with a four-step fix tour and formal-run replay. Follow the gate decision, source passages, handling and recalculation records, then download the review card. The public site remains read-only and starts no new evaluations.
-- **Next engineering work:** task queues, cancellation and progress, authentication and isolation, more independent samples and continued browser acceptance checks.
+- **Historical update (2026-10-29):** workbench r5 introduced the four-step fix tour and formal-run replay. The public site was read-only at that time.
+- **Online use (2026-11-02):** upload your own materials and test set, configure your own API, run evaluation and download the complete record. Demo snapshots and the 13-step guide remain available.
+- **Next engineering work:** task queues, cancellation, account management, more independent samples and continued browser acceptance checks.
 
 Milestones, original target dates and the issue response commitment (first reply within 3 working days) are in the [roadmap](ROADMAP.md) (Chinese).
 

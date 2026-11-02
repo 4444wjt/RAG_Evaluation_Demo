@@ -17,7 +17,7 @@ from . import build_display_df, TRACE_DISPLAY_COLUMNS
 
 def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_OUTPUT,
                          faith_threshold=FAITH_THRESHOLD, ctx_prec_threshold=CTX_PREC_THRESHOLD,
-                         total_elapsed=None, *, case_counts=None, model_dfs=None):
+                         total_elapsed=None, *, case_counts=None, model_dfs=None, embedding_label=None):
     """生成带配置说明的HTML报告"""
     with open(chart_path, "rb") as f:
         chart_base64 = base64.b64encode(f.read()).decode("utf-8")
@@ -149,7 +149,7 @@ def generate_html_report(summary_data, chart_path=CHART_PATH, output_path=HTML_O
         <b>版本号：</b>{VERSION}<br>
         <b>生成时间：</b>{now}<br>
         <b>评测框架：</b>Ragas + LangChain + Chroma<br>
-        <b>Embedding：</b>{EMBEDDING_MODEL}<br>
+        <b>Embedding：</b>{escape(str(EMBEDDING_MODEL if embedding_label is None else embedding_label))}<br>
         <b>评测总耗时：</b>{f'{total_elapsed:.1f} 秒' if total_elapsed is not None else '-'}
     </p>
 

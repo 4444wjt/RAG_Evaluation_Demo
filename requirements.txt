@@ -25,6 +25,8 @@ docx2txt==0.9
 
 # ragas 与数据层
 datasets==5.0.1
+# pyarrow 26 requires NumPy 2; keep the runtime aligned with numpy==1.26.4.
+pyarrow==23.0.1
 ragas==0.1.21
 
 # 后端引擎与关键传递依赖

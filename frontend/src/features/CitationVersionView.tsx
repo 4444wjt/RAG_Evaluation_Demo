@@ -1,3 +1,4 @@
+import { BYOK } from '../config';
 import { createRef, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { DragEvent } from 'react';
 import { Icon } from '../components/Icon';
@@ -236,7 +237,7 @@ export function CitationVersionView() {
     <WorkflowStatus phase={phase} fileCount={files.length} observed={Boolean(inspection)} hasReport={Boolean(current)} downloaded={Boolean(current && downloadNote.startsWith('已发起下载') && !downloadNote.includes('上次'))}/>
     <div className="cv-workbench" data-has-observation={Boolean(inspection)}>
     <section className="audit-panel cv-panel cv-materials" aria-labelledby={`${id}-files-title`}>
-      <div className="audit-panel-head"><div><h2 id={`${id}-files-title`}>原始资料</h2><p>上传原件，保留可追溯的文件绑定。</p></div><span className="audit-chip cv-local">本地检查</span></div>
+      <div className="audit-panel-head"><div><h2 id={`${id}-files-title`}>原始资料</h2><p>上传原件，保留可追溯的文件绑定。</p></div><span className="audit-chip cv-local">{BYOK ? '云端检查' : '本地检查'}</span></div>
       {locked && <p className="readonly-notice" role="status"><Icon name="alert" size={16}/><span><strong>只读演示</strong>{CV_PUBLIC_MESSAGE}</span></p>}
       <div className="cv-upload" data-dragging={dragging || undefined}><input id={`${id}-upload`} className="sr-only" type="file" multiple accept=".xml,application/xml,text/xml" aria-label="添加 CLML XML 文件" aria-describedby={`${id}-upload-hint`} disabled={locked || fileBusy} onChange={(event) => { void addFiles(Array.from(event.currentTarget.files ?? [])); event.currentTarget.value = ''; }}/><label htmlFor={`${id}-upload`} onDragOver={(event) => { event.preventDefault(); if (!locked && !fileBusy) setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={onDrop}><span className="cv-upload-icon"><Icon name="upload" size={25}/></span><span><strong>选择或拖入 XML 文件</strong><small id={`${id}-upload-hint`}>最多 10 份，合计不超过 5 MiB。<br/>同名文件按独立编号与哈希区分。</small></span><span className="cv-upload-cta" aria-hidden="true">浏览文件<Icon name="arrow" size={14}/></span></label></div>
       <div className="cv-file-budget"><p className="cv-note">{`${files.length} / 10 份 · ${formatBytes(total)} / 5 MiB`}</p><span>原始字节</span></div>
@@ -244,7 +245,7 @@ export function CitationVersionView() {
       {!inspection && files.length > 0 && !phase && <button type="button" className="btn btn-secondary cv-fit" disabled={locked} onClick={() => { retire(); void inspect(files); }}>重新读取原件观察</button>}
       {phase && <div className="cv-running" role="status"><p>{phase === 'reading' ? '正在读取原始字节并计算哈希…' : phase === 'inspecting' ? '正在解析原件观察…' : '正在核对版本字段…'}</p><button type="button" className="btn btn-secondary" onClick={() => retire('本次操作已取消，已完成读取的文件和需求仍保留。')}>取消本次操作</button></div>}
       {failure && <div className="error-notice cv-failure" role="alert"><Icon name="alert"/><div><strong>本次操作未完成</strong><p>{failure}</p></div></div>}
-      <p className="cv-local-note"><Icon name="shield" size={14}/><span>由你配置的本地后端处理，不调用模型。</span></p>
+      <p className="cv-local-note"><Icon name="shield" size={14}/><span>{BYOK ? '上传原件由本站后端处理，不调用模型。' : '由你配置的本地后端处理，不调用模型。'}</span></p>
     </section>
 
     <section className="audit-panel cv-panel cv-requirements" aria-labelledby={`${id}-requirements-title`}>

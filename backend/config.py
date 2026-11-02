@@ -14,7 +14,7 @@ except ImportError:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 从 .env 加载环境变量（API 密钥、模型名、base_url 等）
-if load_dotenv is not None:
+if load_dotenv is not None and os.environ.get("VERISCOPE_BYOK") != "1":
     load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # 核心路径配置

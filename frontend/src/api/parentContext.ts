@@ -1,3 +1,4 @@
+import { sessionHeaders } from './session';
 import { READ_ONLY, STATIC_SITE } from '../config';
 
 /** Mirrors backend/api/parent_context.py: every file, and all four together, stay within 8 MiB of raw bytes. */
@@ -212,7 +213,7 @@ export async function prepareParentContext(files: ParentContextFiles, signal?: A
   });
   let response: Response;
   try {
-    response = await fetch('/api/contexts/parent/prepare', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, signal });
+    response = await fetch('/api/contexts/parent/prepare', { method: 'POST', headers: { 'Content-Type': 'application/json', ...sessionHeaders() }, body, signal });
   } catch (error) {
     if (signal?.aborted) throw error;
     throw new ParentContextRequestError('无法连接本地服务，请确认后端已启动后重试。', 'NETWORK');

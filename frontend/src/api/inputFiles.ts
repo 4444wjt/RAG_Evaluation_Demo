@@ -1,4 +1,6 @@
-import { READ_ONLY, STATIC_SITE } from '../config';
+import { BYOK, READ_ONLY, STATIC_SITE } from '../config';
+import { sessionHeaders } from './session';
+import { safeByokMessage } from './byok';
 
 export type InputKind = 'document' | 'testset';
 export interface ImportedInput {
@@ -32,13 +34,18 @@ export async function importInput(file: File, kind: InputKind, signal?: AbortSig
   let response: Response;
   try {
     response = await fetch(`/api/inputs?${new URLSearchParams({ kind, filename: file.name })}`, {
-      method: 'POST', headers: { 'Content-Type': 'application/octet-stream' }, body: file, signal,
+      method: 'POST', headers: { 'Content-Type': 'application/octet-stream', ...sessionHeaders() }, body: file, signal,
     });
   } catch (error) {
     if (signal?.aborted) throw error;
-    throw new Error('无法连接本地导入服务，请确认后端已启动后重试。');
+    throw new Error(BYOK ? '无法连接资料导入服务，请检查连接后重试。' : '无法连接本地导入服务，请确认后端已启动后重试。');
   }
   if (!response.ok) {
+    if (BYOK) {
+      let detail: unknown;
+      try { detail = ((await response.json()) as { detail?: unknown }).detail; } catch { /* fallback */ }
+      if (typeof detail === 'string' && detail.length <= 500) throw new Error(safeByokMessage(detail));
+    }
     const messages: Record<number, string> = {
       403: '本地资料目录无法访问，请检查后端目录权限。',
       404: '当前后端未提供文件导入，请启动最新版本的本地服务。',
@@ -46,7 +53,7 @@ export async function importInput(file: File, kind: InputKind, signal?: AbortSig
       422: '文件未被接收，请检查文件名、格式和内容。',
       423: '公开演示不接收文件，请在本地运行后导入。',
     };
-    throw new Error(messages[response.status] ?? '资料导入未完成，请检查本地后端后重试。');
+    throw new Error(BYOK ? ({ 413: messages[413], 422: messages[422] }[response.status] ?? '资料导入未完成，请检查文件和服务后重试。') : messages[response.status] ?? '资料导入未完成，请检查本地后端后重试。');
   }
   let value: unknown;
   try { value = await response.json(); } catch { throw new Error('导入结果无法读取，请检查本地后端。'); }
