@@ -200,7 +200,9 @@ def test_api_accepts_judge_outside_tested_models_and_preserves_envelope(tmp_path
     with client_for(fake) as client:
         response = client.post("/evaluate", json={"model_names": ["deepseek-chat"], "judge_model_name": "glm-5.2-fast-preview"})
         assert response.status_code == 200
-        assert len(response.json()) == 8
+        assert len(response.json()) == 10
+        assert response.json()["faith_threshold"] is None
+        assert response.json()["ctx_prec_threshold"] is None
         assert fake.call_args.args[0]["judge_model_name"] == "glm-5.2-fast-preview"
         fake.reset_mock()
         assert client.post("/evaluate", json={"judge_model_name": "missing"}).status_code == 422

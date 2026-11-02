@@ -68,9 +68,9 @@ MODELS_CONFIG = [
         "api_key_env": "OPENAI_API_KEY"
     },
     {
-        "name": os.environ.get("QWEN_MODEL", "Pro/Qwen/Qwen2.5-7B-Instruct"),
-        "base_url": os.environ.get("QWEN_BASE_URL", "https://api.siliconflow.cn/v1"),
-        "api_key_env": "SILICONFLOW_API_KEY"
+        "name": os.environ.get("QWEN_MODEL", "qwen-flash"),
+        "base_url": os.environ.get("QWEN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
+        "api_key_env": os.environ.get("QWEN_API_KEY_ENV", "DASHSCOPE_API_KEY")
     },
     {
         "name": "glm-5.2-fast-preview",

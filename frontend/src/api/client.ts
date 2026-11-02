@@ -39,13 +39,16 @@ export function isEvaluationResult(value: unknown): value is EvaluationResult {
   if (typeof value !== 'object' || value === null) return false;
   const result = value as Record<string, unknown>;
   const isRow = (row: unknown) => typeof row === 'object' && row !== null && !Array.isArray(row);
+  const isOptionalThreshold = (threshold: unknown) => threshold === undefined || threshold === null
+    || (typeof threshold === 'number' && Number.isFinite(threshold));
   return Array.isArray(result.summary) && result.summary.every(isRow)
     && Array.isArray(result.summary_df) && result.summary_df.every(isRow)
     && typeof result.gate_passed === 'boolean' && typeof result.gate_message === 'string'
     && (result.chart_path === null || typeof result.chart_path === 'string')
     && (result.html_path === null || typeof result.html_path === 'string')
     && isRow(result.model_dfs) && Object.values(result.model_dfs as Record<string, unknown>).every((rows) => Array.isArray(rows) && rows.every(isRow))
-    && (result.total_elapsed_seconds === null || (typeof result.total_elapsed_seconds === 'number' && Number.isFinite(result.total_elapsed_seconds)));
+    && (result.total_elapsed_seconds === null || (typeof result.total_elapsed_seconds === 'number' && Number.isFinite(result.total_elapsed_seconds)))
+    && isOptionalThreshold(result.faith_threshold) && isOptionalThreshold(result.ctx_prec_threshold);
 }
 
 export async function evaluate(request: EvaluateRequest): Promise<EvaluationResult> {

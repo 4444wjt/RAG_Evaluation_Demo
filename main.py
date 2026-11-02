@@ -57,7 +57,6 @@ except ImportError:
     load_dotenv = None
 import json
 import re
-import shutil
 from datetime import datetime
 
 import numpy as np
@@ -131,9 +130,9 @@ MODELS_CONFIG = [
         "api_key_env": "OPENAI_API_KEY"
     },
     {
-        "name": os.environ.get("QWEN_MODEL", "Pro/Qwen/Qwen2.5-7B-Instruct"),
-        "base_url": os.environ.get("QWEN_BASE_URL", "https://api.siliconflow.cn/v1"),
-        "api_key_env": "SILICONFLOW_API_KEY"
+        "name": os.environ.get("QWEN_MODEL", "qwen-flash"),
+        "base_url": os.environ.get("QWEN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
+        "api_key_env": os.environ.get("QWEN_API_KEY_ENV", "DASHSCOPE_API_KEY")
     },
     {
         "name": "glm-5.2-fast-preview",
@@ -248,13 +247,19 @@ def build_vector_store(chunks, embeddings):
             embedding_function=embeddings
         )
 
-    # 强制重建
-    shutil.rmtree(CHROMA_DIR, ignore_errors=True)
-    return Chroma.from_documents(
-        documents=chunks,
-        embedding=embeddings,
-        persist_directory=CHROMA_DIR
-    )
+    # 通过客户端重建集合；直接删目录会破坏 Chroma 按路径缓存的进程内系统。
+    previous = Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
+    try:
+        previous.delete_collection()
+        return Chroma.from_documents(
+            documents=chunks,
+            embedding=embeddings,
+            persist_directory=CHROMA_DIR,
+            client=previous._client,
+        )
+    except Exception:
+        previous._client.close()
+        raise
 
 
 def _negative_question_key(text):
@@ -581,14 +586,17 @@ def load_custom_testset(path):
         if not isinstance(data, list):
             raise ValueError("JSON 测试集必须是列表，或含 testset/cases 字段的对象")
         for item in data:
+            question = item.get("question")
+            ground_truth = item.get("ground_truth")
+            case_type = item.get("case_type")
             testset.append({
-                "question": str(item.get("question", "")).strip(),
-                "ground_truth": str(item.get("ground_truth", "")).strip(),
+                "question": str("" if question is None else question).strip(),
+                "ground_truth": str("" if ground_truth is None else ground_truth).strip(),
                 "contexts": item.get("contexts", []),
-                "case_type": str(item.get("case_type", "positive")).strip() or "positive",
+                "case_type": str("" if case_type is None else case_type).strip() or "positive",
             })
     elif ext in (".csv", ".txt"):
-        df = pd.read_csv(path, encoding="utf-8-sig").fillna("")
+        df = pd.read_csv(path, encoding="utf-8-sig", dtype=str, keep_default_na=False)
         for _, row in df.iterrows():
             testset.append({
                 "question": str(row.get("question", "")).strip(),
@@ -1966,12 +1974,14 @@ def launch_gradio(port=7860):
         "deepseek-chat": "DeepSeek-V4.1-Flash",
         "deepseek-flash": "DeepSeek-V4.1-Flash",
         "Pro/Qwen/Qwen2.5-7B-Instruct": "Qwen2.5-7B",
+        "qwen-flash": "qwen-flash",
         "glm-5.2-fast-preview": "GLM-5.2-Fast",
     }
     MODEL_DESC = {
         "deepseek-chat": "通用对话模型",
         "deepseek-flash": "通用对话模型",
         "Pro/Qwen/Qwen2.5-7B-Instruct": "通义千问 7B 指令模型",
+        "qwen-flash": "通义千问 Flash（阿里云百炼）",
         "glm-5.2-fast-preview": "智谱 GLM-5.2-Fast（阿里云百炼）",
     }
 

@@ -38,11 +38,14 @@ def _json_value(value: Any) -> Any:
 
 
 def serialize_evaluation_result(result: Mapping[str, Any]) -> dict[str, Any]:
-    """Return only the existing eight fields; absent fields remain an error."""
-    return {
+    """Preserve eight required fields and include optional runtime thresholds."""
+    payload = {
         field: _json_value(result[field])
         for field in (
             "summary", "summary_df", "gate_passed", "gate_message",
             "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
         )
     }
+    for field in ("faith_threshold", "ctx_prec_threshold"):
+        payload[field] = _json_value(result.get(field))
+    return payload

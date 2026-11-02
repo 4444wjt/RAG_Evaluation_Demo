@@ -90,7 +90,7 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
   const [formError, setFormError] = useState<string | null>(null);
   const [health, setHealth] = useState<'checking' | 'connected' | 'disconnected'>('checking');
   const [configurationCheck, setConfigurationCheck] = useState<ConfigurationCheck | null>(null);
-  const [localModels, setLocalModels] = useState<ModelEntry[]>([]);
+  const [registeredModels, setRegisteredModels] = useState<ModelEntry[]>([]);
   // A fresh token per loaded result lets the overview replay the gate settle on every load, but not when switching views.
   const [resultLoad, setResultLoad] = useState<object>(() => ({}));
   const inflight = useRef(false);
@@ -164,12 +164,15 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
     return connected;
   }, []);
 
-  /** Locally registered models join the workspace list; a renamed or removed one also leaves the selection. */
+  /** The backend supplies the current built-ins; renamed or removed models leave the selection. */
   const applyModels = useCallback((models: ModelEntry[]) => {
-    const local = models.filter((model) => model.source === 'local');
-    setLocalModels(local);
-    const known = new Set<string>([...MODELS.map((model) => model.id), ...local.map((model) => model.name)]);
-    setConfig((current) => current.modelNames.every((name) => known.has(name)) ? current : { ...current, modelNames: current.modelNames.filter((name) => known.has(name)) });
+    setRegisteredModels(models);
+    const builtin = models.filter((model) => model.source === 'builtin').map((model) => model.name);
+    const known = new Set<string>([...(builtin.length ? builtin : MODELS.map((model) => model.id)), ...models.map((model) => model.name)]);
+    setConfig((current) => {
+      const defaults = current.modelNames.length === MODELS.length && MODELS.every((model) => current.modelNames.includes(model.id));
+      return { ...current, modelNames: defaults && builtin.length ? builtin : current.modelNames.filter((name) => known.has(name)) };
+    });
   }, []);
 
   // Read on opening the workspace, not on start, so the first screen stays a health check only.
@@ -290,11 +293,11 @@ export default function App({ entryRequest, onHome }: { entryRequest?: EntryRequ
         </div>
         {STATIC_SITE ? <div className="health-status static" title="静态备用站只展示仓库内的冻结快照，没有后端服务"><span className="status-dot"/>静态演示站 · 无后端</div> : <div className={`health-status ${health}`}><span className="status-dot"/>{health === 'checking' ? '检查服务连接' : health === 'connected' ? '服务可连接' : '服务未连接'}<button className="icon-button" aria-label="重新检查服务连接" title="仅检查 API 是否可连接" disabled={health === 'checking'} onClick={() => { void refreshHealth(); }}><Icon name="refresh" size={14}/></button></div>}</header>
       <main id="main-content" tabIndex={-1}><div className={`page-heading${view === 'verification' ? ' verification-page-heading' : ''}${view === 'citation-version' ? ' cv-page-heading' : ''}`}><div><h1>{current.title}</h1><p>{view === 'workspace' && READ_ONLY ? '先看资料用途，再跟随已有案例了解评测方法。' : current.description}</p></div>{view !== 'citation-version' && view !== 'knowledge-update' && <div className="page-actions"><button className="btn btn-secondary" onClick={loadDemo} disabled={running || checkingConfiguration}><Icon name="play" size={15}/>加载演示</button><button className={`btn ${view === 'workspace' || view === 'report' || (view === 'overview' && !run.result) ? 'btn-secondary' : 'btn-primary'}`} onClick={() => navigate('workspace')}><Icon name="layers" size={16}/>新建评测</button></div>}</div>
-        {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span></div>}
+        {running && <div className="run-notice" role="status"><span className="busy-dot"/><strong>评测中</strong><span>正在等待评测完成，请保持页面打开。</span><div className="operation-progress" role="progressbar" aria-label="评测进度"><span/></div></div>}
         {run.error && <div className={`error-notice ${run.status === 'unknown' ? 'uncertain' : ''}`} role="alert"><Icon name="alert"/><div><strong>{run.status === 'unknown' ? '评测结果未知' : '本次评测未完成'}</strong><p>{run.error}</p></div><button className="btn btn-ghost" disabled={checkingConfiguration} onClick={() => { void checkConfiguration(); }}>{checkingConfiguration ? '检查中…' : '检查配置'}<Icon name={checkingConfiguration ? 'refresh' : 'arrow'} size={14}/></button></div>}
         {view !== 'overview' && view !== 'models' && view !== 'audit' && view !== 'fix' && view !== 'robustness' && view !== 'blindspot' && view !== 'annotate' && view !== 'parent-context' && view !== 'citation-version' && view !== 'knowledge-update' && resultMeta}
         {view === 'overview' && <OverviewView result={run.result} resultLoad={resultLoad} resultMeta={resultMeta} gateProvenance={run.source === 'demo' ? demo.provenance : undefined} gateRequest={run.source === 'live' && run.status === 'completed' ? run.submittedConfig : null} onConfigure={() => navigate('workspace')} onDemo={loadDemo} onCompare={() => navigate('comparison')} onTrace={() => navigate('trace')} demoDisabled={running || checkingConfiguration}/>}
-        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} localModels={localModels} onInspectExample={inspectExample}/>}
+        {view === 'workspace' && <WorkspaceView config={config} onChange={(next) => { setConfig(next); setFormError(null); setConfigurationCheck(null); }} onRun={() => { void startRun(); }} running={running} readOnly={READ_ONLY} hasLiveResult={run.source === 'live'} error={formError} configurationCheck={configurationCheck} registeredModels={registeredModels} onInspectExample={inspectExample}/>}
         {view === 'models' && <ModelsView onModelsChange={applyModels}/>}
         {view === 'comparison' && <ComparisonView result={run.result}/>}
         {view === 'trace' && <TraceView result={run.result} document={run.source === 'demo' ? demoDocument : null}/>}

@@ -177,9 +177,22 @@ describe('Parent context page with mocked local API', () => {
     expect(download).toBeEnabled();
     fireEvent.click(download);
     expect(downloads).toEqual(['context.txt']);
+    expect(screen.getByText(/已发起下载，请在浏览器下载列表确认/)).toHaveTextContent('context.txt');
     expect(await blobText(createURL.mock.calls[0][0])).toBe(contextText);
     await waitFor(() => expect(revokeURL).toHaveBeenCalledWith('blob:parent-context-test'));
     expect(requests).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(['下载资料 context.txt', '下载报告 report.json', '下载复核记录'])('reports preparation failure for %s', async (name) => {
+    await prepare();
+    identity();
+    fireEvent.click(screen.getByRole('radio', { name: '可用于后续处理' }));
+    fireEvent.click(screen.getByLabelText('已核对来源、父条范围和预览'));
+    createURL.mockImplementationOnce(() => { throw new Error('object URL failed'); });
+    fireEvent.click(screen.getByRole('button', { name }));
+    expect(screen.getByText('下载准备失败，请重试或检查浏览器下载权限。')).toBeInTheDocument();
+    expect(screen.queryByText(/已在本机保存/)).not.toBeInTheDocument();
+    expect(downloads).toEqual([]);
   });
 
   it('keeps REVIEW without context and exports unresolved reasons without labels or gate result', async () => {

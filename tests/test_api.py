@@ -193,13 +193,16 @@ def fake_evaluation_result():
     }
 
 
-def test_evaluation_result_serializes_all_eight_fields(fake_evaluation_result):
+def test_evaluation_result_serializes_eight_required_fields_and_optional_thresholds(fake_evaluation_result):
     result = fake_evaluation_result
     payload = serialize_evaluation_result(result)
     assert set(payload) == {
         "summary", "summary_df", "gate_passed", "gate_message",
         "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
+        "faith_threshold", "ctx_prec_threshold",
     }
+    assert payload["faith_threshold"] is None
+    assert payload["ctx_prec_threshold"] is None
     expected_summary = [{
         "model": "model-b", "score": 0.0,
         "hallucination_statement_count": 0,
@@ -311,6 +314,34 @@ def test_evaluation_response_requires_complete_contract(fake_evaluation_result):
         EvaluateResponse.model_validate(missing_field)
     with pytest.raises(ValidationError):
         EvaluateResponse.model_validate({**payload, "extra_metric": 1})
+
+
+@pytest.mark.parametrize("faith, context", [(0.0, 0.73), (0.91, 0.0), (None, 0.8)])
+def test_runtime_thresholds_survive_serialization_and_response(fake_evaluation_result, faith, context):
+    fake_evaluation_result.update(faith_threshold=faith, ctx_prec_threshold=np.float64(context))
+    payload = serialize_evaluation_result(fake_evaluation_result)
+    assert payload["faith_threshold"] == faith
+    assert payload["ctx_prec_threshold"] == context
+    assert EvaluateResponse.model_validate(payload).model_dump(mode="json") == payload
+
+
+def test_response_accepts_legacy_eight_fields(fake_evaluation_result):
+    payload = serialize_evaluation_result(fake_evaluation_result)
+    del payload["faith_threshold"]
+    del payload["ctx_prec_threshold"]
+    response = EvaluateResponse.model_validate(payload)
+    assert response.faith_threshold is None
+    assert response.ctx_prec_threshold is None
+
+
+@pytest.mark.parametrize("field", ["faith_threshold", "ctx_prec_threshold"])
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), float("-inf")])
+def test_runtime_threshold_response_rejects_nonfinite(fake_evaluation_result, field, value):
+    payload = serialize_evaluation_result(fake_evaluation_result)
+    with pytest.raises(ValidationError):
+        EvaluateResponse.model_validate({**payload, field: value})
+    fake_evaluation_result[field] = value
+    assert serialize_evaluation_result(fake_evaluation_result)[field] is None
 
 
 def test_evaluation_result_rejects_unsupported_objects(fake_evaluation_result):
@@ -434,7 +465,7 @@ def _run_evaluation_http(tmp_path, case):
     assert result.returncode == 0, result.stdout + result.stderr
 
 
-def test_post_evaluate_returns_eight_fields_and_passes_parameters_once(tmp_path):
+def test_post_evaluate_returns_ten_fields_and_passes_parameters_once(tmp_path):
     _run_evaluation_http(tmp_path, r"""
         result = sample_result()
         fake = Mock(return_value=result)
@@ -456,6 +487,7 @@ def test_post_evaluate_returns_eight_fields_and_passes_parameters_once(tmp_path)
         assert set(response.json()) == {
             "summary", "summary_df", "gate_passed", "gate_message",
             "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
+            "faith_threshold", "ctx_prec_threshold",
         }
         assert response.json() == service.serialize_evaluation_result(result)
         assert response.json()["gate_passed"] is False

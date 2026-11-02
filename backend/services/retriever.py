@@ -1,6 +1,5 @@
 """向量库构建（与 main.build_vector_store 一致）。"""
 import os
-import shutil
 
 from langchain_community.vectorstores import Chroma
 
@@ -16,10 +15,16 @@ def build_vector_store(chunks, embeddings):
             embedding_function=embeddings
         )
 
-    # 强制重建
-    shutil.rmtree(CHROMA_DIR, ignore_errors=True)
-    return Chroma.from_documents(
-        documents=chunks,
-        embedding=embeddings,
-        persist_directory=CHROMA_DIR
-    )
+    # 通过客户端重建集合；直接删目录会破坏 Chroma 按路径缓存的进程内系统。
+    previous = Chroma(persist_directory=CHROMA_DIR, embedding_function=embeddings)
+    try:
+        previous.delete_collection()
+        return Chroma.from_documents(
+            documents=chunks,
+            embedding=embeddings,
+            persist_directory=CHROMA_DIR,
+            client=previous._client,
+        )
+    except Exception:
+        previous._client.close()
+        raise

@@ -81,6 +81,23 @@ describe('Blindspot historical workflow', () => {
     expect(result.archivedResults).toEqual(data.stats);
   });
 
+  it('announces only an initiated review download and reports preparation failure', () => {
+    const createURL = vi.fn(() => 'blob:blindspot');
+    vi.stubGlobal('URL', Object.assign(class extends URL {}, { createObjectURL: createURL, revokeObjectURL: vi.fn() }));
+    vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    render(<BlindspotView/>);
+    fireEvent.click(step('复测与复核'));
+    fireEvent.change(screen.getByLabelText('复核意见'), { target: { value: 'needs_review' } });
+    fireEvent.change(screen.getByLabelText(/补充说明/), { target: { value: '仍需核查' } });
+    const button = screen.getByRole('button', { name: '导出复核记录' });
+    createURL.mockImplementationOnce(() => { throw new Error('object URL failed'); });
+    fireEvent.click(button);
+    expect(screen.getByRole('status')).toHaveTextContent('下载准备失败，请重试或检查浏览器下载权限。');
+    expect(screen.getByRole('status')).not.toHaveTextContent('已发起下载');
+    fireEvent.click(button);
+    expect(screen.getByRole('status')).toHaveTextContent('已发起下载，请在浏览器下载列表确认');
+  });
+
   it('requires a reason for unresolved exports and rejects incomplete confirmed exports', () => {
     expect(() => exportBlindspotReview(empty(), 'now')).toThrow('请完成复核');
     expect(() => exportBlindspotReview({ ...empty(), decision: 'needs_review', note: ' ' }, 'now')).toThrow();

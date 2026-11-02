@@ -508,7 +508,7 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         progress_cb: Optional[Callable[[int, str], None]] — 进度回调（step, desc）
 
     返回：
-        EvaluationResult — 与 run_pipeline 返回结构完全一致（8 字段）
+        EvaluationResult — 含实际门禁阈值的评测结果（10 字段）
 
     异常边界：资源/测试集/CSV/chart/HTML 失败直接抛；模型失败由 run_models 处理；
     全部失败 RuntimeError 保持；history 失败保持旧 warning 行为（save_eval_record 内部吞掉）。
@@ -632,7 +632,7 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
     }
     save_eval_record(record)
 
-    # 14. 返回（与旧 run_pipeline 结构完全一致）
+    # 14. 返回评测结果及本次实际使用的门禁阈值
     return {
         "summary": summary,
         "summary_df": summary_df,
@@ -642,4 +642,6 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         "html_path": HTML_OUTPUT,
         "model_dfs": model_dfs,
         "total_elapsed_seconds": total_elapsed,
+        "faith_threshold": faith_threshold,
+        "ctx_prec_threshold": ctx_prec_threshold,
     }

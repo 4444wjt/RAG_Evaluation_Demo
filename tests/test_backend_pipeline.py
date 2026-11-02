@@ -114,6 +114,7 @@ def test_evaluate_full_call_chain(eval_env):
     assert set(result.keys()) == {
         "summary", "summary_df", "gate_passed", "gate_message",
         "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
+        "faith_threshold", "ctx_prec_threshold",
     }
 
 
@@ -149,14 +150,23 @@ def test_evaluate_resources_preset_skips_prepare(eval_env):
     assert "prepare_resources" not in eval_env["calls"]
     assert "prepare_testset" not in eval_env["calls"]
     assert eval_env["captured"]["run_models_resources"] is preset
-    assert len(result.keys()) == 8
+    assert len(result.keys()) == 10
 
 
-def test_evaluate_threshold_default_and_zero(eval_env):
-    pipeline.evaluate({}, resources=None, model_factory=lambda c: "LLM")  # 未传 → 默认
-    assert eval_env["captured"]["chart_threshold"] == config.FAITH_THRESHOLD
-    pipeline.evaluate({"faith_threshold": 0.0}, resources=None, model_factory=lambda c: "LLM")  # 0.0 保留
-    assert eval_env["captured"]["chart_threshold"] == 0.0
+@pytest.mark.parametrize("threshold_request", [{}, {"faith_threshold": None, "ctx_prec_threshold": None},
+    {"faith_threshold": 0.0, "ctx_prec_threshold": 0.0},
+    {"faith_threshold": 0.71, "ctx_prec_threshold": 0.93}])
+def test_evaluate_returns_the_thresholds_actually_used(eval_env, monkeypatch, threshold_request):
+    # Different defaults prove the returned values are resolved runtime values, not UI constants.
+    monkeypatch.setattr(pipeline, "FAITH_THRESHOLD", 0.83)
+    monkeypatch.setattr(pipeline, "CTX_PREC_THRESHOLD", 0.87)
+    result = pipeline.evaluate(threshold_request, resources=None, model_factory=lambda c: "LLM")
+    expected = tuple(default if threshold_request.get(key) is None else threshold_request[key]
+        for key, default in (("faith_threshold", 0.83), ("ctx_prec_threshold", 0.87)))
+    assert (result["faith_threshold"], result["ctx_prec_threshold"]) == expected
+    assert eval_env["captured"]["gate_thresholds"] == expected
+    assert eval_env["captured"]["chart_threshold"] == expected[0]
+    assert eval_env["captured"]["record"]["thresholds"] == dict(zip(("faithfulness", "context_precision"), expected))
 
 
 def test_evaluate_run_models_receives_base_dir_and_trace(eval_env):
@@ -172,7 +182,7 @@ def test_evaluate_history_failure_still_returns(monkeypatch, eval_env):
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
         result = pipeline.evaluate({}, resources=None, model_factory=lambda c: "LLM")
-    assert len(result.keys()) == 8
+    assert len(result.keys()) == 10
     assert "历史记录保存失败" in buf.getvalue()
 
 

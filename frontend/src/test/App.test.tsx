@@ -52,6 +52,108 @@ function expectGateContext(model: string, range: string, faith: string, contextP
 }
 
 describe('Workspace UI integration with mocked API', () => {
+  it('shows indeterminate progress through computer imports and evaluation to results', async () => {
+    const document = new File(['评测正文'], '评测资料.txt');
+    const testset = new File(['question,ground_truth\n问题,答案'], '测试集.csv');
+    const documentPath = `work/uploads/${'a'.repeat(32)}.txt`;
+    const testsetPath = `work/uploads/${'b'.repeat(32)}.csv`;
+    const pending = new Map<string, (value: Response) => void>();
+    requests.mockImplementation((url: string) => {
+      if (url === '/api/evaluate' || url.startsWith('/api/inputs?')) return new Promise<Response>((resolve) => { pending.set(url, resolve); });
+      return Promise.resolve(response(url === '/api/health' ? { status: 'ok' } : { models: [] }));
+    });
+    render(<App/>);
+    await openWorkspace();
+    await userEvent.click(screen.getByRole('button', { name: '电脑文件' }));
+    await userEvent.selectOptions(screen.getByLabelText('测试集来源'), 'custom');
+    for (const [kind, label, file, path] of [
+      ['document', '评测资料', document, documentPath], ['testset', '测试集', testset, testsetPath],
+    ] as const) {
+      fireEvent.change(screen.getByLabelText(`从电脑选择${label}`), { target: { files: [file] } });
+      const progress = screen.getByRole('progressbar', { name: `导入${label}进度` });
+      expect(progress).not.toHaveAttribute('aria-valuenow');
+      expect(progress).not.toHaveAttribute('value');
+      expect(screen.getByRole('button', { name: '开始评测' })).toBeDisabled();
+      const key = [...pending.keys()].find((url) => url.includes(`kind=${kind}`))!;
+      await act(async () => { pending.get(key)!(response({ kind, file_name: file.name, relative_path: path, size_bytes: file.size })); });
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+      expect(screen.getByText(new RegExp(file.name))).toBeInTheDocument();
+    }
+    const start = screen.getByRole('button', { name: '开始评测' });
+    fireEvent.click(start);
+    fireEvent.click(start);
+    const progress = screen.getByRole('progressbar', { name: '评测进度' });
+    expect(progress).not.toHaveAttribute('aria-valuenow');
+    expect(progress).not.toHaveAttribute('value');
+    expect(screen.getByText('正在等待评测完成，请保持页面打开。')).toBeInTheDocument();
+    const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
+    expect(calls).toHaveLength(1);
+    expect(JSON.parse(calls[0][1].body)).toMatchObject({ doc_path: documentPath, testset_path: testsetPath });
+    await act(async () => { pending.get('/api/evaluate')!(response(sample())); });
+    expect(await screen.findByText('真实评测结果')).toBeInTheDocument();
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+  });
+
+  it('clears indeterminate progress after an evaluation failure', async () => {
+    let finish!: (value: Response) => void;
+    requests.mockImplementation((url: string) => url === '/api/evaluate'
+      ? new Promise<Response>((resolve) => { finish = resolve; })
+      : Promise.resolve(response(url === '/api/health' ? { status: 'ok' } : { models: [] })));
+    render(<App/>);
+    await openWorkspace();
+    await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
+    expect(screen.getByRole('progressbar', { name: '评测进度' })).toBeInTheDocument();
+    await act(async () => { finish(response({}, 422)); });
+    expect(await screen.findByText('本次评测未完成')).toBeInTheDocument();
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '开始评测' })).toBeEnabled();
+    expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(1);
+  });
+
+  it('uses the backend built-in model names and provider in cards and default requests', async () => {
+    const models = [
+      { name: 'deepseek-chat', displayName: 'DeepSeek-V4.1-Flash', baseUrl: 'https://api.deepseek.com', apiKeyEnv: 'OPENAI_API_KEY', keyConfigured: true, source: 'builtin' },
+      { name: 'qwen-local-override', displayName: 'qwen-local-override', baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1', apiKeyEnv: 'DASHSCOPE_API_KEY', keyConfigured: true, source: 'builtin' },
+      { name: 'glm-5.2-fast-preview', displayName: 'GLM-5.2-Fast', baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1', apiKeyEnv: 'DASHSCOPE_API_KEY', keyConfigured: true, source: 'builtin' },
+    ];
+    requests.mockImplementation((url: string) => Promise.resolve(response(url === '/api/health' ? { status: 'ok' } : url === '/api/models' ? { models } : sample())));
+    render(<App/>);
+    await openWorkspace();
+    const card = await screen.findByRole('button', { name: '选择 qwen-local-override' });
+    expect(card).toHaveAttribute('aria-pressed', 'true');
+    expect(card).toHaveTextContent('阿里云百炼');
+    expect(screen.queryByRole('button', { name: '选择 Qwen2.5-7B' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '选择 qwen-flash' })).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
+    await screen.findByText('真实评测结果');
+    const call = requests.mock.calls.find(([url]) => url === '/api/evaluate')!;
+    expect(JSON.parse(call[1].body).model_names).toEqual(models.map((model) => model.name));
+  });
+
+  it('preserves deselection and requires an explicit choice when the backend removes a judge', async () => {
+    let finishModels!: (value: Response) => void;
+    requests.mockImplementation((url: string) => url === '/api/models' ? new Promise<Response>((resolve) => { finishModels = resolve; }) : Promise.resolve(response(url === '/api/health' ? { status: 'ok' } : sample())));
+    render(<App/>);
+    await openWorkspace();
+    await userEvent.click(screen.getByRole('button', { name: '选择 qwen-flash' }));
+    fireEvent.change(screen.getByLabelText('评测裁判'), { target: { value: 'qwen-flash' } });
+    const models = ['deepseek-chat', 'qwen-local-override', 'glm-5.2-fast-preview'].map((name) => ({
+      name, displayName: name, baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1', apiKeyEnv: 'DASHSCOPE_API_KEY', keyConfigured: true, source: 'builtin',
+    }));
+    await act(async () => { finishModels(response({ models })); });
+    expect(screen.getByRole('button', { name: '选择 qwen-local-override' })).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('button', { name: '选择 DeepSeek-V4.1-Flash' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: '选择 GLM-5.2-Fast' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByLabelText('评测裁判')).toHaveValue('qwen-flash');
+    expect(screen.getByText('所选裁判当前不在模型登记中，请重新选择或先登记。')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '开始评测' })).toBeDisabled();
+    fireEvent.change(screen.getByLabelText('评测裁判'), { target: { value: 'qwen-local-override' } });
+    await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
+    await screen.findByText('真实评测结果');
+    const call = requests.mock.calls.find(([url]) => url === '/api/evaluate')!;
+    expect(JSON.parse(call[1].body)).toMatchObject({ model_names: ['deepseek-chat', 'glm-5.2-fast-preview'], judge_model_name: 'qwen-local-override' });
+  });
+
   it('initial state and health check do not run an evaluation', async () => {
     render(<App/>);
     expect(screen.getByText('暂无评测结果')).toBeInTheDocument();
@@ -134,7 +236,7 @@ describe('Workspace UI integration with mocked API', () => {
   it('blocks an empty selection without calling evaluate', async () => {
     render(<App/>);
     await openWorkspace();
-    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
+    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 qwen-flash', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     expect(screen.getByText('请至少选择一个模型。')).toBeInTheDocument();
     expect(requests.mock.calls.filter(([url]) => url === '/api/evaluate')).toHaveLength(0);
@@ -486,14 +588,70 @@ describe('Current model quality gate transparency', () => {
     expect(result).toEqual(original);
   });
 
+  it.each([
+    { faith: 0.83, context: 0.87, score: 0.83, contextScore: 0.87, verdict: 'PASS' },
+    { faith: 0.83, context: 0.87, score: 0.82, contextScore: 0.87, verdict: 'FAIL' },
+    { faith: 0, context: 0, score: 0, contextScore: 0, verdict: 'PASS' },
+  ])('uses returned runtime thresholds with default submission: $verdict', ({ faith, context, score, contextScore, verdict }) => {
+    const result = sample();
+    result.faith_threshold = faith;
+    result.ctx_prec_threshold = context;
+    result.summary[0].pos_faithfulness = score;
+    result.summary[0].pos_context_precision = contextScore;
+    result.gate_passed = false;
+    render(<OverviewView result={result} gateRequest={initialConfig} {...callbacks}/>);
+    expect(screen.getByText(verdict)).toBeInTheDocument();
+    expect(screen.getByText('阈值来自本次评测实际使用的配置。')).toBeInTheDocument();
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', `${(score * 100).toFixed(1)}%`, `${(contextScore * 100).toFixed(1)}%`, `门槛 ≥ ${(faith * 100).toFixed(1)}%`, `门槛 ≥ ${(context * 100).toFixed(1)}%`);
+    expect(screen.getByText('原始评测门禁：FAIL')).toBeInTheDocument();
+  });
+
+  it('uses result thresholds ahead of submitted values, with per-field manual fallback', () => {
+    const result = sample();
+    result.faith_threshold = 0;
+    result.ctx_prec_threshold = null;
+    result.summary[0].pos_faithfulness = 0;
+    result.summary[0].pos_context_precision = 0.73;
+    const submitted = { ...initialConfig, useDefaultThresholds: false, faithThreshold: 0.99, contextThreshold: 0.73 };
+    const { rerender } = render(<OverviewView result={result} gateRequest={submitted} {...callbacks}/>);
+    expect(screen.getByText('PASS')).toBeInTheDocument();
+    expect(screen.getByText('已有阈值分别来自本次结果与显式提交参数；缺失项不作推断。')).toBeInTheDocument();
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '0.0%', '73.0%', '门槛 ≥ 0.0%', '门槛 ≥ 73.0%');
+    rerender(<OverviewView result={{ ...result, ctx_prec_threshold: 0.74 }} gateRequest={submitted} {...callbacks}/>);
+    expect(screen.getByText('FAIL')).toBeInTheDocument();
+    expect(screen.getByText('阈值来自本次评测实际使用的配置。')).toBeInTheDocument();
+  });
+
+  it.each(['faith_threshold', 'ctx_prec_threshold'] as const)('keeps partial result %s unknown without manual fallback', (field) => {
+    const result = sample();
+    result[field] = 0;
+    render(<OverviewView result={result} gateRequest={initialConfig} {...callbacks}/>);
+    expect(screen.getByText('WARNING')).toBeInTheDocument();
+    expect(screen.getByText('门槛未提供')).toBeInTheDocument();
+    expect(screen.getByText('已有阈值来自本次结果；缺失项不作推断。')).toBeInTheDocument();
+    expect(screen.queryByText('阈值来自本次评测实际使用的配置。')).not.toBeInTheDocument();
+  });
+
+  it('does not fill absent snapshot thresholds from result or manual parameters', () => {
+    const result = { ...sample(), faith_threshold: 0, ctx_prec_threshold: 0 };
+    const provenance: DemoFixture['provenance'] = { ...demo.provenance, run: { thresholds: {} } };
+    const submitted = { ...initialConfig, useDefaultThresholds: false, faithThreshold: 0, contextThreshold: 0 };
+    render(<OverviewView result={result} gateProvenance={provenance} gateRequest={submitted} {...callbacks}/>);
+    expect(screen.getByText('WARNING')).toBeInTheDocument();
+    expect(screen.getAllByText('门槛未提供')).toHaveLength(2);
+    expect(screen.getByText('未随结果返回的运行阈值不作推断。')).toBeInTheDocument();
+  });
+
   it('keeps a snapshot threshold and positive zero while treating another missing threshold as unknown', () => {
     const result = sample();
     result.summary[0].pos_faithfulness = 0;
     result.summary[0].pos_context_precision = 0;
     const provenance: DemoFixture['provenance'] = structuredClone(demo.provenance);
     provenance.run = { thresholds: { faithfulness: 0, context_precision: null } };
+    result.faith_threshold = 0.9;
+    result.ctx_prec_threshold = 0;
     const originals = structuredClone({ result, provenance });
-    render(<OverviewView result={result} gateProvenance={provenance} {...callbacks}/>);
+    render(<OverviewView result={result} gateProvenance={provenance} gateRequest={{ ...initialConfig, useDefaultThresholds: false }} {...callbacks}/>);
     expect(screen.getByText('WARNING')).toBeInTheDocument();
     expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '0.0%', '0.0%', '门槛 ≥ 0.0%', '门槛未提供');
     expect(screen.getByText('已有阈值来自演示快照的原始运行记录；缺失项不作推断。')).toBeInTheDocument();
@@ -634,7 +792,7 @@ describe('configuration check feedback', () => {
 
   it('reports invalid parameters before requesting health and clears outdated feedback on editing', async () => {
     await failedEvaluation();
-    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 Qwen2.5-7B', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
+    for (const label of ['选择 DeepSeek-V4.1-Flash', '选择 qwen-flash', '选择 GLM-5.2-Fast']) await userEvent.click(screen.getByRole('button', { name: label }));
     const healthCalls = requests.mock.calls.filter(([url]) => url === '/api/health').length;
     await userEvent.click(screen.getByRole('button', { name: '检查配置' }));
     expect(screen.getByRole('status', { name: '配置检查结果' })).toHaveTextContent('配置未通过本地检查');

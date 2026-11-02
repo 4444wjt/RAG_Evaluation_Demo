@@ -190,13 +190,21 @@ export function ParentContextView() {
   const downloadContext = () => {
     if (!result?.context || !contextAllowed) return;
     // Exactly the returned text: no BOM and no final newline, so the file keeps the reported SHA-256.
-    download(result.context.text, 'context.txt', 'text/plain;charset=utf-8');
-    setNotice('已在本机保存 context.txt。');
+    try {
+      download(result.context.text, 'context.txt', 'text/plain;charset=utf-8');
+      setNotice('已发起下载，请在浏览器下载列表确认。文件 context.txt。');
+    } catch {
+      setNotice('下载准备失败，请重试或检查浏览器下载权限。');
+    }
   };
   const downloadReport = () => {
     if (!result || downloadsPaused) return;
-    download(`${JSON.stringify(result.report, null, 2)}\n`, 'report.json', 'application/json;charset=utf-8');
-    setNotice('已在本机保存 report.json。');
+    try {
+      download(`${JSON.stringify(result.report, null, 2)}\n`, 'report.json', 'application/json;charset=utf-8');
+      setNotice('已发起下载，请在浏览器下载列表确认。文件 report.json。');
+    } catch {
+      setNotice('下载准备失败，请重试或检查浏览器下载权限。');
+    }
   };
   const downloadReview = () => {
     if (!result || downloadsPaused) return;
@@ -207,9 +215,13 @@ export function ParentContextView() {
       setNotice(error instanceof Error ? error.message : '复核信息尚未完整。');
       return;
     }
-    download(`${JSON.stringify(record, null, 2)}\n`, 'parent-context-review.json', 'application/json;charset=utf-8');
-    setExported(true);
-    setNotice('已在本机保存 parent-context-review.json，复核表没有上传。');
+    try {
+      download(`${JSON.stringify(record, null, 2)}\n`, 'parent-context-review.json', 'application/json;charset=utf-8');
+      setExported(true);
+      setNotice('已发起下载，请在浏览器下载列表确认。文件 parent-context-review.json，复核表没有上传。');
+    } catch {
+      setNotice('下载准备失败，请重试或检查浏览器下载权限。');
+    }
   };
 
   const hint = locked ? PUBLIC_DEMO_MESSAGE

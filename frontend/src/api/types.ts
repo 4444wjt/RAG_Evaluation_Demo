@@ -23,6 +23,8 @@ export interface EvaluationResult {
   html_path: string | null;
   model_dfs: Record<string, ResultRow[]>;
   total_elapsed_seconds: number | null;
+  faith_threshold?: number | null;
+  ctx_prec_threshold?: number | null;
 }
 
 export interface DemoFixture {

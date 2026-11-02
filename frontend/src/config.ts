@@ -18,13 +18,16 @@ export const MODEL_COLORS = ['#3987e5', '#d95926', '#199e70', '#9085e9', '#d5518
  *  演示快照（2026-09-30）与金融失败案例（2026-09-28）没有记录返回名，是按官方路由说明推断为 V4.1-Flash 的；页面上的运行都在 2026-09-10 之后。 */
 export const DEEPSEEK_VERSION = 'DeepSeek-V4.1-Flash';
 
-/** 服务端返回的模型名 → 显示名。 */
-export const RETURNED_MODEL_LABELS: Readonly<Record<string, string>> = { 'deepseek-flash': DEEPSEEK_VERSION };
+/** 结果及历史模型名 → 显示名，保留旧运行的模型身份。 */
+export const RETURNED_MODEL_LABELS: Readonly<Record<string, string>> = {
+  'deepseek-flash': DEEPSEEK_VERSION,
+  'Pro/Qwen/Qwen2.5-7B-Instruct': 'Qwen2.5-7B',
+};
 
-/** Public model IDs only. Update these if the local backend names are overridden. */
+/** Default workspace choices until GET /models supplies the local backend configuration. */
 export const MODELS = [
   { id: 'deepseek-chat', label: DEEPSEEK_VERSION, detail: '请求名 deepseek-chat（旧别名）', initials: 'DS' },
-  { id: 'Pro/Qwen/Qwen2.5-7B-Instruct', label: 'Qwen2.5-7B', detail: '通义千问 7B 指令模型', initials: 'QW' },
+  { id: 'qwen-flash', label: 'qwen-flash', detail: '通义千问 Flash · 阿里云百炼', initials: 'QW' },
   { id: 'glm-5.2-fast-preview', label: 'GLM-5.2-Fast', detail: '智谱 GLM · 阿里云百炼', initials: 'GL' },
 ] as const;
 

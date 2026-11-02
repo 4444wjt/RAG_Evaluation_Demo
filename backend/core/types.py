@@ -136,6 +136,8 @@ class EvaluationResult(TypedDict, total=False):
     html_path: str
     model_dfs: Dict[str, Any]
     total_elapsed_seconds: float
+    faith_threshold: Optional[float]
+    ctx_prec_threshold: Optional[float]
 
 
 EvalResult = EvaluationResult  # 向后兼容别名（Phase 1 定义）

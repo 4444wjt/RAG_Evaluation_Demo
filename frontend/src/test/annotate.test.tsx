@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AnnotateView, exportAnnotation, importAnnotation } from '../features/AnnotateView';
 import { parseLabHash } from '../labRoute';
 import data from '../fixtures/judge-annotation.json';
@@ -68,6 +68,21 @@ describe('Judge annotation view', () => {
     expect(restored.labels.S01).toEqual({ label: '支持', fromQuestion: true, note: '见第五条' });
     expect(() => importAnnotation(JSON.stringify({ ...exported, packageId: '0'.repeat(64) }))).toThrow('另一批陈述');
     expect(() => importAnnotation('{}')).toThrow('不是本页导出');
+  });
+
+  it('announces only an initiated download and reports preparation failure', () => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ annotator: 'A', notAuthor: true, labels: {} }));
+    const createURL = vi.fn(() => 'blob:annotation');
+    vi.stubGlobal('URL', Object.assign(class extends URL {}, { createObjectURL: createURL, revokeObjectURL: vi.fn() }));
+    vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    render(<AnnotateView/>);
+    const button = screen.getByRole('button', { name: '导出标注文件' });
+    createURL.mockImplementationOnce(() => { throw new Error('object URL failed'); });
+    fireEvent.click(button);
+    expect(screen.getByRole('status')).toHaveTextContent('下载准备失败，请重试或检查浏览器下载权限。');
+    expect(screen.getByRole('status')).not.toHaveTextContent('已发起下载');
+    fireEvent.click(button);
+    expect(screen.getByRole('status')).toHaveTextContent('已发起下载，请在浏览器下载列表确认');
   });
 
   it('is reachable by deep link', () => {

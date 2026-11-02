@@ -53,6 +53,7 @@ export function FileImportControl({ kind, imported, disabled, readOnly, onImport
       <strong>{busy ? `正在导入${label}…` : imported ? '更换电脑文件' : '选择电脑文件'}</strong>
       <span>{readOnly ? '公开演示不接收文件' : imported ? '选择新文件以替换' : '也可以将文件拖到这里'}</span>
     </button>
+    {busy && <div className="operation-progress" role="progressbar" aria-label={`导入${label}进度`}><span/></div>}
     <p id={`${id}-hint`} className="workspace-input-hint">{INPUT_EXTENSIONS[kind].join(' / ').toUpperCase()} · 单个文件不超过 10MB</p>
     {readOnly ? <p className="workspace-input-hint">请使用内置示例；导入和真实评测需在本地运行。</p>
       : imported ? <div className="workspace-import-status" role="status"><Icon name="check" size={16}/><span><strong>已导入评测服务</strong><span>{imported.file_name} · {imported.size_bytes < 1024 ? `${imported.size_bytes} B` : `${(imported.size_bytes / 1024).toFixed(1)} KB`}</span></span></div>

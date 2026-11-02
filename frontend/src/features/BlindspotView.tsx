@@ -81,9 +81,9 @@ export function BlindspotView() {
     try {
       const result = exportBlindspotReview(review, new Date().toISOString());
       download(`${JSON.stringify(result, null, 2)}\n`, 'blindspot-review.json', 'application/json;charset=utf-8');
-      setNotice(review.decision === 'confirmed' ? '复核记录已导出到本机。历史裁判结果未改动。' : '待核查记录已导出，仍保留未完成状态。');
-    } catch (error) {
-      setNotice(error instanceof Error ? error.message : '导出失败，请检查浏览器下载权限后重试。');
+      setNotice(review.decision === 'confirmed' ? '已发起下载，请在浏览器下载列表确认。文件 blindspot-review.json；历史裁判结果未改动。' : '已发起下载，请在浏览器下载列表确认。文件 blindspot-review.json；仍保留未完成状态。');
+    } catch {
+      setNotice('下载准备失败，请重试或检查浏览器下载权限。');
     }
   };
 

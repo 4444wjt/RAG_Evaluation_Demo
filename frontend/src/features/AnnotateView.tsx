@@ -127,8 +127,12 @@ export function AnnotateView() {
   const onExport = () => {
     if (!state.annotator.trim()) { setMessage('请先填写标注人代号。'); return; }
     if (!state.notAuthor) { setMessage('请先确认未参与本项目的开发与题目编写。'); return; }
-    download(state);
-    setMessage(done < pkg.items.length ? `已导出 ${done} 条；还有 ${pkg.items.length - done} 条未标。未标完时，分析只使用从第一题起连续标完的部分。` : '已导出全部 52 条。请把文件发给作者。');
+    try {
+      download(state);
+      setMessage(done < pkg.items.length ? `已发起下载，请在浏览器下载列表确认。包含 ${done} 条；还有 ${pkg.items.length - done} 条未标。未标完时，分析只使用从第一题起连续标完的部分。` : '已发起下载，请在浏览器下载列表确认。包含全部 52 条，请把文件发给作者。');
+    } catch {
+      setMessage('下载准备失败，请重试或检查浏览器下载权限。');
+    }
   };
 
   return <div className="audit-view an-view">

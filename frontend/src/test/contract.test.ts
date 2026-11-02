@@ -62,6 +62,15 @@ describe('offline API contract', () => {
     expect(isEvaluationResult({ ...demoResult, total_elapsed_seconds: Infinity })).toBe(false);
   });
 
+  it.each(['faith_threshold', 'ctx_prec_threshold'])('validates optional finite runtime threshold %s while preserving extra fields', (field) => {
+    for (const value of [undefined, null, 0, 0.83, 1]) {
+      expect(isEvaluationResult({ ...demoResult, [field]: value, extra_metric: 'unchanged' })).toBe(true);
+    }
+    for (const value of ['0.8', true, false, NaN, Infinity, -Infinity, {}, []]) {
+      expect(isEvaluationResult({ ...demoResult, [field]: value })).toBe(false);
+    }
+  });
+
   it('passes HTTP 200 with gate false through unchanged and sends exactly one POST', async () => {
     const orderedRows = [demoResult.summary[2], demoResult.summary[0], demoResult.summary[1]];
     const payload: EvaluationResult = {
@@ -156,7 +165,7 @@ describe('request and workspace state', () => {
   it('uses the public API defaults and leaves default thresholds to the server', () => {
     expect(toRequest(config())).toEqual({
       doc_path: 'demo.txt', testset_path: null, benchmark: null, benchmark_limit: 20,
-      model_names: [DEEPSEEK, QWEN, GLM], faith_threshold: null, ctx_prec_threshold: null, version_label: null,
+      model_names: [DEEPSEEK, 'qwen-flash', GLM], faith_threshold: null, ctx_prec_threshold: null, version_label: null,
     });
   });
 

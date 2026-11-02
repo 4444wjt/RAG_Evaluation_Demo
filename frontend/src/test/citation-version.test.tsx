@@ -365,7 +365,20 @@ describe('citation version workflow', () => {
     expect(html).toContain(CV_HASH_COMMAND);
     expect(bundle.report.limitations).toEqual(['仅为字段核对。']);
     expect(downloads).toEqual(['citation-version-bundle.json', 'citation-version-bundle.json', 'citation-version-report.html']);
+    expect(screen.getByText(/已发起下载，请在浏览器下载列表确认/)).toBeInTheDocument();
     await waitFor(() => expect(revokeURL).toHaveBeenCalledTimes(3));
+  });
+
+  it('reports download preparation failure without retaining a success notice', async () => {
+    await completed();
+    const button = screen.getByRole('button', { name: '下载本次 JSON 复核包' });
+    fireEvent.click(button);
+    createURL.mockImplementationOnce(() => { throw new Error('object URL failed'); });
+    fireEvent.click(button);
+    expect(screen.getByText('下载准备失败，请重试或检查浏览器下载权限。')).toBeInTheDocument();
+    expect(screen.queryByText(/已发起下载/)).not.toBeInTheDocument();
+    expect(screen.getByText('可下载复核包')).toBeInTheDocument();
+    expect(screen.queryByText('已生成下载')).not.toBeInTheDocument();
   });
 });
 

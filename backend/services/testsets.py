@@ -88,14 +88,17 @@ def load_custom_testset(path):
         if not isinstance(data, list):
             raise ValueError("JSON 测试集必须是列表，或含 testset/cases 字段的对象")
         for item in data:
+            question = item.get("question")
+            ground_truth = item.get("ground_truth")
+            case_type = item.get("case_type")
             testset.append({
-                "question": str(item.get("question", "")).strip(),
-                "ground_truth": str(item.get("ground_truth", "")).strip(),
+                "question": str("" if question is None else question).strip(),
+                "ground_truth": str("" if ground_truth is None else ground_truth).strip(),
                 "contexts": item.get("contexts", []),
-                "case_type": str(item.get("case_type", "positive")).strip() or "positive",
+                "case_type": str("" if case_type is None else case_type).strip() or "positive",
             })
     elif ext in (".csv", ".txt"):
-        df = pd.read_csv(path, encoding="utf-8-sig").fillna("")
+        df = pd.read_csv(path, encoding="utf-8-sig", dtype=str, keep_default_na=False)
         for _, row in df.iterrows():
             testset.append({
                 "question": str(row.get("question", "")).strip(),

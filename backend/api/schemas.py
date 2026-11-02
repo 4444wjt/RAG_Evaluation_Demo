@@ -22,7 +22,7 @@ class EvaluateRequest(BaseModel):
 
 
 class EvaluateResponse(BaseModel):
-    """The engine's eight result fields, represented as JSON data."""
+    """Engine result fields and optional actual runtime thresholds as JSON data."""
 
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
@@ -34,3 +34,5 @@ class EvaluateResponse(BaseModel):
     html_path: str | None
     model_dfs: dict[str, list[dict[str, JsonValue]]]
     total_elapsed_seconds: float | None
+    faith_threshold: float | None = None
+    ctx_prec_threshold: float | None = None

@@ -1,8 +1,11 @@
 """本机模型登记：校验、读写、接口不泄露密钥值、只读与本机限制。全部离线。"""
 
 import asyncio
+import ast
 import json
 import socket
+from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
@@ -147,3 +150,23 @@ def test_pipeline_adds_local_models_only_when_named(tmp_path, monkeypatch):
 def test_service_accepts_registered_model_names(tmp_path):
     model_registry.save(tmp_path, [entry()], BUILTIN)
     assert service._configured_model_names(tmp_path) == set(BUILTIN) | {"qwen2.5-7b"}
+
+
+@pytest.mark.parametrize("relative_path", ["backend/config.py", "main.py"])
+@pytest.mark.parametrize("overrides", [False, True])
+def test_qwen_builtin_uses_dashscope_defaults_and_explicit_overrides(relative_path, overrides):
+    # Execute the actual config expression without importing main or reading .env.
+    source = Path(__file__).resolve().parents[1] / relative_path
+    tree = ast.parse(source.read_text(encoding="utf-8-sig"))
+    assignment = next(node for node in tree.body if isinstance(node, ast.Assign)
+                      and any(isinstance(target, ast.Name) and target.id == "MODELS_CONFIG"
+                              for target in node.targets))
+    environment = {"QWEN_MODEL": "Pro/Qwen/Qwen2.5-7B-Instruct",
+                   "QWEN_BASE_URL": "https://api.siliconflow.cn/v1",
+                   "QWEN_API_KEY_ENV": "SILICONFLOW_API_KEY"} if overrides else {}
+    namespace = {"os": SimpleNamespace(environ=environment), "DEEPSEEK_MODEL": "deepseek-chat"}
+    exec(compile(ast.Module(body=[assignment], type_ignores=[]), str(source), "exec"), namespace)
+    qwen = namespace["MODELS_CONFIG"][1]
+    assert qwen["name"] == (environment["QWEN_MODEL"] if overrides else "qwen-flash")
+    assert qwen["base_url"] == (environment["QWEN_BASE_URL"] if overrides else "https://dashscope.aliyuncs.com/compatible-mode/v1")
+    assert qwen["api_key_env"] == (environment["QWEN_API_KEY_ENV"] if overrides else "DASHSCOPE_API_KEY")

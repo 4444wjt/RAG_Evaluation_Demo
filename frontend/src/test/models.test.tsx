@@ -5,7 +5,9 @@ import { fetchModels, saveLocalModels, suggestKeyEnv, validateLocalModel } from 
 import type { ModelEntry } from '../api/models';
 import { ModelsView } from '../features/ModelsView';
 import { WorkspaceView } from '../features/WorkspaceView';
-import { initialConfig } from '../state';
+import { initialConfig, toRequest } from '../state';
+import { MODELS } from '../config';
+import { modelName } from '../utils/format';
 
 const response = (data: unknown, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 const builtin: ModelEntry = { name: 'deepseek-chat', displayName: 'deepseek-chat', baseUrl: 'https://api.deepseek.com/v1', apiKeyEnv: 'OPENAI_API_KEY', keyConfigured: true, source: 'builtin' };
@@ -92,8 +94,19 @@ describe('Model configuration view', () => {
 });
 
 describe('Workspace with registered models', () => {
+  it('defaults new requests to Aliyun qwen-flash while retaining historical Qwen labels', () => {
+    expect(MODELS[1].id).toBe('qwen-flash');
+    expect(toRequest(initialConfig).model_names).toEqual(['deepseek-chat', 'qwen-flash', 'glm-5.2-fast-preview']);
+    expect(modelName('Pro/Qwen/Qwen2.5-7B-Instruct')).toBe('Qwen2.5-7B');
+    render(<WorkspaceView config={initialConfig} onChange={() => undefined} onRun={() => undefined} running={false} hasLiveResult={false} error={null} configurationCheck={null}/>);
+    const card = screen.getByRole('button', { name: '选择 qwen-flash' });
+    expect(card).toHaveAttribute('aria-pressed', 'true');
+    expect(card).toHaveTextContent('阿里云百炼');
+    expect(screen.queryByRole('button', { name: '选择 Qwen2.5-7B' })).not.toBeInTheDocument();
+  });
+
   it('offers local models after the built-in ones, unselected by default', () => {
-    render(<WorkspaceView config={initialConfig} onChange={() => undefined} onRun={() => undefined} running={false} hasLiveResult={false} error={null} configurationCheck={null} localModels={[local]}/>);
+    render(<WorkspaceView config={initialConfig} onChange={() => undefined} onRun={() => undefined} running={false} hasLiveResult={false} error={null} configurationCheck={null} registeredModels={[local]}/>);
     const card = screen.getByRole('button', { name: '选择 内网 Qwen' });
     expect(card).toHaveAttribute('aria-pressed', 'false');
     expect(card).toHaveTextContent('密钥未设置');

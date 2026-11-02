@@ -99,6 +99,90 @@ def test_backend_csv_blank_cells_match_main_loader(app, tmp_path, extension):
     assert result == app.load_custom_testset(str(path))
 
 
+@pytest.fixture(params=["main", "backend"])
+def custom_testset_loader(request, app):
+    if request.param == "main":
+        return app.load_custom_testset
+    from backend.services.testsets import load_custom_testset
+
+    return load_custom_testset
+
+
+@pytest.mark.parametrize("extension", [".csv", ".txt"])
+def test_custom_testset_preserves_leading_zero_text(
+    custom_testset_loader, tmp_path, extension,
+):
+    path = tmp_path / ("identifiers" + extension)
+    path.write_text("question,ground_truth\n00123,00045\n", encoding="utf-8")
+
+    assert custom_testset_loader(str(path)) == [
+        {"question": "00123", "ground_truth": "00045", "contexts": [], "case_type": "positive"},
+    ]
+
+
+@pytest.mark.parametrize("extension", [".csv", ".txt"])
+def test_custom_testset_preserves_literal_na_text_and_row_count(
+    custom_testset_loader, tmp_path, extension,
+):
+    path = tmp_path / ("literal_values" + extension)
+    path.write_text(
+        "question,ground_truth\nWhat is the literal NULL?,NULL\nNA,valid answer\n",
+        encoding="utf-8",
+    )
+
+    assert custom_testset_loader(str(path)) == [
+        {"question": "What is the literal NULL?", "ground_truth": "NULL", "contexts": [], "case_type": "positive"},
+        {"question": "NA", "ground_truth": "valid answer", "contexts": [], "case_type": "positive"},
+    ]
+
+
+def test_custom_testset_null_json_fields_match_missing_fields(
+    custom_testset_loader, tmp_path,
+):
+    path = tmp_path / "null_fields.json"
+    path.write_text(json.dumps([
+        {"question": None, "ground_truth": "orphan"},
+        {"question": "valid", "ground_truth": None},
+    ]), encoding="utf-8")
+
+    assert custom_testset_loader(str(path)) == [
+        {"question": "valid", "ground_truth": "", "contexts": [], "case_type": "positive"},
+    ]
+
+
+def test_custom_testset_numeric_zero_is_preserved(custom_testset_loader, tmp_path):
+    path = tmp_path / "numeric_zero.json"
+    path.write_text(json.dumps([{"question": 0, "ground_truth": 0}]), encoding="utf-8")
+
+    assert custom_testset_loader(str(path)) == [
+        {"question": "0", "ground_truth": "0", "contexts": [], "case_type": "positive"},
+    ]
+
+
+@pytest.mark.parametrize("case_type, expected", [(None, "positive"), (" custom ", "custom")])
+def test_custom_testset_null_case_type_defaults_without_reclassifying_unknown_types(
+    custom_testset_loader, tmp_path, case_type, expected,
+):
+    path = tmp_path / "case_types.json"
+    path.write_text(json.dumps([
+        {"question": "explicit positive", "case_type": "positive"},
+        {"question": "optional case type", "case_type": case_type},
+    ]), encoding="utf-8")
+
+    result = custom_testset_loader(str(path))
+    assert len(result) == 2
+    assert result[0]["case_type"] == "positive"
+    assert result[1]["case_type"] == expected
+
+
+def test_custom_testset_all_null_questions_are_empty(custom_testset_loader, tmp_path):
+    path = tmp_path / "null_questions.json"
+    path.write_text(json.dumps([{"question": None}]), encoding="utf-8")
+
+    with pytest.raises(RuntimeError, match="自定义测试集为空"):
+        custom_testset_loader(str(path))
+
+
 class FakeDataset:
     features = {"question": object(), "best_answer": object()}
 

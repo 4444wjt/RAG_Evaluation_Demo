@@ -38,6 +38,27 @@ function imported(file: File, kind: 'document' | 'testset' = 'document'): Import
 }
 
 describe('Workspace examples and real computer-file import', () => {
+  it.each(['document', 'testset'] as const)('clears indeterminate progress after a %s import failure', async (kind) => {
+    let finish!: (value: Response) => void;
+    requests.mockImplementationOnce(() => new Promise<Response>((resolve) => { finish = resolve; }));
+    const onImported = vi.fn();
+    const label = kind === 'document' ? '评测资料' : '测试集';
+    render(<FileImportControl kind={kind} disabled={false} readOnly={false} onImported={onImported} onBusy={vi.fn()}/>);
+    const file = new File(['正文'], '资料.txt');
+    upload(`从电脑选择${label}`, file);
+    const progress = screen.getByRole('progressbar', { name: `导入${label}进度` });
+    expect(progress).not.toHaveAttribute('aria-valuenow');
+    expect(progress).not.toHaveAttribute('value');
+    expect(screen.getByLabelText(`从电脑选择${label}`)).toBeDisabled();
+    upload(`从电脑选择${label}`, file);
+    expect(requests).toHaveBeenCalledTimes(1);
+    await act(async () => { finish(response({}, 422)); });
+    expect(await screen.findByRole('alert')).toHaveTextContent('文件未被接收');
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    expect(screen.getByLabelText(`从电脑选择${label}`)).toBeEnabled();
+    expect(onImported).not.toHaveBeenCalled();
+  });
+
   it('starts with three usable examples and switches them without an API call', async () => {
     const page = workspace();
     expect(screen.getByRole('button', { name: '示例资料' })).toHaveAttribute('aria-pressed', 'true');

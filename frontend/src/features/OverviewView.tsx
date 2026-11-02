@@ -59,13 +59,23 @@ export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompar
   const snapshotQuestionCount = new Set(snapshotRows.map((row) => row.question)).size;
   const snapshotThresholds = displayRecord(displayRecord(gateProvenance?.run)?.thresholds);
   const manualThresholds = gateRequest?.useDefaultThresholds === false ? gateRequest : null;
+  const resultFaithThreshold = numberValue(result.faith_threshold);
+  const resultContextThreshold = numberValue(result.ctx_prec_threshold);
   const faithGateThreshold = numberValue(gateProvenance
-    ? snapshotThresholds?.faithfulness : manualThresholds?.faithThreshold);
+    ? snapshotThresholds?.faithfulness : resultFaithThreshold ?? manualThresholds?.faithThreshold);
   const contextGateThreshold = numberValue(gateProvenance
-    ? snapshotThresholds?.context_precision : manualThresholds?.contextThreshold);
+    ? snapshotThresholds?.context_precision : resultContextThreshold ?? manualThresholds?.contextThreshold);
+  const hasResultThreshold = resultFaithThreshold !== null || resultContextThreshold !== null;
+  const hasManualFallback = (resultFaithThreshold === null && numberValue(manualThresholds?.faithThreshold) !== null)
+    || (resultContextThreshold === null && numberValue(manualThresholds?.contextThreshold) !== null);
   const thresholdNote = gateProvenance && (faithGateThreshold !== null || contextGateThreshold !== null)
     ? '已有阈值来自演示快照的原始运行记录；缺失项不作推断。'
-    : manualThresholds ? '阈值来自本次显式提交参数。' : '未随结果返回的运行阈值不作推断。';
+    : gateProvenance ? '未随结果返回的运行阈值不作推断。'
+      : resultFaithThreshold !== null && resultContextThreshold !== null ? '阈值来自本次评测实际使用的配置。'
+        : hasResultThreshold ? (hasManualFallback
+          ? '已有阈值分别来自本次结果与显式提交参数；缺失项不作推断。'
+          : '已有阈值来自本次结果；缺失项不作推断。')
+          : manualThresholds ? '阈值来自本次显式提交参数。' : '未随结果返回的运行阈值不作推断。';
   // 能力图上的门禁参考线：只有两项阈值都取得到时才画，缺失项不作推断。
   const gateLine: readonly [number, number] | undefined = faithGateThreshold !== null && contextGateThreshold !== null
     ? [faithGateThreshold, contextGateThreshold] : undefined;

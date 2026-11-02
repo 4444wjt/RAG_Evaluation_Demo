@@ -30,8 +30,8 @@ interface Props {
   hasLiveResult: boolean;
   error: string | null;
   configurationCheck: ConfigurationCheck | null;
-  /** Models registered on this machine (GET /models); empty without a backend. */
-  localModels?: ModelEntry[];
+  /** Built-in and local models reported by GET /models; empty without a backend. */
+  registeredModels?: ModelEntry[];
   onInspectExample?: (example: ExampleEvidence) => void;
 }
 
@@ -39,11 +39,13 @@ function Stage({ number, name, children }: { number: string; name: string; child
   return <section className="workspace-stage"><div className="stage-track"><span>{number}</span><strong>{name}</strong></div><div className="stage-content">{children}</div></section>;
 }
 
-export function WorkspaceView({ config, onChange, onRun, running, readOnly = false, hasLiveResult, error, configurationCheck, localModels = [], onInspectExample }: Props) {
-  const models = [...MODELS, ...localModels.map((model) => ({
-    id: model.name, label: model.displayName,
-    detail: `本机登记 · ${model.name}${model.keyConfigured ? '' : ' · 密钥未设置'}`,
-  }))];
+export function WorkspaceView({ config, onChange, onRun, running, readOnly = false, hasLiveResult, error, configurationCheck, registeredModels = [], onInspectExample }: Props) {
+  const registered = registeredModels.map((model) => ({
+    id: model.name,
+    label: model.displayName === model.name ? MODELS.find((entry) => entry.id === model.name)?.label ?? model.displayName : model.displayName,
+    detail: `${model.source === 'local' ? '本机登记' : model.baseUrl.startsWith('https://dashscope.aliyuncs.com/') ? '阿里云百炼' : '内置模型'} · ${model.name}${model.keyConfigured ? '' : ' · 密钥未设置'}`,
+  }));
+  const models = registeredModels.some((model) => model.source === 'builtin') ? registered : [...MODELS, ...registered];
   const feedback = useRef<HTMLDivElement>(null);
   const modelStage = useRef<HTMLHeadingElement>(null);
   const checking = configurationCheck?.status === 'checking';

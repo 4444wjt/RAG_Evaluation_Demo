@@ -224,12 +224,16 @@ export function CitationVersionView() {
   };
   const onDrop = (event: DragEvent<HTMLLabelElement>) => { event.preventDefault(); setDragging(false); if (!locked && !fileBusy) void addFiles(Array.from(event.dataTransfer?.files ?? [])); };
   const download = (bundle: CVBundle, format: 'html' | 'json', historical = false) => {
-    downloadCitationReport(bundle, format, historical);
-    setDownloadNote(`已生成${historical ? '上次' : '本次'}${format === 'html' ? ' HTML 报告' : ' JSON 复核包'}下载。`);
+    try {
+      downloadCitationReport(bundle, format, historical);
+      setDownloadNote(`已发起下载，请在浏览器下载列表确认。${historical ? '上次' : '本次'}${format === 'html' ? ' HTML 报告' : ' JSON 复核包'}。`);
+    } catch {
+      setDownloadNote('下载准备失败，请重试或检查浏览器下载权限。');
+    }
   };
 
   return <div className="audit-view cv-view" data-phase={phase || undefined}>
-    <WorkflowStatus phase={phase} fileCount={files.length} observed={Boolean(inspection)} hasReport={Boolean(current)} downloaded={Boolean(current && downloadNote && !downloadNote.includes('上次'))}/>
+    <WorkflowStatus phase={phase} fileCount={files.length} observed={Boolean(inspection)} hasReport={Boolean(current)} downloaded={Boolean(current && downloadNote.startsWith('已发起下载') && !downloadNote.includes('上次'))}/>
     <div className="cv-workbench" data-has-observation={Boolean(inspection)}>
     <section className="audit-panel cv-panel cv-materials" aria-labelledby={`${id}-files-title`}>
       <div className="audit-panel-head"><div><h2 id={`${id}-files-title`}>原始资料</h2><p>上传原件，保留可追溯的文件绑定。</p></div><span className="audit-chip cv-local">本地检查</span></div>

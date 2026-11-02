@@ -388,7 +388,9 @@ def test_pipeline_review_warns_continues_and_persists_without_rewriting_history(
     assert record["parse_check"]["source_fingerprint"] == record["source_fingerprint"]
     assert record["gate_passed"] is False
     assert result["gate_passed"] is False
-    assert len(result) == 8
+    assert len(result) == 10
+    assert result["faith_threshold"] == record["thresholds"]["faithfulness"] == isolated_pipeline.FAITH_THRESHOLD
+    assert result["ctx_prec_threshold"] == record["thresholds"]["context_precision"] == isolated_pipeline.CTX_PREC_THRESHOLD
 
 
 def test_pipeline_presupplied_resources_do_not_invent_parse_pass(isolated_pipeline, tmp_path):
