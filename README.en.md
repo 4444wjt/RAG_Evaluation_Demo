@@ -15,6 +15,8 @@
 
 **[Open the read-only demo](https://kk444444444444.cloud/)** · [Run the demo locally without API keys](#quick-start) · [Replay an archived gate](docs/gate-replay.md)
 
+**Real workflow tutorial (Chinese captions):** [Download MP4 from GitHub](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [Download MP4 from Gitee](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) (2:54, 1080p). Follow a new evaluation, legal-source and test-set uploads, a real run, sentence-level evidence and report preview. Waiting footage is labelled 4×. It uses the existing deposit-insurance excerpt, one question and qwen-flash as both answer model and judge. The single PASS is an operation example, not an overall model-quality result. The public demo is read-only; run evaluations locally.
+
 Repositories: [Gitee (primary)](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub (mirror, CI and Pages fallback)](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
 [Gate credibility (Chinese)](docs/competition/gate-credibility.md) · [Gate replay](docs/gate-replay.md) · [Deploy](deploy/README.md) · [Adoption & integration (Chinese)](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
