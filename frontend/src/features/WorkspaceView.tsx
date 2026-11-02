@@ -153,6 +153,7 @@ export function WorkspaceView({ config, onChange, onRun, running, readOnly = fal
       <Stage number="04" name="运行">
         {configurationCheck && <div ref={feedback} className={`configuration-feedback ${configurationCheck.status}`} role="status" aria-label="配置检查结果" tabIndex={-1}><Icon name={checking ? 'refresh' : configurationCheck.status === 'success' ? 'check' : 'alert'} size={18}/><div><strong>本地参数与服务检查</strong><p>{configurationCheck.message}</p><small>此检查不会运行评测，也不会验证文件是否存在、模型或凭据是否可用。</small></div></div>}
         <div className="run-area"><div><h3>执行评测</h3><p>{readOnly ? '这里不能运行新评测。请在上方资料说明中打开已有验证，查看真实记录。' : running ? '评测正在运行，请保持当前页面打开。' : !inputReady ? '请先选择示例资料，或完成电脑文件导入。' : '执行当前配置，完成后查看门禁、模型指标和逐句证据。'}</p><small>{readOnly ? '在线评测请按仓库 README 在本地运行。' : '真实评测需先在本地后端配置模型凭据。'}</small></div><button type="button" className="btn btn-primary run-button" onClick={onRun} disabled={readOnly || running || checking || importBusy || !inputReady}><Icon name={running ? 'refresh' : 'play'}/>{running ? '评测中' : hasLiveResult ? '再次评测' : '开始评测'}</button></div>
+        {running && <div className="operation-progress" role="progressbar" aria-label="评测进度"><span/></div>}
         {error && <p className="form-error" role="alert">{error}</p>}
       </Stage>
     </fieldset>

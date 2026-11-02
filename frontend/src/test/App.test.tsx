@@ -83,9 +83,20 @@ describe('Workspace UI integration with mocked API', () => {
     fireEvent.click(start);
     fireEvent.click(start);
     const progress = screen.getByRole('progressbar', { name: '评测进度' });
+    const runStage = screen.getByRole('heading', { name: '执行评测' }).closest('section');
+    expect(runStage).toContainElement(progress);
+    expect(screen.getAllByRole('progressbar', { name: '评测进度' })).toHaveLength(1);
     expect(progress).not.toHaveAttribute('aria-valuenow');
     expect(progress).not.toHaveAttribute('value');
-    expect(screen.getByText('正在等待评测完成，请保持页面打开。')).toBeInTheDocument();
+    expect(screen.getByText('评测正在运行，请保持当前页面打开。')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
+    const globalProgress = screen.getByRole('progressbar', { name: '评测进度' });
+    expect(globalProgress.closest('.run-notice')).toHaveTextContent('正在等待评测完成，请保持页面打开。');
+    expect(screen.getAllByRole('progressbar', { name: '评测进度' })).toHaveLength(1);
+    await userEvent.click(screen.getByRole('button', { name: '评测工作区' }));
+    expect(screen.getByRole('heading', { name: '执行评测' }).closest('section'))
+      .toContainElement(screen.getByRole('progressbar', { name: '评测进度' }));
+    expect(screen.getAllByRole('progressbar', { name: '评测进度' })).toHaveLength(1);
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(1);
     expect(JSON.parse(calls[0][1].body)).toMatchObject({ doc_path: documentPath, testset_path: testsetPath });
@@ -102,7 +113,9 @@ describe('Workspace UI integration with mocked API', () => {
     render(<App/>);
     await openWorkspace();
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
-    expect(screen.getByRole('progressbar', { name: '评测进度' })).toBeInTheDocument();
+    const progress = screen.getByRole('progressbar', { name: '评测进度' });
+    expect(screen.getByRole('heading', { name: '执行评测' }).closest('section')).toContainElement(progress);
+    expect(screen.getAllByRole('progressbar', { name: '评测进度' })).toHaveLength(1);
     await act(async () => { finish(response({}, 422)); });
     expect(await screen.findByText('本次评测未完成')).toBeInTheDocument();
     expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
