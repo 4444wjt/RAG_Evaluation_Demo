@@ -15,7 +15,7 @@
 
 **▶ 在线演示**：[kk444444444444.cloud](https://kk444444444444.cloud/)（免登录、不调用模型，打开就是一次真实 FAIL 的门禁结论 + 逐句证据 + 换裁判对比） · **一键起站**：[Docker 三行](#快速启动) · **全部文档**：[docs/](docs/README.md)
 
-**真实操作教程**：[下载 MP4（GitHub）](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [下载 MP4（Gitee）](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4)（4 分 10 秒，1080p 中文字幕与普通话配音）。使用《存款保险条例》节选，从新建评测、上传资料与题集，到真实运行、逐句证据和报告预览；追加三题实测，展示回答与原文对照、错误前提下的回答及引用校验。等待段已加速标注。云站只读，实际评测需本地启动。
+**使用教程与核心实测**：[视频（GitHub）](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [视频（Gitee）](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4)
 
 代码仓库：[Gitee（主）](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub（镜像，运行 CI 与 Pages 备用站）](https://github.com/4444wjt/RAG_Evaluation_Demo)
 

@@ -15,7 +15,7 @@
 
 **[Open the read-only demo](https://kk444444444444.cloud/)** · [Run the demo locally without API keys](#quick-start) · [Replay an archived gate](docs/gate-replay.md)
 
-**Real workflow tutorial (Mandarin narration and Chinese captions):** [Download MP4 from GitHub](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [Download MP4 from Gitee](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) (4:10, 1080p). Follow a real deposit-insurance evaluation from source and test-set upload through execution, sentence-level evidence and report preview. An additional three-question run shows source comparison, an answer to a false-premise question and quote validation. Waiting footage is labelled and accelerated. The public demo is read-only; run evaluations locally.
+**Usage tutorial and feature tests:** [Video (GitHub)](https://github.com/4444wjt/RAG_Evaluation_Demo/raw/refs/heads/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4) · [Video (Gitee)](https://gitee.com/kkbushishou/rag-hallucination-evaluator/raw/master/docs/videos/veriscope-evaluation-tutorial-20261102.mp4)
 
 Repositories: [Gitee (primary)](https://gitee.com/kkbushishou/rag-hallucination-evaluator) · [GitHub (mirror, CI and Pages fallback)](https://github.com/4444wjt/RAG_Evaluation_Demo)
 
