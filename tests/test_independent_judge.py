@@ -200,7 +200,17 @@ def test_api_accepts_judge_outside_tested_models_and_preserves_envelope(tmp_path
     with client_for(fake) as client:
         response = client.post("/evaluate", json={"model_names": ["deepseek-chat"], "judge_model_name": "glm-5.2-fast-preview"})
         assert response.status_code == 200
-        assert len(response.json()) == 10
+        body = response.json()
+        assert set(body) == {
+            "summary", "summary_df", "gate_passed", "gate_message",
+            "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
+            "faith_threshold", "ctx_prec_threshold",
+            "record_id", "saved_at", "save_error",
+        }
+        assert body["record_id"] and body["saved_at"]
+        assert body["save_error"]  # This engine stub writes no HTML or chart.
+        assert {key: value for key, value in body.items()
+                if key not in {"record_id", "saved_at", "save_error"}} == service.serialize_evaluation_result(fake.return_value)
         assert response.json()["faith_threshold"] is None
         assert response.json()["ctx_prec_threshold"] is None
         assert fake.call_args.args[0]["judge_model_name"] == "glm-5.2-fast-preview"
