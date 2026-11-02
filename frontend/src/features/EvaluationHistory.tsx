@@ -73,7 +73,7 @@ export function EvaluationHistory({ disabled, onOpen, onClose }: { disabled: boo
   }
 
   return <section id="evaluation-history" className="evaluation-history" aria-label="历史记录" aria-busy={busy}>
-    <header className="history-header"><div><h2>历史记录</h2><p>保存于当前本地服务；打开记录不会重新执行评测。</p></div><div className="history-actions">
+    <header className="history-header"><div><h2>历史记录</h2><p>查看已保存的评测记录；打开记录不会重新执行评测。</p></div><div className="history-actions">
       <button type="button" className="btn btn-secondary" disabled={busy || disabled} onClick={() => input.current?.click()}><Icon name="upload" size={15}/>导入记录</button>
       <button type="button" className="btn btn-ghost" disabled={busy || disabled} onClick={() => { void refresh(); }}>刷新列表</button>
       <button type="button" className="btn btn-ghost" onClick={onClose} aria-label="关闭历史记录">关闭</button>
