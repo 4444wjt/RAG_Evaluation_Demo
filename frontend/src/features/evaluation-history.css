@@ -1,0 +1,16 @@
+.page-heading:has(.evaluation-record-actions) { flex-wrap: wrap; align-items: flex-start; }
+.evaluation-record-actions { flex-wrap: wrap; gap: 8px; margin-left: auto; }
+.evaluation-history { margin-bottom: 24px; padding: 22px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); background: var(--bg-surface); }
+.history-header { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.history-header p, .history-note { margin-top: 6px; color: var(--text-secondary); font-size: 13px; }
+.history-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.history-list { list-style: none; margin: 0; padding: 0; max-height: 440px; overflow-y: auto; }
+.history-list li { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-top: 1px solid var(--border-subtle); }
+.history-record-main { flex: 1; min-width: 160px; display: grid; gap: 4px; overflow-wrap: anywhere; }
+.history-record-main span { font-size: 12px; color: var(--text-secondary); }
+.history-list .badge { flex-shrink: 0; }
+.history-note { margin-top: 16px; }
+.history-error { color: var(--danger); margin-bottom: 14px; }
+.history-warning, .history-record-main .history-warning { color: var(--warning); }
+.record-notice { margin: 0 0 16px; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-control); color: var(--text-secondary); background: var(--bg-surface); font-size: 13px; }
+.record-notice--error { color: var(--warning); }

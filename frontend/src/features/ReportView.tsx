@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { EvaluationResult } from '../api/types';
+import { fetchEvaluationReport } from '../api/evaluations';
 import { Icon } from '../components/Icon';
 import { READ_ONLY } from '../config';
 import { JudgeProvenance } from './JudgeProvenance';
@@ -9,7 +10,7 @@ import './details.css';
 /** Public builds show only the file name: the frozen snapshot records absolute paths from the author's machine. */
 const fileName = (path: string) => path.split(/[\\/]/).pop() || path;
 
-type ImportedReport = { result: EvaluationResult | null; name: string; document: string };
+type ImportedReport = { result: EvaluationResult | null; name: string; document: string; saved?: boolean };
 type Notice = { kind: 'success' | 'error'; text: string };
 
 function readFile(file: File): Promise<string> {
@@ -52,12 +53,23 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
   const visibleReport = report?.result === result ? report : null;
 
   useEffect(() => {
-    generation.current += 1;
+    const token = ++generation.current;
+    const controller = new AbortController();
     setReport(null);
     setReading(false);
     setImportError('');
     setCopyNotice(null);
-    return () => { generation.current += 1; };
+    if (result?.record_id && !READ_ONLY) {
+      setReading(true);
+      fetchEvaluationReport(result.record_id, controller.signal).then((source) => {
+        if (generation.current === token) setReport({ result, name: '已保存的 HTML 报告', document: isolatedDocument(source), saved: true });
+      }).catch((error) => {
+        if (generation.current === token) setImportError(error instanceof Error ? error.message : '历史报告读取失败。');
+      }).finally(() => {
+        if (generation.current === token) setReading(false);
+      });
+    }
+    return () => { generation.current += 1; controller.abort(); };
   }, [result]);
 
   async function importReport(event: ChangeEvent<HTMLInputElement>) {
@@ -111,7 +123,7 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
   return <section className="report-view" aria-label="评测报告">
     {result && <JudgeProvenance rows={result.summary}/>}
     <header className="report-toolbar">
-      <p id="report-view-title" className="muted">导入本地 HTML 报告，查看图表与详细评测记录。</p>
+      <p id="report-view-title" className="muted">{result?.record_id ? '查看当前记录保存的 HTML 报告，也可手动导入本地报告。' : '导入本地 HTML 报告，查看图表与详细评测记录。'}</p>
       <button type="button" className="btn btn-primary" disabled={reading} onClick={() => fileInput.current?.click()}><Icon name="folder" size={16} />{reading ? '正在读取…' : '导入 HTML 报告'}</button>
       <input ref={fileInput} className="report-file-input" type="file" accept=".html,text/html" aria-label="选择本地 HTML 报告" onChange={importReport} />
     </header>
@@ -122,7 +134,7 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
         <div className="report-path-label"><Icon name={path.icon} size={17} /><span>{path.label}</span></div>
         {path.value && READ_ONLY ? <code className="report-path-value" tabIndex={0}>{fileName(path.value)}</code> : path.value ? <><code className="report-path-value" tabIndex={0}>{path.value}</code><button type="button" className="btn btn-ghost report-copy-button" aria-label={`复制${path.label}本地路径`} onClick={() => void copyPath(path.value!)}><Icon name="copy" size={15} /><span>复制路径</span></button></> : <span className="report-path-missing">{result ? '当前结果未记录路径' : '尚未载入评测结果'}</span>}
       </div>)}</div>
-      <p className="report-path-note">{READ_ONLY ? '这些是评测时在本机生成的产物，公开站点不提供下载；可导入你自己的 HTML 报告预览。' : '路径指向本地文件。请从本地选择报告导入；文件可能被后续评测覆盖。'}</p>
+      <p className="report-path-note">{READ_ONLY ? '这些是评测时在本机生成的产物，公开站点不提供下载；可导入你自己的 HTML 报告预览。' : result?.record_id ? '预览从当前记录读取；这些原始路径不用于加载报告。' : '路径指向本地文件。请从本地选择报告导入；文件可能被后续评测覆盖。'}</p>
       {copyNotice && <p className={`report-notice report-notice--${copyNotice.kind}`} role="status">{copyNotice.text}</p>}
     </div>
 
@@ -130,15 +142,15 @@ export function ReportView({ result }: { result: EvaluationResult | null }) {
 
     {visibleReport ? <div className="report-preview">
       <div className="report-preview-heading">
-        <div className="report-filename"><Icon name="file" size={18} /><span>{visibleReport.name}</span><span className="badge report-local-badge">本地文件</span></div>
+        <div className="report-filename"><Icon name="file" size={18} /><span>{visibleReport.name}</span><span className="badge report-local-badge">{visibleReport.saved ? '当前记录' : '本地文件'}</span></div>
         <button type="button" className="btn btn-ghost" onClick={clearReport}>清除预览</button>
       </div>
-      <div className="report-source-notice"><Icon name="alert" size={15} /><span>手动导入，未自动核验与当前结果对应</span></div>
-      <iframe className="report-frame" title={`本地报告预览：${visibleReport.name}`} sandbox="" referrerPolicy="no-referrer" srcDoc={visibleReport.document} />
+      <div className="report-source-notice"><Icon name={visibleReport.saved ? 'check' : 'alert'} size={15} /><span>{visibleReport.saved ? '按当前记录 ID 读取，未重新执行评测' : '手动导入，未自动核验与当前结果对应'}</span></div>
+      <iframe className="report-frame" title={visibleReport.saved ? '历史报告预览' : `本地报告预览：${visibleReport.name}`} sandbox="" referrerPolicy="no-referrer" srcDoc={visibleReport.document} />
       <div className="report-preview-footer"><Icon name="shield" size={14} /><span>隔离预览，仅显示内联样式和内嵌图片；脚本与外部内容已禁用。</span></div>
     </div> : <div className="empty-state report-empty">
       <span className="details-empty-icon"><Icon name="file" size={29} /></span>
-      <h3>{reading ? '正在读取本地报告' : '导入报告以开始预览'}</h3>
+      <h3>{reading ? result?.record_id ? '正在读取已保存报告' : '正在读取本地报告' : '导入报告以开始预览'}</h3>
       <p>选择已有的 .html 文件，报告仅在当前浏览器中读取。</p>
       <span className="report-empty-note">手动导入，未自动核验与当前结果对应</span>
     </div>}

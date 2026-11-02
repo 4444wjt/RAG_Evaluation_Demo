@@ -72,7 +72,7 @@ def _check_isolated_api(entry_point, tmp_path):
                 assert response.status_code == 200
                 assert response.json() == {"status": "ok"}
                 if sys.argv[2] == "scope":
-                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate", "/inputs", "/models", "/models/local", "/contexts/parent/prepare", "/citations/versions/inspect", "/citations/versions/check"}
+                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate", "/inputs", "/models", "/models/local", "/contexts/parent/prepare", "/citations/versions/inspect", "/citations/versions/check", "/evaluations", "/evaluations/import", "/evaluations/{ident}", "/evaluations/{ident}/download", "/evaluations/{ident}/report"}
                     assert client.post("/evaluate", json={"resources": {}}).status_code == 422
                     assert client.post("/uploads").status_code == 404
         finally:
@@ -465,7 +465,7 @@ def _run_evaluation_http(tmp_path, case):
     assert result.returncode == 0, result.stdout + result.stderr
 
 
-def test_post_evaluate_returns_ten_fields_and_passes_parameters_once(tmp_path):
+def test_post_evaluate_preserves_result_fields_adds_save_status_and_passes_parameters_once(tmp_path):
     _run_evaluation_http(tmp_path, r"""
         result = sample_result()
         fake = Mock(return_value=result)
@@ -488,8 +488,12 @@ def test_post_evaluate_returns_ten_fields_and_passes_parameters_once(tmp_path):
             "summary", "summary_df", "gate_passed", "gate_message",
             "chart_path", "html_path", "model_dfs", "total_elapsed_seconds",
             "faith_threshold", "ctx_prec_threshold",
+            "record_id", "saved_at", "save_error",
         }
-        assert response.json() == service.serialize_evaluation_result(result)
+        body = response.json()
+        assert body["record_id"] and body["saved_at"]
+        assert body["save_error"]  # This engine stub writes no HTML or chart.
+        assert {k: v for k, v in body.items() if k not in {"record_id", "saved_at", "save_error"}} == service.serialize_evaluation_result(result)
         assert response.json()["gate_passed"] is False
         assert response.json()["summary"][0]["hallucination_ratio"] is None
         assert response.json()["model_dfs"]["deepseek-chat"][0]["contexts"] == ["原文证据"]
@@ -650,7 +654,9 @@ def test_post_evaluate_runtime_failure_is_safe_and_releases_lock(tmp_path, failu
             assert "RuntimeError" not in failed.text
             retry = client.post("/evaluate", json={})
             assert retry.status_code == 200
-            assert retry.json() == service.serialize_evaluation_result(good)
+            body = retry.json()
+            assert body["record_id"] and body["saved_at"]
+            assert {k: v for k, v in body.items() if k not in {"record_id", "saved_at", "save_error"}} == service.serialize_evaluation_result(good)
         assert fake.call_count == 2
     """.replace("FAILURE", repr(failure))
     _run_evaluation_http(tmp_path, case)

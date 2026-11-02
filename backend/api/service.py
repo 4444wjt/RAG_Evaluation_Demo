@@ -9,6 +9,7 @@ from typing import Any
 
 from backend.api.schemas import EvaluateRequest, EvaluateResponse
 from backend.api.serialization import serialize_evaluation_result
+from backend.api.evaluation_records import capture_record
 
 
 _PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -165,7 +166,18 @@ def run_evaluation(
             engine_request, resources=None, model_factory=None, progress_cb=None,
         )
         payload = serialize_evaluation_result(result)
-        return EvaluateResponse.model_validate(payload).model_dump(mode="json")
+        payload = EvaluateResponse.model_validate(payload).model_dump(mode="json")
+        try:
+            record = capture_record(root, request, payload)
+        except (OSError, ValueError):
+            # The model call has already completed. A disk failure must not turn
+            # it into an evaluation error that encourages a second paid call.
+            return {**payload, "record_id": None, "saved_at": None,
+                    "save_error": "评测已完成，但记录未能保存；请点击“保存记录”下载备份。"}
+        return {**payload, "record_id": record.id,
+                "saved_at": record.created_at.isoformat(),
+                "save_error": ("评测结果已保存；" + "".join(record.artifact_warnings))
+                    if record.artifact_warnings else None}
     except Exception:
         raise EvaluationAPIError(500, _RUNTIME_ERROR) from None
     finally:

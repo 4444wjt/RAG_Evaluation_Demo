@@ -25,6 +25,38 @@ export interface EvaluationResult {
   total_elapsed_seconds: number | null;
   faith_threshold?: number | null;
   ctx_prec_threshold?: number | null;
+  record_id?: string | null;
+  saved_at?: string | null;
+  save_error?: string | null;
+}
+
+export interface EvaluationRecord {
+  schema_version: 1;
+  id: string;
+  created_at: string;
+  source: 'evaluation' | 'imported';
+  request: EvaluateRequest | null;
+  result: EvaluationResult;
+  report_html: string | null;
+  chart_png_base64: string | null;
+  artifact_warnings: string[];
+}
+
+export interface EvaluationRecordSummary {
+  id: string;
+  created_at: string;
+  source: 'evaluation' | 'imported';
+  document_name: string | null;
+  models: string[];
+  gate_passed: boolean;
+  total_elapsed_seconds: number | null;
+  has_report: boolean;
+  artifact_warnings: string[];
+}
+
+export interface EvaluationHistory {
+  records: EvaluationRecordSummary[];
+  unreadable_count: number;
 }
 
 export interface DemoFixture {
@@ -38,4 +70,4 @@ export interface DemoFixture {
 }
 
 export type View = 'overview' | 'workspace' | 'comparison' | 'trace' | 'report';
-export type ResultSource = 'live' | 'demo';
+export type ResultSource = 'live' | 'demo' | 'history';

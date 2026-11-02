@@ -7,9 +7,10 @@ from typing import Any, Literal
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 
-from backend.api.schemas import EvaluateRequest, EvaluateResponse
+from backend.api.schemas import EvaluateRequest, SavedEvaluateResponse
+from backend.api import evaluation_records
 from backend.api.service import (
     EvaluationAPIError, list_models, run_evaluation, save_local_models,
 )
@@ -98,7 +99,62 @@ def create_app(
         from backend.api.citation_version import citation_version_request
         return await citation_version_request(request, operation="check")
 
-    @application.post("/evaluate", response_model=EvaluateResponse, tags=["evaluation"])
+    record_root = Path(__file__).resolve().parents[2] if project_root is None else Path(project_root)
+
+    def history_allowed() -> None:
+        if os.environ.get("VERISCOPE_READ_ONLY") == "1":
+            raise EvaluationAPIError(423, "公开演示站点未开放本机评测记录。")
+
+    def get_record(ident: str) -> evaluation_records.EvaluationRecord:
+        history_allowed()
+        try:
+            return evaluation_records.read_record(record_root, ident)
+        except FileNotFoundError:
+            raise EvaluationAPIError(404, "没有找到这份评测记录。") from None
+        except (OSError, ValueError):
+            raise EvaluationAPIError(500, "这份评测记录无法读取，请保留原文件并检查本地存储。") from None
+
+    @application.get("/evaluations", tags=["history"])
+    def evaluation_history() -> dict[str, Any]:
+        history_allowed()
+        try:
+            return evaluation_records.list_records(record_root)
+        except OSError:
+            raise EvaluationAPIError(500, "历史记录无法读取，请检查本地存储。") from None
+
+    @application.post("/evaluations/import", status_code=201, tags=["history"])
+    async def import_evaluation(request: Request) -> dict[str, Any]:
+        history_allowed()
+        try:
+            record = evaluation_records.import_record(record_root, await request.json())
+        except ValueError:
+            raise EvaluationAPIError(422, "记录格式不完整或版本不支持，请选择导出的 JSON 记录。") from None
+        except OSError:
+            raise EvaluationAPIError(500, "记录未能保存，请检查本地存储后重新导入。") from None
+        return record.model_dump(mode="json")
+
+    @application.get("/evaluations/{ident}", tags=["history"])
+    def evaluation_record(ident: str) -> dict[str, Any]:
+        return get_record(ident).model_dump(mode="json")
+
+    @application.get("/evaluations/{ident}/download", tags=["history"])
+    def download_evaluation(ident: str) -> Response:
+        record = get_record(ident)
+        return Response(record.model_dump_json(indent=2), media_type="application/json",
+                        headers={"Content-Disposition": f'attachment; filename="veriscope-{record.id}.json"',
+                                 "Cache-Control": "no-store"})
+
+    @application.get("/evaluations/{ident}/report", tags=["history"])
+    def evaluation_report(ident: str) -> Response:
+        record = get_record(ident)
+        if record.report_html is None:
+            raise EvaluationAPIError(404, "此记录没有附带 HTML 报告。")
+        return Response(record.report_html, media_type="text/html", headers={
+            "Content-Security-Policy": "sandbox; default-src 'none'; style-src 'unsafe-inline'; img-src data:",
+            "Cache-Control": "no-store",
+        })
+
+    @application.post("/evaluate", response_model=SavedEvaluateResponse, tags=["evaluation"])
     def evaluate_request(request: EvaluateRequest) -> dict[str, Any]:
         # Read per request so a public demo deployment can switch it via environment alone.
         if os.environ.get("VERISCOPE_READ_ONLY") == "1":

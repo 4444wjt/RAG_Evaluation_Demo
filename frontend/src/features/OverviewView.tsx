@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { DemoFixture, EvaluationResult } from '../api/types';
-import type { WorkspaceConfig } from '../state';
 import { Icon } from '../components/Icon';
 import { SlideArrow } from '../components/SlideArrow';
 import { MetricBars } from '../components/MetricBars';
@@ -36,7 +35,7 @@ function useGateSettle(load: object | null, model: string): string | undefined {
   return settle;
 }
 
-export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompare, onTrace, demoDisabled = false, resultMeta, gateProvenance, gateRequest }: { result: EvaluationResult | null; resultLoad?: object; onConfigure: () => void; onDemo: () => void; onCompare: () => void; onTrace: () => void; demoDisabled?: boolean; resultMeta?: ReactNode; gateProvenance?: DemoFixture['provenance']; gateRequest?: WorkspaceConfig | null }) {
+export function OverviewView({ result, resultLoad, onConfigure, onDemo, onCompare, onTrace, demoDisabled = false, resultMeta, gateProvenance, gateRequest }: { result: EvaluationResult | null; resultLoad?: object; onConfigure: () => void; onDemo: () => void; onCompare: () => void; onTrace: () => void; demoDisabled?: boolean; resultMeta?: ReactNode; gateProvenance?: DemoFixture['provenance']; gateRequest?: { useDefaultThresholds: boolean; faithThreshold: number | null; contextThreshold: number | null } | null }) {
   const [selection, setSelection] = useState<{ result: EvaluationResult | null; model: string }>({ result: null, model: '' });
   const models = result ? result.summary.filter((row) => typeof row.model === 'string' && row.model.length > 0) : [];
   const defaultModel = models.find((row) => numberValue(row.faithfulness) !== null);

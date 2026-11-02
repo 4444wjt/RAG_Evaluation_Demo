@@ -686,7 +686,7 @@ describe('Current model quality gate transparency', () => {
     expect({ result, submittedConfig }).toEqual(original);
   });
 
-  it('warns for the retained completed live result during a different submission and after that submission fails', async () => {
+  it.each([true, false])('keeps the retained result bound to its original request during a new submission and failure (explicit thresholds: %s)', async (explicitThresholds) => {
     let finish!: (value: Response) => void;
     let evaluations = 0;
     const firstResult = sample();
@@ -701,28 +701,34 @@ describe('Current model quality gate transparency', () => {
     render(<App/>);
     await screen.findByText('服务可连接');
     await openWorkspace();
-    await userEvent.click(screen.getByRole('checkbox', { name: '沿用后端默认阈值' }));
+    if (explicitThresholds) await userEvent.click(screen.getByRole('checkbox', { name: '沿用后端默认阈值' }));
     await userEvent.click(screen.getByRole('button', { name: '开始评测' }));
     await screen.findByText('真实评测结果');
-    expect(screen.getByText('PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%');
+    expect(screen.getByText(explicitThresholds ? 'PASS' : 'WARNING')).toBeInTheDocument();
+    const originalThreshold = explicitThresholds ? '门槛 ≥ 80.0%' : '门槛未提供';
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', originalThreshold, originalThreshold);
     await openWorkspace();
+    if (!explicitThresholds) await userEvent.click(screen.getByRole('checkbox', { name: '沿用后端默认阈值' }));
     fireEvent.change(screen.getByRole('spinbutton', { name: '忠实度门禁阈值' }), { target: { value: '0.9' } });
     fireEvent.change(screen.getByRole('spinbutton', { name: '上下文精度门禁阈值' }), { target: { value: '0.95' } });
     await userEvent.click(screen.getByRole('button', { name: '再次评测' }));
     await userEvent.click(screen.getByRole('button', { name: '评测总览' }));
-    expect(screen.getByText('WARNING')).toBeInTheDocument();
+    expect(screen.getByText(explicitThresholds ? 'PASS' : 'WARNING')).toBeInTheDocument();
     expect(screen.getByText('上次结果 · 本次尚未更新')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', originalThreshold, originalThreshold);
+    expect(screen.getByLabelText('门禁检查上下文')).not.toHaveTextContent('门槛 ≥ 90.0%');
+    expect(screen.getByLabelText('门禁检查上下文')).not.toHaveTextContent('门槛 ≥ 95.0%');
     await act(async () => { finish(response({}, 500)); });
     await screen.findByText('本次评测未完成');
-    expect(screen.getByText('WARNING')).toBeInTheDocument();
+    expect(screen.getByText(explicitThresholds ? 'PASS' : 'WARNING')).toBeInTheDocument();
     expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
-    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', '门槛未提供', '门槛未提供');
+    expectGateContext('DeepSeek-V4.1-Flash', '3 条正向用例', '100.0%', '100.0%', originalThreshold, originalThreshold);
+    expect(screen.getByLabelText('门禁检查上下文')).not.toHaveTextContent('门槛 ≥ 90.0%');
+    expect(screen.getByLabelText('门禁检查上下文')).not.toHaveTextContent('门槛 ≥ 95.0%');
     const calls = requests.mock.calls.filter(([url]) => url === '/api/evaluate');
     expect(calls).toHaveLength(2);
-    expect(JSON.parse(calls[0][1].body)).toMatchObject({ faith_threshold: 0.8, ctx_prec_threshold: 0.8 });
+    expect(JSON.parse(calls[0][1].body)).toMatchObject({ faith_threshold: explicitThresholds ? 0.8 : null, ctx_prec_threshold: explicitThresholds ? 0.8 : null });
     expect(JSON.parse(calls[1][1].body)).toMatchObject({ faith_threshold: 0.9, ctx_prec_threshold: 0.95 });
     expect(firstResult).toEqual(originalResult);
   });

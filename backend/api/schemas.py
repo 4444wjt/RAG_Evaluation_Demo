@@ -36,3 +36,11 @@ class EvaluateResponse(BaseModel):
     total_elapsed_seconds: float | None
     faith_threshold: float | None = None
     ctx_prec_threshold: float | None = None
+
+
+class SavedEvaluateResponse(EvaluateResponse):
+    """Persistence status is separate from the original evaluation verdict."""
+
+    record_id: str | None = None
+    saved_at: str | None = None
+    save_error: str | None = None
