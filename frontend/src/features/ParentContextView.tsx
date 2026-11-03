@@ -235,7 +235,7 @@ export function ParentContextView() {
   return <div className="audit-view pc-view">
     <section className="audit-panel pc-panel" aria-labelledby={`${id}-title`}>
       <div className="audit-panel-head">
-        <div><h2 id={`${id}-title`}>导入四份文件，把命中段补全为完整父条</h2><p>{BYOK ? '上传资料由云端准备，不调用模型、不核验回答、不改变质量门禁。' : '只在本机准备资料：不调用模型、不核验回答、不改变质量门禁。'}准备成功只表示等待你复核，不代表通过质量门禁。</p></div>
+        <div><h2 id={`${id}-title`}>导入四份文件，把命中段补全为完整父条</h2><p>{BYOK ? '上传四份文件，按原文补全命中段并预览父条，复核后下载。' : '导入四份文件，按原文补全命中段并预览父条，复核后下载。'}</p></div>
         <span className="audit-chip pc-chip">{BYOK ? '云端处理 · 不调用模型' : '本地处理 · 不调用模型'}</span>
       </div>
       {locked && <p className="readonly-notice"><Icon name="alert" size={16}/><span><strong>只读演示</strong>{PUBLIC_DEMO_MESSAGE}</span></p>}
@@ -280,7 +280,7 @@ export function ParentContextView() {
           <span className={`audit-chip ${prepared ? 'pc-chip' : 'audit-chip--warning'}`}>{result.status}</span>
         </div>
         {prepared && context && facts ? <>
-          <p className="pc-lead">{`命中 ${facts.retrieved} 段，按原文补全为 ${facts.expanded} 段。`}这只说明四份文件彼此一致、命中段已补全为完整父条；不证明原文在法律全文中完整，也不代表通过质量门禁。</p>
+          <p className="pc-lead">{`命中 ${facts.retrieved} 段，依据上传原文补全为 ${facts.expanded} 段。`}四份文件已核对一致，请对照原文复核后下载。</p>
           <dl className="audit-facts pc-facts">
             <div><dt>命中段</dt><dd>{facts.retrieved}<small>段</small></dd></div>
             <div><dt>补全后</dt><dd>{facts.expanded}<small>段</small></dd></div>

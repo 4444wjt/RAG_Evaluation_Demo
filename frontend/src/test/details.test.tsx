@@ -198,7 +198,7 @@ describe('TraceView 原始溯源', () => {
     expect(screen.getByText('可验证', { selector: 'strong' })).toBeInTheDocument();
     expect(screen.getByText('有依据')).toBeInTheDocument();
     expect(screen.getByText('引用已定位')).toBeInTheDocument();
-    expect(screen.getByText('机器逐句判定，不代表人工认证；引用已定位不等于语义支持，有依据也不等于事实正确。')).toBeInTheDocument();
+    expect(screen.getByText('查看模型对每句陈述的判断，对照引用的原文核对依据。')).toBeInTheDocument();
   });
 
   it('没有回答类型元数据时明确显示未记录，不从旧记录猜测', () => {

@@ -29,7 +29,7 @@ export function QualityGatePreview() {
       </div>
     </div>
     <p className="gate-snapshot-scope">当前快照包含 6 个问题、3 个模型、18 条回答。</p>
-    <p className="gate-interpretation">本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。</p>
+    <p className="gate-interpretation">演示结果来自已保存的快照；门禁按其中正向用例的忠实度与上下文精度判定。</p>
     <div className="landing-gate-record"><Icon name="shield" size={16}/><span>门禁依据与原始记录</span><Icon name="chevron" size={15}/></div>
   </section>;
 }

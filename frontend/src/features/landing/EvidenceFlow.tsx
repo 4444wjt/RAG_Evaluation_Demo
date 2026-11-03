@@ -105,6 +105,6 @@ export function EvidenceFlow({ enabled = true, startDelay = 0 }: { enabled?: boo
         </li>)}
       </ol>
     </div>
-    <p className="evidence-footnote">逐句证据看的是单条回答有没有依据，门禁看的是整批样本有没有达标——两回事，都不代表模型全面合格。</p>
+    <p className="evidence-footnote">逐句证据帮助核对单条回答的依据；质量门禁检查整批正向用例的忠实度与上下文精度是否达标。</p>
   </div>;
 }

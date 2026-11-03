@@ -15,7 +15,7 @@ describe('Landing page', () => {
     for (const name of ['提出问题', '检索上下文', '模型回答', '核对证据', '质量门禁']) expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText(name)).toBeInTheDocument();
     for (const name of ['Question', 'Retrieval Context', 'Answer', 'Evidence Check', 'Quality Gate']) expect(screen.queryByText(name)).not.toBeInTheDocument();
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.getByText(/门禁看的是整批样本有没有达标/)).toBeInTheDocument();
+    expect(screen.getByText(/质量门禁检查整批正向用例的忠实度与上下文精度是否达标/)).toBeInTheDocument();
     expect(screen.getByText(/无需连接模型服务/)).toBeInTheDocument();
   });
 
@@ -55,11 +55,11 @@ describe('Landing page', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
     expect(screen.getByText('真实界面 · 演示快照 20260930-1958 · 非本次实时评测')).toBeInTheDocument();
     expect(screen.getByText('真实界面 · 同一演示快照中的逐句证据')).toBeInTheDocument();
-    expect(screen.getByText(/都不代表模型全面合格/)).toBeInTheDocument();
+    expect(screen.getByText('逐句证据帮助核对单条回答的依据；质量门禁检查整批正向用例的忠实度与上下文精度是否达标。')).toBeInTheDocument();
     const gate = screen.getByRole('region', { name: 'DeepSeek-V4.1-Flash 演示快照质量门禁' });
     expect(gate).toHaveTextContent('演示门禁范围');
     expect(gate).toHaveTextContent('当前快照包含 6 个问题、3 个模型、18 条回答。');
-    expect(gate).toHaveTextContent('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。');
+    expect(gate).toHaveTextContent('演示结果来自已保存的快照；门禁按其中正向用例的忠实度与上下文精度判定。');
   });
 
   it('keeps the native preview equal to the original frozen snapshot', () => {
@@ -181,7 +181,7 @@ describe('Landing page', () => {
     render(<LandingPage onEnter={vi.fn()}/>);
     expect(within(screen.getByRole('list', {name:'证据验证流程'})).getByText('质量门禁').closest('li')).toHaveAttribute('aria-current', 'step');
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.getByText(/逐句证据看的是单条回答有没有依据/)).toBeInTheDocument();
+    expect(screen.getByText(/逐句证据帮助核对单条回答的依据/)).toBeInTheDocument();
   });
 
   it('holds the flow until the opening moment ends, then plays the same two passes', () => {

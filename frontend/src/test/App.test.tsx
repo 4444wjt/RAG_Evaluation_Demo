@@ -420,8 +420,8 @@ describe('Dashboard summary model selection', () => {
 });
 
 describe('Current model quality gate transparency', () => {
-  const interpretation = '门禁结论仅反映规则检查，不代表所有模型指标优秀。';
-  const selectionNote = '当前模型用于指标查看，不代表最佳模型；门禁展示按该模型的正向指标及已有阈值检查，原始记录保持不变。';
+  const interpretation = '门禁按本次正向用例的忠实度与上下文精度判定。';
+  const selectionNote = '切换模型可查看各自的指标，以及按现有阈值得出的门禁结论；原始门禁记录保持不变。';
   const chartNote = '图中整体均值用于模型横向比较；当前模型门禁仅检查正向忠实度与正向上下文精度。';
   const rule = '原始门禁采用首个有效评测模型的正向指标；当前卡片检查所选模型，不改写原始记录。';
   const callbacks = { onConfigure: vi.fn(), onDemo: vi.fn(), onCompare: vi.fn(), onTrace: vi.fn() };
@@ -435,7 +435,7 @@ describe('Current model quality gate transparency', () => {
     expect(within(gate).getByRole('status')).toHaveAttribute('aria-live', 'polite');
     expect(metrics.querySelectorAll('.metric-tile')).toHaveLength(4);
     expect(metrics.querySelector('.quality-gate')).toBeNull();
-    expect(within(gate).getByText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。')).toBeVisible();
+    expect(within(gate).getByText('演示结果来自已保存的快照；门禁按其中正向用例的忠实度与上下文精度判定。')).toBeVisible();
     const details = gate.querySelector('details')!;
     expect(details).not.toHaveAttribute('open');
     expect(within(details).getByText(selectionNote)).not.toBeVisible();
@@ -498,7 +498,7 @@ describe('Current model quality gate transparency', () => {
       await userEvent.selectOptions(screen.getByRole('combobox', { name: '当前摘要模型' }), model.id);
       const gate = screen.getByText(model.gate).closest('.quality-gate')!;
       expect(within(gate as HTMLElement).getByText('当前模型质量门禁')).toBeInTheDocument();
-      expect(within(gate as HTMLElement).getByText('本快照用于展示评测流程；PASS 仅表示指定正向样本达到现有门槛，不代表模型总体可靠性。')).toBeInTheDocument();
+      expect(within(gate as HTMLElement).getByText('演示结果来自已保存的快照；门禁按其中正向用例的忠实度与上下文精度判定。')).toBeInTheDocument();
       expectGateContext(model.label, '3 条正向用例', model.label === 'Qwen2.5-7B' ? '33.3%' : '100.0%', '100.0%');
       expect(screen.getByText('原始评测门禁：PASS')).toBeInTheDocument();
       expectSummaryValues(model.values);

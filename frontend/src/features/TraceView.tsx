@@ -157,7 +157,7 @@ function TraceDiagnostics({ trace }: { trace: TraceData }) {
   return <details className="trace-processing-record">
     <summary>Trace 处理记录{trace.status === 'partial' && ' · 部分候选未通过校验'}</summary>
     <div>
-      <p>这里只记录调用与格式校验；引用能定位不等于语义判定已经独立复核。</p>
+      <p>这里列出模型调用和格式校验记录；逐句判断可结合引用原文核查。</p>
       <dl>
         <div><dt>处理版本</dt><dd>{typeof data.version === 'string' ? data.version : '未记录'}</dd></div>
         <div><dt>响应模型</dt><dd>{typeof data.returned_model === 'string' ? data.returned_model : '未记录'}</dd></div>
@@ -436,7 +436,7 @@ export function TraceView({ result, document = null }: { result: EvaluationResul
           <VerificationScope trace={trace} statements={statements} contexts={contexts} state={traceState} document={document}/>
 
           <section className="trace-statements-section" aria-labelledby="trace-statements-title">
-            <div className="trace-section-heading"><div><h4 id="trace-statements-title">逐句判定</h4><p className="trace-verdict-note">机器逐句判定，不代表人工认证；引用已定位不等于语义支持，有依据也不等于事实正确。</p></div><span>来自原始溯源记录</span></div>
+            <div className="trace-section-heading"><div><h4 id="trace-statements-title">逐句判定</h4><p className="trace-verdict-note">查看模型对每句陈述的判断，对照引用的原文核对依据。</p></div><span>来自原始溯源记录</span></div>
             {statements && statements.length > 0 ? <div className="trace-statements">
               {statements.map((statement, index) => {
                 const matchingContext = statement.evidence.trim()
