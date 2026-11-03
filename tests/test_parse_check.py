@@ -325,7 +325,7 @@ def isolated_pipeline(tmp_path):
     """Execute unchanged production function bodies with offline service doubles."""
     source = Path(__file__).resolve().parents[1] / "backend" / "core" / "pipeline.py"
     tree = ast.parse(source.read_text(encoding="utf-8-sig"), filename=str(source))
-    names = {"prepare_resources", "evaluate"}
+    names = {"prepare_resources", "evaluate", "_evaluate_run"}
     definitions = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name in names]
     assert {node.name for node in definitions} == names
     module = ModuleType("parse_check_pipeline_under_test")
