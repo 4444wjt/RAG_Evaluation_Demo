@@ -1,6 +1,6 @@
 import type { View } from './api/types';
 
-export type LabView = View | 'models' | 'verification' | 'audit' | 'fix' | 'robustness' | 'blindspot' | 'annotate' | 'parent-context' | 'citation-version' | 'knowledge-update';
+export type LabView = View | 'models' | 'verification' | 'audit' | 'fix' | 'robustness' | 'blindspot' | 'annotate' | 'parent-context' | 'citation-version' | 'knowledge-update' | 'answer-improvement' | 'finance-review' | 'transaction-review';
 export type LabTarget = 'lab' | 'demo' | 'workspace';
 
 /** The knowledge-update workbench splits into six addressable steps so each one can be linked and reloaded. */
@@ -8,7 +8,7 @@ export const KU_STEPS = ['sources', 'items', 'scan', 'revise', 'review', 'export
 export type KUStep = (typeof KU_STEPS)[number];
 
 /** #/lab, #/lab/demo, #/lab/workspace keep their meaning; an optional trailing view segment deep-links a workbench view. */
-const LAB_HASH = /^#\/lab(?:\/(demo))?(?:\/(overview|workspace|models|comparison|trace|report|verification|audit|fix|robustness|blindspot|annotate|parent-context|citation-version|knowledge-update))?$/;
+const LAB_HASH = /^#\/lab(?:\/(demo))?(?:\/(overview|workspace|models|comparison|trace|report|verification|audit|fix|robustness|blindspot|annotate|parent-context|citation-version|knowledge-update|answer-improvement|finance-review|transaction-review))?$/;
 
 /** Knowledge update carries a second, closed segment. A closed enum keeps `#/lab/knowledge-update/unknown` unresolved. */
 const KU_HASH = /^#\/lab(?:\/(demo))?\/knowledge-update(?:\/(sources|items|scan|revise|review|export))?$/;

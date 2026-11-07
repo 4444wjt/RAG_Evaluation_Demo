@@ -822,3 +822,30 @@ examples/knowledge_update/revisions.json text eol=lf
 examples/knowledge_update/sources/old.txt text eol=lf
 examples/knowledge_update/sources/new.txt text eol=lf
 
+backend/core/knowledge_suggestions.py -text
+scripts/knowledge_suggest.py -text
+
+# Finance-review candidate: preserve the seven new files byte for byte.
+/backend/api/finance_review.py -text
+/tests/test_finance_review_api.py -text
+/frontend/src/api/financeReview.ts -text
+/frontend/src/features/FinanceReviewView.tsx -text
+/frontend/src/features/finance-review.css -text
+/frontend/src/test/finance-review.test.tsx -text
+/frontend/src/fixtures/finance-examples.json -text
+
+# Transaction-review delivery: preserve the fourteen new files byte for byte.
+/backend/core/transaction_review.py -text
+/backend/api/transaction_review.py -text
+/scripts/transaction_review.py -text
+/tests/test_transaction_review.py -text
+/tests/test_transaction_review_api.py -text
+/frontend/src/api/transactionReview.ts -text
+/frontend/src/features/TransactionReviewView.tsx -text
+/frontend/src/features/transaction-review.css -text
+/frontend/src/fixtures/transaction-examples.json -text
+/frontend/src/test/transaction-review.test.tsx -text
+/tools/finance/local_app.py -text
+/tools/finance/start-local.ps1 -text
+/tests/test_finance_local_app.py -text
+/docs/finance-transaction-review.md -text

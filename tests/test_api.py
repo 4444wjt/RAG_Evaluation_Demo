@@ -72,7 +72,7 @@ def _check_isolated_api(entry_point, tmp_path):
                 assert response.status_code == 200
                 assert response.json() == {"status": "ok"}
                 if sys.argv[2] == "scope":
-                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate", "/inputs", "/models", "/models/local", "/contexts/parent/prepare", "/citations/versions/inspect", "/citations/versions/check", "/evaluations", "/evaluations/import", "/evaluations/{ident}", "/evaluations/{ident}/download", "/evaluations/{ident}/report"}
+                    assert set(client.get("/openapi.json").json()["paths"]) == {"/health", "/evaluate", "/inputs", "/models", "/models/local", "/contexts/parent/prepare", "/finance-review", "/transaction-review/analyze", "/transaction-review/replay", "/citations/versions/inspect", "/citations/versions/check", "/evaluations", "/evaluations/import", "/evaluations/{ident}", "/evaluations/{ident}/download", "/evaluations/{ident}/report", "/evaluations/{record_id}/improvements", "/improvements/{ident}", "/improvements/{ident}/verify", "/recognitions", "/recognitions/sidecar", "/inputs/media", "/evaluations/{record_id}/source-locations"}
                     assert client.post("/evaluate", json={"resources": {}}).status_code == 422
                     assert client.post("/uploads").status_code == 404
         finally:

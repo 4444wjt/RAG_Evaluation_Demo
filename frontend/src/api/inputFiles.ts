@@ -1,6 +1,8 @@
-import { READ_ONLY, STATIC_SITE } from '../config';
+import { BYOK, READ_ONLY, STATIC_SITE } from '../config';
+import { sessionHeaders } from './session';
+import { safeByokMessage } from './byok';
 
-export type InputKind = 'document' | 'testset';
+export type InputKind = 'document' | 'testset' | 'image' | 'audio';
 export interface ImportedInput {
   kind: InputKind;
   file_name: string;
@@ -12,6 +14,8 @@ export const MAX_INPUT_BYTES = 10 * 1024 * 1024;
 export const INPUT_EXTENSIONS = {
   document: ['txt', 'pdf', 'docx', 'md'],
   testset: ['json', 'csv', 'txt'],
+  image: ['png', 'jpg', 'jpeg'],
+  audio: ['wav', 'flac'],
 } as const;
 
 export function validateInputFile(file: File, kind: InputKind): string | null {
@@ -20,25 +24,36 @@ export function validateInputFile(file: File, kind: InputKind): string | null {
   if (!file.name || file.name !== file.name.trim() || /[\/\\:<>|"?*\p{C}]/u.test(file.name) || new TextEncoder().encode(file.name).length > 255) return '文件名不合法，请更换文件名后重试。';
   const extension = file.name.split('.').pop()?.toLowerCase();
   if (!extension || !(INPUT_EXTENSIONS[kind] as readonly string[]).includes(extension)) {
-    return kind === 'document' ? '请选择 TXT、PDF、DOCX 或 MD 资料。' : '请选择 JSON、CSV 或 TXT 测试集。';
+    return {
+      document: '请选择 TXT、PDF、DOCX 或 MD 资料。',
+      testset: '请选择 JSON、CSV 或 TXT 测试集。',
+      image: '请选择 PNG 或 JPG 图片。',
+      audio: '请选择 16kHz 单声道 WAV 或 FLAC 音频。',
+    }[kind];
   }
   return null;
 }
 
 export async function importInput(file: File, kind: InputKind, signal?: AbortSignal): Promise<ImportedInput> {
   if (READ_ONLY || STATIC_SITE) throw new Error('公开演示不接收文件，请在本地运行后导入。');
+  if (BYOK && (kind === 'image' || kind === 'audio')) throw new Error('访客模式不提供本机识别，请上传已提取的文字资料。');
   const invalid = validateInputFile(file, kind);
   if (invalid) throw new Error(invalid);
   let response: Response;
   try {
     response = await fetch(`/api/inputs?${new URLSearchParams({ kind, filename: file.name })}`, {
-      method: 'POST', headers: { 'Content-Type': 'application/octet-stream' }, body: file, signal,
+      method: 'POST', headers: { 'Content-Type': 'application/octet-stream', ...sessionHeaders() }, body: file, signal,
     });
   } catch (error) {
     if (signal?.aborted) throw error;
-    throw new Error('无法连接本地导入服务，请确认后端已启动后重试。');
+    throw new Error(BYOK ? '无法连接资料导入服务，请检查连接后重试。' : '无法连接本地导入服务，请确认后端已启动后重试。');
   }
   if (!response.ok) {
+    if (BYOK) {
+      let detail: unknown;
+      try { detail = ((await response.json()) as { detail?: unknown }).detail; } catch { /* fallback */ }
+      if (typeof detail === 'string' && detail.length <= 500) throw new Error(safeByokMessage(detail));
+    }
     const messages: Record<number, string> = {
       403: '本地资料目录无法访问，请检查后端目录权限。',
       404: '当前后端未提供文件导入，请启动最新版本的本地服务。',
@@ -46,7 +61,7 @@ export async function importInput(file: File, kind: InputKind, signal?: AbortSig
       422: '文件未被接收，请检查文件名、格式和内容。',
       423: '公开演示不接收文件，请在本地运行后导入。',
     };
-    throw new Error(messages[response.status] ?? '资料导入未完成，请检查本地后端后重试。');
+    throw new Error(BYOK ? ({ 413: messages[413], 422: messages[422] }[response.status] ?? '资料导入未完成，请检查文件和服务后重试。') : messages[response.status] ?? '资料导入未完成，请检查本地后端后重试。');
   }
   let value: unknown;
   try { value = await response.json(); } catch { throw new Error('导入结果无法读取，请检查本地后端。'); }

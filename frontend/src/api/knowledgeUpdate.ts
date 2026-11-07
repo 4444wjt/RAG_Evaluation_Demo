@@ -1,3 +1,4 @@
+import { sessionHeaders } from './session';
 export type KUMode = 'scan' | 'recheck';
 export type KUSide = 'old' | 'new';
 export type KUSource = {
@@ -120,7 +121,7 @@ async function request<T>(path: string, body: unknown, signal: AbortSignal | und
   let timedOut = false;
   const timer = window.setTimeout(() => { timedOut = true; controller.abort(); }, 30_000);
   try {
-    const response = await fetch(`${root}/${path}`, { method: body === undefined ? 'GET' : 'POST', ...(body === undefined ? {} : { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }), signal: controller.signal });
+    const response = await fetch(`${root}/${path}`, { method: body === undefined ? 'GET' : 'POST', headers: { ...(body === undefined ? {} : { 'Content-Type': 'application/json' }), ...sessionHeaders() }, ...(body === undefined ? {} : { body: JSON.stringify(body) }), signal: controller.signal });
     if (controller.signal.aborted) throw new Error('aborted');
     if (!response.ok) {
       let diagnostic: unknown;

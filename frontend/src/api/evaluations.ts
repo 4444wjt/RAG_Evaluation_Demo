@@ -1,5 +1,8 @@
 import { isEvaluationResult } from './client';
 import type { EvaluateRequest, EvaluationHistory, EvaluationRecord } from './types';
+import { BYOK } from '../config';
+import { sessionHeaders } from './session';
+import { safeByokMessage } from './byok';
 
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every((item) => typeof item === 'string');
@@ -25,16 +28,21 @@ export function isEvaluationRecord(value: unknown): value is EvaluationRecord {
 
 async function historyResponse(path: string, options?: RequestInit): Promise<Response> {
   let response: Response;
-  try { response = await fetch(`/api/evaluations${path}`, options); }
+  try { response = await fetch(`/api/evaluations${path}`, { ...options, headers: { ...Object.fromEntries(new Headers(options?.headers)), ...sessionHeaders() } }); }
   catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') throw error;
-    throw new Error('无法连接历史记录服务，请确认本地服务已启动。');
+    throw new Error(BYOK ? '无法连接历史记录服务，请检查连接后重试。' : '无法连接历史记录服务，请确认本地服务已启动。');
   }
   if (!response.ok) {
+    if (BYOK) {
+      let detail: unknown;
+      try { detail = ((await response.json()) as { detail?: unknown }).detail; } catch { /* fallback */ }
+      if (typeof detail === 'string' && detail.length <= 500) throw new Error(safeByokMessage(detail));
+    }
     if (response.status === 423) throw new Error('公开演示站未开放历史记录，请在本地服务中查看。');
     if (response.status === 404) throw new Error(path.endsWith('/report') ? '该历史记录未保存 HTML 报告，可导入已有报告预览。' : '历史记录不存在，请刷新列表后重试。');
     if (response.status === 422) throw new Error('历史记录 JSON 格式不符合要求，请选择完整评测结果或导出的记录包。');
-    throw new Error('历史记录读取或保存失败，当前评测结果仍保留，请检查本地服务。');
+    throw new Error(BYOK ? '历史记录读取或保存失败，当前评测结果仍保留，请检查服务。' : '历史记录读取或保存失败，当前评测结果仍保留，请检查本地服务。');
   }
   return response;
 }

@@ -20,7 +20,7 @@ export function FileImportControl({ kind, imported, disabled, readOnly, onImport
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const locked = disabled || readOnly || busy;
-  const label = kind === 'document' ? '评测资料' : '测试集';
+  const label = { document: '评测资料', testset: '测试集', image: '图片', audio: '音频' }[kind];
   useEffect(() => () => { controller.current?.abort(); }, []);
 
   const receive = async (files: FileList | File[]) => {

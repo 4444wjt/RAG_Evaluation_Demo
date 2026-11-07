@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import re
 import tempfile
-from typing import Any, Literal
+from typing import Any, Callable, Literal
 from uuid import uuid4
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -42,7 +42,10 @@ def record_path(root: Path, ident: str) -> Path:
     return path
 
 
-def write_record(root: Path, record: EvaluationRecord) -> None:
+def write_record(root: Path, record: EvaluationRecord, *, before_write: Callable[[int], None] | None = None) -> None:
+    data = record.model_dump_json(indent=2).encode("utf-8")
+    if before_write is not None:
+        before_write(len(data))
     folder = store_path(root)
     folder.mkdir(parents=True, exist_ok=True)
     # Readers see either a whole record or no record; interrupted .tmp files
@@ -50,7 +53,7 @@ def write_record(root: Path, record: EvaluationRecord) -> None:
     with tempfile.NamedTemporaryFile(dir=folder, suffix=".tmp", delete=False) as stream:
         temp = Path(stream.name)
         try:
-            stream.write(record.model_dump_json(indent=2).encode("utf-8"))
+            stream.write(data)
             stream.flush()
             os.fsync(stream.fileno())
         except BaseException:
@@ -105,7 +108,8 @@ def list_records(root: Path) -> dict[str, Any]:
     return {"records": rows, "unreadable_count": unreadable}
 
 
-def capture_record(root: Path, request: EvaluateRequest, result: dict[str, Any]) -> EvaluationRecord:
+def capture_record(root: Path, request: EvaluateRequest, result: dict[str, Any], *,
+                   before_write: Callable[[int], None] | None = None) -> EvaluationRecord:
     """Called while the API evaluation lock still owns the legacy output paths."""
     payload = EvaluateResponse.model_validate(result)
     warnings = []
@@ -133,11 +137,11 @@ def capture_record(root: Path, request: EvaluateRequest, result: dict[str, Any])
         chart_png_base64=artifact(payload.chart_path, "结果图表"),
         artifact_warnings=warnings,
     )
-    write_record(root, record)
+    write_record(root, record, before_write=before_write)
     return record
 
 
-def import_record(root: Path, data: Any) -> EvaluationRecord:
+def import_record(root: Path, data: Any, *, before_write: Callable[[int], None] | None = None) -> EvaluationRecord:
     """Imports data, never the local paths claimed by an uploaded result."""
     if not isinstance(data, dict):
         raise ValueError("Expected JSON object")
@@ -161,5 +165,5 @@ def import_record(root: Path, data: Any) -> EvaluationRecord:
     # Every import is a new entry. The original export/file is never overwritten.
     record = record.model_copy(update={"id": uuid4().hex, "source": "imported",
                                       "created_at": datetime.now(timezone.utc)})
-    write_record(root, record)
+    write_record(root, record, before_write=before_write)
     return record

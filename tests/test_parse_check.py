@@ -22,6 +22,7 @@ import pytest
 
 from backend import config
 from backend.core.gate import check_quality_gate
+from backend.input_errors import DocumentInputError
 from backend.storage.json_history import save_eval_record
 
 
@@ -333,6 +334,7 @@ def isolated_pipeline(tmp_path):
     module.__dict__.update(
         json=json, os=os, time=time, datetime=datetime, pd=pd,
         check_document=parse_check.check_document,
+        DocumentInputError=DocumentInputError,
         fingerprint_source=parse_check.fingerprint_source,
         HuggingFaceEmbeddings=Mock(return_value="offline-embeddings"),
         load_and_split_doc=Mock(return_value=[SimpleNamespace(page_content="offline text")]),
@@ -361,9 +363,28 @@ def test_pipeline_fail_stops_before_loading_and_vector_store(isolated_pipeline, 
         isolated_pipeline.prepare_resources(str(path))
     assert "GARBLED_TEXT_LAYER" in str(error.value)
     assert "1" in str(error.value)
+    assert isinstance(error.value, DocumentInputError)
+    assert error.value.code == "GARBLED_TEXT_LAYER"
     isolated_pipeline.HuggingFaceEmbeddings.assert_not_called()
     isolated_pipeline.load_and_split_doc.assert_not_called()
     isolated_pipeline.build_vector_store.assert_not_called()
+
+
+def test_pipeline_whole_scan_gives_explicit_status_before_embeddings(isolated_pipeline, tmp_path):
+    path = _write_pdf(tmp_path, [None, "", None])
+    with pytest.raises(DocumentInputError) as error:
+        isolated_pipeline.prepare_resources(str(path))
+    assert error.value.code == "SCANNED_DOCUMENT"
+    assert "第 1, 3 页" in error.value.message
+    isolated_pipeline.HuggingFaceEmbeddings.assert_not_called()
+    isolated_pipeline.load_and_split_doc.assert_not_called()
+
+
+def test_pipeline_blank_only_pdf_is_not_called_a_scan(isolated_pipeline, tmp_path):
+    # Blank pages without images are not suspected scans; loading decides emptiness.
+    path = _write_pdf(tmp_path, [""])
+    isolated_pipeline.prepare_resources(str(path))
+    isolated_pipeline.load_and_split_doc.assert_called_once_with(str(path))
 
 
 def test_pipeline_review_warns_continues_and_persists_without_rewriting_history(

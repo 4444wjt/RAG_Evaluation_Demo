@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "plugins": [
+    {
+      "kind": "ocr",
+      "python": "<OCR_ENV_PYTHON>",
+      "script": "plugins/recognition/rapidocr_plugin.py",
+      "args": [
+        "--det-model", "<MODEL_DIRECTORY>/PP-OCRv6_det_small.onnx",
+        "--rec-model", "<MODEL_DIRECTORY>/PP-OCRv6_rec_small.onnx",
+        "--cls-model", "<MODEL_DIRECTORY>/ch_ppocr_mobile_v2.0_cls_mobile.onnx"
+      ],
+      "engine": {"name": "rapidocr", "version": "<INSTALLED_RAPIDOCR_VERSION>"},
+      "models": [
+        {"name": "PP-OCRv6_det_small.onnx", "sha256": "<LOCAL_DET_SHA256>"},
+        {"name": "PP-OCRv6_rec_small.onnx", "sha256": "<LOCAL_REC_SHA256>"},
+        {"name": "ch_ppocr_mobile_v2.0_cls_mobile.onnx", "sha256": "<LOCAL_CLS_SHA256>"}
+      ],
+      "suffixes": [".png", ".jpg", ".jpeg"],
+      "threads": 1,
+      "timeout_s": 120
+    },
+    {
+      "kind": "asr",
+      "python": "<ASR_ENV_PYTHON>",
+      "script": "plugins/recognition/sherpa_asr_plugin.py",
+      "args": [
+        "--model", "<MODEL_DIRECTORY>/model.int8.onnx",
+        "--tokens", "<MODEL_DIRECTORY>/tokens.txt",
+        "--vad-model", "<MODEL_DIRECTORY>/silero_vad.onnx"
+      ],
+      "engine": {"name": "sherpa-onnx", "version": "<INSTALLED_SHERPA_ONNX_VERSION>"},
+      "models": [
+        {"name": "model.int8.onnx", "sha256": "<LOCAL_ASR_SHA256>"},
+        {"name": "tokens.txt", "sha256": "<LOCAL_TOKENS_SHA256>"},
+        {"name": "silero_vad.onnx", "sha256": "<LOCAL_VAD_SHA256>"}
+      ],
+      "suffixes": [".wav", ".flac"],
+      "threads": 1,
+      "timeout_s": 120
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { sessionHeaders } from './session';
 import { READ_ONLY, STATIC_SITE } from '../config';
 import { readFileBytes } from './parentContext';
 
@@ -114,7 +115,7 @@ async function post(path: string, body: unknown, signal?: AbortSignal): Promise<
   signal?.addEventListener('abort', cancel, { once: true });
   const timeout = window.setTimeout(() => { timedOut = true; controller.abort(); }, CV_TIMEOUT_MS);
   try {
-    const response = await fetch(`/api/citations/versions/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: controller.signal });
+    const response = await fetch(`/api/citations/versions/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...sessionHeaders() }, body: JSON.stringify(body), signal: controller.signal });
     if (controller.signal.aborted) throw new Error('aborted');
     if (!response.ok) {
       let detail: unknown;

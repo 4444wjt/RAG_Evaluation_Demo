@@ -38,6 +38,7 @@ from backend.config import (
     FAITH_THRESHOLD, CTX_PREC_THRESHOLD, VERSION, ENABLE_TRACE,
 )
 from backend.core.utils import _safe_mean, _is_refusal
+from backend.input_errors import DocumentInputError
 from backend.services.documents import load_and_split_doc
 from backend.services.parse_check import check_document
 from backend.services.retriever import build_vector_store
@@ -61,7 +62,7 @@ RAGAS_METRICS = [
 answer_relevancy.strictness = 1
 
 
-def prepare_resources(doc_path, progress_cb=None):
+def prepare_resources(doc_path, progress_cb=None, *, vector_dir=None):
     """准备 RAG 评测运行时资源（从旧 run_pipeline 步骤 1~3 原样提取）。
 
     依次完成：
@@ -98,7 +99,16 @@ def prepare_resources(doc_path, progress_cb=None):
             if page["verdict"] == parse_check["verdict"]
         )
         if parse_check["verdict"] == "FAIL":
-            raise RuntimeError(f"入库检查 FAIL，已阻止文档入库: {details}")
+            raise DocumentInputError("GARBLED_TEXT_LAYER", f"入库检查 FAIL，已阻止文档入库: {details}")
+        pages = parse_check["pages"]
+        scanned = [page["page_number"] for page in pages if "SUSPECTED_SCAN_PAGE" in page["reasons"]]
+        # 整本没有文字层时，切块必然为空；在加载嵌入模型前给出明确状态，而不是服务器错误。
+        if scanned and all(set(page["reasons"]) & {"SUSPECTED_SCAN_PAGE", "BLANK_PAGE"} for page in pages):
+            raise DocumentInputError(
+                "SCANNED_DOCUMENT",
+                f"文档没有可提取的文字层，疑似扫描件（第 {', '.join(map(str, scanned))} 页）。"
+                "请先用识别插件转成文字并复核，再导入评测。",
+            )
         print(f"⚠️ 入库检查 REVIEW，需要复核；继续运行并保留检查记录: {details}")
 
     # 1. 初始化嵌入模型
@@ -118,7 +128,7 @@ def prepare_resources(doc_path, progress_cb=None):
     # 3. 构建向量库 + 检索器
     report_step(3, "构建向量库")
     print("\n[3/6] 构建向量库...")
-    vector_store = build_vector_store(chunks, embeddings)
+    vector_store = build_vector_store(chunks, embeddings, **({"directory": vector_dir} if vector_dir is not None else {}))
     retriever = vector_store.as_retriever(search_kwargs={"k": TOP_K})
     print(f"✅ 向量库就绪（Top-K={TOP_K}）")
 
@@ -131,7 +141,7 @@ def prepare_resources(doc_path, progress_cb=None):
     }
 
 
-def prepare_testset(request, resources, model_factory=None, progress_cb=None):
+def prepare_testset(request, resources, model_factory=None, progress_cb=None, *, testset_model=None):
     """准备统一测试集（从旧 run_pipeline 步骤 4 原样提取）。
 
     三分支（优先级与旧代码一致）：
@@ -183,19 +193,23 @@ def prepare_testset(request, resources, model_factory=None, progress_cb=None):
         if model_factory is None:
             from backend.adapters.models.registry import build_llm
             model_factory = build_llm
-        try:
-            llm_for_testset = model_factory(MODELS_CONFIG[0])
+        if testset_model is not None:
+            llm_for_testset = model_factory(testset_model)
             testset = generate_testset(chunks, llm_for_testset, TEST_QA_NUM)
-        except Exception as e:
-            print(f"⚠️ DeepSeek 生成测试集失败，切换通义千问: {str(e)[:60]}")
-            llm_for_testset = model_factory(MODELS_CONFIG[1])
-            testset = generate_testset(chunks, llm_for_testset, TEST_QA_NUM)
+        else:
+            try:
+                llm_for_testset = model_factory(MODELS_CONFIG[0])
+                testset = generate_testset(chunks, llm_for_testset, TEST_QA_NUM)
+            except Exception as e:
+                print(f"⚠️ DeepSeek 生成测试集失败，切换通义千问: {str(e)[:60]}")
+                llm_for_testset = model_factory(MODELS_CONFIG[1])
+                testset = generate_testset(chunks, llm_for_testset, TEST_QA_NUM)
         print(f"✅ 生成 {len(testset)} 道测试题（含3道负样本）")
 
     return testset
 
 
-def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled, *, judge_llm=None):
+def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled, *, judge_llm=None, fresh_metrics=False):
     """单模型原始评测（从旧 run_pipeline 步骤 5 的单模型体 L1243~1299 原样提取）。
 
     仅完成单个模型的原始评测执行：RAG 问答 → Ragas evaluate → 幻觉溯源，
@@ -226,7 +240,7 @@ def run_single_model_raw(testset, retriever, embeddings, llm, trace_enabled, *, 
             print(f"  进度: {idx + 1}/{len(testset)}")
 
     return score_answer_rows(testset, eval_data, embeddings, llm if judge_llm is None else judge_llm,
-                             trace_enabled, fresh_metrics=judge_llm is not None)
+                             trace_enabled, fresh_metrics=judge_llm is not None or fresh_metrics)
 
 
 def score_answer_rows(testset, eval_data, embeddings, judge_llm, trace_enabled, *, fresh_metrics=True):
@@ -386,7 +400,7 @@ def select_model_configs(model_names=None):
     return [c for c in MODELS_CONFIG + local if c["name"] in model_names]
 
 
-def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled, judge_cfg=None):
+def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled, judge_cfg=None, safe_errors=False):
     """多模型循环（从旧 run_pipeline 步骤 5 的模型循环体 L1234~1377 原样提取）。
 
     按 model_cfgs 顺序逐模型执行：创建 llm → run_single_model_raw → model_dfs 登记 →
@@ -419,6 +433,8 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled,
 
             # 单模型原始评测（复用 Phase 3-B-3，不复制其内部逻辑）
             judge_args = {"judge_llm": judge_llm} if judge_cfg is not None else {}
+            if safe_errors:
+                judge_args["fresh_metrics"] = True
             raw_result = run_single_model_raw(
                 resources["testset"],
                 resources["retriever"],
@@ -458,7 +474,8 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled,
 
         except Exception as e:
             # 失败日志先行，然后才构造失败 summary（失败耗时含失败日志自身耗时）
-            print(f"❌ 模型 {model_cfg['name']} 评测失败: {str(e)[:100]}")
+            detail = type(e).__name__ if safe_errors else str(e)[:100]
+            print(f"❌ 模型 {model_cfg['name']} 评测失败: {detail}")
             summary.append({
                 "model": model_cfg["name"],
                 "faithfulness": None,
@@ -493,7 +510,26 @@ def run_models(model_cfgs, resources, model_factory, *, base_dir, trace_enabled,
     }
 
 
-def evaluate(request, resources=None, model_factory=None, progress_cb=None):
+def evaluate(request, resources=None, model_factory=None, progress_cb=None, *, runtime=None):
+    # Local callers keep ownership of their shared resources. Visitor resources
+    # are per run and must also close when automatic question generation fails.
+    owned = [] if runtime is not None else None
+    if owned is not None and resources is not None:
+        owned.append(resources)
+    try:
+        return _evaluate_run(request, resources, model_factory, progress_cb, runtime=runtime, _owned=owned)
+    finally:
+        if owned:
+            retriever = owned[0].get("retriever")
+            client = getattr(getattr(retriever, "vectorstore", None), "_client", None)
+            if client is not None:
+                try:
+                    client.close()
+                except Exception as error:
+                    print(f"访客向量库关闭失败：{type(error).__name__}")
+
+
+def _evaluate_run(request, resources=None, model_factory=None, progress_cb=None, *, runtime=None, _owned=None):
     """执行一次完整的多模型 RAG 评测（Phase 3-B-7-B：总编排）。
 
     按旧 run_pipeline 顺序编排已迁移的叶子函数：
@@ -527,16 +563,30 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
     ctx_prec_threshold = CTX_PREC_THRESHOLD if ctx_prec_threshold is None else ctx_prec_threshold
 
     # 3. 模型工厂：None → build_llm（懒加载，避免 import 期依赖）
+    if runtime is not None and model_factory is None:
+        raise ValueError("访客评测必须显式提供模型工厂。")
     if model_factory is None:
         from backend.adapters.models.registry import build_llm
         model_factory = build_llm
 
-    # 4. 模型配置（保持 MODELS_CONFIG 顺序，复用 select_model_configs）
-    model_cfgs = select_model_configs(model_names)
+    # Explicit visitor runtime avoids both the server registry and global paths.
+    output_base, summary_output, chart_path, html_output = BASE_DIR, SUMMARY_OUTPUT, CHART_PATH, HTML_OUTPUT
+    if runtime is None:
+        model_cfgs = select_model_configs(model_names)
+    else:
+        output_base = runtime["output_dir"]
+        os.makedirs(output_base, exist_ok=True)
+        summary_output = os.path.join(output_base, "multi_model_summary.csv")
+        chart_path = os.path.join(output_base, "result_chart.png")
+        html_output = os.path.join(output_base, "ragas_report.html")
+        known = {config["name"]: config for config in runtime["model_configs"]}
+        if not model_names or any(name not in known for name in model_names):
+            raise ValueError("访客模型配置不完整。")
+        model_cfgs = [known[name] for name in model_names]
     judge_name = request.get("judge_model_name")
     judge_cfg = None
     if judge_name is not None:
-        judges = select_model_configs([judge_name])
+        judges = select_model_configs([judge_name]) if runtime is None else [known[judge_name]] if judge_name in known else []
         if len(judges) != 1:
             raise ValueError("裁判模型不支持，请先在本机登记模型。")
         judge_cfg = judges[0]
@@ -559,8 +609,12 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
 
     # 6. 资源准备 + 测试集准备（resources 非 None 直接使用，不重复准备、不自动补齐）
     if resources is None:
-        resources = prepare_resources(doc_path, progress_cb)
-        testset = prepare_testset(request, resources, model_factory, progress_cb)
+        resource_options = {} if runtime is None else {"vector_dir": os.path.join(output_base, "chroma_db")}
+        testset_options = {} if runtime is None else {"testset_model": known[runtime["testset_model"]]}
+        resources = prepare_resources(doc_path, progress_cb, **resource_options)
+        if _owned is not None:
+            _owned.append(resources)
+        testset = prepare_testset(request, resources, model_factory, progress_cb, **testset_options)
         resources["testset"] = testset
 
     # 7. 多模型横向评测（步骤 5 进度：多模型横向评测）
@@ -570,9 +624,10 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         model_cfgs,
         resources,
         model_factory,
-        base_dir=BASE_DIR,
+        base_dir=output_base,
         trace_enabled=ENABLE_TRACE,
         **({"judge_cfg": judge_cfg} if judge_cfg is not None else {}),
+        **({"safe_errors": True} if runtime is not None else {}),
     )
     summary = loop_result["summary"]
     model_dfs = loop_result["model_dfs"]
@@ -584,12 +639,12 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
     print("=" * 50)
     summary_df = pd.DataFrame(summary)
     print(summary_df.to_string(index=False))
-    summary_df.to_csv(SUMMARY_OUTPUT, index=False, encoding="utf-8-sig")
-    print(f"\n✅ 汇总报告已保存: {SUMMARY_OUTPUT}")
+    summary_df.to_csv(summary_output, index=False, encoding="utf-8-sig")
+    print(f"\n✅ 汇总报告已保存: {summary_output}")
 
     # 9. 真实评测可视化图表（禁止 draw_summary_chart）
     print("\n[6/6] 生成可视化图表...")
-    generate_evaluation_chart(summary, faith_threshold, CHART_PATH)
+    generate_evaluation_chart(summary, faith_threshold, chart_path)
 
     # 10. 总耗时采样（必须在 chart 之后、HTML 之前）
     total_elapsed = round(time.time() - t_start, 2)
@@ -597,8 +652,8 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
     # 11. HTML 报告
     generate_html_report(
         summary,
-        chart_path=CHART_PATH,
-        output_path=HTML_OUTPUT,
+        chart_path=chart_path,
+        output_path=html_output,
         faith_threshold=faith_threshold,
         ctx_prec_threshold=ctx_prec_threshold,
         total_elapsed=total_elapsed,
@@ -609,6 +664,7 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
             "other": sum(item.get("case_type", "positive") not in ("positive", "negative") for item in resources["testset"]),
         },
         model_dfs=model_dfs,
+        **({"embedding_label": os.path.basename(EMBEDDING_MODEL)} if runtime is not None else {}),
     )
 
     # 12. 质量门禁
@@ -630,7 +686,10 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         "models": summary,
         "total_elapsed_seconds": total_elapsed,
     }
-    save_eval_record(record)
+    if runtime is None:
+        save_eval_record(record)
+    else:
+        save_eval_record(record, path=os.path.join(output_base, "eval_history.json"))
 
     # 14. 返回评测结果及本次实际使用的门禁阈值
     return {
@@ -638,8 +697,8 @@ def evaluate(request, resources=None, model_factory=None, progress_cb=None):
         "summary_df": summary_df,
         "gate_passed": gate_passed,
         "gate_message": gate_message,
-        "chart_path": CHART_PATH,
-        "html_path": HTML_OUTPUT,
+        "chart_path": chart_path,
+        "html_path": html_output,
         "model_dfs": model_dfs,
         "total_elapsed_seconds": total_elapsed,
         "faith_threshold": faith_threshold,

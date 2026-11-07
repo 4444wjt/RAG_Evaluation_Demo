@@ -7,6 +7,8 @@ python scripts/knowledge_update.py scan --input examples/knowledge_update/task.j
 python scripts/knowledge_update.py recheck --input examples/knowledge_update/task.json --revisions examples/knowledge_update/revisions.json --output work/knowledge-recheck-1
 ```
 
+引文失效时可独立运行 `python -I -S -B -X utf8 scripts/knowledge_suggest.py --input examples/knowledge_update/task.json`，JSON 写到标准输出（退出码 0 完成、2 输入错误、1 执行失败）。它保留完整 scan 和全部真实旧引文记录，仅对旧版字面命中、新版未找到的引文列出同一来源内相交的逐行 diff 替换块；有效声明行优先，未声明的重复位置全部保留。块包含完整旧/新行与位置，可能只覆盖多行引文的一部分或包含额外文本；删除块无替代文本，新增、移动后仍命中、读取或映射异常均保留原状态。不改稿、不判断语义、不批准发布，输出绑定 task_fingerprint 及原检查/新建议核心与 CLI 的四份实现哈希。
+
 task 声明来源的 old/new（新增 old=null、删除 new=null，不能同时为空）、条目的原稿、source_ids 和 old_citations。引文按完整连续逻辑行精确检查，支持成对的 line_start/line_end；重复命中全部保留。revisions 按 item_id 提交 proposed_draft 与 citations；省略 source_ids 继承关联，提供时整体替换（[] 清空），不按引文推断关联。未修订条目仍完整重查，open_questions 只记录未决。
 
 来源状态包含 ADDED、DELETED、UNCHANGED、CHANGED、READ_ERROR；引用状态包含 MATCHED、AMBIGUOUS、LINE_MISMATCH、NOT_FOUND、MISSING_QUOTE、来源缺失/读错及映射错误。有变化、异常或未决时条目标 PENDING_REVIEW。所有条目始终 NOT_EVALUATED、publication_approved=false；MATCHED 和退出 0 均不证明稿件正确或批准发布。

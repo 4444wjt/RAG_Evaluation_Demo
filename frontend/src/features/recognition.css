@@ -1,0 +1,37 @@
+.workspace-source-switch:has(.workspace-recognition-switch) { grid-template-columns: repeat(3, auto); }
+.recognition-panel { padding: 18px 20px; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--bg-control); min-width: 0; }
+.recognition-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+.recognition-heading h4 { font-size: 16px; line-height: 1.6; }
+.recognition-heading p { color: var(--text-secondary); font-size: 13px; line-height: 1.7; margin: 4px 0 0; }
+.recognition-heading label { display: flex; align-items: center; gap: 8px; flex-shrink: 0; font-size: 13px; color: var(--text-secondary); }
+.workspace-field .recognition-heading select { width: 110px; margin: 0; }
+.recognition-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.recognition-actions > span { color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
+.recognition-outcome, .recognition-result-note { margin-top: 12px; color: var(--text-primary); line-height: 1.7; font-size: 13px; overflow-wrap: anywhere; }
+.recognition-outcome.is-success, .recognition-result-note { color: var(--success); }
+.recognition-review { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; align-items: start; }
+.recognition-panel h5 { font-size: 14px; line-height: 1.6; margin: 0 0 10px; }
+.recognition-original, .recognition-transcript { min-width: 0; }
+.recognition-image { display: block; width: 100%; max-height: 420px; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-section); }
+.recognition-image polygon { fill: #e7b85e30; stroke: var(--brand); stroke-width: 2; }
+.recognition-original audio { display: block; width: 100%; }
+.recognition-current-location { margin: 9px 0 0; font-size: 12px; line-height: 1.7; color: var(--text-secondary); overflow-wrap: anywhere; }
+.recognition-transcript ol { list-style: none; padding: 0; margin: 0; max-height: 420px; overflow: auto; }
+.recognition-transcript li + li { margin-top: 7px; }
+.recognition-span, .recognition-match { display: flex; flex-direction: column; gap: 5px; width: 100%; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: 6px; color: var(--text-primary); background: var(--bg-section); text-align: left; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.recognition-span > span:first-child { white-space: pre-wrap; }
+.recognition-span small, .recognition-match small { color: var(--text-secondary); font-size: 12px; }
+.recognition-span[aria-pressed='true'], .recognition-match[aria-pressed='true'] { border-color: var(--border-selected); background: var(--bg-selected); }
+.recognition-span:focus-visible, .recognition-match:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.recognition-confidence { font-size: 12px; color: var(--text-secondary); }
+.recognition-confidence.needs-review { color: var(--brand); }
+.recognition-evidence { padding-top: 16px; margin-top: 18px; border-top: 1px solid var(--border-subtle); }
+.recognition-model { margin-top: 16px; }
+.recognition-model > summary { cursor: pointer; color: var(--text-primary); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.recognition-row { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-subtle); font-size: 13px; line-height: 1.7; }
+.recognition-row > p { color: var(--text-secondary); margin-top: 6px; }
+.recognition-statement { margin-top: 10px; }
+.recognition-statement > p { margin: 7px 0; overflow-wrap: anywhere; }
+.recognition-statement .badge { margin-left: 8px; }
+.recognition-statement blockquote { padding: 8px 12px; margin: 8px 0; border-left: 2px solid var(--border-selected); white-space: pre-wrap; color: var(--text-secondary); background: var(--bg-section); overflow-wrap: anywhere; }
+.recognition-matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }

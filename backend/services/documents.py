@@ -5,6 +5,7 @@ from langchain_community.document_loaders import TextLoader, PyPDFLoader, Docx2t
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from backend.config import CHUNK_SIZE, CHUNK_OVERLAP
+from backend.input_errors import DocumentInputError
 
 
 def load_and_split_doc(path):
@@ -29,5 +30,5 @@ def load_and_split_doc(path):
     chunks = loader.load_and_split(text_splitter)
 
     if not chunks:
-        raise RuntimeError("文档切分后为空，请检查文档内容长度")
+        raise DocumentInputError("EMPTY_DOCUMENT", "文档切分后为空，请检查文档内容长度")
     return chunks

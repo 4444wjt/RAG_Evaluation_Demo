@@ -4,7 +4,8 @@ import { fetchModels, MAX_LOCAL_MODELS, MODEL_CONFIG_UNAVAILABLE, saveLocalModel
 import type { LocalModelInput, ModelEntry } from '../api/models';
 import { Icon } from '../components/Icon';
 import { modelName } from '../utils/format';
-import { READ_ONLY, REPO_URL, STATIC_SITE } from '../config';
+import { BYOK, READ_ONLY, REPO_URL, STATIC_SITE } from '../config';
+import { ByokModelsView } from './ByokModelsView';
 import './gate-audit.css';
 import './models.css';
 
@@ -35,6 +36,10 @@ function ModelTable({ models, label, actions }: { models: ModelEntry[]; label: s
 
 /** Register OpenAI-compatible models on this machine. Keys stay in .env; this page only records which variable holds each one. */
 export function ModelsView({ onModelsChange }: { onModelsChange?: (models: ModelEntry[]) => void }) {
+  return BYOK ? <ByokModelsView onModelsChange={onModelsChange}/> : <LocalModelsView onModelsChange={onModelsChange}/>;
+}
+
+function LocalModelsView({ onModelsChange }: { onModelsChange?: (models: ModelEntry[]) => void }) {
   const unavailable = READ_ONLY || STATIC_SITE;
   const [models, setModels] = useState<ModelEntry[] | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);

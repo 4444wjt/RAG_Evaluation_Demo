@@ -1,5 +1,5 @@
 import type { EvaluateRequest, EvaluationRecord, EvaluationResult, ResultSource } from './api/types';
-import { MODELS } from './config';
+import { BYOK, MODELS } from './config';
 import type { ImportedInput } from './api/inputFiles';
 
 export interface WorkspaceConfig {
@@ -15,11 +15,14 @@ export interface WorkspaceConfig {
   contextThreshold: number | null;
   docImport?: ImportedInput;
   testsetImport?: ImportedInput;
+  /** Local recognition metadata stays out of evaluation requests and saved model credentials. */
+  recognitionPath?: string;
+  recognitionSource?: ImportedInput;
 }
 
 export const initialConfig: WorkspaceConfig = {
   docPath: 'demo.txt', testsetMode: 'auto', testsetPath: 'testset_example.csv',
-  benchmarkLimit: 20, modelNames: MODELS.map((model) => model.id),
+  benchmarkLimit: 20, modelNames: BYOK ? [] : MODELS.map((model) => model.id),
   useDefaultThresholds: true, faithThreshold: 0.8, contextThreshold: 0.8,
 };
 
@@ -41,6 +44,7 @@ export function toRequest(config: WorkspaceConfig): EvaluateRequest {
 }
 
 export function validateConfig(config: WorkspaceConfig): string | null {
+  if (BYOK && config.testsetMode === 'benchmark') return '云端未开放 TruthfulQA，请选择自动生成或上传自定义题集。';
   if (!config.modelNames.length) return '请至少选择一个模型。';
   if (config.testsetMode === 'custom' && !config.testsetPath.trim()) return '请先选择或导入自定义测试集。';
   if (config.testsetMode === 'benchmark' && (!Number.isInteger(config.benchmarkLimit) || config.benchmarkLimit < 1)) return '基准样本数量必须是正整数。';
@@ -89,7 +93,12 @@ export function runReducer(state: RunState, action: RunAction): RunState {
   }
 }
 
-export function fromRequest(request: EvaluateRequest): WorkspaceConfig {
+export function fromRequest(request: EvaluateRequest, current?: WorkspaceConfig): WorkspaceConfig {
+  // Only reuse an original already verified in this page, for exactly the same document.
+  const recognition = current?.docPath === request.doc_path && current?.recognitionPath && current.recognitionSource
+    ? { recognitionPath: current.recognitionPath, recognitionSource: current.recognitionSource,
+      ...(current.docImport?.relative_path === request.doc_path ? { docImport: current.docImport } : {}) }
+    : {};
   return {
     docPath: request.doc_path ?? '', testsetMode: request.benchmark ? 'benchmark' : request.testset_path ? 'custom' : 'auto',
     testsetPath: request.testset_path ?? initialConfig.testsetPath, benchmarkLimit: request.benchmark_limit,
@@ -97,5 +106,6 @@ export function fromRequest(request: EvaluateRequest): WorkspaceConfig {
     useDefaultThresholds: request.faith_threshold === null && request.ctx_prec_threshold === null,
     faithThreshold: request.faith_threshold,
     contextThreshold: request.ctx_prec_threshold,
+    ...recognition,
   };
 }

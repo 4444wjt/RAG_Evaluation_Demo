@@ -14,6 +14,9 @@ _PROJECT_ROOT = Path(__file__).resolve().parents[2]
 _EXTENSIONS = {
     "document": {".txt", ".pdf", ".docx", ".md"},
     "testset": {".json", ".csv", ".txt"},
+    # Raw media for local recognition plugins; never evaluated directly.
+    "image": {".png", ".jpg", ".jpeg"},
+    "audio": {".wav", ".flac"},
 }
 
 

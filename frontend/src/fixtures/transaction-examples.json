@@ -1,0 +1,22 @@
+{
+  "id": "synthetic-boundary-v1",
+  "title": "模拟边界示例",
+  "note": "合成交易，非真实欺诈标签。包含正常大额、同主体窗口、错合计、漏引及不能由交易证明的确定性指控。",
+  "request": {
+    "schemaVersion": 1,
+    "currency": "CNY",
+    "transactions": [
+      {"transaction_id":"t001","timestamp":"2026-11-01T10:00:00+08:00","customer_id":"模拟客户甲","terminal_id":"m1","amount":"500.10"},
+      {"transaction_id":"t002","timestamp":"2026-11-01T10:05:00+08:00","customer_id":"模拟客户甲","terminal_id":"m1","amount":"500.20"},
+      {"transaction_id":"t003","timestamp":"2026-11-01T10:10:00+08:00","customer_id":"模拟客户甲","terminal_id":"m2","amount":"600.30"},
+      {"transaction_id":"t004","timestamp":"2026-11-01T10:12:00+08:00","customer_id":"模拟客户乙","terminal_id":"m3","amount":"12000.00"}
+    ],
+    "rules": {"highAmount":"10000.00","windowMinutes":10,"minTransactions":3},
+    "claims": [
+      {"transaction_id":"t003","field":"window_count","value":3,"evidence_ids":["t001","t002","t003"]},
+      {"transaction_id":"t003","field":"window_total","value":"1601.60","evidence_ids":["t001","t002","t003"]},
+      {"transaction_id":"t004","field":"amount","value":"12000.00","evidence_ids":[]},
+      {"transaction_id":"t004","field":"fraud_confirmed","value":true,"evidence_ids":["t004"]}
+    ]
+  }
+}

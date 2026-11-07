@@ -10,6 +10,7 @@ from typing import Any
 from backend.api.schemas import EvaluateRequest, EvaluateResponse
 from backend.api.serialization import serialize_evaluation_result
 from backend.api.evaluation_records import capture_record
+from backend.input_errors import DocumentInputError
 
 
 _PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -22,10 +23,11 @@ _RUNTIME_ERROR = "评测未能完成，请检查本地配置和服务日志后�
 class EvaluationAPIError(Exception):
     """An HTTP error with a fixed, client-safe message."""
 
-    def __init__(self, status_code: int, detail: str):
+    def __init__(self, status_code: int, detail: str, code: str | None = None):
         super().__init__(detail)
         self.status_code = status_code
         self.detail = detail
+        self.code = code
 
 
 def _allowed_location(relative: Path, root_files: set[str]) -> bool:
@@ -121,6 +123,30 @@ def save_local_models(models: Any, project_root: Path | None = None) -> dict[str
 def _default_evaluator(request: dict[str, Any], **kwargs: Any) -> Mapping[str, Any]:
     # The API is a local, single-worker process; plotting must stay headless.
     os.environ["MPLBACKEND"] = "Agg"
+    # Refuse unusable PDFs before importing the full engine. The RV64 API can
+    # run this existing pypdf check without datasets/langchain/ragas installed.
+    # Keep these refusal conditions identical to prepare_resources; valid and
+    # mixed-text documents still enter the original pipeline and its recheck.
+    doc_path = request.get("doc_path")
+    if doc_path and Path(doc_path).suffix.lower() == ".pdf":
+        from backend.services.parse_check import check_document
+        parse_check = check_document(doc_path)
+        if parse_check["verdict"] in ("FAIL", "REVIEW"):
+            details = "; ".join(
+                f"第 {page['page_number']} 页: {', '.join(page['reasons'])}"
+                for page in parse_check["pages"]
+                if page["verdict"] == parse_check["verdict"]
+            )
+            if parse_check["verdict"] == "FAIL":
+                raise DocumentInputError("GARBLED_TEXT_LAYER", f"入库检查 FAIL，已阻止文档入库: {details}")
+            pages = parse_check["pages"]
+            scanned = [page["page_number"] for page in pages if "SUSPECTED_SCAN_PAGE" in page["reasons"]]
+            if scanned and all(set(page["reasons"]) & {"SUSPECTED_SCAN_PAGE", "BLANK_PAGE"} for page in pages):
+                raise DocumentInputError(
+                    "SCANNED_DOCUMENT",
+                    f"文档没有可提取的文字层，疑似扫描件（第 {', '.join(map(str, scanned))} 页）。"
+                    "请先用识别插件转成文字并复核，再导入评测。",
+                )
     from backend.core.pipeline import evaluate
 
     return evaluate(request, **kwargs)
@@ -178,6 +204,9 @@ def run_evaluation(
                 "saved_at": record.created_at.isoformat(),
                 "save_error": ("评测结果已保存；" + "".join(record.artifact_warnings))
                     if record.artifact_warnings else None}
+    except DocumentInputError as error:
+        # Raised before any model call: an explicit input status, not a server fault.
+        raise EvaluationAPIError(422, error.message, code=error.code) from None
     except Exception:
         raise EvaluationAPIError(500, _RUNTIME_ERROR) from None
     finally:
