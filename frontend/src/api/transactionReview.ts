@@ -1,5 +1,6 @@
 import { READ_ONLY, STATIC_SITE } from '../config';
 import { sessionHeaders } from './session';
+import { apiPath } from './base';
 
 export const TRANSACTION_MAX_BYTES = 2 * 1024 * 1024;
 export const TRANSACTION_BUNDLE_MAX_BYTES = 24 * 1024 * 1024;
@@ -7,6 +8,8 @@ export const TRANSACTION_MAX_ROWS = 5000;
 export const TRANSACTION_FIELDS = ['transaction_id', 'timestamp', 'customer_id', 'terminal_id', 'amount'] as const;
 export const CLAIM_FIELDS = ['amount', 'customer_id', 'terminal_id', 'timestamp', 'window_count', 'window_total', 'fraud_confirmed'] as const;
 const LOCAL = '公开演示和静态页面不接收交易资料；请在本地服务中使用此入口。';
+const service = import.meta.env.VITE_FINANCE_PUBLIC === '1' ? '交易复核服务' : '本地交易复核服务';
+const serviceStatus = import.meta.env.VITE_FINANCE_PUBLIC === '1' ? '服务' : '本地服务';
 const bytes = (value: string) => new TextEncoder().encode(value).length;
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const strings = (value: unknown): value is string[] => Array.isArray(value) && value.every((item) => typeof item === 'string');
@@ -287,20 +290,20 @@ async function postTransaction(path: 'analyze' | 'replay', body: string, signal?
   signal?.addEventListener('abort', cancel, { once: true });
   const timeout = window.setTimeout(cancel, 30000);
   try {
-    const response = await fetch(`/api/transaction-review/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...sessionHeaders() }, body, signal: controller.signal });
-    if (controller.signal.aborted) throw new Error('本次请求已取消或等待超时，请检查本地服务后显式重试。');
+    const response = await fetch(apiPath(`transaction-review/${path}`), { method: 'POST', headers: { 'Content-Type': 'application/json', ...sessionHeaders() }, body, signal: controller.signal });
+    if (controller.signal.aborted) throw new Error(`本次请求已取消或等待超时，请检查${serviceStatus}后显式重试。`);
     if (!response.ok) {
       let detail: unknown;
       try { const error: unknown = await response.json(); detail = record(error) ? error.detail : null; } catch { detail = null; }
-      throw new Error(typeof detail === 'string' && detail.length <= 1000 ? detail : response.status === 423 ? LOCAL : response.status === 413 ? '请求超过服务大小限制，未执行核对。' : '本地服务未完成交易复核，请检查输入后重试。');
+      throw new Error(typeof detail === 'string' && detail.length <= 1000 ? detail : response.status === 423 ? LOCAL : response.status === 413 ? '请求超过服务大小限制，未执行核对。' : `${serviceStatus}未完成交易复核，请检查输入后重试。`);
     }
     let output: unknown;
-    try { output = await response.json(); } catch { throw new Error('本地服务返回的内容不是有效 JSON，未采用该结果。'); }
+    try { output = await response.json(); } catch { throw new Error(`${serviceStatus}返回的内容不是有效 JSON，未采用该结果。`); }
     if (controller.signal.aborted) throw new Error('本次请求已取消或等待超时。');
     return output;
   } catch (error) {
-    if (controller.signal.aborted) throw new Error('本次请求已取消或等待超时，请检查本地服务后显式重试。');
-    if (error instanceof TypeError) throw new Error('本地交易复核服务连接失败，请检查服务连接后重试。');
+    if (controller.signal.aborted) throw new Error(`本次请求已取消或等待超时，请检查${serviceStatus}后显式重试。`);
+    if (error instanceof TypeError) throw new Error(`${service}连接失败，请检查服务连接后重试。`);
     throw error;
   } finally { window.clearTimeout(timeout); signal?.removeEventListener('abort', cancel); }
 }

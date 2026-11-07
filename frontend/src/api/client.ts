@@ -2,6 +2,7 @@ import type { EvaluateRequest, EvaluationResult } from './types';
 import { BYOK } from '../config';
 import { sessionHeaders } from './session';
 import { byokRequestModels, safeByokMessage } from './byok';
+import { apiPath } from './base';
 
 const errorMessages: Record<number, string> = {
   403: '文件路径不在允许范围内，请使用项目中的 demo.txt 或 scenarios/ 相对路径。',
@@ -38,7 +39,7 @@ export class ConnectionError extends Error {
 
 export async function checkHealth(): Promise<boolean> {
   try {
-    const response = await fetch('/api/health');
+    const response = await fetch(apiPath('health'));
     if (!response.ok) return false;
     const data: unknown = await response.json();
     return typeof data === 'object' && data !== null && 'status' in data && data.status === 'ok';

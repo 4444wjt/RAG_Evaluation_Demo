@@ -13,6 +13,9 @@ import example from '../fixtures/transaction-examples.json';
 import './transaction-review.css';
 
 const PAGE_SIZE = 25;
+const serviceLabel = import.meta.env.VITE_FINANCE_PUBLIC === '1' ? '服务' : '本地服务';
+const apiLabel = import.meta.env.VITE_FINANCE_PUBLIC === '1' ? '服务器' : '本地 API';
+const ruleLabel = import.meta.env.VITE_FINANCE_PUBLIC === '1' ? '交易规则' : '本地交易规则';
 const FIELD_LABEL: Record<ClaimField, string> = { amount: '交易金额', customer_id: '交易主体', terminal_id: '交易终端', timestamp: '交易时间', window_count: '窗口笔数', window_total: '窗口合计', fraud_confirmed: '是否已认定欺诈' };
 const CHECK_LABEL: Record<CheckStatus, string> = { consistent: '字段一致', inconsistent: '字段不一致', review: '需要复核' };
 const DECISION_LABEL: Record<DecisionValue, string> = { pending: '待复核', escalate: '升级调查', dismiss: '排除线索', need_more: '补充证据' };
@@ -90,7 +93,7 @@ export function TransactionReviewView() {
   const adopt = (parsed: TransactionImport) => {
     if (parsed.kind === 'bundle') {
       setDraft(null); setClaims([]); setPendingBundle(parsed); setIgnored([]);
-      setNotice('复核包已载入，尚未验证。点击“重开并验证”后等待本地服务完整重算。');
+      setNotice(`复核包已载入，尚未验证。点击“重开并验证”后等待${serviceLabel}完整重算。`);
     } else {
       applyRequest(parsed.request); setPendingBundle(null); setIgnored(parsed.ignoredColumns);
       setNotice(`已读取 ${parsed.request.transactions.length} 笔交易；请核对币种、规则与结构化说明后分析。`);
@@ -215,7 +218,7 @@ export function TransactionReviewView() {
         {ignored.length > 0 && <p className="tr-sample">忽略额外列：{ignored.join('、')}。这些列不会进入规则或证据核对。</p>}
         <div className="tr-inline-actions"><button type="button" className="btn btn-secondary" disabled={locked || !source.trim() || busy === 'read'} onClick={readPaste}>读取粘贴内容</button><span className="tr-note">再次读取会替换当前规则与说明。</span></div>
         <div className="tr-submit"><button type="submit" className="btn btn-primary" disabled={locked || !!busy || !draft}>{busy === 'analyze' ? '正在分析…' : '分析并核对'}</button><button type="button" className="btn btn-secondary" disabled={locked || !!busy || !pendingBundle} onClick={() => { void reopen(); }}>{busy === 'replay' ? '正在重开验证…' : '重开并验证'}</button>{busy && <button type="button" className="btn btn-ghost" onClick={() => { retire(); setNotice('已取消当前操作。输入仍保留。'); }}>取消当前操作</button>}</div>
-        <p className="tr-note">不调用模型 · 不自动重试 · 仅显式分析/重开发送本地 API · 不自动保存交易</p>
+        <p className="tr-note">不调用模型 · 不自动重试 · 仅显式分析/重开发送{apiLabel} · 不自动保存交易</p>
       </section>
 
       <section className="tr-panel tr-settings" aria-labelledby="tr-settings-title">
@@ -228,7 +231,7 @@ export function TransactionReviewView() {
         </details>
       </section>
     </form>
-    <div className="tr-messages" aria-live="polite">{busy && <p className="tr-note" role="status">{busy === 'read' ? '正在读取文件…' : busy === 'replay' ? '本地服务正在完整重算复核包；上传报告尚未采信。' : '正在等待本地交易规则与字段检查…'}</p>}{failure && <p className="tr-error" role="alert">{failure}</p>}{notice && <p className="tr-note" role="status">{notice}</p>}</div>
+    <div className="tr-messages" aria-live="polite">{busy && <p className="tr-note" role="status">{busy === 'read' ? '正在读取文件…' : busy === 'replay' ? `${serviceLabel}正在完整重算复核包；上传报告尚未采信。` : `正在等待${ruleLabel}与字段检查…`}</p>}{failure && <p className="tr-error" role="alert">{failure}</p>}{notice && <p className="tr-note" role="status">{notice}</p>}</div>
 
     {report && current && <section className="tr-results" aria-labelledby="tr-results-title">
       <div className="tr-result-heading"><div><h3 id="tr-results-title">本次交易复核结果</h3><p className="tr-note">总计 {report.summary.totalTransactions} 笔 · 线索 {report.summary.flaggedTransactions} 笔</p></div><span className="tr-status" data-status={report.status === 'review' ? 'review' : 'consistent'}>{report.status === 'review' ? '仍需复核' : '规则未触发线索'}</span><button type="button" className="btn btn-secondary" onClick={download}>下载完整复核包</button></div>
@@ -244,7 +247,7 @@ export function TransactionReviewView() {
         </section> : <section className="tr-panel">{evidenceView ?? <><h3>案件详情</h3><p className="tr-note">本次没有可选择的线索案件。全部字段检查仍可独立查看。</p></>}</section>}
       </div>
       <details className="tr-panel tr-all-checks" onToggle={(event) => setAllChecksOpen(event.currentTarget.open)}><summary>全部字段检查 · {report.claimChecks.length} 条（含未产生案件的交易）</summary>{allChecksOpen && <><p className="tr-note">这里与案件详情引用同一批检查，不另加统计分母；每页 10 条。</p><div className="tr-check-grid">{report.claimChecks.slice((checkPage - 1) * 10, checkPage * 10).map(fact)}</div><Pager page={checkPage} total={report.claimChecks.length} size={10} label="字段检查" onChange={setCheckPage}/></>}</details>
-      <details className="tr-panel tr-binding"><summary>范围、输入绑定与代码版本</summary><ul>{report.limitations.map((item, index) => <li key={index}>{item}</li>)}</ul><p>引擎：<code>{report.engineVersion}</code></p><p>规范化请求 SHA-256：<code>{report.provenance.requestSha256}</code></p><p>该值绑定服务端规范化请求：显式默认值、UTC 时间、十进制金额字符串、按时间/ID 排序的交易及排序键紧凑 UTF-8 JSON。它不是下载包文件的字节哈希；输入来源真实性、语义正确性和模型可复现性不由哈希证明。</p><ul>{Object.entries(report.provenance.codeSha256).map(([path, digest]) => <li key={path}><code>{path}</code><br/><code>{digest}</code></li>)}</ul><p>重开由本地服务重算整个报告并检查输入/代码绑定及决定结构；没有数字签名或权威副本，不提供人工决定的身份认证。完整报告仅保存在下载包中，页面按案件和字段分页阅读。</p></details>
+      <details className="tr-panel tr-binding"><summary>范围、输入绑定与代码版本</summary><ul>{report.limitations.map((item, index) => <li key={index}>{item}</li>)}</ul><p>引擎：<code>{report.engineVersion}</code></p><p>规范化请求 SHA-256：<code>{report.provenance.requestSha256}</code></p><p>该值绑定服务端规范化请求：显式默认值、UTC 时间、十进制金额字符串、按时间/ID 排序的交易及排序键紧凑 UTF-8 JSON。它不是下载包文件的字节哈希；输入来源真实性、语义正确性和模型可复现性不由哈希证明。</p><ul>{Object.entries(report.provenance.codeSha256).map(([path, digest]) => <li key={path}><code>{path}</code><br/><code>{digest}</code></li>)}</ul><p>重开由{serviceLabel}重算整个报告并检查输入/代码绑定及决定结构；没有数字签名或权威副本，不提供人工决定的身份认证。完整报告仅保存在下载包中，页面按案件和字段分页阅读。</p></details>
     </section>}
   </div>;
 }
