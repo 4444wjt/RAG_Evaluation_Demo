@@ -1,6 +1,6 @@
 # Offline test dependencies reuse the project's pinned versions.
 -c ../requirements.txt
-pytest==9.1.1
+pytest==9.2.0
 numpy
 pandas
 fastapi
@@ -28,7 +28,7 @@ jsonschema>=4.18
 pyyaml
 
 # 门禁性质测试（tests/test_gate_properties.py）；固定版本，使 derandomize 生成的输入序列可复现。
-hypothesis==6.169.0
+hypothesis==6.170.15
 
 # pyarrow 是 datasets 的传递依赖，具体版本沿用 requirements.txt。
 # pyarrow 26.x 在运行时要求 numpy>=2，与本项目钉住的 numpy==1.26.4
